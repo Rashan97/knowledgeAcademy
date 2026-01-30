@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 4: JavaScript Basics - Engineering Academy</title>
+    <link rel="stylesheet" href="../../../css/styles.css">
+    <link rel="stylesheet" href="../../../css/course-styles/course.css">
+</head>
+<body>
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <h1><a href="../../../index.html" style="color: inherit; text-decoration: none;">🎓 Engineering Academy</a></h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../index.html">Course Overview</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section class="course-header">
+        <div class="container">
+            <h1>⌨️ Programming</h1>
+            <p>Lesson 4: JavaScript Basics</p>
+        </div>
+    </section>
+
+    <div class="course-container">
+        <aside class="course-sidebar">
+            <h3>Course Modules</h3>
+            <ul class="lesson-list">
+                <li><a href="../index.html"><span class="lesson-number">📚</span>Course Overview</a></li>
+                <li><a href="01-programming-fundamentals.html" class="completed"><span class="lesson-number">1</span>Programming Fundamentals</a></li>
+                <li><a href="02-python-basics.html" class="completed"><span class="lesson-number">2</span>Python Basics</a></li>
+                <li><a href="03-python-advanced.html" class="completed"><span class="lesson-number">3</span>Python Advanced</a></li>
+                <li><a href="04-javascript-basics.html" class="active"><span class="lesson-number">4</span>JavaScript Basics</a></li>
+                <li><a href="05-javascript-modern.html"><span class="lesson-number">5</span>Modern JavaScript</a></li>
+                <li><a href="06-cpp-basics.html"><span class="lesson-number">6</span>C++ Basics</a></li>
+                <li><a href="07-cpp-advanced.html"><span class="lesson-number">7</span>C++ Advanced</a></li>
+                <li><a href="08-oop-principles.html"><span class="lesson-number">8</span>OOP Principles</a></li>
+                <li><a href="09-data-structures.html"><span class="lesson-number">9</span>Data Structures</a></li>
+                <li><a href="10-algorithms.html"><span class="lesson-number">10</span>Algorithms</a></li>
+                <li><a href="11-debugging.html"><span class="lesson-number">11</span>Debugging & Testing</a></li>
+                <li><a href="12-best-practices.html"><span class="lesson-number">12</span>Best Practices</a></li>
+            </ul>
+        </aside>
+
+        <main class="course-content">
+            <div class="lesson-header">
+                <h2>Lesson 4: JavaScript Basics</h2>
+                <div class="lesson-meta">
+                    <span>📖 95 min read</span>
+                    <span>📊 Beginner-Intermediate</span>
+                </div>
+            </div>
+
+            <div class="lesson-content">
+                <h3>JavaScript: The Language of the Web</h3>
+                <p>
+                    JavaScript is the programming language that brings web pages to life. While HTML provides 
+                    structure and CSS handles styling, JavaScript adds interactivity—responding to user actions, 
+                    updating content dynamically, and creating engaging web experiences.
+                </p>
+
+                <div class="info-box note">
+                    <h4>📌 JavaScript Everywhere</h4>
+                    <p>
+                        JavaScript isn't just for browsers anymore. With Node.js, you can use JavaScript for 
+                        servers, desktop apps (Electron), mobile apps (React Native), and even IoT devices. 
+                        It's one of the most versatile programming languages today.
+                    </p>
+                </div>
+
+                <h3>JavaScript Syntax and Variables</h3>
+
+                <h4>Variable Declarations: var, let, const</h4>
+                <div class="code-block" data-language="javascript">
+<code><span class="comment">// var (old way - avoid using)</span>
+<span class="keyword">var</span> oldWay = <span class="string">"don't use var"</span>;
+
+<span class="comment">// let - for variables that change</span>
+<span class="keyword">let</span> age = <span class="number">25</span>;
+age = <span class="number">26</span>;  <span class="comment">// Can reassign</span>
+
+<span class="comment">// const - for variables that don't change</span>
+<span class="keyword">const</span> name = <span class="string">"Alice"</span>;
+<span class="comment">// name = "Bob";  // ERROR: Cannot reassign const</span>
+
+<span class="comment">// const with objects/arrays (content can change, reference cannot)</span>
+<span class="keyword">const</span> person = { name: <span class="string">"Alice"</span>, age: <span class="number">25</span> };
+person.age = <span class="number">26</span>;      <span class="comment">// OK - modifying content</span>
+<span class="comment">// person = {};      // ERROR - cannot reassign</span>
+
+<span class="keyword">const</span> numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];
+numbers.push(<span class="number">4</span>);      <span class="comment">// OK - modifying content</span>
+<span class="comment">// numbers = [];     // ERROR - cannot reassign</span>
+</code>
+                </div>
+
+                <div class="info-box tip">
+                    <h4>💡 Best Practice</h4>
+                    <p>
+                        Use <code>const</code> by default. Only use <code>let</code> when you know the variable 
+                        will be reassigned. Never use <code>var</code> in modern JavaScript.
+                    </p>
+                </div>
+
+                <h3>Data Types</h3>
+
+                <h4>Primitive Types</h4>
+                <div class="code-block" data-language="javascript">
+<code><span class="comment">// Numbers (integers and floats are the same type)</span>
+<span class="keyword">let</span> integer = <span class="number">42</span>;
+<span class="keyword">let</span> float = <span class="number">3.14</span>;
+<span class="keyword">let</span> negative = <span class="number">-10</span>;
+<span class="keyword">let</span> scientific = <span class="number">2.5e6</span>;  <span class="comment">// 2,500,000</span>
+
+<span class="comment">// Strings</span>
+<span class="keyword">let</span> single = <span class="string">'single quotes'</span>;
+<span class="keyword">let</span> double = <span class="string">"double quotes"</span>;
+<span class="keyword">let</span> template = <span class="string">`template literals with ${integer}`</span>;  <span class="comment">// "template literals with 42"</span>
+
+<span class="comment">// Boolean</span>
+<span class="keyword">let</span> isTrue = <span class="keyword">true</span>;
+<span class="keyword">let</span> isFalse = <span class="keyword">false</span>;
+
+<span class="comment">// Null and Undefined</span>
+<span class="keyword">let</span> nothing = <span class="keyword">null</span>;        <span class="comment">// Intentionally empty</span>
+<span class="keyword">let</span> notDefined;           <span class="comment">// undefined (declared but not assigned)</span>
+
+<span class="comment">// Symbol (unique identifier)</span>
+<span class="keyword">const</span> id = Symbol(<span class="string">'id'</span>);
+
+<span class="comment">// Check types with typeof</span>
+console.log(<span class="keyword">typeof</span> integer);    <span class="comment">// "number"</span>
+console.log(<span class="keyword">typeof</span> single);     <span class="comment">// "string"</span>
+console.log(<span class="keyword">typeof</span> isTrue);     <span class="comment">// "boolean"</span>
+console.log(<span class="keyword">typeof</span> nothing);    <span class="comment">// "object" (historical bug!)</span>
+console.log(<span class="keyword">typeof</span> notDefined); <span class="comment">// "undefined"</span>
+</code>
+                </div>
+
+                <h4>Objects</h4>
+                <div class="code-block" data-language="javascript">
+<code><span class="comment">// Object literal</span>
+<span class="keyword">const</span> person = {
+    name: <span class="string">"Alice"</span>,
+    age: <span class="number">25</span>,
+    city: <span class="string">"NYC"</span>,
+    hobbies: [<span class="string">"reading"</span>, <span class="string">"coding"</span>],
+    greet: <span class="keyword">function</span>() {
+        console.log(<span class="string">`Hello, I'm ${<span class="keyword">this</span>.name}`</span>);
+    }
+};
+
+<span class="comment">// Accessing properties</span>
+console.log(person.name);         <span class="comment">// "Alice" (dot notation)</span>
+console.log(person[<span class="string">"age"</span>]);       <span class="comment">// 25 (bracket notation)</span>
+
+<span class="comment">// Adding/modifying properties</span>
+person.email = <span class="string">"alice@example.com"</span>;
+person.age = <span class="number">26</span>;
+
+<span class="comment">// Calling methods</span>
+person.greet();  <span class="comment">// "Hello, I'm Alice"</span>
+
+<span class="comment">// Destructuring</span>
+<span class="keyword">const</span> { name, age } = person;
+console.log(name, age);  <span class="comment">// "Alice" 26</span>
+</code>
+                </div>
+
+                <h4>Arrays</h4>
+                <div class="code-block" data-language="javascript">
+<code><span class="comment">// Creating arrays</span>
+<span class="keyword">const</span> fruits = [<span class="string">"apple"</span>, <span class="string">"banana"</span>, <span class="string">"orange"</span>];
+<span class="keyword">const</span> mixed = [<span class="number">1</span>, <span class="string">"two"</span>, <span class="keyword">true</span>, { key: <span class="string">"value"</span> }];  <span class="comment">// Can mix types</span>
+
+<span class="comment">// Accessing elements (0-indexed)</span>
+console.log(fruits[<span class="number">0</span>]);   <span class="comment">// "apple"</span>
+console.log(fruits[<span class="number">2</span>]);   <span class="comment">// "orange"</span>
+
+<span class="comment">// Array methods</span>
+fruits.push(<span class="string">"grape"</span>);           <span class="comment">// Add to end</span>
+fruits.pop();                   <span class="comment">// Remove from end</span>
+fruits.unshift(<span class="string">"mango"</span>);        <span class="comment">// Add to beginning</span>
+fruits.shift();                 <span class="comment">// Remove from beginning</span>
+
+console.log(fruits.length);     <span class="comment">// 3</span>
+console.log(fruits.includes(<span class="string">"apple"</span>));  <span class="comment">// true</span>
+console.log(fruits.indexOf(<span class="string">"banana"</span>));  <span class="comment">// 1</span>
+
+<span class="comment">// Array iteration</span>
+fruits.forEach(<span class="keyword">function</span>(fruit) {
+    console.log(fruit);
+});
+
+<span class="comment">// Map, filter, reduce</span>
+<span class="keyword">const</span> numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];
+<span class="keyword">const</span> doubled = numbers.map(n => n * <span class="number">2</span>);           <span class="comment">// [2, 4, 6, 8, 10]</span>
+<span class="keyword">const</span> evens = numbers.filter(n => n % <span class="number">2</span> === <span class="number">0</span>);   <span class="comment">// [2, 4]</span>
+<span class="keyword">const</span> sum = numbers.reduce((acc, n) => acc + n, <span class="number">0</span>);  <span class="comment">// 15</span>
+</code>
+                </div>
+
+                <h3>Functions</h3>
+
+                <h4>Function Declaration</h4>
+                <div class="code-block" data-language="javascript">
+<code><span class="comment">// Traditional function declaration</span>
+<span class="keyword">function</span> <span class="function">greet</span>(name) {
+    <span class="keyword">return</span> <span class="string">`Hello, ${name}!`</span>;
+}
+
+console.log(greet(<span class="string">"Alice"</span>));  <span class="comment">// "Hello, Alice!"</span>
+
+<span class="comment">// Function with default parameters</span>
+<span class="keyword">function</span> <span class="function">greetWithDefault</span>(name = <span class="string">"Guest"</span>) {
+    <span class="keyword">return</span> <span class="string">`Hello, ${name}!`</span>;
+}
+
+console.log(greetWithDefault());        <span class="comment">// "Hello, Guest!"</span>
+console.log(greetWithDefault(<span class="string">"Bob"</span>));  <span class="comment">// "Hello, Bob!"</span>
+
+<span class="comment">// Multiple parameters</span>
+<span class="keyword">function</span> <span class="function">add</span>(a, b) {
+    <span class="keyword">return</span> a + b;
+}
+
+console.log(add(<span class="number">5</span>, <span class="number">3</span>));  <span class="comment">// 8</span>
+</code>
+                </div>
+
+                <h4>Function Expression</h4>
+                <div class="code-block" data-language="javascript">
+<code><span class="comment">// Function expression (assigned to variable)</span>
+<span class="keyword">const</span> multiply = <span class="keyword">function</span>(a, b) {
+    <span class="keyword">return</span> a * b;
+};
+
+console.log(multiply(<span class="number">4</span>, <span class="number">5</span>));  <span class="comment">// 20</span>
+
+<span class="comment">// Arrow function (modern, concise)</span>
+<span class="keyword">const</span> divide = (a, b) => a / b;
+
+console.log(divide(<span class="number">10</span>, <span class="number">2</span>));  <span class="comment">// 5</span>
+
+<span class="comment">// Arrow function with multiple lines</span>
+<span class="keyword">const</span> calculate = (a, b, operation) => {
+    <span class="keyword">if</span> (operation === <span class="string">'add'</span>) <span class="keyword">return</span> a + b;
+    <span class="keyword">if</span> (operation === <span class="string">'multiply'</span>) <span class="keyword">return</span> a * b;
+    <span class="keyword">return</span> <span class="number">0</span>;
+};
+
+console.log(calculate(<span class="number">5</span>, <span class="number">3</span>, <span class="string">'add'</span>));       <span class="comment">// 8</span>
+console.log(calculate(<span class="number">5</span>, <span class="number">3</span>, <span class="string">'multiply'</span>));  <span class="comment">// 15</span>
+</code>
+                </div>
+
+                <h3>Control Flow</h3>
+
+                <h4>Conditional Statements</h4>
+                <div class="code-block" data-language="javascript">
+<code><span class="comment">// if/else</span>
+<span class="keyword">const</span> age = <span class="number">18</span>;
+
+<span class="keyword">if</span> (age &gt;= <span class="number">18</span>) {
+    console.log(<span class="string">"Adult"</span>);
+} <span class="keyword">else</span> <span class="keyword">if</span> (age &gt;= <span class="number">13</span>) {
+    console.log(<span class="string">"Teenager"</span>);
+} <span class="keyword">else</span> {
+    console.log(<span class="string">"Child"</span>);
+}
+
+<span class="comment">// Ternary operator (short if/else)</span>
+<span class="keyword">const</span> status = age &gt;= <span class="number">18</span> ? <span class="string">"Adult"</span> : <span class="string">"Minor"</span>;
+
+<span class="comment">// Switch statement</span>
+<span class="keyword">const</span> day = <span class="string">"Monday"</span>;
+
+<span class="keyword">switch</span> (day) {
+    <span class="keyword">case</span> <span class="string">"Monday"</span>:
+        console.log(<span class="string">"Start of work week"</span>);
+        <span class="keyword">break</span>;
+    <span class="keyword">case</span> <span class="string">"Friday"</span>:
+        console.log(<span class="string">"TGIF!"</span>);
+        <span class="keyword">break</span>;
+    <span class="keyword">case</span> <span class="string">"Saturday"</span>:
+    <span class="keyword">case</span> <span class="string">"Sunday"</span>:
+        console.log(<span class="string">"Weekend!"</span>);
+        <span class="keyword">break</span>;
+    <span class="keyword">default</span>:
+        console.log(<span class="string">"Midweek"</span>);
+}
+
+<span class="comment">// Truthy/Falsy values</span>
+<span class="comment">// Falsy: false, 0, "", null, undefined, NaN</span>
+<span class="comment">// Everything else is truthy</span>
+<span class="keyword">if</span> (<span class="string">""</span>) { console.log(<span class="string">"Won't print"</span>); }
+<span class="keyword">if</span> (<span class="string">"hello"</span>) { console.log(<span class="string">"Will print"</span>); }
+</code>
+                </div>
+
+                <h4>Loops</h4>
+                <div class="code-block" data-language="javascript">
+<code><span class="comment">// for loop</span>
+<span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) {
+    console.log(i);  <span class="comment">// 0, 1, 2, 3, 4</span>
+}
+
+<span class="comment">// while loop</span>
+<span class="keyword">let</span> count = <span class="number">0</span>;
+<span class="keyword">while</span> (count &lt; <span class="number">3</span>) {
+    console.log(count);
+    count++;
+}
+
+<span class="comment">// do...while (executes at least once)</span>
+<span class="keyword">let</span> x = <span class="number">0</span>;
+<span class="keyword">do</span> {
+    console.log(x);
+    x++;
+} <span class="keyword">while</span> (x &lt; <span class="number">3</span>);
+
+<span class="comment">// for...of (iterate over values)</span>
+<span class="keyword">const</span> fruits = [<span class="string">"apple"</span>, <span class="string">"banana"</span>, <span class="string">"orange"</span>];
+<span class="keyword">for</span> (<span class="keyword">const</span> fruit <span class="keyword">of</span> fruits) {
+    console.log(fruit);
+}
+
+<span class="comment">// for...in (iterate over keys/indices)</span>
+<span class="keyword">const</span> person = { name: <span class="string">"Alice"</span>, age: <span class="number">25</span>, city: <span class="string">"NYC"</span> };
+<span class="keyword">for</span> (<span class="keyword">const</span> key <span class="keyword">in</span> person) {
+    console.log(<span class="string">`${key}: ${person[key]}`</span>);
+}
+
+<span class="comment">// break and continue</span>
+<span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) {
+    <span class="keyword">if</span> (i === <span class="number">3</span>) <span class="keyword">continue</span>;  <span class="comment">// Skip 3</span>
+    <span class="keyword">if</span> (i === <span class="number">7</span>) <span class="keyword">break</span>;     <span class="comment">// Stop at 7</span>
+    console.log(i);
+}
+</code>
+                </div>
+
+                <h3>DOM Manipulation</h3>
+                <p>
+                    The Document Object Model (DOM) represents the HTML structure as a tree that JavaScript 
+                    can access and modify.
+                </p>
+
+                <h4>Selecting Elements</h4>
+                <div class="code-block" data-language="javascript">
+<code><span class="comment">// Get element by ID</span>
+<span class="keyword">const</span> header = document.getElementById(<span class="string">'header'</span>);
+
+<span class="comment">// Get elements by class name (returns HTMLCollection)</span>
+<span class="keyword">const</span> buttons = document.getElementsByClassName(<span class="string">'btn'</span>);
+
+<span class="comment">// Get elements by tag name</span>
+<span class="keyword">const</span> paragraphs = document.getElementsByTagName(<span class="string">'p'</span>);
+
+<span class="comment">// querySelector (returns first match)</span>
+<span class="keyword">const</span> firstButton = document.querySelector(<span class="string">'.btn'</span>);
+<span class="keyword">const</span> mainTitle = document.querySelector(<span class="string">'h1'</span>);
+
+<span class="comment">// querySelectorAll (returns NodeList)</span>
+<span class="keyword">const</span> allButtons = document.querySelectorAll(<span class="string">'.btn'</span>);
+<span class="keyword">const</span> allLinks = document.querySelectorAll(<span class="string">'a[href]'</span>);
+</code>
+                </div>
+
+                <h4>Modifying Content and Attributes</h4>
+                <div class="code-block" data-language="javascript">
+<code><span class="comment">// Change text content</span>
+<span class="keyword">const</span> title = document.querySelector(<span class="string">'h1'</span>);
+title.textContent = <span class="string">'New Title'</span>;
+
+<span class="comment">// Change HTML content</span>
+<span class="keyword">const</span> container = document.querySelector(<span class="string">'.container'</span>);
+container.innerHTML = <span class="string">'&lt;p&gt;New paragraph&lt;/p&gt;'</span>;
+
+<span class="comment">// Modify attributes</span>
+<span class="keyword">const</span> image = document.querySelector(<span class="string">'img'</span>);
+image.src = <span class="string">'new-image.jpg'</span>;
+image.alt = <span class="string">'New description'</span>;
+image.setAttribute(<span class="string">'data-id'</span>, <span class="string">'123'</span>);
+
+<span class="comment">// Modify styles</span>
+<span class="keyword">const</span> box = document.querySelector(<span class="string">'.box'</span>);
+box.style.backgroundColor = <span class="string">'blue'</span>;
+box.style.color = <span class="string">'white'</span>;
+box.style.padding = <span class="string">'20px'</span>;
+
+<span class="comment">// Add/remove classes</span>
+box.classList.add(<span class="string">'active'</span>);
+box.classList.remove(<span class="string">'inactive'</span>);
+box.classList.toggle(<span class="string">'highlight'</span>);
+console.log(box.classList.contains(<span class="string">'active'</span>));  <span class="comment">// true</span>
+</code>
+                </div>
+
+                <h4>Creating and Removing Elements</h4>
+                <div class="code-block" data-language="javascript">
+<code><span class="comment">// Create new element</span>
+<span class="keyword">const</span> newDiv = document.createElement(<span class="string">'div'</span>);
+newDiv.textContent = <span class="string">'Hello, World!'</span>;
+newDiv.className = <span class="string">'message'</span>;
+
+<span class="comment">// Append to parent</span>
+document.body.appendChild(newDiv);
+
+<span class="comment">// Insert before another element</span>
+<span class="keyword">const</span> parent = document.querySelector(<span class="string">'.parent'</span>);
+<span class="keyword">const</span> reference = document.querySelector(<span class="string">'.reference'</span>);
+parent.insertBefore(newDiv, reference);
+
+<span class="comment">// Remove element</span>
+newDiv.remove();
+
+<span class="comment">// Create multiple elements</span>
+<span class="keyword">const</span> ul = document.createElement(<span class="string">'ul'</span>);
+[<span class="string">'Item 1'</span>, <span class="string">'Item 2'</span>, <span class="string">'Item 3'</span>].forEach(text => {
+    <span class="keyword">const</span> li = document.createElement(<span class="string">'li'</span>);
+    li.textContent = text;
+    ul.appendChild(li);
+});
+document.body.appendChild(ul);
+</code>
+                </div>
+
+                <h3>Events and Event Handling</h3>
+
+                <h4>Adding Event Listeners</h4>
+                <div class="code-block" data-language="javascript">
+<code><span class="comment">// Click event</span>
+<span class="keyword">const</span> button = document.querySelector(<span class="string">'#myButton'</span>);
+button.addEventListener(<span class="string">'click'</span>, <span class="keyword">function</span>() {
+    console.log(<span class="string">'Button clicked!'</span>);
+});
+
+<span class="comment">// With arrow function</span>
+button.addEventListener(<span class="string">'click'</span>, () => {
+    console.log(<span class="string">'Button clicked!'</span>);
+});
+
+<span class="comment">// Access event object</span>
+button.addEventListener(<span class="string">'click'</span>, (event) => {
+    console.log(event.target);  <span class="comment">// The clicked element</span>
+    console.log(event.type);    <span class="comment">// "click"</span>
+});
+
+<span class="comment">// Input event (fires on every keystroke)</span>
+<span class="keyword">const</span> input = document.querySelector(<span class="string">'#nameInput'</span>);
+input.addEventListener(<span class="string">'input'</span>, (e) => {
+    console.log(<span class="string">`Current value: ${e.target.value}`</span>);
+});
+
+<span class="comment">// Form submit</span>
+<span class="keyword">const</span> form = document.querySelector(<span class="string">'#myForm'</span>);
+form.addEventListener(<span class="string">'submit'</span>, (e) => {
+    e.preventDefault();  <span class="comment">// Prevent page reload</span>
+    console.log(<span class="string">'Form submitted'</span>);
+});
+
+<span class="comment">// Mouse events</span>
+<span class="keyword">const</span> box = document.querySelector(<span class="string">'.box'</span>);
+box.addEventListener(<span class="string">'mouseenter'</span>, () => console.log(<span class="string">'Mouse entered'</span>));
+box.addEventListener(<span class="string">'mouseleave'</span>, () => console.log(<span class="string">'Mouse left'</span>));
+box.addEventListener(<span class="string">'mousemove'</span>, (e) => {
+    console.log(<span class="string">`Mouse at: ${e.clientX}, ${e.clientY}`</span>);
+});
+
+<span class="comment">// Keyboard events</span>
+document.addEventListener(<span class="string">'keydown'</span>, (e) => {
+    console.log(<span class="string">`Key pressed: ${e.key}`</span>);
+    <span class="keyword">if</span> (e.key === <span class="string">'Enter'</span>) {
+        console.log(<span class="string">'Enter key pressed!'</span>);
+    }
+});
+</code>
+                </div>
+
+                <h4>Event Delegation</h4>
+                <div class="code-block" data-language="javascript">
+<code><span class="comment">// Instead of adding listeners to each button individually</span>
+<span class="keyword">const</span> parent = document.querySelector(<span class="string">'#buttonContainer'</span>);
+
+parent.addEventListener(<span class="string">'click'</span>, (e) => {
+    <span class="keyword">if</span> (e.target.matches(<span class="string">'button'</span>)) {
+        console.log(<span class="string">`Button ${e.target.textContent} clicked`</span>);
+    }
+});
+
+<span class="comment">// Works for dynamically added buttons too!</span>
+<span class="keyword">const</span> newButton = document.createElement(<span class="string">'button'</span>);
+newButton.textContent = <span class="string">'New Button'</span>;
+parent.appendChild(newButton);  <span class="comment">// Event listener still works!</span>
+</code>
+                </div>
+
+                <h3>JSON and Data Handling</h3>
+
+                <h4>Working with JSON</h4>
+                <div class="code-block" data-language="javascript">
+<code><span class="comment">// JavaScript object</span>
+<span class="keyword">const</span> person = {
+    name: <span class="string">"Alice"</span>,
+    age: <span class="number">25</span>,
+    hobbies: [<span class="string">"reading"</span>, <span class="string">"coding"</span>]
+};
+
+<span class="comment">// Convert to JSON string</span>
+<span class="keyword">const</span> jsonString = JSON.stringify(person);
+console.log(jsonString);
+<span class="comment">// {"name":"Alice","age":25,"hobbies":["reading","coding"]}</span>
+
+<span class="comment">// Pretty print JSON</span>
+<span class="keyword">const</span> prettyJson = JSON.stringify(person, <span class="keyword">null</span>, <span class="number">2</span>);
+console.log(prettyJson);
+
+<span class="comment">// Parse JSON string to object</span>
+<span class="keyword">const</span> parsed = JSON.parse(jsonString);
+console.log(parsed.name);  <span class="comment">// "Alice"</span>
+
+<span class="comment">// Local Storage (persists data)</span>
+localStorage.setItem(<span class="string">'user'</span>, JSON.stringify(person));
+<span class="keyword">const</span> retrieved = JSON.parse(localStorage.getItem(<span class="string">'user'</span>));
+console.log(retrieved.name);  <span class="comment">// "Alice"</span>
+
+<span class="comment">// Session Storage (cleared when browser closes)</span>
+sessionStorage.setItem(<span class="string">'temp'</span>, <span class="string">'temporary data'</span>);
+console.log(sessionStorage.getItem(<span class="string">'temp'</span>));
+</code>
+                </div>
+
+                <h3>Practice Problems</h3>
+
+                <div class="example-box">
+                    <h5>Problem 1: Interactive Counter</h5>
+                    <p>Create a counter with increment, decrement, and reset buttons.</p>
+                    
+                    <button class="toggle-solution" onclick="toggleSolution('sol1')">Show Solution</button>
+                    <div id="sol1" class="solution" style="display: none;">
+                        <div class="code-block" data-language="html">
+<code><span class="comment">&lt;!-- HTML --&gt;</span>
+&lt;<span class="tag">div</span> <span class="attr">id</span>=<span class="string">"counter"</span>&gt;
+    &lt;<span class="tag">h2</span>&gt;Count: &lt;<span class="tag">span</span> <span class="attr">id</span>=<span class="string">"count"</span>&gt;0&lt;/<span class="tag">span</span>&gt;&lt;/<span class="tag">h2</span>&gt;
+    &lt;<span class="tag">button</span> <span class="attr">id</span>=<span class="string">"increment"</span>&gt;+&lt;/<span class="tag">button</span>&gt;
+    &lt;<span class="tag">button</span> <span class="attr">id</span>=<span class="string">"decrement"</span>&gt;-&lt;/<span class="tag">button</span>&gt;
+    &lt;<span class="tag">button</span> <span class="attr">id</span>=<span class="string">"reset"</span>&gt;Reset&lt;/<span class="tag">button</span>&gt;
+&lt;/<span class="tag">div</span>&gt;
+</code>
+                        </div>
+                        <div class="code-block" data-language="javascript">
+<code><span class="comment">// JavaScript</span>
+<span class="keyword">let</span> count = <span class="number">0</span>;
+<span class="keyword">const</span> countDisplay = document.getElementById(<span class="string">'count'</span>);
+
+document.getElementById(<span class="string">'increment'</span>).addEventListener(<span class="string">'click'</span>, () => {
+    count++;
+    countDisplay.textContent = count;
+});
+
+document.getElementById(<span class="string">'decrement'</span>).addEventListener(<span class="string">'click'</span>, () => {
+    count--;
+    countDisplay.textContent = count;
+});
+
+document.getElementById(<span class="string">'reset'</span>).addEventListener(<span class="string">'click'</span>, () => {
+    count = <span class="number">0</span>;
+    countDisplay.textContent = count;
+});
+</code>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="example-box">
+                    <h5>Problem 2: Todo List</h5>
+                    <p>Build a simple todo list where users can add and remove items.</p>
+                    
+                    <button class="toggle-solution" onclick="toggleSolution('sol2')">Show Solution</button>
+                    <div id="sol2" class="solution" style="display: none;">
+                        <div class="code-block" data-language="javascript">
+<code><span class="comment">// HTML structure assumed:
+// &lt;input id="todoInput" type="text"&gt;
+// &lt;button id="addBtn"&gt;Add&lt;/button&gt;
+// &lt;ul id="todoList"&gt;&lt;/ul&gt;</span>
+
+<span class="keyword">const</span> input = document.getElementById(<span class="string">'todoInput'</span>);
+<span class="keyword">const</span> addBtn = document.getElementById(<span class="string">'addBtn'</span>);
+<span class="keyword">const</span> todoList = document.getElementById(<span class="string">'todoList'</span>);
+
+addBtn.addEventListener(<span class="string">'click'</span>, addTodo);
+input.addEventListener(<span class="string">'keypress'</span>, (e) => {
+    <span class="keyword">if</span> (e.key === <span class="string">'Enter'</span>) addTodo();
+});
+
+<span class="keyword">function</span> <span class="function">addTodo</span>() {
+    <span class="keyword">const</span> text = input.value.trim();
+    <span class="keyword">if</span> (!text) <span class="keyword">return</span>;
+    
+    <span class="keyword">const</span> li = document.createElement(<span class="string">'li'</span>);
+    li.textContent = text;
+    
+    <span class="keyword">const</span> deleteBtn = document.createElement(<span class="string">'button'</span>);
+    deleteBtn.textContent = <span class="string">'Delete'</span>;
+    deleteBtn.addEventListener(<span class="string">'click'</span>, () => li.remove());
+    
+    li.appendChild(deleteBtn);
+    todoList.appendChild(li);
+    input.value = <span class="string">''</span>;
+}
+</code>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="example-box">
+                    <h5>Problem 3: Color Changer</h5>
+                    <p>Create a button that changes the background color randomly when clicked.</p>
+                    
+                    <button class="toggle-solution" onclick="toggleSolution('sol3')">Show Solution</button>
+                    <div id="sol3" class="solution" style="display: none;">
+                        <div class="code-block" data-language="javascript">
+<code><span class="keyword">const</span> btn = document.querySelector(<span class="string">'#colorBtn'</span>);
+
+btn.addEventListener(<span class="string">'click'</span>, () => {
+    <span class="keyword">const</span> randomColor = <span class="string">`#${Math.floor(Math.random() * 16777215).toString(16)}`</span>;
+    document.body.style.backgroundColor = randomColor;
+});
+
+<span class="comment">// Alternative: using RGB</span>
+btn.addEventListener(<span class="string">'click'</span>, () => {
+    <span class="keyword">const</span> r = Math.floor(Math.random() * <span class="number">256</span>);
+    <span class="keyword">const</span> g = Math.floor(Math.random() * <span class="number">256</span>);
+    <span class="keyword">const</span> b = Math.floor(Math.random() * <span class="number">256</span>);
+    document.body.style.backgroundColor = <span class="string">`rgb(${r}, ${g}, ${b})`</span>;
+});
+</code>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="example-box">
+                    <h5>Problem 4: Form Validation</h5>
+                    <p>Validate a form with name and email fields before submission.</p>
+                    
+                    <button class="toggle-solution" onclick="toggleSolution('sol4')">Show Solution</button>
+                    <div id="sol4" class="solution" style="display: none;">
+                        <div class="code-block" data-language="javascript">
+<code><span class="keyword">const</span> form = document.querySelector(<span class="string">'#userForm'</span>);
+
+form.addEventListener(<span class="string">'submit'</span>, (e) => {
+    e.preventDefault();
+    
+    <span class="keyword">const</span> name = document.getElementById(<span class="string">'name'</span>).value.trim();
+    <span class="keyword">const</span> email = document.getElementById(<span class="string">'email'</span>).value.trim();
+    
+    <span class="comment">// Validation</span>
+    <span class="keyword">if</span> (name.length &lt; <span class="number">3</span>) {
+        alert(<span class="string">'Name must be at least 3 characters'</span>);
+        <span class="keyword">return</span>;
+    }
+    
+    <span class="keyword">const</span> emailRegex = <span class="string">/^[\w\.-]+@[\w\.-]+\.\w+$/</span>;
+    <span class="keyword">if</span> (!emailRegex.test(email)) {
+        alert(<span class="string">'Invalid email address'</span>);
+        <span class="keyword">return</span>;
+    }
+    
+    console.log(<span class="string">'Form valid!'</span>, { name, email });
+    <span class="comment">// Submit data...</span>
+});
+</code>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="example-box">
+                    <h5>Problem 5: Live Search Filter</h5>
+                    <p>Filter a list of items as the user types in a search box.</p>
+                    
+                    <button class="toggle-solution" onclick="toggleSolution('sol5')">Show Solution</button>
+                    <div id="sol5" class="solution" style="display: none;">
+                        <div class="code-block" data-language="javascript">
+<code><span class="comment">// HTML: &lt;input id="searchBox"&gt; &lt;ul id="itemList"&gt;...&lt;/ul&gt;</span>
+
+<span class="keyword">const</span> searchBox = document.getElementById(<span class="string">'searchBox'</span>);
+<span class="keyword">const</span> items = document.querySelectorAll(<span class="string">'#itemList li'</span>);
+
+searchBox.addEventListener(<span class="string">'input'</span>, (e) => {
+    <span class="keyword">const</span> searchTerm = e.target.value.toLowerCase();
+    
+    items.forEach(item => {
+        <span class="keyword">const</span> text = item.textContent.toLowerCase();
+        <span class="keyword">if</span> (text.includes(searchTerm)) {
+            item.style.display = <span class="string">''</span>;
+        } <span class="keyword">else</span> {
+            item.style.display = <span class="string">'none'</span>;
+        }
+    });
+});
+</code>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Key Takeaways</h3>
+                <ul>
+                    <li>Use <code>const</code> by default, <code>let</code> when reassigning, never <code>var</code></li>
+                    <li>JavaScript has dynamic typing—variables can hold any type</li>
+                    <li>Objects and arrays are fundamental data structures</li>
+                    <li>Functions can be declared or expressed; arrow functions provide concise syntax</li>
+                    <li>DOM manipulation lets you dynamically change web pages</li>
+                    <li><code>querySelector</code> and <code>querySelectorAll</code> are the modern way to select elements</li>
+                    <li>Event listeners make pages interactive by responding to user actions</li>
+                    <li>JSON is the standard format for data exchange in JavaScript</li>
+                </ul>
+
+                <div class="info-box tip">
+                    <h4>💡 Next Steps</h4>
+                    <p>
+                        You've learned JavaScript fundamentals! Next, we'll explore Modern JavaScript (ES6+) 
+                        with advanced features like destructuring, spread operators, promises, async/await, 
+                        modules, and more that make JavaScript even more powerful and expressive.
+                    </p>
+                </div>
+            </div>
+
+            <div class="lesson-navigation">
+                <a href="03-python-advanced.html" class="nav-btn">← Previous: Python Advanced</a>
+                <a href="05-javascript-modern.html" class="nav-btn">Next: Modern JavaScript →</a>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../js/main.js"></script>
+    <script>
+        function toggleSolution(id) {
+            const solution = document.getElementById(id);
+            const button = event.target;
+            if (solution.style.display === 'none') {
+                solution.style.display = 'block';
+                button.textContent = 'Hide Solution';
+            } else {
+                solution.style.display = 'none';
+                button.textContent = 'Show Solution';
+            }
+        }
+    </script>
+</body>
+</html>

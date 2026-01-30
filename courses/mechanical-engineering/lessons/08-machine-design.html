@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 8: Machine Design - Engineering Academy</title>
+    <link rel="stylesheet" href="../../../css/styles.css">
+    <link rel="stylesheet" href="../../../css/course-styles/course.css">
+</head>
+<body>
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <h1><a href="../../../index.html" style="color: inherit; text-decoration: none;">🎓 Engineering Academy</a></h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../index.html">Course Overview</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section class="course-header">
+        <div class="container">
+            <h1>⚙️ Mechanical Engineering</h1>
+            <p>Lesson 8: Machine Design</p>
+        </div>
+    </section>
+
+    <div class="course-container">
+        <aside class="course-sidebar">
+            <h3>Course Modules</h3>
+            <ul class="lesson-list">
+                <li><a href="../index.html"><span class="lesson-number">📚</span>Course Overview</a></li>
+                <li><a href="01-statics.html"><span class="lesson-number">1</span>Statics & Force Analysis</a></li>
+                <li><a href="02-dynamics.html"><span class="lesson-number">2</span>Dynamics & Motion</a></li>
+                <li><a href="03-mechanics-of-materials.html"><span class="lesson-number">3</span>Mechanics of Materials</a></li>
+                <li><a href="04-thermodynamics.html"><span class="lesson-number">4</span>Thermodynamics</a></li>
+                <li><a href="05-fluid-mechanics.html"><span class="lesson-number">5</span>Fluid Mechanics</a></li>
+                <li><a href="06-heat-transfer.html"><span class="lesson-number">6</span>Heat Transfer</a></li>
+                <li><a href="07-materials-science.html"><span class="lesson-number">7</span>Materials Science</a></li>
+                <li><a href="08-machine-design.html" class="active"><span class="lesson-number">8</span>Machine Design</a></li>
+                <li><a href="09-manufacturing-processes.html"><span class="lesson-number">9</span>Manufacturing Processes</a></li>
+                <li><a href="10-vibrations.html"><span class="lesson-number">10</span>Mechanical Vibrations</a></li>
+                <li><a href="11-cad-cam.html"><span class="lesson-number">11</span>CAD/CAM & Design Tools</a></li>
+                <li><a href="12-hvac-systems.html"><span class="lesson-number">12</span>HVAC & Thermal Systems</a></li>
+            </ul>
+        </aside>
+
+        <main class="course-content">
+            <div class="lesson-header">
+                <h2>Lesson 8: Machine Design</h2>
+                <div class="lesson-meta">
+                    <span>📖 105 min read</span>
+                    <span>📊 Applied</span>
+                </div>
+            </div>
+
+            <div class="lesson-content">
+                <h3>Introduction to Machine Design</h3>
+                <p>
+                    Machine design integrates mechanics, materials science, and manufacturing to create safe, reliable, 
+                    and economical mechanical components and systems. Design engineers must consider static and dynamic 
+                    loads, material selection, stress concentrations, fatigue, and manufacturability.
+                </p>
+
+                <div class="info-box note">
+                    <h4>📌 What You'll Learn</h4>
+                    <ul>
+                        <li>Design methodology and factor of safety</li>
+                        <li>Static failure theories (Tresca, von Mises)</li>
+                        <li>Fatigue and S-N curves</li>
+                        <li>Stress concentrations and notch sensitivity</li>
+                        <li>Shaft design for combined loading</li>
+                        <li>Rolling element bearings</li>
+                        <li>Gear design and analysis</li>
+                        <li>Springs, fasteners, and joints</li>
+                    </ul>
+                </div>
+
+                <h3>Design Process and Safety Factors</h3>
+
+                <h4>Design Methodology</h4>
+                <div class="code-block" data-language="text">
+<code>Engineering Design Process:
+
+1. Problem Definition:
+   - Identify need
+   - Define requirements (functional, performance)
+   - List constraints (cost, size, weight, manufacturability)
+
+2. Conceptual Design:
+   - Brainstorm solutions
+   - Evaluate alternatives
+   - Select best concept
+
+3. Preliminary Design:
+   - Rough sizing calculations
+   - Material selection
+   - Layout drawings
+
+4. Detailed Design:
+   - Stress analysis
+   - Fatigue analysis
+   - FEA simulation
+   - Detailed drawings with tolerances
+
+5. Prototype and Testing:
+   - Build prototype
+   - Test against requirements
+   - Iterate as needed
+
+6. Production:
+   - Manufacturing planning
+   - Quality control
+   - Documentation
+
+Design Criteria:
+  Functionality: Does it work?
+  Strength: Can it withstand loads?
+  Reliability: Will it last?
+  Manufacturability: Can we make it?
+  Cost: Is it economical?
+  Sustainability: Environmental impact?
+  Safety: Risk mitigation
+</code>
+                </div>
+
+                <h4>Factor of Safety</h4>
+                <div class="code-block" data-language="text">
+<code>Factor of Safety (n):
+  Ratio of strength to applied stress
+  
+  For static loading:
+    n = σ_y / σ_applied  (yield-based)
+    or
+    n = S_ut / σ_max  (ultimate-based)
+
+  Purpose:
+    - Account for uncertainties:
+      • Material variability
+      • Load variations
+      • Geometry approximations
+      • Wear, corrosion over time
+    
+    - Ensure safety and reliability
+
+Typical Values:
+  n = 1.2-1.5: Well-known loads, materials
+               (aerospace, weight-critical)
+  
+  n = 1.5-2.5: Standard machinery
+               (motors, pumps)
+  
+  n = 2.5-4:   Uncertain loads
+               (construction, vehicles)
+  
+  n = 4-10:    Unknown stresses
+               (building codes, pressure vessels)
+
+Selection Factors:
+  Lower n:
+    + Lighter, cheaper
+    - Higher risk
+  
+  Higher n:
+    + Safer
+    - Heavier, more expensive
+  
+  Balance performance and safety
+
+ASME Code:
+  Pressure vessels: n ≥ 3.5 (yield) or 4.0 (ultimate)
+  
+  Aircraft: n = 1.5 (with rigorous analysis)
+
+Note: n < 1 indicates failure!</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Static Failure Theories</h3>
+
+                <h4>Multiaxial Stress States</h4>
+                <div class="code-block" data-language="text">
+<code>Problem:
+  Real components have complex stress states
+  (σ_x, σ_y, σ_z, τ_xy, τ_yz, τ_zx)
+  
+  How do we predict failure?
+  
+  Solution: Failure theories
+
+Ductile Material Theories:
+  Based on tensile test data (σ_y, S_ut)
+
+1. Maximum Shear Stress (Tresca):
+   Failure when: τ_max = σ_y / 2
+   
+   For principal stresses (σ₁, σ₂, σ₃):
+     τ_max = (σ₁ - σ₃) / 2
+   
+   Criterion: (σ₁ - σ₃) = σ_y
+   
+   Factor of safety:
+     n = σ_y / (σ₁ - σ₃)
+   
+   Conservative (safe), simple
+
+2. Distortion Energy (von Mises):
+   Failure when distortion energy equals yield
+   
+   von Mises stress:
+     σ_v = √[(σ₁-σ₂)² + (σ₂-σ₃)² + (σ₃-σ₁)²] / √2
+   
+   Or for 2D (σ_x, σ_y, τ_xy):
+     σ_v = √(σ_x² - σ_x·σ_y + σ_y² + 3τ_xy²)
+   
+   Criterion: σ_v = σ_y
+   
+   Factor of safety:
+     n = σ_y / σ_v
+   
+   More accurate, widely used
+   
+   Agrees with experiments better
+
+Brittle Material Theories:
+
+Maximum Normal Stress (Rankine):
+  Failure when: σ₁ = S_ut  or  σ₃ = S_uc
+  
+  Where:
+    S_ut = ultimate tensile strength
+    S_uc = ultimate compressive strength
+  
+  Used for: Cast iron, ceramics, concrete
+
+Modified Mohr Theory:
+  Combines tension and compression data
+  Different failure in tension vs compression
+  
+  Accounts for: S_ut ≠ S_uc
+
+Coulomb-Mohr:
+  Linear envelope on Mohr's circle
+  
+  For ductile: Same as Tresca
+  For brittle: Uses S_ut and S_uc
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Fatigue Analysis</h3>
+
+                <h4>Fatigue Fundamentals</h4>
+                <div class="code-block" data-language="text">
+<code>Fatigue Failure:
+  Progressive structural damage from cyclic loading
+  
+  Can fail at stress << σ_y
+  
+  Responsible for ~90% of mechanical failures
+
+Fatigue Process:
+  1. Crack initiation (at stress concentration)
+  2. Crack propagation (stable growth)
+  3. Final fracture (unstable, sudden)
+
+Stress Cycle Parameters:
+  σ_max = maximum stress
+  σ_min = minimum stress
+  
+  Mean stress:
+    σ_m = (σ_max + σ_min) / 2
+  
+  Alternating stress (amplitude):
+    σ_a = (σ_max - σ_min) / 2
+  
+  Stress ratio:
+    R = σ_min / σ_max
+  
+  Stress range:
+    Δσ = σ_max - σ_min = 2σ_a
+
+Types of Loading:
+  Completely reversed: σ_m = 0, R = -1
+    Example: Rotating shaft with gravity
+  
+  Zero-to-max: σ_min = 0, R = 0
+    Example: Vehicle suspension
+  
+  General: Any σ_m and σ_a
+
+S-N Curve (Wöhler curve):
+  Log(stress) vs Log(cycles to failure)
+  
+  High-cycle fatigue: N > 10³ cycles
+  
+  For steel:
+    Endurance limit S_e: Stress for infinite life
+    Occurs around N = 10⁶-10⁷ cycles
+    
+    Typical: S_e ≈ 0.5 S_ut (for S_ut < 1400 MPa)
+  
+  For Al, Ti (no endurance limit):
+    Fatigue strength at N cycles (e.g., 5×10⁸)
+  
+  Low-cycle fatigue: N < 10³ cycles
+    Plastic deformation occurs
+    Strain-life approach
+
+Modifying Factors for S_e:
+  S_e = k_a · k_b · k_c · k_d · k_e · S_e'
+  
+  Where S_e' = 0.5 S_ut (ideal)
+  
+  k_a = surface finish factor
+    Ground: k_a = 1.0-0.9
+    Machined: k_a = 0.9-0.7
+    Hot-rolled: k_a = 0.7-0.5
+    As-forged: k_a = 0.4-0.3
+  
+  k_b = size factor
+    For rotating round: k_b = (d/7.6)^(-0.107) for 2.8<d<51 mm
+    Larger = more likely to have defects
+  
+  k_c = load factor
+    Bending: k_c = 1.0
+    Axial: k_c = 0.85
+    Torsion: k_c = 0.59
+  
+  k_d = temperature factor
+    Room T: k_d = 1.0
+    High T: k_d < 1.0
+  
+  k_e = reliability factor
+    50%: k_e = 1.0
+    90%: k_e = 0.89
+    99%: k_e = 0.81
+    99.9%: k_e = 0.75
+</code>
+                </div>
+
+                <h4>Fluctuating Stress Analysis</h4>
+                <div class="code-block" data-language="text">
+<code>Problem:
+  Combine σ_m and σ_a to predict failure
+  
+  Mean stress reduces fatigue strength
+
+Failure Criteria:
+
+1. Soderberg (most conservative):
+   σ_a/S_e + σ_m/σ_y = 1/n
+   
+   Factor of safety:
+     n = 1 / (σ_a/S_e + σ_m/σ_y)
+   
+   Based on yield (very safe)
+
+2. Goodman (most common):
+   σ_a/S_e + σ_m/S_ut = 1/n
+   
+   Factor of safety:
+     n = 1 / (σ_a/S_e + σ_m/S_ut)
+   
+   Based on ultimate strength
+   Linear approximation
+
+3. Gerber (least conservative):
+   σ_a/S_e + (σ_m/S_ut)² = 1/n
+   
+   Parabolic, agrees with data better
+   More complex
+
+Modified Goodman (ASME):
+  If σ_m < 0 (compressive):
+    Use σ_m = 0 (compression helps fatigue)
+  
+  If σ_a/S_e + σ_m/S_ut > 1:
+    Check yielding: σ_max = σ_m + σ_a < σ_y
+
+Completely Reversed (σ_m = 0):
+  n = S_e / σ_a
+  
+  Simplest case
+
+Variable Amplitude Loading:
+  Miner's Rule (cumulative damage):
+    Σ(n_i / N_i) = 1  at failure
+  
+  Where:
+    n_i = actual cycles at stress level i
+    N_i = cycles to failure at stress level i
+  
+  Damage accumulates linearly
+  
+  Example:
+    10⁴ cycles at σ₁ (N₁=10⁵) + 2×10⁵ cycles at σ₂ (N₂=10⁶)
+    
+    Damage = 10⁴/10⁵ + 2×10⁵/10⁶ = 0.1 + 0.2 = 0.3
+    
+    Can withstand 1/0.3 = 3.33 times this loading
+</code>
+                </div>
+
+                <h4>Stress Concentrations</h4>
+                <div class="code-block" data-language="text">
+<code>Geometric Discontinuities:
+  Holes, notches, fillets, keyways
+  
+  Stress magnification: σ_max = K_t · σ_nominal
+  
+  Theoretical Stress Concentration Factor (K_t):
+    From charts/tables based on geometry
+    
+    Examples:
+      Hole in plate (tension): K_t ≈ 3.0
+      Shoulder fillet (D/d=1.5, r/d=0.1): K_t ≈ 1.6
+      Sharp notch: K_t can exceed 10
+    
+    Depends on:
+      - Type of loading (tension, bending, torsion)
+      - Geometry ratios (D/d, r/d)
+
+Static Loading:
+  Ductile materials: Local yielding redistributes stress
+    Use K_t cautiously, may ignore
+  
+  Brittle materials: Crack propagates
+    Always use K_t
+
+Fatigue Loading:
+  Stress concentrations critical!
+  
+  Fatigue Stress Concentration Factor (K_f):
+    K_f = 1 + q(K_t - 1)
+  
+  Where q = notch sensitivity (0 to 1)
+    
+    q = 0: No notch effect (K_f = 1)
+    q = 1: Full theoretical effect (K_f = K_t)
+  
+  Notch sensitivity depends on:
+    - Material (ductility)
+    - Notch radius (sharper → higher q)
+    - Strength (higher strength → higher q)
+  
+  Typical:
+    Steel (S_ut = 550 MPa): q ≈ 0.9
+    Aluminum: q ≈ 0.7-0.9
+  
+  Charts available (Peterson, Neuber)
+
+Reducing Stress Concentrations:
+  1. Increase fillet radius
+     (larger r → lower K_t)
+  
+  2. Add relief grooves
+  
+  3. Gradual transitions
+  
+  4. Remove sharp corners
+  
+  5. Surface treatments:
+     - Shot peening (compressive residual stress)
+     - Nitriding, carburizing (hard surface)
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Shaft Design</h3>
+
+                <h4>Shaft Loading and Analysis</h4>
+                <div class="code-block" data-language="text">
+<code>Shaft Functions:
+  - Transmit torque (power transmission)
+  - Support rotating elements (gears, pulleys)
+  - Maintain alignment
+
+Loading Types:
+  1. Torsion: From transmitted torque
+  2. Bending: From forces on gears, belts
+  3. Axial: From thrust loads (less common)
+
+Power Transmission:
+  P = T · ω
+  
+  Where:
+    P = power (W)
+    T = torque (N·m)
+    ω = angular velocity (rad/s)
+  
+  Or: P = 2πnT
+  Where n = rotational speed (rev/s or Hz)
+  
+  English units: P(hp) = T(lb·in) · n(rpm) / 63,025
+
+Torsional Stress:
+  τ = Tc/J = 16T/(πd³)  (solid shaft)
+  
+  For hollow shaft (d_o, d_i):
+    τ = Tc/J = 16Td_o/[π(d_o⁴ - d_i⁴)]
+
+Bending Stress:
+  σ = Mc/I = 32M/(πd³)  (solid shaft)
+  
+  M from bearing reactions and loads
+
+Combined Loading:
+  Critical points: surface (max stress)
+  
+  Principal stresses (Mohr's circle):
+    σ₁ = σ/2 + √[(σ/2)² + τ²]
+    σ₂ = 0
+    σ₃ = σ/2 - √[(σ/2)² + τ²]
+  
+  von Mises stress:
+    σ_v = √(σ² + 3τ²)
+  
+  For shaft (σ from bending, τ from torsion):
+    σ_v = √(σ_b² + 3τ_t²)
+
+ASME Code for Shafts:
+  Static (ductile):
+    σ_v ≤ σ_y / n
+  
+  Fatigue (fluctuating bending, steady torsion):
+    σ_a = 32K_f M_a / (πd³)  (alternating bending)
+    σ_m = 32K_f M_m / (πd³)  (mean bending)
+    τ_m = 16T / (πd³)  (mean torsion)
+    
+    von Mises equivalent:
+      σ_a,eq = √(σ_a² + 3τ_a²)
+      σ_m,eq = √(σ_m² + 3τ_m²)
+    
+    Apply Goodman:
+      σ_a,eq/S_e + σ_m,eq/S_ut = 1/n
+
+Critical Speed:
+  Natural frequency of shaft
+  
+  Avoid operating near critical speed (resonance)
+  
+  First critical (simply supported):
+    ω_c = √(g·k)
+  
+  Where k = stiffness = deflection coefficient
+  
+  Detailed: FEA or Rayleigh method
+
+Shaft Materials:
+  Cold-drawn steel (1020, 1045): Inexpensive
+  Alloy steel (4140, 4340): Higher strength
+  Stainless (316, 440C): Corrosion resistance
+
+Design Procedure:
+  1. Determine torque and loads
+  2. Draw FBD, find reactions
+  3. Bending moment and torque diagrams
+  4. Select critical sections
+  5. Calculate stresses
+  6. Apply failure criterion with K_f
+  7. Size diameter (iterate)
+  8. Check deflection and critical speed
+</code>
+                </div>
+
+                <h4>Example: Shaft Design</h4>
+                <div class="code-block" data-language="text">
+<code>Problem:
+  Design shaft for P = 15 kW at n = 600 rpm
+  Gear applies F_t = 3000 N tangential force
+  Bearing span L = 400 mm, gear at center
+  Material: AISI 1045 cold-drawn steel
+    S_ut = 620 MPa, σ_y = 530 MPa
+  Factor of safety n = 2.0
+
+Solution:
+
+1. Torque:
+   T = P/(2πn) = 15,000/(2π·10) = 238.7 N·m
+
+2. Bending moment (at gear):
+   Bearing reactions: R = F_t/2 = 1500 N
+   M_max = R·L/4 = 1500·0.1 = 150 N·m
+
+3. Endurance limit:
+   S_e' = 0.5·S_ut = 310 MPa
+   
+   Assume:
+     k_a = 0.8 (machined)
+     k_b = 0.85 (assume d ≈ 30 mm)
+     k_c = 1.0 (bending)
+     k_d = 1.0 (room T)
+     k_e = 0.89 (90% reliability)
+   
+   S_e = 0.8·0.85·1.0·1.0·0.89·310 = 188 MPa
+
+4. Stresses (assume d = 30 mm, K_f = 1.5):
+   σ_a = K_f·32M/(πd³) = 1.5·32·150/(π·0.03³) = 84.9 MPa
+   σ_m = 0 (fully reversed bending)
+   
+   τ_m = 16T/(πd³) = 16·238.7/(π·0.03³) = 45.1 MPa
+
+5. von Mises equivalent:
+   σ_a,eq = √(84.9² + 3·0²) = 84.9 MPa
+   σ_m,eq = √(0² + 3·45.1²) = 78.1 MPa
+
+6. Goodman criterion:
+   1/n = σ_a,eq/S_e + σ_m,eq/S_ut
+       = 84.9/188 + 78.1/620
+       = 0.451 + 0.126 = 0.577
+   
+   n = 1/0.577 = 1.73 < 2.0  (NOT ACCEPTABLE)
+
+7. Resize to d = 32 mm:
+   σ_a = 1.5·32·150/(π·0.032³) = 70.4 MPa
+   τ_m = 16·238.7/(π·0.032³) = 37.4 MPa
+   
+   σ_a,eq = 70.4 MPa
+   σ_m,eq = 64.8 MPa
+   
+   1/n = 70.4/188 + 64.8/620 = 0.374 + 0.105 = 0.479
+   
+   n = 2.09 > 2.0  ✓ ACCEPTABLE
+
+Select: d = 32 mm standard size</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Rolling Element Bearings</h3>
+
+                <h4>Bearing Types and Selection</h4>
+                <div class="code-block" data-language="text">
+<code>Bearing Functions:
+  - Support rotating shaft
+  - Reduce friction
+  - Transmit loads
+
+Types:
+
+Ball Bearings:
+  - Point contact
+  - Lower load capacity
+  - Higher speed capability
+  - Lower friction
+  
+  Deep groove: Radial and moderate thrust
+  Angular contact: High thrust (pairs)
+  Self-aligning: Compensate misalignment
+
+Roller Bearings:
+  - Line contact
+  - Higher load capacity
+  - Lower speed
+  
+  Cylindrical: Pure radial, high radial capacity
+  Tapered: Combined radial and thrust
+  Spherical: Self-aligning, heavy loads
+  Needle: Compact, high radial
+
+Nomenclature:
+  Bore size: Inner diameter (mm)
+    Last two digits × 5 = bore (e.g., 6204 → 20 mm)
+  
+  Series: Width and diameter
+    Light (02), Medium (03), Heavy (04)
+
+Load Ratings:
+
+Basic Dynamic Load Rating (C):
+  Load for L₁₀ = 10⁶ revolutions
+  
+  Catalog value (N or kN)
+
+Basic Static Load Rating (C₀):
+  Maximum static load
+  For non-rotating or slow speed
+
+Life Equation:
+  L₁₀ = (C/P)^p
+  
+  Where:
+    L₁₀ = rating life (millions of revolutions)
+    C = dynamic load rating
+    P = equivalent dynamic load
+    p = 3 for ball bearings
+        10/3 for roller bearings
+  
+  90% of bearings survive L₁₀
+
+Life in Hours:
+  L₁₀h = (10⁶/60n) · L₁₀ = (C/P)^p · (10⁶/60n)
+  
+  Where n = speed (rpm)
+
+Equivalent Load:
+  Combines radial (F_r) and axial (F_a) loads
+  
+  P = X·F_r + Y·F_a
+  
+  Where X, Y = radial and thrust factors (tables)
+
+Load Adjustment:
+  Application factor (a_f):
+    Smooth: a_f = 1.0
+    Light shock: a_f = 1.2
+    Moderate shock: a_f = 1.5
+    Heavy shock: a_f = 2.0+
+  
+  P = a_f · P_equiv
+
+Reliability:
+  For reliability R ≠ 90%:
+    L_R = a₁ · L₁₀
+  
+  Where a₁ (from table):
+    R = 90%: a₁ = 1.0
+    R = 95%: a₁ = 0.62
+    R = 99%: a₁ = 0.21
+
+Selection Procedure:
+  1. Determine loads (F_r, F_a)
+  2. Calculate equivalent load P
+  3. Specify desired life L₁₀h
+  4. Calculate required C:
+     C = P · (60nL₁₀h/10⁶)^(1/p)
+  5. Select bearing from catalog (C ≥ C_required)
+  6. Verify static load: P₀ ≤ C₀
+
+Lubrication:
+  Grease: Most common, sealed bearings
+  Oil: High speed, high temperature
+  
+  Insufficient lubrication → premature failure
+
+Mounting:
+  Rotating inner ring: Interference fit
+  Stationary inner ring: Clearance fit
+  Proper alignment critical
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Gear Design</h3>
+
+                <h4>Gear Fundamentals</h4>
+                <div class="code-block" data-language="text">
+<code>Gear Types:
+
+Spur Gears:
+  - Parallel shafts
+  - Straight teeth (parallel to axis)
+  - Simplest, most common
+  - Noisy at high speed
+
+Helical Gears:
+  - Parallel or crossed shafts
+  - Angled teeth (helix)
+  - Smoother, quieter
+  - Axial thrust load
+
+Bevel Gears:
+  - Intersecting shafts (usually 90°)
+  - Conical shape
+  - Straight or spiral teeth
+
+Worm Gears:
+  - Non-intersecting, perpendicular shafts
+  - High reduction ratios
+  - Self-locking (low efficiency)
+
+Terminology:
+
+Pitch circle: Theoretical contact circle
+Pitch diameter: d = mN (metric)
+  Where m = module, N = number of teeth
+
+Diametral pitch (P): P = N/d (teeth per inch, English)
+
+Gear ratio:
+  GR = ω_in/ω_out = N_out/N_in = d_out/d_in
+
+Velocity ratio = GR
+
+Center distance:
+  C = (d₁ + d₂)/2 = m(N₁ + N₂)/2
+
+Pressure angle (φ):
+  Angle of force transmission
+  Standard: φ = 20° (sometimes 14.5°, 25°)
+
+Tooth proportions (module m):
+  Addendum: a = m
+  Dedendum: b = 1.25m
+  Whole depth: h_t = 2.25m
+  Clearance: c = 0.25m
+
+Undercut:
+  Interference if too few teeth
+  Minimum teeth (φ = 20°): N_min = 18
+
+Gear Trains:
+  Simple: One pair
+  Compound: Multiple pairs on same shaft
+  Planetary: Sun, planet, ring gears
+  
+  Overall GR = product of individual ratios</code>
+                </div>
+
+                <h4>Gear Strength Analysis</h4>
+                <div class="code-block" data-language="text">
+<code>Design Considerations:
+  1. Bending stress (tooth breakage)
+  2. Contact stress (pitting, wear)
+
+AGMA Standards:
+  American Gear Manufacturers Association
+  Comprehensive design equations
+
+Lewis Equation (Bending):
+  σ = W_t/(F·m·Y)
+  
+  Where:
+    W_t = tangential force (transmitted load)
+    F = face width
+    m = module
+    Y = Lewis form factor (geometry, tooth count)
+  
+  Allowable:
+    σ_allow = σ_at · K_L / (K_v · K_o · K_m · K_B)
+  
+  Where:
+    σ_at = allowable bending stress (material)
+    K_L = life factor
+    K_v = dynamic factor (speed)
+    K_o = overload factor
+    K_m = load distribution factor
+    K_B = rim thickness factor
+
+Hertzian Contact Stress:
+  σ_c = √[(W_t/F) · (K_factors) / (d₁·d₂/(d₁+d₂))]
+  
+  Pitting resistance:
+    σ_c,allow = σ_ac · C_L / (K_v · K_o · K_m)
+  
+  Where σ_ac = contact fatigue strength
+
+Gear Materials:
+
+Steel (common):
+  Through-hardened: 180-400 HB
+    AISI 1045, 4140
+  
+  Case-hardened: 50-60 HRC surface
+    AISI 4320, 8620 (carburized)
+    Higher strength, wear resistance
+
+Cast iron: Economical, low speed
+
+Bronze: Worm gear wheels (vs steel worm)
+
+Plastics: Light load, quiet, no lubrication
+
+Transmitted Load:
+  W_t = T/r = 2T/d
+  
+  Where T = torque, r = pitch radius
+
+Power:
+  P = W_t · v
+  
+  Where v = pitch line velocity = πdn/60
+
+Efficiency:
+  Spur/helical: η ≈ 98-99%
+  Bevel: η ≈ 95-98%
+  Worm: η ≈ 50-90% (low for high ratio)
+
+Heat Generation:
+  P_loss = P_in · (1 - η)
+  
+  High-speed gears require cooling
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Springs and Fasteners</h3>
+
+                <h4>Helical Compression Springs</h4>
+                <div class="code-block" data-language="text">
+<code>Spring Functions:
+  - Store energy
+  - Absorb shock
+  - Apply force
+  - Maintain contact
+
+Spring Rate:
+  k = F/δ (stiffness, N/mm or lb/in)
+  
+  Linear springs: Constant k
+
+Compression Spring Geometry:
+  d = wire diameter
+  D = mean coil diameter
+  N_a = number of active coils
+  
+  Spring index: C = D/d (typically 4-12)
+
+Spring Rate:
+  k = Gd⁴/(8D³N_a) = Gd/(8C³N_a)
+  
+  Where G = shear modulus
+    Steel: G ≈ 80 GPa
+    Music wire: G ≈ 79 GPa
+
+Shear Stress:
+  τ = K_s · 8FD/(πd³) = K_s · 8FC/(πd²)
+  
+  Shear correction factor:
+    K_s = (2C + 1)/(2C)  (Wahl factor includes curvature)
+  
+  Or more accurate (Bergsträsser):
+    K_s = (4C - 1)/(4C - 4) + 0.615/C
+
+Solid Length:
+  L_s = d · N_t
+  
+  Where N_t = total coils (N_a + end coils)
+
+Free Length:
+  L_f = L_s + δ_max + clash allowance
+
+Deflection:
+  δ = 8FD³N_a/(Gd⁴) = 8FC³N_a/(Gd)
+
+Spring Materials:
+  Music wire (ASTM A228): Highest strength
+  Oil-tempered (A229): Common, economical
+  Stainless (302, 316): Corrosion resistance
+  
+  Allowable stress depends on d (smaller = stronger)
+
+Fatigue:
+  Goodman diagram for springs
+  
+  Shot peening increases fatigue life
+
+Extension Springs:
+  Initial tension F_i
+  Hooks: Stress concentration
+
+Torsion Springs:
+  Bending stress (not torsion!)
+  σ = K_b · 32M/(πd³)</code>
+                </div>
+
+                <h4>Threaded Fasteners</h4>
+                <div class="code-block" data-language="text">
+<code>Bolt Strength:
+
+Proof Strength:
+  S_p = 0.85 S_y (approximately)
+  
+  Proof load: Tensile load withstood without permanent deformation
+
+Bolt Grades (Metric):
+  Property class: X.Y
+    X × 100 = S_ut (MPa)
+    X × Y × 10 = S_y (MPa)
+  
+  Example: 8.8
+    S_ut = 800 MPa
+    S_y = 640 MPa
+  
+  Common: 4.6, 5.8, 8.8, 10.9, 12.9
+
+SAE Grades (English):
+  Grade 2: Low carbon
+  Grade 5: Medium carbon
+  Grade 8: Alloy steel, heat-treated
+
+Tensile Stress Area:
+  A_t ≈ 0.785(d - 0.9382p)²
+  
+  Where p = pitch
+  
+  Or use tables
+
+Preload:
+  F_i = initial clamping force
+  
+  Recommended: F_i = 0.75 F_p
+  
+  Where F_p = proof load = S_p · A_t
+
+Joint Stiffness:
+  Bolt acts as spring: k_b = A_t E_b/L_grip
+  Members act as spring: k_m (complex, charts)
+  
+  Joint constant:
+    C = k_b/(k_b + k_m)  (typically 0.1-0.3)
+
+External Load:
+  Force on bolt: F_b = F_i + C·P
+  Force on members: F_m = F_i - (1-C)·P
+  
+  Where P = external load
+
+Separation occurs when: F_m = 0
+  P_sep = F_i/(1-C)
+
+Design:
+  Static: F_b < S_p · A_t / n
+  
+  Fatigue:
+    σ_a = C·P_a/(2A_t)  (alternating)
+    σ_m = F_i/A_t + C·P_m/(2A_t)  (mean)
+    
+    Apply Goodman criterion
+
+Torque:
+  T = K·F_i·d
+  
+  Where K ≈ 0.2 (typical)
+  
+  K depends on friction, thread geometry
+
+Thread Stripping:
+  Shear area of threads > tensile area
+  
+  Length of engagement: L_e ≥ 1.5d (steel)
+
+Lock Methods:
+  Lockwashers, thread-locking compound, prevailing torque nuts</code>
+                </div>
+
+                <div class="info-box important">
+                    <h4>🎯 Practice Problems</h4>
+                    <ol>
+                        <li>Factor of safety: Shaft has σ_applied = 180 MPa. Material σ_y = 450 MPa. Find n. Is it acceptable for machinery?</li>
+                        <li>von Mises: State has σ_x=100 MPa, σ_y=-50 MPa, τ_xy=75 MPa. Find σ_v. If σ_y=300 MPa, what is n?</li>
+                        <li>Fatigue: S_ut=700 MPa steel (S_e=280 MPa modified). σ_a=100 MPa, σ_m=50 MPa. Find n using Goodman.</li>
+                        <li>Bearing life: C=35 kN, P=8 kN, n=1200 rpm. Find L₁₀h (ball bearing, p=3).</li>
+                        <li>Gears: Pinion 20 teeth, gear 60 teeth, m=4 mm. Find pitch diameters and center distance.</li>
+                        <li>Spring: d=3 mm, D=24 mm, N_a=10, G=80 GPa. Find k. If F=100 N, find δ and τ.</li>
+                    </ol>
+                </div>
+
+                <h3>Summary</h3>
+                <ul>
+                    <li>Factor of safety accounts for uncertainties: n=1.2-10 depending on application criticality</li>
+                    <li>Ductile failure: von Mises theory (σ_v=σ_y) most accurate for multiaxial stress states</li>
+                    <li>Fatigue critical: S-N curves, endurance limit S_e≈0.5S_ut for steel, modified by surface/size/load factors</li>
+                    <li>Fluctuating stress: Goodman criterion σ_a/S_e + σ_m/S_ut = 1/n combines mean and alternating</li>
+                    <li>Stress concentrations: K_f reduces fatigue strength, minimize with larger radii and smooth transitions</li>
+                    <li>Shafts: combined bending and torsion, use ASME code with σ_v and Goodman for fatigue analysis</li>
+                    <li>Bearings: life L₁₀=(C/P)³ for balls, select from catalog ensuring C≥required for desired life hours</li>
+                    <li>Gears: AGMA standards for bending (Lewis) and contact (Hertzian) stresses, case-hardened steel for high loads</li>
+                    <li>Springs: k=Gd/(8C³N_a), stress τ=K_s·8FC/(πd²), music wire highest strength, shot peen for fatigue</li>
+                    <li>Fasteners: preload F_i controls joint behavior, torque T=K·F_i·d, fatigue from alternating external load</li>
+                </ul>
+
+                <h3>Next Steps</h3>
+                <p>
+                    Lesson 9 explores Manufacturing Processes, covering how designed parts are actually made. You'll learn 
+                    about casting, forming, machining, joining, and additive manufacturing methods.
+                </p>
+            </div>
+
+            <div class="lesson-navigation">
+                <a href="07-materials-science.html" class="nav-btn">← Materials Science</a>
+                <a href="09-manufacturing-processes.html" class="nav-btn">Next: Manufacturing →</a>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../js/main.js"></script>
+</body>
+</html>

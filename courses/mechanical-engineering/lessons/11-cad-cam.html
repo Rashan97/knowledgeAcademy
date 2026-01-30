@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 11: CAD/CAM & Design Tools - Engineering Academy</title>
+    <link rel="stylesheet" href="../../../css/styles.css">
+    <link rel="stylesheet" href="../../../css/course-styles/course.css">
+</head>
+<body>
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <h1><a href="../../../index.html" style="color: inherit; text-decoration: none;">🎓 Engineering Academy</a></h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../index.html">Course Overview</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section class="course-header">
+        <div class="container">
+            <h1>⚙️ Mechanical Engineering</h1>
+            <p>Lesson 11: CAD/CAM & Design Tools</p>
+        </div>
+    </section>
+
+    <div class="course-container">
+        <aside class="course-sidebar">
+            <h3>Course Modules</h3>
+            <ul class="lesson-list">
+                <li><a href="../index.html"><span class="lesson-number">📚</span>Course Overview</a></li>
+                <li><a href="01-statics.html"><span class="lesson-number">1</span>Statics & Force Analysis</a></li>
+                <li><a href="02-dynamics.html"><span class="lesson-number">2</span>Dynamics & Motion</a></li>
+                <li><a href="03-mechanics-of-materials.html"><span class="lesson-number">3</span>Mechanics of Materials</a></li>
+                <li><a href="04-thermodynamics.html"><span class="lesson-number">4</span>Thermodynamics</a></li>
+                <li><a href="05-fluid-mechanics.html"><span class="lesson-number">5</span>Fluid Mechanics</a></li>
+                <li><a href="06-heat-transfer.html"><span class="lesson-number">6</span>Heat Transfer</a></li>
+                <li><a href="07-materials-science.html"><span class="lesson-number">7</span>Materials Science</a></li>
+                <li><a href="08-machine-design.html"><span class="lesson-number">8</span>Machine Design</a></li>
+                <li><a href="09-manufacturing-processes.html"><span class="lesson-number">9</span>Manufacturing Processes</a></li>
+                <li><a href="10-vibrations.html"><span class="lesson-number">10</span>Mechanical Vibrations</a></li>
+                <li><a href="11-cad-cam.html" class="active"><span class="lesson-number">11</span>CAD/CAM & Design Tools</a></li>
+                <li><a href="12-hvac-systems.html"><span class="lesson-number">12</span>HVAC & Thermal Systems</a></li>
+            </ul>
+        </aside>
+
+        <main class="course-content">
+            <div class="lesson-header">
+                <h2>Lesson 11: CAD/CAM & Design Tools</h2>
+                <div class="lesson-meta">
+                    <span>📖 95 min read</span>
+                    <span>📊 Advanced</span>
+                </div>
+            </div>
+
+            <div class="lesson-content">
+                <h3>Introduction to CAD/CAM</h3>
+                <p>
+                    Computer-Aided Design (CAD) and Computer-Aided Manufacturing (CAM) are essential tools for modern 
+                    mechanical engineering. CAD enables precise 3D modeling and analysis, while CAM translates designs 
+                    into machine instructions for automated manufacturing.
+                </p>
+
+                <div class="info-box note">
+                    <h4>📌 What You'll Learn</h4>
+                    <ul>
+                        <li>CAD fundamentals: 2D drafting vs 3D modeling</li>
+                        <li>Parametric and direct modeling</li>
+                        <li>Sketching, features, and assemblies</li>
+                        <li>Engineering drawings and GD&T</li>
+                        <li>Finite Element Analysis (FEA) basics</li>
+                        <li>Topology optimization</li>
+                        <li>CAM fundamentals and toolpaths</li>
+                        <li>G-code programming and CNC</li>
+                    </ul>
+                </div>
+
+                <h3>CAD Fundamentals</h3>
+
+                <h4>Modeling Approaches</h4>
+                <div class="code-block" data-language="text">
+<code>2D Drafting:
+  Traditional approach (computer-based)
+  
+  Lines, arcs, circles, dimensions
+  Similar to manual drafting
+  
+  Outputs: Engineering drawings
+  
+  Legacy systems still in use
+  Being replaced by 3D
+
+3D Modeling:
+  Three-dimensional virtual representation
+  
+  Advantages:
+    + Visualize complete design
+    + Detect interferences
+    + Calculate mass properties
+    + Generate drawings automatically
+    + Simulation (FEA, CFD, motion)
+  
+  Types:
+    Wireframe: Lines and curves (limited use)
+    Surface: Sheet-like surfaces (complex shapes)
+    Solid: Enclosed volume (most common)
+
+Modeling Philosophies:
+
+Parametric (Feature-Based):
+  History-based design tree
+  Dimensions drive geometry
+  
+  Features:
+    Extrude, revolve, sweep, loft
+    Holes, fillets, chamfers
+    Patterns, mirrors
+  
+  Constraints:
+    Geometric: Parallel, perpendicular, tangent
+    Dimensional: Lengths, angles, radii
+  
+  Advantages:
+    + Design intent captured
+    + Easy to modify (change parameters)
+    + Relationships maintained
+  
+  Disadvantages:
+    - Feature failures if poorly structured
+    - Learning curve
+  
+  Software: SolidWorks, Inventor, Creo, NX
+
+Direct (Explicit) Modeling:
+  No history, edit geometry directly
+  
+  Push, pull, move faces
+  Immediate results
+  
+  Advantages:
+    + Fast for simple edits
+    + Good for imported geometry
+    + No feature failures
+  
+  Disadvantages:
+    - Design intent not captured
+    - Harder to make systematic changes
+  
+  Software: SpaceClaim, Onshape (some tools)
+
+Hybrid Approach:
+  Combine parametric and direct
+  
+  Modern CAD trend
+  Best of both worlds
+
+Top-Down vs Bottom-Up:
+  Bottom-up: Design parts, then assemble
+    Traditional approach
+  
+  Top-down: Design in assembly context
+    Create parts from assembly
+    Better for complex products
+</code>
+                </div>
+
+                <h4>Sketching and Constraints</h4>
+                <div class="code-block" data-language="text">
+<code>2D Sketch:
+  Foundation of 3D features
+  Drawn on plane or face
+
+Sketch Entities:
+  Line, arc, circle, spline
+  Rectangle, polygon
+  Construction geometry (reference only)
+
+Constraints (Relations):
+
+Geometric Constraints:
+  Horizontal/Vertical: Force orientation
+  Parallel/Perpendicular: Between lines
+  Tangent: Smooth connection
+  Concentric: Share center
+  Coincident: Points touch
+  Collinear: On same line
+  Equal: Same length/radius
+  Symmetric: Mirror about centerline
+
+Dimensional Constraints:
+  Length, angle, radius, diameter
+  Numerical values drive size
+  
+  Can be:
+    - Fixed: Constant value
+    - Driven: Calculated from others
+    - Linked: Tied to parameter/equation
+
+Sketch States:
+  Under-defined (blue): Needs constraints
+    Can move freely (unintentional)
+  
+  Fully-defined (black): Completely constrained
+    Cannot move (ideal for manufacturing)
+  
+  Over-defined (red/orange): Conflicting constraints
+    ERROR - must resolve
+
+Best Practices:
+  1. Start with construction lines (centerlines, axes)
+  2. Draw approximate geometry
+  3. Add geometric constraints first
+  4. Add dimensions last
+  5. Fully define critical features
+  6. Use design intent (what should stay fixed)
+
+Global Variables:
+  Define once, use everywhere
+  
+  Example:
+    Plate_Thickness = 5 mm
+    Hole_Diameter = Plate_Thickness + 0.5
+  
+  Change Plate_Thickness → all update
+
+Equations:
+  Relate dimensions mathematically
+  
+  Length_2 = Length_1 * 1.5
+  Angle_2 = 180° - Angle_1
+  
+  Propagate changes automatically
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>3D Features and Modeling</h3>
+
+                <h4>Common Features</h4>
+                <div class="code-block" data-language="text">
+<code>Base Features:
+
+Extrude:
+  Extend 2D sketch perpendicular to plane
+  
+  Options:
+    - Blind: Specified distance
+    - Through all: Penetrate all
+    - Up to surface/face
+    - Mid-plane: Symmetric
+  
+  Can add or remove material
+
+Revolve:
+  Rotate sketch around axis
+  
+  Creates cylindrical/conical parts
+  
+  Angle: 360° (full) or partial
+
+Sweep:
+  Follow sketch along path
+  
+  Profile sketch + path sketch
+  
+  Applications:
+    - Pipes, tubes, handles
+    - Complex profiles
+
+Loft:
+  Transition between multiple profiles
+  
+  Smooth blend (organic shapes)
+  
+  Guide curves for control
+  
+  Applications:
+    - Bottles, housings
+    - Aerodynamic surfaces
+
+Applied Features:
+
+Hole:
+  Specialized feature (countersink, counterbore, tapped)
+  
+  Standards: ANSI, ISO
+  
+  Faster than sketch + extrude
+
+Fillet:
+  Round internal/external edges
+  
+  Constant or variable radius
+  
+  Reduces stress concentration
+  Manufacturing-friendly
+
+Chamfer:
+  Beveled edge (45° common)
+  
+  Distance-distance or distance-angle
+  
+  Deburring, assembly clearance
+
+Shell:
+  Hollow out solid
+  
+  Uniform wall thickness
+  
+  One or more faces removed (opening)
+
+Draft:
+  Taper for mold release
+  
+  Angle from pull direction
+  
+  Essential for casting/molding
+
+Pattern:
+  Replicate features
+  
+  Linear: Rows and columns
+  Circular: Around axis
+  Curve-driven: Along path
+  
+  Instances linked (change one → all change)
+
+Mirror:
+  Reflect features/parts about plane
+  
+  Ensures symmetry
+  Half the work!
+
+Rib/Web:
+  Thin structural support
+  
+  Strengthen without much weight
+</code>
+                </div>
+
+                <h4>Assembly Modeling</h4>
+                <div class="code-block" data-language="text">
+<code>Assembly:
+  Multiple parts positioned together
+  
+  Relationships define relative positions
+
+Mates (Constraints):
+
+Coincident:
+  Faces, edges, or points touch
+  
+  Planar faces: Coplanar
+  Axes: Aligned
+
+Concentric:
+  Cylindrical faces share axis
+  
+  Common: Shaft in hole
+
+Parallel/Perpendicular:
+  Maintain angular relationship
+
+Distance:
+  Specific gap between faces
+
+Angle:
+  Specific angle between planes/lines
+
+Tangent:
+  Curved faces touch
+
+Lock:
+  Fix position rigidly
+
+Degrees of Freedom:
+  6 DOF: 3 translations (X, Y, Z) + 3 rotations
+  
+  Fully constrained: 0 DOF (fixed)
+  Under-constrained: > 0 DOF (can move)
+
+Assembly Techniques:
+
+In-Context Design:
+  Design part within assembly
+  
+  Reference other parts (holes align, etc.)
+  
+  Maintains relationships
+  
+  Risk: External references can break
+
+Skeleton Modeling:
+  Master layout part/sketch
+  
+  Other parts reference skeleton
+  
+  Centralized control
+
+Interference Detection:
+  Identify overlapping volumes
+  
+  Clearance analysis
+  
+  Prevent collisions
+
+Exploded View:
+  Show separated components
+  
+  For assembly instructions, presentations
+
+Bill of Materials (BOM):
+  List of all parts and quantities
+  
+  Exported to spreadsheet
+  
+  Manufacturing input
+
+Motion Simulation:
+  Define joints (revolute, slider, etc.)
+  
+  Animate mechanism
+  
+  Check range of motion
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Engineering Drawings</h3>
+
+                <h4>Drawing Standards and Views</h4>
+                <div class="code-block" data-language="text">
+<code>Purpose:
+  Communicate design for manufacturing
+  
+  2D representation of 3D part
+  
+  Complete dimensional definition
+
+Standards:
+  ASME Y14.5 (US)
+  ISO 1101 (International)
+  
+  Ensure consistent interpretation
+
+Projection Methods:
+
+Third-Angle Projection (US):
+  Object between observer and projection plane
+  
+  Front view: What you see from front
+  Top view: Above front view
+  Right view: Right of front view
+
+First-Angle Projection (ISO):
+  Projection plane between observer and object
+  
+  Top view: Below front view
+  Right view: Left of front view
+
+View Selection:
+  Choose most descriptive as front view
+  
+  Minimum views needed (typically 3)
+  
+  Avoid hidden lines if possible
+  
+  Auxiliary views: Inclined surfaces
+
+Section Views:
+  Cut through part to show interior
+  
+  Types:
+    Full section: Cut completely through
+    Half section: Quarter removed (symmetric)
+    Offset section: Staggered cutting plane
+    Broken-out: Local area only
+  
+  Section lines (hatching): Indicate cut surface
+
+Detail View:
+  Enlarged portion
+  
+  Show small features clearly
+
+Dimensioning:
+
+Rules:
+  - Dimension each feature once
+  - Dimension to visible features
+  - Place between views when possible
+  - Avoid redundancy
+  - Group related dimensions
+
+Dimension Types:
+  Linear: Length, width, height
+  Angular: Degrees
+  Radial: Radius (R prefix)
+  Diametral: Diameter (Ø symbol)
+
+Tolerances:
+  Allowable variation
+  
+  Methods:
+    Limit: Max and min (25.2/25.0)
+    Plus-minus: Nominal ± tolerance (25.1 ± 0.1)
+    Unilateral: One direction (25.0 +0.2/-0)
+    Bilateral: Both directions (25.1 ± 0.1)
+  
+  General tolerance block: Default for uncalled
+
+Fits:
+  Shaft-hole relationships
+  
+  Clearance: Hole > shaft (sliding)
+  Interference: Shaft > hole (press-fit)
+  Transition: Can be either
+  
+  ISO system: H7/g6, etc.
+    Letter: Tolerance zone
+    Number: Precision grade
+</code>
+                </div>
+
+                <h4>Geometric Dimensioning & Tolerancing (GD&T)</h4>
+                <div class="code-block" data-language="text">
+<code>GD&T Purpose:
+  Define allowable variation in geometry
+  
+  More precise than ± tolerances
+  
+  Critical for interchangeability
+
+Feature Control Frame:
+  ┌──┬────┬────┬───┬───┬───┐
+  │⊕ │0.05│ Ⓜ │ A │ B │ C │
+  └──┴────┴────┴───┴───┴───┘
+  
+  Components:
+    Symbol: Type of control
+    Tolerance: Allowable variation
+    Material condition: Ⓜ (MMC), Ⓛ (LMC), ⊕ (RFS)
+    Datums: Reference features (A, B, C)
+
+Datums:
+  Reference points/planes/axes
+  
+  Datum Feature: Physical feature on part
+  Datum: Theoretical exact plane/axis
+  
+  Datum Reference Frame (DRF):
+    Primary (A): 3 DOF restricted
+    Secondary (B): 2 DOF restricted
+    Tertiary (C): 1 DOF restricted
+    Total: 6 DOF locked
+
+Form Tolerances (No datum):
+
+Straightness (—):
+  How straight a line element is
+  
+  Tolerance zone: Two parallel lines
+
+Flatness (⏥):
+  How flat a surface is
+  
+  Tolerance zone: Two parallel planes
+
+Circularity (○):
+  Roundness of circular feature
+  
+  Single cross-section
+
+Cylindricity (⌭):
+  Combined roundness and straightness
+  
+  Entire cylindrical surface
+
+Orientation Tolerances (Require datum):
+
+Parallelism (∥):
+  Surface/axis parallel to datum
+  
+  Tolerance zone: Two parallel planes
+
+Perpendicularity (⊥):
+  90° to datum
+  
+  Orientation only (not location)
+
+Angularity (∠):
+  Specific angle to datum
+
+Location Tolerances:
+
+Position (⊕):
+  Location of feature (hole, slot)
+  
+  Tolerance zone: Cylindrical (holes) or parallel planes
+  
+  True position: Theoretically exact location
+  
+  Most common GD&T callout
+
+Concentricity (◎):
+  Axis of feature coincident with datum axis
+  
+  Very tight, hard to measure
+
+Symmetry (⌯):
+  Feature centered about datum plane
+
+Profile Tolerances:
+
+Profile of a Line (⌒):
+  2D tolerance zone
+
+Profile of a Surface (⌓):
+  3D tolerance zone
+  
+  Complex surfaces
+
+Runout Tolerances:
+
+Circular Runout (↗):
+  Single rotation, surface variation
+  
+  Each circular element
+
+Total Runout (↗↗):
+  Full rotation, entire surface
+  
+  More restrictive
+
+Material Condition Modifiers:
+
+Maximum Material Condition (MMC) Ⓜ:
+  Hole: Smallest diameter
+  Shaft: Largest diameter
+  
+  Bonus tolerance when not at MMC
+
+Least Material Condition (LMC) Ⓛ:
+  Opposite of MMC
+
+Regardless of Feature Size (RFS) ⊕:
+  No bonus tolerance (default)
+
+Benefits of GD&T:
+  - Precise functional requirements
+  - Larger tolerances (lower cost)
+  - International standard
+  - Reduces ambiguity
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Finite Element Analysis (FEA)</h3>
+
+                <h4>FEA Fundamentals</h4>
+                <div class="code-block" data-language="text">
+<code>Purpose:
+  Simulate real-world behavior
+  
+  Predict:
+    - Stress and deformation
+    - Vibration modes
+    - Heat transfer
+    - Fluid flow
+  
+  Before physical testing
+
+FEA Process:
+
+1. Preprocessing:
+   a. Geometry: Import/create CAD model
+      Simplify (remove fillets, small holes if allowed)
+   
+   b. Material: Define properties
+      E, ν, ρ, thermal, etc.
+   
+   c. Mesh: Divide into elements
+      Nodes and elements
+      
+      Element types:
+        Solid: Tetrahedral (4-node), hex (8-node)
+        Shell: For thin parts (2D elements)
+        Beam: For long slender (1D elements)
+      
+      Mesh refinement:
+        Coarse: Fast, less accurate
+        Fine: Slow, more accurate
+      
+      Adaptive meshing: Auto-refine high-stress areas
+   
+   d. Boundary Conditions:
+      Fixtures: Constrain DOF (prevent rigid body motion)
+        Fixed: All DOF
+        Roller: Some DOF free
+      
+      Loads: Forces, pressures, torques
+        Point load, distributed load, pressure
+      
+      Contacts: Part interactions
+        Bonded, no penetration, friction
+
+2. Solution:
+   Solve system of equations
+   
+   Ax = b
+   
+   Where A = stiffness matrix (large!)
+   
+   Iterative solvers
+   
+   Convergence criteria
+
+3. Postprocessing:
+   View results
+   
+   Contour plots:
+     - von Mises stress
+     - Displacement magnitude
+     - Safety factor (yield/stress)
+   
+   Animations: Deformation, mode shapes
+   
+   Graphs: Stress vs location
+   
+   Reports: Max stress, displacement
+
+Result Interpretation:
+
+Stress:
+  von Mises: Compare to yield strength
+  
+  Red zones: High stress (potential failure)
+  
+  Check: σ_max < σ_y/n (factor of safety n)
+
+Displacement:
+  Maximum deflection
+  
+  Check against requirements
+  
+  Stiffness adequate?
+
+Factor of Safety:
+  n = σ_y / σ_von_Mises
+  
+  Minimum value critical
+  
+  n < 1: Failure predicted!
+  n > design requirement: Acceptable
+
+Singularities:
+  Infinite stress at sharp corners, point loads
+  
+  Not real (local mesh refinement)
+  
+  Interpret nearby stress instead
+
+Mesh Convergence:
+  Run with finer mesh
+  
+  If results don't change → converged
+  
+  If changing → refine more
+
+Validation:
+  Compare to:
+    - Hand calculations (simple cases)
+    - Physical testing
+    - Published data
+  
+  Build confidence in model
+</code>
+                </div>
+
+                <h4>Advanced Analysis</h4>
+                <div class="code-block" data-language="text">
+<code>Modal Analysis (Vibration):
+  Find natural frequencies and mode shapes
+  
+  No external loads
+  
+  Outputs:
+    f_n1, f_n2, f_n3, ... (frequencies)
+    Mode shapes (deformation patterns)
+  
+  Use:
+    - Avoid resonance (operating ≠ natural)
+    - Design for dynamic loads
+
+Thermal Analysis:
+  Heat transfer simulation
+  
+  Steady-state: Constant temperature
+  Transient: Time-dependent
+  
+  Boundary conditions:
+    - Temperature (fixed)
+    - Heat flux (W/m²)
+    - Convection (h, T_ambient)
+    - Radiation (emissivity, environment)
+  
+  Output: Temperature distribution
+
+Thermal-Structural (Coupled):
+  Thermal expansion causes stress
+  
+  Sequence:
+    1. Thermal analysis → temperatures
+    2. Structural analysis with thermal loads
+  
+  Applications:
+    - Engine components
+    - Electronics cooling
+
+Nonlinear Analysis:
+  Beyond linear elastic
+  
+  Types:
+    Material: Plasticity, hyperelastic
+    Geometric: Large deformation
+    Contact: Changing boundaries
+  
+  More complex, slower
+
+Fatigue Analysis:
+  Predict life under cyclic loading
+  
+  Input: Loading history (stress vs time)
+  
+  Output: Life (cycles to failure)
+  
+  Based on: S-N curves, mean stress effects
+
+Buckling Analysis:
+  Critical load for instability
+  
+  Linear buckling: Eigenvalue problem
+  
+  Output: Load factors, mode shapes
+  
+  Compare to Euler theory
+
+Optimization:
+  Automatic design improvement
+  
+  Define:
+    - Objective: Minimize mass, maximize stiffness
+    - Constraints: Stress < limit, size limits
+    - Variables: Dimensions, shape
+  
+  Algorithm iterates to optimal design
+
+Topology Optimization:
+  Material distribution for best performance
+  
+  Start: Design space (volume)
+  
+  Remove low-stress material iteratively
+  
+  Output: Organic-looking structure
+  
+  Benefits:
+    - Lightweight
+    - Efficient load paths
+  
+  Ideal for additive manufacturing (3D printing)
+  
+  Post-process: Smooth, manufacturability
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Computer-Aided Manufacturing (CAM)</h3>
+
+                <h4>CAM Fundamentals</h4>
+                <div class="code-block" data-language="text">
+<code>CAM Purpose:
+  Generate toolpaths for CNC machines
+  
+  Input: CAD model
+  Output: G-code (machine instructions)
+
+CNC (Computer Numerical Control):
+  Automated machine tool control
+  
+  Types:
+    - Mills (3-axis, 4-axis, 5-axis)
+    - Lathes (turning)
+    - Routers
+    - Laser cutters
+    - 3D printers
+
+CAM Workflow:
+
+1. Import Geometry:
+   CAD model (STEP, IGES, native)
+   
+   Verify: Orientation, units, scale
+
+2. Define Stock:
+   Raw material block
+   
+   Size and shape (rectangular, cylindrical)
+
+3. Setup:
+   Work Coordinate System (WCS):
+     Origin (X0, Y0, Z0)
+     
+     Usually: Corner or center of part
+   
+   Fixtures: How part held
+     Vise, clamps, vacuum table
+
+4. Select Operations:
+   Machining strategies for features
+   
+   Order matters (rough → finish)
+
+5. Define Toolpaths:
+   Tool motion to remove material
+
+6. Simulate:
+   Verify toolpaths (no collisions, gouges)
+   
+   Material removal animation
+
+7. Post-Process:
+   Convert to machine-specific G-code
+   
+   Post-processor for each machine
+
+8. Output:
+   G-code file to machine
+
+Machining Strategies:
+
+Facing:
+  Flatten top surface
+  
+  Large tool, light depth
+
+2D Pocket:
+  Remove material inside closed boundary
+  
+  Zig-zag, offset spiral, etc.
+
+2D Contour:
+  Follow edges
+  
+  Finishing operation
+
+Drilling:
+  Peck, deep hole cycles
+
+3D Surface:
+  Sculpted surfaces
+  
+  Waterline, spiral, radial
+
+Turning (Lathe):
+  OD/ID turning, facing, grooving, threading
+
+Toolpath Parameters:
+
+Stepover:
+  Distance between adjacent passes
+  
+  % of tool diameter
+  
+  Smaller → better finish, longer time
+
+Stepdown:
+  Depth per pass
+  
+  Axial depth of cut
+  
+  Roughing: Larger (remove material fast)
+  Finishing: Smaller (good surface)
+
+Speeds and Feeds:
+  Spindle speed (RPM)
+  Feed rate (mm/min or in/min)
+  
+  From material, tool, operation
+  
+  Too fast: Tool wear, breakage
+  Too slow: Inefficient, rubbing
+</code>
+                </div>
+
+                <h4>G-Code Programming</h4>
+                <div class="code-block" data-language="text">
+<code>G-Code:
+  Numerical control programming language
+  
+  Line-by-line instructions
+
+Structure:
+  N10 G01 X50.0 Y30.0 F500 S1200 M03
+  
+  N10: Line number (optional)
+  G01: G-code (linear interpolation)
+  X50.0, Y30.0: Coordinates
+  F500: Feed rate (mm/min)
+  S1200: Spindle speed (RPM)
+  M03: M-code (spindle on clockwise)
+
+Common G-Codes:
+
+G00: Rapid positioning
+  Move at maximum speed (not cutting)
+  G00 X100 Y50 Z10
+
+G01: Linear interpolation
+  Straight line at feed rate (cutting)
+  G01 X50 Y30 F200
+
+G02: Circular interpolation CW
+  Arc clockwise
+  G02 X50 Y50 I25 J0 F100
+  (I, J = arc center offsets)
+
+G03: Circular interpolation CCW
+  Arc counterclockwise
+
+G04: Dwell
+  Pause for specified time
+  G04 P2.0  (pause 2 seconds)
+
+G17/G18/G19: Plane selection
+  G17: XY plane (default)
+  G18: XZ plane
+  G19: YZ plane
+
+G20/G21: Units
+  G20: Inches
+  G21: Millimeters
+
+G28: Return to home position
+
+G40/G41/G42: Cutter compensation
+  G40: Cancel
+  G41: Left
+  G42: Right
+
+G43: Tool length offset
+  Compensate for different tool lengths
+
+G54-G59: Work coordinate systems
+  Different setups/fixtures
+
+G80: Cancel canned cycle
+
+G81-G89: Canned cycles
+  G81: Drilling
+  G83: Peck drilling
+  G73: High-speed peck
+
+G90/G91: Positioning mode
+  G90: Absolute (from origin)
+  G91: Incremental (from current)
+
+Common M-Codes:
+
+M00: Program stop
+  Operator must restart
+
+M01: Optional stop
+  If switch enabled
+
+M02: Program end
+
+M03: Spindle on CW
+  M03 S1500 (1500 RPM)
+
+M04: Spindle on CCW
+
+M05: Spindle stop
+
+M06: Tool change
+  M06 T02 (load tool 2)
+
+M08: Coolant on
+
+M09: Coolant off
+
+M30: Program end and reset
+
+Example Program:
+  %
+  O0001 (Program number and name)
+  N10 G21 G90 G40 (mm, absolute, cancel comp)
+  N20 G54 (Work coordinate system 1)
+  N30 M06 T01 (Tool change to T1)
+  N40 G43 H01 (Tool length offset 1)
+  N50 S1200 M03 (Spindle 1200 RPM CW)
+  N60 G00 X0 Y0 Z50 (Rapid to safe Z)
+  N70 G00 X10 Y10 (Rapid to start)
+  N80 G01 Z-5 F100 (Feed down to depth)
+  N90 G01 X40 F300 (Cut to X40)
+  N100 G01 Y40 (Cut to Y40)
+  N110 G01 X10 (Cut to X10)
+  N120 G01 Y10 (Cut back to start)
+  N130 G00 Z50 (Retract)
+  N140 G00 X0 Y0 (Return to origin)
+  N150 M05 (Spindle off)
+  N160 M30 (End program)
+  %
+
+Coordinate Systems:
+
+Machine Coordinates:
+  Fixed to machine
+  Set at startup (homing)
+
+Work Coordinates:
+  Relative to part
+  Operator sets (G54-G59)
+  
+  Allows repositioning without reprogramming
+
+Tool Offsets:
+  Compensate for tool length
+  Measured and stored (H1, H2, etc.)
+  
+  Every tool change: G43 H__ activated
+</code>
+                </div>
+
+                <div class="info-box important">
+                    <h4>🎯 Practice Problems</h4>
+                    <ol>
+                        <li>Sketch: Draw rectangle 50×30 mm. What constraints fully define it? (Hint: 4 dimensions + positioning)</li>
+                        <li>Assembly: Two cylindrical parts (shaft Ø20 mm, hole Ø20.1 mm). What type of fit? What mate?</li>
+                        <li>GD&T: Hole position tolerance Ø0.5 at MMC. Hole nominal Ø10 H7 (tolerance +0.015). What tolerance at Ø10.015?</li>
+                        <li>FEA: Beam 1000 mm long, 50×50 mm cross-section, fixed one end, 500 N load other end. E=200 GPa. Estimate max stress and deflection.</li>
+                        <li>G-code: Write program to drill hole at X30 Y40, depth 15 mm, rapid Z=10 mm safe, feed 100 mm/min.</li>
+                        <li>Natural frequency: FEA gives first mode f₁=45 Hz. Operating speed 2400 RPM. Is resonance concern? (Convert RPM to Hz)</li>
+                    </ol>
+                </div>
+
+                <h3>Summary</h3>
+                <ul>
+                    <li>CAD fundamentals: 3D parametric modeling most common, sketches with constraints drive features (extrude, revolve)</li>
+                    <li>Constraints: geometric (parallel, tangent) + dimensional (lengths, angles) to fully define sketches</li>
+                    <li>Features: extrude/revolve (base), fillets/chamfers (applied), patterns/mirrors (replicate), assemblies with mates</li>
+                    <li>Engineering drawings: orthographic views, section views, dimensioning with tolerances, GD&T for precision control</li>
+                    <li>GD&T: position ⊕, perpendicularity ⊥, flatness ⏥, etc. with datums (A, B, C) and material condition Ⓜ MMC</li>
+                    <li>FEA workflow: mesh geometry → apply loads/fixtures → solve → analyze stress/displacement/safety factor</li>
+                    <li>FEA types: static (stress), modal (vibration), thermal (heat), nonlinear (plasticity), topology optimization (material distribution)</li>
+                    <li>CAM: define stock → create toolpaths (pocket, contour, drill) → simulate → post-process to G-code</li>
+                    <li>G-code: G00 rapid, G01 linear cut, G02/G03 arcs, M03 spindle on, coordinates absolute G90 or incremental G91</li>
+                    <li>Modern design: CAD for geometry, FEA for validation, CAM for manufacturing, integrated PLM systems manage lifecycle</li>
+                </ul>
+
+                <h3>Next Steps</h3>
+                <p>
+                    Lesson 12 covers HVAC & Thermal Systems, the final lesson integrating thermodynamics, fluid mechanics, 
+                    and heat transfer. You'll learn psychrometrics, cooling/heating load calculations, and HVAC system design.
+                </p>
+            </div>
+
+            <div class="lesson-navigation">
+                <a href="10-vibrations.html" class="nav-btn">← Vibrations</a>
+                <a href="12-hvac-systems.html" class="nav-btn">Next: HVAC Systems →</a>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../js/main.js"></script>
+</body>
+</html>

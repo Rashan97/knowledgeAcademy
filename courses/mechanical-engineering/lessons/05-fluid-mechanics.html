@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 5: Fluid Mechanics - Engineering Academy</title>
+    <link rel="stylesheet" href="../../../css/styles.css">
+    <link rel="stylesheet" href="../../../css/course-styles/course.css">
+</head>
+<body>
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <h1><a href="../../../index.html" style="color: inherit; text-decoration: none;">🎓 Engineering Academy</a></h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../index.html">Course Overview</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section class="course-header">
+        <div class="container">
+            <h1>⚙️ Mechanical Engineering</h1>
+            <p>Lesson 5: Fluid Mechanics</p>
+        </div>
+    </section>
+
+    <div class="course-container">
+        <aside class="course-sidebar">
+            <h3>Course Modules</h3>
+            <ul class="lesson-list">
+                <li><a href="../index.html"><span class="lesson-number">📚</span>Course Overview</a></li>
+                <li><a href="01-statics.html"><span class="lesson-number">1</span>Statics & Force Analysis</a></li>
+                <li><a href="02-dynamics.html"><span class="lesson-number">2</span>Dynamics & Motion</a></li>
+                <li><a href="03-mechanics-of-materials.html"><span class="lesson-number">3</span>Mechanics of Materials</a></li>
+                <li><a href="04-thermodynamics.html"><span class="lesson-number">4</span>Thermodynamics</a></li>
+                <li><a href="05-fluid-mechanics.html" class="active"><span class="lesson-number">5</span>Fluid Mechanics</a></li>
+                <li><a href="06-heat-transfer.html"><span class="lesson-number">6</span>Heat Transfer</a></li>
+                <li><a href="07-materials-science.html"><span class="lesson-number">7</span>Materials Science</a></li>
+                <li><a href="08-machine-design.html"><span class="lesson-number">8</span>Machine Design</a></li>
+                <li><a href="09-manufacturing-processes.html"><span class="lesson-number">9</span>Manufacturing Processes</a></li>
+                <li><a href="10-vibrations.html"><span class="lesson-number">10</span>Mechanical Vibrations</a></li>
+                <li><a href="11-cad-cam.html"><span class="lesson-number">11</span>CAD/CAM & Design Tools</a></li>
+                <li><a href="12-hvac-systems.html"><span class="lesson-number">12</span>HVAC & Thermal Systems</a></li>
+            </ul>
+        </aside>
+
+        <main class="course-content">
+            <div class="lesson-header">
+                <h2>Lesson 5: Fluid Mechanics</h2>
+                <div class="lesson-meta">
+                    <span>📖 105 min read</span>
+                    <span>📊 Core</span>
+                </div>
+            </div>
+
+            <div class="lesson-content">
+                <h3>Introduction to Fluid Mechanics</h3>
+                <p>
+                    Fluid mechanics studies the behavior of fluids (liquids and gases) at rest and in motion. 
+                    It's essential for designing piping systems, pumps, turbines, aircraft, ships, and hydraulic 
+                    systems. Understanding fluid flow is critical for mechanical engineers across many industries.
+                </p>
+
+                <div class="info-box note">
+                    <h4>📌 What You'll Learn</h4>
+                    <ul>
+                        <li>Fluid properties (density, viscosity, surface tension)</li>
+                        <li>Fluid statics and pressure variation</li>
+                        <li>Manometry and buoyancy</li>
+                        <li>Fluid dynamics and Bernoulli's equation</li>
+                        <li>Reynolds number and flow regimes</li>
+                        <li>Pipe flow and friction losses</li>
+                        <li>Drag and lift forces</li>
+                        <li>Turbomachinery basics (pumps, turbines)</li>
+                    </ul>
+                </div>
+
+                <h3>Fluid Properties</h3>
+
+                <h4>Density and Specific Weight</h4>
+                <div class="code-block" data-language="text">
+<code>Density:
+  ρ = m/V (kg/m³)
+  
+  Mass per unit volume
+  
+  Typical values (at 20°C, 1 atm):
+    Water: ρ = 998 kg/m³ ≈ 1000 kg/m³
+    Air: ρ = 1.20 kg/m³
+    Mercury: ρ = 13,600 kg/m³
+    Oil (SAE 30): ρ = 880 kg/m³
+    Gasoline: ρ = 680 kg/m³
+
+Specific Weight:
+  γ = ρg (N/m³)
+  
+  Weight per unit volume
+  
+  Water: γ = 1000 × 9.81 = 9810 N/m³
+  Air: γ = 1.20 × 9.81 = 11.8 N/m³
+
+Specific Gravity:
+  SG = ρ/ρ_water
+  
+  Dimensionless ratio to water density
+  
+  Mercury: SG = 13.6
+  Oil: SG = 0.88
+  Ice: SG = 0.92 (floats!)
+
+Compressibility:
+  Liquids: nearly incompressible (ρ ≈ constant)
+  Gases: compressible (ρ varies with P and T)
+  
+  For low-speed gas flow (M < 0.3):
+    Can treat as incompressible
+
+Bulk Modulus:
+  E_v = -ΔP/(ΔV/V) = ρ(dP/dρ)
+  
+  Resistance to volume change
+  
+  Water: E_v = 2.2 GPa
+  (Very large → nearly incompressible)
+</code>
+                </div>
+
+                <h4>Viscosity</h4>
+                <div class="code-block" data-language="text">
+<code>Dynamic Viscosity (μ):
+  Resistance to shear deformation
+  
+  Newton's law of viscosity:
+    τ = μ(du/dy)
+  
+  Where:
+    τ = shear stress
+    du/dy = velocity gradient (shear rate)
+    μ = dynamic viscosity (Pa·s or N·s/m²)
+  
+  Also: 1 poise = 0.1 Pa·s
+        1 centipoise (cP) = 0.001 Pa·s
+
+Kinematic Viscosity (ν):
+  ν = μ/ρ (m²/s)
+  
+  Ratio of viscous to inertial forces
+  
+  Also: 1 stoke = 10⁻⁴ m²/s
+
+Typical Values (at 20°C):
+┌──────────────┬─────────┬─────────┐
+│   Fluid      │ μ (Pa·s)│ ν (m²/s)│
+├──────────────┼─────────┼─────────┤
+│ Water        │ 0.001   │ 1.0×10⁻⁶│
+│ Air          │ 1.8×10⁻⁵│ 1.5×10⁻⁵│
+│ SAE 10W oil  │ 0.10    │ 1.1×10⁻⁴│
+│ SAE 30 oil   │ 0.29    │ 3.3×10⁻⁴│
+│ Glycerin     │ 1.5     │ 1.2×10⁻³│
+│ Honey        │ 10      │ 7×10⁻³  │
+└──────────────┴─────────┴─────────┘
+
+Temperature Effect:
+  Liquids: μ decreases with T (molecular activity)
+  Gases: μ increases with T (molecular collisions)
+  
+  Approximation (liquids):
+    μ₂/μ₁ = exp[B(1/T₂ - 1/T₁)]
+
+Newtonian vs. Non-Newtonian:
+  Newtonian: τ ∝ du/dy (linear, μ constant)
+    Examples: water, air, most gases and liquids
+  
+  Non-Newtonian: μ varies with shear rate
+    Examples: blood, paint, ketchup, polymers
+</code>
+                </div>
+
+                <h4>Surface Tension and Capillarity</h4>
+                <div class="code-block" data-language="text">
+<code>Surface Tension (σ):
+  Force per unit length at interface
+  
+  Units: N/m
+  
+  Water-air (20°C): σ = 0.073 N/m
+  Mercury-air: σ = 0.48 N/m
+  
+  Causes:
+    - Cohesive forces between molecules
+    - Surface minimization (spherical drops)
+
+Capillarity:
+  Rise or depression in small tubes
+  
+  Height change:
+    h = (2σ cos θ)/(ρgR)
+  
+  Where:
+    θ = contact angle
+    R = tube radius
+  
+  Water in glass: θ ≈ 0° (wetting), h > 0 (rise)
+  Mercury in glass: θ ≈ 140° (non-wetting), h < 0 (depression)
+
+Pressure Jump Across Curved Interface:
+  Sphere (bubble): ΔP = 4σ/R
+  
+  Cylinder: ΔP = 2σ/R
+  
+  Smaller bubbles have higher internal pressure
+
+Weber Number:
+  We = ρV²L/σ (ratio of inertia to surface tension)
+  
+  We << 1: surface tension dominates
+  We >> 1: inertia dominates
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Fluid Statics</h3>
+
+                <h4>Pressure Variation in Static Fluid</h4>
+                <div class="code-block" data-language="text">
+<code>Pressure:
+  Force per unit area
+  
+  P = F/A (Pa = N/m²)
+  
+  Acts perpendicular to surface
+  Same in all directions at a point (Pascal's law)
+
+Pressure Variation with Depth:
+  dP/dz = -ρg
+  
+  For constant density (liquid):
+    P₂ - P₁ = -ρg(z₂ - z₁) = ρgh
+  
+  Where h = depth below surface
+
+Atmospheric Pressure:
+  P_atm = 101.325 kPa = 1 atm = 14.7 psi
+  
+  Decreases with altitude
+
+Absolute vs. Gage Pressure:
+  P_abs = P_atm + P_gage
+  
+  Gage pressure: relative to atmosphere
+  Vacuum: P_gage < 0
+
+Pressure Head:
+  h = P/(ρg)
+  
+  Height of equivalent fluid column
+  
+  1 atm = 10.3 m of water
+        = 760 mm of mercury (Hg)
+
+Hydrostatic Equation:
+  For incompressible fluid at rest:
+  
+  P₂ = P₁ + ρg(z₁ - z₂)
+  
+  Or: P₂ = P₁ + γh (where h = z₁ - z₂)
+
+Pressure in Gases:
+  For ideal gas in gravity field:
+    P = P₀ exp(-gz/RT)
+  
+  For small heights: P ≈ constant
+</code>
+                </div>
+
+                <h4>Manometry</h4>
+                <div class="code-block" data-language="text">
+<code>Manometer:
+  Device to measure pressure using fluid columns
+  
+  Types:
+    - Piezometer (open tube)
+    - U-tube manometer
+    - Inclined manometer
+    - Differential manometer
+
+U-Tube Manometer:
+  Measures pressure difference
+  
+  P_A - P_B = ρ_m g h
+  
+  Where:
+    ρ_m = manometer fluid density
+    h = height difference
+  
+  Often use mercury (high density, visible interface)
+
+Reading Procedure:
+  1. Start at one pressure point
+  2. Add ρgh for each downward column
+  3. Subtract ρgh for each upward column
+  4. Account for different fluids
+  5. End at other pressure point
+
+Differential Manometer:
+  Measures pressure difference between two points
+  
+  P₁ - P₂ = (ρ_m - ρ_f)gh
+  
+  Where:
+    ρ_m = manometer fluid
+    ρ_f = flowing fluid
+
+Sensitivity:
+  For accurate measurement:
+    - Large density difference (ρ_m - ρ_f)
+    - Incline tube for small pressures
+    - Use micromanometers for very small ΔP
+</code>
+                </div>
+
+                <h4>Hydrostatic Forces and Buoyancy</h4>
+                <div class="code-block" data-language="text">
+<code>Force on Submerged Surface:
+  For plane surface at depth:
+  
+  F = P_c × A = ρgh_c × A
+  
+  Where:
+    P_c = pressure at centroid
+    h_c = depth to centroid
+    A = surface area
+  
+  Acts perpendicular to surface
+
+Center of Pressure:
+  Point where resultant force acts
+  
+  Below centroid for plane surface
+  
+  y_cp = y_c + (I_xx,c)/(y_c × A)
+  
+  Where I_xx,c = second moment about centroid
+
+Archimedes' Principle:
+  Buoyant force equals weight of displaced fluid
+  
+  F_B = ρ_fluid × g × V_submerged
+  
+  Acts upward through centroid of displaced volume
+
+Floating Body Stability:
+  Weight W acts down through center of gravity G
+  Buoyancy F_B acts up through center of buoyancy B
+  
+  Equilibrium: W = F_B
+  
+  Stable if metacenter M is above G
+  
+  Metacentric height: GM = I/V_sub - BG
+  
+  GM > 0: stable (ship rights itself)
+  GM < 0: unstable (ship capsizes)
+
+Example: Submerged Object
+  Volume V, density ρ_obj, fluid density ρ_fluid
+  
+  Net force: F_net = F_B - W
+            = ρ_fluid V g - ρ_obj V g
+            = (ρ_fluid - ρ_obj)Vg
+  
+  If ρ_obj < ρ_fluid: F_net > 0 (rises)
+  If ρ_obj > ρ_fluid: F_net < 0 (sinks)
+  If ρ_obj = ρ_fluid: F_net = 0 (neutral buoyancy)
+</code>
+                </div>
+
+                <h4>Example 1: Manometer Problem</h4>
+                <div class="code-block" data-language="text">
+<code>Problem:
+  U-tube manometer connected to tank
+  Tank contains water (ρ = 1000 kg/m³)
+  Manometer fluid: mercury (ρ = 13,600 kg/m³)
+  Water column height above mercury: h₁ = 0.5 m
+  Mercury rise in right limb: h₂ = 0.2 m
+  Right limb open to atmosphere
+  
+Find: Gage pressure in tank
+
+Solution:
+  Step 1: Apply hydrostatic equation
+    Start at tank (P_tank), go down through water, across mercury, up to atmosphere
+    
+    P_tank + ρ_water × g × h₁ = P_atm + ρ_Hg × g × h₂
+  
+  Step 2: Solve for P_tank (gage)
+    P_tank,gage = P_tank - P_atm
+    
+    P_tank,gage = ρ_Hg × g × h₂ - ρ_water × g × h₁
+                = g(ρ_Hg × h₂ - ρ_water × h₁)
+                = 9.81(13,600 × 0.2 - 1000 × 0.5)
+                = 9.81(2720 - 500)
+                = 9.81 × 2220
+                = 21,778 Pa
+                = 21.78 kPa
+  
+  Answer: P_tank,gage = 21.78 kPa
+  
+  Interpretation: Tank pressure is 21.78 kPa above atmospheric
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Fluid Dynamics</h3>
+
+                <h4>Bernoulli's Equation</h4>
+                <div class="code-block" data-language="text">
+<code>Bernoulli's Equation:
+  Energy conservation for flowing fluid
+  
+  P/ρ + V²/2 + gz = constant (along streamline)
+  
+  Or: P₁/ρ + V₁²/2 + gz₁ = P₂/ρ + V₂²/2 + gz₂
+  
+  Terms:
+    P/ρ = pressure head (static pressure energy)
+    V²/2 = velocity head (kinetic energy)
+    gz = elevation head (potential energy)
+  
+  All terms have units of J/kg or m²/s²
+
+Assumptions:
+  - Steady flow
+  - Incompressible (ρ = constant)
+  - Inviscid (no friction)
+  - Along a streamline
+  - No shaft work
+  - No heat transfer
+
+Head Form:
+  P/(ρg) + V²/(2g) + z = constant
+  
+  All terms have units of meters (head)
+  
+  Total head H = pressure head + velocity head + elevation head
+
+Applications:
+  - Flow from tanks
+  - Pitot tubes (velocity measurement)
+  - Venturi meters (flow measurement)
+  - Flow under gates
+  - Siphons
+
+Stagnation Point:
+  Where V = 0 (fluid brought to rest)
+  
+  P_stagnation = P + ½ρV² (from Bernoulli)
+  
+  Used in Pitot tubes to measure velocity
+
+Torricelli's Theorem:
+  Velocity of efflux from tank:
+  
+  V = √(2gh)
+  
+  Where h = depth below free surface
+  
+  (Same as free fall velocity!)
+</code>
+                </div>
+
+                <h4>Continuity Equation</h4>
+                <div class="code-block" data-language="text">
+<code>Mass Conservation:
+  Mass flow rate must be constant
+  
+  ṁ = ρAV = constant
+  
+  For incompressible flow (ρ = constant):
+    A₁V₁ = A₂V₂ = Q (volumetric flow rate)
+  
+  Where:
+    A = cross-sectional area
+    V = average velocity
+    Q = volumetric flow rate (m³/s)
+
+Implications:
+  - Small area → high velocity
+  - Large area → low velocity
+  
+  Nozzle: A decreases → V increases
+  Diffuser: A increases → V decreases
+
+Velocity in Pipe:
+  Q = AV
+  
+  V = Q/A = 4Q/(πD²)
+  
+  For D in meters, Q in m³/s:
+    V in m/s
+
+Unit Conversions:
+  1 m³/s = 1000 L/s = 60,000 L/min
+  1 gpm (gal/min) = 6.309 × 10⁻⁵ m³/s
+</code>
+                </div>
+
+                <h4>Example 2: Venturi Meter</h4>
+                <div class="code-block" data-language="text">
+<code>Problem:
+  Water flows through horizontal venturi meter
+  Inlet diameter: D₁ = 100 mm
+  Throat diameter: D₂ = 50 mm
+  Pressure drop: P₁ - P₂ = 50 kPa
+  ρ_water = 1000 kg/m³
+  
+Find: Flow rate
+
+Solution:
+  Step 1: Cross-sectional areas
+    A₁ = πD₁²/4 = π(0.1)²/4 = 0.00785 m²
+    A₂ = πD₂²/4 = π(0.05)²/4 = 0.00196 m²
+  
+  Step 2: Continuity equation
+    A₁V₁ = A₂V₂
+    
+    V₂ = V₁(A₁/A₂) = V₁(0.00785/0.00196)
+       = V₁ × 4 = 4V₁
+  
+  Step 3: Bernoulli equation (horizontal, z₁ = z₂)
+    P₁/ρ + V₁²/2 = P₂/ρ + V₂²/2
+    
+    (P₁ - P₂)/ρ = (V₂² - V₁²)/2
+    
+    50,000/1000 = ((4V₁)² - V₁²)/2
+    50 = (16V₁² - V₁²)/2
+    100 = 15V₁²
+    V₁² = 6.667
+    V₁ = 2.58 m/s
+  
+  Step 4: Flow rate
+    Q = A₁V₁ = 0.00785 × 2.58
+      = 0.0203 m³/s
+      = 20.3 L/s
+      = 1218 L/min
+  
+  Step 5: Check velocity at throat
+    V₂ = 4V₁ = 4 × 2.58 = 10.32 m/s
+  
+  Answer:
+    Q = 20.3 L/s
+    V₁ = 2.58 m/s (inlet)
+    V₂ = 10.32 m/s (throat)
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Flow in Pipes</h3>
+
+                <h4>Reynolds Number and Flow Regimes</h4>
+                <div class="code-block" data-language="text">
+<code>Reynolds Number:
+  Re = ρVD/μ = VD/ν
+  
+  Ratio of inertial to viscous forces
+  
+  Where:
+    ρ = density
+    V = average velocity
+    D = pipe diameter (or characteristic length)
+    μ = dynamic viscosity
+    ν = kinematic viscosity
+
+Flow Regimes (Pipe Flow):
+  Re < 2300: Laminar flow
+    - Smooth, orderly flow
+    - Parabolic velocity profile
+    - Low mixing
+  
+  2300 < Re < 4000: Transition
+    - Unstable, fluctuating
+  
+  Re > 4000: Turbulent flow
+    - Chaotic, mixing
+    - Flatter velocity profile
+    - Higher friction
+
+Critical Reynolds Number:
+  Re_cr ≈ 2300 for pipes
+  
+  Actual transition depends on:
+    - Surface roughness
+    - Disturbances
+    - Entry conditions
+
+Velocity Profile:
+
+Laminar (Poiseuille flow):
+  u(r) = u_max[1 - (r/R)²]
+  
+  Where u_max = 2V_avg (centerline velocity)
+  
+  Parabolic distribution
+
+Turbulent:
+  u(r) ≈ u_max(1 - r/R)^(1/7)
+  
+  Power-law approximation
+  Flatter profile: u_max ≈ 1.2V_avg
+</code>
+                </div>
+
+                <h4>Head Loss in Pipes</h4>
+                <div class="code-block" data-language="text">
+<code>Darcy-Weisbach Equation:
+  Major head loss (friction in straight pipe):
+  
+  h_L = f × (L/D) × (V²/2g)
+  
+  Where:
+    f = Darcy friction factor
+    L = pipe length
+    D = pipe diameter
+    V = average velocity
+    g = 9.81 m/s²
+
+Friction Factor:
+
+Laminar flow (Re < 2300):
+  f = 64/Re
+  
+  Independent of roughness
+
+Turbulent flow (Re > 4000):
+  From Moody chart or Colebrook equation:
+  
+  1/√f = -2 log₁₀(ε/(3.7D) + 2.51/(Re√f))
+  
+  Where ε = pipe roughness (m)
+  
+  Depends on Re and relative roughness ε/D
+
+Relative Roughness:
+┌─────────────────┬──────────┐
+│  Pipe Material  │   ε (mm) │
+├─────────────────┼──────────┤
+│ Drawn tubing    │  0.0015  │
+│ Commercial steel│  0.045   │
+│ Wrought iron    │  0.045   │
+│ Galvanized iron │  0.15    │
+│ Cast iron       │  0.26    │
+│ Concrete        │  0.3-3   │
+│ Riveted steel   │  0.9-9   │
+└─────────────────┴──────────┘
+
+Minor Losses:
+  Valves, fittings, bends, expansions, contractions
+  
+  h_L,minor = K × (V²/2g)
+  
+  Where K = loss coefficient (from tables)
+  
+  Examples:
+    90° elbow: K ≈ 0.9
+    Globe valve (open): K ≈ 10
+    Gate valve (open): K ≈ 0.2
+    Sharp entrance: K ≈ 0.5
+    Sharp exit: K = 1.0
+    Sudden expansion: K = (1 - A₁/A₂)²
+
+Total Head Loss:
+  h_L,total = h_L,major + Σh_L,minor
+  
+  = f(L/D)(V²/2g) + ΣK(V²/2g)
+
+Pressure Drop:
+  ΔP = ρgh_L
+  
+  In Pa or kPa
+</code>
+                </div>
+
+                <h4>Example 3: Pipe Flow with Losses</h4>
+                <div class="code-block" data-language="text">
+<code>Problem:
+  Water flows through 200 m of commercial steel pipe
+  Diameter: D = 100 mm
+  Flow rate: Q = 0.02 m³/s
+  ρ = 1000 kg/m³, ν = 1.0 × 10⁻⁶ m²/s
+  Roughness: ε = 0.045 mm
+  Minor losses: 2 elbows (K = 0.9 each), 1 valve (K = 0.2)
+  
+Find: Total head loss and pressure drop
+
+Solution:
+  Step 1: Velocity
+    V = Q/A = Q/(πD²/4) = 4Q/(πD²)
+      = 4(0.02)/(π × 0.1²)
+      = 0.08/(π × 0.01)
+      = 2.55 m/s
+  
+  Step 2: Reynolds number
+    Re = VD/ν = (2.55)(0.1)/(1.0 × 10⁻⁶)
+       = 255,000
+    
+    Turbulent flow (Re > 4000) ✓
+  
+  Step 3: Relative roughness
+    ε/D = 0.045/100 = 0.00045
+  
+  Step 4: Friction factor (from Moody chart or approximation)
+    For Re = 255,000 and ε/D = 0.00045:
+      f ≈ 0.019
+    
+    (Or use Swamee-Jain equation for explicit f)
+  
+  Step 5: Major head loss
+    h_L,major = f(L/D)(V²/2g)
+              = 0.019 × (200/0.1) × (2.55²/(2 × 9.81))
+              = 0.019 × 2000 × 0.331
+              = 12.6 m
+  
+  Step 6: Minor losses
+    K_total = 2(0.9) + 0.2 = 2.0
+    
+    h_L,minor = K(V²/2g) = 2.0 × 0.331 = 0.66 m
+  
+  Step 7: Total head loss
+    h_L = 12.6 + 0.66 = 13.26 m ≈ 13.3 m
+  
+  Step 8: Pressure drop
+    ΔP = ρgh_L = 1000 × 9.81 × 13.26
+       = 130,081 Pa
+       = 130 kPa
+  
+  Answer:
+    Total head loss = 13.3 m
+    Pressure drop = 130 kPa
+  
+  Note: Major losses dominate (95% of total)
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Drag and Lift</h3>
+
+                <h4>Drag Force</h4>
+                <div class="code-block" data-language="text">
+<code>Drag:
+  Force opposing motion through fluid
+  
+  F_D = C_D × A × (½ρV²)
+  
+  Where:
+    C_D = drag coefficient (dimensionless)
+    A = reference area (frontal area or planform)
+    ρ = fluid density
+    V = relative velocity
+    ½ρV² = dynamic pressure
+
+Drag Coefficient:
+  Depends on:
+    - Shape
+    - Reynolds number
+    - Surface roughness
+    - Orientation
+  
+  Typical values (high Re):
+    Sphere: C_D ≈ 0.47
+    Cylinder: C_D ≈ 1.2
+    Streamlined body: C_D ≈ 0.04
+    Flat plate (perpendicular): C_D ≈ 1.28
+    Flat plate (parallel): C_D ≈ 0.001-0.01
+    Car: C_D ≈ 0.3-0.4
+    Truck: C_D ≈ 0.6-0.8
+
+Types of Drag:
+
+Pressure (Form) Drag:
+  Due to pressure difference fore/aft
+  Dominant for bluff bodies
+  Reduced by streamlining
+
+Friction (Skin) Drag:
+  Due to viscous shear at surface
+  Dominant for streamlined bodies
+  Proportional to wetted area
+
+Induced Drag:
+  For lifting surfaces (wings)
+  Due to vortices at wingtips
+  C_D,induced = C_L²/(πAR)
+  
+  Where AR = aspect ratio = b²/A (wing)
+
+Terminal Velocity:
+  When drag equals weight:
+  
+  V_terminal = √(2mg/(ρAC_D))
+  
+  Skydiver: ~50 m/s (180 km/h)
+  Raindrop: ~9 m/s
+</code>
+                </div>
+
+                <h4>Lift Force</h4>
+                <div class="code-block" data-language="text">
+<code>Lift:
+  Force perpendicular to flow direction
+  
+  F_L = C_L × A × (½ρV²)
+  
+  Where:
+    C_L = lift coefficient
+    A = planform area (for wings)
+
+Airfoil Theory:
+  Lift generated by:
+    - Pressure difference (Bernoulli)
+    - Circulation around airfoil
+    - Deflection of airflow (Newton's 3rd law)
+  
+  C_L varies with angle of attack α
+  
+  Typically:
+    C_L ≈ 2π sin(α) (thin airfoil theory)
+  
+  Maximum: C_L,max ≈ 1.5-2.0 (before stall)
+
+Lift-to-Drag Ratio:
+  L/D = C_L/C_D
+  
+  Measure of aerodynamic efficiency
+  
+  Glider: L/D ≈ 40-60
+  Airliner: L/D ≈ 15-20
+  Fighter: L/D ≈ 8-12
+
+Flight Conditions:
+  Cruise (steady level):
+    Lift = Weight
+    Thrust = Drag
+  
+  C_L × A × (½ρV²) = mg
+  
+  Stall speed:
+    V_stall = √(2mg/(ρAC_L,max))
+
+Magnus Effect:
+  Lift on spinning cylinder/sphere
+  
+  Baseball curve, soccer swerve
+  Topspin/backspin affect trajectory
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Pumps and Turbines</h3>
+
+                <h4>Pump Performance</h4>
+                <div class="code-block" data-language="text">
+<code>Pumps:
+  Add energy to fluid
+  
+  Types:
+    - Centrifugal (radial flow)
+    - Axial flow (propeller)
+    - Positive displacement (piston, gear)
+
+Head Added by Pump:
+  h_pump = (P_out - P_in)/(ρg) + (V_out² - V_in²)/(2g) + (z_out - z_in)
+  
+  Total head rise across pump
+
+Pump Power:
+  Hydraulic power (useful):
+    Ẇ_hydraulic = ρgQh_pump = γQh_pump
+  
+  Shaft power (input):
+    Ẇ_shaft = Ẇ_hydraulic / η_pump
+  
+  Where η_pump = pump efficiency (typically 60-85%)
+
+Specific Speed:
+  N_s = (N√Q)/h^(3/4)
+  
+  Where:
+    N = rotational speed (rpm)
+    Q = flow rate (gpm or m³/s)
+    h = head (ft or m)
+  
+  Determines pump type:
+    N_s < 2000: Centrifugal (radial)
+    N_s > 10,000: Axial
+
+Affinity Laws:
+  For same pump at different speeds:
+  
+  Q₂/Q₁ = N₂/N₁
+  h₂/h₁ = (N₂/N₁)²
+  P₂/P₁ = (N₂/N₁)³
+  
+  Doubling speed:
+    - Doubles flow
+    - Quadruples head
+    - Increases power 8×
+
+System Curve vs. Pump Curve:
+  System: h_system = h_static + KQ²
+  
+  Pump: h_pump from manufacturer curve
+  
+  Operating point: intersection
+
+Cavitation:
+  Vapor bubbles form when P < P_vapor
+  
+  Avoid by:
+    - Sufficient NPSH (Net Positive Suction Head)
+    - Submerge pump intake
+    - Minimize suction losses
+</code>
+                </div>
+
+                <h4>Turbines</h4>
+                <div class="code-block" data-language="text">
+<code>Turbines:
+  Extract energy from fluid
+  
+  Types:
+    - Impulse (Pelton wheel)
+    - Reaction (Francis, Kaplan)
+
+Power Output:
+  Ẇ_turbine = ηρgQh_turbine
+  
+  Where:
+    η = turbine efficiency (85-95%)
+    h_turbine = available head
+
+Impulse Turbine (Pelton):
+  High head, low flow
+  
+  Jet impinges on buckets
+  
+  Power: Ẇ = ρQ(V₁ - u)(1 + cos β)u
+  
+  Where:
+    V₁ = jet velocity
+    u = bucket velocity
+    β = bucket angle
+  
+  Optimal: u = V₁/2 (bucket speed = half jet speed)
+
+Reaction Turbine (Francis, Kaplan):
+  Low to medium head, high flow
+  
+  Pressure drop across rotor
+  
+  Francis: Radial flow, medium head
+  Kaplan: Axial flow (like propeller), low head
+
+Specific Speed:
+  N_s = (N√P)/h^(5/4)
+  
+  Determines turbine type:
+    Low N_s: Pelton
+    Medium N_s: Francis
+    High N_s: Kaplan
+
+Hydroelectric Power:
+  P = ηρgQh
+  
+  For water (ρ = 1000 kg/m³):
+    P (kW) = 9.81 × Q (m³/s) × h (m) × η
+  
+  Example: 100 m head, 10 m³/s, η = 0.9:
+    P = 9.81 × 10 × 100 × 0.9 = 8829 kW ≈ 8.8 MW
+</code>
+                </div>
+
+                <div class="info-box important">
+                    <h4>🎯 Practice Problems</h4>
+                    <ol>
+                        <li>Buoyancy: Sphere (diameter 0.5 m, density 600 kg/m³) in water. Find buoyant force and net force.</li>
+                        <li>Bernoulli: Water flows from tank (surface at P_atm) through 3 m height to exit. Find exit velocity.</li>
+                        <li>Reynolds: Oil (ν = 1.0×10⁻⁴ m²/s) flows at 0.5 m/s through 50 mm pipe. Is flow laminar or turbulent?</li>
+                        <li>Head loss: 100 m pipe, D = 150 mm, V = 2 m/s, f = 0.02. Find head loss and pressure drop (water).</li>
+                        <li>Drag: Car (A = 2.5 m², C_D = 0.35) at 100 km/h in air (ρ = 1.2 kg/m³). Find drag force and power needed.</li>
+                        <li>Pump: Water pump delivers 50 L/s against 30 m head, η = 75%. Find required shaft power.</li>
+                    </ol>
+                </div>
+
+                <h3>Summary</h3>
+                <ul>
+                    <li>Fluid properties: ρ (density), μ (viscosity), σ (surface tension) define behavior</li>
+                    <li>Hydrostatics: P₂ = P₁ + ρgh, buoyancy F_B = ρ_fluid gV_displaced</li>
+                    <li>Continuity: A₁V₁ = A₂V₂ (mass conservation), small area means high velocity</li>
+                    <li>Bernoulli: P/ρ + V²/2 + gz = constant (energy conservation along streamline)</li>
+                    <li>Reynolds number Re = ρVD/μ determines flow regime (laminar Re<2300, turbulent Re>4000)</li>
+                    <li>Pipe losses: h_L = f(L/D)(V²/2g) + ΣK(V²/2g), use Moody chart for friction factor f</li>
+                    <li>Drag: F_D = C_D A(½ρV²), depends on shape and Re</li>
+                    <li>Lift: F_L = C_L A(½ρV²), perpendicular to flow, enables flight</li>
+                    <li>Pumps add energy: Ẇ = ρgQh/η, turbines extract: Ẇ = ηρgQh</li>
+                </ul>
+
+                <h3>Next Steps</h3>
+                <p>
+                    Lesson 6 covers Heat Transfer, analyzing thermal energy transport by conduction, convection, 
+                    and radiation. You'll learn Fourier's law, Newton's law of cooling, Stefan-Boltzmann radiation, 
+                    heat exchangers, and transient thermal analysis.
+                </p>
+            </div>
+
+            <div class="lesson-navigation">
+                <a href="04-thermodynamics.html" class="nav-btn">← Thermodynamics</a>
+                <a href="06-heat-transfer.html" class="nav-btn">Next: Heat Transfer →</a>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../js/main.js"></script>
+</body>
+</html>

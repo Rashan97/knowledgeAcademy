@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 12: HVAC & Thermal Systems - Engineering Academy</title>
+    <link rel="stylesheet" href="../../../css/styles.css">
+    <link rel="stylesheet" href="../../../css/course-styles/course.css">
+</head>
+<body>
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <h1><a href="../../../index.html" style="color: inherit; text-decoration: none;">🎓 Engineering Academy</a></h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../index.html">Course Overview</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section class="course-header">
+        <div class="container">
+            <h1>⚙️ Mechanical Engineering</h1>
+            <p>Lesson 12: HVAC & Thermal Systems</p>
+        </div>
+    </section>
+
+    <div class="course-container">
+        <aside class="course-sidebar">
+            <h3>Course Modules</h3>
+            <ul class="lesson-list">
+                <li><a href="../index.html"><span class="lesson-number">📚</span>Course Overview</a></li>
+                <li><a href="01-statics.html"><span class="lesson-number">1</span>Statics & Force Analysis</a></li>
+                <li><a href="02-dynamics.html"><span class="lesson-number">2</span>Dynamics & Motion</a></li>
+                <li><a href="03-mechanics-of-materials.html"><span class="lesson-number">3</span>Mechanics of Materials</a></li>
+                <li><a href="04-thermodynamics.html"><span class="lesson-number">4</span>Thermodynamics</a></li>
+                <li><a href="05-fluid-mechanics.html"><span class="lesson-number">5</span>Fluid Mechanics</a></li>
+                <li><a href="06-heat-transfer.html"><span class="lesson-number">6</span>Heat Transfer</a></li>
+                <li><a href="07-materials-science.html"><span class="lesson-number">7</span>Materials Science</a></li>
+                <li><a href="08-machine-design.html"><span class="lesson-number">8</span>Machine Design</a></li>
+                <li><a href="09-manufacturing-processes.html"><span class="lesson-number">9</span>Manufacturing Processes</a></li>
+                <li><a href="10-vibrations.html"><span class="lesson-number">10</span>Mechanical Vibrations</a></li>
+                <li><a href="11-cad-cam.html"><span class="lesson-number">11</span>CAD/CAM & Design Tools</a></li>
+                <li><a href="12-hvac-systems.html" class="active"><span class="lesson-number">12</span>HVAC & Thermal Systems</a></li>
+            </ul>
+        </aside>
+
+        <main class="course-content">
+            <div class="lesson-header">
+                <h2>Lesson 12: HVAC & Thermal Systems</h2>
+                <div class="lesson-meta">
+                    <span>📖 95 min read</span>
+                    <span>📊 Advanced</span>
+                </div>
+            </div>
+
+            <div class="lesson-content">
+                <h3>Introduction to HVAC</h3>
+                <p>
+                    Heating, Ventilation, and Air Conditioning (HVAC) systems maintain comfortable and healthy indoor 
+                    environments. HVAC design integrates thermodynamics, fluid mechanics, and heat transfer to control 
+                    temperature, humidity, and air quality efficiently.
+                </p>
+
+                <div class="info-box note">
+                    <h4>📌 What You'll Learn</h4>
+                    <ul>
+                        <li>Psychrometrics and humid air properties</li>
+                        <li>Psychrometric chart and processes</li>
+                        <li>Cooling and heating load calculations</li>
+                        <li>Refrigeration cycles and components</li>
+                        <li>Air distribution and ductwork</li>
+                        <li>HVAC equipment and systems</li>
+                        <li>Energy efficiency and standards</li>
+                        <li>Ventilation and indoor air quality</li>
+                    </ul>
+                </div>
+
+                <h3>Psychrometrics</h3>
+
+                <h4>Humid Air Properties</h4>
+                <div class="code-block" data-language="text">
+<code>Psychrometrics:
+  Study of moist air properties
+  
+  Air-water vapor mixture behavior
+
+Dry-Bulb Temperature (T_db or DBT):
+  Temperature measured by standard thermometer
+  
+  Units: °C or °F
+  
+  Independent property (primary axis)
+
+Humidity Ratio (ω or W):
+  Mass of water vapor per mass of dry air
+  
+  ω = m_v/m_a  (kg_water/kg_dry_air or lb_w/lb_da)
+  
+  Also called: Absolute humidity, mixing ratio
+  
+  From ideal gas:
+    ω = 0.622 · p_v/(p - p_v)
+  
+  Where:
+    p_v = partial pressure of vapor
+    p = total atmospheric pressure (101.325 kPa)
+
+Relative Humidity (φ or RH):
+  Ratio of actual vapor to saturated vapor
+  
+  φ = p_v/p_g(T) × 100%
+  
+  Where p_g = saturation pressure at T
+  
+  Range: 0% (dry) to 100% (saturated)
+  
+  Comfort: 30-60% RH
+
+Dew Point Temperature (T_dp):
+  Temperature at which condensation begins
+  
+  Air cooled at constant ω until φ = 100%
+  
+  Lower than T_db (unless saturated)
+
+Wet-Bulb Temperature (T_wb):
+  Temperature with water evaporation
+  
+  Measured by thermometer with wet wick
+  
+  Lower than T_db (latent cooling)
+  
+  T_dp ≤ T_wb ≤ T_db
+
+Specific Enthalpy (h):
+  Total energy per unit mass of dry air
+  
+  h = c_p·T + ω·h_g
+  
+  Where:
+    c_p = 1.006 kJ/kg·K (dry air)
+    h_g ≈ 2501 kJ/kg (vapor at 0°C)
+  
+  Approximate:
+    h ≈ 1.006·T + ω(2501 + 1.86·T)  kJ/kg_da
+  
+  Units: kJ/kg_dry_air or Btu/lb_da
+
+Specific Volume (v):
+  Volume per unit mass of dry air
+  
+  v ≈ 0.287·(T + 273.15)/(p - p_v)  m³/kg_da
+  
+  Or: v ≈ 0.287·T/p + 0.462·ω·T/p
+  
+  Standard: v ≈ 0.83 m³/kg at 20°C, 50% RH
+
+Saturation Curve:
+  φ = 100% line on psychrometric chart
+  
+  Maximum ω for given T
+  
+  Equations (approximate):
+    p_g(T) = exp[a - b/(T+c)]  (Antoine equation)
+  
+  Or use steam tables, correlations
+</code>
+                </div>
+
+                <h4>Psychrometric Chart</h4>
+                <div class="code-block" data-language="text">
+<code>Psychrometric Chart:
+  Graphical representation of moist air properties
+  
+  ASHRAE Chart most common
+
+Axes:
+  Horizontal: Dry-bulb temperature (T_db)
+  Vertical: Humidity ratio (ω)
+
+Curves/Lines:
+  Saturation curve: φ = 100% (upper left boundary)
+  Constant RH: Curved lines (φ = 20%, 40%, 60%, etc.)
+  Constant wet-bulb: Diagonal lines (slope down-right)
+  Constant enthalpy: Nearly parallel to wet-bulb
+  Constant specific volume: Diagonal lines (slope up-right)
+
+Reading Chart:
+  Locate point: T_db and one other property
+    (e.g., T_db = 25°C, φ = 60%)
+  
+  Read all other properties:
+    ω, T_wb, T_dp, h, v
+
+State Point:
+  Defines condition of air
+  
+  Two independent properties needed
+  
+  Common pairs:
+    - T_db and φ
+    - T_db and T_wb
+    - T_db and ω
+
+Psychrometric Processes:
+
+1. Sensible Heating:
+   Heat added, no moisture change
+   
+   ω = constant (horizontal right)
+   φ decreases (drier feeling)
+   
+   Example: Furnace, electric heater
+
+2. Sensible Cooling:
+   Heat removed, no moisture change
+   
+   ω = constant (horizontal left)
+   φ increases
+   
+   If reach saturation: Condensation begins
+
+3. Cooling with Dehumidification:
+   Cool below dew point
+   
+   Follows saturation curve (φ = 100%)
+   ω decreases (moisture removed)
+   
+   Example: Air conditioning coil
+   
+   Apparatus Dew Point (ADP):
+     Effective coil surface temperature
+     On saturation curve
+   
+   Bypass Factor (BF):
+     Fraction of air not contacting coil
+     BF = (T_out - T_ADP)/(T_in - T_ADP)
+
+4. Humidification:
+   Add moisture
+   
+   Adiabatic (evaporative):
+     Constant wet-bulb (diagonal down-left)
+     T_db decreases, ω increases
+     Example: Evaporative cooler
+   
+   Steam injection:
+     Constant dry-bulb (vertical up)
+     T increases slightly (superheat)
+
+5. Dehumidification:
+   Remove moisture (overcooling then reheat)
+   
+   Or desiccant systems
+
+6. Mixing:
+   Combine two airstreams
+   
+   State 3 on straight line between states 1 and 2
+   
+   Mass balance:
+     ṁ₃ = ṁ₁ + ṁ₂
+   
+   Property balance (for ω, h, etc.):
+     ṁ₃·ω₃ = ṁ₁·ω₁ + ṁ₂·ω₂
+   
+   Mixing point location:
+     Lever rule (mass ratio)
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Load Calculations</h3>
+
+                <h4>Cooling Load Components</h4>
+                <div class="code-block" data-language="text">
+<code>Cooling Load:
+  Heat gain that must be removed
+  
+  Total = Sensible + Latent
+
+Sensible Load (Q_sensible):
+  Temperature change only
+  
+  Sources:
+
+1. Transmission (Envelope):
+   Heat through walls, roof, windows, floor
+   
+   Q = U·A·CLTD
+   
+   Or simplified:
+     Q = U·A·ΔT
+   
+   Where:
+     U = overall heat transfer coefficient (W/m²·K)
+     A = area (m²)
+     CLTD = cooling load temperature difference
+     ΔT = T_outside - T_inside
+
+   Typical U-values:
+     Uninsulated wall: 2-3 W/m²·K
+     Insulated wall (R-13): 0.4 W/m²·K
+     Single-pane window: 5-6 W/m²·K
+     Double-pane: 2-3 W/m²·K
+     Triple-pane: 1-2 W/m²·K
+
+2. Solar Radiation (Windows):
+   Q_solar = A·SHGC·SC·SCL
+   
+   Or: Q = A·SHGC·I_solar
+   
+   Where:
+     SHGC = solar heat gain coefficient (0-1)
+       Clear glass: 0.8
+       Low-E: 0.4-0.6
+       Reflective: 0.2-0.4
+     I_solar = incident solar radiation (W/m²)
+       Peak ≈ 800-1000 W/m² (perpendicular)
+
+3. Infiltration/Ventilation:
+   Outside air entering
+   
+   Q_inf = ṁ·c_p·ΔT = ρ·V̇·c_p·ΔT
+   
+   Where:
+     V̇ = volumetric flow rate (m³/s or CFM)
+     ΔT = T_outside - T_inside
+     ρ ≈ 1.2 kg/m³, c_p ≈ 1.006 kJ/kg·K
+   
+   Simplified:
+     Q (W) = 1.2·V̇(m³/s)·ΔT(K)
+     Q (Btu/h) = 1.08·V̇(CFM)·ΔT(°F)
+   
+   Infiltration rate:
+     Air changes per hour (ACH)
+     Typical: 0.5-2 ACH
+     
+     V̇ = (ACH/60)·Volume
+
+4. Internal Gains:
+   People:
+     Sensible: 60-75 W/person (sedentary)
+                100-150 W/person (active)
+     ASHRAE tables by activity
+   
+   Lights:
+     Q = Wattage × factor
+     Incandescent: 100% sensible
+     Fluorescent: ~90% sensible (ballast heat)
+     LED: Lower heat
+   
+   Equipment:
+     Computers, appliances, machinery
+     Nameplate power (with usage factor)
+
+Latent Load (Q_latent):
+  Moisture addition (no temperature change)
+  
+  Sources:
+
+1. People:
+   Latent: 30-60 W/person (sedentary)
+           150-300 W/person (active)
+   
+   Higher in hot, humid climates
+
+2. Infiltration/Ventilation:
+   Moisture in outside air
+   
+   Q_lat = ṁ·h_fg·Δω = ρ·V̇·h_fg·Δω
+   
+   Where:
+     h_fg ≈ 2501 kJ/kg (latent heat)
+     Δω = ω_outside - ω_inside
+   
+   Simplified:
+     Q (W) = 3000·V̇(m³/s)·Δω(kg/kg)
+     Q (Btu/h) = 4840·V̇(CFM)·Δω(lb/lb)
+
+3. Cooking, Showers:
+   Significant in kitchens, bathrooms
+
+Total Cooling Load:
+  Q_total = Q_sensible + Q_latent
+  
+  Units: W, kW, Btu/h, tons refrigeration
+  
+  1 ton = 12,000 Btu/h = 3.517 kW
+
+Sensible Heat Ratio (SHR):
+  SHR = Q_sensible / Q_total
+  
+  Range: 0.6-0.95 (typical buildings)
+  
+  Higher SHR: More sensible (dry climates)
+  Lower SHR: More latent (humid climates)
+  
+  Important for equipment selection
+</code>
+                </div>
+
+                <h4>Heating Load</h4>
+                <div class="code-block" data-language="text">
+<code>Heating Load:
+  Heat loss to be replaced
+  
+  Winter design conditions
+
+Components:
+
+1. Transmission:
+   Q = U·A·(T_inside - T_outside)
+   
+   Same U-values as cooling
+   
+   Design ΔT larger (winter extreme)
+
+2. Infiltration:
+   Cold air entering
+   
+   Q = 1.2·V̇·ΔT  (W, m³/s, K)
+   
+   Higher in winter (stack effect, wind)
+
+3. Ventilation:
+   Required outside air
+   
+   Q = ṁ·c_p·ΔT + ṁ·h_fg·Δω
+   
+   Sensible + humidification load
+
+4. Pickup Load:
+   Morning warm-up (thermostat setback recovery)
+   
+   Percentage of design load (10-30%)
+
+No Internal Gains:
+  People, lights, equipment not credited
+  (Conservative, not always present)
+
+Design Temperatures:
+  ASHRAE Handbook: 99% or 97.5% conditions
+  
+  99%: Temperature exceeded 1% of hours
+  (approximately 88 hours per year)
+  
+  Example: Minneapolis 99% = -23°C (-10°F)
+
+Total Heating Load:
+  Q_heating = Q_transmission + Q_infiltration + Q_ventilation
+  
+  Units: W, kW, Btu/h
+
+Humidification:
+  Moisture addition (dry winter air)
+  
+  Q_hum = ṁ·h_fg·Δω
+  
+  Steam or evaporative humidifiers
+</code>
+                </div>
+
+                <h4>Example: Cooling Load Calculation</h4>
+                <div class="code-block" data-language="text">
+<code>Problem:
+  Office 5m × 6m × 3m high
+  Outside: 35°C, 60% RH
+  Inside: 24°C, 50% RH
+  
+  Walls: U = 0.5 W/m²·K, total area 40 m²
+  Windows: 10 m², SHGC = 0.6, U = 2.5 W/m²·K
+  Solar radiation: 500 W/m² (average)
+  
+  Infiltration: 0.5 ACH
+  Occupancy: 4 people (70 W sensible, 50 W latent each)
+  Lights: 500 W (all sensible)
+  
+  Find: Total cooling load, SHR
+
+Solution:
+
+1. Wall transmission:
+   Q_wall = U·A·ΔT = 0.5·40·(35-24) = 220 W
+
+2. Window transmission:
+   Q_window,trans = 2.5·10·(35-24) = 275 W
+
+3. Solar gain (windows):
+   Q_solar = A·SHGC·I = 10·0.6·500 = 3000 W
+
+4. Infiltration:
+   Volume = 5·6·3 = 90 m³
+   V̇ = 0.5 ACH · 90 m³ / 60 min = 0.75 m³/min = 0.0125 m³/s
+   
+   Sensible:
+   Q_inf,sens = 1.2·V̇·ΔT = 1.2·0.0125·(35-24) = 165 W
+   
+   Latent (need ω values from chart):
+   At 35°C, 60% RH: ω ≈ 0.021 kg/kg
+   At 24°C, 50% RH: ω ≈ 0.0093 kg/kg
+   Δω = 0.021 - 0.0093 = 0.0117 kg/kg
+   
+   Q_inf,lat = 3000·V̇·Δω = 3000·0.0125·0.0117 = 439 W
+
+5. People:
+   Q_people,sens = 4·70 = 280 W
+   Q_people,lat = 4·50 = 200 W
+
+6. Lights:
+   Q_lights = 500 W (all sensible)
+
+7. Total sensible:
+   Q_sens = 220 + 275 + 3000 + 165 + 280 + 500 = 4440 W
+
+8. Total latent:
+   Q_lat = 439 + 200 = 639 W
+
+9. Total cooling load:
+   Q_total = 4440 + 639 = 5079 W ≈ 5.1 kW
+   
+   In tons: 5.1 / 3.517 = 1.45 tons
+
+10. Sensible Heat Ratio:
+    SHR = 4440 / 5079 = 0.87
+    
+    (High SHR, mostly sensible load)
+
+System Selection:
+  Need 1.5-2 ton AC unit
+  Must handle SHR = 0.87
+  Supply air temperature and humidity determined by SHR
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Refrigeration and HVAC Equipment</h3>
+
+                <h4>Vapor-Compression Refrigeration Cycle</h4>
+                <div class="code-block" data-language="text">
+<code>Components (Review from Thermodynamics):
+
+1. Evaporator:
+   Absorbs heat from space
+   Low pressure, low temperature
+   Refrigerant evaporates
+   
+   Q_evap = ṁ_r·(h₁ - h₄)
+
+2. Compressor:
+   Raises pressure and temperature
+   Work input required
+   
+   W_comp = ṁ_r·(h₂ - h₁)
+   
+   Types:
+     Reciprocating: Small-medium (residential)
+     Scroll: Medium (residential, light commercial)
+     Screw: Large (commercial, industrial)
+     Centrifugal: Very large (chillers)
+
+3. Condenser:
+   Rejects heat to environment
+   High pressure, high temperature
+   Refrigerant condenses
+   
+   Q_cond = ṁ_r·(h₂ - h₃)
+   
+   Types:
+     Air-cooled: Fans, outdoor unit
+     Water-cooled: Cooling tower loop
+     Evaporative: Spray water on coils
+
+4. Expansion Valve:
+   Pressure reduction (throttling)
+   Isenthalpic: h₃ = h₄
+   
+   Types:
+     Capillary tube: Fixed (small systems)
+     Thermostatic (TXV): Adjustable (most common)
+     Electronic (EEV): Precise control
+
+COP (Coefficient of Performance):
+  Cooling: COP_R = Q_evap / W_comp
+  
+  Typical: COP = 2.5-4.5 (air conditioning)
+  
+  Higher is better (more efficient)
+
+Refrigerants:
+
+Legacy:
+  R-12, R-22: CFCs/HCFCs
+  Ozone depleting (phased out)
+
+Current:
+  R-134a: Automotive, some appliances
+  R-410A: Residential/commercial AC (most common)
+  R-32: Lower GWP alternative
+  
+  Environmental impact:
+    ODP: Ozone Depletion Potential (want 0)
+    GWP: Global Warming Potential (want low)
+
+Future:
+  Natural refrigerants: CO₂ (R-744), ammonia, propane
+  Low-GWP synthetics: R-32, R-1234yf
+
+Superheat and Subcooling:
+
+Superheat:
+  Vapor temperature above saturation
+  At evaporator outlet
+  
+  Superheat = T₁ - T_sat(P₁)
+  
+  Ensures no liquid to compressor
+  Typical: 5-10°C
+
+Subcooling:
+  Liquid temperature below saturation
+  At condenser outlet
+  
+  Subcooling = T_sat(P₃) - T₃
+  
+  Ensures liquid to expansion valve
+  Increases capacity
+  Typical: 3-8°C
+</code>
+                </div>
+
+                <h4>HVAC Systems and Equipment</h4>
+                <div class="code-block" data-language="text">
+<code>Air Conditioning Systems:
+
+Window/Portable AC:
+  Self-contained
+  Evaporator inside, condenser outside
+  1-3 tons typical
+  
+  Pros: Low cost, easy install
+  Cons: Noisy, less efficient
+
+Split System:
+  Indoor unit (evaporator + fan)
+  Outdoor unit (compressor + condenser)
+  Refrigerant lines connect
+  
+  Residential/light commercial
+  1-5 tons common
+  
+  Pros: Quiet indoor, efficient
+  Cons: Installation cost
+
+Multi-Split/VRF:
+  One outdoor, multiple indoor units
+  Variable Refrigerant Flow
+  
+  Zoned control
+  Efficient (heat recovery variants)
+  
+  Commercial buildings
+
+Packaged Unit (RTU):
+  Rooftop unit
+  All components in one cabinet
+  
+  3-50 tons
+  
+  Commercial buildings
+  
+  Pros: Easy install, space-saving
+  Cons: Rooftop access for service
+
+Chiller + Air Handler:
+  Central plant
+  
+  Chiller produces chilled water (5-10°C)
+  Piped to air handlers throughout building
+  Air handler: Coil + fan
+  
+  Large buildings (>50 tons)
+  
+  Types:
+    Air-cooled chiller: Outdoor condenser
+    Water-cooled chiller: Cooling tower
+  
+  Pros: Centralized, efficient, flexible
+  Cons: High initial cost, complexity
+
+Heat Pumps:
+  Reversible refrigeration cycle
+  
+  Cooling mode: AC (heat outside)
+  Heating mode: Heat from outside
+  
+  Reversing valve switches flow
+  
+  COP_heating = COP_cooling + 1 (approximately)
+  
+  Efficient heating in mild climates
+  
+  Types:
+    Air-source: Most common
+    Ground-source (Geothermal): High efficiency, high cost
+
+Heating Systems:
+
+Furnace:
+  Combustion (gas, oil) or electric resistance
+  
+  Forced air (duct distribution)
+  
+  AFUE (Annual Fuel Utilization Efficiency):
+    Standard: 80%
+    High-efficiency: 90-98%
+
+Boiler:
+  Hydronic (hot water or steam)
+  
+  Radiators or radiant floor
+  
+  Natural gas, oil, electric
+  
+  Efficiency: 80-98% (condensing)
+
+Radiant Heating:
+  Embedded tubing in floor/ceiling
+  
+  Hot water circulation
+  
+  Comfortable, efficient
+  Slow response
+
+Ventilation:
+
+Outdoor Air:
+  ASHRAE 62.1: Ventilation for IAQ
+  
+  Typical: 10-20 CFM/person (5-10 L/s)
+  
+  Higher for special uses (labs, kitchens)
+
+Energy Recovery Ventilator (ERV):
+  Heat exchanger between exhaust and intake
+  
+  Recovers sensible + latent (total energy)
+  
+  Effectiveness: 60-80%
+  
+  Reduces load from outdoor air
+
+Heat Recovery Ventilator (HRV):
+  Sensible only (temperature)
+  
+  For cold, dry climates
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Air Distribution and Ductwork</h3>
+
+                <h4>Duct Design</h4>
+                <div class="code-block" data-language="text">
+<code>Duct System:
+  Deliver conditioned air to spaces
+  Return air to equipment
+
+Duct Sizing Methods:
+
+1. Velocity Method:
+   Select duct size for target velocity
+   
+   Velocities:
+     Main ducts: 4-6 m/s (800-1200 fpm)
+     Branch ducts: 3-5 m/s (600-1000 fpm)
+     
+     Lower for quiet (libraries, bedrooms)
+     Higher for industrial
+   
+   Area = Q / v
+   
+   Where Q = flow rate (m³/s or CFM)
+
+2. Equal Friction Method:
+   Constant pressure loss per length
+   
+   Typical: 0.8-1.5 Pa/m (0.1 in.w.g./100 ft)
+   
+   Size ducts to maintain friction rate
+   
+   Balanced system
+
+3. Static Regain Method:
+   Velocity reduction regains static pressure
+   
+   Maintains pressure at branches
+   
+   Complex, large systems
+
+Friction Loss:
+  Darcy-Weisbach (or simplified charts)
+  
+  Δp = f·(L/D)·(ρv²/2)
+  
+  Higher velocity → higher loss (v² relationship)
+
+Duct Shapes:
+  Round: Lowest pressure loss, lowest material
+  Rectangular: Fits above ceilings (flat)
+  Oval: Compromise
+
+Equivalent Diameter:
+  Convert rectangular to round
+  
+  D_eq = 1.30·[(ab)^0.625] / [(a+b)^0.25]
+  
+  Where a, b = rectangular dimensions
+
+Fittings and Losses:
+  Elbows, transitions, branches
+  
+  Loss coefficient (C) or equivalent length
+  
+  Minimize sharp turns, sudden changes
+
+Diffusers and Grilles:
+  Deliver air to space
+  
+  Types:
+    Diffuser: Multi-directional (ceiling)
+    Register: Adjustable (wall, floor)
+    Grille: Return air
+  
+  Throw: Distance air travels before velocity drops
+  
+  Select for coverage, noise, aesthetics
+
+Duct Insulation:
+  Exterior: Reduce heat gain/loss
+  Interior liner: Acoustic dampening
+  
+  R-value: R-4 to R-8 typical
+
+Duct Leakage:
+  Seal joints (mastic, tape)
+  
+  Leakage class: 3-48 (lower is better)
+  
+  Can lose 10-30% airflow to leaks!
+</code>
+                </div>
+
+                <h4>System Balancing</h4>
+                <div class="code-block" data-language="text">
+<code>Air Balancing:
+  Adjust airflow to design values
+  
+  Process:
+    1. Measure airflow at each outlet
+    2. Adjust dampers
+    3. Repeat until balanced
+
+Dampers:
+  Volume dampers: Manually adjusted
+  Balancing dampers: Fine-tune branches
+  Fire dampers: Close in fire (safety)
+  
+  Automated: VAV (variable air volume) boxes
+
+Hydronic Balancing:
+  Water flow in piping
+  
+  Balancing valves at each terminal
+  
+  Differential pressure readouts
+
+Testing and Commissioning:
+  Verify system performance
+  
+  Airflow, temperatures, pressures
+  Control sequences
+  
+  Before occupancy
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Energy Efficiency and Standards</h3>
+
+                <h4>Efficiency Metrics</h4>
+                <div class="code-block" data-language="text">
+<code>Energy Efficiency Ratings:
+
+SEER (Seasonal Energy Efficiency Ratio):
+  Cooling efficiency over season
+  
+  SEER = Cooling output (Btu) / Energy input (Wh)
+  
+  Units: Btu/Wh
+  
+  US minimum: 13-14 SEER (residential)
+  High-efficiency: 16-25+ SEER
+  
+  Higher is better
+
+EER (Energy Efficiency Ratio):
+  Steady-state efficiency (95°F outdoor)
+  
+  EER = Cooling capacity (Btu/h) / Power (W)
+  
+  SEER ≈ 1.1 × EER (approximate)
+
+HSPF (Heating Seasonal Performance Factor):
+  Heat pump heating efficiency
+  
+  HSPF = Heating output (Btu) / Energy input (Wh)
+  
+  Minimum: 8.2 HSPF (US)
+  High-efficiency: 10-13 HSPF
+
+AFUE (Annual Fuel Utilization Efficiency):
+  Furnace/boiler efficiency
+  
+  AFUE = Heat output / Fuel input
+  
+  Percentage (%)
+  
+  Standard: 80%
+  High-efficiency: 90-98% (condensing)
+
+COP (Coefficient of Performance):
+  Instantaneous efficiency
+  
+  COP = Useful output / Work input
+  
+  Dimensionless
+  
+  Typical: 2.5-4.5 (cooling), 3-5 (heating)
+
+Improving Efficiency:
+
+Equipment:
+  - High-efficiency units (SEER, AFUE)
+  - Variable-speed compressors, fans
+  - Heat recovery (ERV, economizers)
+
+Building Envelope:
+  - Insulation (walls, roof, foundation)
+  - High-performance windows (low-U, low-SHGC)
+  - Air sealing (reduce infiltration)
+
+Design:
+  - Proper sizing (no oversizing)
+  - Zoning (separate control)
+  - Duct sealing and insulation
+
+Controls:
+  - Programmable thermostats
+  - Occupancy sensors
+  - Building automation systems (BAS)
+
+Economizers:
+  Use cool outdoor air for "free cooling"
+  
+  When T_outside < T_inside (and humidity acceptable)
+  
+  Mix or fully use outdoor air
+  
+  Significant savings in mild climates
+
+Thermal Energy Storage:
+  Ice or chilled water storage
+  
+  Make ice at night (off-peak electricity)
+  Use during day (peak demand reduction)
+  
+  Lower utility costs (time-of-use rates)
+</code>
+                </div>
+
+                <h4>Standards and Codes</h4>
+                <div class="code-block" data-language="text">
+<code>ASHRAE Standards:
+
+ASHRAE 62.1:
+  Ventilation for Acceptable IAQ
+  
+  Outdoor air requirements
+  
+  CFM per person + CFM per area
+
+ASHRAE 90.1:
+  Energy Standard for Buildings
+  
+  Minimum efficiency requirements
+  
+  Envelope, lighting, HVAC, controls
+
+ASHRAE 55:
+  Thermal Environmental Conditions
+  
+  Comfort criteria (PMV, PPD)
+  
+  Temperature, humidity, air speed
+
+Building Codes:
+  International Mechanical Code (IMC)
+  International Energy Conservation Code (IECC)
+  
+  Local amendments
+
+Indoor Air Quality (IAQ):
+
+Ventilation:
+  Dilute contaminants
+  
+  CO₂ indicator (>1000 ppm = poor ventilation)
+
+Filtration:
+  MERV rating (1-16)
+  
+  MERV 8-11: Standard residential/commercial
+  MERV 13-16: Healthcare, high-end
+  HEPA: 99.97% at 0.3 μm (labs, hospitals)
+
+Source Control:
+  Low-VOC materials
+  Exhaust at source (kitchens, labs)
+
+Humidity Control:
+  30-60% RH
+  
+  Low: Dry skin, static, respiratory issues
+  High: Mold, dust mites
+
+Green Building:
+  LEED (Leadership in Energy and Environmental Design)
+  
+  Credits for:
+    - Energy efficiency
+    - Indoor air quality
+    - Refrigerant management
+    - Commissioning
+</code>
+                </div>
+
+                <div class="info-box important">
+                    <h4>🎯 Practice Problems</h4>
+                    <ol>
+                        <li>Psychrometrics: Air at 30°C, 40% RH. Using correlations or chart, find ω, T_dp, and h.</li>
+                        <li>Mixing: Stream 1: 1000 CFM, 75°F, 50% RH. Stream 2: 500 CFM, 90°F, 70% RH. Find mixed state (T, ω).</li>
+                        <li>Cooling load: Room 4m×5m×3m, walls U=0.6 W/m²·K, ΔT=12°C, 2 people (75W sens, 55W lat), lights 400W. Find Q_total.</li>
+                        <li>Refrigeration: Evaporator load 10 kW, compressor power 3 kW. Find COP and tons refrigeration.</li>
+                        <li>Duct sizing: 1000 CFM, target velocity 800 fpm. Find round duct diameter in inches.</li>
+                        <li>Efficiency: AC unit 24,000 Btu/h cooling, 2000 W power. Find EER. If SEER=1.1×EER, estimate SEER.</li>
+                    </ol>
+                </div>
+
+                <h3>Summary</h3>
+                <ul>
+                    <li>Psychrometrics: moist air properties ω (humidity ratio), φ (relative humidity), h (enthalpy), psychrometric chart graphical tool</li>
+                    <li>Processes: sensible heating/cooling (constant ω), dehumidification (cooling below T_dp), humidification, mixing (linear combination)</li>
+                    <li>Cooling load: transmission (walls/windows), solar gain (SHGC), infiltration, internal (people/lights/equipment), sensible + latent</li>
+                    <li>Heating load: transmission and infiltration dominate, design for winter extreme conditions (99% temperature)</li>
+                    <li>Refrigeration cycle: evaporator (absorb heat), compressor (work input), condenser (reject heat), expansion valve (throttle)</li>
+                    <li>Equipment: split systems (residential), RTU/chillers (commercial), heat pumps (reversible), furnaces/boilers (heating)</li>
+                    <li>Ductwork: velocity method or equal friction sizing, round ducts most efficient, seal joints to prevent leakage</li>
+                    <li>Efficiency: SEER (seasonal cooling), EER (steady-state), COP (instantaneous), AFUE (furnace), higher values better</li>
+                    <li>Standards: ASHRAE 62.1 (ventilation), 90.1 (energy), 55 (comfort), IAQ with filtration MERV 8-16</li>
+                    <li>HVAC integrates thermodynamics (cycles), fluid mechanics (airflow), and heat transfer (loads) for comfort and efficiency</li>
+                </ul>
+
+                <h3>Course Complete!</h3>
+                <p>
+                    Congratulations on completing the Mechanical Engineering course! You've covered fundamental topics 
+                    from statics and dynamics through advanced applications in HVAC systems. This comprehensive foundation 
+                    prepares you for real-world mechanical engineering challenges.
+                </p>
+                
+                <div class="info-box note">
+                    <h4>🎓 What's Next?</h4>
+                    <p>Continue your engineering education by exploring our other courses:</p>
+                    <ul>
+                        <li><a href="../../electrical-engineering/index.html">Electrical Engineering</a> - Circuits, power systems, and electronics</li>
+                        <li><a href="../../software-engineering/index.html">Software Engineering</a> - Software development and design patterns</li>
+                        <li><a href="../../programming/index.html">Programming</a> - Coding fundamentals and data structures</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="lesson-navigation">
+                <a href="11-cad-cam.html" class="nav-btn">← CAD/CAM</a>
+                <a href="../index.html" class="nav-btn">Course Overview →</a>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../js/main.js"></script>
+</body>
+</html>

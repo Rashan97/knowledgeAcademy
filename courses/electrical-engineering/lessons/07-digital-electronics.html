@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 7: Digital Electronics - Engineering Academy</title>
+    <link rel="stylesheet" href="../../../css/styles.css">
+    <link rel="stylesheet" href="../../../css/course-styles/course.css">
+</head>
+<body>
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <h1><a href="../../../index.html" style="color: inherit; text-decoration: none;">🎓 Engineering Academy</a></h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../index.html">Course Overview</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section class="course-header">
+        <div class="container">
+            <h1>⚡ Electrical Engineering</h1>
+            <p>Lesson 7: Digital Electronics</p>
+        </div>
+    </section>
+
+    <div class="course-container">
+        <aside class="course-sidebar">
+            <h3>Course Modules</h3>
+            <ul class="lesson-list">
+                <li><a href="../index.html"><span class="lesson-number">📚</span>Course Overview</a></li>
+                <li><a href="01-fundamentals.html" class="completed"><span class="lesson-number">1</span>EE Fundamentals</a></li>
+                <li><a href="02-dc-circuits.html" class="completed"><span class="lesson-number">2</span>DC Circuit Analysis</a></li>
+                <li><a href="03-ac-circuits.html" class="completed"><span class="lesson-number">3</span>AC Circuits</a></li>
+                <li><a href="04-semiconductors.html" class="completed"><span class="lesson-number">4</span>Semiconductors</a></li>
+                <li><a href="05-diodes-transistors.html" class="completed"><span class="lesson-number">5</span>Diodes & Transistors</a></li>
+                <li><a href="06-operational-amplifiers.html" class="completed"><span class="lesson-number">6</span>Op-Amps</a></li>
+                <li><a href="07-digital-electronics.html" class="active"><span class="lesson-number">7</span>Digital Electronics</a></li>
+                <li><a href="08-power-systems.html"><span class="lesson-number">8</span>Power Systems</a></li>
+                <li><a href="09-transformers-motors.html"><span class="lesson-number">9</span>Transformers & Motors</a></li>
+                <li><a href="10-control-systems.html"><span class="lesson-number">10</span>Control Systems</a></li>
+                <li><a href="11-signals-systems.html"><span class="lesson-number">11</span>Signals & Systems</a></li>
+                <li><a href="12-safety-standards.html"><span class="lesson-number">12</span>Safety & Standards</a></li>
+            </ul>
+        </aside>
+
+        <main class="course-content">
+            <div class="lesson-header">
+                <h2>Lesson 7: Digital Electronics</h2>
+                <div class="lesson-meta">
+                    <span>📖 115 min read</span>
+                    <span>📊 Intermediate</span>
+                </div>
+            </div>
+
+            <div class="lesson-content">
+                <h3>Introduction to Digital Electronics</h3>
+                <p>
+                    Digital electronics form the foundation of modern computing and information technology. Unlike 
+                    analog circuits that work with continuous signals, digital circuits process discrete binary 
+                    values (0 and 1), enabling reliable computation, storage, and communication of information.
+                </p>
+
+                <div class="info-box note">
+                    <h4>📌 What You'll Learn</h4>
+                    <ul>
+                        <li>Binary number systems and conversions</li>
+                        <li>Boolean algebra and logic gates</li>
+                        <li>Combinational logic circuits (multiplexers, decoders, adders)</li>
+                        <li>Sequential logic (flip-flops, registers, counters)</li>
+                        <li>Timing diagrams and state machines</li>
+                        <li>Memory types (RAM, ROM, Flash)</li>
+                        <li>Digital IC families (TTL, CMOS)</li>
+                        <li>Microcontroller interfacing basics</li>
+                    </ul>
+                </div>
+
+                <h3>Digital Logic Fundamentals</h3>
+
+                <h4>Binary Number System</h4>
+                <div class="code-block" data-language="text">
+<code>Binary (Base-2):
+  Uses only two digits: 0 and 1
+  Each position represents power of 2
+  
+  Example: 1011₂
+    = 1×2³ + 0×2² + 1×2¹ + 1×2⁰
+    = 8 + 0 + 2 + 1
+    = 11₁₀ (decimal)
+
+Binary to Decimal Conversion:
+  Weight each bit by its position
+  Sum the results
+  
+  Example: 11010₂
+    = 1×16 + 1×8 + 0×4 + 1×2 + 0×1
+    = 16 + 8 + 2 = 26₁₀
+
+Decimal to Binary Conversion:
+  Divide by 2, track remainders
+  
+  Example: 19₁₀ to binary
+    19 ÷ 2 = 9 R 1  (LSB)
+     9 ÷ 2 = 4 R 1
+     4 ÷ 2 = 2 R 0
+     2 ÷ 2 = 1 R 0
+     1 ÷ 2 = 0 R 1  (MSB)
+    
+    Read remainders bottom-up: 10011₂
+
+Hexadecimal (Base-16):
+  Uses 0-9, A-F (A=10, B=11, C=12, D=13, E=14, F=15)
+  One hex digit = 4 binary bits (nibble)
+  
+  Example: 0xA3 = 1010 0011₂ = 163₁₀
+  
+Binary-Coded Decimal (BCD):
+  Each decimal digit encoded in 4 bits
+  Example: 59₁₀ = 0101 1001 BCD
+</code>
+                </div>
+
+                <h4>Logic Levels and Voltage Ranges</h4>
+                <div class="code-block" data-language="text">
+<code>Logic Level Definitions:
+
+TTL (Transistor-Transistor Logic) - 5V supply:
+  Logic HIGH (1): 2.0V to 5.0V
+  Logic LOW (0):  0V to 0.8V
+  Undefined:      0.8V to 2.0V (noise margin)
+  
+  Output levels:
+    V_OH (min): 2.4V (HIGH output)
+    V_OL (max): 0.4V (LOW output)
+  
+  Input levels:
+    V_IH (min): 2.0V (HIGH input threshold)
+    V_IL (max): 0.8V (LOW input threshold)
+
+CMOS (Complementary MOS) - 3.3V or 5V:
+  Logic HIGH: > 0.7×V_CC
+  Logic LOW:  < 0.3×V_CC
+  Better noise margins than TTL
+  
+  For 5V CMOS:
+    HIGH: > 3.5V
+    LOW:  < 1.5V
+
+Modern standards:
+  3.3V: Used in most microcontrollers, FPGAs
+  1.8V: Low-power applications
+  1.2V: High-speed processors
+  LVDS: Differential signaling for high speed
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Boolean Algebra</h3>
+
+                <h4>Boolean Operations</h4>
+                <div class="code-block" data-language="text">
+<code>Three Fundamental Operations:
+
+1. AND (·): Output HIGH only if ALL inputs HIGH
+   Symbol: A · B or AB
+   Truth table:
+     A B | Y
+     0 0 | 0
+     0 1 | 0
+     1 0 | 0
+     1 1 | 1
+
+2. OR (+): Output HIGH if ANY input HIGH
+   Symbol: A + B
+   Truth table:
+     A B | Y
+     0 0 | 0
+     0 1 | 1
+     1 0 | 1
+     1 1 | 1
+
+3. NOT (¯ or '): Output is INVERTED
+   Symbol: Ā or A'
+   Truth table:
+     A | Y
+     0 | 1
+     1 | 0
+
+Derived Operations:
+
+NAND (NOT-AND): Output LOW only if ALL inputs HIGH
+  Y = (AB)' = A'+ B'
+  Universal gate (can build any logic)
+
+NOR (NOT-OR): Output HIGH only if ALL inputs LOW
+  Y = (A + B)' = A' · B'
+  Universal gate
+
+XOR (Exclusive-OR): Output HIGH if inputs DIFFER
+  Y = A ⊕ B = AB' + A'B
+  Used in: Adders, comparators, parity
+
+XNOR (Exclusive-NOR): Output HIGH if inputs SAME
+  Y = (A ⊕ B)' = AB + A'B'
+  Equality checker
+</code>
+                </div>
+
+                <h4>Boolean Algebra Laws</h4>
+                <div class="code-block" data-language="text">
+<code>Fundamental Laws:
+
+Identity:
+  A + 0 = A
+  A · 1 = A
+
+Null (Dominance):
+  A + 1 = 1
+  A · 0 = 0
+
+Idempotent:
+  A + A = A
+  A · A = A
+
+Inverse (Complement):
+  A + A' = 1
+  A · A' = 0
+
+Commutative:
+  A + B = B + A
+  A · B = B · A
+
+Associative:
+  (A + B) + C = A + (B + C)
+  (A · B) · C = A · (B · C)
+
+Distributive:
+  A · (B + C) = A·B + A·C
+  A + (B · C) = (A + B) · (A + C)
+
+De Morgan's Theorems (crucial!):
+  (A + B)' = A' · B'
+  (A · B)' = A' + B'
+  
+  "Break the bar, change the sign"
+
+Absorption:
+  A + A·B = A
+  A · (A + B) = A
+
+Example Simplification:
+  Y = A·B + A·B' + A'·B
+    = A(B + B') + A'·B    (Factor A)
+    = A·1 + A'·B          (B + B' = 1)
+    = A + A'·B            (Identity)
+    = A + B               (Absorption)
+</code>
+                </div>
+
+                <h4>Example 1: Boolean Simplification</h4>
+                <div class="code-block" data-language="text">
+<code>Problem:
+  Simplify: F = A'BC + ABC + AB'C + ABC'
+  
+Solution:
+  F = A'BC + ABC + AB'C + ABC'
+  
+  Step 1: Factor out common BC from first two terms
+    = BC(A' + A) + AB'C + ABC'
+    = BC·1 + AB'C + ABC'
+    = BC + AB'C + ABC'
+  
+  Step 2: Factor C from first two terms
+    = C(B + AB') + ABC'
+    = C(B + AB') + ABC'
+  
+  Step 3: Apply absorption: B + AB' = B + A
+    = C(A + B) + ABC'
+  
+  Step 4: Expand
+    = AC + BC + ABC'
+  
+  Step 5: Factor A from first and third terms
+    = A(C + BC') + BC
+    = A(C + B) + BC      (C + BC' = C + B)
+    = AC + AB + BC
+  
+  Final: F = AB + AC + BC
+  
+  Verification using truth table confirms equality!
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Combinational Logic Circuits</h3>
+                <p>
+                    Circuits whose output depends only on current inputs (no memory).
+                </p>
+
+                <h4>Multiplexer (MUX)</h4>
+                <div class="code-block" data-language="text">
+<code>2-to-1 Multiplexer:
+  Selects one of two inputs based on select line
+  
+  Inputs: I0, I1 (data)
+  Select: S
+  Output: Y
+  
+  Logic:
+    Y = S'·I0 + S·I1
+    
+    If S=0: Y = I0
+    If S=1: Y = I1
+
+Truth Table:
+  S I1 I0 | Y
+  0  x  0 | 0
+  0  x  1 | 1
+  1  0  x | 0
+  1  1  x | 1
+
+4-to-1 Multiplexer:
+  Select lines: S1 S0 (2 bits)
+  Data inputs: I0, I1, I2, I3
+  
+  Y = S1'S0'·I0 + S1'S0·I1 + S1S0'·I2 + S1S0·I3
+
+IC Examples:
+  74151: 8-to-1 MUX
+  74153: Dual 4-to-1 MUX
+  
+Applications:
+  - Data routing
+  - Function generation
+  - Parallel-to-serial conversion
+  - Implementing any Boolean function
+</code>
+                </div>
+
+                <h4>Decoder</h4>
+                <div class="code-block" data-language="text">
+<code>2-to-4 Decoder:
+  Converts binary input to one-hot output
+  
+  Inputs: A1 A0 (2-bit binary)
+  Outputs: Y0 Y1 Y2 Y3 (4 outputs, only one HIGH)
+  
+  Truth Table:
+    A1 A0 | Y3 Y2 Y1 Y0
+     0  0 |  0  0  0  1
+     0  1 |  0  0  1  0
+     1  0 |  0  1  0  0
+     1  1 |  1  0  0  0
+  
+  Logic:
+    Y0 = A1' · A0'
+    Y1 = A1' · A0
+    Y2 = A1  · A0'
+    Y3 = A1  · A0
+
+3-to-8 Decoder:
+  3 inputs → 8 outputs
+  Y_i = HIGH when input = i
+  
+IC Examples:
+  74138: 3-to-8 decoder
+  74154: 4-to-16 decoder
+
+Applications:
+  - Address decoding (memory selection)
+  - Instruction decoding
+  - Seven-segment display drivers
+  - Demultiplexing
+</code>
+                </div>
+
+                <h4>Encoder</h4>
+                <div class="code-block" data-language="text">
+<code>Priority Encoder:
+  Converts one-hot input to binary
+  Handles multiple inputs (highest priority wins)
+  
+  8-to-3 Priority Encoder:
+    Inputs: I7 I6 I5 I4 I3 I2 I1 I0
+    Outputs: A2 A1 A0 (3-bit binary)
+    
+    If I7=1: Output = 111 (7)
+    If I6=1 and I7=0: Output = 110 (6)
+    Etc.
+    
+IC: 74148 (8-to-3 priority encoder)
+
+Applications:
+  - Keyboard encoding
+  - Interrupt prioritization
+  - Position encoding
+</code>
+                </div>
+
+                <h4>Binary Adder</h4>
+                <div class="code-block" data-language="text">
+<code>Half Adder:
+  Adds two 1-bit numbers
+  
+  Inputs: A, B
+  Outputs: Sum (S), Carry (C)
+  
+  Truth Table:
+    A B | S C
+    0 0 | 0 0
+    0 1 | 1 0
+    1 0 | 1 0
+    1 1 | 0 1
+  
+  Logic:
+    S = A ⊕ B  (XOR)
+    C = A · B  (AND)
+
+Full Adder:
+  Adds three 1-bit numbers (A, B, carry-in)
+  
+  Inputs: A, B, C_in
+  Outputs: Sum (S), Carry-out (C_out)
+  
+  Logic:
+    S = A ⊕ B ⊕ C_in
+    C_out = AB + C_in(A ⊕ B)
+         = AB + AC_in + BC_in
+
+4-Bit Ripple-Carry Adder:
+  Chain four full adders
+  C_out of one connects to C_in of next
+  
+  Inputs: A3A2A1A0, B3B2B1B0, C_in
+  Outputs: S3S2S1S0, C_out
+  
+  Limitation: Carry propagation delay
+    - Each stage must wait for previous carry
+    - Slow for large numbers
+  
+IC: 7483 (4-bit binary adder)
+
+Fast Adders:
+  - Carry Look-Ahead: Parallel carry generation
+  - Carry-Skip: Skip over groups
+  - Carry-Select: Compute both, select based on carry
+</code>
+                </div>
+
+                <h4>Example 2: Design 2-bit Comparator</h4>
+                <div class="code-block" data-language="text">
+<code>Problem:
+  Design circuit to compare two 2-bit numbers A and B
+  Outputs: A>B, A=B, A<B
+  
+Solution:
+  Inputs: A1 A0, B1 B0
+  Outputs: GT (A>B), EQ (A=B), LT (A<B)
+  
+  Equality:
+    EQ = (A1 ⊙ B1) · (A0 ⊙ B0)
+       = (A1'B1' + A1B1) · (A0'B0' + A0B0)
+    
+  Greater Than:
+    GT = A1B1'  (MSB: A=1, B=0)
+       + (A1 ⊙ B1)·A0B0'  (MSBs equal, A0>B0)
+    
+  Less Than:
+    LT = A1'B1  (MSB: A=0, B=1)
+       + (A1 ⊙ B1)·A0'B0  (MSBs equal, A0<B0)
+  
+  Or simply:
+    LT = (GT + EQ)'  (De Morgan's)
+
+IC: 7485 (4-bit magnitude comparator)
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Sequential Logic Circuits</h3>
+                <p>
+                    Circuits with memory - output depends on inputs AND previous state.
+                </p>
+
+                <h4>SR Latch (Set-Reset)</h4>
+                <div class="code-block" data-language="text">
+<code>NOR-based SR Latch:
+
+     S ──┐
+         NOR ──┬── Q
+     ┌───┘     │
+     │         │
+     │   ┌─────┘
+     └───┤
+         NOR ──── Q'
+     R ──┘
+
+Truth Table:
+  S R | Q  Q' | State
+  0 0 | Q₀ Q₀'| Hold (no change)
+  0 1 | 0  1  | Reset
+  1 0 | 1  0  | Set
+  1 1 | 0  0  | Invalid (forbidden!)
+
+Characteristic:
+  - Asynchronous (no clock)
+  - Simplest memory element
+  - S=1 sets Q=1
+  - R=1 resets Q=0
+  - S=R=1 is undefined (both outputs 0)
+</code>
+                </div>
+
+                <h4>D Flip-Flop (Data/Delay)</h4>
+                <div class="code-block" data-language="text">
+<code>Edge-Triggered D Flip-Flop:
+
+  Inputs: D (data), CLK (clock)
+  Outputs: Q, Q'
+  
+  Operation:
+    On rising edge of CLK: Q ← D
+    Between edges: Q holds previous value
+  
+  Symbol:
+     D ───┤D   Q├─── Q
+          │     │
+    CLK ─→│>    │
+          │    Q'├─── Q'
+          └─────┘
+  
+  Truth Table:
+    CLK  D | Q(next)
+     ↑   0 |   0
+     ↑   1 |   1
+     0/1  x |   Q (no change)
+  
+  Advantages:
+    - No invalid states (unlike SR)
+    - Synchronous operation
+    - Most common flip-flop type
+    
+  With Asynchronous Inputs:
+    PRE (Preset): Forces Q=1 regardless of clock
+    CLR (Clear): Forces Q=0 regardless of clock
+    Active-low typically: PRE', CLR'
+
+IC Examples:
+  7474: Dual D flip-flop
+  74174: Hex D flip-flop
+</code>
+                </div>
+
+                <h4>JK Flip-Flop</h4>
+                <div class="code-block" data-language="text">
+<code>Edge-Triggered JK Flip-Flop:
+
+  Inputs: J, K, CLK
+  Outputs: Q, Q'
+  
+  Truth Table (on rising edge):
+    J K | Q(next) | Action
+    0 0 |   Q     | Hold
+    0 1 |   0     | Reset
+    1 0 |   1     | Set
+    1 1 |   Q'    | Toggle
+  
+  Characteristic Equation:
+    Q(next) = JQ' + K'Q
+  
+  Advantage:
+    - No invalid state (solves SR problem)
+    - Toggle mode (J=K=1) very useful
+    
+IC: 7476 (Dual JK flip-flop)
+
+T Flip-Flop (Toggle):
+  Special case of JK with J=K=T
+  
+  Truth Table:
+    T | Q(next)
+    0 |   Q      (hold)
+    1 |   Q'     (toggle)
+    
+  Used in: Counters, frequency dividers
+</code>
+                </div>
+
+                <h4>Registers</h4>
+                <div class="code-block" data-language="text">
+<code>4-Bit Parallel Register:
+  Four D flip-flops sharing common clock
+  
+  Inputs: D3 D2 D1 D0, CLK
+  Outputs: Q3 Q2 Q1 Q0
+  
+  On CLK edge: All bits loaded simultaneously
+  
+Shift Register:
+  Serial data transfer
+  
+  Serial-In, Serial-Out (SISO):
+    D → [FF] → [FF] → [FF] → [FF] → Q
+        CLK  CLK  CLK  CLK
+    
+    Data shifts one position per clock
+    
+  Serial-In, Parallel-Out (SIPO):
+    Serial input, read all bits in parallel
+    Used for: Serial-to-parallel conversion
+    
+  Parallel-In, Serial-Out (PISO):
+    Load all bits, shift out serially
+    Used for: Parallel-to-serial conversion
+    
+  Bidirectional Shift Register:
+    Can shift left or right
+    Control input selects direction
+
+IC Examples:
+  74164: 8-bit SIPO
+  74165: 8-bit PISO
+  74194: 4-bit universal shift register
+  
+Applications:
+  - Data storage
+  - Serial communication (SPI, I2C)
+  - Delay lines
+  - Sequence generation
+  - Multiplication/division by 2
+</code>
+                </div>
+
+                <h4>Counters</h4>
+                <div class="code-block" data-language="text">
+<code>Asynchronous (Ripple) Counter:
+  Each flip-flop clocked by previous output
+  
+  4-bit binary counter (0-15):
+    Using T flip-flops (toggle mode)
+    
+    CLK → [T FF] → [T FF] → [T FF] → [T FF]
+          Q0 (LSB)  Q1       Q2       Q3 (MSB)
+    
+  Sequence: 0000, 0001, 0010, ..., 1111, 0000
+  
+  Disadvantage: Propagation delay accumulates
+    - Not all bits change simultaneously
+    - Glitches possible
+
+Synchronous Counter:
+  All flip-flops clocked simultaneously
+  
+  4-bit synchronous up-counter logic:
+    Q0 toggles every clock
+    Q1 toggles when Q0=1
+    Q2 toggles when Q1Q0=1
+    Q3 toggles when Q2Q1Q0=1
+  
+  Advantages:
+    - No ripple delay
+    - All outputs change together
+    - Faster operation
+    - Glitch-free
+
+Decade Counter (MOD-10):
+  Counts 0-9, then resets
+  
+  Using 4-bit counter with reset logic:
+    When count = 1010 (10): Reset to 0000
+    
+IC Examples:
+  7490: Decade counter
+  7493: 4-bit binary counter
+  74161: Synchronous 4-bit counter with load
+  74191: Up/down counter
+
+BCD Counter:
+  Counts in Binary-Coded Decimal
+  Each decade represented in 4 bits
+  Used for: Decimal displays, clocks
+
+Applications:
+  - Frequency division
+  - Digital clocks
+  - Event counting
+  - Address generation
+  - Timing sequences
+</code>
+                </div>
+
+                <h4>Example 3: Design MOD-6 Counter</h4>
+                <div class="code-block" data-language="text">
+<code>Problem:
+  Design synchronous counter that counts 0-5, then repeats
+  
+Solution:
+  Need 3 bits (2³ = 8 > 6)
+  States: 000, 001, 010, 011, 100, 101, 000...
+  
+  Method: Use 74161 (4-bit counter with parallel load)
+  
+  Approach 1: Detect count=6, synchronous load 0
+    When Q2Q1Q0 = 110 (6): Load 0000
+    
+    NAND gate: (Q2 · Q1)' → LOAD input
+    Load data: D3D2D1D0 = 0000
+  
+  Approach 2: Use clear/reset
+    4-bit counter counts normally
+    Decode 110 (6) with AND gate
+    Feed to asynchronous clear
+    Counter resets to 0000
+  
+  State Diagram:
+    000 → 001 → 010 → 011 → 100 → 101 → 000
+    
+  Verification: 6 states, MOD-6 ✓
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Memory Devices</h3>
+
+                <h4>Memory Classification</h4>
+                <div class="code-block" data-language="text">
+<code>Memory Types:
+
+1. RAM (Random Access Memory) - Volatile
+   
+   a) SRAM (Static RAM):
+      - Uses flip-flops (6 transistors/bit)
+      - Fast (< 10 ns access)
+      - No refresh needed
+      - Expensive, low density
+      - Used in: CPU cache, buffers
+   
+   b) DRAM (Dynamic RAM):
+      - Uses capacitors (1 transistor/bit)
+      - Slower (50-70 ns)
+      - Requires periodic refresh
+      - Cheap, high density
+      - Used in: Main memory
+      - Types: SDR, DDR, DDR2, DDR3, DDR4, DDR5
+
+2. ROM (Read-Only Memory) - Non-Volatile
+   
+   a) Mask ROM:
+      - Programmed during manufacture
+      - Cannot be changed
+      - High volume production
+   
+   b) PROM (Programmable ROM):
+      - One-time programmable (OTP)
+      - Fuses blown by user
+   
+   c) EPROM (Erasable PROM):
+      - UV light erases (quartz window)
+      - Slow erase (20 min)
+      - Reusable
+   
+   d) EEPROM (Electrically Erasable):
+      - Byte-level erase/write
+      - Slow write (ms)
+      - Limited write cycles (10⁵-10⁶)
+      - Used in: Configuration data
+   
+   e) Flash Memory:
+      - Block erase (not byte)
+      - Fast write (μs)
+      - High density
+      - Limited write cycles (10⁴-10⁵)
+      - Types: NOR Flash, NAND Flash
+      - Used in: USB drives, SSDs, microcontrollers
+
+3. Special Memories:
+   
+   - CAM (Content Addressable Memory)
+   - FIFO (First-In-First-Out)
+   - LIFO/Stack memory
+</code>
+                </div>
+
+                <h4>Memory Organization</h4>
+                <div class="code-block" data-language="text">
+<code>Memory Specifications:
+
+Example: 1K × 8 SRAM
+  - 1K = 1024 locations (2¹⁰ addresses)
+  - 8 bits per location (byte-wide)
+  - Total capacity: 1024 × 8 = 8192 bits = 1 KB
+  
+  Address lines: 10 (A9-A0)
+  Data lines: 8 (D7-D0)
+  Control: CS (Chip Select), WE (Write Enable), OE (Output Enable)
+
+Address Decoding:
+  Multiple memory chips on same bus
+  Use decoder to select specific chip
+  
+  Example: 4 × (1K×8) chips = 4KB total
+    A11 A10 | Chip Selected
+     0   0  | Chip 0 (0x0000-0x03FF)
+     0   1  | Chip 1 (0x0400-0x07FF)
+     1   0  | Chip 2 (0x0800-0x0BFF)
+     1   1  | Chip 3 (0x0C00-0x0FFF)
+    
+  Use 2-to-4 decoder on A11,A10
+  Connect decoder outputs to CS inputs
+
+Read Cycle:
+  1. Apply address
+  2. Assert CS (chip select)
+  3. Assert OE (output enable)
+  4. Wait for access time
+  5. Read data
+  6. Deassert CS, OE
+
+Write Cycle:
+  1. Apply address
+  2. Apply data
+  3. Assert CS
+  4. Pulse WE (write enable)
+  5. Deassert CS, WE
+</code>
+                </div>
+
+                <h3>Logic Families</h3>
+
+                <h4>TTL vs CMOS</h4>
+                <div class="code-block" data-language="text">
+<code>TTL (Transistor-Transistor Logic):
+
+  Characteristics:
+    - Supply: 5V ± 0.25V
+    - Fast switching (1-10 ns)
+    - Moderate power (1-10 mW/gate)
+    - Low output impedance
+    - Good current drive
+    - Input must be driven (don't float)
+  
+  Subfamilies:
+    - 74xx: Standard TTL
+    - 74Sxx: Schottky (faster)
+    - 74LSxx: Low-power Schottky (most common)
+    - 74ASxx: Advanced Schottky
+    - 74ALSxx: Advanced Low-power Schottky
+
+CMOS (Complementary MOS):
+
+  Characteristics:
+    - Supply: 3V to 18V (wide range)
+    - Slower than TTL (10-50 ns)
+    - Very low static power (nW)
+    - High dynamic power (at high freq)
+    - High input impedance (MΩ)
+    - Sensitive to static (ESD)
+    - Inputs can float (not recommended)
+  
+  Subfamilies:
+    - 4000 series: Original CMOS
+    - 74HCxx: High-speed CMOS (TTL compatible)
+    - 74HCTxx: CMOS with TTL input levels
+    - 74ACxx: Advanced CMOS (faster)
+
+Comparison:
+┌──────────────┬─────────┬─────────┐
+│  Parameter   │   TTL   │  CMOS   │
+├──────────────┼─────────┼─────────┤
+│ Supply (V)   │   5     │  3-18   │
+│ Speed (ns)   │  1-10   │ 10-50   │
+│ Power/gate   │ 1-10mW  │  10nW   │
+│ Noise Margin │  Good   │  Better │
+│ Fan-out      │   10    │   50    │
+│ Input Z      │  Low    │  High   │
+│ Unused Input │ Must tie│ Prefer  │
+└──────────────┴─────────┴─────────┘
+</code>
+                </div>
+
+                <div class="info-box important">
+                    <h4>🎯 Practice Problems</h4>
+                    <ol>
+                        <li>Convert binary 11010110₂ to decimal and hexadecimal</li>
+                        <li>Simplify: F = A'BC + ABC + AB'C</li>
+                        <li>Design 3-to-8 decoder using AND/NOT gates</li>
+                        <li>Draw timing diagram for 3-bit ripple counter (8 clock cycles)</li>
+                        <li>Design MOD-12 counter using 74161 and reset logic</li>
+                        <li>How many address lines needed for 64KB memory?</li>
+                        <li>Implement F = AB + A'C using only 2-input NAND gates</li>
+                    </ol>
+                </div>
+
+                <h3>Summary</h3>
+                <ul>
+                    <li>Digital systems use binary (0/1) for reliable information processing</li>
+                    <li>Boolean algebra provides mathematical framework for logic design</li>
+                    <li>Logic gates (AND, OR, NOT, NAND, NOR, XOR) are building blocks</li>
+                    <li>Combinational circuits: Output depends only on current inputs</li>
+                    <li>Sequential circuits: Output depends on inputs and previous state (memory)</li>
+                    <li>Flip-flops (D, JK, T) are basic memory elements</li>
+                    <li>Registers store multiple bits, shift registers transfer serially</li>
+                    <li>Counters divide frequency and generate sequences</li>
+                    <li>Memory: RAM (volatile), ROM/Flash (non-volatile)</li>
+                    <li>TTL and CMOS are main logic families with different tradeoffs</li>
+                </ul>
+
+                <h3>Next Steps</h3>
+                <p>
+                    In Lesson 8, we'll explore Power Systems, covering three-phase AC power, transformers, 
+                    power distribution, protection systems, and renewable energy integration.
+                </p>
+            </div>
+
+            <div class="lesson-navigation">
+                <a href="06-operational-amplifiers.html" class="nav-btn">← Previous: Op-Amps</a>
+                <a href="08-power-systems.html" class="nav-btn">Next: Power Systems →</a>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../js/main.js"></script>
+</body>
+</html>

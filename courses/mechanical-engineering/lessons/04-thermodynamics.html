@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 4: Thermodynamics - Engineering Academy</title>
+    <link rel="stylesheet" href="../../../css/styles.css">
+    <link rel="stylesheet" href="../../../css/course-styles/course.css">
+</head>
+<body>
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <h1><a href="../../../index.html" style="color: inherit; text-decoration: none;">🎓 Engineering Academy</a></h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../index.html">Course Overview</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section class="course-header">
+        <div class="container">
+            <h1>⚙️ Mechanical Engineering</h1>
+            <p>Lesson 4: Thermodynamics</p>
+        </div>
+    </section>
+
+    <div class="course-container">
+        <aside class="course-sidebar">
+            <h3>Course Modules</h3>
+            <ul class="lesson-list">
+                <li><a href="../index.html"><span class="lesson-number">📚</span>Course Overview</a></li>
+                <li><a href="01-statics.html"><span class="lesson-number">1</span>Statics & Force Analysis</a></li>
+                <li><a href="02-dynamics.html"><span class="lesson-number">2</span>Dynamics & Motion</a></li>
+                <li><a href="03-mechanics-of-materials.html"><span class="lesson-number">3</span>Mechanics of Materials</a></li>
+                <li><a href="04-thermodynamics.html" class="active"><span class="lesson-number">4</span>Thermodynamics</a></li>
+                <li><a href="05-fluid-mechanics.html"><span class="lesson-number">5</span>Fluid Mechanics</a></li>
+                <li><a href="06-heat-transfer.html"><span class="lesson-number">6</span>Heat Transfer</a></li>
+                <li><a href="07-materials-science.html"><span class="lesson-number">7</span>Materials Science</a></li>
+                <li><a href="08-machine-design.html"><span class="lesson-number">8</span>Machine Design</a></li>
+                <li><a href="09-manufacturing-processes.html"><span class="lesson-number">9</span>Manufacturing Processes</a></li>
+                <li><a href="10-vibrations.html"><span class="lesson-number">10</span>Mechanical Vibrations</a></li>
+                <li><a href="11-cad-cam.html"><span class="lesson-number">11</span>CAD/CAM & Design Tools</a></li>
+                <li><a href="12-hvac-systems.html"><span class="lesson-number">12</span>HVAC & Thermal Systems</a></li>
+            </ul>
+        </aside>
+
+        <main class="course-content">
+            <div class="lesson-header">
+                <h2>Lesson 4: Thermodynamics</h2>
+                <div class="lesson-meta">
+                    <span>📖 110 min read</span>
+                    <span>📊 Core</span>
+                </div>
+            </div>
+
+            <div class="lesson-content">
+                <h3>Introduction to Thermodynamics</h3>
+                <p>
+                    Thermodynamics is the science of energy transformation and the relationships between heat, 
+                    work, and properties of matter. It governs engines, power plants, refrigeration, and all 
+                    energy conversion processes. Understanding thermodynamics is essential for designing efficient 
+                    mechanical systems.
+                </p>
+
+                <div class="info-box note">
+                    <h4>📌 What You'll Learn</h4>
+                    <ul>
+                        <li>Thermodynamic systems and properties</li>
+                        <li>First Law: conservation of energy</li>
+                        <li>Second Law: entropy and irreversibility</li>
+                        <li>Ideal gas behavior and processes</li>
+                        <li>Power cycles (Rankine, Otto, Diesel, Brayton)</li>
+                        <li>Refrigeration and heat pump cycles</li>
+                        <li>Thermodynamic efficiency</li>
+                    </ul>
+                </div>
+
+                <h3>Fundamental Concepts</h3>
+
+                <h4>Systems and Properties</h4>
+                <div class="code-block" data-language="text">
+<code>Thermodynamic System:
+  Quantity of matter or region of space under study
+  
+  Types:
+    - Closed system: Fixed mass, no mass crosses boundary (piston-cylinder)
+    - Open system (control volume): Mass can flow in/out (turbine, compressor)
+    - Isolated system: No mass or energy crosses boundary
+
+Boundary:
+  Real or imaginary surface separating system from surroundings
+  
+  Can be:
+    - Fixed or moving
+    - Permeable or impermeable
+    - Rigid or flexible
+
+Properties:
+  Characteristics describing state of system
+  
+  Intensive: Independent of mass (T, P, ρ)
+  Extensive: Depend on mass (m, V, U, H, S)
+  
+  Specific properties: extensive/mass (u, h, s, v)
+
+State:
+  Condition defined by properties
+  
+  State postulate: For simple compressible substance,
+  two independent intensive properties define state
+
+Process:
+  Change from one state to another
+  Path-dependent or path-independent
+
+Cycle:
+  Series of processes returning to initial state
+  
+  Properties return to initial values
+  Net change in properties = 0
+
+Equilibrium:
+  No tendency for change when isolated
+  
+  Types:
+    - Thermal equilibrium (uniform T)
+    - Mechanical equilibrium (uniform P)
+    - Phase equilibrium (no phase change)
+    - Chemical equilibrium (no reactions)
+
+Phase:
+  Distinct form of matter (solid, liquid, gas)
+  Homogeneous in composition
+</code>
+                </div>
+
+                <h4>Temperature and Pressure</h4>
+                <div class="code-block" data-language="text">
+<code>Temperature:
+  Measure of thermal energy level
+  
+  Scales:
+    Celsius: °C (freezing 0°C, boiling 100°C at 1 atm)
+    Fahrenheit: °F = 9/5(°C) + 32
+    Kelvin: K = °C + 273.15 (absolute)
+    Rankine: °R = °F + 459.67 (absolute)
+  
+  Absolute zero: 0 K = -273.15°C
+
+Pressure:
+  Force per unit area
+  
+  P = F/A
+  
+  Units:
+    Pa (Pascal) = N/m²
+    kPa = 1000 Pa (common)
+    bar = 100 kPa
+    atm (atmosphere) = 101.325 kPa
+    psi = lb/in² (US)
+  
+  Conversions:
+    1 atm = 101.325 kPa = 14.7 psi = 1.01325 bar
+
+Absolute vs. Gage Pressure:
+  P_abs = P_atm + P_gage
+  
+  Where P_atm = atmospheric pressure
+  
+  Vacuum: P_gage negative (below atmospheric)
+  
+  P_abs = P_atm - P_vacuum
+
+Standard Conditions:
+  STP: 0°C (273.15 K), 1 atm
+  NTP: 20°C (293.15 K), 1 atm
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Properties of Pure Substances</h3>
+
+                <h4>Phase Diagrams and Property Tables</h4>
+                <div class="code-block" data-language="text">
+<code>Phases of Pure Substance:
+  Solid → Liquid → Vapor
+  
+  Critical point: Beyond which liquid/vapor distinction disappears
+  Triple point: All three phases coexist
+
+Saturation:
+  Liquid and vapor phases in equilibrium
+  
+  Saturation temperature T_sat: temperature at which phase change occurs at given P
+  Saturation pressure P_sat: pressure at which phase change occurs at given T
+  
+  For water at 100°C: P_sat = 101.325 kPa (1 atm)
+  For water at 1 atm: T_sat = 100°C
+
+Quality (Dryness Fraction):
+  For liquid-vapor mixture:
+  
+  x = m_vapor / m_total
+  
+  x = 0: saturated liquid (all liquid)
+  0 < x < 1: two-phase mixture
+  x = 1: saturated vapor (all vapor)
+  
+  Property of mixture:
+    φ = φ_f + x(φ_g - φ_f) = φ_f + xφ_fg
+  
+  Where:
+    φ_f = saturated liquid value
+    φ_g = saturated vapor value
+    φ_fg = φ_g - φ_f (difference)
+
+Regions:
+  Compressed liquid: T < T_sat at given P
+  Saturated liquid-vapor: T = T_sat, two phases
+  Superheated vapor: T > T_sat at given P
+
+Specific Volume:
+  v = V/m (m³/kg)
+  
+  ρ = 1/v (density)
+
+Internal Energy:
+  u (kJ/kg)
+  Total: U = mu
+
+Enthalpy:
+  h = u + Pv (kJ/kg)
+  
+  Total: H = mh = U + PV
+  
+  Useful for flow processes
+
+Entropy:
+  s (kJ/kg·K)
+  
+  Measure of disorder/irreversibility
+  Total: S = ms
+
+Property Tables (Steam Tables):
+  Table A-4: Saturated water (temperature)
+  Table A-5: Saturated water (pressure)
+  Table A-6: Superheated vapor
+  Table A-7: Compressed liquid
+  
+  Linear interpolation between values
+</code>
+                </div>
+
+                <h4>Ideal Gas Law</h4>
+                <div class="code-block" data-language="text">
+<code>Ideal Gas Equation of State:
+  PV = nRT (molar form)
+  
+  PV = mR̄T (mass form)
+  
+  Pv = R̄T (specific form)
+  
+  Where:
+    P = absolute pressure
+    V = volume
+    n = number of moles
+    m = mass
+    T = absolute temperature
+    R = universal gas constant = 8.314 kJ/kmol·K
+    R̄ = specific gas constant = R/M
+    M = molecular weight
+
+Specific Gas Constants:
+  Air: R̄ = 0.287 kJ/kg·K
+  CO₂: R̄ = 0.189 kJ/kg·K
+  N₂: R̄ = 0.297 kJ/kg·K
+  O₂: R̄ = 0.260 kJ/kg·K
+
+Specific Heats:
+  c_p = specific heat at constant pressure
+  c_v = specific heat at constant volume
+  
+  For ideal gas:
+    Δu = c_v ΔT
+    Δh = c_p ΔT
+  
+  Relationship:
+    c_p - c_v = R̄
+    
+    k = c_p/c_v (specific heat ratio)
+  
+  For air:
+    c_p = 1.005 kJ/kg·K
+    c_v = 0.718 kJ/kg·K
+    k = 1.4
+
+Ideal Gas Assumptions:
+  - Molecules are point masses (negligible volume)
+  - No intermolecular forces
+  - Valid at low pressure, high temperature
+  
+  Good approximation for air, combustion gases
+</code>
+                </div>
+
+                <h4>Example 1: Ideal Gas Problem</h4>
+                <div class="code-block" data-language="text">
+<code>Problem:
+  Air tank: V = 0.5 m³, T = 25°C, P = 500 kPa (absolute)
+  R̄ = 0.287 kJ/kg·K
+  
+Find:
+  a) Mass of air in tank
+  b) Density
+
+Solution:
+  Step 1: Convert temperature to absolute
+    T = 25 + 273 = 298 K
+  
+  Step 2: Apply ideal gas law (Pv = R̄T)
+    PV = mR̄T
+    
+    m = PV/(R̄T)
+      = (500)(0.5) / (0.287 × 298)
+      = 250 / 85.53
+      = 2.92 kg
+  
+  Step 3: Density
+    ρ = m/V = 2.92/0.5 = 5.84 kg/m³
+    
+    Or: ρ = P/(R̄T) = 500/(0.287 × 298) = 5.84 kg/m³ ✓
+  
+  Answer:
+    a) m = 2.92 kg
+    b) ρ = 5.84 kg/m³
+  
+  Note: At standard conditions (101.325 kPa, 15°C):
+        ρ_air ≈ 1.225 kg/m³
+        This tank has higher density due to high pressure
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>First Law of Thermodynamics</h3>
+
+                <h4>Energy Conservation</h4>
+                <div class="code-block" data-language="text">
+<code>First Law:
+  Energy cannot be created or destroyed, only converted
+  
+  For closed system:
+    ΔE = Q - W
+  
+  Where:
+    ΔE = change in total energy
+    Q = heat added to system (+) or removed (-)
+    W = work done by system (+) or on system (-)
+
+Total Energy:
+  E = U + KE + PE
+  
+  Usually: KE and PE negligible for stationary systems
+  
+  So: ΔU = Q - W
+
+Sign Convention:
+  Heat in: Q > 0 (added to system)
+  Heat out: Q < 0 (rejected from system)
+  
+  Work out: W > 0 (done by system, expansion)
+  Work in: W < 0 (done on system, compression)
+
+Differential Form:
+  dU = δQ - δW
+  
+  δ notation: path-dependent (not exact differential)
+
+Per Unit Mass:
+  Δu = q - w
+  
+  In kJ/kg
+
+Cyclic Process:
+  ΔU = 0 (returns to initial state)
+  
+  Therefore: Q_net = W_net
+  
+  Net heat equals net work for complete cycle
+</code>
+                </div>
+
+                <h4>Work and Heat Transfer</h4>
+                <div class="code-block" data-language="text">
+<code>Boundary Work (Moving Boundary):
+  For quasi-static process:
+  
+  W = ∫ P dV
+  
+  Area under P-V diagram
+
+Specific Processes:
+
+Constant Pressure (Isobaric):
+  W = P(V₂ - V₁) = mP(v₂ - v₁)
+
+Constant Volume (Isochoric):
+  W = 0 (no volume change)
+
+Isothermal (Constant Temperature):
+  For ideal gas:
+    W = mR̄T ln(V₂/V₁) = mR̄T ln(P₁/P₂)
+
+Adiabatic (No Heat Transfer, Q = 0):
+  For ideal gas:
+    PV^k = constant
+    
+    W = (P₁V₁ - P₂V₂)/(k - 1) = mR̄(T₁ - T₂)/(k - 1)
+  
+  Relationships:
+    T₂/T₁ = (P₂/P₁)^((k-1)/k) = (V₁/V₂)^(k-1)
+
+Polytropic Process:
+  PV^n = constant (n = polytropic index)
+  
+  W = (P₁V₁ - P₂V₂)/(n - 1)
+  
+  Special cases:
+    n = 0: constant pressure
+    n = 1: isothermal
+    n = k: adiabatic
+    n = ∞: constant volume
+
+Other Work Modes:
+  Shaft work: W_shaft = Tθ (torque × angle)
+  Electrical work: W_e = VI × time
+  Spring work: W = ½k(x₂² - x₁²)
+</code>
+                </div>
+
+                <h4>Example 2: Piston-Cylinder Problem</h4>
+                <div class="code-block" data-language="text">
+<code>Problem:
+  Air in piston-cylinder, initially: P₁ = 200 kPa, T₁ = 300 K, V₁ = 0.1 m³
+  Compressed isentropically (adiabatic) to V₂ = 0.02 m³
+  k = 1.4, c_v = 0.718 kJ/kg·K, R̄ = 0.287 kJ/kg·K
+  
+Find:
+  a) Final temperature and pressure
+  b) Work done
+
+Solution:
+  Step 1: Mass of air
+    m = P₁V₁/(R̄T₁) = (200)(0.1)/(0.287 × 300)
+      = 20/86.1 = 0.232 kg
+  
+  Step 2: Adiabatic process (PV^k = const)
+    P₁V₁^k = P₂V₂^k
+    
+    P₂ = P₁(V₁/V₂)^k = 200(0.1/0.02)^1.4
+       = 200(5)^1.4 = 200 × 9.52
+       = 1904 kPa
+  
+  Step 3: Final temperature
+    T₂/T₁ = (V₁/V₂)^(k-1)
+    T₂ = T₁(V₁/V₂)^0.4 = 300(5)^0.4
+       = 300 × 1.904 = 571.2 K
+    
+    Check: P₂V₂/(R̄T₂) = (1904)(0.02)/(0.287 × 571.2)
+                       = 38.08/163.93 = 0.232 kg ✓
+  
+  Step 4: Work (compression, work is negative)
+    From first law, Q = 0 (adiabatic):
+      W = -ΔU = -mc_v(T₂ - T₁)
+        = -0.232 × 0.718 × (571.2 - 300)
+        = -0.167 × 271.2
+        = -45.3 kJ
+    
+    Or: W = (P₁V₁ - P₂V₂)/(k - 1)
+          = (200×0.1 - 1904×0.02)/(1.4 - 1)
+          = (20 - 38.08)/0.4
+          = -18.08/0.4 = -45.2 kJ ✓
+  
+  Answer:
+    a) T₂ = 571.2 K, P₂ = 1904 kPa
+    b) W = -45.3 kJ (negative = work input required)
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Second Law of Thermodynamics</h3>
+
+                <h4>Entropy and Irreversibility</h4>
+                <div class="code-block" data-language="text">
+<code>Second Law Statements:
+
+Kelvin-Planck:
+  Impossible to build heat engine with 100% efficiency
+  (Cannot convert all heat to work)
+
+Clausius:
+  Heat cannot spontaneously flow from cold to hot
+  (Requires work input, as in refrigerator)
+
+Entropy:
+  Measure of disorder/unavailable energy
+  
+  Differential: dS = δQ_rev/T
+  
+  Change: ΔS = ∫ δQ_rev/T
+  
+  Units: kJ/K (or kJ/kg·K specific)
+
+Entropy Increase Principle:
+  For isolated system:
+    ΔS ≥ 0
+  
+  ΔS > 0: irreversible (real) process
+  ΔS = 0: reversible (ideal) process
+  ΔS < 0: impossible
+
+Clausius Inequality:
+  For any cycle:
+    ∮ δQ/T ≤ 0
+  
+  = 0 for reversible cycle
+  < 0 for irreversible cycle
+
+Entropy Change for Ideal Gas:
+
+Constant temperature:
+  Δs = R̄ ln(V₂/V₁) = -R̄ ln(P₂/P₁)
+
+General:
+  Δs = c_v ln(T₂/T₁) + R̄ ln(V₂/V₁)
+  
+  Δs = c_p ln(T₂/T₁) - R̄ ln(P₂/P₁)
+
+Isentropic (Reversible Adiabatic):
+  Δs = 0 (constant entropy)
+  
+  Isentropic relations:
+    PV^k = constant
+    TV^(k-1) = constant
+    TP^((1-k)/k) = constant
+
+Isentropic Efficiency:
+  Real process compared to ideal isentropic
+  
+  Turbine: η_t = W_actual/W_isentropic
+  
+  Compressor: η_c = W_isentropic/W_actual
+  
+  Typically 80-90% for well-designed machines
+</code>
+                </div>
+
+                <h4>Carnot Cycle and Efficiency</h4>
+                <div class="code-block" data-language="text">
+<code>Carnot Cycle:
+  Most efficient cycle between two temperature reservoirs
+  
+  Four reversible processes:
+    1. Isothermal expansion at T_H (heat in Q_H)
+    2. Adiabatic expansion (temperature drops to T_L)
+    3. Isothermal compression at T_L (heat out Q_L)
+    4. Adiabatic compression (temperature rises to T_H)
+
+Carnot Efficiency:
+  Maximum possible efficiency
+  
+  η_Carnot = 1 - T_L/T_H = (T_H - T_L)/T_H
+  
+  Where T_H and T_L in absolute temperature (K or R)
+  
+  All real engines: η < η_Carnot
+
+Coefficient of Performance (Refrigeration):
+  COP_R = Q_L/W_net = Q_L/(Q_H - Q_L)
+  
+  Carnot refrigerator:
+    COP_R,Carnot = T_L/(T_H - T_L)
+
+Heat Pump:
+  COP_HP = Q_H/W_net = Q_H/(Q_H - Q_L)
+  
+  Carnot heat pump:
+    COP_HP,Carnot = T_H/(T_H - T_L)
+  
+  Note: COP_HP = COP_R + 1
+
+Practical Implications:
+  - Higher T_H or lower T_L → higher efficiency
+  - Power plants: want high boiler T, low condenser T
+  - Refrigerators: want small temperature difference
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Power Cycles</h3>
+
+                <h4>Rankine Cycle (Steam Power Plants)</h4>
+                <div class="code-block" data-language="text">
+<code>Rankine Cycle Components:
+  1. Pump: compress liquid to high pressure
+  2. Boiler: add heat, produce steam
+  3. Turbine: steam expands, produces work
+  4. Condenser: reject heat, condense to liquid
+
+Ideal Rankine Cycle Processes:
+  1→2: Isentropic compression (pump)
+       W_pump,in = h₂ - h₁ ≈ v₁(P₂ - P₁)
+  
+  2→3: Constant pressure heat addition (boiler)
+       Q_in = h₃ - h₂
+  
+  3→4: Isentropic expansion (turbine)
+       W_turbine,out = h₃ - h₄
+  
+  4→1: Constant pressure heat rejection (condenser)
+       Q_out = h₄ - h₁
+
+Thermal Efficiency:
+  η_th = W_net/Q_in = (W_turbine - W_pump)/Q_in
+  
+  η_th = 1 - Q_out/Q_in = 1 - (h₄ - h₁)/(h₃ - h₂)
+  
+  Typical: 30-40% for modern coal plants
+           40-45% for combined cycle
+
+Improvements:
+  - Superheat steam (higher T₃)
+  - Increase boiler pressure
+  - Decrease condenser pressure
+  - Reheat cycle (expand in stages)
+  - Regeneration (feedwater heating)
+
+Back Work Ratio:
+  r_bw = W_pump/W_turbine
+  
+  Small for Rankine (1-2%), favorable
+</code>
+                </div>
+
+                <h4>Otto Cycle (Gasoline Engines)</h4>
+                <div class="code-block" data-language="text">
+<code>Otto Cycle (Air-Standard):
+  Idealized internal combustion engine
+  
+  Processes:
+    1→2: Isentropic compression
+    2→3: Constant volume heat addition (combustion)
+    3→4: Isentropic expansion (power stroke)
+    4→1: Constant volume heat rejection (exhaust)
+
+Compression Ratio:
+  r = V_max/V_min = V₁/V₂
+  
+  Typical: 8 to 12 for gasoline engines
+
+Thermal Efficiency:
+  η_Otto = 1 - 1/r^(k-1)
+  
+  Where k = c_p/c_v ≈ 1.4 for air
+  
+  Higher compression ratio → higher efficiency
+  
+  Limited by knock (pre-ignition)
+
+Example:
+  r = 10, k = 1.4:
+    η = 1 - 1/10^0.4 = 1 - 1/2.512 = 0.602 = 60.2%
+  
+  Actual: ~30% (losses due to friction, heat transfer, incomplete combustion)
+
+Mean Effective Pressure (MEP):
+  Fictitious constant pressure producing same work
+  
+  MEP = W_net/(V_max - V_min)
+  
+  Higher MEP → more power from given displacement
+</code>
+                </div>
+
+                <h4>Diesel Cycle</h4>
+                <div class="code-block" data-language="text">
+<code>Diesel Cycle:
+  Compression-ignition engine
+  
+  Processes:
+    1→2: Isentropic compression (higher ratio than Otto)
+    2→3: Constant pressure heat addition (fuel injection)
+    3→4: Isentropic expansion
+    4→1: Constant volume heat rejection
+
+Compression Ratio:
+  r = V₁/V₂
+  
+  Typical: 14 to 24 (higher than gasoline)
+
+Cutoff Ratio:
+  r_c = V₃/V₂ (volume ratio during heat addition)
+
+Thermal Efficiency:
+  η_Diesel = 1 - (1/r^(k-1)) × ((r_c^k - 1)/(k(r_c - 1)))
+  
+  Efficiency increases with r, decreases with r_c
+
+Comparison with Otto:
+  For same r: η_Otto > η_Diesel
+  But diesel uses much higher r, so overall η_Diesel > η_Otto
+  
+  Diesel: ~40-45% efficiency
+  Otto: ~25-30% efficiency
+  
+  Diesel advantages:
+    - Higher efficiency
+    - Higher torque
+    - No spark plugs (simpler ignition)
+  
+  Diesel disadvantages:
+    - Heavier, more expensive
+    - Higher emissions (NOx, particulates)
+    - Noisier operation
+</code>
+                </div>
+
+                <h4>Brayton Cycle (Gas Turbines)</h4>
+                <div class="code-block" data-language="text">
+<code>Brayton Cycle:
+  Jet engines, gas turbine power plants
+  
+  Open cycle (actual) or closed cycle (ideal analysis)
+  
+  Processes:
+    1→2: Isentropic compression (compressor)
+    2→3: Constant pressure heat addition (combustor)
+    3→4: Isentropic expansion (turbine)
+    4→1: Constant pressure heat rejection (to atmosphere)
+
+Pressure Ratio:
+  r_p = P₂/P₁
+  
+  Typical: 10 to 30 for aircraft engines
+
+Thermal Efficiency:
+  η_Brayton = 1 - 1/r_p^((k-1)/k)
+  
+  For k = 1.4:
+    η = 1 - 1/r_p^0.286
+
+Back Work Ratio:
+  Large (40-80% of turbine work drives compressor)
+  
+  Unfavorable compared to Rankine
+
+Improvements:
+  - Intercooling (cool between compressor stages)
+  - Reheating (reheat between turbine stages)
+  - Regeneration (use turbine exhaust to preheat air)
+  
+  Combined cycle:
+    Gas turbine + steam turbine (use exhaust heat)
+    Efficiency up to 60%
+
+Applications:
+  - Aircraft propulsion (turbojets, turbofans)
+  - Peak power plants (fast startup)
+  - Combined cycle power generation
+</code>
+                </div>
+
+                <h4>Example 3: Simple Rankine Cycle</h4>
+                <div class="code-block" data-language="text">
+<code>Problem:
+  Steam power plant operating on ideal Rankine cycle
+  Boiler pressure: 6 MPa
+  Condenser pressure: 10 kPa
+  Turbine inlet: 500°C (superheated)
+  Mass flow rate: 10 kg/s
+  
+Find: Thermal efficiency and power output
+
+Solution (using steam tables):
+  
+  State 1 (condenser exit, saturated liquid at 10 kPa):
+    h₁ = h_f = 191.8 kJ/kg
+    s₁ = s_f = 0.6493 kJ/kg·K
+    v₁ = v_f = 0.001010 m³/kg
+  
+  State 2 (pump exit, compressed liquid at 6 MPa):
+    Isentropic: s₂ = s₁
+    
+    W_pump = v₁(P₂ - P₁) = 0.001010(6000 - 10)
+           = 6.05 kJ/kg
+    
+    h₂ = h₁ + W_pump = 191.8 + 6.05 = 197.9 kJ/kg
+  
+  State 3 (turbine inlet, superheated at 6 MPa, 500°C):
+    From tables:
+      h₃ = 3422.2 kJ/kg
+      s₃ = 6.8803 kJ/kg·K
+  
+  State 4 (turbine exit, mixture at 10 kPa):
+    Isentropic: s₄ = s₃ = 6.8803 kJ/kg·K
+    
+    At 10 kPa:
+      s_f = 0.6493 kJ/kg·K
+      s_fg = 7.5009 kJ/kg·K
+    
+    Quality: x₄ = (s₄ - s_f)/s_fg = (6.8803 - 0.6493)/7.5009
+                = 0.831
+    
+    h₄ = h_f + x₄h_fg = 191.8 + 0.831 × 2392.8
+       = 191.8 + 1988.4 = 2180.2 kJ/kg
+  
+  Heat input (boiler):
+    Q_in = h₃ - h₂ = 3422.2 - 197.9 = 3224.3 kJ/kg
+  
+  Turbine work:
+    W_turbine = h₃ - h₄ = 3422.2 - 2180.2 = 1242.0 kJ/kg
+  
+  Net work:
+    W_net = W_turbine - W_pump = 1242.0 - 6.05 = 1235.95 kJ/kg
+  
+  Thermal efficiency:
+    η_th = W_net/Q_in = 1235.95/3224.3 = 0.383 = 38.3%
+  
+  Power output:
+    Ẇ_net = ṁ × w_net = 10 × 1235.95 = 12,359.5 kW ≈ 12.4 MW
+  
+  Answer:
+    η_th = 38.3%
+    Power = 12.4 MW
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Refrigeration Cycles</h3>
+
+                <h4>Vapor-Compression Refrigeration</h4>
+                <div class="code-block" data-language="text">
+<code>Refrigeration Cycle Components:
+  1. Compressor: compress vapor to high pressure
+  2. Condenser: reject heat, condense to liquid
+  3. Expansion valve: throttle to low pressure
+  4. Evaporator: absorb heat, evaporate to vapor
+
+Ideal Cycle Processes:
+  1→2: Isentropic compression
+       W_comp = h₂ - h₁
+  
+  2→3: Constant pressure heat rejection (condenser)
+       Q_out = h₂ - h₃
+  
+  3→4: Throttling (isenthalpic)
+       h₄ = h₃ (but pressure and temperature drop)
+  
+  4→1: Constant pressure heat absorption (evaporator)
+       Q_in = h₁ - h₄
+
+Coefficient of Performance:
+  COP_R = Q_in/W_comp = (h₁ - h₄)/(h₂ - h₁)
+  
+  Typical: 2 to 6 (higher is better)
+  
+  Means: For 1 kW compressor work, remove 2-6 kW heat
+
+Refrigerants:
+  Properties needed:
+    - Low boiling point
+    - High latent heat
+    - Non-toxic, non-flammable
+    - Environmentally safe
+  
+  Common:
+    R-134a (automotive AC, replaced R-12)
+    R-410A (residential AC, replaced R-22)
+    Ammonia (industrial)
+    CO₂ (natural refrigerant)
+
+Ton of Refrigeration:
+  1 ton = 211 kJ/min = 3.517 kW
+  
+  Based on melting 1 ton of ice in 24 hours
+
+Heat Pump:
+  Same cycle, but goal is heating (Q_out)
+  
+  COP_HP = Q_out/W_comp = (h₂ - h₃)/(h₂ - h₁)
+  
+  COP_HP = COP_R + 1
+  
+  More efficient than electric resistance heating
+</code>
+                </div>
+
+                <div class="info-box important">
+                    <h4>🎯 Practice Problems</h4>
+                    <ol>
+                        <li>Ideal gas: 2 kg air at 100 kPa, 27°C compressed to 1 MPa isothermally. Find work and heat transfer.</li>
+                        <li>Carnot efficiency: Heat engine operates between 800 K and 300 K. Find maximum efficiency.</li>
+                        <li>Otto cycle: Compression ratio r = 9, T₁ = 300 K, P₁ = 100 kPa. After compression T₂ = 689 K. Find efficiency.</li>
+                        <li>Rankine: Steam at 4 MPa, 400°C expands to 10 kPa. Find turbine work per kg (assume isentropic).</li>
+                        <li>Refrigeration: COP = 3.5, cooling load = 10 kW. Find compressor power required.</li>
+                        <li>Brayton: Pressure ratio = 8, T₁ = 300 K, T₃ = 1200 K, k = 1.4. Find efficiency and work ratio.</li>
+                    </ol>
+                </div>
+
+                <h3>Summary</h3>
+                <ul>
+                    <li>Properties define state; two independent properties fix state for simple substance</li>
+                    <li>First Law: ΔU = Q - W (energy conservation), Q and W are path-dependent</li>
+                    <li>Ideal gas: Pv = R̄T, Δu = c_vΔT, Δh = c_pΔT, great approximation for air</li>
+                    <li>Second Law: entropy always increases for isolated system, defines maximum efficiency</li>
+                    <li>Carnot: most efficient cycle, η = 1 - T_L/T_H (all real engines less efficient)</li>
+                    <li>Rankine (steam): boiler-turbine-condenser-pump, η ≈ 30-40%, backbone of power generation</li>
+                    <li>Otto (gasoline): constant volume combustion, η = 1 - 1/r^(k-1), limited by knock</li>
+                    <li>Diesel: constant pressure combustion, higher compression, higher efficiency than Otto</li>
+                    <li>Brayton (gas turbine): compressor-combustor-turbine, high power/weight ratio</li>
+                    <li>Refrigeration: vapor compression cycle, COP = cooling/work, heat pumps more efficient than resistive heating</li>
+                </ul>
+
+                <h3>Next Steps</h3>
+                <p>
+                    Lesson 5 covers Fluid Mechanics, analyzing the behavior of liquids and gases at rest and in motion. 
+                    You'll learn fluid properties, fluid statics, Bernoulli's equation, pipe flow, drag and lift forces, 
+                    and pumps/turbines.
+                </p>
+            </div>
+
+            <div class="lesson-navigation">
+                <a href="03-mechanics-of-materials.html" class="nav-btn">← Mechanics of Materials</a>
+                <a href="05-fluid-mechanics.html" class="nav-btn">Next: Fluid Mechanics →</a>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../js/main.js"></script>
+</body>
+</html>

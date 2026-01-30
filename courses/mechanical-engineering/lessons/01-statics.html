@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 1: Statics & Force Analysis - Engineering Academy</title>
+    <link rel="stylesheet" href="../../../css/styles.css">
+    <link rel="stylesheet" href="../../../css/course-styles/course.css">
+</head>
+<body>
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <h1><a href="../../../index.html" style="color: inherit; text-decoration: none;">🎓 Engineering Academy</a></h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../index.html">Course Overview</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section class="course-header">
+        <div class="container">
+            <h1>⚙️ Mechanical Engineering</h1>
+            <p>Lesson 1: Statics & Force Analysis</p>
+        </div>
+    </section>
+
+    <div class="course-container">
+        <aside class="course-sidebar">
+            <h3>Course Modules</h3>
+            <ul class="lesson-list">
+                <li><a href="../index.html"><span class="lesson-number">📚</span>Course Overview</a></li>
+                <li><a href="01-statics.html" class="active"><span class="lesson-number">1</span>Statics & Force Analysis</a></li>
+                <li><a href="02-dynamics.html"><span class="lesson-number">2</span>Dynamics & Motion</a></li>
+                <li><a href="03-mechanics-of-materials.html"><span class="lesson-number">3</span>Mechanics of Materials</a></li>
+                <li><a href="04-thermodynamics.html"><span class="lesson-number">4</span>Thermodynamics</a></li>
+                <li><a href="05-fluid-mechanics.html"><span class="lesson-number">5</span>Fluid Mechanics</a></li>
+                <li><a href="06-heat-transfer.html"><span class="lesson-number">6</span>Heat Transfer</a></li>
+                <li><a href="07-materials-science.html"><span class="lesson-number">7</span>Materials Science</a></li>
+                <li><a href="08-machine-design.html"><span class="lesson-number">8</span>Machine Design</a></li>
+                <li><a href="09-manufacturing-processes.html"><span class="lesson-number">9</span>Manufacturing Processes</a></li>
+                <li><a href="10-vibrations.html"><span class="lesson-number">10</span>Mechanical Vibrations</a></li>
+                <li><a href="11-cad-cam.html"><span class="lesson-number">11</span>CAD/CAM & Design Tools</a></li>
+                <li><a href="12-hvac-systems.html"><span class="lesson-number">12</span>HVAC & Thermal Systems</a></li>
+            </ul>
+        </aside>
+
+        <main class="course-content">
+            <div class="lesson-header">
+                <h2>Lesson 1: Statics & Force Analysis</h2>
+                <div class="lesson-meta">
+                    <span>📖 90 min read</span>
+                    <span>📊 Fundamental</span>
+                </div>
+            </div>
+
+            <div class="lesson-content">
+                <h3>Introduction to Statics</h3>
+                <p>
+                    Statics is the branch of mechanics dealing with bodies at rest or moving at constant velocity. 
+                    It's the foundation of structural and mechanical analysis, essential for designing everything 
+                    from bridges to machine frames. Mastering statics is critical for all mechanical engineers.
+                </p>
+
+                <div class="info-box note">
+                    <h4>📌 What You'll Learn</h4>
+                    <ul>
+                        <li>Force systems and vector operations</li>
+                        <li>Equilibrium conditions and equations</li>
+                        <li>Free body diagrams (FBDs)</li>
+                        <li>Analysis of trusses and frames</li>
+                        <li>Friction and its applications</li>
+                        <li>Centroids and centers of gravity</li>
+                        <li>Moments of inertia for area</li>
+                    </ul>
+                </div>
+
+                <h3>Forces and Moments</h3>
+
+                <h4>Force as a Vector</h4>
+                <div class="code-block" data-language="text">
+<code>Force Characteristics:
+  1. Magnitude (how strong)
+  2. Direction (where it points)
+  3. Point of application (where it acts)
+  4. Line of action (along which it acts)
+
+Vector Notation:
+  F = F_x i + F_y j + F_z k  (3D Cartesian)
+  
+  Magnitude: |F| = √(F_x² + F_y² + F_z²)
+  
+  Unit vector: û = F/|F|
+
+Force Components (2D):
+  F_x = F cos(θ)
+  F_y = F sin(θ)
+  
+  Where θ = angle from positive x-axis
+
+Example: Force of 100 N at 30° from horizontal
+  F_x = 100 cos(30°) = 100 × 0.866 = 86.6 N →
+  F_y = 100 sin(30°) = 100 × 0.5 = 50 N ↑
+  
+  Verification: |F| = √(86.6² + 50²) = √(7500 + 2500) = 100 N ✓
+
+Vector Addition (Parallelogram Law):
+  R = F₁ + F₂ (resultant)
+  
+  Component method:
+    R_x = F₁ₓ + F₂ₓ
+    R_y = F₁ᵧ + F₂ᵧ
+    
+    |R| = √(R_x² + R_y²)
+    θ_R = tan⁻¹(R_y/R_x)
+
+Dot Product:
+  F · G = |F||G|cos(θ)
+  F · G = F_x G_x + F_y G_y + F_z G_z
+  
+  Used for: Projections, work
+
+Cross Product:
+  F × G = |F||G|sin(θ) n̂  (perpendicular direction)
+  
+  In 3D:
+    F × G = |i    j    k  |
+            |F_x  F_y  F_z|
+            |G_x  G_y  G_z|
+  
+  Used for: Moments, angular quantities
+</code>
+                </div>
+
+                <h4>Moment of a Force</h4>
+                <div class="code-block" data-language="text">
+<code>Moment (Torque):
+  Tendency of force to rotate body about a point
+  
+  M = r × F  (vector cross product)
+  
+  Magnitude (2D): M = F × d
+  
+  Where:
+    F = force magnitude
+    d = perpendicular distance from point to line of action
+    
+  Direction: Right-hand rule
+    - Counterclockwise: Positive (+)
+    - Clockwise: Negative (-)
+
+Varignon's Theorem:
+  Moment of resultant = Sum of moments of components
+  
+  M_O = r × (F₁ + F₂) = (r × F₁) + (r × F₂)
+
+Couple:
+  Two parallel forces, equal magnitude, opposite direction
+  
+  Moment of couple: M = F × d
+  
+  Where d = perpendicular distance between forces
+  
+  Properties:
+    - Same moment about ANY point
+    - Cannot be balanced by single force
+    - Can be moved anywhere (free vector)
+
+Example: Wrench with 50 N force, 0.3 m from bolt
+  M = F × d = 50 × 0.3 = 15 N·m
+  
+  This torque tightens the bolt
+
+Equivalent Force Systems:
+  Two force systems are equivalent if they have:
+    1. Same resultant force
+    2. Same resultant moment about any point
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Equilibrium of Rigid Bodies</h3>
+
+                <h4>Conditions of Equilibrium</h4>
+                <div class="code-block" data-language="text">
+<code>For a body in equilibrium (at rest or constant velocity):
+
+1. Force Equilibrium:
+   ΣF = 0  (vector sum of all forces = zero)
+   
+   In 2D:
+     ΣF_x = 0  (sum of horizontal forces)
+     ΣF_y = 0  (sum of vertical forces)
+   
+   In 3D:
+     ΣF_x = 0
+     ΣF_y = 0
+     ΣF_z = 0
+
+2. Moment Equilibrium:
+   ΣM = 0  (sum of all moments about any point = zero)
+   
+   In 2D:
+     ΣM_O = 0  (about point O)
+   
+   In 3D:
+     ΣM_x = 0
+     ΣM_y = 0
+     ΣM_z = 0
+
+Total: 3 equations in 2D, 6 equations in 3D
+
+Number of Unknowns vs. Equations:
+  - Unknowns = Equations: Statically determinate
+  - Unknowns > Equations: Statically indeterminate
+  - Unknowns < Equations: Unstable or inconsistent
+
+Two-Force Members:
+  If only two forces act on a body in equilibrium:
+    - Forces must be equal in magnitude
+    - Forces must be opposite in direction
+    - Forces must act along the line joining points
+
+Three-Force Members:
+  If three forces act on a rigid body in equilibrium:
+    - Lines of action must be concurrent (meet at a point)
+    - OR all three forces are parallel
+</code>
+                </div>
+
+                <h4>Free Body Diagrams (FBD)</h4>
+                <div class="code-block" data-language="text">
+<code>Free Body Diagram Steps:
+
+1. Isolate the body
+   - Draw outline of body alone
+   - Remove all supports and connections
+
+2. Show all external forces
+   - Applied forces (known)
+   - Reaction forces (unknown)
+   - Weight (at center of gravity)
+
+3. Label dimensions
+   - Distances for moment calculations
+   - Angles
+
+4. Choose coordinate system
+   - Usually x horizontal, y vertical
+   - Or align with geometry
+
+Types of Supports (2D):
+
+Roller Support:
+  Symbol: ___●___  (wheel on surface)
+  Reaction: 1 force perpendicular to surface
+  Unknowns: 1 (magnitude of normal force N)
+  Prevents: Translation perpendicular to surface
+  Allows: Translation parallel, rotation
+
+Pin Support (Hinge):
+  Symbol: ▼ (triangle)
+  Reactions: 2 forces (any direction)
+  Unknowns: 2 (R_x and R_y, or R and θ)
+  Prevents: Translation in x and y
+  Allows: Rotation
+
+Fixed (Built-in) Support:
+  Symbol: ═╪═ (wall with hatching)
+  Reactions: 2 forces + 1 moment
+  Unknowns: 3 (R_x, R_y, M)
+  Prevents: Translation and rotation
+  Allows: Nothing
+
+Cable/Rope:
+  Reaction: Tension along cable (T)
+  Unknowns: 1 (magnitude T)
+  Note: Can only pull, not push!
+
+Internal Forces:
+  When cutting through member:
+    - Normal force N (axial)
+    - Shear force V (perpendicular)
+    - Bending moment M (rotation)
+</code>
+                </div>
+
+                <h4>Example 1: Simply Supported Beam</h4>
+                <div class="code-block" data-language="text">
+<code>Problem:
+  Beam: 6 m long, pin at A (left), roller at B (right)
+  Loads: 100 N at 2 m from A, 200 N at 5 m from A
+  
+Find: Reactions at A and B
+
+Solution:
+  Step 1: Draw FBD
+    - Pin at A: A_x (→), A_y (↑)
+    - Roller at B: B_y (↑)
+    - 100 N downward at 2 m
+    - 200 N downward at 5 m
+  
+  Step 2: Apply equilibrium equations
+    
+    ΣF_x = 0:
+      A_x = 0  (no horizontal loads)
+    
+    ΣF_y = 0:
+      A_y + B_y - 100 - 200 = 0
+      A_y + B_y = 300 N  ... (1)
+    
+    ΣM_A = 0 (taking moments about A):
+      (100)(2) + (200)(5) - B_y(6) = 0
+      200 + 1000 - 6B_y = 0
+      1200 = 6B_y
+      B_y = 200 N ↑
+  
+  Step 3: Substitute back
+    From (1): A_y + 200 = 300
+              A_y = 100 N ↑
+  
+  Step 4: Check (moments about B)
+    ΣM_B = 0:
+      A_y(6) - (100)(4) - (200)(1) = 0
+      100(6) - 400 - 200 = 0
+      600 - 600 = 0 ✓
+  
+  Answer:
+    A_x = 0
+    A_y = 100 N ↑
+    B_y = 200 N ↑
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Structural Analysis</h3>
+
+                <h4>Trusses - Method of Joints</h4>
+                <div class="code-block" data-language="text">
+<code>Truss:
+  Structure composed of two-force members (straight)
+  Connected by pin joints (frictionless)
+  Loads applied only at joints
+
+Assumptions:
+  - Members are two-force members
+  - All forces axial (tension or compression)
+  - Weight of members negligible
+
+Method of Joints:
+  Analyze equilibrium of each joint sequentially
+  
+  Procedure:
+    1. Calculate support reactions (FBD of entire truss)
+    2. Select joint with ≤ 2 unknowns
+    3. Draw FBD of joint (concurrent forces)
+    4. Apply ΣF_x = 0 and ΣF_y = 0
+    5. Solve for member forces
+    6. Move to next joint
+    7. Repeat until all members found
+
+Sign Convention:
+  Tension: Positive (+) [pulls on joint, stretches member]
+  Compression: Negative (-) [pushes on joint, shortens member]
+
+Zero-Force Members:
+  Conditions for zero force:
+    1. Joint with 2 non-collinear members, no load → both zero
+    2. Joint with 3 members (2 collinear), no load → third is zero
+  
+  Purpose: Provide stability, support during construction
+
+Example (simple truss):
+  Warren truss, 3 m span, 1.5 m height
+  Vertical load 1000 N at center joint
+  
+  Members: AB (base), AC and BC (inclined at 45°)
+  
+  Joint C (apex):
+    ΣF_y = 0: F_AC sin(45°) + F_BC sin(45°) - 1000 = 0
+    
+    By symmetry: F_AC = F_BC
+    
+    2F_AC × 0.707 = 1000
+    F_AC = 707 N (tension)
+    F_BC = 707 N (tension)
+  
+  Joint A:
+    ΣF_x = 0: F_AB + F_AC cos(45°) = 0
+              F_AB + 707 × 0.707 = 0
+              F_AB = -500 N (compression)
+</code>
+                </div>
+
+                <h4>Trusses - Method of Sections</h4>
+                <div class="code-block" data-language="text">
+<code>Method of Sections:
+  Cut through truss to find specific member forces
+  Faster when only few members needed
+
+Procedure:
+  1. Calculate support reactions
+  2. Pass imaginary cutting plane through truss
+     - Must cut through ≤ 3 members (for 2D)
+     - Should cut through member of interest
+  3. Draw FBD of one section
+  4. Apply equilibrium equations (ΣF_x, ΣF_y, ΣM)
+  5. Solve for unknown forces
+
+Strategy:
+  - Choose section with fewest unknowns
+  - Take moments about intersection of two unknowns
+    (eliminates two unknowns from one equation)
+
+Example:
+  Bridge truss, want force in diagonal member DE
+  
+  Cut through DE and two adjacent members
+  Consider left section
+  Take moments about point where other two members intersect
+  Only F_DE appears in equation → solve directly
+
+Advantages over Method of Joints:
+  - Faster for specific members
+  - Don't need to solve entire truss
+  - Good for internal members
+
+Disadvantages:
+  - Need support reactions first
+  - Limited to ≤ 3 unknown members per cut
+</code>
+                </div>
+
+                <h4>Frames and Machines</h4>
+                <div class="code-block" data-language="text">
+<code>Frames:
+  Structures with at least one multi-force member
+  Designed to support loads
+  Stationary
+
+Machines:
+  Structures designed to transmit/modify forces
+  Often have moving parts
+
+Difference from Trusses:
+  - Members can have forces not aligned with member
+  - Internal forces include shear and bending moment
+  - Joints may have moments
+
+Analysis Procedure:
+  1. Draw FBD of entire structure → find reactions
+  2. Disassemble into individual members
+  3. Draw FBD of each member
+     - Show all forces (external and internal)
+     - Internal forces appear as pairs (Newton's 3rd law)
+  4. Apply equilibrium to each member
+  5. Solve system of equations
+
+Pin Connections:
+  - Can transmit force in any direction (F_x, F_y)
+  - Cannot transmit moment (free to rotate)
+  - Two components of force at each pin
+
+Multi-Force Member:
+  Three or more forces act on member
+  Forces not necessarily along member axis
+  Must consider moments
+
+Example: Simple Pliers
+  Two members hinged at center
+  Applied force at handle ends
+  Gripping force at jaw ends
+  
+  Analyze each handle as separate FBD
+  Pin at hinge provides F_x and F_y
+  Mechanical advantage from geometry
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Friction</h3>
+
+                <h4>Dry Friction (Coulomb Friction)</h4>
+                <div class="code-block" data-language="text">
+<code>Friction Force:
+  Opposes relative motion between surfaces
+  Parallel to contact surface
+  
+  F_f = friction force
+  N = normal force (perpendicular to surface)
+
+Static Friction:
+  Prevents motion (body at rest)
+  
+  F_s ≤ μ_s N
+  
+  Where μ_s = coefficient of static friction
+  
+  Maximum static friction: F_s,max = μ_s N
+  
+  Impending motion: F_s = μ_s N (about to slip)
+
+Kinetic (Dynamic) Friction:
+  Opposes motion (body sliding)
+  
+  F_k = μ_k N
+  
+  Where μ_k = coefficient of kinetic friction
+  
+  Always: μ_k < μ_s (easier to keep sliding than start)
+
+Typical Friction Coefficients:
+┌────────────────────┬─────────┬─────────┐
+│  Surface Pair      │   μ_s   │   μ_k   │
+├────────────────────┼─────────┼─────────┤
+│ Steel on steel     │  0.6    │  0.4    │
+│ (dry)              │         │         │
+├────────────────────┼─────────┼─────────┤
+│ Steel on steel     │  0.1    │  0.05   │
+│ (lubricated)       │         │         │
+├────────────────────┼─────────┼─────────┤
+│ Wood on wood       │  0.5    │  0.3    │
+├────────────────────┼─────────┼─────────┤
+│ Rubber on concrete │  1.0    │  0.8    │
+│ (dry)              │         │         │
+├────────────────────┼─────────┼─────────┤
+│ Ice on ice         │  0.1    │  0.03   │
+└────────────────────┴─────────┴─────────┘
+
+Angle of Friction:
+  φ_s = tan⁻¹(μ_s)  (static)
+  φ_k = tan⁻¹(μ_k)  (kinetic)
+  
+  If applied force angle > φ, motion occurs
+
+Friction in Equilibrium Problems:
+  1. Assume impending motion or not
+  2. If impending: F = μN
+  3. If not: F < μN (unknown, solve from equilibrium)
+  4. Check assumption: Is calculated F ≤ μN?
+</code>
+                </div>
+
+                <h4>Example 2: Block on Inclined Plane</h4>
+                <div class="code-block" data-language="text">
+<code>Problem:
+  100 kg block on 30° incline
+  μ_s = 0.4, μ_k = 0.3
+  
+Find:
+  a) Will block slide?
+  b) If sliding, what is acceleration?
+
+Solution:
+  Step 1: Weight and components
+    W = mg = 100 × 9.81 = 981 N
+    W_parallel = W sin(30°) = 981 × 0.5 = 490.5 N (down incline)
+    W_perpendicular = W cos(30°) = 981 × 0.866 = 849.5 N (into incline)
+  
+  Step 2: Normal force
+    ΣF_perpendicular = 0:
+      N = W_perpendicular = 849.5 N
+  
+  Step 3: Maximum static friction
+    F_s,max = μ_s N = 0.4 × 849.5 = 339.8 N (up incline)
+  
+  Step 4: Compare to W_parallel
+    W_parallel (490.5 N) > F_s,max (339.8 N)
+    
+    Block WILL slide! ✓
+  
+  Step 5: Acceleration (sliding)
+    Kinetic friction: F_k = μ_k N = 0.3 × 849.5 = 254.9 N
+    
+    ΣF_parallel = ma:
+      W_parallel - F_k = ma
+      490.5 - 254.9 = 100a
+      235.6 = 100a
+      a = 2.36 m/s² (down the incline)
+  
+  Answer:
+    a) Yes, block slides
+    b) Acceleration = 2.36 m/s² down incline
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Centroids and Centers of Gravity</h3>
+
+                <h4>Center of Gravity vs. Centroid</h4>
+                <div class="code-block" data-language="text">
+<code>Center of Gravity (CG):
+  Point where total weight acts
+  
+  For 3D body:
+    x̄ = (ΣW_i x_i) / ΣW_i
+    ȳ = (ΣW_i y_i) / ΣW_i
+    z̄ = (ΣW_i z_i) / ΣW_i
+
+Centroid:
+  Geometric center
+  For uniform material: Centroid = CG
+  
+  For area:
+    x̄ = (ΣA_i x_i) / ΣA_i
+    ȳ = (ΣA_i y_i) / ΣA_i
+  
+  For volume:
+    x̄ = (ΣV_i x_i) / ΣV_i
+    ȳ = (ΣV_i y_i) / ΣV_i
+    z̄ = (ΣV_i z_i) / ΣV_i
+
+Composite Shapes:
+  Divide into simple shapes with known centroids
+  
+  Examples:
+    Rectangle: centroid at center (b/2, h/2)
+    Triangle: centroid at h/3 from base
+    Circle: centroid at center
+    Semicircle: centroid at 4r/(3π) from base
+
+Method:
+  1. Divide into simple shapes
+  2. Find area/volume of each
+  3. Locate centroid of each
+  4. Apply formulas above
+  
+  For holes/cutouts: Subtract (negative area)
+
+Centroids by Integration:
+  For continuous area A:
+    x̄ = (∫ x dA) / A
+    ȳ = (∫ y dA) / A
+  
+  Where dA = element of area
+</code>
+                </div>
+
+                <h4>Example 3: Composite Shape Centroid</h4>
+                <div class="code-block" data-language="text">
+<code>Problem:
+  L-shaped area: 
+    - Horizontal rectangle: 100 mm × 20 mm
+    - Vertical rectangle: 20 mm × 60 mm
+  
+Find: Centroid location from bottom-left corner
+
+Solution:
+  Step 1: Divide into two rectangles
+    Rectangle 1 (horizontal): 100 × 20 mm
+    Rectangle 2 (vertical): 20 × 60 mm
+  
+  Step 2: Areas
+    A₁ = 100 × 20 = 2000 mm²
+    A₂ = 20 × 60 = 1200 mm²
+    A_total = 3200 mm²
+  
+  Step 3: Individual centroids (from bottom-left)
+    Rectangle 1:
+      x₁ = 100/2 = 50 mm
+      y₁ = 20/2 = 10 mm
+    
+    Rectangle 2:
+      x₂ = 20/2 = 10 mm
+      y₂ = 20 + 60/2 = 20 + 30 = 50 mm
+  
+  Step 4: Combined centroid
+    x̄ = (A₁x₁ + A₂x₂) / A_total
+      = (2000×50 + 1200×10) / 3200
+      = (100,000 + 12,000) / 3200
+      = 112,000 / 3200
+      = 35 mm
+    
+    ȳ = (A₁y₁ + A₂y₂) / A_total
+      = (2000×10 + 1200×50) / 3200
+      = (20,000 + 60,000) / 3200
+      = 80,000 / 3200
+      = 25 mm
+  
+  Answer: Centroid at (35 mm, 25 mm) from bottom-left
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Area Moments of Inertia</h3>
+
+                <h4>Second Moment of Area</h4>
+                <div class="code-block" data-language="text">
+<code>Moment of Inertia (Second Moment):
+  Measure of area's resistance to bending
+  NOT mass moment of inertia (different!)
+  
+  About x-axis: I_x = ∫ y² dA
+  About y-axis: I_y = ∫ x² dA
+  
+  Polar moment: J_O = ∫ r² dA = I_x + I_y
+  
+  Units: mm⁴, m⁴, in⁴
+
+Common Shapes:
+  Rectangle (b × h, about centroidal x-axis):
+    I_x = bh³/12
+    
+  Rectangle (about base):
+    I_x = bh³/3
+  
+  Circle (radius r, about diameter):
+    I = πr⁴/4
+  
+  Hollow circle (outer R, inner r):
+    I = π(R⁴ - r⁴)/4
+
+Parallel Axis Theorem:
+  Transfer I from centroid to parallel axis
+  
+  I = I_c + Ad²
+  
+  Where:
+    I = moment about new axis
+    I_c = moment about centroidal axis
+    A = area
+    d = distance between axes
+  
+  CRITICAL: I_c must be about centroid!
+
+Composite Areas:
+  I_total = Σ(I_c,i + A_i d_i²)
+  
+  For each shape:
+    1. Find I about its own centroid
+    2. Transfer to common axis using parallel axis theorem
+    3. Sum all contributions
+
+Radius of Gyration:
+  r = √(I/A)
+  
+  Distance where entire area could be concentrated
+  and have same I
+
+Applications:
+  - Beam bending stress and deflection
+  - Column buckling
+  - Torsion of non-circular shafts
+</code>
+                </div>
+
+                <div class="info-box important">
+                    <h4>🎯 Practice Problems</h4>
+                    <ol>
+                        <li>Beam: 8 m, pin at A, roller at B. Loads: 500 N at 3 m, 800 N at 6 m. Find reactions.</li>
+                        <li>Truss: Simple roof truss, 4 m span, 2 m height, 2000 N vertical load at apex. Find all member forces.</li>
+                        <li>Friction: 50 kg box, μ_s = 0.5. What horizontal force needed to start motion? (Take g = 10 m/s²)</li>
+                        <li>Centroid: T-shaped area (flange 120×20 mm, web 20×100 mm). Find ȳ from bottom.</li>
+                        <li>Moment of inertia: Rectangle 50 mm × 100 mm. Find I_x about centroid and about base.</li>
+                        <li>Ladder: 4 m long, 70 kg, against wall at 60° angle. μ_s = 0.3 at both ends. Find normal force at wall.</li>
+                    </ol>
+                </div>
+
+                <h3>Summary</h3>
+                <ul>
+                    <li>Statics analyzes bodies in equilibrium: ΣF = 0 and ΣM = 0</li>
+                    <li>Free Body Diagrams (FBDs) are essential - show ALL forces and moments</li>
+                    <li>Support reactions: roller (1 unknown), pin (2 unknowns), fixed (3 unknowns)</li>
+                    <li>Trusses: two-force members, use method of joints or sections</li>
+                    <li>Frames and machines: multi-force members, analyze each component separately</li>
+                    <li>Friction: F_s ≤ μ_s N (static), F_k = μ_k N (kinetic), μ_k < μ_s always</li>
+                    <li>Centroid: geometric center, x̄ = ΣAx/ΣA, use composite method for complex shapes</li>
+                    <li>Moment of inertia: I = ∫y²dA, parallel axis theorem I = I_c + Ad²</li>
+                    <li>Always check units and verify answers with alternative equilibrium equations</li>
+                </ul>
+
+                <h3>Next Steps</h3>
+                <p>
+                    In Lesson 2, we'll extend these concepts to Dynamics, analyzing bodies in motion with 
+                    acceleration. You'll learn kinematics, Newton's laws applied to moving systems, work-energy 
+                    methods, and impulse-momentum principles.
+                </p>
+            </div>
+
+            <div class="lesson-navigation">
+                <a href="../index.html" class="nav-btn">← Course Overview</a>
+                <a href="02-dynamics.html" class="nav-btn">Next: Dynamics & Motion →</a>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,497 @@
+/* ========================================
+   COLORFUL THEME & ANIMATIONS
+   Ultra Vibrant Design with Moving Elements
+   ======================================== */
+
+/* Animated Background Particles */
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+        radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+        radial-gradient(circle at 40% 20%, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 100px 100px, 80px 80px, 120px 120px;
+    animation: particleFloat 20s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes particleFloat {
+    0% { background-position: 0 0, 0 0, 0 0; }
+    100% { background-position: 100px 100px, -80px 80px, 120px -120px; }
+}
+
+/* Gradient Animation for Hero - Dark Theme */
+.hero {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 25%, #0f3460 50%, #533483 75%, #1a1a2e 100%);
+    background-size: 400% 400%;
+    animation: rainbowGradient 15s ease infinite;
+    position: relative;
+    overflow: hidden;
+}
+
+@keyframes rainbowGradient {
+    0% { background-position: 0% 50%; }
+    25% { background-position: 50% 50%; }
+    50% { background-position: 100% 50%; }
+    75% { background-position: 50% 100%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Floating Shapes in Hero */
+.hero::before {
+    content: '✨';
+    position: absolute;
+    font-size: 3rem;
+    top: 20%;
+    left: 10%;
+    animation: floatStar1 8s ease-in-out infinite;
+    opacity: 0.4;
+}
+
+@keyframes floatStar1 {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(50px, -30px) rotate(90deg); }
+    50% { transform: translate(100px, 0) rotate(180deg); }
+    75% { transform: translate(50px, 30px) rotate(270deg); }
+}
+
+/* Animated Course Icons */
+.course-icon {
+    font-size: 5rem;
+    display: inline-block;
+    animation: iconBounce 3s ease-in-out infinite;
+    filter: drop-shadow(0 10px 20px rgba(102, 126, 234, 0.4));
+    transition: all 0.3s ease;
+}
+
+@keyframes iconBounce {
+    0%, 100% { 
+        transform: translateY(0px) scale(1) rotate(0deg); 
+    }
+    25% { 
+        transform: translateY(-20px) scale(1.1) rotate(-5deg); 
+    }
+    50% { 
+        transform: translateY(-30px) scale(1.05) rotate(0deg); 
+    }
+    75% { 
+        transform: translateY(-20px) scale(1.1) rotate(5deg); 
+    }
+}
+
+.course-card:hover .course-icon {
+    animation: spinGrow 0.6s ease;
+    transform: scale(1.3) rotate(360deg);
+}
+
+@keyframes spinGrow {
+    0% { transform: scale(1) rotate(0deg); }
+    50% { transform: scale(1.4) rotate(180deg); }
+    100% { transform: scale(1.3) rotate(360deg); }
+}
+
+/* Colorful Course Card Backgrounds */
+.course-card {
+    background: linear-gradient(145deg, #ffffff 0%, #f0f4ff 100%);
+    position: relative;
+    overflow: hidden;
+    border: 3px solid transparent;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.course-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent 30%,
+        rgba(102, 126, 234, 0.2) 50%,
+        transparent 70%
+    );
+    animation: shimmerEffect 3s infinite;
+}
+
+@keyframes shimmerEffect {
+    0% { transform: translateX(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) rotate(45deg); }
+}
+
+/* Individual Card Color Themes - Dark Mode Fixed */
+.course-card[data-category="software"] {
+    background: linear-gradient(145deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.3) 100%) !important;
+    border-color: #667eea;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.course-card[data-category="software"]::after {
+    content: '💻';
+    position: absolute;
+    font-size: 15rem;
+    right: -50px;
+    bottom: -50px;
+    opacity: 0.05;
+    animation: rotateBackground 20s linear infinite;
+}
+
+.course-card[data-category="programming"] {
+    background: linear-gradient(145deg, rgba(240, 147, 251, 0.2) 0%, rgba(245, 87, 108, 0.3) 100%) !important;
+    border-color: #f093fb;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.course-card[data-category="programming"]::after {
+    content: '⌨️';
+    position: absolute;
+    font-size: 15rem;
+    right: -50px;
+    bottom: -50px;
+    opacity: 0.05;
+    animation: rotateBackground 20s linear infinite reverse;
+}
+
+.course-card[data-category="electrical"] {
+    background: linear-gradient(145deg, rgba(79, 172, 254, 0.2) 0%, rgba(0, 242, 254, 0.3) 100%) !important;
+    border-color: #4facfe;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.course-card[data-category="electrical"]::after {
+    content: '⚡';
+    position: absolute;
+    font-size: 15rem;
+    right: -50px;
+    bottom: -50px;
+    opacity: 0.05;
+    animation: rotateBackground 20s linear infinite;
+}
+
+.course-card[data-category="mechanical"] {
+    background: linear-gradient(145deg, rgba(67, 233, 123, 0.2) 0%, rgba(56, 249, 215, 0.3) 100%) !important;
+    border-color: #43e97b;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.course-card[data-category="mechanical"]::after {
+    content: '⚙️';
+    position: absolute;
+    font-size: 15rem;
+    right: -50px;
+    bottom: -50px;
+    opacity: 0.05;
+    animation: rotateBackground 20s linear infinite reverse;
+}
+
+.course-card[data-category="english"] {
+    background: linear-gradient(145deg, rgba(255, 183, 77, 0.2) 0%, rgba(255, 138, 101, 0.3) 100%) !important;
+    border-color: #ffb74d;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.course-card[data-category="english"]::after {
+    content: '📚';
+    position: absolute;
+    font-size: 15rem;
+    right: -50px;
+    bottom: -50px;
+    opacity: 0.05;
+    animation: rotateBackground 20s linear infinite;
+}
+
+@keyframes rotateBackground {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Enhanced Hover Effects with Rainbow Border */
+.course-card:hover {
+    transform: translateY(-20px) scale(1.03);
+    box-shadow: 
+        0 20px 50px rgba(102, 126, 234, 0.4),
+        0 0 0 5px rgba(102, 126, 234, 0.1);
+    animation: rainbowBorder 2s linear infinite;
+}
+
+@keyframes rainbowBorder {
+    0% { border-color: #667eea; }
+    25% { border-color: #f093fb; }
+    50% { border-color: #4facfe; }
+    75% { border-color: #43e97b; }
+    100% { border-color: #667eea; }
+}
+
+/* Pulsating Glow Effect on Buttons */
+.btn-primary, .btn-secondary {
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+    animation: pulseGlow 2s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+    0%, 100% { 
+        box-shadow: 0 0 20px rgba(102, 126, 234, 0.3),
+                    0 0 40px rgba(102, 126, 234, 0.1);
+    }
+    50% { 
+        box-shadow: 0 0 30px rgba(102, 126, 234, 0.5),
+                    0 0 60px rgba(102, 126, 234, 0.3);
+    }
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* Floating Feature Cards */
+.feature-card {
+    animation: floatCard 4s ease-in-out infinite;
+}
+
+.feature-card:nth-child(1) { animation-delay: 0s; }
+.feature-card:nth-child(2) { animation-delay: 0.5s; }
+.feature-card:nth-child(3) { animation-delay: 1s; }
+.feature-card:nth-child(4) { animation-delay: 1.5s; }
+
+@keyframes floatCard {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+}
+
+/* Animated Text Gradient */
+.hero-title {
+    background: linear-gradient(90deg, #fff 0%, #f0f4ff 50%, #fff 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textShine 3s linear infinite;
+}
+
+@keyframes textShine {
+    to { background-position: 200% center; }
+}
+
+/* Section Title Rainbow Effect */
+.section-title {
+    background: linear-gradient(90deg, #667eea, #764ba2, #f093fb, #4facfe, #43e97b, #667eea);
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: rainbowText 5s linear infinite;
+    font-weight: 800;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes rainbowText {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 300% 50%; }
+}
+
+/* Confetti Animation on Page Load */
+@keyframes confettiFall {
+    0% { 
+        transform: translateY(-100vh) rotate(0deg);
+        opacity: 1;
+    }
+    100% { 
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+.confetti {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    background: #667eea;
+    top: -10px;
+    z-index: 9999;
+    animation: confettiFall 4s linear forwards;
+}
+
+/* Moving Background Pattern */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(102, 126, 234, 0.03) 35px, rgba(102, 126, 234, 0.03) 70px),
+        repeating-linear-gradient(-45deg, transparent, transparent 35px, rgba(240, 147, 251, 0.03) 35px, rgba(240, 147, 251, 0.03) 70px);
+    animation: movePattern 20s linear infinite;
+    pointer-events: none;
+    z-index: -1;
+}
+
+@keyframes movePattern {
+    0% { background-position: 0 0, 0 0; }
+    100% { background-position: 70px 70px, -70px 70px; }
+}
+
+/* Glowing Highlights */
+.course-highlights li::before {
+    content: '✨';
+    margin-right: 8px;
+    animation: sparkle 1.5s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.2); }
+}
+
+/* Navbar Rainbow Underline on Hover */
+.nav-menu a {
+    position: relative;
+}
+
+.nav-menu a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #667eea, #f093fb, #4facfe, #43e97b);
+    transition: width 0.3s ease;
+}
+
+.nav-menu a:hover::after,
+.nav-menu a.active::after {
+    width: 100%;
+}
+
+/* Stat Cards with Gradient Backgrounds */
+.stat-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    animation: gradientRotate 3s ease infinite;
+    background-size: 200% 200%;
+}
+
+.stat-card:nth-child(2) {
+    background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+}
+
+.stat-card:nth-child(3) {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.stat-card:nth-child(4) {
+    background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+}
+
+@keyframes gradientRotate {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Pulsating Quiz Container */
+.quiz-container {
+    animation: subtlePulse 3s ease-in-out infinite;
+}
+
+@keyframes subtlePulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.01); }
+}
+
+/* Progress Bar Rainbow Fill */
+.progress-bar-fill {
+    background: linear-gradient(90deg, #667eea, #764ba2, #f093fb, #4facfe, #43e97b);
+    background-size: 200% 100%;
+    animation: progressRainbow 2s linear infinite;
+}
+
+@keyframes progressRainbow {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+}
+
+/* Footer with Animated Gradient */
+.main-footer {
+    background: linear-gradient(135deg, #1f2937 0%, #111827 50%, #374151 100%);
+    background-size: 200% 200%;
+    animation: footerGradient 10s ease infinite;
+}
+
+@keyframes footerGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Success/Completion Animations */
+.mark-complete-btn.completed {
+    animation: successPulse 1s ease;
+}
+
+@keyframes successPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+/* Shake Animation for Attention */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+}
+
+/* Page Load Fade In */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.course-card {
+    animation: fadeInUp 0.6s ease-out backwards;
+}
+
+.course-card:nth-child(1) { animation-delay: 0.1s; }
+.course-card:nth-child(2) { animation-delay: 0.2s; }
+.course-card:nth-child(3) { animation-delay: 0.3s; }
+.course-card:nth-child(4) { animation-delay: 0.4s; }
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .course-icon {
+        font-size: 4rem;
+    }
+    
+    .course-card::after {
+        font-size: 10rem;
+    }
+}

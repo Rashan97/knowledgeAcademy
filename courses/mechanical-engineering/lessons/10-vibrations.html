@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 10: Mechanical Vibrations - Engineering Academy</title>
+    <link rel="stylesheet" href="../../../css/styles.css">
+    <link rel="stylesheet" href="../../../css/course-styles/course.css">
+</head>
+<body>
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <h1><a href="../../../index.html" style="color: inherit; text-decoration: none;">🎓 Engineering Academy</a></h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../index.html">Course Overview</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section class="course-header">
+        <div class="container">
+            <h1>⚙️ Mechanical Engineering</h1>
+            <p>Lesson 10: Mechanical Vibrations</p>
+        </div>
+    </section>
+
+    <div class="course-container">
+        <aside class="course-sidebar">
+            <h3>Course Modules</h3>
+            <ul class="lesson-list">
+                <li><a href="../index.html"><span class="lesson-number">📚</span>Course Overview</a></li>
+                <li><a href="01-statics.html"><span class="lesson-number">1</span>Statics & Force Analysis</a></li>
+                <li><a href="02-dynamics.html"><span class="lesson-number">2</span>Dynamics & Motion</a></li>
+                <li><a href="03-mechanics-of-materials.html"><span class="lesson-number">3</span>Mechanics of Materials</a></li>
+                <li><a href="04-thermodynamics.html"><span class="lesson-number">4</span>Thermodynamics</a></li>
+                <li><a href="05-fluid-mechanics.html"><span class="lesson-number">5</span>Fluid Mechanics</a></li>
+                <li><a href="06-heat-transfer.html"><span class="lesson-number">6</span>Heat Transfer</a></li>
+                <li><a href="07-materials-science.html"><span class="lesson-number">7</span>Materials Science</a></li>
+                <li><a href="08-machine-design.html"><span class="lesson-number">8</span>Machine Design</a></li>
+                <li><a href="09-manufacturing-processes.html"><span class="lesson-number">9</span>Manufacturing Processes</a></li>
+                <li><a href="10-vibrations.html" class="active"><span class="lesson-number">10</span>Mechanical Vibrations</a></li>
+                <li><a href="11-cad-cam.html"><span class="lesson-number">11</span>CAD/CAM & Design Tools</a></li>
+                <li><a href="12-hvac-systems.html"><span class="lesson-number">12</span>HVAC & Thermal Systems</a></li>
+            </ul>
+        </aside>
+
+        <main class="course-content">
+            <div class="lesson-header">
+                <h2>Lesson 10: Mechanical Vibrations</h2>
+                <div class="lesson-meta">
+                    <span>📖 90 min read</span>
+                    <span>📊 Applied</span>
+                </div>
+            </div>
+
+            <div class="lesson-content">
+                <h3>Introduction to Vibrations</h3>
+                <p>
+                    Mechanical vibrations are oscillatory motions of particles or mechanical systems about an equilibrium 
+                    position. Understanding vibrations is critical for designing structures and machines that are safe, 
+                    reliable, and comfortable, and for diagnosing mechanical problems.
+                </p>
+
+                <div class="info-box note">
+                    <h4>📌 What You'll Learn</h4>
+                    <ul>
+                        <li>Vibration fundamentals: frequency, amplitude, phase</li>
+                        <li>Free vibration: undamped and damped</li>
+                        <li>Natural frequency and damping ratio</li>
+                        <li>Forced vibration and resonance</li>
+                        <li>Transmissibility and vibration isolation</li>
+                        <li>Multi-DOF systems and mode shapes</li>
+                        <li>Vibration measurement and analysis</li>
+                        <li>Balancing and vibration control</li>
+                    </ul>
+                </div>
+
+                <h3>Vibration Fundamentals</h3>
+
+                <h4>Basic Concepts</h4>
+                <div class="code-block" data-language="text">
+<code>Vibration:
+  Periodic or oscillatory motion
+  Alternates between two extreme positions
+
+Importance:
+  - Structural integrity (fatigue, failure)
+  - Noise generation
+  - Comfort (vehicles, buildings)
+  - Precision (machine tools)
+  - Diagnostics (condition monitoring)
+
+Key Parameters:
+
+Amplitude (A or X):
+  Maximum displacement from equilibrium
+  Units: mm, μm (displacement)
+         mm/s (velocity)
+         m/s² or g (acceleration, g = 9.81 m/s²)
+
+Frequency (f):
+  Cycles per unit time
+  Units: Hz (cycles/second)
+  
+  Angular frequency: ω = 2πf (rad/s)
+
+Period (T):
+  Time for one complete cycle
+  T = 1/f = 2π/ω
+
+Phase (φ):
+  Position in cycle at t=0
+  Units: radians or degrees
+
+Simple Harmonic Motion:
+  x(t) = A cos(ωt + φ)
+  
+  Or: x(t) = A sin(ωt)  (if φ = -π/2)
+  
+  Velocity: v(t) = dx/dt = -Aω sin(ωt + φ)
+  
+  Acceleration: a(t) = dv/dt = -Aω² cos(ωt + φ) = -ω²x
+
+Degrees of Freedom (DOF):
+  Number of independent coordinates needed
+  
+  1-DOF: Single mass-spring
+  2-DOF: Two coupled masses
+  Continuous: Infinite DOF (beams, shafts)
+
+Types of Vibration:
+
+Free Vibration:
+  System oscillates due to initial disturbance
+  No external force after initial excitation
+  Oscillates at natural frequency
+
+Forced Vibration:
+  External force continuously applied
+  Oscillates at forcing frequency
+  Resonance when forcing ≈ natural frequency
+
+Undamped:
+  No energy dissipation
+  Oscillation amplitude constant (ideal)
+
+Damped:
+  Energy dissipated (friction, air resistance)
+  Amplitude decreases with time (real systems)
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Single Degree of Freedom Systems</h3>
+
+                <h4>Free Vibration - Undamped</h4>
+                <div class="code-block" data-language="text">
+<code>Spring-Mass System:
+  
+  m: mass (kg)
+  k: spring stiffness (N/m)
+  x: displacement from equilibrium
+
+Equation of Motion:
+  Newton's 2nd law: ΣF = ma
+  
+  -kx = m(d²x/dt²)
+  
+  Standard form:
+    d²x/dt² + (k/m)x = 0
+    
+    d²x/dt² + ω_n²x = 0
+
+Natural Frequency:
+  ω_n = √(k/m)  (rad/s)
+  
+  f_n = ω_n/(2π) = (1/2π)√(k/m)  (Hz)
+  
+  Period: T_n = 1/f_n = 2π/ω_n
+
+General Solution:
+  x(t) = A cos(ω_n t) + B sin(ω_n t)
+  
+  Or: x(t) = X cos(ω_n t - φ)
+  
+  Where:
+    X = √(A² + B²)  (amplitude)
+    φ = tan⁻¹(B/A)  (phase angle)
+
+Initial Conditions:
+  At t = 0:
+    x(0) = x₀  (initial displacement)
+    v(0) = v₀  (initial velocity)
+  
+  Determine A and B:
+    A = x₀
+    B = v₀/ω_n
+  
+  Amplitude:
+    X = √[x₀² + (v₀/ω_n)²]
+
+Energy Conservation:
+  Total energy constant (no damping)
+  
+  E = PE + KE = (1/2)kX² = constant
+  
+  At max displacement: E = (1/2)kX² (all PE)
+  At equilibrium: E = (1/2)mv_max² (all KE)
+  
+  v_max = ω_n X
+
+Static Deflection:
+  δ_st = W/k = mg/k
+  
+  Natural frequency:
+    ω_n = √(k/m) = √(g/δ_st)
+  
+  For gravity-loaded system:
+    f_n = (1/2π)√(g/δ_st)
+  
+  Example: δ_st = 10 mm
+    f_n = (1/2π)√(9.81/0.01) = 4.98 Hz
+</code>
+                </div>
+
+                <h4>Free Vibration - Damped</h4>
+                <div class="code-block" data-language="text">
+<code>Viscous Damper:
+  Damping force: F_d = -c(dx/dt)
+  
+  c: damping coefficient (N·s/m)
+
+Equation of Motion:
+  m(d²x/dt²) + c(dx/dt) + kx = 0
+  
+  Standard form:
+    d²x/dt² + 2ζω_n(dx/dt) + ω_n²x = 0
+
+Critical Damping:
+  Minimum damping to prevent oscillation
+  
+  c_c = 2√(km) = 2mω_n
+
+Damping Ratio:
+  ζ = c/c_c
+  
+  ζ < 1: Underdamped (oscillatory)
+  ζ = 1: Critically damped
+  ζ > 1: Overdamped
+
+Underdamped (ζ < 1):
+  Most common in practice
+  
+  Solution:
+    x(t) = Xe^(-ζω_n t) cos(ω_d t - φ)
+  
+  Damped natural frequency:
+    ω_d = ω_n√(1 - ζ²)
+  
+  Decay envelope: Xe^(-ζω_n t)
+  
+  Period: T_d = 2π/ω_d
+
+Logarithmic Decrement (δ):
+  Measure of decay rate
+  
+  δ = ln(x_n/x_{n+1})
+  
+  For successive peaks:
+    δ = 2πζ/√(1-ζ²)
+  
+  Damping ratio from δ:
+    ζ = δ/√(4π² + δ²)
+  
+  Or approximation (ζ << 1):
+    ζ ≈ δ/(2π)
+
+Critically Damped (ζ = 1):
+  Fastest return to equilibrium without oscillation
+  
+  Solution:
+    x(t) = (A + Bt)e^(-ω_n t)
+  
+  Applications: Door closers, shock absorbers (ideal)
+
+Overdamped (ζ > 1):
+  Slow return, no oscillation
+  
+  Solution:
+    x(t) = Ae^(s₁t) + Be^(s₂t)
+  
+  Where s₁, s₂ = -ζω_n ± ω_n√(ζ²-1)  (both negative)
+
+Quality Factor (Q):
+  Measure of sharpness of resonance
+  
+  Q = 1/(2ζ)
+  
+  Low damping → high Q → sharp resonance
+</code>
+                </div>
+
+                <h4>Example: Damped Vibration</h4>
+                <div class="code-block" data-language="text">
+<code>Problem:
+  Mass m = 10 kg, spring k = 1000 N/m, damper c = 50 N·s/m
+  Initial: x₀ = 50 mm, v₀ = 0
+  Find: ω_n, ζ, ω_d, amplitude after 3 cycles
+
+Solution:
+
+1. Natural frequency:
+   ω_n = √(k/m) = √(1000/10) = 10 rad/s
+   f_n = 10/(2π) = 1.59 Hz
+
+2. Critical damping:
+   c_c = 2mω_n = 2(10)(10) = 200 N·s/m
+
+3. Damping ratio:
+   ζ = c/c_c = 50/200 = 0.25 (underdamped)
+
+4. Damped frequency:
+   ω_d = ω_n√(1-ζ²) = 10√(1-0.25²) = 9.68 rad/s
+   f_d = 1.54 Hz
+   
+   Period: T_d = 1/f_d = 0.65 s
+
+5. Logarithmic decrement:
+   δ = 2πζ/√(1-ζ²) = 2π(0.25)/√(1-0.25²)
+     = 1.62
+
+6. Amplitude ratio after 1 cycle:
+   x_{n+1}/x_n = e^(-δ) = e^(-1.62) = 0.198
+   
+   After 3 cycles:
+   x₃/x₀ = (e^(-δ))³ = 0.198³ = 0.0078
+   
+   x₃ = 0.0078 × 50 = 0.39 mm
+   
+   (Amplitude decays to <1% in 3 cycles)
+
+Alternative using time:
+  Time for 3 cycles: t = 3T_d = 3(0.65) = 1.95 s
+  
+  Envelope: Xe^(-ζω_n t) = 50·e^(-0.25·10·1.95)
+                          = 50·e^(-4.88) = 0.38 mm  ✓
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Forced Vibration</h3>
+
+                <h4>Harmonic Excitation</h4>
+                <div class="code-block" data-language="text">
+<code>Forced Vibration:
+  External force F(t) applied continuously
+  
+  Harmonic force (most important):
+    F(t) = F₀ cos(ωt)
+  
+  Where:
+    F₀ = force amplitude
+    ω = forcing frequency (rad/s)
+
+Equation of Motion:
+  m(d²x/dt²) + c(dx/dt) + kx = F₀ cos(ωt)
+  
+  Standard form:
+    d²x/dt² + 2ζω_n(dx/dt) + ω_n²x = (F₀/m) cos(ωt)
+
+Solution:
+  x(t) = x_h(t) + x_p(t)
+  
+  Homogeneous (transient):
+    x_h(t) = Xe^(-ζω_n t) cos(ω_d t - φ)
+    Dies out due to damping
+  
+  Particular (steady-state):
+    x_p(t) = X cos(ωt - φ)
+    Persists, same frequency as forcing
+
+Steady-State Amplitude:
+  X = (F₀/k) / √[(1-r²)² + (2ζr)²]
+  
+  Or: X = δ_st · MF
+  
+  Where:
+    δ_st = F₀/k (static deflection)
+    r = ω/ω_n (frequency ratio)
+    MF = magnification factor
+
+Magnification Factor:
+  MF = 1 / √[(1-r²)² + (2ζr)²]
+  
+  Amplitude ratio: X/δ_st
+
+Phase Angle:
+  φ = tan⁻¹[2ζr/(1-r²)]
+  
+  φ = 0° when r = 0 (low frequency, in-phase)
+  φ = 90° when r = 1 (resonance)
+  φ = 180° when r → ∞ (high frequency, out-of-phase)
+
+Resonance:
+  Maximum amplitude occurs when:
+    r = √(1 - 2ζ²)  (for ζ < 0.707)
+  
+  For small damping (ζ << 1):
+    Resonance ≈ r = 1 (ω ≈ ω_n)
+  
+  Peak magnification:
+    MF_max ≈ 1/(2ζ)  (at r = 1, ζ << 1)
+  
+  Example: ζ = 0.05
+    MF_max = 1/(2·0.05) = 10
+    (Amplitude 10× static deflection!)
+
+Frequency Regions:
+  r < 0.5: Quasi-static (X ≈ δ_st)
+  r ≈ 1: Resonance (X >> δ_st, dangerous)
+  r > √2: Isolation (X < δ_st)
+
+Operating Considerations:
+  AVOID operating near resonance!
+  
+  Design:
+    - ω_n >> ω_operating (stiff, heavy)
+    - ω_n << ω_operating (soft, light)
+    - Add damping (reduces peak, but always present)
+</code>
+                </div>
+
+                <h4>Rotating Unbalance</h4>
+                <div class="code-block" data-language="text">
+<code>Unbalanced Rotating Mass:
+  Common source of vibration
+  
+  Eccentric mass m_e at radius e
+  Rotational speed ω
+  
+  Centrifugal force:
+    F(t) = m_e·e·ω² cos(ωt)
+  
+  Force amplitude: F₀ = m_e·e·ω²
+
+Modified Magnification Factor:
+  X = (m_e·e/m) · r² / √[(1-r²)² + (2ζr)²]
+  
+  Where:
+    m = total mass
+    r = ω/ω_n
+
+Characteristics:
+  At low speed (r << 1):
+    X → 0 (static)
+  
+  At resonance (r = 1):
+    X = (m_e·e/m) · 1/(2ζ)
+  
+  At high speed (r >> 1):
+    X → m_e·e/m (constant)
+    Force transmitted proportional to ω²
+
+Applications:
+  - Motors, engines, turbines
+  - Vibrating screens, compactors
+  - Washing machines
+
+Balancing:
+  Add counterweights to eliminate unbalance
+  
+  Static balancing: Single plane (discs)
+  Dynamic balancing: Two planes (long rotors)
+</code>
+                </div>
+
+                <h4>Vibration Isolation and Transmissibility</h4>
+                <div class="code-block" data-language="text">
+<code>Transmissibility (TR):
+  Ratio of transmitted force to applied force
+  
+  TR = F_t/F₀ = √[(1 + (2ζr)²) / ((1-r²)² + (2ζr)²)]
+  
+  For base excitation (support motion):
+    TR = X/Y  (amplitude ratio)
+
+Isolation Regions:
+  TR > 1: Amplification (avoid!)
+    Occurs when r < √2
+  
+  TR = 1: No benefit
+    At r = √2 (for all ζ)
+  
+  TR < 1: Isolation
+    Occurs when r > √2
+  
+  Good isolation: r > 2-3
+    Soft springs, low ω_n
+
+Damping Effect:
+  Low frequency (r < √2):
+    More damping reduces TR (good)
+  
+  High frequency (r > √2):
+    More damping increases TR (bad!)
+  
+  Optimal: ζ ≈ 0.1-0.2 for isolation
+    Limits resonance peak
+    Doesn't degrade high-frequency isolation
+
+Design for Isolation:
+  Make ω_n much smaller than disturbing frequency
+  
+  Use soft springs (low k)
+  Increase mass if possible
+  
+  Typical: ω_n ≤ 0.3 ω_disturb
+
+Applications:
+  - Engine mounts (isolate vehicle from vibration)
+  - Precision equipment (isolate from floor vibration)
+  - Suspended ceilings (acoustic isolation)
+
+Active Isolation:
+  Sensors detect vibration
+  Actuators apply canceling force
+  
+  Better performance than passive
+  More complex and expensive
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Multi-DOF Systems</h3>
+
+                <h4>Two Degree of Freedom Systems</h4>
+                <div class="code-block" data-language="text">
+<code>2-DOF System:
+  Two masses, springs, dampers
+  
+  Equations of motion (matrix form):
+    [M]{ẍ} + [C]{ẋ} + [K]{x} = {F(t)}
+  
+  Where:
+    [M] = mass matrix
+    [C] = damping matrix
+    [K] = stiffness matrix
+    {x} = displacement vector
+
+Undamped Free Vibration:
+  [M]{ẍ} + [K]{x} = {0}
+  
+  Assume: {x} = {X}e^(iωt)
+  
+  Eigenvalue problem:
+    ([K] - ω²[M]){X} = {0}
+  
+  Characteristic equation:
+    det([K] - ω²[M]) = 0
+  
+  Yields: Two natural frequencies ω₁, ω₂
+
+Natural Frequencies:
+  First mode: ω₁ (lower, fundamental)
+  Second mode: ω₂ (higher, overtone)
+
+Mode Shapes:
+  Each frequency has associated mode shape {X}₁, {X}₂
+  
+  Describes relative motion of masses
+  
+  Orthogonality:
+    {X}_i^T [M] {X}_j = 0  (i ≠ j)
+    {X}_i^T [K] {X}_j = 0  (i ≠ j)
+
+Modal Analysis:
+  Decouple equations using mode shapes
+  
+  Transform: {x} = [Φ]{q}
+  Where [Φ] = mode shape matrix
+        {q} = modal coordinates
+  
+  Equations become independent:
+    Each mode behaves as SDOF system
+  
+  General solution:
+    Sum of modal responses
+
+Vibration Absorber:
+  Add secondary mass-spring (tuned)
+  
+  Tuning: ω_absorber = ω_disturbing
+  
+  At ω_disturbing: Main mass stationary!
+  Creates two new natural frequencies
+  
+  Applications:
+    - Torsional vibration dampers (engines)
+    - Tall buildings (tuned mass dampers)
+</code>
+                </div>
+
+                <h4>Continuous Systems</h4>
+                <div class="code-block" data-language="text">
+<code>Continuous (Distributed) Systems:
+  Infinite DOF
+  Mass and stiffness distributed
+  
+  Examples: Beams, shafts, strings, plates
+
+Transverse Vibration of Beams:
+  Partial differential equation:
+    EI ∂⁴w/∂x⁴ + ρA ∂²w/∂t² = 0
+  
+  Where:
+    w(x,t) = transverse deflection
+    EI = flexural rigidity
+    ρA = mass per unit length
+
+Separation of Variables:
+  w(x,t) = W(x)·T(t)
+  
+  Spatial: W(x) (mode shapes)
+  Temporal: T(t) = cos(ω_n t)
+
+Natural Frequencies:
+  ω_n = (λ_n)²√(EI/ρA L⁴)
+  
+  Where λ_n depends on boundary conditions
+
+Mode Shapes:
+  First mode: Fundamental (largest wavelength)
+  Higher modes: More nodes (zero points)
+
+Boundary Conditions:
+  Simply supported:
+    λ_n = nπ  (n = 1, 2, 3, ...)
+    f_n = (n²π²/2L²)√(EI/ρA)
+  
+  Cantilever:
+    λ₁ = 1.875, λ₂ = 4.694, λ₃ = 7.855
+    f₁ = 3.516/(2πL²)√(EI/ρA)
+  
+  Fixed-fixed:
+    λ_n ≈ (n+1/2)π
+    Higher frequencies than simply supported
+
+Torsional Vibration (Shafts):
+  ω_n = nπ√(G/ρL²)  (fixed-free)
+  
+  Critical speed: ω_c (avoid in operation)
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Vibration Measurement and Control</h3>
+
+                <h4>Measurement Techniques</h4>
+                <div class="code-block" data-language="text">
+<code>Vibration Sensors:
+
+Accelerometer:
+  Measures acceleration
+  
+  Piezoelectric: Charge output, high frequency
+  MEMS: Capacitive, low cost, DC response
+  
+  Most common (rugged, wide frequency range)
+  
+  Integrate to get velocity, displacement:
+    v(t) = ∫a(t)dt
+    x(t) = ∫∫a(t)dt
+
+Velocity Transducer:
+  Measures velocity
+  
+  Electromagnetic (moving coil)
+  Self-generating (no power needed)
+  
+  Good for 10-1000 Hz
+
+Displacement Transducer:
+  Measures position
+  
+  LVDT (linear variable differential transformer)
+  Eddy current probe (non-contact)
+  Laser vibrometer (optical, precise)
+
+Frequency Analysis:
+
+Time Domain:
+  Waveform: x(t) vs t
+  Shows amplitude and period
+  
+  RMS (root mean square):
+    x_rms = √[(1/T)∫x²dt]
+  
+  Peak value, peak-to-peak
+
+Frequency Domain:
+  Spectrum: Amplitude vs frequency
+  
+  FFT (Fast Fourier Transform):
+    Converts time signal to frequency components
+  
+  Shows:
+    - Natural frequencies (peaks)
+    - Harmonics (multiples of fundamental)
+    - Sidebands (modulation)
+
+Vibration Severity:
+  ISO 10816 standards
+  
+  Velocity criteria (mm/s RMS):
+    < 1.8: Excellent
+    1.8-4.5: Good
+    4.5-11.2: Acceptable
+    > 11.2: Unacceptable
+  
+  Depends on machine class and support
+
+Modal Testing:
+  Experimental determination of modes
+  
+  Procedure:
+    1. Excite structure (impact hammer, shaker)
+    2. Measure response (accelerometers)
+    3. Analyze (frequency response function)
+    4. Extract modal parameters (f_n, ζ, mode shapes)
+  
+  Validates FEA models
+  Troubleshoots vibration problems
+
+Condition Monitoring:
+  Periodic vibration measurement
+  
+  Trend analysis: Track changes over time
+  
+  Diagnose:
+    - Unbalance: 1× running speed
+    - Misalignment: 2× running speed, axial
+    - Bearing defects: Specific frequencies
+    - Looseness: Harmonics, non-linear
+    - Resonance: Amplitude spikes
+  
+  Predictive maintenance
+</code>
+                </div>
+
+                <h4>Vibration Control Methods</h4>
+                <div class="code-block" data-language="text">
+<code>Control Strategies:
+
+1. Eliminate/Reduce Source:
+   - Balance rotating parts
+   - Align shafts properly
+   - Fix worn bearings
+   - Smooth operation (avoid impacts)
+
+2. Alter Natural Frequency:
+   - Increase stiffness (higher ω_n)
+     Add bracing, thicker sections
+   
+   - Change mass (affects ω_n)
+     Usually less practical
+   
+   Goal: Move ω_n away from excitation
+
+3. Add Damping:
+   - Viscous dampers (dashpots)
+   - Friction dampers
+   - Constrained-layer damping (viscoelastic)
+   
+   Reduces resonance amplitude
+   Broadens response peak
+
+4. Vibration Isolation:
+   - Soft mounts (springs, rubber)
+   - Isolate machine from foundation
+   - Isolate sensitive equipment from vibration
+   
+   Effective when r > √2
+
+5. Vibration Absorption:
+   - Tuned mass damper (TMD)
+     Secondary mass-spring tuned to problem frequency
+   
+   - Dynamic vibration absorber
+     Reduces vibration at specific frequency
+   
+   Applications:
+     Buildings, bridges, aircraft engines
+
+6. Active Control:
+   - Sensors detect vibration
+   - Controller calculates correction
+   - Actuators apply counteracting force
+   
+   Adaptive (adjusts to changing conditions)
+   Effective over wide frequency range
+   
+   Applications:
+     - Active mounts (engine, helicopter rotor)
+     - Active noise/vibration cancellation
+
+Balancing:
+
+Static Balancing:
+  Center of mass on rotation axis
+  
+  Single plane correction
+  
+  Add/remove mass at specific angle
+  
+  Process:
+    1. Measure unbalance (amplitude, phase)
+    2. Calculate correction mass and angle
+    3. Add counterweight
+    4. Verify
+
+Dynamic Balancing:
+  Two-plane correction
+  
+  Long rotors, high speed
+  
+  Eliminates:
+    - Static unbalance (force)
+    - Couple unbalance (moment)
+  
+  Specialized balancing machines
+
+Design Guidelines:
+  - Avoid operation near natural frequencies
+  - Design for adequate damping (ζ ≈ 0.05-0.15)
+  - Use vibration isolation for sensitive equipment
+  - Balance rotating components
+  - Conduct modal analysis (FEA, testing)
+  - Monitor vibration in service
+</code>
+                </div>
+
+                <div class="info-box important">
+                    <h4>🎯 Practice Problems</h4>
+                    <ol>
+                        <li>Natural frequency: Mass m=5 kg, spring k=2000 N/m. Find ω_n and f_n.</li>
+                        <li>Damping: ζ=0.2, ω_n=50 rad/s. Find c_c, c, and ω_d.</li>
+                        <li>Logarithmic decrement: Two successive peaks are 20 mm and 15 mm. Find δ and ζ.</li>
+                        <li>Forced vibration: f_n=10 Hz, excitation f=12 Hz, ζ=0.1. Find magnification factor MF and phase φ.</li>
+                        <li>Transmissibility: Operating frequency 30 Hz, want TR<0.1. What maximum f_n? (Assume ζ=0.15)</li>
+                        <li>Static deflection: Machine causes δ_st=2 mm. Find natural frequency f_n.</li>
+                    </ol>
+                </div>
+
+                <h3>Summary</h3>
+                <ul>
+                    <li>Vibration parameters: amplitude A, frequency ω (or f), period T=1/f, phase φ, simple harmonic x=A cos(ωt)</li>
+                    <li>Free undamped: ω_n=√(k/m), oscillates indefinitely at natural frequency, energy conserved</li>
+                    <li>Free damped: ζ=c/c_c, underdamped (ζ<1) oscillates with decay, ω_d=ω_n√(1-ζ²), log decrement δ=2πζ/√(1-ζ²)</li>
+                    <li>Forced vibration: steady-state amplitude X=(F₀/k)·MF, magnification factor MF=1/√[(1-r²)²+(2ζr)²]</li>
+                    <li>Resonance: maximum at r≈1 (ω≈ω_n), MF_max≈1/(2ζ) for small damping, avoid operating near resonance</li>
+                    <li>Isolation: transmissibility TR<1 when r>√2, use soft springs (low ω_n), optimal damping ζ≈0.1-0.2</li>
+                    <li>Multi-DOF: multiple natural frequencies and mode shapes, modal analysis decouples equations, vibration absorbers</li>
+                    <li>Measurement: accelerometers most common, FFT for frequency analysis, ISO severity standards, modal testing validates models</li>
+                    <li>Control: eliminate source, change ω_n, add damping, isolate, absorbers, active control, balance rotating parts</li>
+                </ul>
+
+                <h3>Next Steps</h3>
+                <p>
+                    Lesson 11 covers CAD/CAM & Design Tools, exploring computer-aided design and manufacturing. 
+                    You'll learn 3D modeling, FEA simulation, CAM toolpaths, and modern design methodologies.
+                </p>
+            </div>
+
+            <div class="lesson-navigation">
+                <a href="09-manufacturing-processes.html" class="nav-btn">← Manufacturing</a>
+                <a href="11-cad-cam.html" class="nav-btn">Next: CAD/CAM →</a>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../js/main.js"></script>
+</body>
+</html>

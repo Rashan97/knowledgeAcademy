@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 6: C++ Basics - Engineering Academy</title>
+    <link rel="stylesheet" href="../../../css/styles.css">
+    <link rel="stylesheet" href="../../../css/course-styles/course.css">
+</head>
+<body>
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <h1><a href="../../../index.html" style="color: inherit; text-decoration: none;">🎓 Engineering Academy</a></h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../index.html">Course Overview</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section class="course-header">
+        <div class="container">
+            <h1>⌨️ Programming</h1>
+            <p>Lesson 6: C++ Basics</p>
+        </div>
+    </section>
+
+    <div class="course-container">
+        <aside class="course-sidebar">
+            <h3>Course Modules</h3>
+            <ul class="lesson-list">
+                <li><a href="../index.html"><span class="lesson-number">📚</span>Course Overview</a></li>
+                <li><a href="01-programming-fundamentals.html" class="completed"><span class="lesson-number">1</span>Programming Fundamentals</a></li>
+                <li><a href="02-python-basics.html" class="completed"><span class="lesson-number">2</span>Python Basics</a></li>
+                <li><a href="03-python-advanced.html" class="completed"><span class="lesson-number">3</span>Python Advanced</a></li>
+                <li><a href="04-javascript-basics.html" class="completed"><span class="lesson-number">4</span>JavaScript Basics</a></li>
+                <li><a href="05-javascript-modern.html" class="completed"><span class="lesson-number">5</span>Modern JavaScript</a></li>
+                <li><a href="06-cpp-basics.html" class="active"><span class="lesson-number">6</span>C++ Basics</a></li>
+                <li><a href="07-cpp-advanced.html"><span class="lesson-number">7</span>C++ Advanced</a></li>
+                <li><a href="08-oop-principles.html"><span class="lesson-number">8</span>OOP Principles</a></li>
+                <li><a href="09-data-structures.html"><span class="lesson-number">9</span>Data Structures</a></li>
+                <li><a href="10-algorithms.html"><span class="lesson-number">10</span>Algorithms</a></li>
+                <li><a href="11-debugging.html"><span class="lesson-number">11</span>Debugging & Testing</a></li>
+                <li><a href="12-best-practices.html"><span class="lesson-number">12</span>Best Practices</a></li>
+            </ul>
+        </aside>
+
+        <main class="course-content">
+            <div class="lesson-header">
+                <h2>Lesson 6: C++ Basics</h2>
+                <div class="lesson-meta">
+                    <span>📖 100 min read</span>
+                    <span>📊 Intermediate</span>
+                </div>
+            </div>
+
+            <div class="lesson-content">
+                <h3>Welcome to C++</h3>
+                <p>
+                    C++ is a powerful, high-performance programming language used for system software, game engines, 
+                    embedded systems, and applications where speed is critical. It extends C with object-oriented 
+                    features while maintaining low-level control over hardware.
+                </p>
+
+                <div class="info-box note">
+                    <h4>📌 Why Learn C++?</h4>
+                    <p>
+                        C++ powers major systems: Windows, macOS, Adobe applications, game engines (Unreal, Unity), 
+                        browsers (Chrome, Firefox), databases (MySQL, MongoDB), and much more. It's the backbone 
+                        of performance-critical software.
+                    </p>
+                </div>
+
+                <h3>C++ Syntax and Compilation</h3>
+
+                <h4>Basic Program Structure</h4>
+                <div class="code-block" data-language="cpp">
+<code><span class="preprocessor">#include &lt;iostream&gt;</span>  <span class="comment">// Preprocessor directive</span>
+
+<span class="comment">// Main function - program entry point</span>
+<span class="keyword">int</span> <span class="function">main</span>() {
+    std::cout &lt;&lt; <span class="string">"Hello, World!"</span> &lt;&lt; std::endl;
+    <span class="keyword">return</span> <span class="number">0</span>;  <span class="comment">// Return 0 for success</span>
+}
+
+<span class="comment">/* Compile and run:
+   g++ hello.cpp -o hello
+   ./hello
+*/</span>
+</code>
+                </div>
+
+                <h4>Using Namespace std</h4>
+                <div class="code-block" data-language="cpp">
+<code><span class="preprocessor">#include &lt;iostream&gt;</span>
+<span class="keyword">using namespace</span> std;  <span class="comment">// Avoid typing std::</span>
+
+<span class="keyword">int</span> <span class="function">main</span>() {
+    cout &lt;&lt; <span class="string">"No std:: prefix needed"</span> &lt;&lt; endl;
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+</code>
+                </div>
+
+                <div class="info-box important">
+                    <h4>⚠️ Namespace Best Practice</h4>
+                    <p>
+                        In small programs, <code>using namespace std;</code> is fine. In larger projects or 
+                        header files, avoid it to prevent naming conflicts. Use <code>std::</code> explicitly.
+                    </p>
+                </div>
+
+                <h3>Data Types and Variables</h3>
+
+                <h4>Fundamental Types</h4>
+                <div class="code-block" data-language="cpp">
+<code><span class="preprocessor">#include &lt;iostream&gt;</span>
+<span class="keyword">using namespace</span> std;
+
+<span class="keyword">int</span> <span class="function">main</span>() {
+    <span class="comment">// Integer types</span>
+    <span class="keyword">int</span> age = <span class="number">25</span>;                    <span class="comment">// Usually 4 bytes</span>
+    <span class="keyword">short</span> smallNum = <span class="number">100</span>;            <span class="comment">// 2 bytes</span>
+    <span class="keyword">long</span> bigNum = <span class="number">1000000</span>;           <span class="comment">// 4 or 8 bytes</span>
+    <span class="keyword">long long</span> hugeNum = <span class="number">9999999999</span>;  <span class="comment">// 8 bytes</span>
+    
+    <span class="comment">// Floating-point types</span>
+    <span class="keyword">float</span> price = <span class="number">19.99</span>f;            <span class="comment">// 4 bytes, 'f' suffix</span>
+    <span class="keyword">double</span> pi = <span class="number">3.14159265359</span>;      <span class="comment">// 8 bytes, more precise</span>
+    
+    <span class="comment">// Character and boolean</span>
+    <span class="keyword">char</span> grade = <span class="string">'A'</span>;               <span class="comment">// Single quotes!</span>
+    <span class="keyword">bool</span> isStudent = <span class="keyword">true</span>;          <span class="comment">// true or false</span>
+    
+    <span class="comment">// String (from standard library)</span>
+    string name = <span class="string">"Alice"</span>;            <span class="comment">// Requires #include &lt;string&gt;</span>
+    
+    <span class="comment">// Auto type deduction (C++11)</span>
+    <span class="keyword">auto</span> x = <span class="number">42</span>;                    <span class="comment">// int</span>
+    <span class="keyword">auto</span> y = <span class="number">3.14</span>;                  <span class="comment">// double</span>
+    <span class="keyword">auto</span> z = <span class="string">"text"</span>;                <span class="comment">// const char*</span>
+    
+    <span class="comment">// Print sizes</span>
+    cout &lt;&lt; <span class="string">"Size of int: "</span> &lt;&lt; <span class="keyword">sizeof</span>(<span class="keyword">int</span>) &lt;&lt; <span class="string">" bytes"</span> &lt;&lt; endl;
+    
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+</code>
+                </div>
+
+                <h3>Pointers and References</h3>
+                <p>
+                    Pointers and references are C++'s most powerful (and dangerous) features. They provide 
+                    direct memory access and enable efficient data manipulation.
+                </p>
+
+                <h4>Pointers</h4>
+                <div class="code-block" data-language="cpp">
+<code><span class="keyword">int</span> <span class="function">main</span>() {
+    <span class="keyword">int</span> x = <span class="number">10</span>;
+    <span class="keyword">int</span>* ptr = &amp;x;  <span class="comment">// ptr stores address of x</span>
+    
+    cout &lt;&lt; <span class="string">"Value of x: "</span> &lt;&lt; x &lt;&lt; endl;           <span class="comment">// 10</span>
+    cout &lt;&lt; <span class="string">"Address of x: "</span> &lt;&lt; &amp;x &lt;&lt; endl;        <span class="comment">// Memory address</span>
+    cout &lt;&lt; <span class="string">"Value of ptr: "</span> &lt;&lt; ptr &lt;&lt; endl;       <span class="comment">// Same address</span>
+    cout &lt;&lt; <span class="string">"Value at ptr: "</span> &lt;&lt; *ptr &lt;&lt; endl;      <span class="comment">// 10 (dereferencing)</span>
+    
+    <span class="comment">// Modify through pointer</span>
+    *ptr = <span class="number">20</span>;
+    cout &lt;&lt; <span class="string">"New value of x: "</span> &lt;&lt; x &lt;&lt; endl;      <span class="comment">// 20</span>
+    
+    <span class="comment">// Null pointer</span>
+    <span class="keyword">int</span>* nullPtr = <span class="keyword">nullptr</span>;  <span class="comment">// C++11 way (safer than NULL)</span>
+    
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+</code>
+                </div>
+
+                <h4>References</h4>
+                <div class="code-block" data-language="cpp">
+<code><span class="keyword">int</span> <span class="function">main</span>() {
+    <span class="keyword">int</span> x = <span class="number">10</span>;
+    <span class="keyword">int</span>&amp; ref = x;  <span class="comment">// ref is an alias for x</span>
+    
+    cout &lt;&lt; <span class="string">"x: "</span> &lt;&lt; x &lt;&lt; <span class="string">", ref: "</span> &lt;&lt; ref &lt;&lt; endl;  <span class="comment">// Both 10</span>
+    
+    ref = <span class="number">20</span>;  <span class="comment">// Modifying ref changes x</span>
+    cout &lt;&lt; <span class="string">"x: "</span> &lt;&lt; x &lt;&lt; endl;  <span class="comment">// 20</span>
+    
+    <span class="comment">// References must be initialized and cannot be reassigned</span>
+    <span class="keyword">int</span> y = <span class="number">30</span>;
+    <span class="comment">// ref = y;  // This changes x to 30, doesn't rebind ref to y!</span>
+    
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+</code>
+                </div>
+
+                <div class="info-box tip">
+                    <h4>💡 Pointers vs References</h4>
+                    <ul>
+                        <li><strong>References:</strong> Safer, must be initialized, cannot be null, cannot be reassigned</li>
+                        <li><strong>Pointers:</strong> More flexible, can be null, can be reassigned, allow pointer arithmetic</li>
+                        <li>Use references for function parameters when possible</li>
+                    </ul>
+                </div>
+
+                <h3>Functions</h3>
+
+                <h4>Function Declaration and Definition</h4>
+                <div class="code-block" data-language="cpp">
+<code><span class="preprocessor">#include &lt;iostream&gt;</span>
+<span class="keyword">using namespace</span> std;
+
+<span class="comment">// Function declaration (prototype)</span>
+<span class="keyword">int</span> <span class="function">add</span>(<span class="keyword">int</span> a, <span class="keyword">int</span> b);
+<span class="keyword">void</span> <span class="function">printMessage</span>(string msg);
+
+<span class="keyword">int</span> <span class="function">main</span>() {
+    <span class="keyword">int</span> result = add(<span class="number">5</span>, <span class="number">3</span>);
+    cout &lt;&lt; <span class="string">"Result: "</span> &lt;&lt; result &lt;&lt; endl;
+    printMessage(<span class="string">"Hello from function!"</span>);
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+
+<span class="comment">// Function definition</span>
+<span class="keyword">int</span> <span class="function">add</span>(<span class="keyword">int</span> a, <span class="keyword">int</span> b) {
+    <span class="keyword">return</span> a + b;
+}
+
+<span class="keyword">void</span> <span class="function">printMessage</span>(string msg) {
+    cout &lt;&lt; msg &lt;&lt; endl;
+}
+</code>
+                </div>
+
+                <h4>Pass by Value, Reference, and Pointer</h4>
+                <div class="code-block" data-language="cpp">
+<code><span class="comment">// Pass by value (copy)</span>
+<span class="keyword">void</span> <span class="function">incrementValue</span>(<span class="keyword">int</span> x) {
+    x++;  <span class="comment">// Only modifies local copy</span>
+}
+
+<span class="comment">// Pass by reference (no copy, can modify original)</span>
+<span class="keyword">void</span> <span class="function">incrementRef</span>(<span class="keyword">int</span>&amp; x) {
+    x++;  <span class="comment">// Modifies original</span>
+}
+
+<span class="comment">// Pass by const reference (efficient, read-only)</span>
+<span class="keyword">void</span> <span class="function">printVector</span>(<span class="keyword">const</span> vector&lt;<span class="keyword">int</span>&gt;&amp; vec) {
+    <span class="keyword">for</span> (<span class="keyword">int</span> num : vec) {
+        cout &lt;&lt; num &lt;&lt; <span class="string">" "</span>;
+    }
+}
+
+<span class="comment">// Pass by pointer</span>
+<span class="keyword">void</span> <span class="function">incrementPointer</span>(<span class="keyword">int</span>* x) {
+    (*x)++;  <span class="comment">// Dereference and increment</span>
+}
+
+<span class="keyword">int</span> <span class="function">main</span>() {
+    <span class="keyword">int</span> num = <span class="number">10</span>;
+    
+    incrementValue(num);
+    cout &lt;&lt; num &lt;&lt; endl;  <span class="comment">// 10 (unchanged)</span>
+    
+    incrementRef(num);
+    cout &lt;&lt; num &lt;&lt; endl;  <span class="comment">// 11 (changed)</span>
+    
+    incrementPointer(&amp;num);
+    cout &lt;&lt; num &lt;&lt; endl;  <span class="comment">// 12 (changed)</span>
+    
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+</code>
+                </div>
+
+                <h4>Function Overloading</h4>
+                <div class="code-block" data-language="cpp">
+<code><span class="comment">// Same function name, different parameters</span>
+<span class="keyword">int</span> <span class="function">add</span>(<span class="keyword">int</span> a, <span class="keyword">int</span> b) {
+    <span class="keyword">return</span> a + b;
+}
+
+<span class="keyword">double</span> <span class="function">add</span>(<span class="keyword">double</span> a, <span class="keyword">double</span> b) {
+    <span class="keyword">return</span> a + b;
+}
+
+<span class="keyword">int</span> <span class="function">add</span>(<span class="keyword">int</span> a, <span class="keyword">int</span> b, <span class="keyword">int</span> c) {
+    <span class="keyword">return</span> a + b + c;
+}
+
+<span class="keyword">int</span> <span class="function">main</span>() {
+    cout &lt;&lt; add(<span class="number">5</span>, <span class="number">3</span>) &lt;&lt; endl;          <span class="comment">// Calls int version</span>
+    cout &lt;&lt; add(<span class="number">5.5</span>, <span class="number">3.2</span>) &lt;&lt; endl;      <span class="comment">// Calls double version</span>
+    cout &lt;&lt; add(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>) &lt;&lt; endl;       <span class="comment">// Calls 3-parameter version</span>
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+</code>
+                </div>
+
+                <h3>Arrays and Strings</h3>
+
+                <h4>C-Style Arrays</h4>
+                <div class="code-block" data-language="cpp">
+<code><span class="keyword">int</span> <span class="function">main</span>() {
+    <span class="comment">// Static array</span>
+    <span class="keyword">int</span> numbers[<span class="number">5</span>] = {<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>};
+    
+    <span class="comment">// Access elements</span>
+    cout &lt;&lt; numbers[<span class="number">0</span>] &lt;&lt; endl;  <span class="comment">// 1</span>
+    numbers[<span class="number">2</span>] = <span class="number">30</span>;
+    
+    <span class="comment">// Iterate</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) {
+        cout &lt;&lt; numbers[i] &lt;&lt; <span class="string">" "</span>;
+    }
+    cout &lt;&lt; endl;
+    
+    <span class="comment">// Range-based for loop (C++11)</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> num : numbers) {
+        cout &lt;&lt; num &lt;&lt; <span class="string">" "</span>;
+    }
+    
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+</code>
+                </div>
+
+                <h4>C++ Strings</h4>
+                <div class="code-block" data-language="cpp">
+<code><span class="preprocessor">#include &lt;string&gt;</span>
+
+<span class="keyword">int</span> <span class="function">main</span>() {
+    string name = <span class="string">"Alice"</span>;
+    string greeting = <span class="string">"Hello, "</span> + name;  <span class="comment">// Concatenation</span>
+    
+    <span class="comment">// String methods</span>
+    cout &lt;&lt; greeting.length() &lt;&lt; endl;     <span class="comment">// 12</span>
+    cout &lt;&lt; greeting.substr(<span class="number">0</span>, <span class="number">5</span>) &lt;&lt; endl;  <span class="comment">// "Hello"</span>
+    cout &lt;&lt; greeting.find(<span class="string">"Alice"</span>) &lt;&lt; endl;  <span class="comment">// 7</span>
+    
+    <span class="comment">// Character access</span>
+    cout &lt;&lt; name[<span class="number">0</span>] &lt;&lt; endl;  <span class="comment">// 'A'</span>
+    
+    <span class="comment">// Comparison</span>
+    string str1 = <span class="string">"apple"</span>;
+    string str2 = <span class="string">"banana"</span>;
+    <span class="keyword">if</span> (str1 &lt; str2) {
+        cout &lt;&lt; str1 &lt;&lt; <span class="string">" comes before "</span> &lt;&lt; str2 &lt;&lt; endl;
+    }
+    
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+</code>
+                </div>
+
+                <h3>Memory Management</h3>
+
+                <h4>Dynamic Memory Allocation</h4>
+                <div class="code-block" data-language="cpp">
+<code><span class="keyword">int</span> <span class="function">main</span>() {
+    <span class="comment">// Allocate single variable</span>
+    <span class="keyword">int</span>* ptr = <span class="keyword">new</span> <span class="keyword">int</span>;
+    *ptr = <span class="number">42</span>;
+    cout &lt;&lt; *ptr &lt;&lt; endl;
+    <span class="keyword">delete</span> ptr;  <span class="comment">// Free memory</span>
+    
+    <span class="comment">// Allocate array</span>
+    <span class="keyword">int</span>* arr = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">5</span>];
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) {
+        arr[i] = i * <span class="number">10</span>;
+    }
+    <span class="keyword">delete</span>[] arr;  <span class="comment">// Free array memory</span>
+    
+    <span class="comment">// ALWAYS delete what you new!</span>
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+</code>
+                </div>
+
+                <div class="info-box important">
+                    <h4>⚠️ Memory Management Rules</h4>
+                    <ul>
+                        <li>Every <code>new</code> must have a corresponding <code>delete</code></li>
+                        <li>Array allocation (<code>new[]</code>) requires array deletion (<code>delete[]</code>)</li>
+                        <li>Memory leaks occur when you forget to delete</li>
+                        <li>Modern C++ prefers smart pointers (covered in next lesson)</li>
+                    </ul>
+                </div>
+
+                <h3>STL Containers</h3>
+                <p>
+                    The Standard Template Library (STL) provides powerful, tested data structures.
+                </p>
+
+                <h4>Vector (Dynamic Array)</h4>
+                <div class="code-block" data-language="cpp">
+<code><span class="preprocessor">#include &lt;vector&gt;</span>
+
+<span class="keyword">int</span> <span class="function">main</span>() {
+    vector&lt;<span class="keyword">int</span>&gt; numbers;
+    
+    <span class="comment">// Add elements</span>
+    numbers.push_back(<span class="number">10</span>);
+    numbers.push_back(<span class="number">20</span>);
+    numbers.push_back(<span class="number">30</span>);
+    
+    <span class="comment">// Access elements</span>
+    cout &lt;&lt; numbers[<span class="number">0</span>] &lt;&lt; endl;  <span class="comment">// 10</span>
+    cout &lt;&lt; numbers.at(<span class="number">1</span>) &lt;&lt; endl;  <span class="comment">// 20 (with bounds checking)</span>
+    
+    <span class="comment">// Size and capacity</span>
+    cout &lt;&lt; <span class="string">"Size: "</span> &lt;&lt; numbers.size() &lt;&lt; endl;
+    
+    <span class="comment">// Iterate</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> num : numbers) {
+        cout &lt;&lt; num &lt;&lt; <span class="string">" "</span>;
+    }
+    
+    <span class="comment">// Initialize with values</span>
+    vector&lt;<span class="keyword">int</span>&gt; scores = {<span class="number">85</span>, <span class="number">90</span>, <span class="number">78</span>, <span class="number">92</span>};
+    
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+</code>
+                </div>
+
+                <h4>Map (Key-Value Pairs)</h4>
+                <div class="code-block" data-language="cpp">
+<code><span class="preprocessor">#include &lt;map&gt;</span>
+
+<span class="keyword">int</span> <span class="function">main</span>() {
+    map&lt;string, <span class="keyword">int</span>&gt; ages;
+    
+    <span class="comment">// Insert elements</span>
+    ages[<span class="string">"Alice"</span>] = <span class="number">25</span>;
+    ages[<span class="string">"Bob"</span>] = <span class="number">30</span>;
+    ages.insert({<span class="string">"Charlie"</span>, <span class="number">35</span>});
+    
+    <span class="comment">// Access elements</span>
+    cout &lt;&lt; ages[<span class="string">"Alice"</span>] &lt;&lt; endl;  <span class="comment">// 25</span>
+    
+    <span class="comment">// Check existence</span>
+    <span class="keyword">if</span> (ages.find(<span class="string">"Bob"</span>) != ages.end()) {
+        cout &lt;&lt; <span class="string">"Bob found!"</span> &lt;&lt; endl;
+    }
+    
+    <span class="comment">// Iterate</span>
+    <span class="keyword">for</span> (<span class="keyword">const auto</span>&amp; pair : ages) {
+        cout &lt;&lt; pair.first &lt;&lt; <span class="string">": "</span> &lt;&lt; pair.second &lt;&lt; endl;
+    }
+    
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+</code>
+                </div>
+
+                <h4>Set (Unique Values)</h4>
+                <div class="code-block" data-language="cpp">
+<code><span class="preprocessor">#include &lt;set&gt;</span>
+
+<span class="keyword">int</span> <span class="function">main</span>() {
+    set&lt;<span class="keyword">int</span>&gt; numbers;
+    
+    <span class="comment">// Insert (duplicates ignored)</span>
+    numbers.insert(<span class="number">5</span>);
+    numbers.insert(<span class="number">2</span>);
+    numbers.insert(<span class="number">8</span>);
+    numbers.insert(<span class="number">2</span>);  <span class="comment">// Ignored</span>
+    
+    <span class="comment">// Automatically sorted: 2, 5, 8</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> num : numbers) {
+        cout &lt;&lt; num &lt;&lt; <span class="string">" "</span>;
+    }
+    
+    <span class="comment">// Check existence</span>
+    <span class="keyword">if</span> (numbers.count(<span class="number">5</span>)) {
+        cout &lt;&lt; <span class="string">"5 exists"</span> &lt;&lt; endl;
+    }
+    
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+</code>
+                </div>
+
+                <h3>Input/Output Streams</h3>
+
+                <h4>Console I/O</h4>
+                <div class="code-block" data-language="cpp">
+<code><span class="keyword">int</span> <span class="function">main</span>() {
+    string name;
+    <span class="keyword">int</span> age;
+    
+    <span class="comment">// Input</span>
+    cout &lt;&lt; <span class="string">"Enter name: "</span>;
+    cin &gt;&gt; name;  <span class="comment">// Stops at whitespace</span>
+    
+    cout &lt;&lt; <span class="string">"Enter age: "</span>;
+    cin &gt;&gt; age;
+    
+    <span class="comment">// Get full line</span>
+    cin.ignore();  <span class="comment">// Clear newline from buffer</span>
+    cout &lt;&lt; <span class="string">"Enter full address: "</span>;
+    string address;
+    getline(cin, address);
+    
+    <span class="comment">// Output</span>
+    cout &lt;&lt; <span class="string">"Hello, "</span> &lt;&lt; name &lt;&lt; <span class="string">"! You are "</span> &lt;&lt; age &lt;&lt; <span class="string">" years old."</span> &lt;&lt; endl;
+    
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+</code>
+                </div>
+
+                <h4>File I/O</h4>
+                <div class="code-block" data-language="cpp">
+<code><span class="preprocessor">#include &lt;fstream&gt;</span>
+
+<span class="keyword">int</span> <span class="function">main</span>() {
+    <span class="comment">// Write to file</span>
+    ofstream outFile(<span class="string">"data.txt"</span>);
+    <span class="keyword">if</span> (outFile.is_open()) {
+        outFile &lt;&lt; <span class="string">"Hello, File!"</span> &lt;&lt; endl;
+        outFile &lt;&lt; <span class="string">"Line 2"</span> &lt;&lt; endl;
+        outFile.close();
+    }
+    
+    <span class="comment">// Read from file</span>
+    ifstream inFile(<span class="string">"data.txt"</span>);
+    string line;
+    <span class="keyword">if</span> (inFile.is_open()) {
+        <span class="keyword">while</span> (getline(inFile, line)) {
+            cout &lt;&lt; line &lt;&lt; endl;
+        }
+        inFile.close();
+    }
+    
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+</code>
+                </div>
+
+                <h3>Practice Problems</h3>
+
+                <div class="example-box">
+                    <h5>Problem 1: Swap Function</h5>
+                    <p>Write a function that swaps two integers using references.</p>
+                    
+                    <button class="toggle-solution" onclick="toggleSolution('sol1')">Show Solution</button>
+                    <div id="sol1" class="solution" style="display: none;">
+                        <div class="code-block" data-language="cpp">
+<code><span class="keyword">void</span> <span class="function">swap</span>(<span class="keyword">int</span>&amp; a, <span class="keyword">int</span>&amp; b) {
+    <span class="keyword">int</span> temp = a;
+    a = b;
+    b = temp;
+}
+
+<span class="keyword">int</span> <span class="function">main</span>() {
+    <span class="keyword">int</span> x = <span class="number">5</span>, y = <span class="number">10</span>;
+    cout &lt;&lt; <span class="string">"Before: x="</span> &lt;&lt; x &lt;&lt; <span class="string">", y="</span> &lt;&lt; y &lt;&lt; endl;
+    swap(x, y);
+    cout &lt;&lt; <span class="string">"After: x="</span> &lt;&lt; x &lt;&lt; <span class="string">", y="</span> &lt;&lt; y &lt;&lt; endl;
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+</code>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="example-box">
+                    <h5>Problem 2: Grade Calculator</h5>
+                    <p>Calculate average grade from a vector of scores.</p>
+                    
+                    <button class="toggle-solution" onclick="toggleSolution('sol2')">Show Solution</button>
+                    <div id="sol2" class="solution" style="display: none;">
+                        <div class="code-block" data-language="cpp">
+<code><span class="preprocessor">#include &lt;vector&gt;</span>
+<span class="preprocessor">#include &lt;numeric&gt;</span>
+
+<span class="keyword">double</span> <span class="function">calculateAverage</span>(<span class="keyword">const</span> vector&lt;<span class="keyword">int</span>&gt;&amp; grades) {
+    <span class="keyword">if</span> (grades.empty()) <span class="keyword">return</span> <span class="number">0.0</span>;
+    <span class="keyword">int</span> sum = accumulate(grades.begin(), grades.end(), <span class="number">0</span>);
+    <span class="keyword">return</span> <span class="keyword">static_cast</span>&lt;<span class="keyword">double</span>&gt;(sum) / grades.size();
+}
+
+<span class="keyword">int</span> <span class="function">main</span>() {
+    vector&lt;<span class="keyword">int</span>&gt; grades = {<span class="number">85</span>, <span class="number">90</span>, <span class="number">78</span>, <span class="number">92</span>, <span class="number">88</span>};
+    cout &lt;&lt; <span class="string">"Average: "</span> &lt;&lt; calculateAverage(grades) &lt;&lt; endl;
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+</code>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Key Takeaways</h3>
+                <ul>
+                    <li>C++ requires compilation before running</li>
+                    <li>Static typing with explicit type declarations</li>
+                    <li>Pointers provide memory addresses; references are safer aliases</li>
+                    <li>Function overloading allows same name with different parameters</li>
+                    <li>Manual memory management with new/delete (use smart pointers in modern C++)</li>
+                    <li>STL containers (vector, map, set) provide robust data structures</li>
+                    <li>Pass by reference for efficiency with large objects</li>
+                    <li>Always match new with delete, new[] with delete[]</li>
+                </ul>
+
+                <div class="info-box tip">
+                    <h4>💡 Next Steps</h4>
+                    <p>
+                        Now you know C++ basics! The next lesson covers advanced C++ features: templates, 
+                        smart pointers, move semantics, lambda expressions, and modern C++11/14/17 features 
+                        that make C++ safer and more expressive.
+                    </p>
+                </div>
+            </div>
+
+            <div class="lesson-navigation">
+                <a href="05-javascript-modern.html" class="nav-btn">← Previous: Modern JavaScript</a>
+                <a href="07-cpp-advanced.html" class="nav-btn">Next: C++ Advanced →</a>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../js/main.js"></script>
+    <script>
+        function toggleSolution(id) {
+            const solution = document.getElementById(id);
+            const button = event.target;
+            if (solution.style.display === 'none') {
+                solution.style.display = 'block';
+                button.textContent = 'Hide Solution';
+            } else {
+                solution.style.display = 'none';
+                button.textContent = 'Show Solution';
+            }
+        }
+    </script>
+</body>
+</html>

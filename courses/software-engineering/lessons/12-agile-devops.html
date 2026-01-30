@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 12: Agile & DevOps - Engineering Academy</title>
+    <link rel="stylesheet" href="../../../css/styles.css">
+    <link rel="stylesheet" href="../../../css/course-styles/course.css">
+</head>
+<body>
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <h1><a href="../../../index.html" style="color: inherit; text-decoration: none;">🎓 Engineering Academy</a></h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../../../index.html#courses">Courses</a></li>
+                    <li><a href="../index.html">Course Overview</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section class="course-header">
+        <div class="container">
+            <h1>💻 Software Engineering</h1>
+            <p>Lesson 12: Agile & DevOps</p>
+        </div>
+    </section>
+
+    <div class="course-container">
+        <aside class="course-sidebar">
+            <h3>Course Modules</h3>
+            <ul class="lesson-list">
+                <li><a href="../index.html"><span class="lesson-number">📚</span>Course Overview</a></li>
+                <li><a href="01-introduction.html" class="completed"><span class="lesson-number">1</span>Introduction to SE</a></li>
+                <li><a href="02-sdlc.html" class="completed"><span class="lesson-number">2</span>SDLC & Methodologies</a></li>
+                <li><a href="03-requirements-engineering.html" class="completed"><span class="lesson-number">3</span>Requirements Engineering</a></li>
+                <li><a href="04-creational-patterns.html" class="completed"><span class="lesson-number">4</span>Creational Patterns</a></li>
+                <li><a href="05-structural-patterns.html" class="completed"><span class="lesson-number">5</span>Structural Patterns</a></li>
+                <li><a href="06-behavioral-patterns.html" class="completed"><span class="lesson-number">6</span>Behavioral Patterns</a></li>
+                <li><a href="07-architecture.html" class="completed"><span class="lesson-number">7</span>System Architecture</a></li>
+                <li><a href="08-solid-principles.html" class="completed"><span class="lesson-number">8</span>SOLID Principles</a></li>
+                <li><a href="09-code-quality.html" class="completed"><span class="lesson-number">9</span>Code Quality</a></li>
+                <li><a href="10-testing.html" class="completed"><span class="lesson-number">10</span>Testing Strategies</a></li>
+                <li><a href="11-version-control.html" class="completed"><span class="lesson-number">11</span>Version Control</a></li>
+                <li><a href="12-agile-devops.html" class="active"><span class="lesson-number">12</span>Agile & DevOps</a></li>
+            </ul>
+        </aside>
+
+        <main class="course-content">
+            <h2>Agile Methodologies & DevOps Practices</h2>
+            <p class="intro">Master Agile principles, Scrum framework, Kanban methodology, and DevOps practices including CI/CD, containerization, and cloud platforms.</p>
+
+            <div class="content-section">
+                <h3>1. Agile Manifesto and Principles</h3>
+                
+                <p>Agile is a mindset and set of values for software development that emphasizes flexibility, collaboration, and customer satisfaction.</p>
+
+                <div class="info-box">
+                    <strong>The Agile Manifesto (2001):</strong>
+                    <p><em>We value:</em></p>
+                    <ul>
+                        <li><strong>Individuals and interactions</strong> over processes and tools</li>
+                        <li><strong>Working software</strong> over comprehensive documentation</li>
+                        <li><strong>Customer collaboration</strong> over contract negotiation</li>
+                        <li><strong>Responding to change</strong> over following a plan</li>
+                    </ul>
+                    <p><em>That is, while there is value in the items on the right, we value the items on the left more.</em></p>
+                </div>
+
+                <div class="info-box">
+                    <strong>12 Agile Principles:</strong>
+                    <ol>
+                        <li>Customer satisfaction through early and continuous delivery</li>
+                        <li>Welcome changing requirements, even late in development</li>
+                        <li>Deliver working software frequently (weeks rather than months)</li>
+                        <li>Business people and developers work together daily</li>
+                        <li>Build projects around motivated individuals</li>
+                        <li>Face-to-face conversation is most effective</li>
+                        <li>Working software is primary measure of progress</li>
+                        <li>Sustainable development - maintain constant pace</li>
+                        <li>Continuous attention to technical excellence</li>
+                        <li>Simplicity - maximize work not done</li>
+                        <li>Self-organizing teams produce best results</li>
+                        <li>Regular reflection and adjustment</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>2. Scrum Framework</h3>
+                
+                <p>Scrum is an Agile framework for managing complex projects with iterative development cycles called sprints.</p>
+
+                <h4>2.1 Scrum Roles</h4>
+                
+                <div class="info-box">
+                    <strong>Three Core Roles:</strong>
+                    <ul>
+                        <li><strong>Product Owner:</strong> Defines features, prioritizes backlog, accepts/rejects work</li>
+                        <li><strong>Scrum Master:</strong> Facilitates process, removes impediments, coaches team</li>
+                        <li><strong>Development Team:</strong> Self-organizing, cross-functional, 3-9 people</li>
+                    </ul>
+                </div>
+
+                <h4>2.2 Scrum Artifacts</h4>
+                
+                <div class="example-box">
+                    <strong>Scrum Artifacts</strong>
+                    <pre><code>1. PRODUCT BACKLOG
+   - Prioritized list of features
+   - User stories with acceptance criteria
+   - Maintained by Product Owner
+
+   Example User Story:
+   "As a user, I want to reset my password via email
+    so that I can regain access if I forget it"
+   
+   Acceptance Criteria:
+   - User receives reset email within 5 minutes
+   - Reset link expires after 24 hours
+   - Old password no longer works after reset
+
+2. SPRINT BACKLOG
+   - Selected items from product backlog
+   - Tasks for current sprint
+   - Owned by development team
+
+   Sprint Goal: "Implement user authentication features"
+   
+   Tasks:
+   - [ ] Design login UI
+   - [ ] Implement password validation
+   - [ ] Add forgot password functionality
+   - [ ] Write unit tests
+   - [ ] Update documentation
+
+3. INCREMENT
+   - Potentially shippable product
+   - Sum of all completed backlog items
+   - Must meet Definition of Done
+
+   Definition of Done:
+   ✓ Code reviewed
+   ✓ Unit tests pass (>80% coverage)
+   ✓ Integration tests pass
+   ✓ Documentation updated
+   ✓ Deployed to staging
+   ✓ Accepted by Product Owner</code></pre>
+                </div>
+
+                <h4>2.3 Scrum Ceremonies</h4>
+                
+                <div class="example-box">
+                    <strong>Sprint Events</strong>
+                    <pre><code>1. SPRINT PLANNING (2-4 hours for 2-week sprint)
+   - What will be delivered?
+   - How will work be achieved?
+   
+   Input: Product backlog, team velocity
+   Output: Sprint goal, sprint backlog
+   
+   Activities:
+   - Product Owner presents top priorities
+   - Team discusses and estimates stories
+   - Team commits to sprint goal
+
+2. DAILY STANDUP (15 minutes)
+   - What did I do yesterday?
+   - What will I do today?
+   - Any blockers?
+   
+   Rules:
+   - Same time, same place
+   - Stand up (keeps it short)
+   - Focus on commitment, not status report
+
+3. SPRINT REVIEW (1-2 hours)
+   - Demo completed work
+   - Stakeholder feedback
+   - Update product backlog
+   
+   Attendees: Team, Product Owner, stakeholders
+   Format: Live demo, not PowerPoint
+
+4. SPRINT RETROSPECTIVE (1-1.5 hours)
+   - What went well?
+   - What could be improved?
+   - Action items for next sprint
+   
+   Techniques:
+   - Start, Stop, Continue
+   - Glad, Sad, Mad
+   - 4 L's (Liked, Learned, Lacked, Longed for)</code></pre>
+                </div>
+
+                <h4>2.4 Sprint Cycle</h4>
+                
+                <div class="example-box">
+                    <strong>Typical 2-Week Sprint</strong>
+                    <pre><code>Week 1:
+Monday:
+  9:00 AM  - Sprint Planning (4 hours)
+  1:00 PM  - Team starts development
+
+Tuesday-Friday:
+  9:00 AM  - Daily Standup (15 min)
+  Rest of day - Development
+
+Week 2:
+Monday-Thursday:
+  9:00 AM  - Daily Standup (15 min)
+  Rest of day - Development
+
+Friday:
+  9:00 AM  - Daily Standup (15 min)
+  10:00 AM - Sprint Review (2 hours)
+  1:00 PM  - Sprint Retrospective (1.5 hours)
+  3:00 PM  - Backlog refinement (optional)
+
+Sprint Velocity Example:
+Sprint 1: 23 story points completed
+Sprint 2: 27 story points completed
+Sprint 3: 25 story points completed
+Average: 25 points/sprint
+
+Next sprint planning: Commit to ~25 points</code></pre>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>3. Kanban Methodology</h3>
+                
+                <p>Kanban is a visual workflow management method that emphasizes continuous delivery without fixed iterations.</p>
+
+                <div class="example-box">
+                    <strong>Kanban Board</strong>
+                    <pre><code>┌────────┬────────┬─────────┬────────┬──────┐
+│ BACKLOG│  TODO  │IN PROGRESS│REVIEW│ DONE │
+├────────┼────────┼─────────┼────────┼──────┤
+│        │        │         │        │      │
+│ Story 5│Story 2 │ Story 1 │        │Story │
+│        │        │ [Dev A] │        │  0   │
+│ Story 6│Story 3 │         │        │      │
+│        │        │ Story 4 │        │      │
+│ Story 7│        │ [Dev B] │        │      │
+│        │        │         │        │      │
+│ Story 8│        │         │        │      │
+│        │        │         │        │      │
+└────────┴────────┴─────────┴────────┴──────┘
+          WIP Limit: 2 per person
+
+Kanban Principles:
+1. Visualize workflow
+2. Limit Work in Progress (WIP)
+3. Manage flow
+4. Make policies explicit
+5. Implement feedback loops
+6. Improve collaboratively
+
+Kanban Metrics:
+- Lead Time: Backlog → Done
+- Cycle Time: In Progress → Done
+- Throughput: Items completed per week
+- WIP: Items currently in progress</code></pre>
+                </div>
+
+                <div class="info-box">
+                    <strong>Scrum vs Kanban:</strong>
+                    <table style="width: 100%;">
+                        <tr>
+                            <th>Aspect</th>
+                            <th>Scrum</th>
+                            <th>Kanban</th>
+                        </tr>
+                        <tr>
+                            <td>Iterations</td>
+                            <td>Fixed sprints (1-4 weeks)</td>
+                            <td>Continuous flow</td>
+                        </tr>
+                        <tr>
+                            <td>Roles</td>
+                            <td>Defined (PO, SM, Team)</td>
+                            <td>No required roles</td>
+                        </tr>
+                        <tr>
+                            <td>Changes</td>
+                            <td>No changes during sprint</td>
+                            <td>Changes anytime</td>
+                        </tr>
+                        <tr>
+                            <td>Estimation</td>
+                            <td>Required (story points)</td>
+                            <td>Optional</td>
+                        </tr>
+                        <tr>
+                            <td>Board</td>
+                            <td>Reset each sprint</td>
+                            <td>Persistent</td>
+                        </tr>
+                        <tr>
+                            <td>WIP Limits</td>
+                            <td>Indirect (sprint capacity)</td>
+                            <td>Explicit per column</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>4. DevOps Culture and Practices</h3>
+                
+                <p>DevOps is a culture and set of practices that combines software development (Dev) and IT operations (Ops) to shorten development lifecycle and deliver high-quality software continuously.</p>
+
+                <div class="info-box">
+                    <strong>DevOps Principles:</strong>
+                    <ul>
+                        <li><strong>Collaboration:</strong> Break down silos between Dev and Ops</li>
+                        <li><strong>Automation:</strong> Automate repetitive tasks</li>
+                        <li><strong>Continuous Integration:</strong> Merge code frequently</li>
+                        <li><strong>Continuous Delivery:</strong> Release often and reliably</li>
+                        <li><strong>Monitoring:</strong> Observe and measure everything</li>
+                        <li><strong>Feedback:</strong> Fast feedback loops</li>
+                    </ul>
+                </div>
+
+                <h4>4.1 CI/CD Pipelines</h4>
+                
+                <div class="example-box">
+                    <strong>Continuous Integration/Continuous Deployment</strong>
+                    <pre><code>CI/CD Pipeline Stages:
+
+┌──────┐  ┌──────┐  ┌──────┐  ┌────┐  ┌────────┐  ┌──────┐
+│ Code │→ │Build │→ │ Test │→ │QA  │→ │Staging │→ │Prod  │
+└──────┘  └──────┘  └──────┘  └────┘  └────────┘  └──────┘
+
+Continuous Integration (CI):
+1. Developer commits code
+2. CI server detects change
+3. Code is built
+4. Tests run automatically
+5. Feedback sent to developer
+
+Continuous Delivery (CD):
+6. Deploy to staging automatically
+7. Manual approval for production
+
+Continuous Deployment:
+6-7. Deploy to production automatically</code></pre>
+                </div>
+
+                <div class="example-box">
+                    <strong>GitHub Actions CI/CD Example</strong>
+                    <pre><code># .github/workflows/ci-cd.yml
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Run linter
+      run: npm run lint
+
+    - name: Run tests
+      run: npm test -- --coverage
+
+    - name: Build application
+      run: npm run build
+
+    - name: Upload coverage
+      uses: codecov/codecov-action@v3
+
+  deploy-staging:
+    needs: build-and-test
+    if: github.ref == 'refs/heads/develop'
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Deploy to staging
+      run: |
+        echo "Deploying to staging..."
+        # Deploy commands here
+
+  deploy-production:
+    needs: build-and-test
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment: production
+    
+    steps:
+    - name: Deploy to production
+      run: |
+        echo "Deploying to production..."
+        # Deploy commands here
+
+    - name: Notify team
+      run: |
+        echo "Sending deployment notification..."</code></pre>
+                </div>
+
+                <div class="example-box">
+                    <strong>GitLab CI/CD Example</strong>
+                    <pre><code># .gitlab-ci.yml
+stages:
+  - build
+  - test
+  - deploy
+
+variables:
+  DOCKER_IMAGE: myapp:$CI_COMMIT_SHA
+
+build:
+  stage: build
+  image: node:18
+  script:
+    - npm ci
+    - npm run build
+  artifacts:
+    paths:
+      - dist/
+    expire_in: 1 hour
+
+test:
+  stage: test
+  image: node:18
+  script:
+    - npm ci
+    - npm run lint
+    - npm test -- --coverage
+  coverage: '/Lines\s*:\s*(\d+\.\d+)%/'
+
+deploy-staging:
+  stage: deploy
+  only:
+    - develop
+  script:
+    - echo "Deploying to staging"
+    - ./deploy-staging.sh
+  environment:
+    name: staging
+    url: https://staging.myapp.com
+
+deploy-production:
+  stage: deploy
+  only:
+    - main
+  script:
+    - echo "Deploying to production"
+    - ./deploy-production.sh
+  environment:
+    name: production
+    url: https://myapp.com
+  when: manual  # Require manual approval</code></pre>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>5. Containerization with Docker</h3>
+                
+                <p>Containers package applications with their dependencies, ensuring consistency across environments.</p>
+
+                <div class="example-box">
+                    <strong>Dockerfile Example</strong>
+                    <pre><code># Dockerfile
+# Multi-stage build for Node.js application
+
+# Stage 1: Build
+FROM node:18-alpine AS builder
+
+WORKDIR /app
+
+# Copy package files
+COPY package*.json ./
+
+# Install dependencies
+RUN npm ci --only=production
+
+# Copy source code
+COPY . .
+
+# Build application
+RUN npm run build
+
+# Stage 2: Production
+FROM node:18-alpine
+
+WORKDIR /app
+
+# Copy built app from builder
+COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/node_modules ./node_modules
+COPY package*.json ./
+
+# Create non-root user
+RUN addgroup -g 1001 -S nodejs && \
+    adduser -S nodejs -u 1001
+
+USER nodejs
+
+# Expose port
+EXPOSE 3000
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s \
+  CMD node healthcheck.js
+
+# Start application
+CMD ["node", "dist/server.js"]</code></pre>
+                </div>
+
+                <div class="example-box">
+                    <strong>Docker Commands</strong>
+                    <pre><code># Build image
+docker build -t myapp:latest .
+
+# Run container
+docker run -d -p 3000:3000 --name myapp myapp:latest
+
+# View running containers
+docker ps
+
+# View logs
+docker logs myapp
+docker logs -f myapp  # Follow logs
+
+# Execute command in container
+docker exec -it myapp /bin/sh
+
+# Stop container
+docker stop myapp
+
+# Remove container
+docker rm myapp
+
+# Docker Compose for multi-container apps
+# docker-compose.yml
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - DATABASE_URL=postgres://db:5432/myapp
+    depends_on:
+      - db
+      - redis
+
+  db:
+    image: postgres:15
+    environment:
+      - POSTGRES_DB=myapp
+      - POSTGRES_PASSWORD=secret
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+
+volumes:
+  postgres-data:
+
+# Run with Docker Compose
+docker-compose up -d
+docker-compose down
+docker-compose logs -f</code></pre>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>6. Kubernetes Basics</h3>
+                
+                <p>Kubernetes (K8s) is a container orchestration platform for automating deployment, scaling, and management of containerized applications.</p>
+
+                <div class="example-box">
+                    <strong>Kubernetes Resources</strong>
+                    <pre><code># deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp
+  labels:
+    app: myapp
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: myapp
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+      - name: myapp
+        image: myapp:latest
+        ports:
+        - containerPort: 3000
+        env:
+        - name: DATABASE_URL
+          valueFrom:
+            secretKeyRef:
+              name: db-secret
+              key: url
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "256Mi"
+            cpu: "200m"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 3000
+          initialDelaySeconds: 30
+          periodSeconds: 10
+
+---
+# service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: myapp-service
+spec:
+  selector:
+    app: myapp
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 3000
+  type: LoadBalancer
+
+---
+# ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: myapp-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+spec:
+  rules:
+  - host: myapp.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: myapp-service
+            port:
+              number: 80
+  tls:
+  - hosts:
+    - myapp.com
+    secretName: myapp-tls
+
+# Apply resources
+kubectl apply -f deployment.yaml
+kubectl apply -f service.yaml
+kubectl apply -f ingress.yaml
+
+# View resources
+kubectl get pods
+kubectl get services
+kubectl get deployments
+
+# Scale deployment
+kubectl scale deployment myapp --replicas=5
+
+# View logs
+kubectl logs -f deployment/myapp
+
+# Execute command in pod
+kubectl exec -it myapp-pod-xyz -- /bin/sh</code></pre>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>7. Monitoring and Logging</h3>
+                
+                <div class="example-box">
+                    <strong>Monitoring Stack</strong>
+                    <pre><code># Prometheus for metrics
+# prometheus.yml
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: 'myapp'
+    static_configs:
+      - targets: ['localhost:3000']
+
+# Application metrics endpoint
+app.get('/metrics', (req, res) => {
+  const metrics = {
+    http_requests_total: 12345,
+    http_request_duration_seconds: 0.05,
+    active_users: 150,
+    database_connections: 10
+  };
+  res.send(metrics);
+});
+
+# Grafana Dashboard Query Examples:
+# Request rate:
+rate(http_requests_total[5m])
+
+# Error rate:
+rate(http_errors_total[5m]) / rate(http_requests_total[5m])
+
+# P95 latency:
+histogram_quantile(0.95, http_request_duration_seconds)
+
+# Logging with structured logs
+import winston from 'winston';
+
+const logger = winston.createLogger({
+  level: 'info',
+  format: winston.format.json(),
+  transports: [
+    new winston.transports.File({ filename: 'error.log', level: 'error' }),
+    new winston.transports.File({ filename: 'combined.log' })
+  ]
+});
+
+// Application logging
+logger.info('User logged in', {
+  userId: '123',
+  timestamp: new Date(),
+  ip: req.ip
+});
+
+logger.error('Database connection failed', {
+  error: error.message,
+  stack: error.stack
+});
+
+# ELK Stack (Elasticsearch, Logstash, Kibana)
+# - Centralized logging
+# - Log aggregation
+# - Search and visualization</code></pre>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>8. Cloud Platforms</h3>
+                
+                <div class="info-box">
+                    <strong>Major Cloud Providers:</strong>
+                    
+                    <p><strong>AWS (Amazon Web Services):</strong></p>
+                    <ul>
+                        <li>EC2: Virtual servers</li>
+                        <li>S3: Object storage</li>
+                        <li>RDS: Managed databases</li>
+                        <li>Lambda: Serverless functions</li>
+                        <li>ECS/EKS: Container services</li>
+                    </ul>
+
+                    <p><strong>Azure (Microsoft):</strong></p>
+                    <ul>
+                        <li>Virtual Machines</li>
+                        <li>Blob Storage</li>
+                        <li>Azure SQL Database</li>
+                        <li>Azure Functions</li>
+                        <li>AKS: Kubernetes Service</li>
+                    </ul>
+
+                    <p><strong>GCP (Google Cloud Platform):</strong></p>
+                    <ul>
+                        <li>Compute Engine</li>
+                        <li>Cloud Storage</li>
+                        <li>Cloud SQL</li>
+                        <li>Cloud Functions</li>
+                        <li>GKE: Kubernetes Engine</li>
+                    </ul>
+                </div>
+
+                <div class="example-box">
+                    <strong>AWS Deployment Example</strong>
+                    <pre><code># Deploy Node.js app to AWS Elastic Beanstalk
+
+# 1. Install EB CLI
+pip install awsebcli
+
+# 2. Initialize EB application
+eb init -p node.js-18 myapp
+
+# 3. Create environment
+eb create myapp-env
+
+# 4. Deploy
+eb deploy
+
+# 5. Open in browser
+eb open
+
+# Using AWS CLI
+# Deploy to S3
+aws s3 sync ./build s3://my-bucket --delete
+
+# Deploy Lambda function
+aws lambda update-function-code \
+  --function-name myFunction \
+  --zip-file fileb://function.zip
+
+# Infrastructure as Code (Terraform)
+resource "aws_instance" "app" {
+  ami           = "ami-0c55b159cbfafe1f0"
+  instance_type = "t2.micro"
+  
+  tags = {
+    Name = "MyApp"
+  }
+}
+
+resource "aws_s3_bucket" "assets" {
+  bucket = "myapp-assets"
+  acl    = "public-read"
+}</code></pre>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>9. Practice Problems</h3>
+                
+                <div class="practice-problems">
+                    <div class="problem">
+                        <h4>Problem 1: Plan a Sprint</h4>
+                        <p><strong>Scenario:</strong> You're starting a 2-week sprint with a team of 5 developers. Last 3 sprints completed 25, 28, and 27 story points.</p>
+                        <p><strong>Tasks:</strong></p>
+                        <ul>
+                            <li>Calculate team velocity</li>
+                            <li>Select stories from backlog (provided below)</li>
+                            <li>Define sprint goal</li>
+                        </ul>
+                        
+                        <p><strong>Product Backlog:</strong></p>
+                        <ul>
+                            <li>User authentication (8 points)</li>
+                            <li>Password reset (5 points)</li>
+                            <li>User profile page (8 points)</li>
+                            <li>Search functionality (13 points)</li>
+                            <li>Email notifications (5 points)</li>
+                            <li>Admin dashboard (13 points)</li>
+                        </ul>
+
+                        <details>
+                            <summary>Show Solution</summary>
+                            <pre><code>Team Velocity:
+Average = (25 + 28 + 27) / 3 = 26.67 ≈ 27 points
+
+Sprint Selection (27 points total):
+✓ User authentication (8 points)
+✓ Password reset (5 points)
+✓ User profile page (8 points)
+✓ Email notifications (5 points)
+Total: 26 points
+
+Sprint Goal:
+"Implement complete user account management system 
+including authentication, profile management, and 
+password recovery."
+
+Why not include Search (13 points)?
+- Would exceed velocity (26 + 13 = 39)
+- Search is lower priority
+- Save for next sprint</code></pre>
+                        </details>
+                    </div>
+
+                    <div class="problem">
+                        <h4>Problem 2: Design CI/CD Pipeline</h4>
+                        <p><strong>Task:</strong> Design a CI/CD pipeline for a Node.js application that deploys to staging and production.</p>
+                        
+                        <details>
+                            <summary>Show Solution</summary>
+                            <pre><code>Pipeline Stages:
+
+1. CODE COMMIT
+   Trigger: Push to any branch
+
+2. BUILD & TEST (All branches)
+   - Install dependencies
+   - Run linter
+   - Run unit tests
+   - Run integration tests
+   - Generate coverage report
+   - Build application
+
+3. SECURITY SCAN
+   - Dependency vulnerability scan
+   - Static code analysis
+   - Secret detection
+
+4. DEPLOY TO STAGING (develop branch only)
+   - Build Docker image
+   - Push to registry
+   - Deploy to staging environment
+   - Run smoke tests
+
+5. MANUAL APPROVAL (main branch only)
+   - Product Owner approval
+   - QA sign-off
+
+6. DEPLOY TO PRODUCTION (main branch after approval)
+   - Blue-green deployment
+   - Health checks
+   - Rollback capability
+   - Notify team
+
+7. POST-DEPLOYMENT
+   - Monitor metrics
+   - Check error rates
+   - Alert on anomalies
+
+Tools:
+- CI/CD: GitHub Actions / GitLab CI
+- Container Registry: Docker Hub / ECR
+- Orchestration: Kubernetes
+- Monitoring: Prometheus + Grafana
+- Logging: ELK Stack</code></pre>
+                        </details>
+                    </div>
+                </div>
+            </div>
+
+            <div class="key-takeaways">
+                <h3>Key Takeaways</h3>
+                <ul>
+                    <li><strong>Agile:</strong> Flexible, iterative development focused on customer collaboration and responding to change</li>
+                    <li><strong>Scrum:</strong> Fixed sprints, defined roles (PO, SM, Team), ceremonies (planning, standup, review, retro)</li>
+                    <li><strong>Kanban:</strong> Continuous flow, WIP limits, visualize workflow, flexible and adaptive</li>
+                    <li><strong>DevOps:</strong> Culture of collaboration between Dev and Ops, automation, continuous delivery</li>
+                    <li><strong>CI/CD:</strong> Automate build, test, and deployment - fast feedback and reliable releases</li>
+                    <li><strong>Docker:</strong> Containerize applications for consistency across environments</li>
+                    <li><strong>Kubernetes:</strong> Orchestrate containers at scale with automated deployment and scaling</li>
+                    <li><strong>Monitoring:</strong> Observe system behavior, measure performance, detect issues early</li>
+                    <li><strong>Cloud Platforms:</strong> AWS, Azure, GCP provide scalable infrastructure and services</li>
+                    <li>DevOps is a culture, not just tools - collaboration and communication are key</li>
+                </ul>
+            </div>
+
+            <div class="lesson-navigation">
+                <a href="11-version-control.html" class="nav-btn">← Previous: Version Control</a>
+                <span class="nav-btn disabled" style="opacity: 0.5; cursor: not-allowed;">Course Complete! 🎉</span>
+            </div>
+
+            <div style="margin-top: 40px; padding: 30px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 10px; color: white; text-align: center;">
+                <h3 style="margin-top: 0;">🎉 Congratulations! 🎉</h3>
+                <p style="font-size: 1.1em;">You've completed all 12 lessons of the Software Engineering course!</p>
+                <p>You've learned about SDLC, design patterns, architecture, SOLID principles, code quality, testing, version control, and Agile/DevOps practices.</p>
+                <p style="margin-bottom: 0;"><strong>Next steps:</strong> Apply these concepts in real projects, continue learning, and share your knowledge with others!</p>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../js/course.js"></script>
+</body>
+</html>

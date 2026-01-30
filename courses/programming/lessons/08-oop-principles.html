@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 8: OOP Principles - Engineering Academy</title>
+    <link rel="stylesheet" href="../../../css/styles.css">
+    <link rel="stylesheet" href="../../../css/course-styles/course.css">
+</head>
+<body>
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <h1><a href="../../../index.html" style="color: inherit; text-decoration: none;">🎓 Engineering Academy</a></h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../index.html">Course Overview</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section class="course-header">
+        <div class="container">
+            <h1>⌨️ Programming</h1>
+            <p>Lesson 8: Object-Oriented Programming Principles</p>
+        </div>
+    </section>
+
+    <div class="course-container">
+        <aside class="course-sidebar">
+            <h3>Course Modules</h3>
+            <ul class="lesson-list">
+                <li><a href="../index.html"><span class="lesson-number">📚</span>Course Overview</a></li>
+                <li><a href="01-programming-fundamentals.html" class="completed"><span class="lesson-number">1</span>Programming Fundamentals</a></li>
+                <li><a href="02-python-basics.html" class="completed"><span class="lesson-number">2</span>Python Basics</a></li>
+                <li><a href="03-python-advanced.html" class="completed"><span class="lesson-number">3</span>Python Advanced</a></li>
+                <li><a href="04-javascript-basics.html" class="completed"><span class="lesson-number">4</span>JavaScript Basics</a></li>
+                <li><a href="05-javascript-modern.html" class="completed"><span class="lesson-number">5</span>Modern JavaScript</a></li>
+                <li><a href="06-cpp-basics.html" class="completed"><span class="lesson-number">6</span>C++ Basics</a></li>
+                <li><a href="07-cpp-advanced.html" class="completed"><span class="lesson-number">7</span>C++ Advanced</a></li>
+                <li><a href="08-oop-principles.html" class="active"><span class="lesson-number">8</span>OOP Principles</a></li>
+                <li><a href="09-data-structures.html"><span class="lesson-number">9</span>Data Structures</a></li>
+                <li><a href="10-algorithms.html"><span class="lesson-number">10</span>Algorithms</a></li>
+                <li><a href="11-debugging.html"><span class="lesson-number">11</span>Debugging & Testing</a></li>
+                <li><a href="12-best-practices.html"><span class="lesson-number">12</span>Best Practices</a></li>
+            </ul>
+        </aside>
+
+        <main class="course-content">
+            <div class="lesson-header">
+                <h2>Lesson 8: Object-Oriented Programming Principles</h2>
+                <div class="lesson-meta">
+                    <span>📖 110 min read</span>
+                    <span>📊 Intermediate</span>
+                </div>
+            </div>
+
+            <div class="lesson-content">
+                <h3>Introduction to OOP</h3>
+                <p>
+                    Object-Oriented Programming (OOP) is a paradigm based on the concept of "objects" that contain 
+                    data (attributes) and code (methods). OOP promotes code reusability, modularity, and maintainability 
+                    through four core principles: Encapsulation, Inheritance, Polymorphism, and Abstraction.
+                </p>
+
+                <div class="info-box note">
+                    <h4>📌 The Four Pillars of OOP</h4>
+                    <ul>
+                        <li><strong>Encapsulation:</strong> Bundling data and methods, hiding internal details</li>
+                        <li><strong>Inheritance:</strong> Creating new classes from existing ones</li>
+                        <li><strong>Polymorphism:</strong> Same interface, different implementations</li>
+                        <li><strong>Abstraction:</strong> Hiding complexity, showing only essential features</li>
+                    </ul>
+                </div>
+
+                <h3>Classes and Objects</h3>
+
+                <h4>Python: Class Definition and Instantiation</h4>
+                <div class="code-block" data-language="python">
+<code><span class="keyword">class</span> <span class="class-name">Dog</span>:
+    <span class="comment"># Class attribute (shared by all instances)</span>
+    species = <span class="string">"Canis familiaris"</span>
+    
+    <span class="keyword">def</span> <span class="function">__init__</span>(self, name, age):
+        <span class="comment"># Instance attributes (unique to each instance)</span>
+        self.name = name
+        self.age = age
+    
+    <span class="keyword">def</span> <span class="function">bark</span>(self):
+        <span class="keyword">return</span> <span class="string">f"<span class="template-var">{self.name}</span> says Woof!"</span>
+    
+    <span class="keyword">def</span> <span class="function">description</span>(self):
+        <span class="keyword">return</span> <span class="string">f"<span class="template-var">{self.name}</span> is <span class="template-var">{self.age}</span> years old"</span>
+
+<span class="comment"># Creating objects (instances)</span>
+buddy = Dog(<span class="string">"Buddy"</span>, <span class="number">3</span>)
+max_dog = Dog(<span class="string">"Max"</span>, <span class="number">5</span>)
+
+<span class="function">print</span>(buddy.bark())          <span class="comment"># Buddy says Woof!</span>
+<span class="function">print</span>(buddy.description())   <span class="comment"># Buddy is 3 years old</span>
+<span class="function">print</span>(Dog.species)           <span class="comment"># Canis familiaris</span>
+</code>
+                </div>
+
+                <h4>JavaScript: Class Definition</h4>
+                <div class="code-block" data-language="javascript">
+<code><span class="keyword">class</span> <span class="class-name">Dog</span> {
+    <span class="comment">// Static property (shared by all instances)</span>
+    <span class="keyword">static</span> species = <span class="string">'Canis familiaris'</span>;
+    
+    <span class="function">constructor</span>(name, age) {
+        <span class="comment">// Instance properties</span>
+        <span class="keyword">this</span>.name = name;
+        <span class="keyword">this</span>.age = age;
+    }
+    
+    <span class="function">bark</span>() {
+        <span class="keyword">return</span> <span class="string">`<span class="template-var">${<span class="keyword">this</span>.name}</span> says Woof!`</span>;
+    }
+    
+    <span class="function">description</span>() {
+        <span class="keyword">return</span> <span class="string">`<span class="template-var">${<span class="keyword">this</span>.name}</span> is <span class="template-var">${<span class="keyword">this</span>.age}</span> years old`</span>;
+    }
+}
+
+<span class="comment">// Creating objects</span>
+<span class="keyword">const</span> buddy = <span class="keyword">new</span> <span class="class-name">Dog</span>(<span class="string">'Buddy'</span>, <span class="number">3</span>);
+<span class="keyword">const</span> maxDog = <span class="keyword">new</span> <span class="class-name">Dog</span>(<span class="string">'Max'</span>, <span class="number">5</span>);
+
+console.<span class="function">log</span>(buddy.bark());         <span class="comment">// Buddy says Woof!</span>
+console.<span class="function">log</span>(Dog.species);          <span class="comment">// Canis familiaris</span>
+</code>
+                </div>
+
+                <h4>C++: Class Definition</h4>
+                <div class="code-block" data-language="cpp">
+<code><span class="preprocessor">#include &lt;iostream&gt;</span>
+<span class="preprocessor">#include &lt;string&gt;</span>
+<span class="keyword">using namespace</span> std;
+
+<span class="keyword">class</span> <span class="class-name">Dog</span> {
+<span class="keyword">private</span>:
+    string name;
+    <span class="keyword">int</span> age;
+    
+<span class="keyword">public</span>:
+    <span class="comment">// Static member (shared by all instances)</span>
+    <span class="keyword">static const</span> string species;
+    
+    <span class="comment">// Constructor</span>
+    Dog(string n, <span class="keyword">int</span> a) : name(n), age(a) {}
+    
+    <span class="comment">// Methods</span>
+    string <span class="function">bark</span>() {
+        <span class="keyword">return</span> name + <span class="string">" says Woof!"</span>;
+    }
+    
+    string <span class="function">description</span>() {
+        <span class="keyword">return</span> name + <span class="string">" is "</span> + to_string(age) + <span class="string">" years old"</span>;
+    }
+};
+
+<span class="comment">// Define static member</span>
+<span class="keyword">const</span> string Dog::species = <span class="string">"Canis familiaris"</span>;
+
+<span class="keyword">int</span> <span class="function">main</span>() {
+    Dog buddy(<span class="string">"Buddy"</span>, <span class="number">3</span>);
+    Dog maxDog(<span class="string">"Max"</span>, <span class="number">5</span>);
+    
+    cout &lt;&lt; buddy.bark() &lt;&lt; endl;
+    cout &lt;&lt; Dog::species &lt;&lt; endl;
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+</code>
+                </div>
+
+                <h3>Encapsulation</h3>
+                <p>
+                    Encapsulation bundles data and methods together while hiding internal implementation details. 
+                    Access is controlled through public, private, and protected modifiers.
+                </p>
+
+                <h4>Python: Encapsulation with Name Mangling</h4>
+                <div class="code-block" data-language="python">
+<code><span class="keyword">class</span> <span class="class-name">BankAccount</span>:
+    <span class="keyword">def</span> <span class="function">__init__</span>(self, account_number, balance):
+        self.account_number = account_number  <span class="comment"># Public</span>
+        self._balance = balance  <span class="comment"># Protected (convention: single underscore)</span>
+        self.__pin = <span class="number">1234</span>  <span class="comment"># Private (name mangling: double underscore)</span>
+    
+    <span class="comment"># Getter</span>
+    <span class="keyword">def</span> <span class="function">get_balance</span>(self):
+        <span class="keyword">return</span> self._balance
+    
+    <span class="comment"># Setter with validation</span>
+    <span class="keyword">def</span> <span class="function">deposit</span>(self, amount):
+        <span class="keyword">if</span> amount &gt; <span class="number">0</span>:
+            self._balance += amount
+            <span class="keyword">return</span> <span class="keyword">True</span>
+        <span class="keyword">return</span> <span class="keyword">False</span>
+    
+    <span class="keyword">def</span> <span class="function">withdraw</span>(self, amount, pin):
+        <span class="keyword">if</span> pin == self.__pin <span class="keyword">and</span> amount &lt;= self._balance:
+            self._balance -= amount
+            <span class="keyword">return</span> <span class="keyword">True</span>
+        <span class="keyword">return</span> <span class="keyword">False</span>
+    
+    <span class="comment"># Property decorator (Pythonic getter/setter)</span>
+    <span class="decorator">@property</span>
+    <span class="keyword">def</span> <span class="function">balance</span>(self):
+        <span class="keyword">return</span> self._balance
+
+account = BankAccount(<span class="string">"12345"</span>, <span class="number">1000</span>)
+<span class="function">print</span>(account.balance)        <span class="comment"># 1000 (using property)</span>
+account.deposit(<span class="number">500</span>)
+<span class="function">print</span>(account.get_balance())  <span class="comment"># 1500</span>
+<span class="comment"># print(account.__pin)  # AttributeError - private!</span>
+</code>
+                </div>
+
+                <h4>C++: Access Modifiers</h4>
+                <div class="code-block" data-language="cpp">
+<code><span class="keyword">class</span> <span class="class-name">BankAccount</span> {
+<span class="keyword">private</span>:
+    string accountNumber;
+    <span class="keyword">double</span> balance;
+    <span class="keyword">int</span> pin;
+    
+<span class="keyword">protected</span>:
+    <span class="keyword">void</span> <span class="function">logTransaction</span>(string type, <span class="keyword">double</span> amount) {
+        cout &lt;&lt; type &lt;&lt; <span class="string">": $"</span> &lt;&lt; amount &lt;&lt; endl;
+    }
+    
+<span class="keyword">public</span>:
+    BankAccount(string acc, <span class="keyword">double</span> bal, <span class="keyword">int</span> p) 
+        : accountNumber(acc), balance(bal), pin(p) {}
+    
+    <span class="comment">// Getter</span>
+    <span class="keyword">double</span> <span class="function">getBalance</span>() <span class="keyword">const</span> { <span class="keyword">return</span> balance; }
+    
+    <span class="comment">// Setter with validation</span>
+    <span class="keyword">bool</span> <span class="function">deposit</span>(<span class="keyword">double</span> amount) {
+        <span class="keyword">if</span> (amount &gt; <span class="number">0</span>) {
+            balance += amount;
+            logTransaction(<span class="string">"Deposit"</span>, amount);
+            <span class="keyword">return</span> <span class="keyword">true</span>;
+        }
+        <span class="keyword">return</span> <span class="keyword">false</span>;
+    }
+    
+    <span class="keyword">bool</span> <span class="function">withdraw</span>(<span class="keyword">double</span> amount, <span class="keyword">int</span> userPin) {
+        <span class="keyword">if</span> (userPin == pin &amp;&amp; amount &lt;= balance) {
+            balance -= amount;
+            logTransaction(<span class="string">"Withdrawal"</span>, amount);
+            <span class="keyword">return</span> <span class="keyword">true</span>;
+        }
+        <span class="keyword">return</span> <span class="keyword">false</span>;
+    }
+};
+</code>
+                </div>
+
+                <h3>Inheritance</h3>
+                <p>Inheritance allows creating new classes based on existing classes, promoting code reuse.</p>
+
+                <h4>Python: Single Inheritance</h4>
+                <div class="code-block" data-language="python">
+<code><span class="keyword">class</span> <span class="class-name">Animal</span>:
+    <span class="keyword">def</span> <span class="function">__init__</span>(self, name, age):
+        self.name = name
+        self.age = age
+    
+    <span class="keyword">def</span> <span class="function">speak</span>(self):
+        <span class="keyword">pass</span>  <span class="comment"># Abstract method</span>
+    
+    <span class="keyword">def</span> <span class="function">info</span>(self):
+        <span class="keyword">return</span> <span class="string">f"<span class="template-var">{self.name}</span> is <span class="template-var">{self.age}</span> years old"</span>
+
+<span class="comment"># Dog inherits from Animal</span>
+<span class="keyword">class</span> <span class="class-name">Dog</span>(Animal):
+    <span class="keyword">def</span> <span class="function">__init__</span>(self, name, age, breed):
+        <span class="function">super</span>().__init__(name, age)  <span class="comment"># Call parent constructor</span>
+        self.breed = breed
+    
+    <span class="keyword">def</span> <span class="function">speak</span>(self):
+        <span class="keyword">return</span> <span class="string">f"<span class="template-var">{self.name}</span> says Woof!"</span>
+
+<span class="keyword">class</span> <span class="class-name">Cat</span>(Animal):
+    <span class="keyword">def</span> <span class="function">speak</span>(self):
+        <span class="keyword">return</span> <span class="string">f"<span class="template-var">{self.name}</span> says Meow!"</span>
+
+dog = Dog(<span class="string">"Buddy"</span>, <span class="number">3</span>, <span class="string">"Golden Retriever"</span>)
+cat = Cat(<span class="string">"Whiskers"</span>, <span class="number">2</span>)
+
+<span class="function">print</span>(dog.speak())  <span class="comment"># Buddy says Woof!</span>
+<span class="function">print</span>(dog.info())   <span class="comment"># Buddy is 3 years old (inherited)</span>
+<span class="function">print</span>(cat.speak())  <span class="comment"># Whiskers says Meow!</span>
+</code>
+                </div>
+
+                <h4>Python: Multiple Inheritance</h4>
+                <div class="code-block" data-language="python">
+<code><span class="keyword">class</span> <span class="class-name">Flyable</span>:
+    <span class="keyword">def</span> <span class="function">fly</span>(self):
+        <span class="keyword">return</span> <span class="string">"I can fly!"</span>
+
+<span class="keyword">class</span> <span class="class-name">Swimmable</span>:
+    <span class="keyword">def</span> <span class="function">swim</span>(self):
+        <span class="keyword">return</span> <span class="string">"I can swim!"</span>
+
+<span class="comment"># Multiple inheritance</span>
+<span class="keyword">class</span> <span class="class-name">Duck</span>(Animal, Flyable, Swimmable):
+    <span class="keyword">def</span> <span class="function">speak</span>(self):
+        <span class="keyword">return</span> <span class="string">f"<span class="template-var">{self.name}</span> says Quack!"</span>
+
+donald = Duck(<span class="string">"Donald"</span>, <span class="number">5</span>)
+<span class="function">print</span>(donald.speak())  <span class="comment"># Donald says Quack!</span>
+<span class="function">print</span>(donald.fly())    <span class="comment"># I can fly!</span>
+<span class="function">print</span>(donald.swim())   <span class="comment"># I can swim!</span>
+</code>
+                </div>
+
+                <h4>C++: Inheritance and Access Specifiers</h4>
+                <div class="code-block" data-language="cpp">
+<code><span class="comment">// Base class</span>
+<span class="keyword">class</span> <span class="class-name">Animal</span> {
+<span class="keyword">protected</span>:
+    string name;
+    <span class="keyword">int</span> age;
+    
+<span class="keyword">public</span>:
+    Animal(string n, <span class="keyword">int</span> a) : name(n), age(a) {}
+    
+    <span class="keyword">virtual</span> string <span class="function">speak</span>() {
+        <span class="keyword">return</span> <span class="string">"Some sound"</span>;
+    }
+    
+    string <span class="function">info</span>() {
+        <span class="keyword">return</span> name + <span class="string">" is "</span> + to_string(age) + <span class="string">" years old"</span>;
+    }
+    
+    <span class="keyword">virtual</span> ~Animal() {}  <span class="comment">// Virtual destructor</span>
+};
+
+<span class="comment">// Derived class</span>
+<span class="keyword">class</span> <span class="class-name">Dog</span> : <span class="keyword">public</span> Animal {
+<span class="keyword">private</span>:
+    string breed;
+    
+<span class="keyword">public</span>:
+    Dog(string n, <span class="keyword">int</span> a, string b) : Animal(n, a), breed(b) {}
+    
+    <span class="comment">// Override parent method</span>
+    string <span class="function">speak</span>() <span class="keyword">override</span> {
+        <span class="keyword">return</span> name + <span class="string">" says Woof!"</span>;
+    }
+};
+
+<span class="keyword">class</span> <span class="class-name">Cat</span> : <span class="keyword">public</span> Animal {
+<span class="keyword">public</span>:
+    Cat(string n, <span class="keyword">int</span> a) : Animal(n, a) {}
+    
+    string <span class="function">speak</span>() <span class="keyword">override</span> {
+        <span class="keyword">return</span> name + <span class="string">" says Meow!"</span>;
+    }
+};
+</code>
+                </div>
+
+                <div class="info-box important">
+                    <h4>⚠️ Inheritance Best Practices</h4>
+                    <ul>
+                        <li>Use inheritance for "is-a" relationships (Dog IS-A Animal)</li>
+                        <li>Prefer composition over inheritance when possible</li>
+                        <li>Keep inheritance hierarchies shallow (2-3 levels max)</li>
+                        <li>In C++, always make destructors virtual in base classes</li>
+                        <li>Use the <code>override</code> keyword in C++ to catch errors</li>
+                    </ul>
+                </div>
+
+                <h3>Polymorphism</h3>
+                <p>Polymorphism allows objects of different types to be treated uniformly through a common interface.</p>
+
+                <h4>Method Overriding (Runtime Polymorphism)</h4>
+                <div class="code-block" data-language="python">
+<code><span class="keyword">class</span> <span class="class-name">Shape</span>:
+    <span class="keyword">def</span> <span class="function">area</span>(self):
+        <span class="keyword">pass</span>
+    
+    <span class="keyword">def</span> <span class="function">perimeter</span>(self):
+        <span class="keyword">pass</span>
+
+<span class="keyword">class</span> <span class="class-name">Rectangle</span>(Shape):
+    <span class="keyword">def</span> <span class="function">__init__</span>(self, width, height):
+        self.width = width
+        self.height = height
+    
+    <span class="keyword">def</span> <span class="function">area</span>(self):
+        <span class="keyword">return</span> self.width * self.height
+    
+    <span class="keyword">def</span> <span class="function">perimeter</span>(self):
+        <span class="keyword">return</span> <span class="number">2</span> * (self.width + self.height)
+
+<span class="keyword">class</span> <span class="class-name">Circle</span>(Shape):
+    <span class="keyword">def</span> <span class="function">__init__</span>(self, radius):
+        self.radius = radius
+    
+    <span class="keyword">def</span> <span class="function">area</span>(self):
+        <span class="keyword">return</span> <span class="number">3.14159</span> * self.radius ** <span class="number">2</span>
+    
+    <span class="keyword">def</span> <span class="function">perimeter</span>(self):
+        <span class="keyword">return</span> <span class="number">2</span> * <span class="number">3.14159</span> * self.radius
+
+<span class="comment"># Polymorphism in action</span>
+shapes = [Rectangle(<span class="number">5</span>, <span class="number">3</span>), Circle(<span class="number">4</span>), Rectangle(<span class="number">2</span>, <span class="number">7</span>)]
+
+<span class="keyword">for</span> shape <span class="keyword">in</span> shapes:
+    <span class="function">print</span>(<span class="string">f"Area: <span class="template-var">{shape.area():.2f}</span>"</span>)  <span class="comment"># Calls appropriate method</span>
+</code>
+                </div>
+
+                <h4>C++: Virtual Functions (Dynamic Polymorphism)</h4>
+                <div class="code-block" data-language="cpp">
+<code><span class="keyword">class</span> <span class="class-name">Shape</span> {
+<span class="keyword">public</span>:
+    <span class="keyword">virtual</span> <span class="keyword">double</span> <span class="function">area</span>() = <span class="number">0</span>;  <span class="comment">// Pure virtual (abstract)</span>
+    <span class="keyword">virtual</span> <span class="keyword">double</span> <span class="function">perimeter</span>() = <span class="number">0</span>;
+    <span class="keyword">virtual</span> ~Shape() {}
+};
+
+<span class="keyword">class</span> <span class="class-name">Rectangle</span> : <span class="keyword">public</span> Shape {
+<span class="keyword">private</span>:
+    <span class="keyword">double</span> width, height;
+<span class="keyword">public</span>:
+    Rectangle(<span class="keyword">double</span> w, <span class="keyword">double</span> h) : width(w), height(h) {}
+    
+    <span class="keyword">double</span> <span class="function">area</span>() <span class="keyword">override</span> {
+        <span class="keyword">return</span> width * height;
+    }
+    
+    <span class="keyword">double</span> <span class="function">perimeter</span>() <span class="keyword">override</span> {
+        <span class="keyword">return</span> <span class="number">2</span> * (width + height);
+    }
+};
+
+<span class="keyword">class</span> <span class="class-name">Circle</span> : <span class="keyword">public</span> Shape {
+<span class="keyword">private</span>:
+    <span class="keyword">double</span> radius;
+<span class="keyword">public</span>:
+    Circle(<span class="keyword">double</span> r) : radius(r) {}
+    
+    <span class="keyword">double</span> <span class="function">area</span>() <span class="keyword">override</span> {
+        <span class="keyword">return</span> <span class="number">3.14159</span> * radius * radius;
+    }
+    
+    <span class="keyword">double</span> <span class="function">perimeter</span>() <span class="keyword">override</span> {
+        <span class="keyword">return</span> <span class="number">2</span> * <span class="number">3.14159</span> * radius;
+    }
+};
+
+<span class="keyword">int</span> <span class="function">main</span>() {
+    <span class="comment">// Polymorphism with pointers</span>
+    Shape* shapes[] = {<span class="keyword">new</span> Rectangle(<span class="number">5</span>, <span class="number">3</span>), <span class="keyword">new</span> Circle(<span class="number">4</span>)};
+    
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">2</span>; ++i) {
+        cout &lt;&lt; <span class="string">"Area: "</span> &lt;&lt; shapes[i]-&gt;area() &lt;&lt; endl;
+        <span class="keyword">delete</span> shapes[i];
+    }
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+</code>
+                </div>
+
+                <h4>Operator Overloading (C++)</h4>
+                <div class="code-block" data-language="cpp">
+<code><span class="keyword">class</span> <span class="class-name">Complex</span> {
+<span class="keyword">private</span>:
+    <span class="keyword">double</span> real, imag;
+    
+<span class="keyword">public</span>:
+    Complex(<span class="keyword">double</span> r = <span class="number">0</span>, <span class="keyword">double</span> i = <span class="number">0</span>) : real(r), imag(i) {}
+    
+    <span class="comment">// Operator overloading</span>
+    Complex <span class="keyword">operator</span>+<span class="function"></span>(<span class="keyword">const</span> Complex&amp; other) {
+        <span class="keyword">return</span> Complex(real + other.real, imag + other.imag);
+    }
+    
+    Complex <span class="keyword">operator</span>*<span class="function"></span>(<span class="keyword">const</span> Complex&amp; other) {
+        <span class="keyword">return</span> Complex(real * other.real - imag * other.imag,
+                        real * other.imag + imag * other.real);
+    }
+    
+    <span class="keyword">bool</span> <span class="keyword">operator</span>==<span class="function"></span>(<span class="keyword">const</span> Complex&amp; other) {
+        <span class="keyword">return</span> real == other.real &amp;&amp; imag == other.imag;
+    }
+    
+    <span class="keyword">friend</span> ostream&amp; <span class="keyword">operator</span>&lt;&lt;<span class="function"></span>(ostream&amp; os, <span class="keyword">const</span> Complex&amp; c) {
+        os &lt;&lt; c.real &lt;&lt; <span class="string">" + "</span> &lt;&lt; c.imag &lt;&lt; <span class="string">"i"</span>;
+        <span class="keyword">return</span> os;
+    }
+};
+
+<span class="keyword">int</span> <span class="function">main</span>() {
+    Complex c1(<span class="number">3</span>, <span class="number">4</span>), c2(<span class="number">1</span>, <span class="number">2</span>);
+    Complex c3 = c1 + c2;  <span class="comment">// Calls operator+</span>
+    cout &lt;&lt; c3 &lt;&lt; endl;      <span class="comment">// 4 + 6i</span>
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+</code>
+                </div>
+
+                <h3>Abstraction</h3>
+                <p>Abstraction hides implementation details and exposes only essential features.</p>
+
+                <h4>Python: Abstract Base Classes</h4>
+                <div class="code-block" data-language="python">
+<code><span class="keyword">from</span> abc <span class="keyword">import</span> ABC, abstractmethod
+
+<span class="keyword">class</span> <span class="class-name">PaymentProcessor</span>(ABC):
+    <span class="decorator">@abstractmethod</span>
+    <span class="keyword">def</span> <span class="function">process_payment</span>(self, amount):
+        <span class="keyword">pass</span>
+    
+    <span class="decorator">@abstractmethod</span>
+    <span class="keyword">def</span> <span class="function">refund</span>(self, transaction_id):
+        <span class="keyword">pass</span>
+
+<span class="keyword">class</span> <span class="class-name">CreditCardProcessor</span>(PaymentProcessor):
+    <span class="keyword">def</span> <span class="function">process_payment</span>(self, amount):
+        <span class="keyword">return</span> <span class="string">f"Processing credit card payment: $<span class="template-var">{amount}</span>"</span>
+    
+    <span class="keyword">def</span> <span class="function">refund</span>(self, transaction_id):
+        <span class="keyword">return</span> <span class="string">f"Refunding transaction <span class="template-var">{transaction_id}</span>"</span>
+
+<span class="keyword">class</span> <span class="class-name">PayPalProcessor</span>(PaymentProcessor):
+    <span class="keyword">def</span> <span class="function">process_payment</span>(self, amount):
+        <span class="keyword">return</span> <span class="string">f"Processing PayPal payment: $<span class="template-var">{amount}</span>"</span>
+    
+    <span class="keyword">def</span> <span class="function">refund</span>(self, transaction_id):
+        <span class="keyword">return</span> <span class="string">f"Refunding PayPal transaction <span class="template-var">{transaction_id}</span>"</span>
+
+<span class="comment"># Cannot instantiate abstract class</span>
+<span class="comment"># processor = PaymentProcessor()  # TypeError!</span>
+
+processor = CreditCardProcessor()
+<span class="function">print</span>(processor.process_payment(<span class="number">100</span>))
+</code>
+                </div>
+
+                <h4>JavaScript: Interfaces with Duck Typing</h4>
+                <div class="code-block" data-language="javascript">
+<code><span class="comment">// JavaScript doesn't have formal interfaces, but uses duck typing</span>
+<span class="keyword">class</span> <span class="class-name">PaymentProcessor</span> {
+    <span class="function">processPayment</span>(amount) {
+        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="class-name">Error</span>(<span class="string">'Must implement processPayment()'</span>);
+    }
+    
+    <span class="function">refund</span>(transactionId) {
+        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="class-name">Error</span>(<span class="string">'Must implement refund()'</span>);
+    }
+}
+
+<span class="keyword">class</span> <span class="class-name">CreditCardProcessor</span> <span class="keyword">extends</span> <span class="class-name">PaymentProcessor</span> {
+    <span class="function">processPayment</span>(amount) {
+        <span class="keyword">return</span> <span class="string">`Processing credit card payment: $<span class="template-var">${amount}</span>`</span>;
+    }
+    
+    <span class="function">refund</span>(transactionId) {
+        <span class="keyword">return</span> <span class="string">`Refunding transaction <span class="template-var">${transactionId}</span>`</span>;
+    }
+}
+
+<span class="keyword">const</span> processor = <span class="keyword">new</span> <span class="class-name">CreditCardProcessor</span>();
+console.<span class="function">log</span>(processor.processPayment(<span class="number">100</span>));
+</code>
+                </div>
+
+                <h3>Composition vs Inheritance</h3>
+                <p>"Favor composition over inheritance" - design principle promoting flexibility.</p>
+
+                <div class="code-block" data-language="python">
+<code><span class="comment"># Composition: "has-a" relationship</span>
+<span class="keyword">class</span> <span class="class-name">Engine</span>:
+    <span class="keyword">def</span> <span class="function">start</span>(self):
+        <span class="keyword">return</span> <span class="string">"Engine started"</span>
+    
+    <span class="keyword">def</span> <span class="function">stop</span>(self):
+        <span class="keyword">return</span> <span class="string">"Engine stopped"</span>
+
+<span class="keyword">class</span> <span class="class-name">Car</span>:
+    <span class="keyword">def</span> <span class="function">__init__</span>(self, model):
+        self.model = model
+        self.engine = Engine()  <span class="comment"># Composition: Car HAS-A Engine</span>
+    
+    <span class="keyword">def</span> <span class="function">start</span>(self):
+        <span class="keyword">return</span> <span class="string">f"<span class="template-var">{self.model}</span>: <span class="template-var">{self.engine.start()}</span>"</span>
+    
+    <span class="keyword">def</span> <span class="function">stop</span>(self):
+        <span class="keyword">return</span> <span class="string">f"<span class="template-var">{self.model}</span>: <span class="template-var">{self.engine.stop()}</span>"</span>
+
+<span class="comment"># Inheritance: "is-a" relationship</span>
+<span class="keyword">class</span> <span class="class-name">ElectricCar</span>(Car):  <span class="comment"># ElectricCar IS-A Car</span>
+    <span class="keyword">def</span> <span class="function">__init__</span>(self, model, battery_capacity):
+        <span class="function">super</span>().__init__(model)
+        self.battery_capacity = battery_capacity
+    
+    <span class="keyword">def</span> <span class="function">charge</span>(self):
+        <span class="keyword">return</span> <span class="string">f"Charging <span class="template-var">{self.battery_capacity}</span>kWh battery"</span>
+
+tesla = ElectricCar(<span class="string">"Tesla Model 3"</span>, <span class="number">75</span>)
+<span class="function">print</span>(tesla.start())   <span class="comment"># Tesla Model 3: Engine started</span>
+<span class="function">print</span>(tesla.charge())  <span class="comment"># Charging 75kWh battery</span>
+</code>
+                </div>
+
+                <div class="practice-problems">
+                    <h3>Practice Problems</h3>
+                    
+                    <div class="problem">
+                        <h4>Problem 1: Library Management System</h4>
+                        <p>Create a class hierarchy: Book (base), FictionBook, NonFictionBook. Implement methods for borrowing and returning with proper encapsulation.</p>
+                        <button onclick="toggleSolution('sol1')">Show Solution</button>
+                        <div id="sol1" class="solution" style="display:none;">
+                            <div class="code-block" data-language="python">
+<code><span class="keyword">class</span> <span class="class-name">Book</span>:
+    <span class="keyword">def</span> <span class="function">__init__</span>(self, title, author, isbn):
+        self.title = title
+        self.author = author
+        self._isbn = isbn
+        self._is_borrowed = <span class="keyword">False</span>
+    
+    <span class="keyword">def</span> <span class="function">borrow</span>(self):
+        <span class="keyword">if</span> <span class="keyword">not</span> self._is_borrowed:
+            self._is_borrowed = <span class="keyword">True</span>
+            <span class="keyword">return</span> <span class="keyword">True</span>
+        <span class="keyword">return</span> <span class="keyword">False</span>
+    
+    <span class="keyword">def</span> <span class="function">return_book</span>(self):
+        self._is_borrowed = <span class="keyword">False</span>
+    
+    <span class="keyword">def</span> <span class="function">info</span>(self):
+        <span class="keyword">return</span> <span class="string">f"<span class="template-var">{self.title}</span> by <span class="template-var">{self.author}</span>"</span>
+
+<span class="keyword">class</span> <span class="class-name">FictionBook</span>(Book):
+    <span class="keyword">def</span> <span class="function">__init__</span>(self, title, author, isbn, genre):
+        <span class="function">super</span>().__init__(title, author, isbn)
+        self.genre = genre
+
+<span class="keyword">class</span> <span class="class-name">NonFictionBook</span>(Book):
+    <span class="keyword">def</span> <span class="function">__init__</span>(self, title, author, isbn, subject):
+        <span class="function">super</span>().__init__(title, author, isbn)
+        self.subject = subject
+</code>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="problem">
+                        <h4>Problem 2: Employee Management System</h4>
+                        <p>Create Employee (base), Manager, Developer classes. Implement polymorphic calculateSalary() method with different bonus structures.</p>
+                        <button onclick="toggleSolution('sol2')">Show Solution</button>
+                        <div id="sol2" class="solution" style="display:none;">
+                            <div class="code-block" data-language="cpp">
+<code><span class="keyword">class</span> <span class="class-name">Employee</span> {
+<span class="keyword">protected</span>:
+    string name;
+    <span class="keyword">double</span> baseSalary;
+<span class="keyword">public</span>:
+    Employee(string n, <span class="keyword">double</span> s) : name(n), baseSalary(s) {}
+    <span class="keyword">virtual</span> <span class="keyword">double</span> <span class="function">calculateSalary</span>() = <span class="number">0</span>;
+    <span class="keyword">virtual</span> ~Employee() {}
+};
+
+<span class="keyword">class</span> <span class="class-name">Manager</span> : <span class="keyword">public</span> Employee {
+<span class="keyword">public</span>:
+    Manager(string n, <span class="keyword">double</span> s) : Employee(n, s) {}
+    <span class="keyword">double</span> <span class="function">calculateSalary</span>() <span class="keyword">override</span> {
+        <span class="keyword">return</span> baseSalary * <span class="number">1.5</span>;  <span class="comment">// 50% bonus</span>
+    }
+};
+
+<span class="keyword">class</span> <span class="class-name">Developer</span> : <span class="keyword">public</span> Employee {
+<span class="keyword">public</span>:
+    Developer(string n, <span class="keyword">double</span> s) : Employee(n, s) {}
+    <span class="keyword">double</span> <span class="function">calculateSalary</span>() <span class="keyword">override</span> {
+        <span class="keyword">return</span> baseSalary * <span class="number">1.2</span>;  <span class="comment">// 20% bonus</span>
+    }
+};
+</code>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="problem">
+                        <h4>Problem 3: Shape Calculator with Composition</h4>
+                        <p>Create a DrawingBoard class that uses composition to contain multiple Shape objects and calculate total area.</p>
+                        <button onclick="toggleSolution('sol3')">Show Solution</button>
+                        <div id="sol3" class="solution" style="display:none;">
+                            <div class="code-block" data-language="javascript">
+<code><span class="keyword">class</span> <span class="class-name">Shape</span> {
+    <span class="function">area</span>() { <span class="keyword">throw</span> <span class="keyword">new</span> <span class="class-name">Error</span>(<span class="string">'Must implement area()'</span>); }
+}
+
+<span class="keyword">class</span> <span class="class-name">Circle</span> <span class="keyword">extends</span> <span class="class-name">Shape</span> {
+    <span class="function">constructor</span>(radius) {
+        <span class="keyword">super</span>();
+        <span class="keyword">this</span>.radius = radius;
+    }
+    <span class="function">area</span>() { <span class="keyword">return</span> <span class="number">Math</span>.PI * <span class="keyword">this</span>.radius ** <span class="number">2</span>; }
+}
+
+<span class="keyword">class</span> <span class="class-name">Rectangle</span> <span class="keyword">extends</span> <span class="class-name">Shape</span> {
+    <span class="function">constructor</span>(width, height) {
+        <span class="keyword">super</span>();
+        <span class="keyword">this</span>.width = width;
+        <span class="keyword">this</span>.height = height;
+    }
+    <span class="function">area</span>() { <span class="keyword">return</span> <span class="keyword">this</span>.width * <span class="keyword">this</span>.height; }
+}
+
+<span class="keyword">class</span> <span class="class-name">DrawingBoard</span> {
+    <span class="function">constructor</span>() {
+        <span class="keyword">this</span>.shapes = [];
+    }
+    
+    <span class="function">addShape</span>(shape) {
+        <span class="keyword">this</span>.shapes.push(shape);
+    }
+    
+    <span class="function">totalArea</span>() {
+        <span class="keyword">return</span> <span class="keyword">this</span>.shapes.reduce((sum, s) =&gt; sum + s.area(), <span class="number">0</span>);
+    }
+}
+</code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Key Takeaways</h3>
+                <ul>
+                    <li>Encapsulation bundles data and methods while controlling access through modifiers</li>
+                    <li>Inheritance creates "is-a" relationships promoting code reuse</li>
+                    <li>Polymorphism allows uniform treatment of different types through common interfaces</li>
+                    <li>Abstraction hides implementation details exposing only essential features</li>
+                    <li>Composition ("has-a") is often more flexible than inheritance ("is-a")</li>
+                    <li>Virtual functions in C++ enable runtime polymorphism</li>
+                    <li>Abstract classes define interfaces that subclasses must implement</li>
+                    <li>Operator overloading extends polymorphism to operators in C++</li>
+                </ul>
+
+                <div class="info-box tip">
+                    <h4>💡 Next Steps</h4>
+                    <p>
+                        Now you understand OOP principles! Next, we'll explore data structures: arrays, linked lists, 
+                        stacks, queues, trees, and graphs - the building blocks for organizing and managing data efficiently.
+                    </p>
+                </div>
+            </div>
+
+            <div class="lesson-navigation">
+                <a href="07-cpp-advanced.html" class="nav-btn">← Previous: C++ Advanced</a>
+                <a href="09-data-structures.html" class="nav-btn">Next: Data Structures →</a>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../js/main.js"></script>
+    <script>
+        function toggleSolution(id) {
+            const solution = document.getElementById(id);
+            const button = event.target;
+            if (solution.style.display === 'none') {
+                solution.style.display = 'block';
+                button.textContent = 'Hide Solution';
+            } else {
+                solution.style.display = 'none';
+                button.textContent = 'Show Solution';
+            }
+        }
+    </script>
+</body>
+</html>

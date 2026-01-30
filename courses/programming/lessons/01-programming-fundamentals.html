@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 1: Programming Fundamentals - Engineering Academy</title>
+    <link rel="stylesheet" href="../../../css/styles.css">
+    <link rel="stylesheet" href="../../../css/course-styles/course.css">
+</head>
+<body>
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <h1><a href="../../../index.html" style="color: inherit; text-decoration: none;">🎓 Engineering Academy</a></h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../index.html">Course Overview</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section class="course-header">
+        <div class="container">
+            <h1>⌨️ Programming</h1>
+            <p>Lesson 1: Programming Fundamentals</p>
+        </div>
+    </section>
+
+    <div class="course-container">
+        <aside class="course-sidebar">
+            <h3>Course Modules</h3>
+            <ul class="lesson-list">
+                <li><a href="../index.html"><span class="lesson-number">📚</span>Course Overview</a></li>
+                <li><a href="01-programming-fundamentals.html" class="active"><span class="lesson-number">1</span>Programming Fundamentals</a></li>
+                <li><a href="02-python-basics.html"><span class="lesson-number">2</span>Python Basics</a></li>
+                <li><a href="03-python-advanced.html"><span class="lesson-number">3</span>Python Advanced</a></li>
+                <li><a href="04-javascript-basics.html"><span class="lesson-number">4</span>JavaScript Basics</a></li>
+                <li><a href="05-javascript-modern.html"><span class="lesson-number">5</span>Modern JavaScript</a></li>
+                <li><a href="06-cpp-basics.html"><span class="lesson-number">6</span>C++ Basics</a></li>
+                <li><a href="07-cpp-advanced.html"><span class="lesson-number">7</span>C++ Advanced</a></li>
+                <li><a href="08-oop-principles.html"><span class="lesson-number">8</span>OOP Principles</a></li>
+                <li><a href="09-data-structures.html"><span class="lesson-number">9</span>Data Structures</a></li>
+                <li><a href="10-algorithms.html"><span class="lesson-number">10</span>Algorithms</a></li>
+                <li><a href="11-debugging.html"><span class="lesson-number">11</span>Debugging & Testing</a></li>
+                <li><a href="12-best-practices.html"><span class="lesson-number">12</span>Best Practices</a></li>
+            </ul>
+        </aside>
+
+        <main class="course-content">
+            <div class="lesson-header">
+                <h2>Lesson 1: Programming Fundamentals</h2>
+                <div class="lesson-meta">
+                    <span>📖 95 min read</span>
+                    <span>📊 Beginner</span>
+                </div>
+            </div>
+
+            <div class="lesson-content">
+                <h3>What is Programming?</h3>
+                <p>
+                    Programming is the process of creating instructions that a computer can execute to perform specific tasks. 
+                    Think of it as giving detailed, step-by-step directions to a very literal friend who follows 
+                    instructions exactly as written—no more, no less.
+                </p>
+
+                <div class="info-box note">
+                    <h4>📌 The Essence of Programming</h4>
+                    <p>
+                        "Computer programming is an art, because it applies accumulated knowledge to the world, 
+                        because it requires skill and ingenuity, and especially because it produces objects of beauty."
+                        <br>- Donald Knuth
+                    </p>
+                </div>
+
+                <h3>Algorithm Concepts</h3>
+                <p>
+                    An <strong>algorithm</strong> is a step-by-step procedure for solving a problem or accomplishing a task. 
+                    Before writing code, programmers design algorithms to ensure logical solutions.
+                </p>
+
+                <h4>Example: Making Tea (An Algorithm)</h4>
+                <div class="example-box">
+                    <h5>Pseudocode Algorithm</h5>
+<pre><code>1. START
+2. Boil water
+3. IF water is boiling THEN
+4.     Add tea bag to cup
+5.     Pour hot water into cup
+6.     Wait 3-5 minutes
+7.     Remove tea bag
+8.     IF sugar desired THEN
+9.         Add sugar
+10.    END IF
+11.    IF milk desired THEN
+12.        Add milk
+13.    END IF
+14. END IF
+15. STOP
+</code></pre>
+                </div>
+
+                <p>
+                    This simple everyday task demonstrates key programming concepts: sequence, conditions (IF statements), 
+                    and the importance of order.
+                </p>
+
+                <h3>Programming Paradigms</h3>
+                <p>
+                    Different approaches to programming organization and problem-solving:
+                </p>
+
+                <h4>1. Procedural Programming</h4>
+                <p>
+                    Programs are structured as a sequence of procedures or functions. Think of it as a recipe—
+                    step-by-step instructions executed in order.
+                </p>
+
+                <div class="code-block" data-language="python">
+<code><span class="comment"># Procedural approach - sequence of steps</span>
+<span class="keyword">def</span> <span class="function">calculate_total</span>(price, quantity):
+    subtotal = price * quantity
+    tax = subtotal * <span class="number">0.08</span>
+    total = subtotal + tax
+    <span class="keyword">return</span> total
+
+<span class="comment"># Function calls in sequence</span>
+item_total = calculate_total(<span class="number">19.99</span>, <span class="number">3</span>)
+<span class="keyword">print</span>(<span class="string">f"Total: ${item_total:.2f}"</span>)
+</code>
+                </div>
+
+                <h4>2. Object-Oriented Programming (OOP)</h4>
+                <p>
+                    Programs are organized around objects that combine data and behavior. Think of objects as 
+                    real-world entities with properties and actions.
+                </p>
+
+                <div class="code-block" data-language="python">
+<code><span class="comment"># OOP approach - objects with data and methods</span>
+<span class="keyword">class</span> <span class="class-name">ShoppingCart</span>:
+    <span class="keyword">def</span> <span class="function">__init__</span>(<span class="keyword">self</span>):
+        <span class="keyword">self</span>.items = []
+    
+    <span class="keyword">def</span> <span class="function">add_item</span>(<span class="keyword">self</span>, name, price, quantity):
+        <span class="keyword">self</span>.items.append({
+            <span class="string">'name'</span>: name,
+            <span class="string">'price'</span>: price,
+            <span class="string">'quantity'</span>: quantity
+        })
+    
+    <span class="keyword">def</span> <span class="function">get_total</span>(<span class="keyword">self</span>):
+        total = <span class="keyword">sum</span>(item[<span class="string">'price'</span>] * item[<span class="string">'quantity'</span>] <span class="keyword">for</span> item <span class="keyword">in</span> <span class="keyword">self</span>.items)
+        <span class="keyword">return</span> total * <span class="number">1.08</span>  <span class="comment"># Include tax</span>
+
+cart = ShoppingCart()
+cart.add_item(<span class="string">"Widget"</span>, <span class="number">19.99</span>, <span class="number">3</span>)
+<span class="keyword">print</span>(<span class="string">f"Total: ${cart.get_total():.2f}"</span>)
+</code>
+                </div>
+
+                <h4>3. Functional Programming</h4>
+                <p>
+                    Programs are built using pure functions that avoid changing state. Emphasizes immutability 
+                    and function composition.
+                </p>
+
+                <div class="code-block" data-language="javascript">
+<code><span class="comment">// Functional approach - pure functions</span>
+<span class="keyword">const</span> calculateSubtotal = (price, quantity) => price * quantity;
+<span class="keyword">const</span> calculateTax = (amount) => amount * <span class="number">0.08</span>;
+<span class="keyword">const</span> calculateTotal = (price, quantity) => {
+    <span class="keyword">const</span> subtotal = calculateSubtotal(price, quantity);
+    <span class="keyword">return</span> subtotal + calculateTax(subtotal);
+};
+
+console.log(<span class="string">`Total: $${calculateTotal(<span class="number">19.99</span>, <span class="number">3</span>).toFixed(<span class="number">2</span>)}`</span>);
+</code>
+                </div>
+
+                <div class="info-box tip">
+                    <h4>💡 Which Paradigm to Use?</h4>
+                    <p>
+                        Most modern languages support multiple paradigms. Python, JavaScript, and C++ all support 
+                        procedural, OOP, and functional approaches. Choose based on the problem you're solving.
+                    </p>
+                </div>
+
+                <h3>Language Types: Understanding Trade-offs</h3>
+
+                <h4>Compiled vs. Interpreted Languages</h4>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Compiled (C++, C, Go)</th>
+                            <th>Interpreted (Python, JavaScript)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Code translated to machine code before running</td>
+                            <td>Code executed line-by-line at runtime</td>
+                        </tr>
+                        <tr>
+                            <td>✅ Faster execution</td>
+                            <td>✅ Easier debugging</td>
+                        </tr>
+                        <tr>
+                            <td>✅ Better performance</td>
+                            <td>✅ More flexible</td>
+                        </tr>
+                        <tr>
+                            <td>❌ Slower development cycle</td>
+                            <td>❌ Slower runtime</td>
+                        </tr>
+                        <tr>
+                            <td>❌ Platform-specific binaries</td>
+                            <td>✅ Cross-platform</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4>Static vs. Dynamic Typing</h4>
+
+                <div class="example-box">
+                    <h5>Static Typing (C++, Java, TypeScript)</h5>
+                    <div class="code-block" data-language="cpp">
+<code><span class="comment">// Types declared at compile time</span>
+<span class="keyword">int</span> age = <span class="number">25</span>;              <span class="comment">// Must be integer</span>
+<span class="keyword">std::string</span> name = <span class="string">"Alice"</span>;  <span class="comment">// Must be string</span>
+<span class="comment">// age = "thirty";  // ERROR: Type mismatch</span>
+</code>
+                    </div>
+                </div>
+
+                <div class="example-box">
+                    <h5>Dynamic Typing (Python, JavaScript)</h5>
+                    <div class="code-block" data-language="python">
+<code><span class="comment"># Types determined at runtime</span>
+age = <span class="number">25</span>         <span class="comment"># Integer</span>
+age = <span class="string">"thirty"</span>  <span class="comment"># Now a string - totally fine!</span>
+name = <span class="string">"Alice"</span>   <span class="comment"># String</span>
+name = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]  <span class="comment"># Now a list - also fine!</span>
+</code>
+                    </div>
+                </div>
+
+                <h3>Development Environment Setup</h3>
+                <p>
+                    Before writing code, you need the right tools. A typical development environment includes:
+                </p>
+
+                <ul>
+                    <li><strong>Text Editor or IDE</strong>: Where you write code (VS Code, PyCharm, Visual Studio)</li>
+                    <li><strong>Compiler/Interpreter</strong>: Translates your code for the computer</li>
+                    <li><strong>Version Control</strong>: Git for tracking changes</li>
+                    <li><strong>Terminal/Command Line</strong>: For running programs and commands</li>
+                </ul>
+
+                <div class="info-box important">
+                    <h4>🛠️ Quick Setup Guide</h4>
+                    <h5>Python:</h5>
+                    <ol>
+                        <li>Download from python.org</li>
+                        <li>Install (check "Add to PATH")</li>
+                        <li>Verify: <code>python --version</code></li>
+                    </ol>
+                    
+                    <h5>JavaScript:</h5>
+                    <ol>
+                        <li>Install Node.js from nodejs.org</li>
+                        <li>Verify: <code>node --version</code></li>
+                        <li>Browser console (F12) for quick tests</li>
+                    </ol>
+                    
+                    <h5>C++:</h5>
+                    <ol>
+                        <li>Windows: Install Visual Studio or MinGW</li>
+                        <li>Linux/Mac: Install GCC/Clang</li>
+                        <li>Verify: <code>g++ --version</code></li>
+                    </ol>
+                </div>
+
+                <h3>Your First Programs</h3>
+
+                <h4>Hello World in Python</h4>
+                <div class="code-block" data-language="python">
+<code><span class="comment"># hello.py</span>
+<span class="keyword">print</span>(<span class="string">"Hello, World!"</span>)
+
+<span class="comment"># Run: python hello.py</span>
+<span class="comment"># Output: Hello, World!</span>
+</code>
+                </div>
+
+                <h4>Hello World in JavaScript</h4>
+                <div class="code-block" data-language="javascript">
+<code><span class="comment">// hello.js</span>
+console.log(<span class="string">"Hello, World!"</span>);
+
+<span class="comment">// Run in Node: node hello.js</span>
+<span class="comment">// Or in browser console (F12)</span>
+<span class="comment">// Output: Hello, World!</span>
+</code>
+                </div>
+
+                <h4>Hello World in C++</h4>
+                <div class="code-block" data-language="cpp">
+<code><span class="comment">// hello.cpp</span>
+<span class="preprocessor">#include &lt;iostream&gt;</span>
+
+<span class="keyword">int</span> <span class="function">main</span>() {
+    std::cout &lt;&lt; <span class="string">"Hello, World!"</span> &lt;&lt; std::endl;
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+
+<span class="comment">// Compile: g++ hello.cpp -o hello</span>
+<span class="comment">// Run: ./hello</span>
+<span class="comment">// Output: Hello, World!</span>
+</code>
+                </div>
+
+                <h3>Variables and Basic Input/Output</h3>
+
+                <h4>Variables: Storing Information</h4>
+                <p>
+                    Variables are named containers for storing data values. Think of them as labeled boxes.
+                </p>
+
+                <div class="example-box">
+                    <h5>Python Variables</h5>
+                    <div class="code-block" data-language="python">
+<code><span class="comment"># No type declaration needed</span>
+name = <span class="string">"Alice"</span>
+age = <span class="number">25</span>
+height = <span class="number">5.6</span>
+is_student = <span class="keyword">True</span>
+
+<span class="keyword">print</span>(<span class="string">f"Name: {name}, Age: {age}"</span>)
+<span class="keyword">print</span>(<span class="string">f"Height: {height}ft, Student: {is_student}"</span>)
+</code>
+                    </div>
+                </div>
+
+                <div class="example-box">
+                    <h5>JavaScript Variables</h5>
+                    <div class="code-block" data-language="javascript">
+<code><span class="comment">// Modern JavaScript: use let and const</span>
+<span class="keyword">let</span> name = <span class="string">"Alice"</span>;        <span class="comment">// Can be reassigned</span>
+<span class="keyword">const</span> age = <span class="number">25</span>;           <span class="comment">// Cannot be reassigned</span>
+<span class="keyword">let</span> height = <span class="number">5.6</span>;
+<span class="keyword">let</span> isStudent = <span class="keyword">true</span>;
+
+console.log(<span class="string">`Name: ${name}, Age: ${age}`</span>);
+console.log(<span class="string">`Height: ${height}ft, Student: ${isStudent}`</span>);
+</code>
+                    </div>
+                </div>
+
+                <div class="example-box">
+                    <h5>C++ Variables</h5>
+                    <div class="code-block" data-language="cpp">
+<code><span class="comment">// Must declare types</span>
+<span class="preprocessor">#include &lt;iostream&gt;</span>
+<span class="preprocessor">#include &lt;string&gt;</span>
+
+<span class="keyword">int</span> <span class="function">main</span>() {
+    std::string name = <span class="string">"Alice"</span>;
+    <span class="keyword">int</span> age = <span class="number">25</span>;
+    <span class="keyword">double</span> height = <span class="number">5.6</span>;
+    <span class="keyword">bool</span> isStudent = <span class="keyword">true</span>;
+    
+    std::cout &lt;&lt; <span class="string">"Name: "</span> &lt;&lt; name &lt;&lt; <span class="string">", Age: "</span> &lt;&lt; age &lt;&lt; std::endl;
+    std::cout &lt;&lt; <span class="string">"Height: "</span> &lt;&lt; height &lt;&lt; <span class="string">"ft, Student: "</span> 
+              &lt;&lt; (isStudent ? <span class="string">"true"</span> : <span class="string">"false"</span>) &lt;&lt; std::endl;
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+</code>
+                    </div>
+                </div>
+
+                <h4>Basic Input/Output</h4>
+
+                <div class="example-box">
+                    <h5>Getting User Input - Python</h5>
+                    <div class="code-block" data-language="python">
+<code><span class="comment"># input() function reads user input as string</span>
+name = <span class="keyword">input</span>(<span class="string">"Enter your name: "</span>)
+age = <span class="keyword">int</span>(<span class="keyword">input</span>(<span class="string">"Enter your age: "</span>))  <span class="comment"># Convert to integer</span>
+
+<span class="keyword">print</span>(<span class="string">f"Hello {name}, you are {age} years old!"</span>)
+</code>
+                    </div>
+                </div>
+
+                <div class="example-box">
+                    <h5>Getting User Input - C++</h5>
+                    <div class="code-block" data-language="cpp">
+<code><span class="preprocessor">#include &lt;iostream&gt;</span>
+<span class="preprocessor">#include &lt;string&gt;</span>
+
+<span class="keyword">int</span> <span class="function">main</span>() {
+    std::string name;
+    <span class="keyword">int</span> age;
+    
+    std::cout &lt;&lt; <span class="string">"Enter your name: "</span>;
+    std::getline(std::cin, name);  <span class="comment">// Read full line</span>
+    
+    std::cout &lt;&lt; <span class="string">"Enter your age: "</span>;
+    std::cin &gt;&gt; age;
+    
+    std::cout &lt;&lt; <span class="string">"Hello "</span> &lt;&lt; name &lt;&lt; <span class="string">", you are "</span> 
+              &lt;&lt; age &lt;&lt; <span class="string">" years old!"</span> &lt;&lt; std::endl;
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+</code>
+                    </div>
+                </div>
+
+                <h3>Comments and Documentation</h3>
+                <p>
+                    Comments explain code to humans. The computer ignores them, but they're crucial for 
+                    understanding and maintaining code.
+                </p>
+
+                <div class="example-box">
+                    <h5>Comments in Different Languages</h5>
+                    <div class="code-block" data-language="python">
+<code><span class="comment"># Python: Single-line comment</span>
+
+<span class="string">"""
+Python: Multi-line comment (docstring)
+Used for documentation
+"""</span>
+
+<span class="keyword">def</span> <span class="function">calculate_area</span>(radius):
+    <span class="string">"""
+    Calculate the area of a circle.
+    
+    Args:
+        radius (float): The radius of the circle
+        
+    Returns:
+        float: The area of the circle
+    """</span>
+    <span class="keyword">return</span> <span class="number">3.14159</span> * radius ** <span class="number">2</span>
+</code>
+                    </div>
+
+                    <div class="code-block" data-language="javascript">
+<code><span class="comment">// JavaScript: Single-line comment</span>
+
+<span class="comment">/* 
+ * JavaScript: Multi-line comment
+ * Used for longer explanations
+ */</span>
+
+<span class="comment">/**
+ * Calculate the area of a circle (JSDoc format)
+ * @param {number} radius - The radius of the circle
+ * @returns {number} The area of the circle
+ */</span>
+<span class="keyword">function</span> <span class="function">calculateArea</span>(radius) {
+    <span class="keyword">return</span> <span class="number">3.14159</span> * radius ** <span class="number">2</span>;
+}
+</code>
+                    </div>
+
+                    <div class="code-block" data-language="cpp">
+<code><span class="comment">// C++: Single-line comment</span>
+
+<span class="comment">/* 
+ * C++: Multi-line comment
+ * Used for longer explanations
+ */</span>
+
+<span class="comment">/**
+ * Calculate the area of a circle (Doxygen format)
+ * @param radius The radius of the circle
+ * @return The area of the circle
+ */</span>
+<span class="keyword">double</span> <span class="function">calculateArea</span>(<span class="keyword">double</span> radius) {
+    <span class="keyword">return</span> <span class="number">3.14159</span> * radius * radius;
+}
+</code>
+                    </div>
+                </div>
+
+                <div class="info-box important">
+                    <h4>⚠️ Good vs. Bad Comments</h4>
+                    <h5>❌ Bad Comment (states the obvious):</h5>
+                    <pre><code>// Increment i by 1
+i = i + 1;</code></pre>
+                    
+                    <h5>✅ Good Comment (explains why):</h5>
+                    <pre><code>// Skip the header row when processing CSV data
+i = i + 1;</code></pre>
+                </div>
+
+                <h3>Practice Problems</h3>
+
+                <div class="example-box">
+                    <h5>Problem 1: Temperature Converter</h5>
+                    <p>Write a program that converts Celsius to Fahrenheit. Formula: F = (C × 9/5) + 32</p>
+                    
+                    <button class="toggle-solution" onclick="toggleSolution('sol1')">Show Solution</button>
+                    <div id="sol1" class="solution" style="display: none;">
+                        <div class="code-block" data-language="python">
+<code><span class="comment"># Python Solution</span>
+celsius = <span class="keyword">float</span>(<span class="keyword">input</span>(<span class="string">"Enter temperature in Celsius: "</span>))
+fahrenheit = (celsius * <span class="number">9</span>/<span class="number">5</span>) + <span class="number">32</span>
+<span class="keyword">print</span>(<span class="string">f"{celsius}°C = {fahrenheit}°F"</span>)
+</code>
+                        </div>
+
+                        <div class="code-block" data-language="javascript">
+<code><span class="comment">// JavaScript Solution (Node.js)</span>
+<span class="keyword">const</span> readline = <span class="keyword">require</span>(<span class="string">'readline'</span>);
+<span class="keyword">const</span> rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+rl.question(<span class="string">'Enter temperature in Celsius: '</span>, (celsius) => {
+    <span class="keyword">const</span> fahrenheit = (celsius * <span class="number">9</span>/<span class="number">5</span>) + <span class="number">32</span>;
+    console.log(<span class="string">`${celsius}°C = ${fahrenheit}°F`</span>);
+    rl.close();
+});
+</code>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="example-box">
+                    <h5>Problem 2: Simple Calculator</h5>
+                    <p>Create a calculator that takes two numbers and an operator (+, -, *, /) and displays the result.</p>
+                    
+                    <button class="toggle-solution" onclick="toggleSolution('sol2')">Show Solution</button>
+                    <div id="sol2" class="solution" style="display: none;">
+                        <div class="code-block" data-language="python">
+<code><span class="comment"># Python Solution</span>
+num1 = <span class="keyword">float</span>(<span class="keyword">input</span>(<span class="string">"Enter first number: "</span>))
+operator = <span class="keyword">input</span>(<span class="string">"Enter operator (+, -, *, /): "</span>)
+num2 = <span class="keyword">float</span>(<span class="keyword">input</span>(<span class="string">"Enter second number: "</span>))
+
+<span class="keyword">if</span> operator == <span class="string">'+'</span>:
+    result = num1 + num2
+<span class="keyword">elif</span> operator == <span class="string">'-'</span>:
+    result = num1 - num2
+<span class="keyword">elif</span> operator == <span class="string">'*'</span>:
+    result = num1 * num2
+<span class="keyword">elif</span> operator == <span class="string">'/'</span>:
+    <span class="keyword">if</span> num2 != <span class="number">0</span>:
+        result = num1 / num2
+    <span class="keyword">else</span>:
+        result = <span class="string">"Error: Division by zero"</span>
+<span class="keyword">else</span>:
+    result = <span class="string">"Error: Invalid operator"</span>
+
+<span class="keyword">print</span>(<span class="string">f"Result: {result}"</span>)
+</code>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="example-box">
+                    <h5>Problem 3: Age Calculator</h5>
+                    <p>Write a program that calculates someone's age based on their birth year.</p>
+                    
+                    <button class="toggle-solution" onclick="toggleSolution('sol3')">Show Solution</button>
+                    <div id="sol3" class="solution" style="display: none;">
+                        <div class="code-block" data-language="python">
+<code><span class="comment"># Python Solution</span>
+<span class="keyword">from</span> datetime <span class="keyword">import</span> datetime
+
+birth_year = <span class="keyword">int</span>(<span class="keyword">input</span>(<span class="string">"Enter your birth year: "</span>))
+current_year = datetime.now().year
+age = current_year - birth_year
+
+<span class="keyword">print</span>(<span class="string">f"You are {age} years old (or will be this year)"</span>)
+</code>
+                        </div>
+
+                        <div class="code-block" data-language="cpp">
+<code><span class="comment">// C++ Solution</span>
+<span class="preprocessor">#include &lt;iostream&gt;</span>
+<span class="preprocessor">#include &lt;ctime&gt;</span>
+
+<span class="keyword">int</span> <span class="function">main</span>() {
+    <span class="keyword">int</span> birthYear;
+    std::cout &lt;&lt; <span class="string">"Enter your birth year: "</span>;
+    std::cin &gt;&gt; birthYear;
+    
+    <span class="comment">// Get current year</span>
+    time_t now = time(<span class="number">0</span>);
+    tm *ltm = localtime(&amp;now);
+    <span class="keyword">int</span> currentYear = <span class="number">1900</span> + ltm-&gt;tm_year;
+    
+    <span class="keyword">int</span> age = currentYear - birthYear;
+    std::cout &lt;&lt; <span class="string">"You are "</span> &lt;&lt; age &lt;&lt; <span class="string">" years old"</span> &lt;&lt; std::endl;
+    
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+</code>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="example-box">
+                    <h5>Problem 4: String Formatter</h5>
+                    <p>Create a program that takes a first name and last name, then outputs them in various formats.</p>
+                    
+                    <button class="toggle-solution" onclick="toggleSolution('sol4')">Show Solution</button>
+                    <div id="sol4" class="solution" style="display: none;">
+                        <div class="code-block" data-language="python">
+<code><span class="comment"># Python Solution</span>
+first_name = <span class="keyword">input</span>(<span class="string">"Enter first name: "</span>)
+last_name = <span class="keyword">input</span>(<span class="string">"Enter last name: "</span>)
+
+<span class="keyword">print</span>(<span class="string">f"Full name: {first_name} {last_name}"</span>)
+<span class="keyword">print</span>(<span class="string">f"Reversed: {last_name}, {first_name}"</span>)
+<span class="keyword">print</span>(<span class="string">f"Initials: {first_name[0]}.{last_name[0]}."</span>)
+<span class="keyword">print</span>(<span class="string">f"Uppercase: {first_name.upper()} {last_name.upper()}"</span>)
+<span class="keyword">print</span>(<span class="string">f"Total characters: {len(first_name) + len(last_name)}"</span>)
+</code>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="example-box">
+                    <h5>Problem 5: Shopping Receipt</h5>
+                    <p>Write a program that calculates a shopping receipt with multiple items, subtotal, tax (8%), and total.</p>
+                    
+                    <button class="toggle-solution" onclick="toggleSolution('sol5')">Show Solution</button>
+                    <div id="sol5" class="solution" style="display: none;">
+                        <div class="code-block" data-language="python">
+<code><span class="comment"># Python Solution</span>
+<span class="keyword">print</span>(<span class="string">"=== Shopping Receipt ==="</span>)
+
+item1_price = <span class="keyword">float</span>(<span class="keyword">input</span>(<span class="string">"Enter price of item 1: $"</span>))
+item2_price = <span class="keyword">float</span>(<span class="keyword">input</span>(<span class="string">"Enter price of item 2: $"</span>))
+item3_price = <span class="keyword">float</span>(<span class="keyword">input</span>(<span class="string">"Enter price of item 3: $"</span>))
+
+subtotal = item1_price + item2_price + item3_price
+tax = subtotal * <span class="number">0.08</span>
+total = subtotal + tax
+
+<span class="keyword">print</span>(<span class="string">f"\nSubtotal: ${subtotal:.2f}"</span>)
+<span class="keyword">print</span>(<span class="string">f"Tax (8%): ${tax:.2f}"</span>)
+<span class="keyword">print</span>(<span class="string">f"Total: ${total:.2f}"</span>)
+</code>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Key Takeaways</h3>
+                <ul>
+                    <li>Programming is creating instructions for computers to execute tasks</li>
+                    <li>Algorithms are step-by-step procedures for solving problems</li>
+                    <li>Main paradigms: Procedural (sequences), OOP (objects), Functional (pure functions)</li>
+                    <li>Compiled languages (C++) are faster; interpreted languages (Python) are more flexible</li>
+                    <li>Static typing (C++) catches errors early; dynamic typing (Python) offers flexibility</li>
+                    <li>Variables store data; comments explain code to humans</li>
+                    <li>Every language has input/output mechanisms for user interaction</li>
+                    <li>Start simple—Hello World teaches syntax and environment setup</li>
+                </ul>
+
+                <div class="info-box tip">
+                    <h4>💡 Next Steps</h4>
+                    <p>
+                        Now that you understand programming fundamentals, the next lesson dives deep into Python—
+                        one of the best languages for beginners. You'll learn about Python's powerful data types, 
+                        control flow, functions, and more practical programming concepts.
+                    </p>
+                </div>
+            </div>
+
+            <div class="lesson-navigation">
+                <span class="nav-btn disabled" style="opacity: 0.5; cursor: not-allowed;">← Previous: Start</span>
+                <a href="02-python-basics.html" class="nav-btn">Next: Python Basics →</a>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../js/main.js"></script>
+    <script>
+        function toggleSolution(id) {
+            const solution = document.getElementById(id);
+            const button = event.target;
+            if (solution.style.display === 'none') {
+                solution.style.display = 'block';
+                button.textContent = 'Hide Solution';
+            } else {
+                solution.style.display = 'none';
+                button.textContent = 'Show Solution';
+            }
+        }
+    </script>
+</body>
+</html>

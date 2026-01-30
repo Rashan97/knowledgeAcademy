@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 11: Signals & Systems - Engineering Academy</title>
+    <link rel="stylesheet" href="../../../css/styles.css">
+    <link rel="stylesheet" href="../../../css/course-styles/course.css">
+</head>
+<body>
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <h1><a href="../../../index.html" style="color: inherit; text-decoration: none;">🎓 Engineering Academy</a></h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../index.html">Course Overview</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section class="course-header">
+        <div class="container">
+            <h1>⚡ Electrical Engineering</h1>
+            <p>Lesson 11: Signals & Systems</p>
+        </div>
+    </section>
+
+    <div class="course-container">
+        <aside class="course-sidebar">
+            <h3>Course Modules</h3>
+            <ul class="lesson-list">
+                <li><a href="../index.html"><span class="lesson-number">📚</span>Course Overview</a></li>
+                <li><a href="01-fundamentals.html" class="completed"><span class="lesson-number">1</span>EE Fundamentals</a></li>
+                <li><a href="02-dc-circuits.html" class="completed"><span class="lesson-number">2</span>DC Circuit Analysis</a></li>
+                <li><a href="03-ac-circuits.html" class="completed"><span class="lesson-number">3</span>AC Circuits</a></li>
+                <li><a href="04-semiconductors.html" class="completed"><span class="lesson-number">4</span>Semiconductors</a></li>
+                <li><a href="05-diodes-transistors.html" class="completed"><span class="lesson-number">5</span>Diodes & Transistors</a></li>
+                <li><a href="06-operational-amplifiers.html" class="completed"><span class="lesson-number">6</span>Op-Amps</a></li>
+                <li><a href="07-digital-electronics.html" class="completed"><span class="lesson-number">7</span>Digital Electronics</a></li>
+                <li><a href="08-power-systems.html" class="completed"><span class="lesson-number">8</span>Power Systems</a></li>
+                <li><a href="09-transformers-motors.html" class="completed"><span class="lesson-number">9</span>Transformers & Motors</a></li>
+                <li><a href="10-control-systems.html" class="completed"><span class="lesson-number">10</span>Control Systems</a></li>
+                <li><a href="11-signals-systems.html" class="active"><span class="lesson-number">11</span>Signals & Systems</a></li>
+                <li><a href="12-safety-standards.html"><span class="lesson-number">12</span>Safety & Standards</a></li>
+            </ul>
+        </aside>
+
+        <main class="course-content">
+            <div class="lesson-header">
+                <h2>Lesson 11: Signals & Systems</h2>
+                <div class="lesson-meta">
+                    <span>📖 105 min read</span>
+                    <span>📊 Advanced</span>
+                </div>
+            </div>
+
+            <div class="lesson-content">
+                <h3>Introduction to Signals and Systems</h3>
+                <p>
+                    Signals carry information (audio, video, sensor data, communications), while systems process 
+                    these signals. Understanding signal analysis and system response is fundamental to 
+                    communications, digital signal processing, instrumentation, and control.
+                </p>
+
+                <div class="info-box note">
+                    <h4>📌 What You'll Learn</h4>
+                    <ul>
+                        <li>Signal classification (continuous vs discrete, periodic vs aperiodic)</li>
+                        <li>Energy and power signals</li>
+                        <li>System properties (linearity, time-invariance, causality, stability)</li>
+                        <li>Fourier series for periodic signals</li>
+                        <li>Fourier transform for aperiodic signals</li>
+                        <li>Convolution and impulse response</li>
+                        <li>Sampling theorem and aliasing</li>
+                        <li>Digital filter basics (FIR, IIR)</li>
+                    </ul>
+                </div>
+
+                <h3>Signal Classification</h3>
+
+                <h4>Continuous vs. Discrete Signals</h4>
+                <div class="code-block" data-language="text">
+<code>Continuous-Time (Analog) Signals:
+  x(t), where t is continuous
+  Defined for all time values
+  
+  Examples:
+    - Audio waveform
+    - Temperature sensor output
+    - Voltage across resistor
+    - Speech signal
+  
+  Notation: x(t), lowercase, continuous variable
+
+Discrete-Time Signals:
+  x[n], where n is integer (sample index)
+  Defined only at discrete time instances
+  
+  Examples:
+    - Digital audio (44.1 kHz sampling)
+    - Stock prices (daily samples)
+    - Digital image pixels
+    - Computer data
+  
+  Notation: x[n], square brackets, integer n
+  
+  Sampling: x[n] = x_a(nT_s)
+    where T_s = sampling period
+          f_s = 1/T_s = sampling frequency
+
+Continuous vs. Discrete Value:
+
+  Analog: Continuous time, continuous value
+    Traditional electrical signals
+  
+  Digital: Discrete time, discrete value (quantized)
+    Computer processing
+    ADC (Analog-to-Digital Converter) required
+  
+  Sampled-Data: Discrete time, continuous value
+    Sample-and-hold circuits
+    Intermediate representation
+</code>
+                </div>
+
+                <h4>Periodic vs. Aperiodic Signals</h4>
+                <div class="code-block" data-language="text">
+<code>Periodic Signals:
+  Repeat after fixed period T₀
+  
+  x(t) = x(t + T₀)  for all t
+  
+  Fundamental period T₀: smallest T₀ > 0
+  Fundamental frequency: f₀ = 1/T₀ (Hz)
+  Angular frequency: ω₀ = 2πf₀ (rad/s)
+  
+  Examples:
+    - Sine wave: x(t) = A sin(ωt + φ)
+    - Square wave (clock signal)
+    - Triangle wave
+    - AC power (60 Hz)
+  
+  Discrete periodic:
+    x[n] = x[n + N]
+    where N = fundamental period (samples)
+
+Aperiodic (Non-Periodic) Signals:
+  Do not repeat
+  
+  Examples:
+    - Step function: u(t)
+    - Impulse: δ(t)
+    - Exponential: e^(-at)u(t)
+    - Speech, music (finite duration)
+    - Transient events
+
+Even and Odd Signals:
+
+Even (symmetric about t=0):
+  x_e(t) = x_e(-t)
+  Example: cos(t), t²
+  
+Odd (antisymmetric):
+  x_o(t) = -x_o(-t)
+  Example: sin(t), t
+  
+Any signal: x(t) = x_e(t) + x_o(t)
+  x_e(t) = [x(t) + x(-t)]/2
+  x_o(t) = [x(t) - x(-t)]/2
+</code>
+                </div>
+
+                <h4>Energy and Power Signals</h4>
+                <div class="code-block" data-language="text">
+<code>Energy Signal:
+  Finite total energy, zero average power
+  
+  E = ∫|x(t)|² dt  (from -∞ to ∞)
+  
+  0 < E < ∞
+  
+  Examples:
+    - Pulse: x(t) = A, |t| < T/2; 0 otherwise
+    - Exponential decay: e^(-at)u(t), a > 0
+    - Gaussian pulse
+  
+  Typical: Signals that decay to zero
+
+Power Signal:
+  Infinite energy, finite average power
+  
+  P = lim (1/T) ∫|x(t)|² dt  (from -T/2 to T/2)
+      T→∞
+  
+  0 < P < ∞
+  
+  Examples:
+    - Periodic signals (sine, square, triangle)
+    - Constant: x(t) = A
+    - Random noise
+  
+  Typical: Signals that continue indefinitely
+
+Classification:
+  - Energy signal: E finite, P = 0
+  - Power signal: E infinite, P finite
+  - Some signals: Neither (e.g., ramp t·u(t))
+
+Example: Sine Wave
+  x(t) = A sin(ω₀t)
+  
+  Energy: E = ∫|A sin(ω₀t)|² dt → ∞ (infinite)
+  
+  Power: P = lim (1/T) ∫A² sin²(ω₀t) dt
+             T→∞
+           = A²/2  (finite)
+  
+  Conclusion: Power signal
+
+Example: Exponential Pulse
+  x(t) = e^(-at)u(t), a > 0
+  
+  Energy: E = ∫₀^∞ e^(-2at) dt = 1/(2a)  (finite)
+  
+  Power: P = lim (1/T) ∫₀^T e^(-2at) dt → 0
+             T→∞
+  
+  Conclusion: Energy signal
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>System Properties</h3>
+
+                <h4>Linearity</h4>
+                <div class="code-block" data-language="text">
+<code>Linear System:
+  Obeys superposition principle
+  
+  If: x₁(t) → y₁(t)  and  x₂(t) → y₂(t)
+  
+  Then: a·x₁(t) + b·x₂(t) → a·y₁(t) + b·y₂(t)
+  
+  Two properties:
+    1. Homogeneity (Scaling):
+       a·x(t) → a·y(t)
+    
+    2. Additivity:
+       x₁(t) + x₂(t) → y₁(t) + y₂(t)
+
+Test for Linearity:
+  1. Apply x₁ → get y₁
+  2. Apply x₂ → get y₂
+  3. Apply ax₁ + bx₂ → should get ay₁ + by₂
+  
+  If satisfied for all a, b, x₁, x₂ → Linear
+
+Examples:
+
+Linear Systems:
+  - y(t) = 5x(t)  (amplifier)
+  - y(t) = dx/dt  (differentiator)
+  - y(t) = ∫x(τ)dτ  (integrator)
+  - y(t) = x(t-T)  (delay)
+  - RC circuit, op-amp circuits
+
+Nonlinear Systems:
+  - y(t) = x²(t)  (squarer)
+  - y(t) = |x(t)|  (rectifier)
+  - y(t) = x(t) + 5  (DC offset violates zero-input zero-output)
+  - Diode circuit (exponential I-V)
+  - Saturation, clipping
+
+Importance:
+  Linear systems are easier to analyze
+  Superposition allows complex input → sum of responses
+  Fourier analysis applies (frequency decomposition)
+</code>
+                </div>
+
+                <h4>Time-Invariance</h4>
+                <div class="code-block" data-language="text">
+<code>Time-Invariant System:
+  Behavior doesn't change with time
+  Time shift in input → same time shift in output
+  
+  If: x(t) → y(t)
+  Then: x(t - t₀) → y(t - t₀)  for any t₀
+
+Test for Time-Invariance:
+  1. Delay input: x(t - t₀)
+  2. Apply system → get output
+  3. Compare to y(t - t₀)
+  4. If equal for all t₀ → Time-invariant
+
+Examples:
+
+Time-Invariant:
+  - y(t) = 3x(t)
+  - y(t) = x(t - 2)
+  - y(t) = dx/dt
+  - RC circuit (constant R, C)
+
+Time-Varying:
+  - y(t) = t·x(t)  (time-varying gain)
+  - y(t) = x(2t)  (time compression)
+  - Amplitude modulation: x(t)·cos(ωt)
+  - Aging components (R, C change over time)
+
+LTI Systems:
+  Linear + Time-Invariant = LTI
+  Most important class in signal processing
+  Completely characterized by impulse response h(t)
+  Convolution describes input-output relation
+</code>
+                </div>
+
+                <h4>Causality and Stability</h4>
+                <div class="code-block" data-language="text">
+<code>Causal System:
+  Output depends only on present and past inputs
+  No future values needed
+  
+  y(t) depends on x(τ) for τ ≤ t only
+  
+  Physically realizable systems must be causal
+  
+  Examples:
+    Causal:
+      - y(t) = x(t) + x(t-1)
+      - y(t) = ∫₋∞^t x(τ)dτ
+      - All real-time systems
+    
+    Non-causal:
+      - y(t) = x(t+1)  (requires future input!)
+      - y(t) = ∫ₜ^∞ x(τ)dτ
+      - Off-line processing (data recorded, then processed)
+
+BIBO Stability:
+  Bounded Input → Bounded Output
+  
+  If |x(t)| < M for all t (input bounded)
+  Then |y(t)| < N for all t (output bounded)
+  
+  For LTI system:
+    Stable ⟺ ∫|h(t)|dt < ∞
+    
+    where h(t) = impulse response
+
+Examples:
+
+Stable:
+  - y(t) = 5x(t)
+  - RC low-pass filter
+  - h(t) = e^(-t)u(t)  [∫e^(-t)dt = 1 < ∞]
+
+Unstable:
+  - Integrator: y(t) = ∫x(t)dt
+    Constant input → unbounded output
+  - Positive feedback (oscillates or grows)
+  - h(t) = e^(t)u(t)  [∫e^t dt → ∞]
+
+Memory:
+  Memoryless: y(t) depends only on x(t) at same instant
+    Example: y(t) = 5x(t)
+  
+  With memory: y(t) depends on past values
+    Example: y(t) = x(t) + x(t-1)
+    All systems with energy storage (C, L)
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Fourier Series</h3>
+
+                <h4>Fourier Series Representation</h4>
+                <div class="code-block" data-language="text">
+<code>Fourier Series:
+  Represents periodic signal as sum of sinusoids
+  Frequencies: f₀, 2f₀, 3f₀, ... (harmonics)
+  
+  Any periodic signal x(t) with period T₀:
+  
+  x(t) = a₀ + Σ[a_n cos(nω₀t) + b_n sin(nω₀t)]
+              n=1 to ∞
+  
+  where ω₀ = 2π/T₀ (fundamental frequency)
+
+Fourier Coefficients (Trigonometric Form):
+
+  DC component:
+    a₀ = (1/T₀) ∫ x(t) dt  (over one period)
+  
+  Cosine coefficients:
+    a_n = (2/T₀) ∫ x(t)cos(nω₀t) dt
+  
+  Sine coefficients:
+    b_n = (2/T₀) ∫ x(t)sin(nω₀t) dt
+
+Alternative: Exponential Form (Complex)
+
+  x(t) = Σ c_n e^(jnω₀t)
+         n=-∞ to ∞
+  
+  c_n = (1/T₀) ∫ x(t)e^(-jnω₀t) dt
+  
+  Relationship to trig form:
+    c₀ = a₀
+    c_n = (a_n - jb_n)/2  for n > 0
+    c₋ₙ = c_n*  (complex conjugate)
+
+Parseval's Theorem (Power):
+  
+  Average power: P = (1/T₀) ∫|x(t)|² dt
+  
+               = |a₀|² + (1/2)Σ(a_n² + b_n²)
+  
+               = Σ|c_n|²
+  
+  Power distributed across frequencies!
+
+Example: Square Wave
+  
+  x(t) = { +A,  0 < t < T₀/2
+         { -A,  T₀/2 < t < T₀
+  
+  Odd symmetry → a_n = 0 (no cosines)
+  
+  a₀ = 0  (equal positive/negative area)
+  
+  b_n = (2/T₀) ∫₀^(T₀/2) A·sin(nω₀t) dt 
+        - (2/T₀) ∫_(T₀/2)^T₀ A·sin(nω₀t) dt
+  
+  Result:
+    b_n = (4A)/(nπ)  for n odd
+    b_n = 0          for n even
+  
+  x(t) = (4A/π)[sin(ω₀t) + (1/3)sin(3ω₀t) + (1/5)sin(5ω₀t) + ...]
+  
+  Fundamental + odd harmonics only
+  Higher harmonics decrease as 1/n
+</code>
+                </div>
+
+                <h4>Example 1: Fourier Series of Triangle Wave</h4>
+                <div class="code-block" data-language="text">
+<code>Problem:
+  Triangle wave, period T₀ = 2, amplitude ±1
+  x(t) = { t,      -1 < t < 1
+         { x(t+2)  (periodic)
+  
+Find: Fourier series coefficients
+
+Solution:
+  Step 1: Fundamental frequency
+    ω₀ = 2π/T₀ = 2π/2 = π rad/s
+  
+  Step 2: DC component
+    a₀ = (1/2) ∫₋₁¹ t dt
+       = (1/2) [t²/2]₋₁¹
+       = (1/2) [(1/2) - (1/2)]
+       = 0
+    
+    (Expected: symmetric about zero)
+  
+  Step 3: Even function check
+    x(t) = x(-t) → even function
+    Therefore: b_n = 0 (no sine terms)
+  
+  Step 4: Cosine coefficients
+    a_n = (2/2) ∫₀¹ t·cos(nπt) dt
+        = ∫₀¹ t·cos(nπt) dt
+    
+    Using integration by parts:
+      u = t, dv = cos(nπt)dt
+      du = dt, v = sin(nπt)/(nπ)
+    
+    = [t·sin(nπt)/(nπ)]₀¹ - ∫₀¹ sin(nπt)/(nπ) dt
+    = 0 - [(-cos(nπt))/(nπ)²]₀¹
+    = (1/(nπ)²)[cos(nπ) - 1]
+    
+    For n even: cos(nπ) = 1 → a_n = 0
+    For n odd: cos(nπ) = -1 → a_n = -2/(nπ)²
+  
+  Step 5: Final series
+    x(t) = Σ (-8/(n²π²))cos(nπt)  for n = 1,3,5,...
+         n odd
+    
+    x(t) = -(8/π²)[cos(πt) + (1/9)cos(3πt) + (1/25)cos(5πt) + ...]
+  
+  Observation:
+    Coefficients decrease as 1/n² (faster than square wave's 1/n)
+    Smoother waveform → faster coefficient decay
+</code>
+                </div>
+
+                <h4>Frequency Spectrum</h4>
+                <div class="code-block" data-language="text">
+<code>Magnitude Spectrum:
+  Plot of |c_n| vs. frequency nf₀
+  Shows amplitude of each harmonic
+  
+  Line spectrum (discrete frequencies)
+  
+  For real x(t): symmetric about f = 0
+
+Phase Spectrum:
+  Plot of ∠c_n vs. frequency
+  Shows phase of each harmonic
+
+Bandwidth:
+  Range of significant frequencies
+  Often defined as frequencies containing 95% or 99% of power
+  
+  Example: Square wave
+    Fundamental: f₀
+    Significant harmonics to ~10f₀
+    Bandwidth ≈ 10f₀
+
+Effect of Signal Characteristics:
+  
+  Smooth signals:
+    - Slow coefficient decay (1/n², 1/n³)
+    - Lower bandwidth
+    - Example: Triangle wave (1/n²)
+  
+  Discontinuous signals:
+    - Slow coefficient decay (1/n)
+    - Higher bandwidth
+    - Example: Square wave (1/n)
+  
+  Sharp transitions:
+    - Even slower decay
+    - Very high bandwidth
+    - Example: Impulse train (constant coefficients)
+
+Gibbs Phenomenon:
+  Overshoot near discontinuities
+  Truncating Fourier series (finite terms)
+  ~9% overshoot persists even with many terms
+  Inherent to representing discontinuity with sinusoids
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Fourier Transform</h3>
+
+                <h4>Fourier Transform Definition</h4>
+                <div class="code-block" data-language="text">
+<code>Fourier Transform (FT):
+  Extends Fourier series to aperiodic signals
+  Continuous frequency spectrum
+  
+  Forward Transform:
+    X(f) = ∫₋∞^∞ x(t)e^(-j2πft) dt
+    
+    or (angular frequency):
+    X(ω) = ∫₋∞^∞ x(t)e^(-jωt) dt
+  
+  Inverse Transform:
+    x(t) = ∫₋∞^∞ X(f)e^(j2πft) df
+    
+    or:
+    x(t) = (1/2π) ∫₋∞^∞ X(ω)e^(jωt) dω
+
+Notation:
+  x(t) ↔ X(f)  or  x(t) ⟷ X(ω)
+
+Existence Conditions:
+  Sufficient (not necessary):
+    ∫₋∞^∞ |x(t)| dt < ∞  (absolutely integrable)
+  
+  Most practical signals satisfy this
+
+Magnitude and Phase:
+  X(f) is generally complex: X(f) = |X(f)|e^(jφ(f))
+  
+  Magnitude spectrum: |X(f)|
+  Phase spectrum: φ(f) = ∠X(f)
+
+Properties for Real Signals:
+  If x(t) is real:
+    |X(f)| is even: |X(-f)| = |X(f)|
+    φ(f) is odd: φ(-f) = -φ(f)
+    X(-f) = X*(f)  (conjugate symmetry)
+
+Common Transform Pairs:
+
+1. Rectangular Pulse:
+   x(t) = { 1,  |t| < T/2
+          { 0,  otherwise
+   
+   X(f) = T·sinc(πfT) = T·sin(πfT)/(πfT)
+
+2. Exponential:
+   x(t) = e^(-at)u(t), a > 0
+   
+   X(f) = 1/(a + j2πf)
+
+3. Gaussian:
+   x(t) = e^(-πt²)
+   
+   X(f) = e^(-πf²)  (Gaussian → Gaussian!)
+
+4. Impulse:
+   x(t) = δ(t)
+   
+   X(f) = 1  (all frequencies equally)
+
+5. Constant:
+   x(t) = 1
+   
+   X(f) = δ(f)  (DC only)
+
+6. Sinusoid:
+   x(t) = cos(2πf₀t)
+   
+   X(f) = 0.5[δ(f-f₀) + δ(f+f₀)]
+</code>
+                </div>
+
+                <h4>Fourier Transform Properties</h4>
+                <div class="code-block" data-language="text">
+<code>Key Properties:
+
+1. Linearity:
+   a·x₁(t) + b·x₂(t) ↔ a·X₁(f) + b·X₂(f)
+
+2. Time Shifting:
+   x(t - t₀) ↔ X(f)·e^(-j2πft₀)
+   
+   (Magnitude unchanged, phase shifted)
+
+3. Frequency Shifting (Modulation):
+   x(t)·e^(j2πf₀t) ↔ X(f - f₀)
+
+4. Scaling:
+   x(at) ↔ (1/|a|)X(f/a)
+   
+   Time compression ↔ Frequency expansion
+   (Inverse relationship!)
+
+5. Duality:
+   X(t) ↔ x(-f)
+
+6. Differentiation in Time:
+   dx/dt ↔ j2πf·X(f)
+   
+   (Multiplies spectrum by jω)
+
+7. Integration:
+   ∫₋∞^t x(τ)dτ ↔ X(f)/(j2πf) + X(0)δ(f)
+
+8. Convolution in Time:
+   x(t) * h(t) ↔ X(f)·H(f)
+   
+   (Most important for LTI systems!)
+
+9. Multiplication in Time:
+   x(t)·y(t) ↔ X(f) * Y(f)
+
+10. Parseval's Theorem (Energy):
+    ∫|x(t)|² dt = ∫|X(f)|² df
+    
+    Energy in time = Energy in frequency
+
+Convolution:
+  (x * h)(t) = ∫₋∞^∞ x(τ)h(t-τ) dτ
+  
+  "Flip, shift, multiply, integrate"
+  
+  LTI system output: y(t) = x(t) * h(t)
+</code>
+                </div>
+
+                <h4>Example 2: Fourier Transform Calculation</h4>
+                <div class="code-block" data-language="text">
+<code>Problem:
+  x(t) = e^(-2|t|)
+  
+Find: Fourier Transform X(f)
+
+Solution:
+  Step 1: Split integral at t = 0
+    |t| = { -t,  t < 0
+          {  t,  t ≥ 0
+  
+  Step 2: Apply FT definition
+    X(f) = ∫₋∞^∞ e^(-2|t|)e^(-j2πft) dt
+    
+         = ∫₋∞^0 e^(2t)e^(-j2πft) dt + ∫₀^∞ e^(-2t)e^(-j2πft) dt
+  
+  Step 3: First integral (t < 0)
+    ∫₋∞^0 e^(2t-j2πft) dt
+    = [e^(2t-j2πft)/(2-j2πf)]₋∞^0
+    = 1/(2-j2πf) - 0
+    = 1/(2-j2πf)
+  
+  Step 4: Second integral (t ≥ 0)
+    ∫₀^∞ e^(-2t-j2πft) dt
+    = [e^(-2t-j2πft)/(-2-j2πf)]₀^∞
+    = 0 - 1/(-2-j2πf)
+    = 1/(2+j2πf)
+  
+  Step 5: Combine
+    X(f) = 1/(2-j2πf) + 1/(2+j2πf)
+    
+         = (2+j2πf + 2-j2πf)/[(2-j2πf)(2+j2πf)]
+    
+         = 4/(4 + (2πf)²)
+    
+         = 4/(4 + 4π²f²)
+    
+    X(f) = 1/(1 + π²f²)
+  
+  Step 6: Magnitude
+    |X(f)| = 1/(1 + π²f²)
+    
+    Real and even (as expected for real, even x(t))
+    
+    At f = 0: |X(0)| = 1
+    At f = ±1/π: |X(±1/π)| = 0.5  (-3 dB point)
+    
+  This is a low-pass characteristic!
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Sampling and Reconstruction</h3>
+
+                <h4>Sampling Theorem</h4>
+                <div class="code-block" data-language="text">
+<code>Nyquist-Shannon Sampling Theorem:
+
+Statement:
+  A band-limited signal with maximum frequency f_max
+  can be perfectly reconstructed from samples if
+  sampling frequency f_s ≥ 2f_max
+
+Nyquist Rate:
+  f_Nyquist = 2f_max  (minimum sampling rate)
+
+Nyquist Frequency:
+  f_N = f_s/2  (maximum frequency that can be represented)
+
+Sampling Process:
+  x_s(t) = x(t)·Σδ(t - nT_s)
+         n=-∞ to ∞
+  
+  where T_s = 1/f_s (sampling period)
+
+Frequency Domain Effect:
+  X_s(f) = (1/T_s)·Σ X(f - nf_s)
+                    n=-∞ to ∞
+  
+  Spectrum replicates at multiples of f_s!
+
+Proper Sampling (f_s > 2f_max):
+  Spectral replicas don't overlap
+  Original signal recoverable with low-pass filter
+
+Aliasing (f_s < 2f_max):
+  Spectral replicas overlap
+  High frequencies "fold back" to low frequencies
+  Information loss - CANNOT be recovered!
+
+Reconstruction:
+  Ideal: Sinc interpolation
+    x(t) = Σx[n]·sinc((t-nT_s)/T_s)
+  
+  Practical: Hold circuits + low-pass filter
+    Zero-order hold (staircase)
+    First-order hold (linear interpolation)
+    Reconstruction filter (anti-image filter)
+
+Example Sampling Rates:
+
+Audio CD:
+  f_max ≈ 20 kHz (human hearing)
+  f_s = 44.1 kHz (> 2×20 kHz)
+
+Telephone:
+  f_max = 4 kHz (speech bandwidth)
+  f_s = 8 kHz
+
+Video (NTSC):
+  f_s ≈ 13.5 MHz (digital video)
+</code>
+                </div>
+
+                <h4>Anti-Aliasing and Reconstruction Filters</h4>
+                <div class="code-block" data-language="text">
+<code>Anti-Aliasing Filter:
+  Applied BEFORE sampling (analog domain)
+  Low-pass filter with cutoff ≤ f_s/2
+  
+  Purpose:
+    - Removes frequencies above f_N
+    - Prevents aliasing
+    - Must be analog filter
+  
+  Requirements:
+    - Sharp cutoff (brick-wall ideal, practical ≈ Butterworth)
+    - Passband: 0 to f_max (minimal attenuation)
+    - Stopband: f_s - f_max to ∞ (high attenuation)
+    - Transition band: As narrow as possible
+
+Oversampling:
+  Sample at f_s >> 2f_max
+  
+  Advantages:
+    - Relaxed anti-aliasing filter requirements
+    - Better SNR (noise shaping)
+    - Digital decimation possible
+  
+  Example:
+    Audio: 96 kHz or 192 kHz (vs. 44.1 kHz minimum)
+
+Reconstruction Filter:
+  Applied AFTER DAC (digital-to-analog)
+  Low-pass filter removes sampling artifacts
+  
+  Purpose:
+    - Removes spectral replicas at ±f_s, ±2f_s, etc.
+    - Smooths staircase output from DAC
+  
+  Similar requirements to anti-aliasing filter
+
+Practical ADC System:
+
+  Analog → Anti-Alias → Sample → Quantize → Digital
+  Signal    Filter      (S/H)     (ADC)      Output
+  
+  Anti-alias: Analog Butterworth, fc ≈ 0.4f_s to 0.45f_s
+  Sample & Hold: Captures instantaneous value
+  ADC: Converts to binary (N bits)
+
+Practical DAC System:
+
+  Digital → DAC → Hold → Reconstruction → Analog
+  Input           Circuit    Filter         Signal
+  
+  DAC: N-bit conversion to voltage levels
+  Hold: Zero-order or first-order hold
+  Reconstruction: Analog low-pass, fc ≈ 0.4f_s to 0.45f_s
+</code>
+                </div>
+
+                <h4>Example 3: Sampling and Aliasing</h4>
+                <div class="code-block" data-language="text">
+<code>Problem:
+  Signal: x(t) = cos(2π×100t) + cos(2π×300t)
+  Sample at f_s = 400 Hz
+  
+Determine: Will aliasing occur? What frequencies appear?
+
+Solution:
+  Step 1: Identify frequency components
+    f₁ = 100 Hz
+    f₂ = 300 Hz
+    f_max = 300 Hz
+  
+  Step 2: Nyquist rate
+    f_Nyquist = 2×f_max = 2×300 = 600 Hz
+  
+  Step 3: Compare with sampling rate
+    f_s = 400 Hz < 600 Hz
+    Undersampled! Aliasing will occur.
+  
+  Step 4: Nyquist frequency
+    f_N = f_s/2 = 400/2 = 200 Hz
+  
+  Step 5: Alias frequencies
+    For any frequency component f:
+    Apparent frequency = |f - k·f_s| (for some integer k)
+    Choose k so result is in [0, f_N]
+  
+    Component 1: f₁ = 100 Hz
+      100 Hz < f_N → appears correctly at 100 Hz ✓
+    
+    Component 2: f₂ = 300 Hz
+      300 Hz > f_N → aliasing!
+      f₂ - f_s = 300 - 400 = -100 Hz
+      |−100| = 100 Hz
+      
+      300 Hz aliases to 100 Hz!
+  
+  Step 6: Sampled signal
+    Both components appear at 100 Hz
+    Cannot distinguish them!
+    
+    x_sampled appears as: A·cos(2π×100t)
+    where A depends on phase relationship
+  
+  Conclusion:
+    Original signal has components at 100 Hz and 300 Hz
+    Sampled signal shows only 100 Hz (with combined amplitude)
+    Information about 300 Hz component lost forever
+  
+  Solution: Use f_s ≥ 600 Hz (or apply anti-aliasing filter)
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Digital Filters</h3>
+
+                <h4>FIR and IIR Filters</h4>
+                <div class="code-block" data-language="text">
+<code>Finite Impulse Response (FIR):
+
+  Output is weighted sum of current and past inputs
+  
+  y[n] = Σ b_k x[n-k]
+         k=0 to M
+  
+  Transfer Function:
+    H(z) = Σ b_k z^(-k)
+           k=0 to M
+  
+  Impulse Response:
+    h[n] = b_n  for n = 0 to M
+    h[n] = 0    for n > M  (finite!)
+
+Characteristics:
+  ✓ Always stable (all poles at origin)
+  ✓ Linear phase possible (symmetric coefficients)
+  ✓ No feedback → less sensitive to quantization
+  ✓ Simple structure
+  ✗ Higher order needed (more computations)
+  ✗ More memory required
+
+Design Methods:
+  - Window method (Hamming, Hanning, Blackman)
+  - Frequency sampling
+  - Parks-McClellan (optimal equiripple)
+
+Example: 3-point Moving Average
+  y[n] = (x[n] + x[n-1] + x[n-2])/3
+  
+  Coefficients: b = [1/3, 1/3, 1/3]
+  Simple low-pass filter
+
+Infinite Impulse Response (IIR):
+
+  Output depends on inputs AND past outputs (feedback)
+  
+  y[n] = Σ b_k x[n-k] - Σ a_k y[n-k]
+         k=0 to M       k=1 to N
+  
+  Transfer Function:
+    H(z) = (Σ b_k z^(-k))/(1 + Σ a_k z^(-k))
+            k=0 to M          k=1 to N
+  
+  Impulse Response:
+    h[n] extends to infinity (exponential decay)
+
+Characteristics:
+  ✓ Lower order (fewer coefficients)
+  ✓ Less computation
+  ✓ Less memory
+  ✓ Closely matches analog filters
+  ✗ Can be unstable (pole locations)
+  ✗ Nonlinear phase
+  ✗ Sensitive to coefficient quantization
+
+Design Methods:
+  - Impulse invariance
+  - Bilinear transformation (from analog prototypes)
+  - Direct digital design
+
+Example: 1st-Order IIR Low-Pass
+  y[n] = αx[n] + (1-α)y[n-1]
+  
+  where 0 < α < 1
+  Exponential smoothing
+  Time constant related to α
+</code>
+                </div>
+
+                <h4>Filter Specifications</h4>
+                <div class="code-block" data-language="text">
+<code>Low-Pass Filter Specs:
+
+  Passband:
+    - 0 to f_p (passband edge)
+    - Maximum ripple: δ_p (e.g., ±0.1 dB)
+  
+  Stopband:
+    - f_s to f_N (stopband edge)
+    - Minimum attenuation: δ_s (e.g., -40 dB)
+  
+  Transition Band:
+    - f_p to f_s
+    - Narrower → higher order filter
+
+Common Filter Types:
+
+1. Butterworth:
+   - Maximally flat passband
+   - Smooth rolloff (-20N dB/decade for order N)
+   - Monotonic (no ripple)
+
+2. Chebyshev Type I:
+   - Ripple in passband
+   - Flat stopband
+   - Sharper rolloff than Butterworth
+
+3. Chebyshev Type II:
+   - Flat passband
+   - Ripple in stopband
+   - Less common
+
+4. Elliptic (Cauer):
+   - Ripple in both passband and stopband
+   - Steepest rolloff for given order
+   - Most efficient, but most complex
+
+Filter Order Estimation:
+
+For Butterworth:
+  N ≥ log[(10^(A_s/10) - 1)/(10^(A_p/10) - 1)] / [2log(f_s/f_p)]
+  
+  where A_s = stopband atten (dB)
+        A_p = passband ripple (dB)
+
+Example: Audio Low-Pass
+  f_p = 18 kHz (passband)
+  f_s = 22 kHz (stopband)
+  A_p = 0.5 dB (passband ripple)
+  A_s = 60 dB (stopband atten)
+  
+  Butterworth: N ≈ 15 (high order!)
+  Elliptic: N ≈ 6 (much lower)
+
+Implementation Structures:
+
+Direct Form I:
+  Straightforward from difference equation
+  Two delay chains (input and output)
+
+Direct Form II:
+  Canonical (minimum delays)
+  More efficient
+
+Cascade (Second-Order Sections):
+  H(z) = H₁(z) × H₂(z) × ... × H_K(z)
+  More robust to quantization
+  Recommended for IIR
+
+Parallel:
+  H(z) = H₁(z) + H₂(z) + ... + H_K(z)
+  Less common
+</code>
+                </div>
+
+                <div class="info-box warning">
+                    <h4>⚠️ Common Pitfalls</h4>
+                    <ul>
+                        <li><strong>Aliasing:</strong> Always use anti-aliasing filter before sampling. Once aliased, signal cannot be recovered!</li>
+                        <li><strong>IIR Stability:</strong> Check pole locations. Poles must be inside unit circle (|z| < 1) for stability</li>
+                        <li><strong>Phase Distortion:</strong> IIR filters have nonlinear phase. Use FIR if phase linearity critical (audio, data transmission)</li>
+                        <li><strong>Coefficient Quantization:</strong> Limited precision can move poles, causing instability in IIR filters</li>
+                        <li><strong>Numerical Overflow:</strong> Use proper scaling and saturation arithmetic in fixed-point implementations</li>
+                    </ul>
+                </div>
+
+                <div class="info-box important">
+                    <h4>🎯 Practice Problems</h4>
+                    <ol>
+                        <li>Energy/Power: Classify x(t) = 5cos(10t) as energy or power signal. Find energy or power.</li>
+                        <li>Linearity test: Is y(t) = 3x(t) + 2 linear? Is y[n] = x²[n] linear?</li>
+                        <li>Fourier Series: Find FS coefficients for x(t) = |sin(πt)|, period T₀ = 1</li>
+                        <li>Fourier Transform: Find FT of x(t) = e^(-3t)u(t)</li>
+                        <li>Sampling: Signal with f_max = 5 kHz. Minimum f_s? If sample at 8 kHz, what happens to 6 kHz component?</li>
+                        <li>Filter design: Need LPF, f_p = 1 kHz, f_s = 1.5 kHz, sampling at 10 kHz. Estimate Butterworth order for 40 dB stopband atten</li>
+                    </ol>
+                </div>
+
+                <h3>Summary</h3>
+                <ul>
+                    <li>Signals classified: continuous/discrete, periodic/aperiodic, energy/power, even/odd</li>
+                    <li>LTI systems: Linear + Time-Invariant, characterized by impulse response h(t)</li>
+                    <li>Fourier Series represents periodic signals as sum of harmonics (nf₀)</li>
+                    <li>Fourier Transform extends to aperiodic signals, continuous spectrum X(f)</li>
+                    <li>Convolution in time ↔ Multiplication in frequency (key for LTI analysis)</li>
+                    <li>Sampling Theorem: f_s ≥ 2f_max required to avoid aliasing</li>
+                    <li>Anti-aliasing filter (analog LPF) must precede sampling ADC</li>
+                    <li>FIR filters: Always stable, linear phase possible, higher order needed</li>
+                    <li>IIR filters: Lower order, matches analog prototypes, can be unstable</li>
+                    <li>Digital filter design: Butterworth (smooth), Chebyshev (ripple), Elliptic (steepest)</li>
+                </ul>
+
+                <h3>Next Steps</h3>
+                <p>
+                    In Lesson 12 (final lesson), we'll cover Electrical Safety and Standards, including NEC codes, 
+                    grounding requirements, arc flash hazards, personal protective equipment, and IEEE/IEC standards.
+                </p>
+            </div>
+
+            <div class="lesson-navigation">
+                <a href="10-control-systems.html" class="nav-btn">← Previous: Control Systems</a>
+                <a href="12-safety-standards.html" class="nav-btn">Next: Safety & Standards →</a>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../js/main.js"></script>
+</body>
+</html>

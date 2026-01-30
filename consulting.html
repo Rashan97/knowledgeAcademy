@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulting Services - Engineering Academy</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <style>
+        .consulting-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .consulting-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .consulting-hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.95;
+        }
+
+        .consulting-content {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        .service-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+        }
+
+        .service-card h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .service-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .service-card ul li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .service-card ul li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #3498db;
+            font-weight: bold;
+        }
+
+        .contact-section {
+            background: #f8f9fa;
+            padding: 60px 20px;
+            margin-top: 60px;
+        }
+
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-container h2 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: opacity 0.3s ease, transform 0.2s ease;
+        }
+
+        .submit-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .form-message {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            display: none;
+        }
+
+        .form-message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .form-message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .contact-info {
+            text-align: center;
+            margin-top: 40px;
+            padding: 30px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .contact-info h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        .contact-info p {
+            font-size: 1.1rem;
+            color: #555;
+            margin: 10px 0;
+        }
+
+        .contact-info a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .consulting-hero h1 {
+                font-size: 2rem;
+            }
+
+            .consulting-hero p {
+                font-size: 1.1rem;
+            }
+
+            .contact-form {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <h1><a href="index.html" style="color: inherit; text-decoration: none;">🎓 Engineering Academy</a></h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#courses">Courses</a></li>
+                    <li><a href="consulting.html" class="active">Consulting</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section class="consulting-hero">
+        <div class="container">
+            <h1>Software Solutions Consulting</h1>
+            <p>Expert software engineering and development services tailored to your needs</p>
+        </div>
+    </section>
+
+    <div class="consulting-content">
+        <div style="text-align: center; margin-bottom: 50px;">
+            <h2 style="color: #2c3e50; font-size: 2.5rem; margin-bottom: 20px;">Services Offered</h2>
+            <p style="font-size: 1.2rem; color: #555; max-width: 800px; margin: 0 auto;">
+                Professional software development and engineering consulting services to help bring your ideas to life
+            </p>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>🚀 Custom Software Development</h3>
+                <ul>
+                    <li>Web application development</li>
+                    <li>Desktop application solutions</li>
+                    <li>API development and integration</li>
+                    <li>Database design and optimization</li>
+                    <li>Cloud-based solutions</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <h3>🏗️ Software Architecture</h3>
+                <ul>
+                    <li>System design and architecture</li>
+                    <li>Microservices architecture</li>
+                    <li>Scalability planning</li>
+                    <li>Technology stack selection</li>
+                    <li>Architecture documentation</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <h3>💻 Full-Stack Development</h3>
+                <ul>
+                    <li>Frontend development (React, Vue, Angular)</li>
+                    <li>Backend development (Node.js, Python, C++)</li>
+                    <li>RESTful API design</li>
+                    <li>Responsive web design</li>
+                    <li>Progressive web applications</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <h3>🔧 Technical Consulting</h3>
+                <ul>
+                    <li>Code review and optimization</li>
+                    <li>Performance tuning</li>
+                    <li>Security audits</li>
+                    <li>Best practices implementation</li>
+                    <li>Technical documentation</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <h3>📱 Mobile Development</h3>
+                <ul>
+                    <li>Cross-platform mobile apps</li>
+                    <li>Native iOS and Android development</li>
+                    <li>Mobile-first web applications</li>
+                    <li>App optimization</li>
+                    <li>App store deployment</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <h3>⚙️ DevOps & Automation</h3>
+                <ul>
+                    <li>CI/CD pipeline setup</li>
+                    <li>Cloud infrastructure (AWS, Azure, GCP)</li>
+                    <li>Containerization (Docker, Kubernetes)</li>
+                    <li>Automated testing</li>
+                    <li>Monitoring and logging</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <section class="contact-section">
+        <div class="contact-container">
+            <h2>Get in Touch</h2>
+            
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <label for="name">Your Name *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Your Email *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="company">Company/Organization</label>
+                    <input type="text" id="company" name="company">
+                </div>
+
+                <div class="form-group">
+                    <label for="service">Service Interested In *</label>
+                    <select id="service" name="service" required>
+                        <option value="">Select a service</option>
+                        <option value="custom-development">Custom Software Development</option>
+                        <option value="architecture">Software Architecture</option>
+                        <option value="fullstack">Full-Stack Development</option>
+                        <option value="consulting">Technical Consulting</option>
+                        <option value="mobile">Mobile Development</option>
+                        <option value="devops">DevOps & Automation</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Project Details *</label>
+                    <textarea id="message" name="message" required placeholder="Please describe your project requirements, timeline, and any specific needs..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Send Message</button>
+
+                <div id="formMessage" class="form-message"></div>
+            </form>
+
+            <div class="contact-info">
+                <h3>Direct Contact</h3>
+                <p><strong>Rashan Lakshitha</strong></p>
+                <p>Email: <a href="mailto:r.lakshitha1997@gmail.com">r.lakshitha1997@gmail.com</a></p>
+                <p style="margin-top: 20px; font-size: 0.95rem; color: #777;">
+                    Response time: Typically within 24-48 hours
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer style="background: #2c3e50; color: white; text-align: center; padding: 30px 20px; margin-top: 0;">
+        <div class="container">
+            <p>&copy; 2026 Engineering Academy - Rashan Lakshitha. All rights reserved.</p>
+            <p style="margin-top: 10px; opacity: 0.8;">Software Solutions & Engineering Education</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = this.querySelector('.submit-btn');
+            const messageDiv = document.getElementById('formMessage');
+            
+            // Disable submit button
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+            
+            // Get form data
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                company: document.getElementById('company').value,
+                service: document.getElementById('service').value,
+                message: document.getElementById('message').value
+            };
+            
+            try {
+                // Send to backend API
+                const response = await fetch('http://localhost:3000/api/consulting', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    // Success
+                    messageDiv.textContent = '✅ ' + result.message;
+                    messageDiv.className = 'form-message success';
+                    messageDiv.style.display = 'block';
+                    this.reset();
+                } else {
+                    // Error from server
+                    messageDiv.textContent = '❌ ' + result.message;
+                    messageDiv.className = 'form-message error';
+                    messageDiv.style.display = 'block';
+                }
+            } catch (error) {
+                // Network or server error
+                console.error('Form submission error:', error);
+                messageDiv.textContent = '❌ Error submitting form. Make sure the server is running at http://localhost:3000';
+                messageDiv.className = 'form-message error';
+                messageDiv.style.display = 'block';
+            }
+            
+            // Re-enable submit button
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Send Message';
+            
+            // Hide message after 10 seconds
+            setTimeout(() => {
+                messageDiv.style.display = 'none';
+            }, 10000);
+        });
+    </script>
+</body>
+</html>

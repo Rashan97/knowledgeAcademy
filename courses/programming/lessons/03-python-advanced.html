@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 3: Python Advanced - Engineering Academy</title>
+    <link rel="stylesheet" href="../../../css/styles.css">
+    <link rel="stylesheet" href="../../../css/course-styles/course.css">
+</head>
+<body>
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <h1><a href="../../../index.html" style="color: inherit; text-decoration: none;">🎓 Engineering Academy</a></h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../index.html">Course Overview</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section class="course-header">
+        <div class="container">
+            <h1>⌨️ Programming</h1>
+            <p>Lesson 3: Python Advanced</p>
+        </div>
+    </section>
+
+    <div class="course-container">
+        <aside class="course-sidebar">
+            <h3>Course Modules</h3>
+            <ul class="lesson-list">
+                <li><a href="../index.html"><span class="lesson-number">📚</span>Course Overview</a></li>
+                <li><a href="01-programming-fundamentals.html" class="completed"><span class="lesson-number">1</span>Programming Fundamentals</a></li>
+                <li><a href="02-python-basics.html" class="completed"><span class="lesson-number">2</span>Python Basics</a></li>
+                <li><a href="03-python-advanced.html" class="active"><span class="lesson-number">3</span>Python Advanced</a></li>
+                <li><a href="04-javascript-basics.html"><span class="lesson-number">4</span>JavaScript Basics</a></li>
+                <li><a href="05-javascript-modern.html"><span class="lesson-number">5</span>Modern JavaScript</a></li>
+                <li><a href="06-cpp-basics.html"><span class="lesson-number">6</span>C++ Basics</a></li>
+                <li><a href="07-cpp-advanced.html"><span class="lesson-number">7</span>C++ Advanced</a></li>
+                <li><a href="08-oop-principles.html"><span class="lesson-number">8</span>OOP Principles</a></li>
+                <li><a href="09-data-structures.html"><span class="lesson-number">9</span>Data Structures</a></li>
+                <li><a href="10-algorithms.html"><span class="lesson-number">10</span>Algorithms</a></li>
+                <li><a href="11-debugging.html"><span class="lesson-number">11</span>Debugging & Testing</a></li>
+                <li><a href="12-best-practices.html"><span class="lesson-number">12</span>Best Practices</a></li>
+            </ul>
+        </aside>
+
+        <main class="course-content">
+            <div class="lesson-header">
+                <h2>Lesson 3: Python Advanced</h2>
+                <div class="lesson-meta">
+                    <span>📖 100 min read</span>
+                    <span>📊 Intermediate</span>
+                </div>
+            </div>
+
+            <div class="lesson-content">
+                <h3>Beyond the Basics</h3>
+                <p>
+                    Now that you've mastered Python fundamentals, it's time to explore the powerful features 
+                    that make Python truly exceptional. These advanced concepts will make your code more 
+                    concise, elegant, and Pythonic.
+                </p>
+
+                <div class="info-box note">
+                    <h4>📌 What Makes Code "Pythonic"?</h4>
+                    <p>
+                        Pythonic code leverages Python's unique features to write clear, concise, and 
+                        readable solutions. It's not just about what works—it's about writing code that 
+                        feels natural in Python.
+                    </p>
+                </div>
+
+                <h3>List Comprehensions</h3>
+                <p>
+                    List comprehensions provide a concise way to create lists. They're faster and more 
+                    readable than traditional for loops for simple transformations.
+                </p>
+
+                <h4>Basic List Comprehension</h4>
+                <div class="example-box">
+                    <h5>Traditional Approach vs. List Comprehension</h5>
+                    <div class="code-block" data-language="python">
+<code><span class="comment"># Traditional approach</span>
+squares = []
+<span class="keyword">for</span> x <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">10</span>):
+    squares.append(x ** <span class="number">2</span>)
+<span class="keyword">print</span>(squares)  <span class="comment"># [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]</span>
+
+<span class="comment"># List comprehension - more concise!</span>
+squares = [x ** <span class="number">2</span> <span class="keyword">for</span> x <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">10</span>)]
+<span class="keyword">print</span>(squares)  <span class="comment"># [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]</span>
+</code>
+                    </div>
+                </div>
+
+                <h4>List Comprehension with Conditions</h4>
+                <div class="code-block" data-language="python">
+<code><span class="comment"># Get even numbers only</span>
+evens = [x <span class="keyword">for</span> x <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">20</span>) <span class="keyword">if</span> x % <span class="number">2</span> == <span class="number">0</span>]
+<span class="keyword">print</span>(evens)  <span class="comment"># [0, 2, 4, 6, 8, 10, 12, 14, 16, 18]</span>
+
+<span class="comment"># String manipulation</span>
+words = [<span class="string">"hello"</span>, <span class="string">"world"</span>, <span class="string">"python"</span>, <span class="string">"programming"</span>]
+uppercase = [word.upper() <span class="keyword">for</span> word <span class="keyword">in</span> words <span class="keyword">if</span> <span class="keyword">len</span>(word) &gt; <span class="number">5</span>]
+<span class="keyword">print</span>(uppercase)  <span class="comment"># ['PYTHON', 'PROGRAMMING']</span>
+
+<span class="comment"># Nested list comprehension - multiplication table</span>
+table = [[i * j <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, <span class="number">6</span>)] <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, <span class="number">6</span>)]
+<span class="keyword">for</span> row <span class="keyword">in</span> table:
+    <span class="keyword">print</span>(row)
+<span class="comment"># [1, 2, 3, 4, 5]
+# [2, 4, 6, 8, 10]
+# [3, 6, 9, 12, 15]
+# ...</span>
+</code>
+                </div>
+
+                <h4>Dictionary and Set Comprehensions</h4>
+                <div class="code-block" data-language="python">
+<code><span class="comment"># Dictionary comprehension</span>
+squares_dict = {x: x ** <span class="number">2</span> <span class="keyword">for</span> x <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">6</span>)}
+<span class="keyword">print</span>(squares_dict)  <span class="comment"># {0: 0, 1: 1, 2: 4, 3: 9, 4: 16, 5: 25}</span>
+
+<span class="comment"># Set comprehension (unique values only)</span>
+unique_lengths = {<span class="keyword">len</span>(word) <span class="keyword">for</span> word <span class="keyword">in</span> [<span class="string">"hello"</span>, <span class="string">"world"</span>, <span class="string">"hi"</span>, <span class="string">"there"</span>]}
+<span class="keyword">print</span>(unique_lengths)  <span class="comment"># {2, 5}</span>
+</code>
+                </div>
+
+                <h3>Generators and Iterators</h3>
+                <p>
+                    Generators produce values on-the-fly rather than storing everything in memory. 
+                    Perfect for working with large datasets or infinite sequences.
+                </p>
+
+                <h4>Generator Functions with yield</h4>
+                <div class="example-box">
+                    <h5>Generator vs. List</h5>
+                    <div class="code-block" data-language="python">
+<code><span class="comment"># Regular function - returns entire list</span>
+<span class="keyword">def</span> <span class="function">get_squares_list</span>(n):
+    result = []
+    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(n):
+        result.append(i ** <span class="number">2</span>)
+    <span class="keyword">return</span> result  <span class="comment"># All at once</span>
+
+<span class="comment"># Generator function - yields values one at a time</span>
+<span class="keyword">def</span> <span class="function">get_squares_generator</span>(n):
+    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(n):
+        <span class="keyword">yield</span> i ** <span class="number">2</span>  <span class="comment"># One at a time, on demand</span>
+
+<span class="comment"># Usage</span>
+<span class="keyword">for</span> square <span class="keyword">in</span> get_squares_generator(<span class="number">5</span>):
+    <span class="keyword">print</span>(square, end=<span class="string">" "</span>)  <span class="comment"># 0 1 4 9 16</span>
+</code>
+                    </div>
+                </div>
+
+                <h4>Generator Expressions</h4>
+                <div class="code-block" data-language="python">
+<code><span class="comment"># Generator expression (like list comprehension but with ())</span>
+squares_gen = (x ** <span class="number">2</span> <span class="keyword">for</span> x <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">10</span>))
+
+<span class="comment"># Doesn't create list immediately - saves memory</span>
+<span class="keyword">print</span>(<span class="keyword">next</span>(squares_gen))  <span class="comment"># 0</span>
+<span class="keyword">print</span>(<span class="keyword">next</span>(squares_gen))  <span class="comment"># 1</span>
+<span class="keyword">print</span>(<span class="keyword">next</span>(squares_gen))  <span class="comment"># 4</span>
+
+<span class="comment"># Practical example: Reading large files</span>
+<span class="keyword">def</span> <span class="function">read_large_file</span>(file_path):
+    <span class="keyword">with</span> <span class="keyword">open</span>(file_path) <span class="keyword">as</span> f:
+        <span class="keyword">for</span> line <span class="keyword">in</span> f:
+            <span class="keyword">yield</span> line.strip()
+
+<span class="comment"># Memory efficient - processes one line at a time</span>
+<span class="comment"># for line in read_large_file('huge_file.txt'):</span>
+<span class="comment">#     process(line)</span>
+</code>
+                </div>
+
+                <div class="info-box tip">
+                    <h4>💡 When to Use Generators</h4>
+                    <ul>
+                        <li>Working with large datasets that don't fit in memory</li>
+                        <li>Infinite sequences (e.g., Fibonacci numbers)</li>
+                        <li>Pipeline processing where each step transforms data</li>
+                        <li>When you only need to iterate once</li>
+                    </ul>
+                </div>
+
+                <h3>Decorators</h3>
+                <p>
+                    Decorators modify or enhance functions without changing their code. They're functions 
+                    that wrap other functions, adding functionality.
+                </p>
+
+                <h4>Basic Decorator</h4>
+                <div class="example-box">
+                    <h5>Timing Function Execution</h5>
+                    <div class="code-block" data-language="python">
+<code><span class="keyword">import</span> time
+
+<span class="comment"># Decorator function</span>
+<span class="keyword">def</span> <span class="function">timer_decorator</span>(func):
+    <span class="keyword">def</span> <span class="function">wrapper</span>(*args, **kwargs):
+        start = time.time()
+        result = func(*args, **kwargs)
+        end = time.time()
+        <span class="keyword">print</span>(<span class="string">f"{func.__name__} took {end - start:.4f} seconds"</span>)
+        <span class="keyword">return</span> result
+    <span class="keyword">return</span> wrapper
+
+<span class="comment"># Apply decorator with @ syntax</span>
+<span class="decorator">@timer_decorator</span>
+<span class="keyword">def</span> <span class="function">slow_function</span>():
+    time.sleep(<span class="number">1</span>)
+    <span class="keyword">return</span> <span class="string">"Done!"</span>
+
+result = slow_function()
+<span class="comment"># Output: slow_function took 1.0012 seconds</span>
+<span class="keyword">print</span>(result)  <span class="comment"># Done!</span>
+</code>
+                    </div>
+                </div>
+
+                <h4>Practical Decorators</h4>
+                <div class="code-block" data-language="python">
+<code><span class="comment"># Logging decorator</span>
+<span class="keyword">def</span> <span class="function">log_decorator</span>(func):
+    <span class="keyword">def</span> <span class="function">wrapper</span>(*args, **kwargs):
+        <span class="keyword">print</span>(<span class="string">f"Calling {func.__name__} with args={args}, kwargs={kwargs}"</span>)
+        result = func(*args, **kwargs)
+        <span class="keyword">print</span>(<span class="string">f"{func.__name__} returned {result}"</span>)
+        <span class="keyword">return</span> result
+    <span class="keyword">return</span> wrapper
+
+<span class="decorator">@log_decorator</span>
+<span class="keyword">def</span> <span class="function">add</span>(a, b):
+    <span class="keyword">return</span> a + b
+
+add(<span class="number">5</span>, <span class="number">3</span>)
+<span class="comment"># Output:
+# Calling add with args=(5, 3), kwargs={}
+# add returned 8</span>
+
+<span class="comment"># Memoization decorator (caching results)</span>
+<span class="keyword">def</span> <span class="function">memoize</span>(func):
+    cache = {}
+    <span class="keyword">def</span> <span class="function">wrapper</span>(*args):
+        <span class="keyword">if</span> args <span class="keyword">not in</span> cache:
+            cache[args] = func(*args)
+        <span class="keyword">return</span> cache[args]
+    <span class="keyword">return</span> wrapper
+
+<span class="decorator">@memoize</span>
+<span class="keyword">def</span> <span class="function">fibonacci</span>(n):
+    <span class="keyword">if</span> n &lt; <span class="number">2</span>:
+        <span class="keyword">return</span> n
+    <span class="keyword">return</span> fibonacci(n - <span class="number">1</span>) + fibonacci(n - <span class="number">2</span>)
+
+<span class="keyword">print</span>(fibonacci(<span class="number">50</span>))  <span class="comment"># Fast! Without memoization, this would take forever</span>
+</code>
+                </div>
+
+                <h3>Context Managers (with statement)</h3>
+                <p>
+                    Context managers handle resource management automatically—setup and cleanup. 
+                    Most commonly used with files, but works with any resource.
+                </p>
+
+                <h4>File Handling with Context Managers</h4>
+                <div class="example-box">
+                    <h5>Without Context Manager (Manual)</h5>
+                    <div class="code-block" data-language="python">
+<code><span class="comment"># Manual file handling - error-prone</span>
+f = <span class="keyword">open</span>(<span class="string">'data.txt'</span>, <span class="string">'r'</span>)
+<span class="keyword">try</span>:
+    data = f.read()
+    <span class="comment"># Process data...</span>
+<span class="keyword">finally</span>:
+    f.close()  <span class="comment"># Must remember to close!</span>
+</code>
+                    </div>
+                </div>
+
+                <div class="example-box">
+                    <h5>With Context Manager (Automatic)</h5>
+                    <div class="code-block" data-language="python">
+<code><span class="comment"># With context manager - automatic cleanup</span>
+<span class="keyword">with</span> <span class="keyword">open</span>(<span class="string">'data.txt'</span>, <span class="string">'r'</span>) <span class="keyword">as</span> f:
+    data = f.read()
+    <span class="comment"># Process data...</span>
+<span class="comment"># File automatically closed here, even if errors occur!</span>
+
+<span class="comment"># Multiple context managers</span>
+<span class="keyword">with</span> <span class="keyword">open</span>(<span class="string">'input.txt'</span>) <span class="keyword">as</span> infile, <span class="keyword">open</span>(<span class="string">'output.txt'</span>, <span class="string">'w'</span>) <span class="keyword">as</span> outfile:
+    <span class="keyword">for</span> line <span class="keyword">in</span> infile:
+        outfile.write(line.upper())
+</code>
+                    </div>
+                </div>
+
+                <h4>Creating Custom Context Managers</h4>
+                <div class="code-block" data-language="python">
+<code><span class="keyword">from</span> contextlib <span class="keyword">import</span> contextmanager
+
+<span class="decorator">@contextmanager</span>
+<span class="keyword">def</span> <span class="function">timer_context</span>(name):
+    <span class="keyword">import</span> time
+    start = time.time()
+    <span class="keyword">print</span>(<span class="string">f"Starting {name}..."</span>)
+    <span class="keyword">yield</span>  <span class="comment"># Code in 'with' block executes here</span>
+    end = time.time()
+    <span class="keyword">print</span>(<span class="string">f"{name} took {end - start:.4f} seconds"</span>)
+
+<span class="comment"># Usage</span>
+<span class="keyword">with</span> timer_context(<span class="string">"Data Processing"</span>):
+    <span class="comment"># Your code here</span>
+    total = <span class="keyword">sum</span>(<span class="keyword">range</span>(<span class="number">1000000</span>))
+    <span class="keyword">print</span>(<span class="string">f"Sum: {total}"</span>)
+</code>
+                </div>
+
+                <h3>Lambda Functions</h3>
+                <p>
+                    Lambda functions are small anonymous functions defined in a single line. 
+                    Perfect for short operations used once.
+                </p>
+
+                <div class="code-block" data-language="python">
+<code><span class="comment"># Regular function</span>
+<span class="keyword">def</span> <span class="function">square</span>(x):
+    <span class="keyword">return</span> x ** <span class="number">2</span>
+
+<span class="comment"># Lambda equivalent</span>
+square = <span class="keyword">lambda</span> x: x ** <span class="number">2</span>
+
+<span class="keyword">print</span>(square(<span class="number">5</span>))  <span class="comment"># 25</span>
+
+<span class="comment"># Lambda with multiple arguments</span>
+add = <span class="keyword">lambda</span> x, y: x + y
+<span class="keyword">print</span>(add(<span class="number">3</span>, <span class="number">7</span>))  <span class="comment"># 10</span>
+
+<span class="comment"># Common use: sorting with custom key</span>
+students = [
+    {<span class="string">'name'</span>: <span class="string">'Alice'</span>, <span class="string">'grade'</span>: <span class="number">85</span>},
+    {<span class="string">'name'</span>: <span class="string">'Bob'</span>, <span class="string">'grade'</span>: <span class="number">92</span>},
+    {<span class="string">'name'</span>: <span class="string">'Charlie'</span>, <span class="string">'grade'</span>: <span class="number">78</span>}
+]
+
+<span class="comment"># Sort by grade</span>
+sorted_students = <span class="keyword">sorted</span>(students, key=<span class="keyword">lambda</span> s: s[<span class="string">'grade'</span>], reverse=<span class="keyword">True</span>)
+<span class="keyword">print</span>(sorted_students[<span class="number">0</span>][<span class="string">'name'</span>])  <span class="comment"># Bob</span>
+
+<span class="comment"># With map, filter, reduce</span>
+numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]
+squared = <span class="keyword">list</span>(<span class="keyword">map</span>(<span class="keyword">lambda</span> x: x ** <span class="number">2</span>, numbers))
+evens = <span class="keyword">list</span>(<span class="keyword">filter</span>(<span class="keyword">lambda</span> x: x % <span class="number">2</span> == <span class="number">0</span>, numbers))
+<span class="keyword">print</span>(squared)  <span class="comment"># [1, 4, 9, 16, 25]</span>
+<span class="keyword">print</span>(evens)    <span class="comment"># [2, 4]</span>
+</code>
+                </div>
+
+                <h3>*args and **kwargs</h3>
+                <p>
+                    These allow functions to accept variable numbers of arguments—incredibly flexible!
+                </p>
+
+                <h4>*args - Variable Positional Arguments</h4>
+                <div class="code-block" data-language="python">
+<code><span class="comment"># Function that accepts any number of arguments</span>
+<span class="keyword">def</span> <span class="function">sum_all</span>(*args):
+    <span class="keyword">return</span> <span class="keyword">sum</span>(args)
+
+<span class="keyword">print</span>(sum_all(<span class="number">1</span>, <span class="number">2</span>))              <span class="comment"># 3</span>
+<span class="keyword">print</span>(sum_all(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>))    <span class="comment"># 15</span>
+
+<span class="comment"># args is a tuple</span>
+<span class="keyword">def</span> <span class="function">print_args</span>(*args):
+    <span class="keyword">for</span> i, arg <span class="keyword">in</span> <span class="keyword">enumerate</span>(args):
+        <span class="keyword">print</span>(<span class="string">f"Arg {i}: {arg}"</span>)
+
+print_args(<span class="string">"hello"</span>, <span class="number">42</span>, <span class="keyword">True</span>)
+<span class="comment"># Arg 0: hello
+# Arg 1: 42
+# Arg 2: True</span>
+</code>
+                </div>
+
+                <h4>**kwargs - Variable Keyword Arguments</h4>
+                <div class="code-block" data-language="python">
+<code><span class="comment"># Function that accepts any number of keyword arguments</span>
+<span class="keyword">def</span> <span class="function">print_info</span>(**kwargs):
+    <span class="keyword">for</span> key, value <span class="keyword">in</span> kwargs.items():
+        <span class="keyword">print</span>(<span class="string">f"{key}: {value}"</span>)
+
+print_info(name=<span class="string">"Alice"</span>, age=<span class="number">25</span>, city=<span class="string">"NYC"</span>)
+<span class="comment"># name: Alice
+# age: 25
+# city: NYC</span>
+
+<span class="comment"># Combining regular args, *args, and **kwargs</span>
+<span class="keyword">def</span> <span class="function">flexible_function</span>(required, *args, default=<span class="string">"default_value"</span>, **kwargs):
+    <span class="keyword">print</span>(<span class="string">f"Required: {required}"</span>)
+    <span class="keyword">print</span>(<span class="string">f"Args: {args}"</span>)
+    <span class="keyword">print</span>(<span class="string">f"Default: {default}"</span>)
+    <span class="keyword">print</span>(<span class="string">f"Kwargs: {kwargs}"</span>)
+
+flexible_function(<span class="string">"must_have"</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, default=<span class="string">"custom"</span>, extra=<span class="string">"info"</span>)
+</code>
+                </div>
+
+                <h3>Regular Expressions</h3>
+                <p>
+                    Regular expressions (regex) are powerful tools for pattern matching in strings.
+                </p>
+
+                <div class="code-block" data-language="python">
+<code><span class="keyword">import</span> re
+
+<span class="comment"># Basic matching</span>
+text = <span class="string">"My email is alice@example.com"</span>
+email_pattern = <span class="string">r'\w+@\w+\.\w+'</span>
+match = re.search(email_pattern, text)
+<span class="keyword">if</span> match:
+    <span class="keyword">print</span>(match.group())  <span class="comment"># alice@example.com</span>
+
+<span class="comment"># Find all matches</span>
+text = <span class="string">"Call 555-1234 or 555-5678"</span>
+phone_pattern = <span class="string">r'\d{3}-\d{4}'</span>
+phones = re.findall(phone_pattern, text)
+<span class="keyword">print</span>(phones)  <span class="comment"># ['555-1234', '555-5678']</span>
+
+<span class="comment"># Replace patterns</span>
+text = <span class="string">"Price: $19.99, Discount: $5.00"</span>
+new_text = re.sub(<span class="string">r'\$(\d+\.\d{2})'</span>, <span class="string">r'USD \1'</span>, text)
+<span class="keyword">print</span>(new_text)  <span class="comment"># Price: USD 19.99, Discount: USD 5.00</span>
+
+<span class="comment"># Validation</span>
+<span class="keyword">def</span> <span class="function">is_valid_email</span>(email):
+    pattern = <span class="string">r'^[\w\.-]+@[\w\.-]+\.\w+$'</span>
+    <span class="keyword">return</span> re.match(pattern, email) <span class="keyword">is not None</span>
+
+<span class="keyword">print</span>(is_valid_email(<span class="string">"alice@example.com"</span>))  <span class="comment"># True</span>
+<span class="keyword">print</span>(is_valid_email(<span class="string">"invalid.email"</span>))      <span class="comment"># False</span>
+
+<span class="comment"># Common regex patterns</span>
+patterns = {
+    <span class="string">'email'</span>: <span class="string">r'[\w\.-]+@[\w\.-]+\.\w+'</span>,
+    <span class="string">'phone'</span>: <span class="string">r'\d{3}-\d{3}-\d{4}'</span>,
+    <span class="string">'url'</span>: <span class="string">r'https?://[\w\.-]+\.[\w\.]+'</span>,
+    <span class="string">'date'</span>: <span class="string">r'\d{4}-\d{2}-\d{2}'</span>,  <span class="comment"># YYYY-MM-DD</span>
+    <span class="string">'ip_address'</span>: <span class="string">r'\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}'</span>
+}
+</code>
+                </div>
+
+                <h3>Advanced File Handling</h3>
+
+                <h4>Working with Different File Types</h4>
+                <div class="code-block" data-language="python">
+<code><span class="comment"># Reading files line by line (memory efficient)</span>
+<span class="keyword">with</span> <span class="keyword">open</span>(<span class="string">'large_file.txt'</span>) <span class="keyword">as</span> f:
+    <span class="keyword">for</span> line <span class="keyword">in</span> f:
+        <span class="keyword">print</span>(line.strip())
+
+<span class="comment"># CSV files</span>
+<span class="keyword">import</span> csv
+
+<span class="comment"># Writing CSV</span>
+<span class="keyword">with</span> <span class="keyword">open</span>(<span class="string">'data.csv'</span>, <span class="string">'w'</span>, newline=<span class="string">''</span>) <span class="keyword">as</span> f:
+    writer = csv.writer(f)
+    writer.writerow([<span class="string">'Name'</span>, <span class="string">'Age'</span>, <span class="string">'City'</span>])
+    writer.writerow([<span class="string">'Alice'</span>, <span class="number">25</span>, <span class="string">'NYC'</span>])
+    writer.writerow([<span class="string">'Bob'</span>, <span class="number">30</span>, <span class="string">'LA'</span>])
+
+<span class="comment"># Reading CSV</span>
+<span class="keyword">with</span> <span class="keyword">open</span>(<span class="string">'data.csv'</span>) <span class="keyword">as</span> f:
+    reader = csv.DictReader(f)
+    <span class="keyword">for</span> row <span class="keyword">in</span> reader:
+        <span class="keyword">print</span>(<span class="string">f"{row['Name']} is {row['Age']} years old"</span>)
+
+<span class="comment"># JSON files</span>
+<span class="keyword">import</span> json
+
+data = {<span class="string">'name'</span>: <span class="string">'Alice'</span>, <span class="string">'scores'</span>: [<span class="number">85</span>, <span class="number">90</span>, <span class="number">78</span>]}
+
+<span class="comment"># Writing JSON</span>
+<span class="keyword">with</span> <span class="keyword">open</span>(<span class="string">'data.json'</span>, <span class="string">'w'</span>) <span class="keyword">as</span> f:
+    json.dump(data, f, indent=<span class="number">2</span>)
+
+<span class="comment"># Reading JSON</span>
+<span class="keyword">with</span> <span class="keyword">open</span>(<span class="string">'data.json'</span>) <span class="keyword">as</span> f:
+    loaded_data = json.load(f)
+    <span class="keyword">print</span>(loaded_data[<span class="string">'name'</span>])  <span class="comment"># Alice</span>
+</code>
+                </div>
+
+                <h3>Practice Problems</h3>
+
+                <div class="example-box">
+                    <h5>Problem 1: List Comprehension Challenge</h5>
+                    <p>Create a list of tuples where each tuple contains a number and its square, 
+                    but only for even numbers from 1 to 20.</p>
+                    
+                    <button class="toggle-solution" onclick="toggleSolution('sol1')">Show Solution</button>
+                    <div id="sol1" class="solution" style="display: none;">
+                        <div class="code-block" data-language="python">
+<code><span class="comment"># Solution</span>
+result = [(x, x ** <span class="number">2</span>) <span class="keyword">for</span> x <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, <span class="number">21</span>) <span class="keyword">if</span> x % <span class="number">2</span> == <span class="number">0</span>]
+<span class="keyword">print</span>(result)
+<span class="comment"># [(2, 4), (4, 16), (6, 36), (8, 64), (10, 100), (12, 144), 
+#  (14, 196), (16, 256), (18, 324), (20, 400)]</span>
+</code>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="example-box">
+                    <h5>Problem 2: Fibonacci Generator</h5>
+                    <p>Write a generator that yields Fibonacci numbers indefinitely.</p>
+                    
+                    <button class="toggle-solution" onclick="toggleSolution('sol2')">Show Solution</button>
+                    <div id="sol2" class="solution" style="display: none;">
+                        <div class="code-block" data-language="python">
+<code><span class="comment"># Solution</span>
+<span class="keyword">def</span> <span class="function">fibonacci_generator</span>():
+    a, b = <span class="number">0</span>, <span class="number">1</span>
+    <span class="keyword">while</span> <span class="keyword">True</span>:
+        <span class="keyword">yield</span> a
+        a, b = b, a + b
+
+<span class="comment"># Get first 10 Fibonacci numbers</span>
+fib = fibonacci_generator()
+first_10 = [<span class="keyword">next</span>(fib) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">10</span>)]
+<span class="keyword">print</span>(first_10)  <span class="comment"># [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]</span>
+</code>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="example-box">
+                    <h5>Problem 3: Decorator for Retry Logic</h5>
+                    <p>Create a decorator that retries a function up to 3 times if it raises an exception.</p>
+                    
+                    <button class="toggle-solution" onclick="toggleSolution('sol3')">Show Solution</button>
+                    <div id="sol3" class="solution" style="display: none;">
+                        <div class="code-block" data-language="python">
+<code><span class="comment"># Solution</span>
+<span class="keyword">def</span> <span class="function">retry</span>(max_attempts=<span class="number">3</span>):
+    <span class="keyword">def</span> <span class="function">decorator</span>(func):
+        <span class="keyword">def</span> <span class="function">wrapper</span>(*args, **kwargs):
+            <span class="keyword">for</span> attempt <span class="keyword">in</span> <span class="keyword">range</span>(max_attempts):
+                <span class="keyword">try</span>:
+                    <span class="keyword">return</span> func(*args, **kwargs)
+                <span class="keyword">except</span> <span class="keyword">Exception</span> <span class="keyword">as</span> e:
+                    <span class="keyword">print</span>(<span class="string">f"Attempt {attempt + 1} failed: {e}"</span>)
+                    <span class="keyword">if</span> attempt == max_attempts - <span class="number">1</span>:
+                        <span class="keyword">raise</span>
+            <span class="keyword">return</span> wrapper
+        <span class="keyword">return</span> decorator
+
+<span class="decorator">@retry(max_attempts=3)</span>
+<span class="keyword">def</span> <span class="function">unreliable_function</span>():
+    <span class="keyword">import</span> random
+    <span class="keyword">if</span> random.random() &lt; <span class="number">0.7</span>:
+        <span class="keyword">raise</span> <span class="keyword">Exception</span>(<span class="string">"Random failure"</span>)
+    <span class="keyword">return</span> <span class="string">"Success!"</span>
+
+<span class="comment"># Test it</span>
+<span class="comment"># result = unreliable_function()</span>
+</code>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="example-box">
+                    <h5>Problem 4: Email Extractor</h5>
+                    <p>Use regex to extract all email addresses from a text string.</p>
+                    
+                    <button class="toggle-solution" onclick="toggleSolution('sol4')">Show Solution</button>
+                    <div id="sol4" class="solution" style="display: none;">
+                        <div class="code-block" data-language="python">
+<code><span class="comment"># Solution</span>
+<span class="keyword">import</span> re
+
+<span class="keyword">def</span> <span class="function">extract_emails</span>(text):
+    pattern = <span class="string">r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'</span>
+    <span class="keyword">return</span> re.findall(pattern, text)
+
+text = <span class="string">"""
+Contact us at support@example.com or sales@company.org.
+For urgent matters, reach out to admin@urgent.net
+"""</span>
+
+emails = extract_emails(text)
+<span class="keyword">print</span>(emails)
+<span class="comment"># ['support@example.com', 'sales@company.org', 'admin@urgent.net']</span>
+</code>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="example-box">
+                    <h5>Problem 5: CSV Data Processor</h5>
+                    <p>Read a CSV file, filter rows where age > 25, and write to a new CSV.</p>
+                    
+                    <button class="toggle-solution" onclick="toggleSolution('sol5')">Show Solution</button>
+                    <div id="sol5" class="solution" style="display: none;">
+                        <div class="code-block" data-language="python">
+<code><span class="comment"># Solution</span>
+<span class="keyword">import</span> csv
+
+<span class="keyword">def</span> <span class="function">filter_csv_by_age</span>(input_file, output_file, min_age):
+    <span class="keyword">with</span> <span class="keyword">open</span>(input_file) <span class="keyword">as</span> infile, <span class="keyword">open</span>(output_file, <span class="string">'w'</span>, newline=<span class="string">''</span>) <span class="keyword">as</span> outfile:
+        reader = csv.DictReader(infile)
+        writer = csv.DictWriter(outfile, fieldnames=reader.fieldnames)
+        
+        writer.writeheader()
+        <span class="keyword">for</span> row <span class="keyword">in</span> reader:
+            <span class="keyword">if</span> <span class="keyword">int</span>(row[<span class="string">'age'</span>]) &gt; min_age:
+                writer.writerow(row)
+
+<span class="comment"># Usage example (commented out)</span>
+<span class="comment"># filter_csv_by_age('people.csv', 'filtered.csv', 25)</span>
+</code>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Key Takeaways</h3>
+                <ul>
+                    <li>List comprehensions make creating lists concise and readable</li>
+                    <li>Generators save memory by yielding values on-demand instead of storing all at once</li>
+                    <li>Decorators add functionality to functions without modifying their code</li>
+                    <li>Context managers (with statement) handle resource cleanup automatically</li>
+                    <li>Lambda functions are perfect for short, one-time operations</li>
+                    <li>*args and **kwargs provide flexible function signatures</li>
+                    <li>Regular expressions are powerful for pattern matching and text processing</li>
+                    <li>Python has excellent built-in support for CSV and JSON file handling</li>
+                </ul>
+
+                <div class="info-box tip">
+                    <h4>💡 Next Steps</h4>
+                    <p>
+                        You've mastered advanced Python features! Next, we'll explore JavaScript—
+                        the language of the web. You'll learn how JavaScript brings web pages to life 
+                        with interactivity, DOM manipulation, and event handling.
+                    </p>
+                </div>
+            </div>
+
+            <div class="lesson-navigation">
+                <a href="02-python-basics.html" class="nav-btn">← Previous: Python Basics</a>
+                <a href="04-javascript-basics.html" class="nav-btn">Next: JavaScript Basics →</a>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../js/main.js"></script>
+    <script>
+        function toggleSolution(id) {
+            const solution = document.getElementById(id);
+            const button = event.target;
+            if (solution.style.display === 'none') {
+                solution.style.display = 'block';
+                button.textContent = 'Hide Solution';
+            } else {
+                solution.style.display = 'none';
+                button.textContent = 'Show Solution';
+            }
+        }
+    </script>
+</body>
+</html>

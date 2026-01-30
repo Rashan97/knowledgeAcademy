@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 8: SOLID Principles - Engineering Academy</title>
+    <link rel="stylesheet" href="../../../css/styles.css">
+    <link rel="stylesheet" href="../../../css/course-styles/course.css">
+</head>
+<body>
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <h1><a href="../../../index.html" style="color: inherit; text-decoration: none;">🎓 Engineering Academy</a></h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../../../index.html#courses">Courses</a></li>
+                    <li><a href="../index.html">Course Overview</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section class="course-header">
+        <div class="container">
+            <h1>💻 Software Engineering</h1>
+            <p>Lesson 8: SOLID Principles</p>
+        </div>
+    </section>
+
+    <div class="course-container">
+        <aside class="course-sidebar">
+            <h3>Course Modules</h3>
+            <ul class="lesson-list">
+                <li><a href="../index.html"><span class="lesson-number">📚</span>Course Overview</a></li>
+                <li><a href="01-introduction.html" class="completed"><span class="lesson-number">1</span>Introduction to SE</a></li>
+                <li><a href="02-sdlc.html" class="completed"><span class="lesson-number">2</span>SDLC & Methodologies</a></li>
+                <li><a href="03-requirements-engineering.html" class="completed"><span class="lesson-number">3</span>Requirements Engineering</a></li>
+                <li><a href="04-creational-patterns.html" class="completed"><span class="lesson-number">4</span>Creational Patterns</a></li>
+                <li><a href="05-structural-patterns.html" class="completed"><span class="lesson-number">5</span>Structural Patterns</a></li>
+                <li><a href="06-behavioral-patterns.html" class="completed"><span class="lesson-number">6</span>Behavioral Patterns</a></li>
+                <li><a href="07-architecture.html" class="completed"><span class="lesson-number">7</span>System Architecture</a></li>
+                <li><a href="08-solid-principles.html" class="active"><span class="lesson-number">8</span>SOLID Principles</a></li>
+                <li class="disabled"><span class="lesson-number">9</span>Code Quality <span style="opacity: 0.5;">(Coming Soon)</span></li>
+                <li class="disabled"><span class="lesson-number">10</span>Testing Strategies <span style="opacity: 0.5;">(Coming Soon)</span></li>
+                <li class="disabled"><span class="lesson-number">11</span>Version Control <span style="opacity: 0.5;">(Coming Soon)</span></li>
+                <li class="disabled"><span class="lesson-number">12</span>Agile & DevOps <span style="opacity: 0.5;">(Coming Soon)</span></li>
+            </ul>
+        </aside>
+
+        <main class="course-content">
+            <h2>SOLID Principles</h2>
+            <p class="intro">Master the five foundational principles of object-oriented design that lead to maintainable and scalable software.</p>
+
+            <div class="content-section">
+                <h3>1. Introduction to SOLID</h3>
+                
+                <p>SOLID is an acronym for five design principles intended to make software designs more understandable, flexible, and maintainable. Introduced by Robert C. Martin (Uncle Bob), these principles form the foundation of good object-oriented design.</p>
+
+                <div class="info-box">
+                    <strong>The SOLID Principles:</strong>
+                    <ul>
+                        <li><strong>S</strong> - Single Responsibility Principle (SRP)</li>
+                        <li><strong>O</strong> - Open/Closed Principle (OCP)</li>
+                        <li><strong>L</strong> - Liskov Substitution Principle (LSP)</li>
+                        <li><strong>I</strong> - Interface Segregation Principle (ISP)</li>
+                        <li><strong>D</strong> - Dependency Inversion Principle (DIP)</li>
+                    </ul>
+                </div>
+
+                <p><strong>Why SOLID Matters:</strong> Following these principles leads to code that is easier to test, maintain, extend, and understand. They help prevent code from becoming rigid, fragile, and difficult to change.</p>
+            </div>
+
+            <div class="content-section">
+                <h3>2. Single Responsibility Principle (SRP)</h3>
+                
+                <h4>Definition</h4>
+                <p><em>"A class should have one, and only one, reason to change."</em></p>
+
+                <p>Each class should have a single, well-defined responsibility. If a class has multiple responsibilities, changes to one responsibility may affect or break the others.</p>
+
+                <div class="example-box">
+                    <strong>❌ Bad Example: Multiple Responsibilities</strong>
+                    <pre><code>class UserManager {
+    // Responsibility 1: User data management
+    createUser(name: string, email: string): User {
+        return { id: Date.now().toString(), name, email };
+    }
+
+    // Responsibility 2: Email sending
+    sendWelcomeEmail(user: User): void {
+        console.log(`Sending email to ${user.email}`);
+        // Email logic here
+    }
+
+    // Responsibility 3: Database operations
+    saveToDatabase(user: User): void {
+        console.log(`Saving user ${user.name} to database`);
+        // Database logic here
+    }
+
+    // Responsibility 4: Validation
+    validateEmail(email: string): boolean {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    // Responsibility 5: Logging
+    logUserCreation(user: User): void {
+        console.log(`User created: ${user.id} at ${new Date().toISOString()}`);
+    }
+}
+
+// Problem: This class has 5 reasons to change:
+// 1. User data structure changes
+// 2. Email service changes
+// 3. Database schema changes
+// 4. Validation rules change
+// 5. Logging requirements change</code></pre>
+                </div>
+
+                <div class="example-box">
+                    <strong>✅ Good Example: Single Responsibilities</strong>
+                    <pre><code>// Each class has ONE responsibility
+
+class User {
+    constructor(
+        public id: string,
+        public name: string,
+        public email: string
+    ) {}
+}
+
+class UserValidator {
+    validateEmail(email: string): boolean {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    validateName(name: string): boolean {
+        return name.length >= 2 && name.length <= 50;
+    }
+}
+
+class UserRepository {
+    private users: Map<string, User> = new Map();
+
+    save(user: User): void {
+        this.users.set(user.id, user);
+        console.log(`User ${user.name} saved to database`);
+    }
+
+    findById(id: string): User | undefined {
+        return this.users.get(id);
+    }
+}
+
+class EmailService {
+    sendWelcomeEmail(user: User): void {
+        console.log(`📧 Sending welcome email to ${user.email}`);
+        // Email sending logic
+    }
+
+    sendPasswordResetEmail(user: User): void {
+        console.log(`📧 Sending password reset to ${user.email}`);
+    }
+}
+
+class Logger {
+    log(message: string): void {
+        console.log(`[${new Date().toISOString()}] ${message}`);
+    }
+
+    logError(error: Error): void {
+        console.error(`[${new Date().toISOString()}] ERROR: ${error.message}`);
+    }
+}
+
+class UserService {
+    constructor(
+        private validator: UserValidator,
+        private repository: UserRepository,
+        private emailService: EmailService,
+        private logger: Logger
+    ) {}
+
+    createUser(name: string, email: string): User | null {
+        // Coordinate between different services
+        if (!this.validator.validateEmail(email)) {
+            this.logger.log(`Invalid email: ${email}`);
+            return null;
+        }
+
+        if (!this.validator.validateName(name)) {
+            this.logger.log(`Invalid name: ${name}`);
+            return null;
+        }
+
+        const user = new User(Date.now().toString(), name, email);
+        this.repository.save(user);
+        this.emailService.sendWelcomeEmail(user);
+        this.logger.log(`User created: ${user.id}`);
+
+        return user;
+    }
+}
+
+// Usage
+const userService = new UserService(
+    new UserValidator(),
+    new UserRepository(),
+    new EmailService(),
+    new Logger()
+);
+
+userService.createUser("Alice Johnson", "alice@example.com");</code></pre>
+                </div>
+
+                <div class="info-box">
+                    <strong>Benefits of SRP:</strong>
+                    <ul>
+                        <li>Easier to understand - each class does one thing</li>
+                        <li>Easier to test - can test each responsibility independently</li>
+                        <li>Lower coupling - classes depend on fewer things</li>
+                        <li>Better organization - clear structure</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>3. Open/Closed Principle (OCP)</h3>
+                
+                <h4>Definition</h4>
+                <p><em>"Software entities should be open for extension, but closed for modification."</em></p>
+
+                <p>You should be able to extend a class's behavior without modifying its source code. Use abstraction and polymorphism to achieve this.</p>
+
+                <div class="example-box">
+                    <strong>❌ Bad Example: Modification Required for Extension</strong>
+                    <pre><code>class AreaCalculator {
+    calculateArea(shape: any): number {
+        if (shape.type === 'circle') {
+            return Math.PI * shape.radius * shape.radius;
+        } else if (shape.type === 'rectangle') {
+            return shape.width * shape.height;
+        } else if (shape.type === 'triangle') {
+            return 0.5 * shape.base * shape.height;
+        }
+        // Problem: Adding a new shape requires modifying this class
+        // Not closed for modification!
+        return 0;
+    }
+}
+
+// To add a square, we must modify AreaCalculator
+// else if (shape.type === 'square') {
+//     return shape.side * shape.side;
+// }</code></pre>
+                </div>
+
+                <div class="example-box">
+                    <strong>✅ Good Example: Extension Without Modification</strong>
+                    <pre><code>// Abstract base class or interface
+interface Shape {
+    calculateArea(): number;
+}
+
+class Circle implements Shape {
+    constructor(private radius: number) {}
+
+    calculateArea(): number {
+        return Math.PI * this.radius * this.radius;
+    }
+}
+
+class Rectangle implements Shape {
+    constructor(private width: number, private height: number) {}
+
+    calculateArea(): number {
+        return this.width * this.height;
+    }
+}
+
+class Triangle implements Shape {
+    constructor(private base: number, private height: number) {}
+
+    calculateArea(): number {
+        return 0.5 * this.base * this.height;
+    }
+}
+
+// New shape: just create a new class, no modification needed!
+class Square implements Shape {
+    constructor(private side: number) {}
+
+    calculateArea(): number {
+        return this.side * this.side;
+    }
+}
+
+class Hexagon implements Shape {
+    constructor(private side: number) {}
+
+    calculateArea(): number {
+        return (3 * Math.sqrt(3) / 2) * this.side * this.side;
+    }
+}
+
+// Calculator is closed for modification, open for extension
+class AreaCalculator {
+    calculateTotalArea(shapes: Shape[]): number {
+        return shapes.reduce((total, shape) => {
+            return total + shape.calculateArea();
+        }, 0);
+    }
+}
+
+// Usage - can add any new shape without changing AreaCalculator
+const shapes: Shape[] = [
+    new Circle(5),
+    new Rectangle(4, 6),
+    new Triangle(3, 4),
+    new Square(5),
+    new Hexagon(3)
+];
+
+const calculator = new AreaCalculator();
+const total = calculator.calculateTotalArea(shapes);
+console.log(`Total area: ${total.toFixed(2)}`);</code></pre>
+                </div>
+
+                <div class="info-box">
+                    <strong>Real-World Application:</strong>
+                    <ul>
+                        <li>Plugin architectures - add plugins without modifying core</li>
+                        <li>Payment gateways - add new payment methods easily</li>
+                        <li>Notification systems - add new notification channels</li>
+                        <li>Strategy pattern is a direct application of OCP</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>4. Liskov Substitution Principle (LSP)</h3>
+                
+                <h4>Definition</h4>
+                <p><em>"Objects of a superclass should be replaceable with objects of a subclass without breaking the application."</em></p>
+
+                <p>Subtypes must be substitutable for their base types. A subclass should enhance, not weaken, the behavior of the base class.</p>
+
+                <div class="example-box">
+                    <strong>❌ Bad Example: Violating LSP</strong>
+                    <pre><code>class Bird {
+    fly(): void {
+        console.log("Flying in the sky");
+    }
+}
+
+class Sparrow extends Bird {
+    fly(): void {
+        console.log("Sparrow flying");
+    }
+}
+
+class Penguin extends Bird {
+    fly(): void {
+        // Penguins can't fly!
+        throw new Error("Penguins can't fly");
+    }
+}
+
+// Problem: Penguin violates LSP
+function makeBirdFly(bird: Bird): void {
+    bird.fly(); // This will throw error for Penguin
+}
+
+const sparrow = new Sparrow();
+const penguin = new Penguin();
+
+makeBirdFly(sparrow);  // Works
+makeBirdFly(penguin);  // Throws error - LSP violated!</code></pre>
+                </div>
+
+                <div class="example-box">
+                    <strong>✅ Good Example: Respecting LSP</strong>
+                    <pre><code>// Better abstraction - not all birds fly
+abstract class Bird {
+    abstract move(): void;
+}
+
+class FlyingBird extends Bird {
+    fly(): void {
+        console.log("Flying in the sky");
+    }
+
+    move(): void {
+        this.fly();
+    }
+}
+
+class Sparrow extends FlyingBird {
+    fly(): void {
+        console.log("🐦 Sparrow flying swiftly");
+    }
+}
+
+class Eagle extends FlyingBird {
+    fly(): void {
+        console.log("🦅 Eagle soaring high");
+    }
+}
+
+class Penguin extends Bird {
+    swim(): void {
+        console.log("🐧 Penguin swimming");
+    }
+
+    move(): void {
+        this.swim();
+    }
+}
+
+class Ostrich extends Bird {
+    run(): void {
+        console.log("🦩 Ostrich running fast");
+    }
+
+    move(): void {
+        this.run();
+    }
+}
+
+// Now we can safely use any Bird
+function makeBirdMove(bird: Bird): void {
+    bird.move(); // Works for all birds
+}
+
+const birds: Bird[] = [
+    new Sparrow(),
+    new Eagle(),
+    new Penguin(),
+    new Ostrich()
+];
+
+birds.forEach(bird => makeBirdMove(bird));
+
+// Another LSP example: Rectangle-Square problem
+class Rectangle {
+    constructor(protected width: number, protected height: number) {}
+
+    setWidth(width: number): void {
+        this.width = width;
+    }
+
+    setHeight(height: number): void {
+        this.height = height;
+    }
+
+    getArea(): number {
+        return this.width * this.height;
+    }
+}
+
+// BAD: Square violates LSP
+class BadSquare extends Rectangle {
+    setWidth(width: number): void {
+        this.width = width;
+        this.height = width; // Side effect!
+    }
+
+    setHeight(height: number): void {
+        this.width = height; // Side effect!
+        this.height = height;
+    }
+}
+
+// GOOD: Separate implementations
+interface Shape {
+    getArea(): number;
+}
+
+class GoodRectangle implements Shape {
+    constructor(private width: number, private height: number) {}
+
+    setWidth(width: number): void {
+        this.width = width;
+    }
+
+    setHeight(height: number): void {
+        this.height = height;
+    }
+
+    getArea(): number {
+        return this.width * this.height;
+    }
+}
+
+class GoodSquare implements Shape {
+    constructor(private side: number) {}
+
+    setSide(side: number): void {
+        this.side = side;
+    }
+
+    getArea(): number {
+        return this.side * this.side;
+    }
+}</code></pre>
+                </div>
+
+                <div class="info-box">
+                    <strong>LSP Violations to Watch For:</strong>
+                    <ul>
+                        <li>Throwing unexpected exceptions in subclass</li>
+                        <li>Weakening preconditions (accepting less strict input)</li>
+                        <li>Strengthening postconditions (promising more strict output)</li>
+                        <li>Changing expected behavior in unexpected ways</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>5. Interface Segregation Principle (ISP)</h3>
+                
+                <h4>Definition</h4>
+                <p><em>"Clients should not be forced to depend on interfaces they do not use."</em></p>
+
+                <p>Many small, specific interfaces are better than one large, general-purpose interface. Classes should only implement methods they actually need.</p>
+
+                <div class="example-box">
+                    <strong>❌ Bad Example: Fat Interface</strong>
+                    <pre><code>// Fat interface with too many methods
+interface Worker {
+    work(): void;
+    eat(): void;
+    sleep(): void;
+    getSalary(): number;
+    attendMeeting(): void;
+    writeCode(): void;
+    fixBugs(): void;
+}
+
+// Human worker - implements all methods
+class HumanWorker implements Worker {
+    work(): void { console.log("Working..."); }
+    eat(): void { console.log("Eating lunch"); }
+    sleep(): void { console.log("Sleeping"); }
+    getSalary(): number { return 5000; }
+    attendMeeting(): void { console.log("In meeting"); }
+    writeCode(): void { console.log("Writing code"); }
+    fixBugs(): void { console.log("Fixing bugs"); }
+}
+
+// Robot worker - forced to implement unnecessary methods
+class RobotWorker implements Worker {
+    work(): void { console.log("Processing..."); }
+    
+    eat(): void {
+        // Robots don't eat!
+        throw new Error("Robots don't eat");
+    }
+    
+    sleep(): void {
+        // Robots don't sleep!
+        throw new Error("Robots don't sleep");
+    }
+    
+    getSalary(): number {
+        // Robots don't get paid!
+        return 0;
+    }
+    
+    attendMeeting(): void {
+        throw new Error("Robots don't attend meetings");
+    }
+    
+    writeCode(): void { console.log("Generating code"); }
+    fixBugs(): void { console.log("Auto-fixing bugs"); }
+}
+
+// Problem: RobotWorker is forced to implement methods it doesn't need!</code></pre>
+                </div>
+
+                <div class="example-box">
+                    <strong>✅ Good Example: Segregated Interfaces</strong>
+                    <pre><code>// Split into smaller, focused interfaces
+
+interface Workable {
+    work(): void;
+}
+
+interface Eatable {
+    eat(): void;
+}
+
+interface Sleepable {
+    sleep(): void;
+}
+
+interface Payable {
+    getSalary(): number;
+}
+
+interface MeetingAttendable {
+    attendMeeting(): void;
+}
+
+interface Programmable {
+    writeCode(): void;
+    fixBugs(): void;
+}
+
+// Human implements only relevant interfaces
+class HumanEmployee implements Workable, Eatable, Sleepable, Payable, MeetingAttendable, Programmable {
+    work(): void {
+        console.log("👨‍💻 Human working");
+    }
+
+    eat(): void {
+        console.log("🍔 Eating lunch");
+    }
+
+    sleep(): void {
+        console.log("😴 Sleeping");
+    }
+
+    getSalary(): number {
+        return 5000;
+    }
+
+    attendMeeting(): void {
+        console.log("👥 Attending meeting");
+    }
+
+    writeCode(): void {
+        console.log("💻 Writing code");
+    }
+
+    fixBugs(): void {
+        console.log("🐛 Fixing bugs");
+    }
+}
+
+// Robot implements only relevant interfaces
+class RobotEmployee implements Workable, Programmable {
+    work(): void {
+        console.log("🤖 Robot processing");
+    }
+
+    writeCode(): void {
+        console.log("💻 Generating code");
+    }
+
+    fixBugs(): void {
+        console.log("🔧 Auto-fixing bugs");
+    }
+}
+
+// Manager implements different set of interfaces
+class Manager implements Workable, Eatable, Sleepable, Payable, MeetingAttendable {
+    work(): void {
+        console.log("📊 Managing team");
+    }
+
+    eat(): void {
+        console.log("🍽️ Business lunch");
+    }
+
+    sleep(): void {
+        console.log("😴 Power nap");
+    }
+
+    getSalary(): number {
+        return 8000;
+    }
+
+    attendMeeting(): void {
+        console.log("👔 Leading meeting");
+    }
+}
+
+// Usage
+const employees: Workable[] = [
+    new HumanEmployee(),
+    new RobotEmployee(),
+    new Manager()
+];
+
+employees.forEach(employee => employee.work());</code></pre>
+                </div>
+
+                <div class="info-box">
+                    <strong>Benefits of ISP:</strong>
+                    <ul>
+                        <li>Reduces coupling - clients depend only on what they use</li>
+                        <li>Increases flexibility - easier to change implementations</li>
+                        <li>Better testability - mock only needed interfaces</li>
+                        <li>Clearer contracts - each interface has focused purpose</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>6. Dependency Inversion Principle (DIP)</h3>
+                
+                <h4>Definition</h4>
+                <p><em>"High-level modules should not depend on low-level modules. Both should depend on abstractions."</em></p>
+                <p><em>"Abstractions should not depend on details. Details should depend on abstractions."</em></p>
+
+                <p>Depend on interfaces or abstract classes rather than concrete implementations. This reduces coupling and increases flexibility.</p>
+
+                <div class="example-box">
+                    <strong>❌ Bad Example: High-level depends on Low-level</strong>
+                    <pre><code>// Low-level module
+class MySQLDatabase {
+    save(data: string): void {
+        console.log(`Saving to MySQL: ${data}`);
+    }
+
+    find(id: string): string {
+        console.log(`Finding in MySQL: ${id}`);
+        return "data";
+    }
+}
+
+// High-level module depends directly on low-level module
+class UserService {
+    private database: MySQLDatabase; // Tightly coupled!
+
+    constructor() {
+        this.database = new MySQLDatabase();
+    }
+
+    saveUser(user: string): void {
+        this.database.save(user);
+    }
+
+    getUser(id: string): string {
+        return this.database.find(id);
+    }
+}
+
+// Problem: Can't easily switch to PostgreSQL or MongoDB
+// Must modify UserService to change database</code></pre>
+                </div>
+
+                <div class="example-box">
+                    <strong>✅ Good Example: Both depend on Abstraction</strong>
+                    <pre><code>// Abstraction (interface)
+interface Database {
+    save(data: string): void;
+    find(id: string): string | null;
+}
+
+// Low-level modules implement the abstraction
+class MySQLDatabase implements Database {
+    save(data: string): void {
+        console.log(`💾 Saving to MySQL: ${data}`);
+    }
+
+    find(id: string): string | null {
+        console.log(`🔍 Finding in MySQL: ${id}`);
+        return "MySQL data";
+    }
+}
+
+class PostgreSQLDatabase implements Database {
+    save(data: string): void {
+        console.log(`💾 Saving to PostgreSQL: ${data}`);
+    }
+
+    find(id: string): string | null {
+        console.log(`🔍 Finding in PostgreSQL: ${id}`);
+        return "PostgreSQL data";
+    }
+}
+
+class MongoDBDatabase implements Database {
+    save(data: string): void {
+        console.log(`💾 Saving to MongoDB: ${data}`);
+    }
+
+    find(id: string): string | null {
+        console.log(`🔍 Finding in MongoDB: ${id}`);
+        return "MongoDB data";
+    }
+}
+
+// High-level module depends on abstraction
+class UserService {
+    constructor(private database: Database) {} // Depend on interface!
+
+    saveUser(user: string): void {
+        this.database.save(user);
+    }
+
+    getUser(id: string): string | null {
+        return this.database.find(id);
+    }
+}
+
+// Usage - can easily switch databases via dependency injection
+const mysqlService = new UserService(new MySQLDatabase());
+mysqlService.saveUser("Alice");
+
+const postgresService = new UserService(new PostgreSQLDatabase());
+postgresService.saveUser("Bob");
+
+const mongoService = new UserService(new MongoDBDatabase());
+mongoService.saveUser("Charlie");
+
+// Can even switch at runtime!
+class DatabaseFactory {
+    static createDatabase(type: string): Database {
+        switch (type) {
+            case 'mysql':
+                return new MySQLDatabase();
+            case 'postgres':
+                return new PostgreSQLDatabase();
+            case 'mongo':
+                return new MongoDBDatabase();
+            default:
+                throw new Error('Unknown database type');
+        }
+    }
+}
+
+const configuredDb = DatabaseFactory.createDatabase('postgres');
+const service = new UserService(configuredDb);</code></pre>
+                </div>
+
+                <div class="example-box">
+                    <strong>Dependency Injection Example</strong>
+                    <pre><code>// Abstractions
+interface Logger {
+    log(message: string): void;
+}
+
+interface EmailService {
+    sendEmail(to: string, subject: string, body: string): void;
+}
+
+interface UserRepository {
+    save(user: User): void;
+    findById(id: string): User | null;
+}
+
+// Implementations
+class ConsoleLogger implements Logger {
+    log(message: string): void {
+        console.log(`[LOG] ${message}`);
+    }
+}
+
+class FileLogger implements Logger {
+    log(message: string): void {
+        console.log(`[FILE] Writing to log file: ${message}`);
+    }
+}
+
+class SMTPEmailService implements EmailService {
+    sendEmail(to: string, subject: string, body: string): void {
+        console.log(`📧 Sending email to ${to}: ${subject}`);
+    }
+}
+
+class DatabaseUserRepository implements UserRepository {
+    save(user: User): void {
+        console.log(`💾 Saving user ${user.name} to database`);
+    }
+
+    findById(id: string): User | null {
+        console.log(`🔍 Finding user ${id}`);
+        return null;
+    }
+}
+
+// High-level service depends on abstractions
+class UserRegistrationService {
+    constructor(
+        private repository: UserRepository,
+        private emailService: EmailService,
+        private logger: Logger
+    ) {}
+
+    registerUser(name: string, email: string): void {
+        this.logger.log(`Registering user: ${name}`);
+        
+        const user = new User(Date.now().toString(), name, email);
+        this.repository.save(user);
+        
+        this.emailService.sendEmail(
+            email,
+            "Welcome!",
+            `Welcome ${name}!`
+        );
+        
+        this.logger.log(`User ${name} registered successfully`);
+    }
+}
+
+interface User {
+    id: string;
+    name: string;
+    email: string;
+}
+
+// Dependency injection - configure at runtime
+const registrationService = new UserRegistrationService(
+    new DatabaseUserRepository(),
+    new SMTPEmailService(),
+    new ConsoleLogger()  // Can easily switch to FileLogger
+);
+
+registrationService.registerUser("Alice", "alice@example.com");</code></pre>
+                </div>
+
+                <div class="info-box">
+                    <strong>Benefits of DIP:</strong>
+                    <ul>
+                        <li>Loose coupling - easy to change implementations</li>
+                        <li>Better testability - can inject mock dependencies</li>
+                        <li>Flexibility - swap implementations at runtime</li>
+                        <li>Reusability - high-level modules work with any implementation</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>7. Practice Problems</h3>
+                
+                <div class="practice-problems">
+                    <div class="problem">
+                        <h4>Problem 1: Identify SOLID Violations</h4>
+                        <p>Review this code and identify which SOLID principles are violated:</p>
+                        <pre><code>class OrderProcessor {
+    processOrder(order: any): void {
+        // Validate
+        if (!order.items || order.items.length === 0) {
+            throw new Error("No items");
+        }
+
+        // Calculate total
+        let total = 0;
+        for (const item of order.items) {
+            total += item.price * item.quantity;
+        }
+
+        // Save to MySQL database
+        console.log(`INSERT INTO orders VALUES (${order.id}, ${total})`);
+
+        // Send email
+        console.log(`Sending email to ${order.customerEmail}`);
+
+        // Print invoice
+        console.log("=== INVOICE ===");
+        console.log(`Order: ${order.id}`);
+        console.log(`Total: $${total}`);
+    }
+}</code></pre>
+                        
+                        <details>
+                            <summary>Show Solution</summary>
+                            <pre><code>Violations identified:
+
+1. SRP Violation: OrderProcessor has multiple responsibilities:
+   - Order validation
+   - Price calculation
+   - Database operations
+   - Email sending
+   - Invoice printing
+
+2. OCP Violation: To change database or email service, must modify class
+
+3. DIP Violation: Depends on concrete MySQL implementation
+
+Refactored Solution:
+
+interface OrderValidator {
+    validate(order: Order): boolean;
+}
+
+interface PriceCalculator {
+    calculate(items: OrderItem[]): number;
+}
+
+interface OrderRepository {
+    save(order: Order): void;
+}
+
+interface EmailService {
+    send(to: string, subject: string, body: string): void;
+}
+
+interface InvoicePrinter {
+    print(order: Order, total: number): void;
+}
+
+class OrderProcessor {
+    constructor(
+        private validator: OrderValidator,
+        private calculator: PriceCalculator,
+        private repository: OrderRepository,
+        private emailService: EmailService,
+        private printer: InvoicePrinter
+    ) {}
+
+    processOrder(order: Order): void {
+        if (!this.validator.validate(order)) {
+            throw new Error("Invalid order");
+        }
+
+        const total = this.calculator.calculate(order.items);
+        order.total = total;
+
+        this.repository.save(order);
+        this.emailService.send(
+            order.customerEmail,
+            "Order Confirmation",
+            `Your order ${order.id} is confirmed`
+        );
+        this.printer.print(order, total);
+    }
+}</code></pre>
+                        </details>
+                    </div>
+
+                    <div class="problem">
+                        <h4>Problem 2: Apply SOLID to Notification System</h4>
+                        <p><strong>Task:</strong> Design a notification system that can send notifications via email, SMS, and push notifications. Apply all SOLID principles.</p>
+                        
+                        <details>
+                            <summary>Show Solution</summary>
+                            <pre><code>// ISP: Segregated interfaces
+interface Notification {
+    send(recipient: string, message: string): void;
+}
+
+interface Retryable {
+    retry(recipient: string, message: string, attempts: number): void;
+}
+
+interface Trackable {
+    trackDelivery(recipient: string): boolean;
+}
+
+// SRP: Each class has single responsibility
+class EmailNotification implements Notification, Retryable, Trackable {
+    send(recipient: string, message: string): void {
+        console.log(`📧 Email to ${recipient}: ${message}`);
+    }
+
+    retry(recipient: string, message: string, attempts: number): void {
+        console.log(`Retrying email ${attempts} times`);
+    }
+
+    trackDelivery(recipient: string): boolean {
+        return true;
+    }
+}
+
+class SMSNotification implements Notification, Retryable {
+    send(recipient: string, message: string): void {
+        console.log(`📱 SMS to ${recipient}: ${message}`);
+    }
+
+    retry(recipient: string, message: string, attempts: number): void {
+        console.log(`Retrying SMS ${attempts} times`);
+    }
+}
+
+class PushNotification implements Notification {
+    send(recipient: string, message: string): void {
+        console.log(`🔔 Push to ${recipient}: ${message}`);
+    }
+}
+
+// OCP: Can add new notification types without modifying this
+class NotificationService {
+    private notifications: Notification[] = [];
+
+    addNotification(notification: Notification): void {
+        this.notifications.push(notification);
+    }
+
+    notifyAll(recipient: string, message: string): void {
+        this.notifications.forEach(n => n.send(recipient, message));
+    }
+}
+
+// DIP: Depend on abstraction
+interface NotificationLogger {
+    log(message: string): void;
+}
+
+class NotificationManager {
+    constructor(
+        private notification: Notification,
+        private logger: NotificationLogger
+    ) {}
+
+    notify(recipient: string, message: string): void {
+        this.logger.log(`Sending notification to ${recipient}`);
+        this.notification.send(recipient, message);
+    }
+}
+
+// Usage
+const service = new NotificationService();
+service.addNotification(new EmailNotification());
+service.addNotification(new SMSNotification());
+service.addNotification(new PushNotification());
+
+service.notifyAll("user@example.com", "Your order is ready!");</code></pre>
+                        </details>
+                    </div>
+                </div>
+            </div>
+
+            <div class="key-takeaways">
+                <h3>Key Takeaways</h3>
+                <ul>
+                    <li><strong>SRP:</strong> One class, one responsibility - easier to understand, test, and maintain</li>
+                    <li><strong>OCP:</strong> Extend behavior through inheritance/composition, not modification - use interfaces and abstractions</li>
+                    <li><strong>LSP:</strong> Subtypes must be substitutable for base types - don't break expected behavior</li>
+                    <li><strong>ISP:</strong> Many small interfaces better than one large interface - clients depend only on what they use</li>
+                    <li><strong>DIP:</strong> Depend on abstractions, not concretions - use dependency injection for flexibility</li>
+                    <li>SOLID principles work together - applying one often helps with others</li>
+                    <li>Not dogma - understand the principles and apply them pragmatically</li>
+                    <li>SOLID leads to code that is testable, maintainable, extensible, and understandable</li>
+                </ul>
+            </div>
+
+            <div class="lesson-navigation">
+                <a href="07-architecture.html" class="nav-btn">← Previous: Software Architecture</a>
+                <a href="09-code-quality.html" class="nav-btn">Next: Code Quality →</a>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../js/course.js"></script>
+</body>
+</html>

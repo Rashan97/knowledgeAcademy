@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 3: Requirements Engineering - Engineering Academy</title>
+    <link rel="stylesheet" href="../../../css/styles.css">
+    <link rel="stylesheet" href="../../../css/course-styles/course.css">
+</head>
+<body>
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <h1><a href="../../../index.html" style="color: inherit; text-decoration: none;">🎓 Engineering Academy</a></h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../../../index.html#courses">Courses</a></li>
+                    <li><a href="../index.html">Course Overview</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section class="course-header">
+        <div class="container">
+            <h1>💻 Software Engineering</h1>
+            <p>Lesson 3: Requirements Engineering</p>
+        </div>
+    </section>
+
+    <div class="course-container">
+        <aside class="course-sidebar">
+            <h3>Course Modules</h3>
+            <ul class="lesson-list">
+                <li><a href="../index.html"><span class="lesson-number">📚</span>Course Overview</a></li>
+                <li><a href="01-introduction.html" class="completed"><span class="lesson-number">1</span>Introduction to SE</a></li>
+                <li><a href="02-sdlc.html" class="completed"><span class="lesson-number">2</span>SDLC & Methodologies</a></li>
+                <li><a href="03-requirements-engineering.html" class="active"><span class="lesson-number">3</span>Requirements Engineering</a></li>
+                <li><a href="04-creational-patterns.html"><span class="lesson-number">4</span>Creational Patterns</a></li>
+                <li class="disabled"><span class="lesson-number">5</span>Structural Patterns <span style="opacity: 0.5;">(Coming Soon)</span></li>
+                <li class="disabled"><span class="lesson-number">6</span>Behavioral Patterns <span style="opacity: 0.5;">(Coming Soon)</span></li>
+                <li class="disabled"><span class="lesson-number">7</span>System Architecture <span style="opacity: 0.5;">(Coming Soon)</span></li>
+                <li class="disabled"><span class="lesson-number">8</span>SOLID Principles <span style="opacity: 0.5;">(Coming Soon)</span></li>
+                <li class="disabled"><span class="lesson-number">9</span>Code Quality <span style="opacity: 0.5;">(Coming Soon)</span></li>
+                <li class="disabled"><span class="lesson-number">10</span>Testing Strategies <span style="opacity: 0.5;">(Coming Soon)</span></li>
+                <li class="disabled"><span class="lesson-number">11</span>Version Control <span style="opacity: 0.5;">(Coming Soon)</span></li>
+                <li class="disabled"><span class="lesson-number">12</span>Agile & DevOps <span style="opacity: 0.5;">(Coming Soon)</span></li>
+            </ul>
+        </aside>
+
+        <main class="course-content">
+            <h2>Requirements Engineering</h2>
+            <p class="intro">Learn how to elicit, analyze, document, and validate software requirements - the foundation of successful software projects.</p>
+
+            <div class="content-section">
+                <h3>1. Introduction to Requirements Engineering</h3>
+                
+                <h4>What are Requirements?</h4>
+                <p>Requirements define what a system should do (functionality) and under what constraints it must operate (quality attributes). They form a contract between stakeholders and developers.</p>
+                
+                <div class="info-box">
+                    <strong>Requirement Types:</strong>
+                    <ul>
+                        <li><strong>Functional Requirements:</strong> Describe what the system should do (features, behaviors, inputs/outputs)</li>
+                        <li><strong>Non-Functional Requirements (NFRs):</strong> Describe how the system should perform (performance, security, usability)</li>
+                        <li><strong>Domain Requirements:</strong> Specific to the application domain (e.g., regulatory compliance)</li>
+                    </ul>
+                </div>
+
+                <h4>Requirements Engineering Process</h4>
+                <p>The RE process consists of four main activities:</p>
+                <ol>
+                    <li><strong>Elicitation:</strong> Discovering requirements from stakeholders</li>
+                    <li><strong>Analysis:</strong> Refining and organizing requirements</li>
+                    <li><strong>Specification:</strong> Documenting requirements formally</li>
+                    <li><strong>Validation:</strong> Ensuring requirements meet stakeholder needs</li>
+                </ol>
+            </div>
+
+            <div class="content-section">
+                <h3>2. Functional Requirements</h3>
+                
+                <h4>Characteristics of Good Functional Requirements</h4>
+                <p>Functional requirements should be:</p>
+                <ul>
+                    <li><strong>Complete:</strong> All necessary functionality is specified</li>
+                    <li><strong>Consistent:</strong> No contradictions between requirements</li>
+                    <li><strong>Unambiguous:</strong> Only one interpretation possible</li>
+                    <li><strong>Verifiable:</strong> Can be tested/verified</li>
+                    <li><strong>Traceable:</strong> Linked to business needs and design elements</li>
+                </ul>
+
+                <div class="example-box">
+                    <strong>Example - Banking System:</strong>
+                    <pre><code>FR-001: The system shall allow users to transfer funds between accounts
+FR-002: The system shall verify sufficient balance before processing transfers
+FR-003: The system shall generate a transaction confirmation number
+FR-004: The system shall send email notification upon successful transfer
+FR-005: The system shall log all transaction attempts with timestamp</code></pre>
+                </div>
+
+                <h4>Writing Functional Requirements</h4>
+                <p>Use the template: <strong>"The system shall [action] [object] [condition]"</strong></p>
+                
+                <div class="example-box">
+                    <strong>Good vs. Bad Requirements:</strong>
+                    <pre><code>❌ Bad: "The system should be fast"
+✅ Good: "The system shall process login requests within 2 seconds"
+
+❌ Bad: "Users can search for products"
+✅ Good: "The system shall allow authenticated users to search products by name, category, or SKU"
+
+❌ Bad: "Handle errors properly"
+✅ Good: "The system shall display a user-friendly error message when database connection fails"</code></pre>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>3. Non-Functional Requirements (NFRs)</h3>
+                
+                <h4>NFR Categories</h4>
+                
+                <p><strong>Performance Requirements:</strong></p>
+                <ul>
+                    <li>Response Time: Max time for system response (e.g., &lt; 3 seconds for page load)</li>
+                    <li>Throughput: Transactions per second (e.g., 10,000 TPS)</li>
+                    <li>Resource Usage: CPU, memory, bandwidth limits</li>
+                </ul>
+
+                <p><strong>Scalability Requirements:</strong></p>
+                <ul>
+                    <li>Concurrent Users: Max simultaneous users (e.g., 100,000 concurrent users)</li>
+                    <li>Data Volume: Storage capacity (e.g., support 1TB database)</li>
+                    <li>Load Growth: Future expansion (e.g., 50% annual user growth)</li>
+                </ul>
+
+                <p><strong>Security Requirements:</strong></p>
+                <ul>
+                    <li>Authentication: How users are verified (e.g., OAuth 2.0, MFA)</li>
+                    <li>Authorization: Access control (e.g., role-based access control)</li>
+                    <li>Data Encryption: At rest and in transit (e.g., AES-256, TLS 1.3)</li>
+                    <li>Audit Logging: Track security-relevant events</li>
+                </ul>
+
+                <p><strong>Usability Requirements:</strong></p>
+                <ul>
+                    <li>Learnability: Time for new users to become productive</li>
+                    <li>Accessibility: WCAG 2.1 Level AA compliance</li>
+                    <li>Error Prevention: Input validation, confirmation dialogs</li>
+                </ul>
+
+                <p><strong>Reliability Requirements:</strong></p>
+                <ul>
+                    <li>Availability: Uptime percentage (e.g., 99.9% = 8.76 hours downtime/year)</li>
+                    <li>MTBF (Mean Time Between Failures): Average operational time</li>
+                    <li>MTTR (Mean Time To Repair): Average recovery time</li>
+                    <li>Fault Tolerance: Continue operation despite component failures</li>
+                </ul>
+
+                <div class="formula-box">
+                    <strong>Availability Calculation:</strong>
+                    $$\text{Availability} = \frac{\text{MTBF}}{\text{MTBF} + \text{MTTR}} \times 100\%$$
+                    
+                    <p><strong>Example:</strong> If MTBF = 720 hours and MTTR = 0.5 hours:</p>
+                    $$\text{Availability} = \frac{720}{720 + 0.5} \times 100\% = 99.93\%$$
+                </div>
+
+                <div class="example-box">
+                    <strong>NFR Examples:</strong>
+                    <pre><code>NFR-001: The system shall support 50,000 concurrent users
+NFR-002: The system shall achieve 99.95% uptime (4.38 hours downtime/year)
+NFR-003: All API responses shall complete within 500ms at 95th percentile
+NFR-004: The system shall encrypt all data using AES-256 encryption
+NFR-005: The system shall comply with GDPR and CCPA regulations
+NFR-006: The web interface shall be accessible per WCAG 2.1 Level AA
+NFR-007: The system shall scale horizontally to handle 100% traffic increase</code></pre>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>4. Use Cases</h3>
+                
+                <h4>Use Case Anatomy</h4>
+                <p>A use case describes interactions between actors (users/systems) and the system to achieve a goal.</p>
+
+                <div class="info-box">
+                    <strong>Use Case Structure:</strong>
+                    <ul>
+                        <li><strong>Title:</strong> Goal in brief (e.g., "Process Customer Order")</li>
+                        <li><strong>Actors:</strong> Primary (initiates) and Secondary (supports)</li>
+                        <li><strong>Preconditions:</strong> Must be true before execution</li>
+                        <li><strong>Main Success Scenario:</strong> Step-by-step happy path</li>
+                        <li><strong>Extensions:</strong> Alternative paths and error handling</li>
+                        <li><strong>Postconditions:</strong> System state after completion</li>
+                    </ul>
+                </div>
+
+                <div class="example-box">
+                    <strong>Use Case Example: ATM Cash Withdrawal</strong>
+                    <pre><code><strong>Use Case:</strong> Withdraw Cash
+<strong>Primary Actor:</strong> Bank Customer
+<strong>Preconditions:</strong> Customer has valid ATM card and account with sufficient balance
+<strong>Postconditions:</strong> Cash dispensed, account debited, transaction recorded
+
+<strong>Main Success Scenario:</strong>
+1. Customer inserts ATM card
+2. System prompts for PIN
+3. Customer enters PIN
+4. System validates PIN
+5. System displays transaction menu
+6. Customer selects "Withdraw Cash"
+7. System prompts for amount
+8. Customer enters amount ($100)
+9. System verifies sufficient balance
+10. System dispenses cash
+11. System prints receipt
+12. System ejects card
+13. Customer removes card and cash
+
+<strong>Extensions:</strong>
+4a. Invalid PIN:
+    4a1. System displays error message
+    4a2. System prompts for PIN again
+    4a3. After 3 failed attempts, system retains card
+    
+9a. Insufficient balance:
+    9a1. System displays "Insufficient funds" message
+    9a2. System returns to step 7
+    
+10a. Cash dispenser empty:
+    10a1. System displays "Service unavailable" message
+    10a2. System logs maintenance alert
+    10a3. Use case ends</code></pre>
+                </div>
+
+                <h4>Use Case Diagrams</h4>
+                <p>Visual representation using UML notation showing actors, use cases, and relationships:</p>
+                <ul>
+                    <li><strong>Include:</strong> Required sub-functionality (e.g., "Login" included in multiple use cases)</li>
+                    <li><strong>Extend:</strong> Optional behavior (e.g., "Apply Discount" extends "Process Order")</li>
+                    <li><strong>Generalization:</strong> Inheritance between actors or use cases</li>
+                </ul>
+            </div>
+
+            <div class="content-section">
+                <h3>5. User Stories (Agile Approach)</h3>
+                
+                <h4>User Story Format</h4>
+                <p>A lightweight alternative to use cases, popular in Agile methodologies:</p>
+                
+                <div class="formula-box">
+                    <strong>Standard Template:</strong>
+                    <p><strong>As a</strong> [role], <strong>I want</strong> [feature], <strong>so that</strong> [benefit]</p>
+                </div>
+
+                <div class="example-box">
+                    <strong>User Story Examples:</strong>
+                    <pre><code>As a customer, I want to save items to a wishlist, so that I can purchase them later
+
+As an admin, I want to export user data to CSV, so that I can analyze trends in Excel
+
+As a mobile user, I want to use fingerprint authentication, so that I can log in quickly
+
+As a content creator, I want to schedule posts, so that I can publish during peak hours</code></pre>
+                </div>
+
+                <h4>INVEST Criteria</h4>
+                <p>Good user stories should be:</p>
+                <ul>
+                    <li><strong>I</strong>ndependent: Can be developed in any order</li>
+                    <li><strong>N</strong>egotiable: Details can be discussed</li>
+                    <li><strong>V</strong>aluable: Delivers value to users</li>
+                    <li><strong>E</strong>stimable: Team can estimate effort</li>
+                    <li><strong>S</strong>mall: Completable in one sprint</li>
+                    <li><strong>T</strong>estable: Clear acceptance criteria</li>
+                </ul>
+
+                <h4>Acceptance Criteria</h4>
+                <p>Define "done" for a user story using Given-When-Then format:</p>
+                
+                <div class="example-box">
+                    <strong>Example with Acceptance Criteria:</strong>
+                    <pre><code><strong>User Story:</strong>
+As a registered user, I want to reset my password, so that I can regain access if I forget it
+
+<strong>Acceptance Criteria:</strong>
+Given I am on the login page
+When I click "Forgot Password"
+Then I should see a password reset form
+
+Given I enter my registered email
+When I submit the reset form
+Then I should receive a reset link via email within 5 minutes
+
+Given I click the reset link
+When the link is less than 24 hours old
+Then I should see a new password creation form
+
+Given I enter and confirm a new password
+When the password meets security requirements (8+ chars, uppercase, lowercase, number)
+Then my password should be updated and I should be redirected to login</code></pre>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>6. Requirements Elicitation Techniques</h3>
+                
+                <h4>Interview Techniques</h4>
+                <p><strong>Structured Interviews:</strong> Predefined questions, easy to analyze</p>
+                <p><strong>Unstructured Interviews:</strong> Open-ended, exploratory</p>
+                <p><strong>Tips:</strong></p>
+                <ul>
+                    <li>Prepare questions in advance</li>
+                    <li>Ask open-ended questions ("How do you...?" vs "Do you...?")</li>
+                    <li>Listen actively, probe for details</li>
+                    <li>Document immediately after</li>
+                </ul>
+
+                <h4>Workshops and Facilitated Sessions</h4>
+                <p><strong>Joint Application Development (JAD):</strong> Structured workshops with stakeholders</p>
+                <p><strong>Brainstorming:</strong> Generate many ideas quickly</p>
+                <p><strong>Focus Groups:</strong> Gather diverse perspectives</p>
+
+                <h4>Observation</h4>
+                <p>Watch users perform tasks in their natural environment:</p>
+                <ul>
+                    <li><strong>Ethnographic Studies:</strong> Immerse in user environment</li>
+                    <li><strong>Contextual Inquiry:</strong> Observe and interview simultaneously</li>
+                    <li>Identify implicit requirements users can't articulate</li>
+                </ul>
+
+                <h4>Prototyping</h4>
+                <p>Build early versions to explore requirements:</p>
+                <ul>
+                    <li><strong>Throwaway Prototypes:</strong> Quick mockups, discarded after feedback</li>
+                    <li><strong>Evolutionary Prototypes:</strong> Incrementally refined into final system</li>
+                    <li><strong>Wireframes/Mockups:</strong> UI-focused prototypes</li>
+                </ul>
+
+                <h4>Document Analysis</h4>
+                <p>Review existing documentation:</p>
+                <ul>
+                    <li>Current system manuals</li>
+                    <li>Business process documents</li>
+                    <li>Regulatory requirements</li>
+                    <li>Competitor analysis</li>
+                </ul>
+
+                <h4>Surveys and Questionnaires</h4>
+                <p>Gather data from large groups:</p>
+                <ul>
+                    <li>Use for quantitative data (priorities, preferences)</li>
+                    <li>Keep short and focused</li>
+                    <li>Mix question types (multiple choice, Likert scale, open-ended)</li>
+                </ul>
+            </div>
+
+            <div class="content-section">
+                <h3>7. Requirements Analysis and Modeling</h3>
+                
+                <h4>Requirements Prioritization</h4>
+                
+                <p><strong>MoSCoW Method:</strong></p>
+                <ul>
+                    <li><strong>M</strong>ust have: Critical, non-negotiable</li>
+                    <li><strong>S</strong>hould have: Important but not critical</li>
+                    <li><strong>C</strong>ould have: Desirable if time/budget permits</li>
+                    <li><strong>W</strong>on't have (this time): Deferred to future releases</li>
+                </ul>
+
+                <p><strong>Kano Model:</strong></p>
+                <ul>
+                    <li><strong>Basic Needs:</strong> Expected features (cause dissatisfaction if missing)</li>
+                    <li><strong>Performance Needs:</strong> More is better (linear satisfaction)</li>
+                    <li><strong>Delight Needs:</strong> Unexpected features (high satisfaction)</li>
+                </ul>
+
+                <p><strong>Value vs. Effort Matrix:</strong></p>
+                <div class="example-box">
+                    <pre><code>High Value, Low Effort  → Quick Wins (do first)
+High Value, High Effort → Major Projects (plan carefully)
+Low Value, Low Effort   → Fill-ins (do if time available)
+Low Value, High Effort  → Time Wasters (avoid)</code></pre>
+                </div>
+
+                <h4>Data Modeling</h4>
+                <p><strong>Entity-Relationship Diagrams (ERD):</strong> Model data structure</p>
+                <ul>
+                    <li><strong>Entities:</strong> Objects/concepts (Customer, Order, Product)</li>
+                    <li><strong>Attributes:</strong> Properties (Customer: name, email, phone)</li>
+                    <li><strong>Relationships:</strong> Associations with cardinality (one-to-many, many-to-many)</li>
+                </ul>
+
+                <h4>Behavioral Modeling</h4>
+                <p><strong>State Diagrams:</strong> Model object lifecycle</p>
+                <p><strong>Activity Diagrams:</strong> Model workflows and business processes</p>
+                <p><strong>Sequence Diagrams:</strong> Model interactions between components over time</p>
+            </div>
+
+            <div class="content-section">
+                <h3>8. Requirements Specification</h3>
+                
+                <h4>Software Requirements Specification (SRS)</h4>
+                <p>Formal document containing all requirements. IEEE 830 standard structure:</p>
+                <ol>
+                    <li><strong>Introduction:</strong> Purpose, scope, definitions, references</li>
+                    <li><strong>Overall Description:</strong> Product perspective, functions, user characteristics, constraints</li>
+                    <li><strong>Specific Requirements:</strong> Functional, non-functional, interface requirements</li>
+                    <li><strong>Appendices:</strong> Glossary, analysis models, supporting information</li>
+                </ol>
+
+                <h4>Writing Clear Requirements</h4>
+                <p><strong>Avoid ambiguity:</strong></p>
+                <div class="example-box">
+                    <pre><code>❌ Ambiguous words: "fast", "user-friendly", "robust", "flexible"
+✅ Specific: "within 2 seconds", "5 clicks or less", "99.9% uptime"
+
+❌ "The system shall provide adequate security"
+✅ "The system shall use TLS 1.3 for all network communications"
+
+❌ "The system should handle many users"
+✅ "The system shall support 10,000 concurrent users with <1s response time"</code></pre>
+                </div>
+
+                <p><strong>Use consistent terminology:</strong></p>
+                <ul>
+                    <li>Create a glossary</li>
+                    <li>Use domain-specific terms correctly</li>
+                    <li>Avoid synonyms (pick one term: user/customer/client)</li>
+                </ul>
+
+                <p><strong>Requirement numbering:</strong></p>
+                <div class="example-box">
+                    <pre><code>FR-AUTH-001: Login functionality
+FR-AUTH-002: Password reset
+FR-SRCH-001: Product search
+NFR-PERF-001: Response time requirement
+NFR-SEC-001: Encryption requirement</code></pre>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>9. Requirements Validation</h3>
+                
+                <h4>Validation Techniques</h4>
+                
+                <p><strong>Reviews and Inspections:</strong></p>
+                <ul>
+                    <li><strong>Walkthroughs:</strong> Author presents requirements, team asks questions</li>
+                    <li><strong>Inspections:</strong> Formal process with defined roles (moderator, reader, recorder)</li>
+                    <li><strong>Peer Reviews:</strong> Colleagues review for errors</li>
+                </ul>
+
+                <p><strong>Prototyping Validation:</strong></p>
+                <ul>
+                    <li>Build prototype based on requirements</li>
+                    <li>Users interact and provide feedback</li>
+                    <li>Identify missing/incorrect requirements early</li>
+                </ul>
+
+                <p><strong>Test Case Generation:</strong></p>
+                <ul>
+                    <li>Write test cases from requirements</li>
+                    <li>If you can't test it, requirement is incomplete/ambiguous</li>
+                    <li>Ensures verifiability</li>
+                </ul>
+
+                <p><strong>Requirements Traceability Matrix (RTM):</strong></p>
+                <p>Links requirements to other artifacts (design, code, tests):</p>
+                
+                <div class="example-box">
+                    <strong>Example RTM:</strong>
+                    <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+                        <tr style="background: #2c3e50; color: white;">
+                            <th style="border: 1px solid #ddd; padding: 8px;">Req ID</th>
+                            <th style="border: 1px solid #ddd; padding: 8px;">Description</th>
+                            <th style="border: 1px solid #ddd; padding: 8px;">Design Element</th>
+                            <th style="border: 1px solid #ddd; padding: 8px;">Code Module</th>
+                            <th style="border: 1px solid #ddd; padding: 8px;">Test Case</th>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 8px;">FR-001</td>
+                            <td style="border: 1px solid #ddd; padding: 8px;">User login</td>
+                            <td style="border: 1px solid #ddd; padding: 8px;">AuthController</td>
+                            <td style="border: 1px solid #ddd; padding: 8px;">auth.py</td>
+                            <td style="border: 1px solid #ddd; padding: 8px;">TC-AUTH-01</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 8px;">NFR-001</td>
+                            <td style="border: 1px solid #ddd; padding: 8px;">Response time < 2s</td>
+                            <td style="border: 1px solid #ddd; padding: 8px;">Caching layer</td>
+                            <td style="border: 1px solid #ddd; padding: 8px;">cache.py</td>
+                            <td style="border: 1px solid #ddd; padding: 8px;">TC-PERF-01</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <h4>Validation Checklist</h4>
+                <ul>
+                    <li>✓ Are all requirements consistent (no contradictions)?</li>
+                    <li>✓ Are requirements complete (nothing missing)?</li>
+                    <li>✓ Are requirements realistic and achievable?</li>
+                    <li>✓ Are requirements verifiable/testable?</li>
+                    <li>✓ Are requirements traceable to business needs?</li>
+                    <li>✓ Do stakeholders agree with requirements?</li>
+                </ul>
+            </div>
+
+            <div class="content-section">
+                <h3>10. Requirements Management</h3>
+                
+                <h4>Change Management</h4>
+                <p>Requirements change throughout the project lifecycle. Manage changes systematically:</p>
+                <ol>
+                    <li><strong>Change Request:</strong> Stakeholder submits formal request</li>
+                    <li><strong>Impact Analysis:</strong> Assess cost, schedule, risk impacts</li>
+                    <li><strong>Review:</strong> Change Control Board (CCB) evaluates</li>
+                    <li><strong>Approval/Rejection:</strong> Decision with rationale</li>
+                    <li><strong>Implementation:</strong> Update requirements, design, code, tests</li>
+                    <li><strong>Verification:</strong> Ensure change implemented correctly</li>
+                </ol>
+
+                <h4>Version Control</h4>
+                <p>Track requirement versions:</p>
+                <ul>
+                    <li>Document version numbers (1.0, 1.1, 2.0)</li>
+                    <li>Change history (date, author, description)</li>
+                    <li>Baseline requirements (approved snapshots)</li>
+                </ul>
+
+                <h4>Requirements Management Tools</h4>
+                <ul>
+                    <li><strong>Jira:</strong> User stories, epics, tracking</li>
+                    <li><strong>IBM DOORS:</strong> Enterprise requirements management</li>
+                    <li><strong>Azure DevOps:</strong> Integrated ALM platform</li>
+                    <li><strong>Confluence:</strong> Documentation and collaboration</li>
+                    <li><strong>Trello:</strong> Lightweight Kanban-based tracking</li>
+                </ul>
+            </div>
+
+            <div class="practice-problems">
+                <h3>Practice Problems</h3>
+                
+                <div class="problem">
+                    <p><strong>Problem 1:</strong> Rewrite the following poor requirements to be clear, testable, and unambiguous:</p>
+                    <p>a) "The website should load quickly"</p>
+                    <p>b) "The system must be secure"</p>
+                    <p>c) "Users should find the interface easy to use"</p>
+                    
+                    <button class="toggle-solution">Show Solution</button>
+                    <div class="solution" style="display: none;">
+                        <p><strong>Solution:</strong></p>
+                        <p>a) "The website homepage shall load completely within 3 seconds on a standard broadband connection (10 Mbps) for 95% of requests"</p>
+                        <p>b) "The system shall:</p>
+                        <ul>
+                            <li>Encrypt all data in transit using TLS 1.3</li>
+                            <li>Encrypt all data at rest using AES-256</li>
+                            <li>Require passwords with minimum 12 characters including uppercase, lowercase, number, and symbol</li>
+                            <li>Implement multi-factor authentication for admin accounts</li>
+                            <li>Log all authentication attempts with timestamp and IP address"</li>
+                        </ul>
+                        <p>c) "New users shall be able to complete their first product purchase within 5 minutes without consulting documentation, as verified by usability testing with 80% success rate"</p>
+                    </div>
+                </div>
+
+                <div class="problem">
+                    <p><strong>Problem 2:</strong> Write a complete use case for "User registers for an account" including preconditions, main success scenario, and at least two extensions.</p>
+                    
+                    <button class="toggle-solution">Show Solution</button>
+                    <div class="solution" style="display: none;">
+                        <pre><code><strong>Use Case:</strong> Register User Account
+<strong>Primary Actor:</strong> New User
+<strong>Preconditions:</strong> User has valid email address and internet connection
+<strong>Postconditions:</strong> User account created, confirmation email sent
+
+<strong>Main Success Scenario:</strong>
+1. User navigates to registration page
+2. System displays registration form
+3. User enters email, password, confirm password, first name, last name
+4. User checks "I agree to Terms of Service" checkbox
+5. User clicks "Register" button
+6. System validates all fields
+7. System checks email is not already registered
+8. System hashes password using bcrypt
+9. System creates user account in database
+10. System sends confirmation email with activation link
+11. System displays "Registration successful" message
+12. Use case ends
+
+<strong>Extensions:</strong>
+6a. Validation fails:
+    6a1. System highlights invalid fields in red
+    6a2. System displays specific error messages:
+        - "Email format is invalid"
+        - "Password must be at least 12 characters"
+        - "Passwords do not match"
+    6a3. Return to step 3
+
+7a. Email already registered:
+    7a1. System displays "Email already exists. Try logging in or reset password"
+    7a2. System provides links to login and password reset
+    7a3. Use case ends
+
+5a. Terms of Service not accepted:
+    5a1. System displays "You must accept Terms of Service to register"
+    5a2. Return to step 5</code></pre>
+                    </div>
+                </div>
+
+                <div class="problem">
+                    <p><strong>Problem 3:</strong> A system must be available 99.9% of the time. If the MTTR is 30 minutes, calculate the required MTBF.</p>
+                    
+                    <button class="toggle-solution">Show Solution</button>
+                    <div class="solution" style="display: none;">
+                        <p><strong>Solution:</strong></p>
+                        <p>Using the availability formula:</p>
+                        $$\text{Availability} = \frac{\text{MTBF}}{\text{MTBF} + \text{MTTR}}$$
+                        <p>Given: Availability = 0.999, MTTR = 0.5 hours</p>
+                        $$0.999 = \frac{\text{MTBF}}{\text{MTBF} + 0.5}$$
+                        $$0.999(\text{MTBF} + 0.5) = \text{MTBF}$$
+                        $$0.999 \cdot \text{MTBF} + 0.4995 = \text{MTBF}$$
+                        $$0.4995 = \text{MTBF} - 0.999 \cdot \text{MTBF}$$
+                        $$0.4995 = 0.001 \cdot \text{MTBF}$$
+                        $$\text{MTBF} = \frac{0.4995}{0.001} = 499.5 \text{ hours}$$
+                        <p><strong>Answer:</strong> MTBF must be at least 499.5 hours (approximately 21 days)</p>
+                    </div>
+                </div>
+
+                <div class="problem">
+                    <p><strong>Problem 4:</strong> Write 3 user stories with acceptance criteria for an e-commerce shopping cart feature.</p>
+                    
+                    <button class="toggle-solution">Show Solution</button>
+                    <div class="solution" style="display: none;">
+                        <p><strong>Solution:</strong></p>
+                        
+                        <p><strong>User Story 1:</strong></p>
+                        <p>As a shopper, I want to add items to my cart, so that I can purchase multiple products in one transaction</p>
+                        <p><strong>Acceptance Criteria:</strong></p>
+                        <ul>
+                            <li>Given I'm viewing a product, when I click "Add to Cart", then the item is added to my cart</li>
+                            <li>Given I add an item, when the cart updates, then the cart icon shows the correct item count</li>
+                            <li>Given I add the same item twice, when I view my cart, then the quantity is incremented (not duplicated)</li>
+                        </ul>
+                        
+                        <p><strong>User Story 2:</strong></p>
+                        <p>As a shopper, I want to adjust item quantities in my cart, so that I can change my mind about how many to buy</p>
+                        <p><strong>Acceptance Criteria:</strong></p>
+                        <ul>
+                            <li>Given I'm viewing my cart, when I change the quantity field, then the subtotal updates in real-time</li>
+                            <li>Given I set quantity to 0 or click "Remove", when I confirm, then the item is removed from cart</li>
+                            <li>Given the product has stock limits, when I exceed available quantity, then I see "Only X available" warning</li>
+                        </ul>
+                        
+                        <p><strong>User Story 3:</strong></p>
+                        <p>As a returning customer, I want my cart saved between sessions, so that I don't lose items if I leave the site</p>
+                        <p><strong>Acceptance Criteria:</strong></p>
+                        <ul>
+                            <li>Given I have items in my cart, when I log out and log back in, then my cart contents are preserved</li>
+                            <li>Given I add items while logged out, when I log in, then guest cart merges with my saved cart</li>
+                            <li>Given items in my cart are no longer available, when I view cart, then I see "Item no longer available" message</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="key-takeaways">
+                <h3>Key Takeaways</h3>
+                <ul>
+                    <li>Requirements engineering is critical - poor requirements are the #1 cause of project failure</li>
+                    <li>Functional requirements define WHAT the system does; non-functional requirements define HOW WELL it does it</li>
+                    <li>Use cases provide detailed interaction scenarios; user stories are lightweight and Agile-friendly</li>
+                    <li>Good requirements are complete, consistent, unambiguous, verifiable, and traceable</li>
+                    <li>Elicitation requires multiple techniques (interviews, observation, prototyping) to gather complete requirements</li>
+                    <li>Prioritization (MoSCoW, Kano, Value/Effort) ensures focus on high-impact features</li>
+                    <li>Validation ensures requirements actually meet stakeholder needs before implementation</li>
+                    <li>Requirements change - manage changes systematically with impact analysis and approval processes</li>
+                    <li>Traceability matrices link requirements to design, code, and tests for complete coverage</li>
+                </ul>
+            </div>
+
+            <div class="lesson-navigation">
+                <a href="02-sdlc.html" class="nav-btn">← Previous: SDLC</a>
+                <a href="04-creational-patterns.html" class="nav-btn">Next: Creational Patterns →</a>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../js/course.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.4/katex.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.4/katex.min.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: '$$', right: '$$', display: true},
+                    {left: '$', right: '$', display: false}
+                ]
+            });
+        });
+    </script>
+</body>
+</html>

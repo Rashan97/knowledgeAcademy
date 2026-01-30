@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 12: Electrical Safety & Standards - Engineering Academy</title>
+    <link rel="stylesheet" href="../../../css/styles.css">
+    <link rel="stylesheet" href="../../../css/course-styles/course.css">
+</head>
+<body>
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <h1><a href="../../../index.html" style="color: inherit; text-decoration: none;">🎓 Engineering Academy</a></h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../index.html">Course Overview</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section class="course-header">
+        <div class="container">
+            <h1>⚡ Electrical Engineering</h1>
+            <p>Lesson 12: Electrical Safety & Standards</p>
+        </div>
+    </section>
+
+    <div class="course-container">
+        <aside class="course-sidebar">
+            <h3>Course Modules</h3>
+            <ul class="lesson-list">
+                <li><a href="../index.html"><span class="lesson-number">📚</span>Course Overview</a></li>
+                <li><a href="01-fundamentals.html" class="completed"><span class="lesson-number">1</span>EE Fundamentals</a></li>
+                <li><a href="02-dc-circuits.html" class="completed"><span class="lesson-number">2</span>DC Circuit Analysis</a></li>
+                <li><a href="03-ac-circuits.html" class="completed"><span class="lesson-number">3</span>AC Circuits</a></li>
+                <li><a href="04-semiconductors.html" class="completed"><span class="lesson-number">4</span>Semiconductors</a></li>
+                <li><a href="05-diodes-transistors.html" class="completed"><span class="lesson-number">5</span>Diodes & Transistors</a></li>
+                <li><a href="06-operational-amplifiers.html" class="completed"><span class="lesson-number">6</span>Op-Amps</a></li>
+                <li><a href="07-digital-electronics.html" class="completed"><span class="lesson-number">7</span>Digital Electronics</a></li>
+                <li><a href="08-power-systems.html" class="completed"><span class="lesson-number">8</span>Power Systems</a></li>
+                <li><a href="09-transformers-motors.html" class="completed"><span class="lesson-number">9</span>Transformers & Motors</a></li>
+                <li><a href="10-control-systems.html" class="completed"><span class="lesson-number">10</span>Control Systems</a></li>
+                <li><a href="11-signals-systems.html" class="completed"><span class="lesson-number">11</span>Signals & Systems</a></li>
+                <li><a href="12-safety-standards.html" class="active"><span class="lesson-number">12</span>Safety & Standards</a></li>
+            </ul>
+        </aside>
+
+        <main class="course-content">
+            <div class="lesson-header">
+                <h2>Lesson 12: Electrical Safety & Standards</h2>
+                <div class="lesson-meta">
+                    <span>📖 95 min read</span>
+                    <span>⚠️ Critical Knowledge</span>
+                </div>
+            </div>
+
+            <div class="lesson-content">
+                <div class="info-box warning" style="border-left-color: #dc2626; background-color: #fef2f2;">
+                    <h4>⚠️ SAFETY FIRST - READ THIS</h4>
+                    <p><strong>Electricity can KILL. This lesson contains life-saving information.</strong></p>
+                    <ul>
+                        <li>Never work on live circuits unless absolutely necessary and qualified</li>
+                        <li>Always assume circuits are energized until proven otherwise</li>
+                        <li>Follow lockout/tagout (LOTO) procedures</li>
+                        <li>Use appropriate PPE (Personal Protective Equipment)</li>
+                        <li>Know the arc flash boundary and wear rated gear</li>
+                        <li>One hand in pocket rule when probing live circuits</li>
+                        <li>When in doubt, ASK. Your life depends on it.</li>
+                    </ul>
+                </div>
+
+                <h3>Introduction to Electrical Safety</h3>
+                <p>
+                    Electrical engineering involves working with potentially lethal energy. Understanding safety 
+                    principles, regulations, and standards is not optional—it's essential for protecting lives 
+                    and property. This lesson covers the critical safety knowledge every electrical engineer must know.
+                </p>
+
+                <div class="info-box note">
+                    <h4>📌 What You'll Learn</h4>
+                    <ul>
+                        <li>Effects of electric current on the human body</li>
+                        <li>National Electrical Code (NEC) fundamentals</li>
+                        <li>Grounding and bonding requirements</li>
+                        <li>Arc flash hazards and protection</li>
+                        <li>Lockout/Tagout (LOTO) procedures</li>
+                        <li>Personal Protective Equipment (PPE) requirements</li>
+                        <li>IEEE and IEC standards</li>
+                        <li>Safe work practices and procedures</li>
+                    </ul>
+                </div>
+
+                <h3>Effects of Electric Current</h3>
+
+                <h4>Current vs. Voltage: What Kills?</h4>
+                <div class="code-block" data-language="text">
+<code>CURRENT KILLS, NOT VOLTAGE
+
+Ohm's Law applies to human body:
+  I = V / R_body
+  
+  Typical body resistance: 1,000Ω to 100,000Ω
+  Depends on: Skin condition, contact area, path, moisture
+
+Effects of Current (60 Hz AC through chest):
+
+┌──────────────┬──────────────────────────────────┐
+│   Current    │           Effect                 │
+├──────────────┼──────────────────────────────────┤
+│  < 1 mA      │ Barely perceptible               │
+│  1-5 mA      │ Threshold of perception          │
+│  5-10 mA     │ Painful shock                    │
+│  10-20 mA    │ "Let-go" current limit           │
+│              │ Muscle contraction, cannot let go│
+│  20-50 mA    │ Severe pain, breathing difficult │
+│  50-100 mA   │ Possible ventricular fibrillation│
+│              │ (heart stops pumping properly)   │
+│  100-200 mA  │ CERTAIN ventricular fibrillation │
+│  > 200 mA    │ Severe burns, muscle contraction │
+│  > 1-2 A     │ Heart stops (may restart)        │
+│  > 10 A      │ Severe burns, death likely       │
+└──────────────┴──────────────────────────────────┘
+
+DC vs. AC:
+  DC "let-go" threshold: ~75 mA
+  AC "let-go" threshold: ~10-20 mA
+  
+  AC is MORE DANGEROUS than DC at same voltage
+  60 Hz is particularly dangerous (muscle/nerve frequency)
+
+Duration Matters:
+  Energy = I² × R × t
+  
+  Brief contact (< 0.03s): May survive higher currents
+  Extended contact: Lower currents can be lethal
+  
+  Circuit breakers: Trip in 0.1-5 seconds (too slow!)
+  GFCI: Trips in 0.025 seconds at 5 mA (life-saving)
+
+Current Path:
+  Most dangerous paths:
+    - Hand to hand (across chest/heart)
+    - Hand to foot
+    - Head to foot
+  
+  Less dangerous:
+    - Foot to foot
+    - Hand to back
+  
+  NEVER work with both hands in contact with circuits!
+  "One hand in pocket" rule
+</code>
+                </div>
+
+                <h4>Shock Hazards</h4>
+                <div class="code-block" data-language="text">
+<code>Example: 120V Circuit Shock
+
+Scenario: Wet hands, grounding through feet
+  Skin resistance (wet): ~1,000Ω
+  Internal body resistance: ~500Ω
+  Total: R_body ≈ 1,500Ω
+  
+  Current: I = 120V / 1,500Ω = 80 mA
+  
+  Result: LETHAL (ventricular fibrillation range)
+
+Scenario: Dry skin, insulated shoes
+  Skin resistance (dry): ~100,000Ω
+  
+  Current: I = 120V / 100,000Ω = 1.2 mA
+  
+  Result: Painful but not lethal
+
+THIS IS WHY:
+  - Never work on wet floors
+  - Always use insulated tools
+  - Wear electrical safety shoes
+  - Keep skin dry
+  - Use GFCI protection
+
+Step and Touch Potentials:
+
+Touch Potential:
+  Voltage between grounded object and earth
+  Person touches equipment during ground fault
+  
+Touch Voltage Limit:
+  ~50V in dry conditions
+  ~25V in wet conditions
+
+Step Potential:
+  Voltage between feet during ground fault
+  Occurs near fault point (substation, downed line)
+  Gradient in earth due to fault current
+  
+Safe Practice Near Downed Lines:
+  - Stay in vehicle if possible
+  - If must exit: SHUFFLE feet (keep together)
+  - Never run or take large steps!
+  - Maintain equipotential (feet at same voltage)
+
+High Voltage Hazards:
+
+  Above ~600V: Arc can jump gaps!
+  Never assume "not touching = safe"
+  
+  Arc Flash: Explosive release of energy
+  Temperature: 35,000°F (hotter than sun surface!)
+  
+  Minimum Approach Distances (MAD):
+    600V: 2 feet (qualified workers only)
+    15 kV: 3 feet
+    69 kV: 4 feet
+    138 kV: 5 feet
+    
+  NEVER approach high voltage unless trained and authorized!
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>National Electrical Code (NEC)</h3>
+
+                <h4>NEC Overview</h4>
+                <div class="code-block" data-language="text">
+<code>National Electrical Code (NFPA 70):
+  - Published by National Fire Protection Association (NFPA)
+  - Updated every 3 years (2017, 2020, 2023, 2026...)
+  - Adopted by most US states and municipalities
+  - Minimum safety requirements (not design manual)
+  - Legal requirement for electrical installations
+
+NEC Structure:
+  Article 90: Introduction
+  Chapters 1-4: General requirements (apply to all)
+  Chapters 5-7: Special occupancies/equipment
+  Chapter 8: Communications (separate)
+  Chapter 9: Tables
+  Annexes: Informational (not enforceable)
+
+Key Articles:
+
+Article 100: Definitions
+  Essential terminology (branch circuit, feeder, GFCI, etc.)
+
+Article 110: Requirements for Electrical Installations
+  - Working space clearances
+  - Guarding live parts
+  - Interrupting ratings
+  - Circuit impedance and short-circuit ratings
+  - Deteriorating agents
+
+Article 210: Branch Circuits
+  - 15A and 20A branch circuits (most common)
+  - Receptacle requirements
+  - GFCI and AFCI requirements
+  - Kitchen/bathroom/outdoor circuits
+
+Article 220: Branch-Circuit, Feeder, and Service Calculations
+  - Load calculations
+  - Demand factors
+  - Service sizing
+
+Article 250: Grounding and Bonding
+  - CRITICAL for safety
+  - Grounding electrode system
+  - Equipment grounding
+  - Bonding requirements
+
+Article 300: Wiring Methods
+  - Conductors in parallel
+  - Underground installations
+  - Cables through studs/joists
+
+Article 310: Conductors for General Wiring
+  - Ampacity tables
+  - Temperature ratings
+  - Correction factors
+
+Article 400: Flexible Cords and Cables
+  - Extension cords, power cords
+  - Usage restrictions
+
+Article 430: Motors and Motor Controllers
+  - Overload protection
+  - Branch-circuit conductors
+  - Disconnecting means
+
+Article 680: Swimming Pools, Fountains
+  - Special bonding
+  - GFCI requirements
+  - Underwater lighting
+
+Article 700-702: Emergency, Standby, and Optional Standby Systems
+  - Required for life safety
+  - Generators, UPS
+  - Transfer switches
+</code>
+                </div>
+
+                <h4>NEC Critical Requirements</h4>
+                <div class="code-block" data-language="text">
+<code>Working Space (NEC 110.26):
+
+Minimum Clear Distances:
+┌──────────────┬───────────┬───────────┬───────────┐
+│  Voltage to  │Condition 1│Condition 2│Condition 3│
+│   Ground     │  (feet)   │  (feet)   │  (feet)   │
+├──────────────┼───────────┼───────────┼───────────┤
+│  0-150V      │    3      │    3      │    3      │
+│  151-600V    │    3      │   3.5     │    4      │
+│  601-2500V   │    4      │    5      │    6      │
+└──────────────┴───────────┴───────────┴───────────┘
+
+Conditions:
+  1: Exposed live on one side, grounded on other
+  2: Exposed live on both sides
+  3: Exposed live, operator faces
+
+Depth: Must be clear and unobstructed
+Width: 30" minimum, width of equipment (whichever greater)
+Height: 6.5 feet minimum
+
+GFCI Protection (NEC 210.8):
+
+Required Locations (Dwelling Units):
+  - Bathrooms (all receptacles)
+  - Garages and accessory buildings
+  - Outdoors (all receptacles)
+  - Crawl spaces
+  - Basements (unfinished areas)
+  - Kitchens (countertop receptacles)
+  - Sinks (within 6 feet)
+  - Laundry areas
+
+Trip Current: 4-6 mA
+Trip Time: 0.025 seconds (25 milliseconds)
+
+How GFCI Works:
+  Measures current in hot and neutral
+  If difference > 5 mA → ground fault → trip
+  Protects against electrocution
+  Does NOT protect against overcurrent (need breaker too)
+
+AFCI Protection (NEC 210.12):
+
+Arc-Fault Circuit Interrupter
+Required: All dwelling unit 120V, 15A and 20A circuits
+  (Bedrooms, living rooms, etc.)
+
+Purpose:
+  Detects dangerous arcing (loose connections, damaged cords)
+  Prevents fires
+  Does not replace GFCI (both may be required)
+
+Combination AFCI/GFCI breakers available
+
+Conductor Ampacity (NEC 310.16):
+
+Common Copper Conductors (60°C termination):
+┌──────────┬──────────┬──────────────────────┐
+│   AWG    │  Ampacity│  Typical Use         │
+├──────────┼──────────┼──────────────────────┤
+│   14     │   15 A   │ Lighting circuits    │
+│   12     │   20 A   │ General receptacles  │
+│   10     │   30 A   │ A/C, dryer          │
+│    8     │   50 A   │ Range, large loads   │
+│    6     │   65 A   │ Subpanels           │
+│    4     │   85 A   │ Services            │
+│    2     │  115 A   │ Services            │
+│   1/0    │  150 A   │ Services            │
+│   2/0    │  175 A   │ Services            │
+│   4/0    │  230 A   │ Large services      │
+└──────────┴──────────┴──────────────────────┘
+
+Derating:
+  - More than 3 current-carrying conductors in raceway
+  - Ambient temperature > 30°C (86°F)
+  - Apply correction factors (NEC Tables)
+
+Voltage Drop:
+  NEC Recommendation (not requirement):
+    - Branch circuits: 3% maximum
+    - Feeders: 2% maximum
+    - Total (feeder + branch): 5% maximum
+  
+  V_drop = I × R × L (single-phase)
+         = I × R × L × 1.732 (three-phase)
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Grounding and Bonding</h3>
+
+                <h4>Grounding Fundamentals</h4>
+                <div class="code-block" data-language="text">
+<code>Grounding vs. Bonding (NEC Article 250):
+
+Grounding:
+  Intentional connection to earth
+  Purpose:
+    1. Limit voltage to ground (lightning, line surges)
+    2. Stabilize voltage during normal operation
+    3. Facilitate overcurrent device operation
+  
+  NOT the primary shock protection!
+
+Bonding:
+  Connection of conductive parts together
+  Purpose:
+    1. Establish equipotential (same voltage)
+    2. Provide low-impedance fault path
+    3. Ensure fault current sufficient to trip breaker
+  
+  PRIMARY shock protection mechanism!
+
+Grounded System vs. Grounding:
+
+Grounded System (System Grounding):
+  One conductor intentionally grounded (neutral)
+  120/240V single-phase: Neutral grounded
+  208Y/120V three-phase: Neutral grounded
+  480Y/277V three-phase: Neutral grounded
+
+Equipment Grounding:
+  Non-current-carrying metal parts connected to ground
+  Green wire or bare conductor
+  Ensures fault current returns to source
+
+Grounding Electrode System (NEC 250.50):
+
+Required Electrodes (if present, must use all):
+  1. Metal underground water pipe (≥10 ft buried)
+  2. Metal building frame (effectively grounded)
+  3. Concrete-encased electrode (Ufer ground)
+     - 20 ft of #4 bare copper in concrete footer
+  4. Ground ring (bare #2 copper, ≥20 ft, buried ≥2.5 ft)
+
+Supplemental Electrodes:
+  5. Ground rods (5/8" × 8 ft, copper-clad steel)
+     - Two rods required if single rod > 25Ω
+     - Spacing: Minimum 6 feet apart
+  6. Other local metal systems (if approved)
+
+Ground Resistance:
+  NEC: No specific requirement (25Ω recommended)
+  Telecom/NFPA 780: 25Ω maximum
+  Best practice: < 5Ω for critical systems
+  Measured with fall-of-potential tester
+
+Grounding Electrode Conductor (GEC):
+  Connects service neutral to grounding electrode
+  Sized per NEC Table 250.66
+  
+  Example: 200A service, 2/0 copper
+    GEC: #4 copper minimum
+
+Equipment Grounding Conductor (EGC):
+  Green wire in branch circuits
+  Sized per NEC Table 250.122
+  
+  Example: 20A circuit breaker
+    EGC: #12 copper minimum
+</code>
+                </div>
+
+                <h4>Ground Fault Protection</h4>
+                <div class="code-block" data-language="text">
+<code>How Equipment Grounding Protects:
+
+Normal Operation:
+  Hot (120V) → Load → Neutral (0V)
+  Ground wire carries NO current
+  Equipment chassis at ground potential (safe to touch)
+
+Ground Fault:
+  Hot wire contacts equipment chassis
+  Fault current path: Hot → Chassis → Ground wire → Panel → Transformer → Hot
+  High fault current (I_fault = V/Z_loop)
+  Breaker trips (magnetic trip, instantaneous)
+  
+  Example:
+    120V fault to chassis
+    Loop impedance: 0.5Ω
+    I_fault = 120/0.5 = 240A
+    20A breaker trips magnetically (> 10× rating)
+    Trip time: < 0.1 second
+  
+  WITHOUT equipment ground:
+    Chassis sits at 120V
+    Person touches chassis
+    Current through person (may be < 20A)
+    Breaker may NOT trip
+    ELECTROCUTION!
+
+Bonding Jumpers:
+
+Main Bonding Jumper:
+  At service entrance ONLY
+  Connects neutral bar to ground bar
+  Connects neutral to enclosure
+  Only one point in system!
+
+Equipment Bonding Jumper:
+  Connects equipment to ground
+  Raceway, cable armor, green wire
+
+Supplementary Bonding:
+  Metal water pipes, gas pipes
+  Structural steel
+  Prevents differences in potential
+
+Isolated Ground (IG):
+
+Special ground for sensitive electronics
+Orange receptacles (IG type)
+Insulated ground wire to panel
+Reduces noise from other equipment
+Still requires equipment ground!
+
+Medical Facilities:
+
+Special requirements (NEC Article 517)
+Redundant grounding
+Ground-fault protection at lower levels
+Isolation transformers in critical areas
+Equipotential grounding plane
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Arc Flash Hazards</h3>
+
+                <h4>Arc Flash Basics</h4>
+                <div class="code-block" data-language="text">
+<code>Arc Flash:
+  Explosive release of energy from electrical arc
+  Caused by: Short circuit, equipment failure, human error
+
+Arc Flash vs. Arc Blast:
+
+Arc Flash:
+  Intense light and heat
+  Temperature: 35,000°F (19,400°C)
+  Vaporizes metal conductors
+  UV radiation, bright light (blindness risk)
+  Burns skin, ignites clothing
+
+Arc Blast:
+  Pressure wave from arc
+  Force: Thousands of pounds
+  Throws person across room
+  Hearing damage (140-160 dB)
+  Shrapnel from vaporized metal
+  Molten metal spray
+
+Incident Energy:
+  Energy delivered to worker at working distance
+  Measured in cal/cm² (calories per square centimeter)
+  
+  Determines PPE level required
+  
+  Burns:
+    2 cal/cm²: Curable burns
+    4 cal/cm²: Serious injury
+    8 cal/cm²: Life-threatening
+    20 cal/cm²: Often fatal
+
+Arc Flash Boundary:
+  Distance where incident energy = 1.2 cal/cm²
+  (Threshold of second-degree burn)
+  
+  Within boundary: Arc-rated PPE required
+  Outside boundary: Generally safe (but still caution)
+  
+  Typical boundaries:
+    480V, 25 kA: 4-6 feet
+    4160V, 40 kA: 10-15 feet
+
+Factors Affecting Arc Flash:
+
+1. Available Fault Current:
+   Higher fault current → More energy
+   Depends on: Transformer size, wire size, distance
+
+2. Clearing Time:
+   How long arc burns before breaker trips
+   Energy = Power × Time
+   Faster breaker → Less energy
+   
+3. Working Distance:
+   Energy decreases with distance (inverse square)
+   
+4. System Voltage:
+   Higher voltage → More energy
+   But: Lower voltage can sustain arc easier
+
+5. Electrode Configuration:
+   Bus bars, cable, open air
+   Enclosure reflects energy (worse)
+</code>
+                </div>
+
+                <h4>Arc Flash Labels and PPE</h4>
+                <div class="code-block" data-language="text">
+<code>NFPA 70E: Standard for Electrical Safety in the Workplace
+
+Arc Flash Label Requirements:
+  Required on equipment (≥50V)
+  Must include:
+    - Nominal system voltage
+    - Arc flash boundary
+    - Incident energy OR PPE category
+    - Working distance
+    - Available fault current
+    - Protective device clearing time
+    - Date of analysis
+
+PPE Categories (NFPA 70E Table 130.7):
+
+┌──────────┬──────────────┬────────────────────────┐
+│ Category │ Incident     │  Minimum PPE           │
+│          │ Energy       │                        │
+├──────────┼──────────────┼────────────────────────┤
+│    0     │ < 2 cal/cm²  │ Non-melting shirt/pants│
+│          │              │ Safety glasses         │
+│          │              │ Hearing protection     │
+├──────────┼──────────────┼────────────────────────┤
+│    1     │ 4 cal/cm²    │ Arc-rated shirt/pants  │
+│          │              │ Arc flash suit (4 AR)  │
+│          │              │ Arc-rated face shield  │
+│          │              │ Hard hat               │
+│          │              │ Leather gloves         │
+│          │              │ Hearing protection     │
+├──────────┼──────────────┼────────────────────────┤
+│    2     │ 8 cal/cm²    │ Same as Cat 1 but:     │
+│          │              │ 8 cal/cm² suit         │
+│          │              │ Arc flash hood         │
+├──────────┼──────────────┼────────────────────────┤
+│    3     │ 25 cal/cm²   │ 25 cal/cm² suit        │
+│          │              │ Arc flash hood         │
+│          │              │ Rubber insulating gloves│
+│          │              │ (with leather protectors)│
+├──────────┼──────────────┼────────────────────────┤
+│    4     │ 40 cal/cm²   │ 40 cal/cm² suit        │
+│          │              │ Full face shield       │
+│          │              │ Hard hat               │
+│          │              │ Rubber gloves (class 00-4)│
+└──────────┴──────────────┴────────────────────────┘
+
+Voltage-Rated Gloves (ASTM D120):
+┌───────────┬───────────────┬──────────────────┐
+│   Class   │  Max Voltage  │  Test Voltage    │
+├───────────┼───────────────┼──────────────────┤
+│    00     │     500V AC   │     2,500V       │
+│    0      │   1,000V AC   │     5,000V       │
+│    1      │   7,500V AC   │    10,000V       │
+│    2      │  17,000V AC   │    20,000V       │
+│    3      │  26,500V AC   │    30,000V       │
+│    4      │  36,000V AC   │    40,000V       │
+└───────────┴───────────────┴──────────────────┘
+
+Must be tested every 6 months!
+Leather protectors required (prevent puncture)
+
+Other Required PPE:
+  - Non-conductive hard hat (Class E)
+  - Safety glasses (IR filter for arc)
+  - Hearing protection (ear plugs + muffs)
+  - Electrical safety shoes (EH rated)
+  - No jewelry, watches, rings!
+  - No synthetic clothing (melts to skin)
+    Use cotton or arc-rated materials
+
+Reducing Arc Flash Hazard:
+
+1. Engineering Controls:
+   - Current-limiting fuses
+   - Arc-resistant switchgear
+   - Remote racking (operate from outside)
+   - Zone-selective interlocking (faster trip)
+   - Arc flash relays (optical detection)
+
+2. Administrative Controls:
+   - Work on de-energized equipment (preferred!)
+   - Use infrared scanning (no panel opening)
+   - Work permits and approvals
+   - Trained, qualified personnel only
+   - Limits on when/how live work performed
+
+3. PPE (Last Resort):
+   - Proper selection based on analysis
+   - Inspection before each use
+   - Removal when leaving area
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Lockout/Tagout (LOTO)</h3>
+
+                <h4>LOTO Procedures</h4>
+                <div class="code-block" data-language="text">
+<code>OSHA 1910.147: The Control of Hazardous Energy
+
+Purpose:
+  Prevent unexpected energization during maintenance
+  Protect workers from stored energy release
+  
+  Applies to: Electrical, mechanical, hydraulic, pneumatic, thermal
+
+Six Steps of Lockout/Tagout:
+
+1. PREPARATION
+   - Identify energy sources
+   - Type and magnitude of energy
+   - Hazards present
+   - Method of control
+   - Notify affected employees
+
+2. SHUTDOWN
+   - Orderly shutdown using normal procedures
+   - No damage to equipment
+   - Notify operators
+
+3. ISOLATION
+   - Disconnect energy sources
+   - Open circuit breakers/disconnects
+   - Close valves
+   - Block moving parts
+   - Position to "off" or "safe"
+
+4. LOCKOUT/TAGOUT APPLICATION
+   - Apply lockout devices (locks, hasps)
+   - Apply tags (who, why, when)
+   - One lock per person working!
+   - Personal locks (only you have key)
+   - Tags supplement locks (don't replace)
+
+5. STORED ENERGY CONTROL
+   - Dissipate stored energy:
+     * Capacitors: Discharge
+     * Springs: Release tension
+     * Hydraulic: Bleed pressure
+     * Elevated parts: Lower, block
+     * Thermal: Cool down
+   
+   - Verify zero energy:
+     * Test with meter
+     * Try to start
+     * Check indicators
+     * Multiple points if possible
+
+6. VERIFICATION
+   - Test that machine won't start
+   - Operate controls (should not work)
+   - Return controls to "off"
+   - Confirm safe to work
+
+Lockout Devices:
+
+Must be:
+  - Durable (withstand environment)
+  - Standardized (color, shape, size)
+  - Substantial (not easily removed)
+  - Identifiable (name, date, purpose)
+
+Types:
+  - Circuit breaker locks (various types)
+  - Plug lockouts
+  - Valve lockouts
+  - Cable lockouts
+  - Hasps (multiple workers)
+
+Group Lockout:
+  Multiple people working
+  Each person applies own lock
+  Hasp or lockbox system
+  Coordinator manages
+  Last person removes last lock
+
+Re-energization:
+
+1. Inspect work area (tools removed, guards replaced)
+2. Check that employees clear
+3. Verify controls in neutral/off
+4. Remove locks (only person who applied!)
+5. Remove tags
+6. Notify affected employees
+7. Restore energy safely
+8. Test equipment operation
+
+Violations and Penalties:
+
+OSHA violations:
+  - Serious: Up to $13,653 per violation
+  - Willful: Up to $136,532
+  - Repeat: Up to $136,532
+
+More importantly: LIVES at stake!
+
+Electrical-Specific LOTO:
+
+Absence of Voltage Test (Required!):
+  1. Verify tester on known live source (BEFORE)
+  2. Test all conductors (phase-to-phase, phase-to-ground)
+  3. Verify tester on known live source (AFTER)
+  
+  "Test before touch, test after test"
+
+Test Equipment:
+  - Proximity tester (non-contact)
+  - Multimeter (contact)
+  - Wiggy (solenoid voltage tester)
+  - Phasing sticks (high voltage)
+  
+  Must be rated for voltage!
+  Inspect before each use
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Standards and Codes</h3>
+
+                <h4>IEEE Standards</h4>
+                <div class="code-block" data-language="text">
+<code>Institute of Electrical and Electronics Engineers (IEEE)
+
+Major IEEE Standards:
+
+IEEE 80: Guide for Safety in AC Substation Grounding
+  - Touch and step potentials
+  - Grounding grid design
+  - Safety calculations
+
+IEEE 142 (Green Book): Grounding of Industrial and Commercial Power Systems
+  - System grounding
+  - Equipment grounding
+  - Static grounding
+  - Lightning protection
+
+IEEE 242 (Buff Book): Protection and Coordination
+  - Overcurrent protection
+  - Coordination studies
+  - Protective device selection
+
+IEEE 399 (Brown Book): Power System Analysis
+  - Load flow
+  - Short-circuit analysis
+  - Stability studies
+
+IEEE 446 (Orange Book): Emergency and Standby Power
+  - Generator sizing
+  - UPS systems
+  - Transfer switches
+
+IEEE 519: Harmonic Control in Electrical Power Systems
+  - Harmonic limits
+  - Total harmonic distortion (THD)
+  - Filter design
+
+IEEE 1547: Interconnecting Distributed Resources
+  - Solar, wind, battery integration
+  - Anti-islanding requirements
+  - Voltage/frequency limits
+  - Interconnection procedures
+
+IEEE 1584: Arc Flash Hazard Calculation
+  - Incident energy calculation
+  - Arc flash boundaries
+  - Working distances
+
+IEEE C2 (NESC): National Electrical Safety Code
+  - Utility systems (outside buildings)
+  - Overhead lines
+  - Underground lines
+  - Clearances and spacing
+
+Color Books (IEEE Std 141-1100):
+  Red Book (141): Power distribution
+  Green Book (142): Grounding
+  Blue Book (1015): Industrial & commercial
+  Buff Book (242): Protection
+  Gray Book (241): Commercial buildings
+  Bronze Book (1100): Industrial power
+  Gold Book (493): Reliability
+  White Book (602): Healthcare facilities
+</code>
+                </div>
+
+                <h4>International Standards</h4>
+                <div class="code-block" data-language="text">
+<code>IEC Standards (International Electrotechnical Commission):
+
+IEC 60038: Standard Voltages
+  - Worldwide voltage standards
+  - Low voltage: < 1000V AC, < 1500V DC
+  - High voltage: > 1000V AC, > 1500V DC
+
+IEC 60364: Electrical Installations of Buildings
+  - Similar to NEC but international
+  - Adopted by many countries
+
+IEC 60446: Identification of Conductors
+  - Color codes
+  - Brown/Blue/Green-Yellow (EU)
+  - vs Black/White/Green (US)
+
+IEC 60479: Effects of Current on Human Beings
+  - Body impedance models
+  - Current thresholds
+  - Safety limits
+
+IEC 60529: IP Ratings (Ingress Protection)
+  Format: IP XY
+  
+  First digit (X): Solid particle protection
+    0: No protection
+    1: > 50mm
+    2: > 12.5mm
+    3: > 2.5mm
+    4: > 1mm
+    5: Dust protected
+    6: Dust tight
+  
+  Second digit (Y): Liquid ingress protection
+    0: No protection
+    1: Dripping water (vertical)
+    2: Dripping water (15° tilt)
+    3: Spraying water (60°)
+    4: Splashing water
+    5: Water jets
+    6: Powerful water jets
+    7: Temporary immersion (1m, 30 min)
+    8: Continuous immersion
+
+  Example: IP65 = Dust tight + Water jets
+
+IEC 61000: Electromagnetic Compatibility (EMC)
+  - Emission limits
+  - Immunity requirements
+  - Testing methods
+
+IEC 62305: Lightning Protection
+  - Risk assessment
+  - Protection zones
+  - LPS design
+
+ANSI Standards (American National Standards Institute):
+
+ANSI C84.1: Voltage Ratings
+  - Nominal voltages
+  - Utilization voltage ranges
+  - Service voltage ranges
+
+ANSI Z535: Safety Signs and Colors
+  - Danger (red): Immediate hazard, death/serious injury
+  - Warning (orange): Hazard, death/serious injury possible
+  - Caution (yellow): Hazard, minor/moderate injury
+  - Notice (blue): Information, no injury
+
+UL Standards (Underwriters Laboratories):
+
+UL 508: Industrial Control Equipment
+UL 698: Surge Protective Devices
+UL 1449: Surge Protection
+UL 1741: Inverters (solar, wind)
+
+CSA Standards (Canadian Standards Association):
+
+CSA C22.1: Canadian Electrical Code
+  Similar to NEC
+  Used throughout Canada
+
+International Adoption:
+  NEC: Primarily USA
+  IEC: Europe, Asia, Africa, South America
+  Hybrid: Some countries use both
+</code>
+                </div>
+
+                <h4>Testing and Measurements</h4>
+                <div class="code-block" data-language="text">
+<code>Electrical Testing Safety:
+
+Multimeter Safety:
+  - CAT rating MUST match or exceed work
+  - Inspect leads before each use (no cracks)
+  - Fused inputs (check fuse before use)
+  - Proper range selection
+  - One hand in pocket (probing live circuits)
+
+CAT Ratings (IEC 61010):
+  CAT I: Electronics, protected circuits
+  CAT II: Appliances, outlets (single-phase)
+  CAT III: Distribution, 3-phase loads, feeders
+  CAT IV: Utility, overhead lines, meter bases
+  
+  Higher CAT = Higher transient protection
+  
+  Example: 600V CAT III ≠ 600V CAT IV
+  CAT IV withstands higher voltage spikes
+
+Insulation Resistance Testing (Megger):
+  Purpose: Verify insulation integrity
+  Test voltage: 250V, 500V, 1000V DC
+  Measure: Insulation resistance (MΩ)
+  
+  Minimum values:
+    < 600V: > 1 MΩ
+    600-5000V: > 1 MΩ per kV
+  
+  Safety:
+    - De-energize circuit first!
+    - Discharge after test
+    - Hazardous voltages generated
+
+Ground Resistance Testing:
+  Methods:
+    - Fall-of-potential (most accurate)
+    - Clamp-on (quick, less accurate)
+    - 2-point (rough estimate)
+  
+  Procedure (Fall-of-potential):
+    1. Disconnect ground from system
+    2. Drive test stakes (C1, P2)
+    3. Inject current (C1)
+    4. Measure voltage (P2)
+    5. Calculate R = V/I
+    6. Repeat with P2 at various distances
+    7. Plot results (should plateau)
+
+Thermography (Infrared):
+  Purpose: Find hot spots (loose connections, overloads)
+  Non-contact, safe
+  Regular surveys prevent failures
+  NFPA 70B recommended intervals
+
+Power Quality Analyzers:
+  Measures:
+    - Voltage sags/swells
+    - Harmonics (THD)
+    - Power factor
+    - Transients
+    - Flicker
+  
+  Used for troubleshooting and monitoring
+</code>
+                </div>
+
+                <div class="info-box important">
+                    <h4>🚨 Critical Safety Rules - MEMORIZE THESE</h4>
+                    <ol>
+                        <li><strong>ASSUME ALL CIRCUITS ARE LIVE</strong> until proven otherwise with proper test equipment</li>
+                        <li><strong>ALWAYS USE LOCKOUT/TAGOUT</strong> - Your life depends on it</li>
+                        <li><strong>TEST BEFORE TOUCH</strong> - Verify absence of voltage</li>
+                        <li><strong>ONE HAND IN POCKET</strong> - Prevent hand-to-hand current path across heart</li>
+                        <li><strong>WEAR PROPER PPE</strong> - Arc-rated clothing for energized work</li>
+                        <li><strong>KNOW THE ARC FLASH BOUNDARY</strong> - Stay outside unless protected</li>
+                        <li><strong>NEVER WORK ALONE</strong> on high-voltage or high-energy circuits</li>
+                        <li><strong>WHEN IN DOUBT, DE-ENERGIZE</strong> - No task is worth your life</li>
+                        <li><strong>RESPECT ALL VOLTAGES</strong> - Even 120V can kill under wrong conditions</li>
+                        <li><strong>GET PROPER TRAINING</strong> - Qualified persons only for live work</li>
+                    </ol>
+                </div>
+
+                <div class="info-box tip">
+                    <h4>💡 Resources for Further Learning</h4>
+                    <ul>
+                        <li><strong>NFPA 70E:</strong> Standard for Electrical Safety in the Workplace (purchase from NFPA)</li>
+                        <li><strong>NEC Handbook:</strong> Commentary and examples (updated every 3 years)</li>
+                        <li><strong>IEEE Color Books:</strong> Comprehensive guides for specific topics</li>
+                        <li><strong>OSHA Electrical Safety:</strong> www.osha.gov/SLTC/electrical</li>
+                        <li><strong>NFPA Electrical Training:</strong> Courses and certifications</li>
+                        <li><strong>Mike Holt Enterprises:</strong> NEC training and resources</li>
+                        <li><strong>IAEI:</strong> International Association of Electrical Inspectors</li>
+                        <li><strong>Local Electrical Inspector:</strong> Authority having jurisdiction (AHJ)</li>
+                    </ul>
+                </div>
+
+                <h3>Summary</h3>
+                <ul>
+                    <li>Current kills, not voltage; as little as 100 mA can cause ventricular fibrillation</li>
+                    <li>NEC (NFPA 70) establishes minimum safety requirements for electrical installations</li>
+                    <li>GFCI protection required in wet locations, trips at 5 mA in 0.025 seconds</li>
+                    <li>Grounding limits voltages; bonding provides fault current path (primary protection)</li>
+                    <li>Arc flash hazards produce 35,000°F temperatures; proper PPE is mandatory</li>
+                    <li>Lockout/Tagout prevents unexpected energization; test before touch always</li>
+                    <li>NFPA 70E defines arc flash boundaries and PPE categories</li>
+                    <li>IEEE standards cover design (142, 242), safety (80, 1584), and power quality (519)</li>
+                    <li>IEC standards used internationally; IP ratings define ingress protection</li>
+                    <li>Qualified workers only for energized work; training saves lives</li>
+                </ul>
+
+                <div class="info-box note" style="border-left-color: #059669; background-color: #f0fdf4;">
+                    <h4>🎓 Congratulations!</h4>
+                    <p>
+                        You've completed all 12 lessons of the Electrical Engineering course. You now have a 
+                        comprehensive foundation in:
+                    </p>
+                    <ul>
+                        <li>Circuit analysis (DC and AC)</li>
+                        <li>Semiconductor devices and transistors</li>
+                        <li>Operational amplifiers and analog circuits</li>
+                        <li>Digital electronics and logic design</li>
+                        <li>Power systems and three-phase analysis</li>
+                        <li>Transformers and rotating machines</li>
+                        <li>Control systems and PID controllers</li>
+                        <li>Signals and systems analysis</li>
+                        <li>Electrical safety and standards</li>
+                    </ul>
+                    <p>
+                        Continue your learning by practicing problems, building projects, and studying the 
+                        referenced standards. Stay safe, keep learning, and enjoy your electrical engineering journey!
+                    </p>
+                </div>
+
+                <h3>Final Thoughts</h3>
+                <p>
+                    Electrical engineering is a rewarding field that literally powers modern civilization. With 
+                    this knowledge comes great responsibility—the safety of yourself and others depends on 
+                    following proper procedures and never taking shortcuts.
+                </p>
+                <p>
+                    Always prioritize safety over convenience. Stay current with code updates. Seek mentorship 
+                    from experienced engineers. And remember: when in doubt, ask questions. Your career—and 
+                    your life—are worth it.
+                </p>
+            </div>
+
+            <div class="lesson-navigation">
+                <a href="11-signals-systems.html" class="nav-btn">← Previous: Signals & Systems</a>
+                <a href="../index.html" class="nav-btn">Back to Course Overview</a>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../js/main.js"></script>
+</body>
+</html>

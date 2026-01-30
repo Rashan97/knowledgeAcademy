@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 11: Version Control - Engineering Academy</title>
+    <link rel="stylesheet" href="../../../css/styles.css">
+    <link rel="stylesheet" href="../../../css/course-styles/course.css">
+</head>
+<body>
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <h1><a href="../../../index.html" style="color: inherit; text-decoration: none;">🎓 Engineering Academy</a></h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../../../index.html#courses">Courses</a></li>
+                    <li><a href="../index.html">Course Overview</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section class="course-header">
+        <div class="container">
+            <h1>💻 Software Engineering</h1>
+            <p>Lesson 11: Version Control</p>
+        </div>
+    </section>
+
+    <div class="course-container">
+        <aside class="course-sidebar">
+            <h3>Course Modules</h3>
+            <ul class="lesson-list">
+                <li><a href="../index.html"><span class="lesson-number">📚</span>Course Overview</a></li>
+                <li><a href="01-introduction.html" class="completed"><span class="lesson-number">1</span>Introduction to SE</a></li>
+                <li><a href="02-sdlc.html" class="completed"><span class="lesson-number">2</span>SDLC & Methodologies</a></li>
+                <li><a href="03-requirements-engineering.html" class="completed"><span class="lesson-number">3</span>Requirements Engineering</a></li>
+                <li><a href="04-creational-patterns.html" class="completed"><span class="lesson-number">4</span>Creational Patterns</a></li>
+                <li><a href="05-structural-patterns.html" class="completed"><span class="lesson-number">5</span>Structural Patterns</a></li>
+                <li><a href="06-behavioral-patterns.html" class="completed"><span class="lesson-number">6</span>Behavioral Patterns</a></li>
+                <li><a href="07-architecture.html" class="completed"><span class="lesson-number">7</span>System Architecture</a></li>
+                <li><a href="08-solid-principles.html" class="completed"><span class="lesson-number">8</span>SOLID Principles</a></li>
+                <li><a href="09-code-quality.html" class="completed"><span class="lesson-number">9</span>Code Quality</a></li>
+                <li><a href="10-testing.html" class="completed"><span class="lesson-number">10</span>Testing Strategies</a></li>
+                <li><a href="11-version-control.html" class="active"><span class="lesson-number">11</span>Version Control</a></li>
+                <li class="disabled"><span class="lesson-number">12</span>Agile & DevOps <span style="opacity: 0.5;">(Coming Soon)</span></li>
+            </ul>
+        </aside>
+
+        <main class="course-content">
+            <h2>Version Control with Git</h2>
+            <p class="intro">Master Git fundamentals, workflows, branching strategies, and best practices for collaborative software development.</p>
+
+            <div class="content-section">
+                <h3>1. Introduction to Version Control</h3>
+                
+                <p>Version control systems (VCS) track changes to files over time, enabling collaboration, history tracking, and the ability to revert to previous versions.</p>
+
+                <div class="info-box">
+                    <strong>Why Version Control Matters:</strong>
+                    <ul>
+                        <li><strong>History:</strong> Track all changes with who, what, when, why</li>
+                        <li><strong>Collaboration:</strong> Multiple developers work on same codebase</li>
+                        <li><strong>Branching:</strong> Develop features in isolation</li>
+                        <li><strong>Backup:</strong> Distributed copies protect against data loss</li>
+                        <li><strong>Experimentation:</strong> Try ideas without breaking main code</li>
+                        <li><strong>Code Review:</strong> Review changes before merging</li>
+                    </ul>
+                </div>
+
+                <p><strong>Git:</strong> The most popular distributed version control system, created by Linus Torvalds in 2005.</p>
+            </div>
+
+            <div class="content-section">
+                <h3>2. Git Fundamentals</h3>
+                
+                <h4>2.1 Git Configuration</h4>
+                
+                <div class="example-box">
+                    <strong>Initial Setup</strong>
+                    <pre><code># Set your identity
+git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"
+
+# Set default editor
+git config --global core.editor "code --wait"
+
+# Set default branch name
+git config --global init.defaultBranch main
+
+# View configuration
+git config --list
+
+# Check specific setting
+git config user.name</code></pre>
+                </div>
+
+                <h4>2.2 Repository Basics</h4>
+                
+                <div class="example-box">
+                    <strong>Creating and Cloning Repositories</strong>
+                    <pre><code># Initialize a new repository
+git init
+git init my-project
+
+# Clone existing repository
+git clone https://github.com/user/repo.git
+git clone https://github.com/user/repo.git custom-folder-name
+
+# Clone specific branch
+git clone -b develop https://github.com/user/repo.git</code></pre>
+                </div>
+
+                <h4>2.3 The Three States</h4>
+                
+                <div class="example-box">
+                    <strong>Git File States</strong>
+                    <pre><code>┌─────────────────────────────────────────────┐
+│  Working Directory  →  Staging Area  →  Repo│
+│  (Modified files)    (Staged/Index)   (Commit)│
+└─────────────────────────────────────────────┘
+
+# Check status
+git status
+git status -s  # Short format
+
+# Add files to staging area
+git add file.txt               # Add specific file
+git add .                      # Add all files
+git add src/                   # Add directory
+git add *.js                   # Add pattern
+
+# Remove from staging
+git reset HEAD file.txt        # Unstage file
+git restore --staged file.txt  # Unstage (newer syntax)
+
+# Commit changes
+git commit -m "Add user authentication"
+git commit -am "Fix bug in login"  # Add and commit tracked files
+
+# Amend last commit
+git commit --amend -m "New commit message"
+git commit --amend --no-edit  # Keep message, add staged changes</code></pre>
+                </div>
+
+                <h4>2.4 Viewing History</h4>
+                
+                <div class="example-box">
+                    <strong>Git Log Commands</strong>
+                    <pre><code># View commit history
+git log
+git log --oneline              # Compact view
+git log --graph --all          # Visual graph of branches
+git log --graph --oneline --all --decorate
+
+# Limit output
+git log -5                     # Last 5 commits
+git log --since="2 weeks ago"
+git log --after="2024-01-01"
+git log --author="John"
+
+# Search commits
+git log --grep="bug fix"       # Search commit messages
+git log -S "function_name"     # Search code changes
+
+# View file history
+git log -- file.txt
+git log -p file.txt            # With diff
+
+# Show specific commit
+git show HEAD                  # Latest commit
+git show abc123                # Specific commit
+git show HEAD~3                # 3 commits ago
+
+# Compare commits
+git diff                       # Working dir vs staging
+git diff --staged              # Staging vs last commit
+git diff HEAD~1 HEAD           # Compare commits
+git diff branch1 branch2       # Compare branches</code></pre>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>3. Branching and Merging</h3>
+                
+                <h4>3.1 Branch Basics</h4>
+                
+                <div class="example-box">
+                    <strong>Branch Operations</strong>
+                    <pre><code># List branches
+git branch                     # Local branches
+git branch -r                  # Remote branches
+git branch -a                  # All branches
+
+# Create branch
+git branch feature-login       # Create but don't switch
+git checkout -b feature-login  # Create and switch
+git switch -c feature-login    # Create and switch (newer)
+
+# Switch branches
+git checkout main
+git switch main                # Newer syntax
+
+# Rename branch
+git branch -m old-name new-name
+git branch -m new-name         # Rename current branch
+
+# Delete branch
+git branch -d feature-login    # Safe delete (merged only)
+git branch -D feature-login    # Force delete
+
+# Delete remote branch
+git push origin --delete feature-login</code></pre>
+                </div>
+
+                <h4>3.2 Merging Strategies</h4>
+                
+                <div class="example-box">
+                    <strong>Merge vs Rebase</strong>
+                    <pre><code># MERGE: Creates merge commit, preserves history
+git checkout main
+git merge feature-login
+
+# Merge with no fast-forward (always create merge commit)
+git merge --no-ff feature-login
+
+# Abort merge if conflicts
+git merge --abort
+
+# REBASE: Rewrites history, creates linear timeline
+git checkout feature-login
+git rebase main
+
+# Interactive rebase (edit, squash, reorder commits)
+git rebase -i HEAD~3
+
+# Continue after resolving conflicts
+git rebase --continue
+
+# Abort rebase
+git rebase --abort
+
+# When to use:
+# MERGE: 
+#   - Public branches
+#   - Preserving complete history
+#   - Team collaboration
+#
+# REBASE:
+#   - Private branches
+#   - Clean, linear history
+#   - Before merging feature branch</code></pre>
+                </div>
+
+                <div class="example-box">
+                    <strong>Merge vs Rebase Visualization</strong>
+                    <pre><code>MERGE:
+main:    A---B---C-------M
+              \         /
+feature:       D---E---F
+
+git checkout main
+git merge feature
+# Creates merge commit M
+
+REBASE:
+main:    A---B---C
+              \
+feature:       D---E---F
+
+git checkout feature
+git rebase main
+
+Result:
+main:    A---B---C
+                  \
+feature:           D'---E'---F'
+# Commits D, E, F are rewritten as D', E', F'</code></pre>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>4. Git Workflows</h3>
+                
+                <h4>4.1 GitFlow</h4>
+                <p>Comprehensive workflow with multiple branch types.</p>
+
+                <div class="example-box">
+                    <strong>GitFlow Branch Structure</strong>
+                    <pre><code>┌─────────────────────────────────────────────┐
+│ Branch Types:                               │
+│                                             │
+│ main        - Production-ready code         │
+│ develop     - Integration branch            │
+│ feature/*   - New features                  │
+│ release/*   - Release preparation           │
+│ hotfix/*    - Emergency production fixes    │
+└─────────────────────────────────────────────┘
+
+# Start new feature
+git checkout develop
+git checkout -b feature/user-profile
+
+# Work on feature...
+git add .
+git commit -m "Add user profile component"
+
+# Finish feature
+git checkout develop
+git merge --no-ff feature/user-profile
+git branch -d feature/user-profile
+
+# Start release
+git checkout develop
+git checkout -b release/1.2.0
+
+# Prepare release (version bump, changelog)
+git commit -m "Bump version to 1.2.0"
+
+# Finish release
+git checkout main
+git merge --no-ff release/1.2.0
+git tag -a v1.2.0 -m "Release version 1.2.0"
+
+git checkout develop
+git merge --no-ff release/1.2.0
+git branch -d release/1.2.0
+
+# Hotfix for production issue
+git checkout main
+git checkout -b hotfix/login-bug
+
+# Fix the bug
+git commit -m "Fix login authentication bug"
+
+# Merge to main and develop
+git checkout main
+git merge --no-ff hotfix/login-bug
+git tag -a v1.2.1 -m "Hotfix: login bug"
+
+git checkout develop
+git merge --no-ff hotfix/login-bug
+git branch -d hotfix/login-bug</code></pre>
+                </div>
+
+                <h4>4.2 GitHub Flow</h4>
+                <p>Simpler workflow focused on main branch and pull requests.</p>
+
+                <div class="example-box">
+                    <strong>GitHub Flow Process</strong>
+                    <pre><code>1. Create a branch from main
+   git checkout main
+   git pull origin main
+   git checkout -b feature/add-search
+
+2. Make commits
+   git add .
+   git commit -m "Add search functionality"
+   git push origin feature/add-search
+
+3. Open Pull Request on GitHub
+   - Describe changes
+   - Request reviews
+   - Run CI checks
+
+4. Review and discuss
+   - Address feedback
+   - Make additional commits
+   - Push to same branch
+
+5. Deploy and test
+   - Deploy to staging
+   - Run tests
+
+6. Merge to main
+   git checkout main
+   git merge feature/add-search
+   git push origin main
+
+7. Delete feature branch
+   git branch -d feature/add-search
+   git push origin --delete feature/add-search</code></pre>
+                </div>
+
+                <h4>4.3 Trunk-Based Development</h4>
+                <p>Developers work on short-lived branches or directly on main.</p>
+
+                <div class="example-box">
+                    <strong>Trunk-Based Development</strong>
+                    <pre><code># Short-lived feature branches (< 1 day)
+git checkout main
+git pull origin main
+git checkout -b quick-fix
+
+# Make small, incremental changes
+git add .
+git commit -m "Fix typo in header"
+
+# Push and create PR immediately
+git push origin quick-fix
+
+# Merge quickly (within hours)
+# Delete branch
+
+# Or work directly on main (for very small changes)
+git checkout main
+git pull origin main
+
+# Make change
+git add .
+git commit -m "Update copyright year"
+git push origin main
+
+# Key principles:
+# - Commit to main at least daily
+# - Keep branches short-lived
+# - Use feature flags for incomplete features
+# - Continuous integration required</code></pre>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>5. Conflict Resolution</h3>
+                
+                <div class="example-box">
+                    <strong>Resolving Merge Conflicts</strong>
+                    <pre><code># Attempt merge
+git merge feature-branch
+
+# Conflict occurs
+# CONFLICT (content): Merge conflict in file.txt
+# Automatic merge failed; fix conflicts and then commit the result.
+
+# Check conflicted files
+git status
+
+# File shows conflict markers:
+<<<<<<< HEAD
+Current branch content
+=======
+Incoming branch content
+>>>>>>> feature-branch
+
+# Resolve conflict manually:
+# 1. Edit file to resolve differences
+# 2. Remove conflict markers
+# 3. Keep desired changes
+
+# Mark as resolved
+git add file.txt
+
+# Complete merge
+git commit -m "Merge feature-branch and resolve conflicts"
+
+# Or abort if needed
+git merge --abort
+
+# Tools for conflict resolution
+git mergetool              # Launch configured merge tool
+git diff --conflicts       # Show conflicts</code></pre>
+                </div>
+
+                <div class="example-box">
+                    <strong>Conflict Resolution Strategies</strong>
+                    <pre><code># Accept theirs (incoming changes)
+git checkout --theirs file.txt
+git add file.txt
+
+# Accept ours (current branch)
+git checkout --ours file.txt
+git add file.txt
+
+# View both versions
+git show :1:file.txt       # Common ancestor
+git show :2:file.txt       # HEAD (ours)
+git show :3:file.txt       # MERGE_HEAD (theirs)
+
+# Prevent conflicts:
+# - Communicate with team
+# - Pull frequently
+# - Keep changes small
+# - Merge main into feature branch regularly</code></pre>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>6. Advanced Git Features</h3>
+                
+                <h4>6.1 Stashing</h4>
+                
+                <div class="example-box">
+                    <strong>Git Stash Commands</strong>
+                    <pre><code># Save work in progress
+git stash
+git stash save "WIP: implementing user search"
+
+# List stashes
+git stash list
+# stash@{0}: WIP: implementing user search
+# stash@{1}: On main: emergency fix
+
+# Apply stash
+git stash apply            # Apply latest, keep in stash
+git stash apply stash@{1}  # Apply specific stash
+
+git stash pop              # Apply and remove from stash
+git stash pop stash@{1}
+
+# Create branch from stash
+git stash branch feature-search stash@{0}
+
+# Delete stash
+git stash drop stash@{0}   # Delete specific
+git stash clear            # Delete all
+
+# View stash content
+git stash show
+git stash show -p          # With diff</code></pre>
+                </div>
+
+                <h4>6.2 Cherry-picking</h4>
+                
+                <div class="example-box">
+                    <strong>Cherry-pick Commits</strong>
+                    <pre><code># Pick specific commit from another branch
+git cherry-pick abc123
+
+# Pick multiple commits
+git cherry-pick abc123 def456
+
+# Pick range
+git cherry-pick abc123..def456
+
+# Pick without committing
+git cherry-pick -n abc123
+
+# Continue after conflict
+git cherry-pick --continue
+
+# Abort cherry-pick
+git cherry-pick --abort</code></pre>
+                </div>
+
+                <h4>6.3 Rewriting History</h4>
+                
+                <div class="example-box">
+                    <strong>Interactive Rebase</strong>
+                    <pre><code># Edit last 3 commits
+git rebase -i HEAD~3
+
+# Interactive menu:
+pick abc123 Add user model
+pick def456 Fix typo
+pick ghi789 Add tests
+
+# Available commands:
+# pick   - use commit
+# reword - edit commit message
+# edit   - edit commit content
+# squash - merge with previous commit
+# fixup  - like squash but discard message
+# drop   - remove commit
+
+# Example: squash commits
+pick abc123 Add user model
+squash def456 Fix typo
+squash ghi789 Add tests
+# Results in single commit
+
+# Reorder commits
+pick ghi789 Add tests
+pick abc123 Add user model
+pick def456 Fix typo
+
+# Split commit
+edit abc123
+# Git pauses, reset commit
+git reset HEAD^
+# Make separate commits
+git add file1.js
+git commit -m "Part 1"
+git add file2.js
+git commit -m "Part 2"
+git rebase --continue</code></pre>
+                </div>
+
+                <h4>6.4 Undoing Changes</h4>
+                
+                <div class="example-box">
+                    <strong>Undo Operations</strong>
+                    <pre><code># Undo working directory changes
+git restore file.txt           # Discard changes
+git checkout -- file.txt       # Old syntax
+
+# Undo staging
+git restore --staged file.txt
+git reset HEAD file.txt        # Old syntax
+
+# Undo last commit (keep changes)
+git reset --soft HEAD~1
+
+# Undo last commit (discard changes)
+git reset --hard HEAD~1
+
+# Undo specific commit (create new commit)
+git revert abc123
+
+# Recover deleted commit
+git reflog                     # Find commit hash
+git cherry-pick abc123         # Restore it
+
+# Reset to remote state
+git fetch origin
+git reset --hard origin/main
+
+# Clean untracked files
+git clean -n                   # Dry run
+git clean -f                   # Delete files
+git clean -fd                  # Delete files and directories</code></pre>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>7. Best Practices</h3>
+                
+                <div class="info-box">
+                    <strong>Commit Message Guidelines</strong>
+                    <pre><code># Good commit message structure:
+<type>(<scope>): <subject>
+
+<body>
+
+<footer>
+
+# Example:
+feat(auth): add OAuth2 authentication
+
+Implement OAuth2 authentication flow using Google provider.
+Users can now sign in with their Google accounts.
+
+Closes #123
+
+# Types:
+feat:     New feature
+fix:      Bug fix
+docs:     Documentation
+style:    Formatting
+refactor: Code restructuring
+test:     Adding tests
+chore:    Maintenance
+
+# Rules:
+1. Use imperative mood: "Add feature" not "Added feature"
+2. Keep subject under 50 characters
+3. Capitalize subject line
+4. No period at end of subject
+5. Separate subject from body with blank line
+6. Wrap body at 72 characters
+7. Use body to explain what and why, not how</code></pre>
+                </div>
+
+                <div class="example-box">
+                    <strong>Git Best Practices</strong>
+                    <pre><code># .gitignore - Ignore files
+node_modules/
+dist/
+.env
+*.log
+.DS_Store
+
+# Commit early, commit often
+# Make small, logical commits
+
+# Pull before push
+git pull origin main
+git push origin main
+
+# Use branches for features
+# Never commit directly to main
+
+# Review before committing
+git diff
+git status
+
+# Use tags for releases
+git tag -a v1.0.0 -m "Release 1.0.0"
+git push origin v1.0.0
+
+# Sign commits (optional but recommended)
+git config --global commit.gpgsign true
+git commit -S -m "Signed commit"</code></pre>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>8. Pull Requests and Code Review</h3>
+                
+                <div class="example-box">
+                    <strong>Pull Request Workflow</strong>
+                    <pre><code># 1. Create feature branch
+git checkout -b feature/user-notifications
+git push -u origin feature/user-notifications
+
+# 2. Make changes and commit
+git add .
+git commit -m "Add email notification system"
+git push origin feature/user-notifications
+
+# 3. Create Pull Request on GitHub/GitLab
+# - Fill in description
+# - Link related issues
+# - Request reviewers
+# - Add labels
+
+# 4. Address review feedback
+# Make requested changes
+git add .
+git commit -m "Address review feedback"
+git push origin feature/user-notifications
+
+# 5. Squash commits before merge (optional)
+git rebase -i main
+# Squash all commits into one
+
+# 6. Merge (on GitHub/GitLab or locally)
+git checkout main
+git pull origin main
+git merge --no-ff feature/user-notifications
+git push origin main
+
+# 7. Delete branch
+git branch -d feature/user-notifications
+git push origin --delete feature/user-notifications</code></pre>
+                </div>
+
+                <div class="info-box">
+                    <strong>Code Review Checklist:</strong>
+                    <ul>
+                        <li>Code works and meets requirements</li>
+                        <li>Tests included and passing</li>
+                        <li>Follows coding standards</li>
+                        <li>No security vulnerabilities</li>
+                        <li>Performance considerations addressed</li>
+                        <li>Documentation updated</li>
+                        <li>Commit messages clear and descriptive</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>9. Common Pitfalls and Solutions</h3>
+                
+                <div class="example-box">
+                    <strong>Common Git Problems</strong>
+                    <pre><code># Problem 1: Committed to wrong branch
+git log                        # Find commit hash
+git checkout correct-branch
+git cherry-pick abc123
+git checkout wrong-branch
+git reset --hard HEAD~1
+
+# Problem 2: Need to undo pushed commit
+git revert abc123              # Safe - creates new commit
+git push origin main
+# DON'T use reset on public branches!
+
+# Problem 3: Forgot to pull before committing
+git stash
+git pull origin main
+git stash pop
+# Resolve conflicts if any
+
+# Problem 4: Accidentally deleted branch
+git reflog                     # Find commit
+git checkout -b recovered-branch abc123
+
+# Problem 5: Large file committed
+git rm --cached large-file.zip
+echo "large-file.zip" >> .gitignore
+git commit -m "Remove large file"
+
+# For history:
+git filter-branch --tree-filter 'rm -f large-file.zip' HEAD
+
+# Problem 6: Merge conflict seems impossible
+git merge --abort
+git pull origin main
+# Try rebase instead
+git rebase main</code></pre>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>10. Practice Problems</h3>
+                
+                <div class="practice-problems">
+                    <div class="problem">
+                        <h4>Problem 1: Fix Merge Conflict</h4>
+                        <p><strong>Scenario:</strong> You're working on a feature branch and need to merge main, but there are conflicts.</p>
+                        
+                        <details>
+                            <summary>Show Solution</summary>
+                            <pre><code># Step 1: Pull latest main
+git checkout main
+git pull origin main
+
+# Step 2: Try to merge into feature branch
+git checkout feature/user-dashboard
+git merge main
+
+# Conflict in src/components/Dashboard.js
+
+# Step 3: Open file and resolve
+# Remove conflict markers, keep desired code
+
+# Step 4: Mark as resolved
+git add src/components/Dashboard.js
+
+# Step 5: Complete merge
+git commit -m "Merge main into feature/user-dashboard"
+
+# Step 6: Push updated feature branch
+git push origin feature/user-dashboard</code></pre>
+                        </details>
+                    </div>
+
+                    <div class="problem">
+                        <h4>Problem 2: Clean Up Commit History</h4>
+                        <p><strong>Scenario:</strong> You have 5 commits with typos and "WIP" messages. Clean them up before merging.</p>
+                        
+                        <details>
+                            <summary>Show Solution</summary>
+                            <pre><code># Current commits:
+# abc123 WIP
+# def456 WIP: fix typo
+# ghi789 Add feature
+# jkl012 Fix bug
+# mno345 WIP: cleanup
+
+# Solution: Interactive rebase
+git rebase -i HEAD~5
+
+# In editor:
+pick ghi789 Add feature
+squash abc123 WIP
+squash def456 WIP: fix typo
+pick jkl012 Fix bug
+squash mno345 WIP: cleanup
+
+# Save and close
+# Edit commit messages:
+# Commit 1: "Add user dashboard feature"
+# Commit 2: "Fix navigation bug"
+
+# Force push to update remote
+git push --force-with-lease origin feature-branch</code></pre>
+                        </details>
+                    </div>
+                </div>
+            </div>
+
+            <div class="key-takeaways">
+                <h3>Key Takeaways</h3>
+                <ul>
+                    <li><strong>Git Basics:</strong> Master commits, branches, merging, and conflict resolution</li>
+                    <li><strong>Workflows:</strong> Choose appropriate workflow - GitFlow for releases, GitHub Flow for simplicity, Trunk-Based for CI/CD</li>
+                    <li><strong>Branching:</strong> Use feature branches, keep them short-lived, delete after merging</li>
+                    <li><strong>Merge vs Rebase:</strong> Merge for public branches, rebase for clean history on private branches</li>
+                    <li><strong>Commits:</strong> Small, logical commits with clear messages in imperative mood</li>
+                    <li><strong>Pull Requests:</strong> Essential for code review and collaboration</li>
+                    <li><strong>Never rewrite public history</strong> - use revert instead of reset on shared branches</li>
+                    <li>Pull before you push, commit early and often</li>
+                    <li>Use .gitignore to exclude build artifacts and sensitive files</li>
+                </ul>
+            </div>
+
+            <div class="lesson-navigation">
+                <a href="10-testing.html" class="nav-btn">← Previous: Testing Strategies</a>
+                <a href="12-agile-devops.html" class="nav-btn">Next: Agile & DevOps →</a>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../js/course.js"></script>
+</body>
+</html>

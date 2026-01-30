@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 4: Semiconductor Physics & Devices - Engineering Academy</title>
+    <link rel="stylesheet" href="../../../css/styles.css">
+    <link rel="stylesheet" href="../../../css/course-styles/course.css">
+</head>
+<body>
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <h1><a href="../../../index.html" style="color: inherit; text-decoration: none;">🎓 Engineering Academy</a></h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../index.html">Course Overview</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section class="course-header">
+        <div class="container">
+            <h1>⚡ Electrical Engineering</h1>
+            <p>Lesson 4: Semiconductor Physics & Devices</p>
+        </div>
+    </section>
+
+    <div class="course-container">
+        <aside class="course-sidebar">
+            <h3>Course Modules</h3>
+            <ul class="lesson-list">
+                <li><a href="../index.html"><span class="lesson-number">📚</span>Course Overview</a></li>
+                <li><a href="01-fundamentals.html" class="completed"><span class="lesson-number">1</span>EE Fundamentals</a></li>
+                <li><a href="02-dc-circuits.html" class="completed"><span class="lesson-number">2</span>DC Circuit Analysis</a></li>
+                <li><a href="03-ac-circuits.html" class="completed"><span class="lesson-number">3</span>AC Circuits</a></li>
+                <li><a href="04-semiconductors.html" class="active"><span class="lesson-number">4</span>Semiconductors</a></li>
+                <li><a href="05-diodes-transistors.html"><span class="lesson-number">5</span>Diodes & Transistors</a></li>
+                <li><a href="06-operational-amplifiers.html"><span class="lesson-number">6</span>Op-Amps</a></li>
+                <li><a href="07-digital-electronics.html"><span class="lesson-number">7</span>Digital Electronics</a></li>
+                <li><a href="08-power-systems.html"><span class="lesson-number">8</span>Power Systems</a></li>
+                <li><a href="09-transformers-motors.html"><span class="lesson-number">9</span>Transformers & Motors</a></li>
+                <li><a href="10-control-systems.html"><span class="lesson-number">10</span>Control Systems</a></li>
+                <li><a href="11-signals-systems.html"><span class="lesson-number">11</span>Signals & Systems</a></li>
+                <li><a href="12-safety-standards.html"><span class="lesson-number">12</span>Safety & Standards</a></li>
+            </ul>
+        </aside>
+
+        <main class="course-content">
+            <div class="lesson-header">
+                <h2>Lesson 4: Semiconductor Physics & Devices</h2>
+                <div class="lesson-meta">
+                    <span>📖 95 min read</span>
+                    <span>📊 Intermediate</span>
+                </div>
+            </div>
+
+            <div class="lesson-content">
+                <h3>Introduction to Semiconductors</h3>
+                <p>
+                    Semiconductors revolutionized electronics and enabled the digital age. These materials have 
+                    electrical conductivity between conductors and insulators, and their conductivity can be 
+                    precisely controlled through doping and external influences.
+                </p>
+
+                <div class="info-box note">
+                    <h4>📌 What You'll Learn</h4>
+                    <ul>
+                        <li>Atomic structure and energy bands</li>
+                        <li>Intrinsic and extrinsic semiconductors</li>
+                        <li>N-type and P-type doping</li>
+                        <li>PN junction formation and behavior</li>
+                        <li>Diode characteristics and models</li>
+                        <li>Applications of semiconductor diodes</li>
+                        <li>Special-purpose diodes (Zener, LED, Schottky)</li>
+                    </ul>
+                </div>
+
+                <h3>Material Classification</h3>
+                <p>
+                    Materials are classified by their ability to conduct electricity:
+                </p>
+
+                <div class="code-block" data-language="text">
+<code>Electrical Conductivity Classification:
+
+1. Conductors (ρ < 10⁻⁵ Ω·m):
+   - Free electrons readily available
+   - Examples: Copper (1.68×10⁻⁸), Silver, Gold, Aluminum
+   - Uses: Wires, contacts, PCB traces
+
+2. Insulators (ρ > 10⁸ Ω·m):
+   - Very few free electrons
+   - Examples: Glass (10¹²), Rubber, Plastic, Air
+   - Uses: Insulation, substrates, packaging
+
+3. Semiconductors (10⁻⁵ < ρ < 10⁸ Ω·m):
+   - Conductivity between conductors and insulators
+   - Controllable conductivity
+   - Examples: Silicon (640), Germanium, GaAs
+   - Uses: Diodes, transistors, ICs, solar cells
+
+Temperature effect:
+  - Conductors: R increases with temperature
+  - Semiconductors: R decreases with temperature
+</code>
+                </div>
+
+                <h3>Atomic Structure and Energy Bands</h3>
+
+                <h4>Silicon Atomic Structure</h4>
+                <p>
+                    Silicon (Si) is the most important semiconductor material (>95% of devices).
+                </p>
+
+                <div class="code-block" data-language="text">
+<code>Silicon Properties:
+  Atomic number: 14
+  Electron configuration: 1s² 2s² 2p⁶ 3s² 3p²
+  Valence electrons: 4 (in outer shell)
+  Crystal structure: Diamond cubic (each Si bonds with 4 neighbors)
+  
+Energy Bands in Solids:
+  
+  Conductors:
+    ┌─────────┐ ← Conduction band (partially filled)
+    └─────────┘
+    [Overlapping or no gap]
+    
+  Insulators:
+    ┌─────────┐ ← Conduction band (empty)
+         ↑ Large band gap (> 5 eV)
+    └─────────┘ ← Valence band (full)
+    
+  Semiconductors:
+    ┌─────────┐ ← Conduction band (mostly empty)
+         ↑ Small band gap (0.7-1.5 eV)
+    └─────────┘ ← Valence band (mostly full)
+
+Silicon band gap: E_g = 1.12 eV (at 300K)
+Germanium: E_g = 0.66 eV
+GaAs: E_g = 1.42 eV
+</code>
+                </div>
+
+                <h4>Covalent Bonding</h4>
+                <div class="code-block" data-language="text">
+<code>Silicon Crystal Lattice:
+
+    Si — Si — Si
+    |    |    |
+    Si — Si — Si
+    |    |    |
+    Si — Si — Si
+
+Each Si atom shares 4 electrons with neighbors
+→ All valence electrons locked in bonds at 0K
+→ No free electrons for conduction
+
+At room temperature (300K):
+  - Thermal energy breaks some bonds
+  - Creates electron-hole pairs
+  - Both contribute to conduction
+</code>
+                </div>
+
+                <h3>Intrinsic Semiconductors</h3>
+                <p>
+                    Pure semiconductor material with no impurities.
+                </p>
+
+                <div class="code-block" data-language="text">
+<code>Intrinsic Carrier Concentration:
+
+Electron-hole pair generation:
+  Thermal energy breaks covalent bond
+  → Free electron (negative charge carrier)
+  → Hole (positive charge carrier)
+
+At thermal equilibrium:
+  n = p = n_i
+  
+  Where:
+    n = electron concentration (cm⁻³)
+    p = hole concentration (cm⁻³)
+    n_i = intrinsic carrier concentration
+
+For Silicon at 300K:
+  n_i ≈ 1.5 × 10¹⁰ carriers/cm³
+  
+Compare to doped Si: ~10¹⁵ - 10¹⁹ carriers/cm³
+  
+Mass Action Law:
+  n × p = n_i²  (constant at given temperature)
+</code>
+                </div>
+
+                <div class="info-box tip">
+                    <h4>💡 Electron vs Hole Conduction</h4>
+                    <p>
+                        <strong>Electron:</strong> Actual particle with charge -1.602×10⁻¹⁹ C<br>
+                        <strong>Hole:</strong> Absence of electron, behaves as particle with charge +1.602×10⁻¹⁹ C
+                    </p>
+                    <p>
+                        Both are mobile and contribute to current. Hole current is actually due to 
+                        electrons moving in the opposite direction to fill the holes!
+                    </p>
+                </div>
+
+                <h3>Extrinsic Semiconductors (Doping)</h3>
+                <p>
+                    Adding controlled impurities to dramatically increase conductivity.
+                </p>
+
+                <h4>N-Type Semiconductors (Electron Majority)</h4>
+                <div class="code-block" data-language="text">
+<code>N-Type Doping:
+  Add Group V elements (5 valence electrons)
+  - Phosphorus (P), Arsenic (As), Antimony (Sb)
+  
+Process:
+  1. Substitute Si atom with P atom
+  2. P has 5 valence electrons
+  3. 4 electrons form bonds, 1 extra electron free
+  4. P atom becomes fixed positive ion (donor)
+  5. Free electron available for conduction
+
+Result:
+  - Majority carriers: Electrons (n >> p)
+  - Minority carriers: Holes
+  - Material is still electrically neutral
+  - Conductivity greatly increased
+
+Example:
+  Si with 10¹⁶ P atoms/cm³
+  n ≈ 10¹⁶ electrons/cm³
+  p = n_i²/n = (1.5×10¹⁰)²/10¹⁶ = 2.25×10⁴ holes/cm³
+  
+  Ratio n/p = 10¹⁶/2.25×10⁴ ≈ 4.4×10¹¹
+</code>
+                </div>
+
+                <h4>P-Type Semiconductors (Hole Majority)</h4>
+                <div class="code-block" data-language="text">
+<code>P-Type Doping:
+  Add Group III elements (3 valence electrons)
+  - Boron (B), Gallium (Ga), Indium (In)
+  
+Process:
+  1. Substitute Si atom with B atom
+  2. B has only 3 valence electrons
+  3. Forms 3 bonds, needs 1 more electron
+  4. Accepts electron from neighboring bond
+  5. Creates a hole (missing electron)
+  6. B atom becomes fixed negative ion (acceptor)
+
+Result:
+  - Majority carriers: Holes (p >> n)
+  - Minority carriers: Electrons
+  - Material is electrically neutral
+  - Conductivity greatly increased
+
+Example:
+  Si with 10¹⁵ B atoms/cm³
+  p ≈ 10¹⁵ holes/cm³
+  n = n_i²/p = (1.5×10¹⁰)²/10¹⁵ = 2.25×10⁵ electrons/cm³
+  
+  Ratio p/n = 10¹⁵/2.25×10⁵ ≈ 4.4×10⁹
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>The PN Junction</h3>
+                <p>
+                    The foundation of all semiconductor devices - created by joining P-type and N-type materials.
+                </p>
+
+                <h4>Junction Formation</h4>
+                <div class="code-block" data-language="text">
+<code>PN Junction Creation:
+
+Initial State (before contact):
+  P-side: Many holes, few electrons
+  N-side: Many electrons, few holes
+  
+After Contact (diffusion occurs):
+  
+  P-side │ N-side
+    ⊕    │   ⊖      Carriers near junction
+    ⊕    │   ⊖      diffuse across
+    ⊕    │   ⊖      
+  ───────┼───────   Junction
+    ⊖    │   ⊕      Ions remain
+    ⊖    │   ⊕      (fixed charges)
+    ⊖    │   ⊕      
+
+Depletion Region Forms:
+  - Electrons diffuse from N to P (recombine with holes)
+  - Holes diffuse from P to N (recombine with electrons)
+  - Leaves immobile ions near junction
+  - Creates electric field (N→P direction)
+  - Field opposes further diffusion
+  - Equilibrium reached
+
+Built-in Potential (V₀):
+  For Si: V₀ ≈ 0.7V at 300K
+  For Ge: V₀ ≈ 0.3V at 300K
+  For GaAs: V₀ ≈ 1.2V
+</code>
+                </div>
+
+                <h4>PN Junction Under Bias</h4>
+
+                <h5>Forward Bias (P positive, N negative)</h5>
+                <div class="code-block" data-language="text">
+<code>Forward Bias Behavior:
+
+  Applied voltage opposes built-in field
+  
+  P ⊕ ──▶ V_applied ──▶ ⊖ N
+  
+  Results:
+    - Depletion region narrows
+    - Barrier height reduced: V₀ - V_applied
+    - Majority carriers overcome barrier easily
+    - Large current flows (exponential with voltage)
+    
+  Current increases when V > ~0.6-0.7V (Si)
+  
+  Forward current:
+    I_F = I_S(e^(V/nV_T) - 1)
+    
+    Where:
+      I_S = saturation current (typically pA to fA)
+      V = applied voltage
+      n = ideality factor (1-2)
+      V_T = thermal voltage = kT/q ≈ 26mV at 300K
+      k = Boltzmann constant
+      q = electron charge
+</code>
+                </div>
+
+                <h5>Reverse Bias (N positive, P negative)</h5>
+                <div class="code-block" data-language="text">
+<code>Reverse Bias Behavior:
+
+  Applied voltage aids built-in field
+  
+  P ⊖ ◀── V_applied ◀── ⊕ N
+  
+  Results:
+    - Depletion region widens
+    - Barrier height increased: V₀ + |V_applied|
+    - Majority carriers cannot cross
+    - Only tiny reverse current (minority carriers)
+    
+  Reverse current (small, nearly constant):
+    I_R ≈ -I_S  (microamps or less)
+    
+  Breakdown at high reverse voltage:
+    - Zener breakdown (heavy doping, < 6V)
+    - Avalanche breakdown (light doping, > 6V)
+    - Can be destructive if current not limited
+</code>
+                </div>
+
+                <h3>Diode Characteristics</h3>
+
+                <h4>I-V Characteristic Curve</h4>
+                <div class="code-block" data-language="text">
+<code>Ideal Diode Equation (Shockley):
+
+  I = I_S(e^(V_D/nV_T) - 1)
+  
+  Where:
+    I = diode current
+    V_D = voltage across diode
+    I_S = reverse saturation current
+    n = ideality factor (1 for ideal, 1-2 for real)
+    V_T = kT/q ≈ 26mV at room temp
+
+Regions of Operation:
+
+1. Forward Bias (V_D > 0):
+   V_D < 0.5V: Very small current (exponential)
+   V_D ≈ 0.7V: "Turn-on voltage" (Si diode)
+   V_D > 0.7V: Large current (exponential increase)
+   
+2. Reverse Bias (V_D < 0):
+   Small reverse current: I ≈ -I_S
+   Approximately constant until breakdown
+   
+3. Breakdown (V_D < -V_BR):
+   Sharp increase in reverse current
+   Voltage clamps at -V_BR
+</code>
+                </div>
+
+                <h4>Diode Circuit Models</h4>
+                <div class="code-block" data-language="text">
+<code>Three Levels of Approximation:
+
+1. Ideal Diode Model (simplest):
+   Forward: V_D = 0V, acts as short circuit
+   Reverse: I_D = 0A, acts as open circuit
+   
+2. Constant Voltage Drop Model:
+   Forward: V_D = 0.7V (Si) or 0.3V (Ge), then acts as short
+   Reverse: I_D = 0A, acts as open circuit
+   Most commonly used for hand analysis!
+   
+3. Piecewise Linear Model:
+   Forward: V_D = V_D0 + I_D × r_d
+     V_D0 ≈ 0.6V (offset voltage)
+     r_d ≈ 10-100Ω (dynamic resistance)
+   Reverse: I_D = 0A
+   More accurate for large-signal analysis
+
+4. Small-Signal Model (for AC analysis):
+   r_d = nV_T / I_DQ  (dynamic resistance at Q-point)
+   
+   Example: I_DQ = 1mA, n = 1
+   r_d = 26mV / 1mA = 26Ω
+</code>
+                </div>
+
+                <h4>Example 1: Diode Circuit Analysis</h4>
+                <div class="code-block" data-language="text">
+<code>Problem:
+  Circuit: 5V source, 220Ω resistor, Si diode in series
+  Find: Diode current and voltage
+
+Solution (using constant voltage model):
+  
+  Assume diode is forward biased (conducting):
+    V_D = 0.7V
+  
+  Apply KVL:
+    5V = V_R + V_D
+    5V = I × 220Ω + 0.7V
+    I × 220 = 4.3V
+    I = 19.5 mA
+  
+  Since I > 0, assumption is correct ✓
+  
+  Answer: I_D = 19.5 mA, V_D = 0.7V
+  
+  Power dissipated in diode:
+    P_D = V_D × I_D = 0.7V × 19.5mA = 13.7 mW
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Special-Purpose Diodes</h3>
+
+                <h4>Zener Diode</h4>
+                <p>
+                    Designed to operate in reverse breakdown region for voltage regulation.
+                </p>
+
+                <div class="code-block" data-language="text">
+<code>Zener Diode Characteristics:
+
+  Forward: Behaves like regular diode (0.7V)
+  
+  Reverse: 
+    - Operates in breakdown region
+    - Voltage clamps at V_Z (Zener voltage)
+    - Available in standard values: 2.4V to 200V
+    - Can handle power: 0.4W, 1W, 5W, etc.
+
+Applications:
+  - Voltage regulation
+  - Overvoltage protection
+  - Reference voltage generation
+
+Voltage Regulator Circuit:
+  
+  Input ──┬──[R_series]──┬── Output
+          │               │
+        Load           Zener (reverse biased)
+          │               │
+          └───────────────┴── Ground
+          
+Design:
+  V_out = V_Z (regulated)
+  R_series drops excess voltage
+  I_Z = (V_in - V_Z)/R_series - I_Load
+  
+  Must ensure: I_Z_min < I_Z < I_Z_max
+</code>
+                </div>
+
+                <h4>Example 2: Zener Regulator Design</h4>
+                <div class="code-block" data-language="text">
+<code>Problem:
+  Design 5V regulator
+  V_in = 12V ± 2V (10V to 14V)
+  I_Load = 0 to 50mA
+  Zener: V_Z = 5.1V, I_Z_min = 5mA, P_Z_max = 500mW
+  
+Find: Series resistor value
+
+Solution:
+  Step 1: Maximum Zener current
+    I_Z_max = P_Z_max / V_Z = 500mW / 5.1V = 98 mA
+  
+  Step 2: Worst case (minimum I_Z)
+    Occurs at: V_in_min, I_Load_max
+    
+    I_R = I_Z + I_Load
+    I_R_min = I_Z_min + I_Load_max = 5mA + 50mA = 55mA
+    
+    R = (V_in_min - V_Z) / I_R_min
+    R = (10V - 5.1V) / 55mA = 89Ω
+    
+    Use standard: R = 82Ω
+  
+  Step 3: Verify (worst case maximum I_Z)
+    Occurs at: V_in_max, I_Load_min = 0
+    
+    I_R = (14V - 5.1V) / 82Ω = 109mA
+    I_Z = 109mA - 0 = 109mA
+    
+    Check: 109mA > 98mA ✗ (exceeds rating!)
+    
+    Increase R to 100Ω:
+    I_R = 8.9V / 100Ω = 89mA
+    I_Z_max = 89mA ✓ (within 98mA limit)
+  
+  Final design: R = 100Ω, 1W resistor
+</code>
+                </div>
+
+                <h4>Light Emitting Diode (LED)</h4>
+                <div class="code-block" data-language="text">
+<code>LED Characteristics:
+
+  Principle: Electroluminescence
+    - Forward current causes photon emission
+    - Photon energy ≈ band gap energy
+    
+  Forward voltage (V_F):
+    Red:       1.8-2.2V
+    Green:     2.0-2.4V
+    Blue:      2.8-3.4V
+    White:     3.0-3.6V
+    IR:        1.2-1.6V
+    
+  Typical current: 10-20 mA
+  Max current: Check datasheet (often 30-50 mA)
+  
+Current Limiting Resistor:
+  R = (V_supply - V_F) / I_F
+  
+  Example: 5V supply, red LED (V_F=2V), I_F=20mA
+    R = (5V - 2V) / 20mA = 150Ω
+    P_R = I²R = (0.02)² × 150 = 60mW
+</code>
+                </div>
+
+                <h4>Schottky Diode</h4>
+                <div class="code-block" data-language="text">
+<code>Schottky Barrier Diode:
+
+  Construction: Metal-semiconductor junction
+    (vs. PN junction in regular diode)
+  
+  Advantages:
+    - Low forward voltage: 0.15-0.45V (vs 0.7V)
+    - Very fast switching (< 1ns)
+    - No minority carrier storage
+    
+  Disadvantages:
+    - Higher reverse leakage current
+    - Lower breakdown voltage
+    
+  Applications:
+    - High-frequency rectifiers
+    - Power supplies (reduced loss)
+    - RF mixers
+    - Voltage clamping
+    - Catch/freewheeling diodes
+</code>
+                </div>
+
+                <h4>Photodiode</h4>
+                <div class="code-block" data-language="text">
+<code>Photodiode Operation:
+
+  Principle: Photocurrent generation
+    - Light creates electron-hole pairs in depletion region
+    - Carriers swept by electric field
+    - Current proportional to light intensity
+    
+  Modes of Operation:
+    1. Photovoltaic (0V bias):
+       - Open circuit voltage ∝ log(light)
+       - Used in solar cells
+       
+    2. Photoconductive (reverse bias):
+       - Current ∝ light intensity (linear)
+       - Faster response
+       - Lower capacitance
+       - Used in detectors, sensors
+       
+  Responsivity: R = I_ph / P_optical (A/W)
+  
+  Applications:
+    - Light sensors
+    - Optical communication receivers
+    - Solar cells
+    - Position sensors
+    - Camera exposure meters
+</code>
+                </div>
+
+                <div class="info-box important">
+                    <h4>🎯 Practice Problems</h4>
+                    <ol>
+                        <li>Calculate minority carrier concentration in N-type Si doped with 5×10¹⁶ donors/cm³</li>
+                        <li>Find diode current in circuit: 10V source, 470Ω resistor, Si diode in series</li>
+                        <li>Design Zener regulator for 3.3V output from 9V input, 100mA load</li>
+                        <li>Calculate LED current limiting resistor: 12V supply, blue LED (V_F=3.2V), I_F=15mA</li>
+                        <li>Determine dynamic resistance of diode at I_D = 5mA, n=1</li>
+                        <li>Sketch I-V curve for ideal diode, constant voltage model, and real diode</li>
+                    </ol>
+                </div>
+
+                <h3>Summary</h3>
+                <ul>
+                    <li>Semiconductors have conductivity between conductors and insulators</li>
+                    <li>Silicon is the dominant semiconductor material (band gap 1.12 eV)</li>
+                    <li>Intrinsic semiconductors are pure, with n = p = n_i</li>
+                    <li>N-type doping (Group V) adds free electrons (majority carriers)</li>
+                    <li>P-type doping (Group III) adds holes (majority carriers)</li>
+                    <li>PN junction creates depletion region with built-in potential (~0.7V for Si)</li>
+                    <li>Forward bias allows current flow, reverse bias blocks current</li>
+                    <li>Diode I-V relationship is exponential (Shockley equation)</li>
+                    <li>Special diodes: Zener (regulation), LED (light), Schottky (fast), Photodiode (sensor)</li>
+                </ul>
+
+                <h3>Next Steps</h3>
+                <p>
+                    In Lesson 5, we'll explore Diodes and Transistors in detail, including BJTs and MOSFETs, 
+                    their operating regions, biasing techniques, and applications in amplifiers and switches.
+                </p>
+            </div>
+
+            <div class="lesson-navigation">
+                <a href="03-ac-circuits.html" class="nav-btn">← Previous: AC Circuits</a>
+                <a href="05-diodes-transistors.html" class="nav-btn">Next: Diodes & Transistors →</a>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../js/main.js"></script>
+</body>
+</html>

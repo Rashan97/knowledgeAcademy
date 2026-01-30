@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 5: Modern JavaScript - Engineering Academy</title>
+    <link rel="stylesheet" href="../../../css/styles.css">
+    <link rel="stylesheet" href="../../../css/course-styles/course.css">
+</head>
+<body>
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <h1><a href="../../../index.html" style="color: inherit; text-decoration: none;">🎓 Engineering Academy</a></h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../index.html">Course Overview</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section class="course-header">
+        <div class="container">
+            <h1>⌨️ Programming</h1>
+            <p>Lesson 5: Modern JavaScript</p>
+        </div>
+    </section>
+
+    <div class="course-container">
+        <aside class="course-sidebar">
+            <h3>Course Modules</h3>
+            <ul class="lesson-list">
+                <li><a href="../index.html"><span class="lesson-number">📚</span>Course Overview</a></li>
+                <li><a href="01-programming-fundamentals.html" class="completed"><span class="lesson-number">1</span>Programming Fundamentals</a></li>
+                <li><a href="02-python-basics.html" class="completed"><span class="lesson-number">2</span>Python Basics</a></li>
+                <li><a href="03-python-advanced.html" class="completed"><span class="lesson-number">3</span>Python Advanced</a></li>
+                <li><a href="04-javascript-basics.html" class="completed"><span class="lesson-number">4</span>JavaScript Basics</a></li>
+                <li><a href="05-javascript-modern.html" class="active"><span class="lesson-number">5</span>Modern JavaScript</a></li>
+                <li><a href="06-cpp-basics.html"><span class="lesson-number">6</span>C++ Basics</a></li>
+                <li><a href="07-cpp-advanced.html"><span class="lesson-number">7</span>C++ Advanced</a></li>
+                <li><a href="08-oop-principles.html"><span class="lesson-number">8</span>OOP Principles</a></li>
+                <li><a href="09-data-structures.html"><span class="lesson-number">9</span>Data Structures</a></li>
+                <li><a href="10-algorithms.html"><span class="lesson-number">10</span>Algorithms</a></li>
+                <li><a href="11-debugging.html"><span class="lesson-number">11</span>Debugging & Testing</a></li>
+                <li><a href="12-best-practices.html"><span class="lesson-number">12</span>Best Practices</a></li>
+            </ul>
+        </aside>
+
+        <main class="course-content">
+            <div class="lesson-header">
+                <h2>Lesson 5: Modern JavaScript (ES6+)</h2>
+                <div class="lesson-meta">
+                    <span>📖 105 min read</span>
+                    <span>📊 Intermediate</span>
+                </div>
+            </div>
+
+            <div class="lesson-content">
+                <h3>The Evolution of JavaScript</h3>
+                <p>
+                    ES6 (ECMAScript 2015) revolutionized JavaScript with powerful new features. Since then, 
+                    annual updates have continued to improve the language. Modern JavaScript (ES6+) makes 
+                    code more concise, readable, and maintainable.
+                </p>
+
+                <div class="info-box note">
+                    <h4>📌 Browser Support</h4>
+                    <p>
+                        All modern browsers support ES6+ features. For older browsers, tools like Babel 
+                        can transpile modern JavaScript to ES5. But in 2026, you can confidently use 
+                        all these features!
+                    </p>
+                </div>
+
+                <h3>ES6+ Variable Declarations</h3>
+
+                <h4>let and const (Block Scoping)</h4>
+                <div class="code-block" data-language="javascript">
+<code><span class="comment">// var (function-scoped) - avoid!</span>
+<span class="keyword">var</span> x = <span class="number">10</span>;
+<span class="keyword">if</span> (<span class="keyword">true</span>) {
+    <span class="keyword">var</span> x = <span class="number">20</span>;  <span class="comment">// Same variable!</span>
+}
+console.log(x);  <span class="comment">// 20</span>
+
+<span class="comment">// let (block-scoped)</span>
+<span class="keyword">let</span> y = <span class="number">10</span>;
+<span class="keyword">if</span> (<span class="keyword">true</span>) {
+    <span class="keyword">let</span> y = <span class="number">20</span>;  <span class="comment">// Different variable!</span>
+    console.log(y);  <span class="comment">// 20</span>
+}
+console.log(y);  <span class="comment">// 10</span>
+
+<span class="comment">// const (block-scoped, cannot reassign)</span>
+<span class="keyword">const</span> PI = <span class="number">3.14159</span>;
+<span class="comment">// PI = 3.14;  // ERROR!</span>
+
+<span class="comment">// But object/array contents can change</span>
+<span class="keyword">const</span> config = { theme: <span class="string">'dark'</span> };
+config.theme = <span class="string">'light'</span>;  <span class="comment">// OK!</span>
+</code>
+                </div>
+
+                <h3>Template Literals</h3>
+                <p>
+                    Template literals use backticks (`) and support string interpolation, multi-line 
+                    strings, and expression embedding.
+                </p>
+
+                <div class="code-block" data-language="javascript">
+<code><span class="comment">// Old way (string concatenation)</span>
+<span class="keyword">const</span> name = <span class="string">'Alice'</span>;
+<span class="keyword">const</span> age = <span class="number">25</span>;
+<span class="keyword">const</span> oldGreeting = <span class="string">'Hello, '</span> + name + <span class="string">'. You are '</span> + age + <span class="string">' years old.'</span>;
+
+<span class="comment">// Modern way (template literals)</span>
+<span class="keyword">const</span> greeting = <span class="string">`Hello, ${name}. You are ${age} years old.`</span>;
+
+<span class="comment">// Multi-line strings</span>
+<span class="keyword">const</span> html = <span class="string">`
+  &lt;div class="card"&gt;
+    &lt;h2&gt;${name}&lt;/h2&gt;
+    &lt;p&gt;Age: ${age}&lt;/p&gt;
+  &lt;/div&gt;
+`</span>;
+
+<span class="comment">// Expressions in templates</span>
+<span class="keyword">const</span> price = <span class="number">19.99</span>;
+<span class="keyword">const</span> quantity = <span class="number">3</span>;
+console.log(<span class="string">`Total: $${(price * quantity).toFixed(2)}`</span>);  <span class="comment">// Total: $59.97</span>
+
+<span class="comment">// Tagged templates (advanced)</span>
+<span class="keyword">function</span> <span class="function">highlight</span>(strings, ...values) {
+    <span class="keyword">return</span> strings.reduce((result, str, i) => {
+        <span class="keyword">return</span> result + str + (values[i] ? <span class="string">`&lt;strong&gt;${values[i]}&lt;/strong&gt;`</span> : <span class="string">''</span>);
+    }, <span class="string">''</span>);
+}
+
+<span class="keyword">const</span> highlighted = highlight<span class="string">`Name: ${name}, Age: ${age}`</span>;
+<span class="comment">// Name: &lt;strong&gt;Alice&lt;/strong&gt;, Age: &lt;strong&gt;25&lt;/strong&gt;</span>
+</code>
+                </div>
+
+                <h3>Arrow Functions</h3>
+                <p>
+                    Arrow functions provide concise syntax and have different <code>this</code> binding 
+                    compared to regular functions.
+                </p>
+
+                <div class="example-box">
+                    <h5>Arrow Function Syntax</h5>
+                    <div class="code-block" data-language="javascript">
+<code><span class="comment">// Traditional function</span>
+<span class="keyword">function</span> <span class="function">add</span>(a, b) {
+    <span class="keyword">return</span> a + b;
+}
+
+<span class="comment">// Arrow function (full syntax)</span>
+<span class="keyword">const</span> add = (a, b) => {
+    <span class="keyword">return</span> a + b;
+};
+
+<span class="comment">// Implicit return (single expression)</span>
+<span class="keyword">const</span> add = (a, b) => a + b;
+
+<span class="comment">// Single parameter (parentheses optional)</span>
+<span class="keyword">const</span> square = x => x * x;
+
+<span class="comment">// No parameters</span>
+<span class="keyword">const</span> greet = () => <span class="string">'Hello!'</span>;
+
+<span class="comment">// Returning object (must wrap in parentheses)</span>
+<span class="keyword">const</span> makePerson = (name, age) => ({ name, age });
+
+<span class="comment">// With array methods</span>
+<span class="keyword">const</span> numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];
+<span class="keyword">const</span> doubled = numbers.map(n => n * <span class="number">2</span>);
+<span class="keyword">const</span> evens = numbers.filter(n => n % <span class="number">2</span> === <span class="number">0</span>);
+<span class="keyword">const</span> sum = numbers.reduce((acc, n) => acc + n, <span class="number">0</span>);
+</code>
+                    </div>
+                </div>
+
+                <h4>Arrow Functions and 'this'</h4>
+                <div class="code-block" data-language="javascript">
+<code><span class="comment">// Regular function: 'this' is dynamic</span>
+<span class="keyword">const</span> person = {
+    name: <span class="string">'Alice'</span>,
+    greet: <span class="keyword">function</span>() {
+        console.log(<span class="string">`Hi, I'm ${<span class="keyword">this</span>.name}`</span>);
+    }
+};
+person.greet();  <span class="comment">// "Hi, I'm Alice"</span>
+
+<span class="comment">// Arrow function: inherits 'this' from parent scope</span>
+<span class="keyword">const</span> team = {
+    name: <span class="string">'Developers'</span>,
+    members: [<span class="string">'Alice'</span>, <span class="string">'Bob'</span>],
+    showMembers() {
+        <span class="keyword">this</span>.members.forEach(member => {
+            <span class="comment">// Arrow function inherits 'this' from showMembers</span>
+            console.log(<span class="string">`${member} is in ${<span class="keyword">this</span>.name}`</span>);
+        });
+    }
+};
+team.showMembers();
+</code>
+                </div>
+
+                <h3>Destructuring</h3>
+                <p>
+                    Destructuring extracts values from arrays or properties from objects into distinct variables.
+                </p>
+
+                <h4>Array Destructuring</h4>
+                <div class="code-block" data-language="javascript">
+<code><span class="comment">// Old way</span>
+<span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];
+<span class="keyword">const</span> first = arr[<span class="number">0</span>];
+<span class="keyword">const</span> second = arr[<span class="number">1</span>];
+
+<span class="comment">// Destructuring</span>
+<span class="keyword">const</span> [a, b, c] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];
+console.log(a, b, c);  <span class="comment">// 1 2 3</span>
+
+<span class="comment">// Skip elements</span>
+<span class="keyword">const</span> [x, , z] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];
+console.log(x, z);  <span class="comment">// 1 3</span>
+
+<span class="comment">// Rest pattern</span>
+<span class="keyword">const</span> [head, ...tail] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];
+console.log(head);  <span class="comment">// 1</span>
+console.log(tail);  <span class="comment">// [2, 3, 4]</span>
+
+<span class="comment">// Default values</span>
+<span class="keyword">const</span> [p = <span class="number">1</span>, q = <span class="number">2</span>] = [<span class="number">10</span>];
+console.log(p, q);  <span class="comment">// 10 2</span>
+
+<span class="comment">// Swapping variables</span>
+<span class="keyword">let</span> m = <span class="number">1</span>, n = <span class="number">2</span>;
+[m, n] = [n, m];
+console.log(m, n);  <span class="comment">// 2 1</span>
+</code>
+                </div>
+
+                <h4>Object Destructuring</h4>
+                <div class="code-block" data-language="javascript">
+<code><span class="comment">// Basic destructuring</span>
+<span class="keyword">const</span> person = { name: <span class="string">'Alice'</span>, age: <span class="number">25</span>, city: <span class="string">'NYC'</span> };
+<span class="keyword">const</span> { name, age } = person;
+console.log(name, age);  <span class="comment">// Alice 25</span>
+
+<span class="comment">// Renaming variables</span>
+<span class="keyword">const</span> { name: userName, age: userAge } = person;
+console.log(userName, userAge);  <span class="comment">// Alice 25</span>
+
+<span class="comment">// Default values</span>
+<span class="keyword">const</span> { name, country = <span class="string">'USA'</span> } = person;
+console.log(country);  <span class="comment">// USA</span>
+
+<span class="comment">// Nested destructuring</span>
+<span class="keyword">const</span> user = {
+    id: <span class="number">1</span>,
+    info: { name: <span class="string">'Alice'</span>, email: <span class="string">'alice@example.com'</span> }
+};
+<span class="keyword">const</span> { info: { name, email } } = user;
+
+<span class="comment">// Function parameters</span>
+<span class="keyword">function</span> <span class="function">greet</span>({ name, age }) {
+    console.log(<span class="string">`${name} is ${age} years old`</span>);
+}
+greet(person);  <span class="comment">// Alice is 25 years old</span>
+</code>
+                </div>
+
+                <h3>Spread Operator (...)</h3>
+                <p>
+                    The spread operator expands iterables (arrays, strings, objects) into individual elements.
+                </p>
+
+                <div class="code-block" data-language="javascript">
+<code><span class="comment">// Array spreading</span>
+<span class="keyword">const</span> arr1 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];
+<span class="keyword">const</span> arr2 = [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>];
+<span class="keyword">const</span> combined = [...arr1, ...arr2];  <span class="comment">// [1, 2, 3, 4, 5, 6]</span>
+
+<span class="comment">// Copy array</span>
+<span class="keyword">const</span> original = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];
+<span class="keyword">const</span> copy = [...original];
+
+<span class="comment">// Add elements</span>
+<span class="keyword">const</span> withExtra = [...original, <span class="number">4</span>, <span class="number">5</span>];  <span class="comment">// [1, 2, 3, 4, 5]</span>
+
+<span class="comment">// Function arguments</span>
+<span class="keyword">const</span> numbers = [<span class="number">5</span>, <span class="number">12</span>, <span class="number">8</span>, <span class="number">130</span>, <span class="number">44</span>];
+console.log(Math.max(...numbers));  <span class="comment">// 130</span>
+
+<span class="comment">// Object spreading</span>
+<span class="keyword">const</span> defaults = { theme: <span class="string">'dark'</span>, lang: <span class="string">'en'</span> };
+<span class="keyword">const</span> userPrefs = { lang: <span class="string">'es'</span>, fontSize: <span class="number">14</span> };
+<span class="keyword">const</span> config = { ...defaults, ...userPrefs };
+<span class="comment">// { theme: 'dark', lang: 'es', fontSize: 14 }</span>
+
+<span class="comment">// Shallow copy object</span>
+<span class="keyword">const</span> person = { name: <span class="string">'Alice'</span>, age: <span class="number">25</span> };
+<span class="keyword">const</span> clone = { ...person };
+
+<span class="comment">// Adding/overriding properties</span>
+<span class="keyword">const</span> updated = { ...person, age: <span class="number">26</span>, city: <span class="string">'LA'</span> };
+</code>
+                </div>
+
+                <h4>Rest Parameters</h4>
+                <div class="code-block" data-language="javascript">
+<code><span class="comment">// Collect remaining arguments</span>
+<span class="keyword">function</span> <span class="function">sum</span>(...numbers) {
+    <span class="keyword">return</span> numbers.reduce((acc, n) => acc + n, <span class="number">0</span>);
+}
+
+console.log(sum(<span class="number">1</span>, <span class="number">2</span>));           <span class="comment">// 3</span>
+console.log(sum(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>));  <span class="comment">// 15</span>
+
+<span class="comment">// Mix with regular parameters</span>
+<span class="keyword">function</span> <span class="function">greet</span>(greeting, ...names) {
+    <span class="keyword">return</span> <span class="string">`${greeting}, ${names.join(' and ')}!`</span>;
+}
+
+console.log(greet(<span class="string">'Hello'</span>, <span class="string">'Alice'</span>, <span class="string">'Bob'</span>, <span class="string">'Charlie'</span>));
+<span class="comment">// "Hello, Alice and Bob and Charlie!"</span>
+</code>
+                </div>
+
+                <h3>Promises and Async/Await</h3>
+                <p>
+                    Promises handle asynchronous operations. Async/await makes promise-based code 
+                    look synchronous and easier to read.
+                </p>
+
+                <h4>Promises</h4>
+                <div class="code-block" data-language="javascript">
+<code><span class="comment">// Creating a promise</span>
+<span class="keyword">const</span> promise = <span class="keyword">new</span> Promise((resolve, reject) => {
+    <span class="keyword">const</span> success = <span class="keyword">true</span>;
+    
+    setTimeout(() => {
+        <span class="keyword">if</span> (success) {
+            resolve(<span class="string">'Operation successful!'</span>);
+        } <span class="keyword">else</span> {
+            reject(<span class="string">'Operation failed!'</span>);
+        }
+    }, <span class="number">1000</span>);
+});
+
+<span class="comment">// Using promises</span>
+promise
+    .then(result => {
+        console.log(result);  <span class="comment">// "Operation successful!"</span>
+        <span class="keyword">return</span> <span class="string">'Next step'</span>;
+    })
+    .then(data => {
+        console.log(data);  <span class="comment">// "Next step"</span>
+    })
+    .catch(error => {
+        console.error(error);
+    })
+    .finally(() => {
+        console.log(<span class="string">'Always runs'</span>);
+    });
+
+<span class="comment">// Promise.all (wait for all)</span>
+<span class="keyword">const</span> p1 = Promise.resolve(<span class="number">1</span>);
+<span class="keyword">const</span> p2 = Promise.resolve(<span class="number">2</span>);
+<span class="keyword">const</span> p3 = Promise.resolve(<span class="number">3</span>);
+
+Promise.all([p1, p2, p3]).then(values => {
+    console.log(values);  <span class="comment">// [1, 2, 3]</span>
+});
+
+<span class="comment">// Promise.race (first to finish)</span>
+Promise.race([p1, p2, p3]).then(value => {
+    console.log(value);  <span class="comment">// 1 (whichever finishes first)</span>
+});
+</code>
+                </div>
+
+                <h4>Async/Await</h4>
+                <div class="code-block" data-language="javascript">
+<code><span class="comment">// Async function returns a promise</span>
+<span class="keyword">async function</span> <span class="function">fetchData</span>() {
+    <span class="keyword">return</span> <span class="string">'Data fetched!'</span>;
+}
+
+fetchData().then(data => console.log(data));
+
+<span class="comment">// Await pauses execution until promise resolves</span>
+<span class="keyword">async function</span> <span class="function">getData</span>() {
+    <span class="keyword">const</span> result = <span class="keyword">await</span> fetchData();
+    console.log(result);  <span class="comment">// "Data fetched!"</span>
+}
+
+<span class="comment">// Error handling with try/catch</span>
+<span class="keyword">async function</span> <span class="function">fetchUser</span>(id) {
+    <span class="keyword">try</span> {
+        <span class="keyword">const</span> response = <span class="keyword">await</span> fetch(<span class="string">`https://api.example.com/users/${id}`</span>);
+        <span class="keyword">const</span> user = <span class="keyword">await</span> response.json();
+        <span class="keyword">return</span> user;
+    } <span class="keyword">catch</span> (error) {
+        console.error(<span class="string">'Error fetching user:'</span>, error);
+        <span class="keyword">throw</span> error;
+    }
+}
+
+<span class="comment">// Multiple awaits</span>
+<span class="keyword">async function</span> <span class="function">getMultipleData</span>() {
+    <span class="keyword">const</span> user = <span class="keyword">await</span> fetchUser(<span class="number">1</span>);
+    <span class="keyword">const</span> posts = <span class="keyword">await</span> fetchPosts(user.id);
+    <span class="keyword">return</span> { user, posts };
+}
+
+<span class="comment">// Parallel execution with Promise.all</span>
+<span class="keyword">async function</span> <span class="function">getParallelData</span>() {
+    <span class="keyword">const</span> [user, posts, comments] = <span class="keyword">await</span> Promise.all([
+        fetchUser(<span class="number">1</span>),
+        fetchPosts(<span class="number">1</span>),
+        fetchComments(<span class="number">1</span>)
+    ]);
+    <span class="keyword">return</span> { user, posts, comments };
+}
+</code>
+                </div>
+
+                <h3>Fetch API</h3>
+                <p>
+                    The Fetch API provides a modern way to make HTTP requests.
+                </p>
+
+                <div class="code-block" data-language="javascript">
+<code><span class="comment">// GET request</span>
+fetch(<span class="string">'https://api.example.com/data'</span>)
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error(error));
+
+<span class="comment">// With async/await (cleaner!)</span>
+<span class="keyword">async function</span> <span class="function">fetchData</span>() {
+    <span class="keyword">try</span> {
+        <span class="keyword">const</span> response = <span class="keyword">await</span> fetch(<span class="string">'https://api.example.com/data'</span>);
+        <span class="keyword">const</span> data = <span class="keyword">await</span> response.json();
+        console.log(data);
+    } <span class="keyword">catch</span> (error) {
+        console.error(<span class="string">'Fetch error:'</span>, error);
+    }
+}
+
+<span class="comment">// POST request</span>
+<span class="keyword">async function</span> <span class="function">createUser</span>(userData) {
+    <span class="keyword">const</span> response = <span class="keyword">await</span> fetch(<span class="string">'https://api.example.com/users'</span>, {
+        method: <span class="string">'POST'</span>,
+        headers: {
+            <span class="string">'Content-Type'</span>: <span class="string">'application/json'</span>
+        },
+        body: JSON.stringify(userData)
+    });
+    <span class="keyword">return</span> <span class="keyword">await</span> response.json();
+}
+
+<span class="comment">// Error handling with status checks</span>
+<span class="keyword">async function</span> <span class="function">fetchWithErrorHandling</span>(url) {
+    <span class="keyword">const</span> response = <span class="keyword">await</span> fetch(url);
+    
+    <span class="keyword">if</span> (!response.ok) {
+        <span class="keyword">throw</span> <span class="keyword">new</span> Error(<span class="string">`HTTP error! status: ${response.status}`</span>);
+    }
+    
+    <span class="keyword">return</span> <span class="keyword">await</span> response.json();
+}
+</code>
+                </div>
+
+                <h3>Modules (import/export)</h3>
+                <p>
+                    Modules let you split code into reusable files.
+                </p>
+
+                <div class="example-box">
+                    <h5>math.js (exports)</h5>
+                    <div class="code-block" data-language="javascript">
+<code><span class="comment">// Named exports</span>
+<span class="keyword">export const</span> PI = <span class="number">3.14159</span>;
+
+<span class="keyword">export function</span> <span class="function">add</span>(a, b) {
+    <span class="keyword">return</span> a + b;
+}
+
+<span class="keyword">export function</span> <span class="function">multiply</span>(a, b) {
+    <span class="keyword">return</span> a * b;
+}
+
+<span class="comment">// Default export (one per file)</span>
+<span class="keyword">export default function</span> <span class="function">subtract</span>(a, b) {
+    <span class="keyword">return</span> a - b;
+}
+
+<span class="comment">// Or export all at once</span>
+<span class="keyword">const</span> divide = (a, b) => a / b;
+<span class="keyword">const</span> square = x => x * x;
+<span class="keyword">export</span> { divide, square };
+</code>
+                    </div>
+                </div>
+
+                <div class="example-box">
+                    <h5>app.js (imports)</h5>
+                    <div class="code-block" data-language="javascript">
+<code><span class="comment">// Import named exports</span>
+<span class="keyword">import</span> { add, multiply, PI } <span class="keyword">from</span> <span class="string">'./math.js'</span>;
+
+console.log(add(<span class="number">5</span>, <span class="number">3</span>));      <span class="comment">// 8</span>
+console.log(multiply(<span class="number">4</span>, <span class="number">2</span>));  <span class="comment">// 8</span>
+console.log(PI);            <span class="comment">// 3.14159</span>
+
+<span class="comment">// Import default export</span>
+<span class="keyword">import</span> subtract <span class="keyword">from</span> <span class="string">'./math.js'</span>;
+console.log(subtract(<span class="number">10</span>, <span class="number">3</span>));  <span class="comment">// 7</span>
+
+<span class="comment">// Import everything</span>
+<span class="keyword">import</span> * <span class="keyword">as</span> math <span class="keyword">from</span> <span class="string">'./math.js'</span>;
+console.log(math.add(<span class="number">5</span>, <span class="number">3</span>));
+console.log(math.PI);
+
+<span class="comment">// Rename imports</span>
+<span class="keyword">import</span> { add <span class="keyword">as</span> sum } <span class="keyword">from</span> <span class="string">'./math.js'</span>;
+console.log(sum(<span class="number">5</span>, <span class="number">3</span>));  <span class="comment">// 8</span>
+</code>
+                    </div>
+                </div>
+
+                <h3>Map, Set, WeakMap, WeakSet</h3>
+
+                <h4>Map (Key-Value Pairs)</h4>
+                <div class="code-block" data-language="javascript">
+<code><span class="comment">// Create Map</span>
+<span class="keyword">const</span> map = <span class="keyword">new</span> Map();
+
+<span class="comment">// Set values</span>
+map.set(<span class="string">'name'</span>, <span class="string">'Alice'</span>);
+map.set(<span class="string">'age'</span>, <span class="number">25</span>);
+map.set(<span class="number">1</span>, <span class="string">'one'</span>);  <span class="comment">// Any type as key!</span>
+
+<span class="comment">// Get values</span>
+console.log(map.get(<span class="string">'name'</span>));  <span class="comment">// "Alice"</span>
+
+<span class="comment">// Check existence</span>
+console.log(map.has(<span class="string">'age'</span>));   <span class="comment">// true</span>
+
+<span class="comment">// Delete and clear</span>
+map.delete(<span class="string">'age'</span>);
+console.log(map.size);     <span class="comment">// 2</span>
+
+<span class="comment">// Iterate</span>
+<span class="keyword">for</span> (<span class="keyword">const</span> [key, value] <span class="keyword">of</span> map) {
+    console.log(<span class="string">`${key}: ${value}`</span>);
+}
+
+<span class="comment">// Object as key (Map's superpower!)</span>
+<span class="keyword">const</span> user = { id: <span class="number">1</span> };
+map.set(user, <span class="string">'user data'</span>);
+console.log(map.get(user));
+</code>
+                </div>
+
+                <h4>Set (Unique Values)</h4>
+                <div class="code-block" data-language="javascript">
+<code><span class="comment">// Create Set</span>
+<span class="keyword">const</span> set = <span class="keyword">new</span> Set([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]);
+
+<span class="comment">// Add values (duplicates ignored)</span>
+set.add(<span class="number">4</span>);
+set.add(<span class="number">2</span>);  <span class="comment">// Ignored, already exists</span>
+console.log(set);  <span class="comment">// Set(4) { 1, 2, 3, 4 }</span>
+
+<span class="comment">// Check existence</span>
+console.log(set.has(<span class="number">3</span>));  <span class="comment">// true</span>
+
+<span class="comment">// Delete</span>
+set.delete(<span class="number">2</span>);
+console.log(set.size);  <span class="comment">// 3</span>
+
+<span class="comment">// Iterate</span>
+set.forEach(value => console.log(value));
+
+<span class="comment">// Remove duplicates from array</span>
+<span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">4</span>];
+<span class="keyword">const</span> unique = [...<span class="keyword">new</span> Set(arr)];  <span class="comment">// [1, 2, 3, 4]</span>
+</code>
+                </div>
+
+                <h3>Practice Problems</h3>
+
+                <div class="example-box">
+                    <h5>Problem 1: Destructuring and Spread</h5>
+                    <p>Use destructuring and spread to merge two user objects, with the second overriding the first.</p>
+                    
+                    <button class="toggle-solution" onclick="toggleSolution('sol1')">Show Solution</button>
+                    <div id="sol1" class="solution" style="display: none;">
+                        <div class="code-block" data-language="javascript">
+<code><span class="keyword">const</span> user1 = { name: <span class="string">'Alice'</span>, age: <span class="number">25</span>, city: <span class="string">'NYC'</span> };
+<span class="keyword">const</span> user2 = { age: <span class="number">26</span>, email: <span class="string">'alice@example.com'</span> };
+
+<span class="keyword">const</span> merged = { ...user1, ...user2 };
+console.log(merged);
+<span class="comment">// { name: 'Alice', age: 26, city: 'NYC', email: 'alice@example.com' }</span>
+
+<span class="comment">// Extract specific properties</span>
+<span class="keyword">const</span> { name, email } = merged;
+console.log(<span class="string">`${name}: ${email}`</span>);
+</code>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="example-box">
+                    <h5>Problem 2: Async Data Fetching</h5>
+                    <p>Create an async function that fetches user data and their posts in parallel.</p>
+                    
+                    <button class="toggle-solution" onclick="toggleSolution('sol2')">Show Solution</button>
+                    <div id="sol2" class="solution" style="display: none;">
+                        <div class="code-block" data-language="javascript">
+<code><span class="keyword">async function</span> <span class="function">fetchUserData</span>(userId) {
+    <span class="keyword">try</span> {
+        <span class="comment">// Parallel fetching</span>
+        <span class="keyword">const</span> [user, posts] = <span class="keyword">await</span> Promise.all([
+            fetch(<span class="string">`https://api.example.com/users/${userId}`</span>).then(r => r.json()),
+            fetch(<span class="string">`https://api.example.com/users/${userId}/posts`</span>).then(r => r.json())
+        ]);
+        
+        <span class="keyword">return</span> {
+            user,
+            posts,
+            postCount: posts.length
+        };
+    } <span class="keyword">catch</span> (error) {
+        console.error(<span class="string">'Error fetching data:'</span>, error);
+        <span class="keyword">throw</span> error;
+    }
+}
+
+<span class="comment">// Usage</span>
+fetchUserData(<span class="number">1</span>).then(data => console.log(data));
+</code>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="example-box">
+                    <h5>Problem 3: Array Transformation Pipeline</h5>
+                    <p>Use arrow functions, map, filter, and reduce to process an array of products.</p>
+                    
+                    <button class="toggle-solution" onclick="toggleSolution('sol3')">Show Solution</button>
+                    <div id="sol3" class="solution" style="display: none;">
+                        <div class="code-block" data-language="javascript">
+<code><span class="keyword">const</span> products = [
+    { name: <span class="string">'Laptop'</span>, price: <span class="number">1000</span>, inStock: <span class="keyword">true</span> },
+    { name: <span class="string">'Mouse'</span>, price: <span class="number">25</span>, inStock: <span class="keyword">false</span> },
+    { name: <span class="string">'Keyboard'</span>, price: <span class="number">75</span>, inStock: <span class="keyword">true</span> },
+    { name: <span class="string">'Monitor'</span>, price: <span class="number">300</span>, inStock: <span class="keyword">true</span> }
+];
+
+<span class="comment">// Get total value of in-stock products</span>
+<span class="keyword">const</span> totalValue = products
+    .filter(p => p.inStock)
+    .map(p => p.price)
+    .reduce((sum, price) => sum + price, <span class="number">0</span>);
+
+console.log(totalValue);  <span class="comment">// 1375</span>
+
+<span class="comment">// Get names of affordable in-stock items (price &lt; 100)</span>
+<span class="keyword">const</span> affordable = products
+    .filter(p => p.inStock && p.price &lt; <span class="number">100</span>)
+    .map(p => p.name);
+
+console.log(affordable);  <span class="comment">// ['Keyboard']</span>
+</code>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="example-box">
+                    <h5>Problem 4: Template Literal Function</h5>
+                    <p>Create a tagged template function that highlights variables in red.</p>
+                    
+                    <button class="toggle-solution" onclick="toggleSolution('sol4')">Show Solution</button>
+                    <div id="sol4" class="solution" style="display: none;">
+                        <div class="code-block" data-language="javascript">
+<code><span class="keyword">function</span> <span class="function">highlight</span>(strings, ...values) {
+    <span class="keyword">return</span> strings.reduce((result, str, i) => {
+        <span class="keyword">const</span> value = values[i] 
+            ? <span class="string">`&lt;span style="color: red"&gt;${values[i]}&lt;/span&gt;`</span> 
+            : <span class="string">''</span>;
+        <span class="keyword">return</span> result + str + value;
+    }, <span class="string">''</span>);
+}
+
+<span class="keyword">const</span> name = <span class="string">'Alice'</span>;
+<span class="keyword">const</span> age = <span class="number">25</span>;
+<span class="keyword">const</span> message = highlight<span class="string">`Name: ${name}, Age: ${age}`</span>;
+
+console.log(message);
+<span class="comment">// Name: &lt;span style="color: red"&gt;Alice&lt;/span&gt;, Age: &lt;span style="color: red"&gt;25&lt;/span&gt;</span>
+</code>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="example-box">
+                    <h5>Problem 5: Module-based Calculator</h5>
+                    <p>Create a calculator using modules with separate files for operations.</p>
+                    
+                    <button class="toggle-solution" onclick="toggleSolution('sol5')">Show Solution</button>
+                    <div id="sol5" class="solution" style="display: none;">
+                        <div class="code-block" data-language="javascript">
+<code><span class="comment">// operations.js</span>
+<span class="keyword">export const</span> add = (a, b) => a + b;
+<span class="keyword">export const</span> subtract = (a, b) => a - b;
+<span class="keyword">export const</span> multiply = (a, b) => a * b;
+<span class="keyword">export const</span> divide = (a, b) => b !== <span class="number">0</span> ? a / b : <span class="string">'Error: Division by zero'</span>;
+
+<span class="comment">// calculator.js</span>
+<span class="keyword">import</span> * <span class="keyword">as</span> ops <span class="keyword">from</span> <span class="string">'./operations.js'</span>;
+
+<span class="keyword">export default class</span> <span class="class-name">Calculator</span> {
+    calculate(a, b, operation) {
+        <span class="keyword">return</span> ops[operation]?.(a, b) ?? <span class="string">'Invalid operation'</span>;
+    }
+}
+
+<span class="comment">// main.js</span>
+<span class="keyword">import</span> Calculator <span class="keyword">from</span> <span class="string">'./calculator.js'</span>;
+
+<span class="keyword">const</span> calc = <span class="keyword">new</span> Calculator();
+console.log(calc.calculate(<span class="number">10</span>, <span class="number">5</span>, <span class="string">'add'</span>));       <span class="comment">// 15</span>
+console.log(calc.calculate(<span class="number">10</span>, <span class="number">5</span>, <span class="string">'multiply'</span>));  <span class="comment">// 50</span>
+</code>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Key Takeaways</h3>
+                <ul>
+                    <li>Template literals make string interpolation and multi-line strings easy</li>
+                    <li>Arrow functions provide concise syntax and lexical <code>this</code> binding</li>
+                    <li>Destructuring extracts values from arrays/objects cleanly</li>
+                    <li>Spread operator (...) expands iterables and copies arrays/objects</li>
+                    <li>Async/await makes asynchronous code look synchronous</li>
+                    <li>Fetch API is the modern way to make HTTP requests</li>
+                    <li>Modules enable code organization and reusability</li>
+                    <li>Map and Set provide efficient data structures for unique keys and values</li>
+                </ul>
+
+                <div class="info-box tip">
+                    <h4>💡 Next Steps</h4>
+                    <p>
+                        With modern JavaScript mastered, you're ready to tackle C++! The next lesson covers 
+                        C++ basics—a powerful compiled language used for system programming, game development, 
+                        and performance-critical applications.
+                    </p>
+                </div>
+            </div>
+
+            <div class="lesson-navigation">
+                <a href="04-javascript-basics.html" class="nav-btn">← Previous: JavaScript Basics</a>
+                <a href="06-cpp-basics.html" class="nav-btn">Next: C++ Basics →</a>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../js/main.js"></script>
+    <script>
+        function toggleSolution(id) {
+            const solution = document.getElementById(id);
+            const button = event.target;
+            if (solution.style.display === 'none') {
+                solution.style.display = 'block';
+                button.textContent = 'Hide Solution';
+            } else {
+                solution.style.display = 'none';
+                button.textContent = 'Show Solution';
+            }
+        }
+    </script>
+</body>
+</html>

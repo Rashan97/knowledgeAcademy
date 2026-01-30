@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 9: Code Quality - Engineering Academy</title>
+    <link rel="stylesheet" href="../../../css/styles.css">
+    <link rel="stylesheet" href="../../../css/course-styles/course.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+</head>
+<body>
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <h1><a href="../../../index.html" style="color: inherit; text-decoration: none;">🎓 Engineering Academy</a></h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../../../index.html#courses">Courses</a></li>
+                    <li><a href="../index.html">Course Overview</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section class="course-header">
+        <div class="container">
+            <h1>💻 Software Engineering</h1>
+            <p>Lesson 9: Code Quality</p>
+        </div>
+    </section>
+
+    <div class="course-container">
+        <aside class="course-sidebar">
+            <h3>Course Modules</h3>
+            <ul class="lesson-list">
+                <li><a href="../index.html"><span class="lesson-number">📚</span>Course Overview</a></li>
+                <li><a href="01-introduction.html" class="completed"><span class="lesson-number">1</span>Introduction to SE</a></li>
+                <li><a href="02-sdlc.html" class="completed"><span class="lesson-number">2</span>SDLC & Methodologies</a></li>
+                <li><a href="03-requirements-engineering.html" class="completed"><span class="lesson-number">3</span>Requirements Engineering</a></li>
+                <li><a href="04-creational-patterns.html" class="completed"><span class="lesson-number">4</span>Creational Patterns</a></li>
+                <li><a href="05-structural-patterns.html" class="completed"><span class="lesson-number">5</span>Structural Patterns</a></li>
+                <li><a href="06-behavioral-patterns.html" class="completed"><span class="lesson-number">6</span>Behavioral Patterns</a></li>
+                <li><a href="07-architecture.html" class="completed"><span class="lesson-number">7</span>System Architecture</a></li>
+                <li><a href="08-solid-principles.html" class="completed"><span class="lesson-number">8</span>SOLID Principles</a></li>
+                <li><a href="09-code-quality.html" class="active"><span class="lesson-number">9</span>Code Quality</a></li>
+                <li class="disabled"><span class="lesson-number">10</span>Testing Strategies <span style="opacity: 0.5;">(Coming Soon)</span></li>
+                <li class="disabled"><span class="lesson-number">11</span>Version Control <span style="opacity: 0.5;">(Coming Soon)</span></li>
+                <li class="disabled"><span class="lesson-number">12</span>Agile & DevOps <span style="opacity: 0.5;">(Coming Soon)</span></li>
+            </ul>
+        </aside>
+
+        <main class="course-content">
+            <h2>Code Quality</h2>
+            <p class="intro">Learn clean code principles, identify code smells, master refactoring techniques, and use static analysis tools to maintain high code quality.</p>
+
+            <div class="content-section">
+                <h3>1. Introduction to Code Quality</h3>
+                
+                <p>Code quality refers to how well code meets both functional and non-functional requirements. High-quality code is not just code that works—it's code that is readable, maintainable, testable, and efficient.</p>
+
+                <div class="info-box">
+                    <strong>Characteristics of Quality Code:</strong>
+                    <ul>
+                        <li><strong>Readability:</strong> Easy to understand and follow</li>
+                        <li><strong>Maintainability:</strong> Easy to modify and extend</li>
+                        <li><strong>Testability:</strong> Easy to write tests for</li>
+                        <li><strong>Reliability:</strong> Behaves correctly and consistently</li>
+                        <li><strong>Efficiency:</strong> Uses resources optimally</li>
+                        <li><strong>Modularity:</strong> Well-organized into cohesive modules</li>
+                    </ul>
+                </div>
+
+                <p><strong>Why Code Quality Matters:</strong> Poor quality code leads to bugs, longer development time, technical debt, and frustrated developers. The cost of maintaining bad code far exceeds the cost of writing good code initially.</p>
+            </div>
+
+            <div class="content-section">
+                <h3>2. Clean Code Principles</h3>
+                
+                <h4>2.1 Meaningful Names</h4>
+                <p>Names should reveal intent and make code self-documenting.</p>
+
+                <div class="example-box">
+                    <strong>Naming Best Practices</strong>
+                    <pre><code>// ❌ BAD: Unclear, abbreviated names
+let d: number;  // What is 'd'?
+let temp: any;  // Temp what?
+function proc(x: any): any { }  // Process what?
+
+// ✅ GOOD: Descriptive, meaningful names
+let daysSinceLastModification: number;
+let temporaryUserSession: UserSession;
+function processPayment(order: Order): PaymentResult { }
+
+// ❌ BAD: Magic numbers
+if (user.age > 18) { }
+
+// ✅ GOOD: Named constants
+const MINIMUM_ADULT_AGE = 18;
+if (user.age > MINIMUM_ADULT_AGE) { }
+
+// ❌ BAD: Non-descriptive boolean
+let flag: boolean;
+
+// ✅ GOOD: Intention-revealing boolean
+let isUserAuthenticated: boolean;
+let hasPaymentBeenProcessed: boolean;
+let canUserAccessPremiumContent: boolean;
+
+// ❌ BAD: Single-letter variables (except in short loops)
+function calc(a: number, b: number): number {
+    return a * b * 0.2;
+}
+
+// ✅ GOOD: Descriptive variables
+function calculateSalesTax(subtotal: number, taxRate: number): number {
+    return subtotal * taxRate;
+}
+
+// Class names: Nouns
+class UserAccountManager { }
+class OrderProcessor { }
+class PaymentValidator { }
+
+// Method names: Verbs
+function getUserById(id: string): User { }
+function validateEmail(email: string): boolean { }
+function processOrder(order: Order): void { }</code></pre>
+                </div>
+
+                <h4>2.2 Function Guidelines</h4>
+                <p>Functions should be small, do one thing, and do it well.</p>
+
+                <div class="example-box">
+                    <strong>Function Best Practices</strong>
+                    <pre><code>// ❌ BAD: Function does too many things
+function processUser(userData: any): void {
+    // Validate
+    if (!userData.email || !userData.name) {
+        throw new Error("Invalid data");
+    }
+    
+    // Hash password
+    const hashedPassword = hashPassword(userData.password);
+    
+    // Save to database
+    database.save({ ...userData, password: hashedPassword });
+    
+    // Send welcome email
+    emailService.send(userData.email, "Welcome!");
+    
+    // Log analytics
+    analytics.track("user_created", userData.id);
+    
+    // Update cache
+    cache.set(`user:${userData.id}`, userData);
+}
+
+// ✅ GOOD: Each function has single responsibility
+function validateUserData(userData: UserData): void {
+    if (!userData.email || !userData.name) {
+        throw new Error("Invalid user data");
+    }
+}
+
+function hashUserPassword(password: string): string {
+    return hashPassword(password);
+}
+
+function saveUserToDatabase(user: User): void {
+    database.save(user);
+}
+
+function sendWelcomeEmail(email: string): void {
+    emailService.send(email, "Welcome!");
+}
+
+function trackUserCreation(userId: string): void {
+    analytics.track("user_created", userId);
+}
+
+function cacheUser(user: User): void {
+    cache.set(`user:${user.id}`, user);
+}
+
+function createUser(userData: UserData): User {
+    validateUserData(userData);
+    
+    const user: User = {
+        ...userData,
+        id: generateId(),
+        password: hashUserPassword(userData.password),
+        createdAt: new Date()
+    };
+    
+    saveUserToDatabase(user);
+    sendWelcomeEmail(user.email);
+    trackUserCreation(user.id);
+    cacheUser(user);
+    
+    return user;
+}
+
+// ❌ BAD: Too many parameters
+function createOrder(
+    userId: string,
+    productId: string,
+    quantity: number,
+    price: number,
+    discount: number,
+    tax: number,
+    shippingAddress: string,
+    billingAddress: string,
+    paymentMethod: string
+): Order { }
+
+// ✅ GOOD: Use object parameter
+interface CreateOrderParams {
+    userId: string;
+    productId: string;
+    quantity: number;
+    pricing: {
+        price: number;
+        discount: number;
+        tax: number;
+    };
+    addresses: {
+        shipping: string;
+        billing: string;
+    };
+    paymentMethod: string;
+}
+
+function createOrder(params: CreateOrderParams): Order {
+    // Implementation
+    return {} as Order;
+}
+
+// ❌ BAD: Unclear return value
+function check(user: User): number {
+    return user.age > 18 ? 1 : 0;
+}
+
+// ✅ GOOD: Clear return value
+function isUserAdult(user: User): boolean {
+    const ADULT_AGE = 18;
+    return user.age >= ADULT_AGE;
+}</code></pre>
+                </div>
+
+                <h4>2.3 Comments</h4>
+                <p>Good code is self-documenting. Use comments to explain WHY, not WHAT.</p>
+
+                <div class="example-box">
+                    <strong>Comment Guidelines</strong>
+                    <pre><code>// ❌ BAD: Obvious comments that repeat code
+// Increment i by 1
+i++;
+
+// Set name to "John"
+const name = "John";
+
+// Loop through users
+for (const user of users) { }
+
+// ❌ BAD: Commented-out code
+// function oldImplementation() {
+//     // This doesn't work anymore
+//     return something;
+// }
+
+// ❌ BAD: Misleading or outdated comments
+// This function returns user age
+function getUserName(id: string): string {  // Comment is wrong!
+    return database.users.get(id).name;
+}
+
+// ✅ GOOD: Explain WHY, not WHAT
+// Using setTimeout instead of setInterval because we need to ensure
+// the previous API call completes before starting the next one
+setTimeout(() => pollApi(), 5000);
+
+// ✅ GOOD: Explain complex algorithms
+// Binary search implementation for O(log n) lookup time
+// Assumes array is sorted in ascending order
+function binarySearch(arr: number[], target: number): number {
+    let left = 0;
+    let right = arr.length - 1;
+    
+    while (left <= right) {
+        // Use >>> to prevent integer overflow in large arrays
+        const mid = (left + right) >>> 1;
+        
+        if (arr[mid] === target) return mid;
+        if (arr[mid] < target) left = mid + 1;
+        else right = mid - 1;
+    }
+    
+    return -1;
+}
+
+// ✅ GOOD: Warn about gotchas or non-obvious behavior
+// NOTE: This function mutates the input array
+function sortUsers(users: User[]): User[] {
+    return users.sort((a, b) => a.name.localeCompare(b.name));
+}
+
+// TODO: Add pagination when user count exceeds 1000
+function getAllUsers(): User[] {
+    return database.users.getAll();
+}
+
+// FIXME: Race condition when multiple requests arrive simultaneously
+let requestCount = 0;
+function incrementRequests() {
+    requestCount++;
+}
+
+// ✅ GOOD: JSDoc for public APIs
+/**
+ * Calculates compound interest
+ * @param principal - Initial investment amount
+ * @param rate - Annual interest rate (as decimal, e.g., 0.05 for 5%)
+ * @param time - Number of years
+ * @param frequency - Compounding frequency per year (default: 12 for monthly)
+ * @returns Total amount after interest
+ */
+function calculateCompoundInterest(
+    principal: number,
+    rate: number,
+    time: number,
+    frequency: number = 12
+): number {
+    return principal * Math.pow(1 + rate / frequency, frequency * time);
+}</code></pre>
+                </div>
+
+                <h4>2.4 Formatting and Style</h4>
+                <p>Consistent formatting improves readability.</p>
+
+                <div class="example-box">
+                    <strong>Formatting Best Practices</strong>
+                    <pre><code>// ✅ GOOD: Consistent indentation (2 or 4 spaces)
+function processOrder(order: Order): void {
+  if (order.isValid) {
+    const total = calculateTotal(order);
+    if (total > 0) {
+      processPayment(order);
+    }
+  }
+}
+
+// ✅ GOOD: Vertical spacing for readability
+class UserService {
+  private repository: UserRepository;
+  private validator: UserValidator;
+
+  constructor(repository: UserRepository, validator: UserValidator) {
+    this.repository = repository;
+    this.validator = validator;
+  }
+
+  async createUser(data: UserData): Promise<User> {
+    this.validator.validate(data);
+    
+    const user = new User(data);
+    await this.repository.save(user);
+    
+    return user;
+  }
+
+  async deleteUser(id: string): Promise<void> {
+    await this.repository.delete(id);
+  }
+}
+
+// ✅ GOOD: Line length limit (80-120 characters)
+const message = `Welcome to our platform! We're excited to have you here. ` +
+  `Please complete your profile to get started.`;
+
+// ✅ GOOD: Consistent naming convention
+// Classes: PascalCase
+class UserAccount { }
+
+// Variables and functions: camelCase
+const userName = "John";
+function getUserById(id: string) { }
+
+// Constants: UPPER_SNAKE_CASE
+const MAX_LOGIN_ATTEMPTS = 3;
+const API_BASE_URL = "https://api.example.com";
+
+// Files: kebab-case
+// user-service.ts
+// order-processor.ts</code></pre>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>3. Code Smells</h3>
+                
+                <p>Code smells are indicators of potential problems in code. They don't necessarily indicate bugs but suggest areas that might benefit from refactoring.</p>
+
+                <h4>3.1 Bloaters</h4>
+                
+                <div class="example-box">
+                    <strong>Long Method</strong>
+                    <pre><code>// ❌ BAD: Method is too long (does too many things)
+function processCheckout(cart: Cart, user: User, paymentInfo: any): void {
+  // Validate cart (20 lines)
+  if (!cart.items || cart.items.length === 0) {
+    throw new Error("Empty cart");
+  }
+  for (const item of cart.items) {
+    if (item.quantity <= 0) {
+      throw new Error("Invalid quantity");
+    }
+    if (!item.inStock) {
+      throw new Error("Out of stock");
+    }
+  }
+  
+  // Calculate totals (30 lines)
+  let subtotal = 0;
+  for (const item of cart.items) {
+    subtotal += item.price * item.quantity;
+  }
+  const tax = subtotal * 0.08;
+  const shipping = subtotal > 50 ? 0 : 10;
+  const total = subtotal + tax + shipping;
+  
+  // Process payment (40 lines)
+  // ... payment processing code ...
+  
+  // Create order (20 lines)
+  // ... order creation code ...
+  
+  // Send confirmation (15 lines)
+  // ... email sending code ...
+  
+  // Update inventory (25 lines)
+  // ... inventory update code ...
+}
+
+// ✅ GOOD: Break into smaller methods
+class CheckoutService {
+  processCheckout(cart: Cart, user: User, paymentInfo: PaymentInfo): Order {
+    this.validateCart(cart);
+    
+    const pricing = this.calculatePricing(cart);
+    const payment = this.processPayment(paymentInfo, pricing.total);
+    const order = this.createOrder(cart, user, pricing, payment);
+    
+    this.sendConfirmation(user, order);
+    this.updateInventory(cart);
+    
+    return order;
+  }
+
+  private validateCart(cart: Cart): void { /* ... */ }
+  private calculatePricing(cart: Cart): Pricing { /* ... */ }
+  private processPayment(info: PaymentInfo, amount: number): Payment { /* ... */ }
+  private createOrder(cart: Cart, user: User, pricing: Pricing, payment: Payment): Order { /* ... */ }
+  private sendConfirmation(user: User, order: Order): void { /* ... */ }
+  private updateInventory(cart: Cart): void { /* ... */ }
+}</code></pre>
+                </div>
+
+                <div class="example-box">
+                    <strong>Large Class</strong>
+                    <pre><code>// ❌ BAD: God class doing everything
+class UserManager {
+  // User CRUD
+  createUser() { }
+  updateUser() { }
+  deleteUser() { }
+  
+  // Authentication
+  login() { }
+  logout() { }
+  resetPassword() { }
+  
+  // Authorization
+  checkPermissions() { }
+  assignRole() { }
+  
+  // Profile
+  updateProfile() { }
+  uploadAvatar() { }
+  
+  // Notifications
+  sendEmail() { }
+  sendSMS() { }
+  
+  // Analytics
+  trackUserActivity() { }
+  generateReport() { }
+}
+
+// ✅ GOOD: Split into focused classes
+class UserRepository {
+  create(user: User): void { }
+  update(user: User): void { }
+  delete(id: string): void { }
+  findById(id: string): User | null { }
+}
+
+class AuthenticationService {
+  login(credentials: Credentials): Token { }
+  logout(token: Token): void { }
+  resetPassword(email: string): void { }
+}
+
+class AuthorizationService {
+  checkPermissions(user: User, resource: string): boolean { }
+  assignRole(user: User, role: Role): void { }
+}
+
+class UserProfileService {
+  updateProfile(user: User, data: ProfileData): void { }
+  uploadAvatar(user: User, file: File): void { }
+}
+
+class NotificationService {
+  sendEmail(to: string, message: string): void { }
+  sendSMS(to: string, message: string): void { }
+}
+
+class UserAnalyticsService {
+  trackActivity(user: User, action: string): void { }
+  generateReport(userId: string): Report { }
+}</code></pre>
+                </div>
+
+                <h4>3.2 Object-Orientation Abusers</h4>
+                
+                <div class="example-box">
+                    <strong>Switch Statements</strong>
+                    <pre><code>// ❌ BAD: Switch statement that will grow
+function calculateShippingCost(type: string, weight: number): number {
+  switch (type) {
+    case 'standard':
+      return weight * 2;
+    case 'express':
+      return weight * 5;
+    case 'overnight':
+      return weight * 10;
+    case 'international':
+      return weight * 15;
+    default:
+      throw new Error('Unknown shipping type');
+  }
+}
+
+// ✅ GOOD: Use polymorphism
+interface ShippingMethod {
+  calculateCost(weight: number): number;
+}
+
+class StandardShipping implements ShippingMethod {
+  calculateCost(weight: number): number {
+    return weight * 2;
+  }
+}
+
+class ExpressShipping implements ShippingMethod {
+  calculateCost(weight: number): number {
+    return weight * 5;
+  }
+}
+
+class OvernightShipping implements ShippingMethod {
+  calculateCost(weight: number): number {
+    return weight * 10;
+  }
+}
+
+class InternationalShipping implements ShippingMethod {
+  calculateCost(weight: number): number {
+    return weight * 15;
+  }
+}
+
+class ShippingCalculator {
+  constructor(private method: ShippingMethod) {}
+  
+  calculate(weight: number): number {
+    return this.method.calculateCost(weight);
+  }
+}</code></pre>
+                </div>
+
+                <h4>3.3 Change Preventers</h4>
+                
+                <div class="example-box">
+                    <strong>Divergent Change</strong>
+                    <pre><code>// ❌ BAD: One class changes for many reasons
+class Product {
+  // Changes when product structure changes
+  name: string;
+  price: number;
+  
+  // Changes when display logic changes
+  formatPrice(): string {
+    return `$${this.price.toFixed(2)}`;
+  }
+  
+  displayDetails(): string {
+    return `${this.name} - ${this.formatPrice()}`;
+  }
+  
+  // Changes when validation rules change
+  validate(): boolean {
+    return this.name.length > 0 && this.price > 0;
+  }
+  
+  // Changes when database schema changes
+  toDatabase(): any {
+    return { name: this.name, price: this.price };
+  }
+}
+
+// ✅ GOOD: Separate concerns
+class Product {
+  constructor(public name: string, public price: number) {}
+}
+
+class ProductFormatter {
+  formatPrice(product: Product): string {
+    return `$${product.price.toFixed(2)}`;
+  }
+  
+  displayDetails(product: Product): string {
+    return `${product.name} - ${this.formatPrice(product)}`;
+  }
+}
+
+class ProductValidator {
+  validate(product: Product): boolean {
+    return product.name.length > 0 && product.price > 0;
+  }
+}
+
+class ProductRepository {
+  toDatabase(product: Product): any {
+    return { name: product.name, price: product.price };
+  }
+}</code></pre>
+                </div>
+
+                <h4>3.4 Dispensables</h4>
+                
+                <div class="example-box">
+                    <strong>Dead Code & Duplicate Code</strong>
+                    <pre><code>// ❌ BAD: Dead code
+function processOrder(order: Order): void {
+  // This function is never called
+  const oldTotal = calculateOldWay(order);  // Dead code
+  
+  const total = calculateTotal(order);
+  // ... rest of processing
+}
+
+function calculateOldWay(order: Order): number {
+  // Old implementation never used
+  return 0;
+}
+
+// ❌ BAD: Duplicate code
+function validateUserEmail(email: string): boolean {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+}
+
+function validateAdminEmail(email: string): boolean {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;  // Duplicate!
+  return emailRegex.test(email);
+}
+
+// ✅ GOOD: Remove dead code, extract duplicates
+function validateEmail(email: string): boolean {
+  const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return EMAIL_REGEX.test(email);
+}
+
+function validateUserEmail(email: string): boolean {
+  return validateEmail(email);
+}
+
+function validateAdminEmail(email: string): boolean {
+  return validateEmail(email) && email.endsWith('@company.com');
+}</code></pre>
+                </div>
+
+                <h4>3.5 Couplers</h4>
+                
+                <div class="example-box">
+                    <strong>Feature Envy</strong>
+                    <pre><code>// ❌ BAD: Method uses more features of another class
+class Order {
+  items: OrderItem[];
+  
+  calculateTotal(): number {
+    let total = 0;
+    for (const item of this.items) {
+      // Feature envy: using lots of Product properties
+      total += item.product.price * item.quantity;
+      total -= item.product.discount * item.quantity;
+      total += item.product.tax * item.quantity;
+    }
+    return total;
+  }
+}
+
+// ✅ GOOD: Move behavior to where the data is
+class Product {
+  price: number;
+  discount: number;
+  tax: number;
+  
+  getEffectivePrice(): number {
+    return this.price - this.discount + this.tax;
+  }
+}
+
+class OrderItem {
+  product: Product;
+  quantity: number;
+  
+  getTotal(): number {
+    return this.product.getEffectivePrice() * this.quantity;
+  }
+}
+
+class Order {
+  items: OrderItem[];
+  
+  calculateTotal(): number {
+    return this.items.reduce((sum, item) => sum + item.getTotal(), 0);
+  }
+}</code></pre>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>4. Refactoring Techniques</h3>
+                
+                <p>Refactoring is the process of restructuring code without changing its external behavior.</p>
+
+                <h4>4.1 Extract Method</h4>
+                
+                <div class="example-box">
+                    <pre><code>// Before
+function printOwing(invoice: Invoice): void {
+  console.log("***********************");
+  console.log("**** Customer Owes ****");
+  console.log("***********************");
+  
+  let outstanding = 0;
+  for (const order of invoice.orders) {
+    outstanding += order.amount;
+  }
+  
+  console.log(`Name: ${invoice.customer}`);
+  console.log(`Amount: ${outstanding}`);
+}
+
+// After: Extract methods
+function printOwing(invoice: Invoice): void {
+  printBanner();
+  const outstanding = calculateOutstanding(invoice);
+  printDetails(invoice, outstanding);
+}
+
+function printBanner(): void {
+  console.log("***********************");
+  console.log("**** Customer Owes ****");
+  console.log("***********************");
+}
+
+function calculateOutstanding(invoice: Invoice): number {
+  return invoice.orders.reduce((sum, order) => sum + order.amount, 0);
+}
+
+function printDetails(invoice: Invoice, outstanding: number): void {
+  console.log(`Name: ${invoice.customer}`);
+  console.log(`Amount: ${outstanding}`);
+}</code></pre>
+                </div>
+
+                <h4>4.2 Replace Conditional with Polymorphism</h4>
+                
+                <div class="example-box">
+                    <pre><code>// Before
+class Bird {
+  type: string;
+  
+  getSpeed(): number {
+    switch (this.type) {
+      case 'European':
+        return 35;
+      case 'African':
+        return 40;
+      case 'Norwegian':
+        return 24;
+      default:
+        throw new Error('Unknown bird');
+    }
+  }
+}
+
+// After
+abstract class Bird {
+  abstract getSpeed(): number;
+}
+
+class EuropeanBird extends Bird {
+  getSpeed(): number {
+    return 35;
+  }
+}
+
+class AfricanBird extends Bird {
+  getSpeed(): number {
+    return 40;
+  }
+}
+
+class NorwegianBird extends Bird {
+  getSpeed(): number {
+    return 24;
+  }
+}</code></pre>
+                </div>
+
+                <h4>4.3 Replace Magic Number with Constant</h4>
+                
+                <div class="example-box">
+                    <pre><code>// Before
+function calculateCircumference(radius: number): number {
+  return 2 * 3.14159 * radius;
+}
+
+function calculateArea(radius: number): number {
+  return 3.14159 * radius * radius;
+}
+
+// After
+const PI = 3.14159;
+
+function calculateCircumference(radius: number): number {
+  return 2 * PI * radius;
+}
+
+function calculateArea(radius: number): number {
+  return PI * radius * radius;
+}</code></pre>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>5. Static Analysis Tools</h3>
+                
+                <h4>5.1 ESLint (JavaScript/TypeScript)</h4>
+                
+                <div class="example-box">
+                    <strong>ESLint Configuration</strong>
+                    <pre><code>// .eslintrc.json
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "rules": {
+    "no-console": "warn",
+    "no-unused-vars": "error",
+    "prefer-const": "error",
+    "eqeqeq": "error",
+    "no-var": "error",
+    "max-len": ["warn", { "code": 100 }],
+    "complexity": ["error", 10],
+    "@typescript-eslint/explicit-function-return-type": "warn"
+  }
+}</code></pre>
+                </div>
+
+                <h4>5.2 SonarQube</h4>
+                
+                <div class="info-box">
+                    <strong>SonarQube Metrics:</strong>
+                    <ul>
+                        <li><strong>Bugs:</strong> Code that will likely cause errors</li>
+                        <li><strong>Vulnerabilities:</strong> Security issues</li>
+                        <li><strong>Code Smells:</strong> Maintainability issues</li>
+                        <li><strong>Coverage:</strong> Percentage of code covered by tests</li>
+                        <li><strong>Duplications:</strong> Duplicated code blocks</li>
+                        <li><strong>Complexity:</strong> Cyclomatic complexity</li>
+                    </ul>
+                </div>
+
+                <h4>5.3 Prettier (Code Formatter)</h4>
+                
+                <div class="example-box">
+                    <strong>Prettier Configuration</strong>
+                    <pre><code>// .prettierrc
+{
+  "semi": true,
+  "trailingComma": "es5",
+  "singleQuote": true,
+  "printWidth": 100,
+  "tabWidth": 2,
+  "arrowParens": "avoid"
+}</code></pre>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>6. Code Metrics</h3>
+                
+                <h4>6.1 Cyclomatic Complexity</h4>
+                
+                <p>Measures the number of linearly independent paths through code. Lower is better.</p>
+
+                <div class="example-box">
+                    <strong>Cyclomatic Complexity Example</strong>
+                    <pre><code>// High complexity (7)
+function processPayment(amount: number, type: string, country: string): boolean {
+  if (amount <= 0) return false;  // +1
+  
+  if (type === 'credit') {  // +1
+    if (country === 'US') {  // +1
+      return processCreditUS(amount);
+    } else if (country === 'EU') {  // +1
+      return processCreditEU(amount);
+    }
+  } else if (type === 'debit') {  // +1
+    if (country === 'US') {  // +1
+      return processDebitUS(amount);
+    } else if (country === 'EU') {  // +1
+      return processDebitEU(amount);
+    }
+  }
+  
+  return false;
+}
+
+// Lower complexity using polymorphism
+interface PaymentProcessor {
+  process(amount: number): boolean;
+}
+
+class CreditUSProcessor implements PaymentProcessor {
+  process(amount: number): boolean {
+    if (amount <= 0) return false;
+    return processCreditUS(amount);
+  }
+}
+
+class PaymentService {
+  constructor(private processor: PaymentProcessor) {}
+  
+  processPayment(amount: number): boolean {  // Complexity: 1
+    return this.processor.process(amount);
+  }
+}</code></pre>
+                </div>
+
+                <p><strong>Complexity Guidelines:</strong></p>
+                <ul>
+                    <li>1-10: Simple, low risk</li>
+                    <li>11-20: Moderate, medium risk</li>
+                    <li>21-50: Complex, high risk</li>
+                    <li>50+: Very complex, very high risk</li>
+                </ul>
+
+                <h4>6.2 Code Coverage</h4>
+                
+                <p>Percentage of code executed by tests. Aim for 80%+ coverage.</p>
+
+                <div class="example-box">
+                    <pre><code>// Coverage metrics
+Lines: 85% (850/1000)
+Branches: 78% (78/100)
+Functions: 92% (46/50)
+Statements: 85% (850/1000)</code></pre>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>7. Code Review Best Practices</h3>
+                
+                <div class="info-box">
+                    <strong>What to Look For:</strong>
+                    <ul>
+                        <li><strong>Correctness:</strong> Does code work as intended?</li>
+                        <li><strong>Design:</strong> Is code well-structured?</li>
+                        <li><strong>Readability:</strong> Is code easy to understand?</li>
+                        <li><strong>Tests:</strong> Are there adequate tests?</li>
+                        <li><strong>Security:</strong> Any vulnerabilities?</li>
+                        <li><strong>Performance:</strong> Any obvious bottlenecks?</li>
+                        <li><strong>Documentation:</strong> Are complex parts documented?</li>
+                    </ul>
+                </div>
+
+                <div class="example-box">
+                    <strong>Code Review Checklist</strong>
+                    <pre><code>✅ Code Review Checklist
+
+Functionality:
+[ ] Code solves the problem
+[ ] Edge cases handled
+[ ] Error handling present
+[ ] No obvious bugs
+
+Design:
+[ ] Follows SOLID principles
+[ ] No code smells
+[ ] Appropriate design patterns used
+[ ] No over-engineering
+
+Readability:
+[ ] Meaningful variable/function names
+[ ] Consistent formatting
+[ ] No magic numbers
+[ ] Appropriate comments
+
+Testing:
+[ ] Unit tests present
+[ ] Tests cover edge cases
+[ ] Tests are readable
+[ ] All tests pass
+
+Security:
+[ ] Input validation
+[ ] No SQL injection vulnerabilities
+[ ] Sensitive data encrypted
+[ ] Authentication/authorization correct
+
+Performance:
+[ ] No obvious inefficiencies
+[ ] Appropriate data structures
+[ ] Database queries optimized
+[ ] Caching where appropriate</code></pre>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>8. Practice Problems</h3>
+                
+                <div class="practice-problems">
+                    <div class="problem">
+                        <h4>Problem 1: Refactor This Code</h4>
+                        <p>Identify code smells and refactor:</p>
+                        <pre><code>function calc(d: any): number {
+  let t = 0;
+  for (let i = 0; i < d.length; i++) {
+    if (d[i].t === 1) {
+      t += d[i].p * d[i].q;
+    } else if (d[i].t === 2) {
+      t += d[i].p * d[i].q * 0.9;
+    } else {
+      t += d[i].p * d[i].q * 0.8;
+    }
+  }
+  if (t > 100) {
+    t = t * 0.95;
+  }
+  return t;
+}</code></pre>
+                        
+                        <details>
+                            <summary>Show Solution</summary>
+                            <pre><code>// Issues identified:
+// 1. Unclear names (d, t, i, p, q)
+// 2. Magic numbers (1, 2, 0.9, 0.8, 100, 0.95)
+// 3. Multiple responsibilities
+// 4. Type safety issues (any)
+
+// Refactored solution:
+enum ProductType {
+  REGULAR = 1,
+  PREMIUM = 2,
+  BULK = 3
+}
+
+interface OrderItem {
+  type: ProductType;
+  price: number;
+  quantity: number;
+}
+
+const DISCOUNT_RATES = {
+  [ProductType.REGULAR]: 0,
+  [ProductType.PREMIUM]: 0.1,
+  [ProductType.BULK]: 0.2
+};
+
+const BULK_ORDER_THRESHOLD = 100;
+const BULK_ORDER_DISCOUNT = 0.05;
+
+function calculateItemTotal(item: OrderItem): number {
+  const subtotal = item.price * item.quantity;
+  const discountRate = DISCOUNT_RATES[item.type];
+  return subtotal * (1 - discountRate);
+}
+
+function applyBulkDiscount(total: number): number {
+  if (total > BULK_ORDER_THRESHOLD) {
+    return total * (1 - BULK_ORDER_DISCOUNT);
+  }
+  return total;
+}
+
+function calculateOrderTotal(items: OrderItem[]): number {
+  const subtotal = items.reduce(
+    (sum, item) => sum + calculateItemTotal(item),
+    0
+  );
+  return applyBulkDiscount(subtotal);
+}</code></pre>
+                        </details>
+                    </div>
+                </div>
+            </div>
+
+            <div class="key-takeaways">
+                <h3>Key Takeaways</h3>
+                <ul>
+                    <li><strong>Clean Code:</strong> Meaningful names, small functions, minimal comments, consistent formatting</li>
+                    <li><strong>Code Smells:</strong> Indicators of deeper problems - long methods, large classes, duplicated code</li>
+                    <li><strong>Refactoring:</strong> Improve structure without changing behavior - extract methods, use polymorphism</li>
+                    <li><strong>Static Analysis:</strong> ESLint, SonarQube, Prettier catch issues automatically</li>
+                    <li><strong>Metrics:</strong> Cyclomatic complexity < 10, code coverage > 80%</li>
+                    <li><strong>Code Reviews:</strong> Essential for maintaining quality - check correctness, design, readability</li>
+                    <li>Quality code saves time and money in long run</li>
+                    <li>Make refactoring a habit, not an event</li>
+                </ul>
+            </div>
+
+            <div class="lesson-navigation">
+                <a href="08-solid-principles.html" class="nav-btn">← Previous: SOLID Principles</a>
+                <a href="10-testing.html" class="nav-btn">Next: Testing Strategies →</a>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../js/course.js"></script>
+</body>
+</html>

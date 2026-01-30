@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 10: Control Systems - Engineering Academy</title>
+    <link rel="stylesheet" href="../../../css/styles.css">
+    <link rel="stylesheet" href="../../../css/course-styles/course.css">
+</head>
+<body>
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <h1><a href="../../../index.html" style="color: inherit; text-decoration: none;">🎓 Engineering Academy</a></h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../index.html">Course Overview</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section class="course-header">
+        <div class="container">
+            <h1>⚡ Electrical Engineering</h1>
+            <p>Lesson 10: Control Systems</p>
+        </div>
+    </section>
+
+    <div class="course-container">
+        <aside class="course-sidebar">
+            <h3>Course Modules</h3>
+            <ul class="lesson-list">
+                <li><a href="../index.html"><span class="lesson-number">📚</span>Course Overview</a></li>
+                <li><a href="01-fundamentals.html" class="completed"><span class="lesson-number">1</span>EE Fundamentals</a></li>
+                <li><a href="02-dc-circuits.html" class="completed"><span class="lesson-number">2</span>DC Circuit Analysis</a></li>
+                <li><a href="03-ac-circuits.html" class="completed"><span class="lesson-number">3</span>AC Circuits</a></li>
+                <li><a href="04-semiconductors.html" class="completed"><span class="lesson-number">4</span>Semiconductors</a></li>
+                <li><a href="05-diodes-transistors.html" class="completed"><span class="lesson-number">5</span>Diodes & Transistors</a></li>
+                <li><a href="06-operational-amplifiers.html" class="completed"><span class="lesson-number">6</span>Op-Amps</a></li>
+                <li><a href="07-digital-electronics.html" class="completed"><span class="lesson-number">7</span>Digital Electronics</a></li>
+                <li><a href="08-power-systems.html" class="completed"><span class="lesson-number">8</span>Power Systems</a></li>
+                <li><a href="09-transformers-motors.html" class="completed"><span class="lesson-number">9</span>Transformers & Motors</a></li>
+                <li><a href="10-control-systems.html" class="active"><span class="lesson-number">10</span>Control Systems</a></li>
+                <li><a href="11-signals-systems.html"><span class="lesson-number">11</span>Signals & Systems</a></li>
+                <li><a href="12-safety-standards.html"><span class="lesson-number">12</span>Safety & Standards</a></li>
+            </ul>
+        </aside>
+
+        <main class="course-content">
+            <div class="lesson-header">
+                <h2>Lesson 10: Control Systems</h2>
+                <div class="lesson-meta">
+                    <span>📖 105 min read</span>
+                    <span>📊 Advanced</span>
+                </div>
+            </div>
+
+            <div class="lesson-content">
+                <h3>Introduction to Control Systems</h3>
+                <p>
+                    Control systems regulate the behavior of devices and systems to achieve desired outputs. From 
+                    simple thermostats to complex aircraft autopilots, control theory provides the mathematical 
+                    framework for analyzing and designing these systems.
+                </p>
+
+                <div class="info-box note">
+                    <h4>📌 What You'll Learn</h4>
+                    <ul>
+                        <li>Open-loop vs. closed-loop control systems</li>
+                        <li>Transfer functions and block diagrams</li>
+                        <li>First and second-order system responses</li>
+                        <li>PID controller design and tuning</li>
+                        <li>Stability analysis (Routh-Hurwitz criterion)</li>
+                        <li>Frequency response (Bode plots)</li>
+                        <li>Root locus method</li>
+                        <li>State-space representation (introduction)</li>
+                    </ul>
+                </div>
+
+                <h3>Open-Loop vs. Closed-Loop Systems</h3>
+
+                <h4>Open-Loop Control</h4>
+                <div class="code-block" data-language="text">
+<code>Open-Loop System:
+  No feedback, no error correction
+  
+  Block Diagram:
+  
+    Input → Controller → Plant → Output
+    r(t)                         y(t)
+  
+  Characteristics:
+    • Simple, cheap
+    • No measurement needed
+    • Output depends on calibration
+    • Cannot compensate for disturbances
+    • Cannot correct for system changes
+  
+  Examples:
+    - Toaster (time-based, no temp feedback)
+    - Washing machine (timed cycles)
+    - Stepper motor (no position feedback)
+    - Manual volume control
+  
+  Advantages:
+    ✓ Simple design
+    ✓ Low cost
+    ✓ Easy maintenance
+    ✓ No stability issues
+  
+  Disadvantages:
+    ✗ Sensitive to disturbances
+    ✗ Requires accurate calibration
+    ✗ No self-correction
+    ✗ Parameter drift affects performance
+</code>
+                </div>
+
+                <h4>Closed-Loop (Feedback) Control</h4>
+                <div class="code-block" data-language="text">
+<code>Closed-Loop System:
+  Uses feedback to correct errors
+  
+  Block Diagram:
+  
+    r(t) ┌─────┐      ┌────────┐      y(t)
+    ────→│  +  │─e(t)→│Controller│─u(t)→Plant──┬──→
+     -  │     │      │          │             │
+     ↖  └─────┘      └──────────┘             │
+      │                                       │
+      └──────────────Sensor/Feedback──────────┘
+                       (measurement)
+  
+  Components:
+    r(t) = reference input (setpoint, desired value)
+    e(t) = error = r(t) - y(t)
+    u(t) = control signal (actuator input)
+    y(t) = output (controlled variable)
+  
+  Characteristics:
+    • Automatic error correction
+    • Compensates for disturbances
+    • Reduces sensitivity to parameter changes
+    • Can be unstable if not designed properly
+  
+  Examples:
+    - Thermostat (home heating/cooling)
+    - Cruise control (vehicle speed)
+    - Autopilot (aircraft)
+    - Servo motors (robotics)
+    - Process control (temperature, pressure, flow)
+  
+  Advantages:
+    ✓ Accurate output
+    ✓ Disturbance rejection
+    ✓ Reduced sensitivity
+    ✓ Automatic compensation
+  
+  Disadvantages:
+    ✗ More complex
+    ✗ Higher cost (sensors needed)
+    ✗ Potential stability problems
+    ✗ Requires careful design
+
+Unity Feedback:
+  H(s) = 1 (direct measurement, most common)
+  e(t) = r(t) - y(t)
+</code>
+                </div>
+
+                <h4>Control System Examples</h4>
+                <div class="code-block" data-language="text">
+<code>Example 1: Room Temperature Control
+
+Open-Loop:
+  Set heater to "medium"
+  No thermometer
+  Temperature varies with outdoor temp, door opening, etc.
+
+Closed-Loop (Thermostat):
+  Set desired temp: 72°F
+  Thermometer measures actual temp
+  Error = Setpoint - Actual
+  If error > 0: Turn heater ON
+  If error < 0: Turn heater OFF
+  Result: Maintains ~72°F despite disturbances
+
+Example 2: Motor Speed Control
+
+Open-Loop:
+  Apply fixed voltage
+  Speed varies with load torque
+  No speed sensor
+
+Closed-Loop:
+  Set desired speed: 1800 RPM
+  Encoder measures actual speed
+  Controller adjusts voltage to maintain 1800 RPM
+  Compensates for load changes automatically
+
+Example 3: Water Tank Level
+
+Open-Loop:
+  Open valve halfway
+  Level depends on inflow/outflow
+  Overflow or run dry possible
+
+Closed-Loop:
+  Setpoint: 75% full
+  Level sensor (float or ultrasonic)
+  Controller modulates valve
+  Maintains constant level despite flow variations
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Transfer Functions</h3>
+
+                <h4>Laplace Transform Basics</h4>
+                <div class="code-block" data-language="text">
+<code>Transfer Function:
+  G(s) = Y(s)/U(s)  (output/input in Laplace domain)
+  
+  Assumes zero initial conditions
+  
+  s = complex frequency (σ + jω)
+  
+  Common Laplace Transforms:
+  ┌───────────────┬──────────────────┐
+  │  Time Domain  │  Laplace Domain  │
+  ├───────────────┼──────────────────┤
+  │  δ(t)         │  1               │
+  │  u(t)         │  1/s             │
+  │  t            │  1/s²            │
+  │  e^(-at)      │  1/(s+a)         │
+  │  sin(ωt)      │  ω/(s²+ω²)       │
+  │  cos(ωt)      │  s/(s²+ω²)       │
+  │  df/dt        │  sF(s) - f(0)    │
+  │  ∫f(t)dt      │  F(s)/s          │
+  └───────────────┴──────────────────┘
+
+Properties:
+  Linearity: L{af(t) + bg(t)} = aF(s) + bG(s)
+  Time shift: L{f(t-a)u(t-a)} = e^(-as)F(s)
+  Differentiation: L{df/dt} = sF(s) - f(0)
+  Integration: L{∫f(t)dt} = F(s)/s
+  
+  Final Value Theorem:
+    lim f(t) = lim sF(s)  (if limit exists)
+    t→∞      s→0
+
+Example Differential Equation to Transfer Function:
+  
+  System: τ(dy/dt) + y = Ku  (first-order)
+  
+  Laplace: τ[sY(s) - y(0)] + Y(s) = KU(s)
+  
+  Zero initial conditions: y(0) = 0
+    τsY(s) + Y(s) = KU(s)
+    Y(s)(τs + 1) = KU(s)
+  
+  Transfer Function:
+    G(s) = Y(s)/U(s) = K/(τs + 1)
+</code>
+                </div>
+
+                <h4>First-Order Systems</h4>
+                <div class="code-block" data-language="text">
+<code>Standard First-Order Transfer Function:
+  G(s) = K/(τs + 1)
+  
+  Where:
+    K = DC gain (steady-state gain)
+    τ = time constant (seconds)
+
+Time Constant (τ):
+  Time to reach 63.2% of final value
+  
+  Response to step input:
+    y(t) = K(1 - e^(-t/τ))u(t)
+  
+  Time to reach various percentages:
+    63.2% → t = τ
+    86.5% → t = 2τ
+    95.0% → t = 3τ
+    98.2% → t = 4τ
+    99.3% → t = 5τ (considered "settled")
+
+Performance Metrics:
+  Rise time (10% to 90%): t_r ≈ 2.2τ
+  Settling time (to 2%): t_s = 4τ
+  
+Examples:
+  RC circuit: τ = RC
+  RL circuit: τ = L/R
+  Thermal system: τ = RC_thermal
+  Motor: τ = J/B (inertia/damping)
+
+Example:
+  Thermometer in water bath
+  τ = 5 seconds
+  K = 1 (perfect calibration)
+  
+  G(s) = 1/(5s + 1)
+  
+  If water temp steps from 20°C → 100°C:
+    After 5s: reads 70.6°C (63.2% of 80°C change)
+    After 25s: reads 99.3°C (essentially settled)
+</code>
+                </div>
+
+                <h4>Second-Order Systems</h4>
+                <div class="code-block" data-language="text">
+<code>Standard Second-Order Transfer Function:
+  G(s) = ω_n² / (s² + 2ζω_n s + ω_n²)
+  
+  Where:
+    ω_n = natural frequency (rad/s)
+    ζ = damping ratio (dimensionless)
+
+Damping Ratio (ζ) determines behavior:
+
+1. Underdamped (0 < ζ < 1):
+   - Oscillatory response
+   - Overshoots final value
+   - Common in mechanical systems
+   - Most 2nd-order systems fall here
+
+2. Critically Damped (ζ = 1):
+   - Fastest rise with no overshoot
+   - Ideal for many applications
+   - Two equal real poles
+
+3. Overdamped (ζ > 1):
+   - Slow, sluggish response
+   - No overshoot
+   - Two distinct real poles
+
+4. Undamped (ζ = 0):
+   - Continuous oscillation
+   - Never settles
+   - Unstable for practical use
+
+Step Response (Underdamped):
+  Overshoot: M_p = e^(-πζ/√(1-ζ²)) × 100%
+  
+  Peak time: t_p = π/(ω_n√(1-ζ²))
+  
+  Rise time: t_r ≈ (1.8/ω_n)  (approx)
+  
+  Settling time: t_s = 4/(ζω_n)  (2% criterion)
+
+Example Specifications:
+  ζ = 0.1: M_p = 73% (very oscillatory)
+  ζ = 0.4: M_p = 25% (moderate)
+  ζ = 0.7: M_p = 5% (well-damped)
+  ζ = 1.0: M_p = 0% (critically damped)
+
+Poles:
+  s = -ζω_n ± jω_n√(1-ζ²)
+  
+  Real part: σ = -ζω_n (determines decay rate)
+  Imaginary part: ω_d = ω_n√(1-ζ²) (damped frequency)
+</code>
+                </div>
+
+                <h4>Example 1: Second-Order System Analysis</h4>
+                <div class="code-block" data-language="text">
+<code>Problem:
+  G(s) = 100/(s² + 8s + 100)
+  
+Find: ω_n, ζ, overshoot, settling time
+
+Solution:
+  Step 1: Identify parameters
+    Standard form: s² + 2ζω_n s + ω_n²
+    Given: s² + 8s + 100
+    
+    ω_n² = 100 → ω_n = 10 rad/s
+    2ζω_n = 8 → 2ζ(10) = 8 → ζ = 0.4
+  
+  Step 2: Damping type
+    ζ = 0.4 < 1 → Underdamped (oscillatory)
+  
+  Step 3: Percent overshoot
+    M_p = e^(-πζ/√(1-ζ²))
+    
+    √(1-ζ²) = √(1-0.16) = √0.84 = 0.917
+    
+    M_p = e^(-π×0.4/0.917)
+    M_p = e^(-1.372)
+    M_p = 0.254 = 25.4%
+  
+  Step 4: Peak time
+    t_p = π/(ω_n√(1-ζ²))
+    t_p = π/(10 × 0.917)
+    t_p = 0.342 seconds
+  
+  Step 5: Settling time (2%)
+    t_s = 4/(ζω_n)
+    t_s = 4/(0.4 × 10)
+    t_s = 1.0 second
+  
+  Interpretation:
+    Fast response (ω_n = 10)
+    Moderate overshoot (25.4%)
+    Settles in 1 second
+    Suitable for many control applications
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>PID Controllers</h3>
+
+                <h4>PID Control Fundamentals</h4>
+                <div class="code-block" data-language="text">
+<code>PID = Proportional + Integral + Derivative
+
+Control Law (time domain):
+  u(t) = K_p e(t) + K_i ∫e(t)dt + K_d de(t)/dt
+  
+Transfer Function:
+  C(s) = K_p + K_i/s + K_d s
+  
+  or
+  
+  C(s) = K_p(1 + 1/(T_i s) + T_d s)
+  
+  Where:
+    K_p = proportional gain
+    K_i = integral gain = K_p/T_i
+    K_d = derivative gain = K_p T_d
+    T_i = integral time
+    T_d = derivative time
+
+Three Components Explained:
+
+1. PROPORTIONAL (P):
+   u_p(t) = K_p × e(t)
+   
+   Effect:
+     • Immediate response to error
+     • Larger K_p → faster response
+     • But: Steady-state error remains!
+     • Too large K_p → oscillation/instability
+   
+   Used for: Fast initial correction
+
+2. INTEGRAL (I):
+   u_i(t) = K_i ∫e(t)dt
+   
+   Effect:
+     • Eliminates steady-state error
+     • Accumulates error over time
+     • Essential for zero steady-state error
+     • Too large K_i → slow, oscillatory
+     • Can cause "integral windup"
+   
+   Used for: Eliminating offset
+
+3. DERIVATIVE (D):
+   u_d(t) = K_d de(t)/dt
+   
+   Effect:
+     • Predicts future error (rate of change)
+     • Provides damping (reduces overshoot)
+     • Improves stability
+     • Sensitive to noise!
+     • Often filtered in practice
+   
+   Used for: Damping, stability
+
+Common Combinations:
+
+P (Proportional only):
+  Simple, fast
+  Has steady-state error
+  Used when error acceptable
+
+PI (Proportional-Integral):
+  Most common in industry
+  No steady-state error
+  Good for slow processes
+  Examples: Temperature, level, flow control
+
+PD (Proportional-Derivative):
+  Good transient response
+  Has steady-state error
+  Used with integrating plants
+
+PID (All three):
+  Best performance
+  Complex tuning
+  Used for demanding applications
+</code>
+                </div>
+
+                <h4>PID Tuning Methods</h4>
+                <div class="code-block" data-language="text">
+<code>Ziegler-Nichols Closed-Loop Method:
+
+Step 1: Set K_i = 0, K_d = 0 (P only)
+Step 2: Increase K_p until sustained oscillation
+Step 3: Note K_u (ultimate gain) and P_u (period)
+Step 4: Calculate gains:
+
+┌────────────┬──────────┬──────────┬──────────┐
+│ Controller │   K_p    │   T_i    │   T_d    │
+├────────────┼──────────┼──────────┼──────────┤
+│  P         │  0.5K_u  │    -     │    -     │
+│  PI        │  0.45K_u │  P_u/1.2 │    -     │
+│  PID       │  0.6K_u  │  P_u/2   │  P_u/8   │
+└────────────┴──────────┴──────────┴──────────┘
+
+Then: K_i = K_p/T_i, K_d = K_p × T_d
+
+Ziegler-Nichols Open-Loop Method (Process Reaction):
+
+Step 1: Apply step input to open-loop system
+Step 2: Record S-shaped response curve
+Step 3: Draw tangent at inflection point
+Step 4: Measure L (delay) and T (time constant)
+Step 5: Calculate K = ΔY/ΔU (process gain)
+Step 6: Use table:
+
+┌────────────┬──────────┬──────────┬──────────┐
+│ Controller │   K_p    │   T_i    │   T_d    │
+├────────────┼──────────┼──────────┼──────────┤
+│  P         │  T/(KL)  │    -     │    -     │
+│  PI        │  0.9T/KL │   3.3L   │    -     │
+│  PID       │  1.2T/KL │   2L     │   0.5L   │
+└────────────┴──────────┴──────────┴──────────┘
+
+Manual Tuning (Trial and Error):
+
+Step 1: Set all gains to zero
+Step 2: Increase K_p until oscillation, then reduce by 50%
+Step 3: Increase K_i to eliminate steady-state error
+         Stop if too oscillatory
+Step 4: Increase K_d to reduce overshoot
+         Stop if too noisy
+Step 5: Fine-tune for desired response
+
+Effects of Increasing Gains:
+┌──────────┬────────┬──────────┬──────────┬───────────┐
+│   Gain   │  Rise  │ Overshoot│ Settling │  SS Error │
+│  Increase│  Time  │          │   Time   │           │
+├──────────┼────────┼──────────┼──────────┼───────────┤
+│   K_p    │ Decrease│ Increase │ Small ±  │ Decrease  │
+│   K_i    │ Decrease│ Increase │ Increase │ Eliminate │
+│   K_d    │ Small ± │ Decrease │ Decrease │ No effect │
+└──────────┴────────┴──────────┴──────────┴───────────┘
+
+Modern Tuning Methods:
+  - Auto-tuning (built into many PLCs)
+  - Model-based (IMC, Lambda tuning)
+  - Optimization algorithms
+  - Machine learning
+</code>
+                </div>
+
+                <h4>Example 2: PID Design</h4>
+                <div class="code-block" data-language="text">
+<code>Problem:
+  Plant: G(s) = 1/(s(s+2))
+  Using Ziegler-Nichols, K_u = 6, P_u = 3.14s
+  
+Design: PID controller gains
+
+Solution:
+  Step 1: Ziegler-Nichols PID formulas
+    K_p = 0.6 K_u
+    T_i = P_u / 2
+    T_d = P_u / 8
+  
+  Step 2: Calculate K_p
+    K_p = 0.6 × 6 = 3.6
+  
+  Step 3: Calculate T_i
+    T_i = 3.14 / 2 = 1.57 s
+  
+  Step 4: Calculate K_i
+    K_i = K_p / T_i = 3.6 / 1.57 = 2.29
+  
+  Step 5: Calculate T_d
+    T_d = 3.14 / 8 = 0.393 s
+  
+  Step 6: Calculate K_d
+    K_d = K_p × T_d = 3.6 × 0.393 = 1.41
+  
+  Final PID Controller:
+    C(s) = 3.6 + 2.29/s + 1.41s
+    
+    or
+    
+    u(t) = 3.6e(t) + 2.29∫e(t)dt + 1.41(de/dt)
+  
+  This is initial tuning - adjust as needed!
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Stability Analysis</h3>
+
+                <h4>Stability Concepts</h4>
+                <div class="code-block" data-language="text">
+<code>Stability Definitions:
+
+1. BIBO Stability (Bounded Input → Bounded Output):
+   If input is bounded, output must be bounded
+   
+   Pole Requirement:
+     All poles must have negative real parts
+     (left half of s-plane)
+
+2. Asymptotic Stability:
+   System returns to equilibrium after disturbance
+   
+   lim y(t) = 0  (for zero input)
+   t→∞
+
+3. Marginal Stability:
+   Poles on imaginary axis (sustained oscillation)
+   Not desired in practice
+
+4. Unstable:
+   At least one pole in right half-plane
+   Output grows without bound
+
+Pole Locations and Stability:
+
+  s-plane (jω vertical, σ horizontal):
+  
+      jω
+       │
+    ×  │  ○        × = stable (Re{s} < 0)
+       │           ○ = unstable (Re{s} > 0)
+  ─────┼─────σ     □ = marginally stable (Re{s} = 0)
+    ×  │  ○
+    □  │
+       
+  Stability: All poles in left half-plane (LHP)
+
+Characteristic Equation:
+  Denominator of closed-loop transfer function = 0
+  
+  For: T(s) = N(s)/D(s)
+  
+  Characteristic equation: D(s) = 0
+  
+  Roots of D(s) = poles of system
+</code>
+                </div>
+
+                <h4>Routh-Hurwitz Criterion</h4>
+                <div class="code-block" data-language="text">
+<code>Routh-Hurwitz Stability Test:
+  Determines stability without finding poles
+  Uses characteristic equation coefficients
+
+Procedure:
+
+Given characteristic equation:
+  a_n s^n + a_(n-1) s^(n-1) + ... + a_1 s + a_0 = 0
+
+Step 1: Check necessary conditions
+  - All coefficients present (no zero coefficients)
+  - All coefficients same sign (all positive or all negative)
+  
+  If either fails → unstable
+
+Step 2: Form Routh array
+
+  s^n    │ a_n      a_(n-2)   a_(n-4)  ...
+  s^(n-1)│ a_(n-1)  a_(n-3)   a_(n-5)  ...
+  s^(n-2)│ b_1      b_2       b_3      ...
+  s^(n-3)│ c_1      c_2       c_3      ...
+  ...    │ ...
+  s^1    │ *
+  s^0    │ *
+
+  Where:
+    b_1 = (a_(n-1)×a_(n-2) - a_n×a_(n-3)) / a_(n-1)
+    b_2 = (a_(n-1)×a_(n-4) - a_n×a_(n-5)) / a_(n-1)
+    etc.
+
+Step 3: Stability criterion
+  Count sign changes in first column
+  
+  Number of sign changes = Number of RHP poles
+  
+  Stable ⟺ Zero sign changes (all first column same sign)
+
+Example: s³ + 3s² + 3s + 1 = 0
+
+  s³ │  1    3
+  s² │  3    1
+  s¹ │  (3×3-1×1)/3 = 8/3
+  s⁰ │  1
+
+  First column: [1, 3, 8/3, 1] - all positive
+  Zero sign changes → Stable!
+
+Example (Unstable): s³ + 2s² + s + 2 = 0
+
+  s³ │  1    1
+  s² │  2    2
+  s¹ │  (2×1-1×2)/2 = 0  (problem!)
+      Use small ε instead
+      → ε (assumed positive)
+  s⁰ │  2
+
+  First column: [1, 2, ε, 2]
+  When ε → 0+, no sign change to s¹
+  But: s¹ row being zero indicates special case
+  Auxiliary equation method needed
+  Result: 2 imaginary poles → Marginally stable
+</code>
+                </div>
+
+                <h4>Example 3: Routh-Hurwitz Stability</h4>
+                <div class="code-block" data-language="text">
+<code>Problem:
+  Closed-loop characteristic equation:
+  s⁴ + 3s³ + 3s² + 2s + K = 0
+  
+Find: Range of K for stability
+
+Solution:
+  Step 1: Routh array with K as parameter
+  
+  s⁴ │  1      3      K
+  s³ │  3      2
+  s² │  b₁     b₂
+  s¹ │  c₁
+  s⁰ │  K
+  
+  Step 2: Calculate b₁
+    b₁ = (3×3 - 1×2)/3 = (9-2)/3 = 7/3
+  
+  Step 3: Calculate b₂
+    b₂ = (3×K - 1×0)/3 = K
+  
+  s² │  7/3    K
+  
+  Step 4: Calculate c₁
+    c₁ = ((7/3)×2 - 3×K)/(7/3)
+    c₁ = (14/3 - 3K)/(7/3)
+    c₁ = (14 - 9K)/7
+  
+  Step 5: First column elements
+    [1, 3, 7/3, (14-9K)/7, K]
+  
+  Step 6: Stability conditions
+    All first column elements > 0:
+    
+    1 > 0 ✓
+    3 > 0 ✓
+    7/3 > 0 ✓
+    (14-9K)/7 > 0  →  14-9K > 0  →  K < 14/9 = 1.556
+    K > 0
+  
+  Result: Stable for 0 < K < 1.556
+  
+  At K = 1.556: Marginally stable (oscillates)
+  K > 1.556: Unstable
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Frequency Response</h3>
+
+                <h4>Bode Plots</h4>
+                <div class="code-block" data-language="text">
+<code>Frequency Response:
+  System's steady-state response to sinusoidal input
+  
+  Input: u(t) = A sin(ωt)
+  Output: y(t) = B sin(ωt + φ)
+  
+  Magnitude: M(ω) = B/A = |G(jω)|
+  Phase: φ(ω) = ∠G(jω)
+
+Bode Plot:
+  Two plots vs. frequency (log scale):
+  1. Magnitude: 20log₁₀|G(jω)| in dB
+  2. Phase: ∠G(jω) in degrees
+
+Basic Building Blocks:
+
+1. Gain K:
+   |G|_dB = 20log(K)  (constant, horizontal line)
+   ∠G = 0° (if K > 0) or 180° (if K < 0)
+
+2. Pole at origin (1/s):
+   |G|_dB = -20log(ω)  (slope: -20 dB/decade)
+   ∠G = -90°
+
+3. Zero at origin (s):
+   |G|_dB = 20log(ω)  (slope: +20 dB/decade)
+   ∠G = +90°
+
+4. First-order pole (1/(τs+1)):
+   Low freq (ω << 1/τ): |G|_dB ≈ 0 dB, ∠G ≈ 0°
+   High freq (ω >> 1/τ): -20 dB/decade, ∠G → -90°
+   Corner freq ω_c = 1/τ: -3 dB, ∠G = -45°
+
+5. First-order zero (τs+1):
+   Low freq: |G|_dB ≈ 0 dB, ∠G ≈ 0°
+   High freq: +20 dB/decade, ∠G → +90°
+   Corner freq ω_c = 1/τ: +3 dB, ∠G = +45°
+
+6. Second-order pole (ω_n²/(s²+2ζω_n s+ω_n²)):
+   Low freq: 0 dB, 0°
+   High freq: -40 dB/decade, -180°
+   At ω_n: depends on ζ
+     ζ < 0.707: peak (resonance)
+     ζ = 0.707: -3 dB, -90°
+     ζ > 0.707: smooth rolloff
+
+Construction (Straight-Line Approximation):
+
+1. Write G(jω) in factored form
+2. Plot each factor separately
+3. Add magnitude plots (in dB)
+4. Add phase plots (in degrees)
+5. Identify corner frequencies
+6. Draw asymptotes between corners
+
+Example: G(s) = 10/((s+1)(s+10))
+
+  G(jω) = 10/((jω+1)(jω+10))
+  
+  Factors:
+    K = 10 → 20log(10) = 20 dB
+    1/(jω+1) → corner at ω = 1 rad/s
+    1/(jω+10) → corner at ω = 10 rad/s
+  
+  Magnitude plot:
+    ω < 1: 20 dB (flat)
+    1 < ω < 10: -20 dB/decade (one pole)
+    ω > 10: -40 dB/decade (two poles)
+  
+  Phase plot:
+    ω < 0.1: 0°
+    0.1 to 10: -45° (first pole)
+    1 to 100: -45° more (second pole)
+    ω > 100: -180°
+</code>
+                </div>
+
+                <h4>Gain and Phase Margins</h4>
+                <div class="code-block" data-language="text">
+<code>Stability Margins (for closed-loop system):
+
+1. Gain Margin (GM):
+   How much gain can increase before instability
+   
+   Measured at phase crossover frequency ω_pc
+   (where ∠G(jω) = -180°)
+   
+   GM_dB = -|G(jω_pc)|_dB
+   
+   GM > 0 dB → stable
+   GM = 0 dB → marginally stable
+   GM < 0 dB → unstable
+   
+   Typical spec: GM > 6 dB (factor of 2)
+
+2. Phase Margin (PM):
+   How much phase lag can increase before instability
+   
+   Measured at gain crossover frequency ω_gc
+   (where |G(jω_gc)| = 0 dB = 1)
+   
+   PM = 180° + ∠G(jω_gc)
+   
+   PM > 0° → stable
+   PM = 0° → marginally stable
+   PM < 0° → unstable
+   
+   Typical spec: PM > 45° (good damping)
+
+Relationship to Time Domain:
+
+  Phase Margin ≈ Damping Ratio
+  
+  PM ≈ 100 × ζ  (rough approximation)
+  
+  PM = 30° → ζ ≈ 0.3 (oscillatory, 37% overshoot)
+  PM = 45° → ζ ≈ 0.45 (moderate, 21% overshoot)
+  PM = 60° → ζ ≈ 0.6 (well-damped, 9% overshoot)
+
+Design Guidelines:
+  - GM ≥ 6 dB (factor of 2)
+  - PM ≥ 45° (up to 60° for critical apps)
+  - ω_gc high for fast response
+  - Smooth roll-off for robustness
+</code>
+                </div>
+
+                <h4>Root Locus Method</h4>
+                <div class="code-block" data-language="text">
+<code>Root Locus:
+  Plot of closed-loop poles as gain K varies
+  
+  Shows how pole locations change with feedback gain
+  Useful for selecting K for desired performance
+
+Basic Rules:
+
+1. Number of branches = number of poles
+2. Start at open-loop poles (K=0)
+3. End at open-loop zeros (K→∞)
+4. Symmetric about real axis
+5. Branches on real axis:
+   To the left of odd number of poles+zeros
+6. Asymptotes: θ = ±180°(2k+1)/(n-m)
+   where n = poles, m = zeros
+7. Breakaway/break-in points:
+   Solve dK/ds = 0
+
+Example: G(s) = K/(s(s+2)(s+4))
+
+  Poles: 0, -2, -4 (3 poles)
+  Zeros: none (0 zeros)
+  
+  3 branches:
+    Start at s = 0, -2, -4
+    End at infinity (3 asymptotes)
+  
+  Asymptotes: θ = ±60°, 180°
+  
+  Real axis locus:
+    Between 0 and -2
+    Left of -4
+  
+  As K increases:
+    Two poles move toward each other on real axis
+    Meet at breakaway point
+    Leave real axis as complex conjugate pair
+    Third pole moves left on real axis
+  
+  Design:
+    Select K for desired ζ
+    Draw line from origin at angle θ = cos⁻¹(ζ)
+    Intersection with locus gives pole location
+    Read K value at that point
+
+Software Tools:
+  MATLAB: rlocus(G)
+  Python: control.root_locus()
+  Manual sketching for understanding
+</code>
+                </div>
+
+                <h4>State-Space Introduction</h4>
+                <div class="code-block" data-language="text">
+<code>State-Space Representation:
+  Modern control approach
+  Handles MIMO (multiple input/output)
+  Basis for advanced control (optimal, robust)
+
+State Equations:
+  ẋ = Ax + Bu    (state equation)
+  y = Cx + Du    (output equation)
+  
+  Where:
+    x = state vector (n×1)
+    u = input vector (m×1)
+    y = output vector (p×1)
+    A = system matrix (n×n)
+    B = input matrix (n×m)
+    C = output matrix (p×n)
+    D = feedthrough matrix (p×m)
+
+Transfer Function Relationship:
+  G(s) = C(sI - A)⁻¹B + D
+  
+  Poles: eigenvalues of A
+  Zeros: transmission zeros
+
+Example: Second-Order System
+  ÿ + 3ẏ + 2y = u
+  
+  Define states:
+    x₁ = y
+    x₂ = ẏ
+  
+  State equations:
+    ẋ₁ = x₂
+    ẋ₂ = -2x₁ - 3x₂ + u
+  
+  Matrix form:
+    [ẋ₁]   [0   1 ] [x₁]   [0]
+    [ẋ₂] = [-2 -3 ] [x₂] + [1] u
+    
+    y = [1  0] [x₁]
+                [x₂]
+  
+  A = [0   1 ]    B = [0]
+      [-2 -3 ]        [1]
+  
+  C = [1  0]      D = 0
+
+Advantages:
+  - Natural for physical systems
+  - Handles multiple inputs/outputs
+  - Internal state visibility
+  - Foundation for modern control
+  - Computer implementation efficient
+
+Controllability:
+  Can all states be controlled by input?
+  
+  Test: rank([B  AB  A²B  ...]) = n
+
+Observability:
+  Can all states be determined from output?
+  
+  Test: rank([C  CA  CA²  ...]ᵀ) = n
+</code>
+                </div>
+
+                <div class="info-box tip">
+                    <h4>💡 Control System Design Summary</h4>
+                    <ol>
+                        <li>Model the plant: G(s) from differential equations or experiments</li>
+                        <li>Analyze open-loop: poles, zeros, stability, time response</li>
+                        <li>Design controller: PID, lead/lag, state feedback</li>
+                        <li>Check closed-loop stability: Routh, Bode, root locus</li>
+                        <li>Verify performance: overshoot, settling time, steady-state error</li>
+                        <li>Simulate before implementation: MATLAB/Simulink</li>
+                        <li>Implement and tune: real system often differs from model</li>
+                    </ol>
+                </div>
+
+                <div class="info-box important">
+                    <h4>🎯 Practice Problems</h4>
+                    <ol>
+                        <li>First-order system: G(s) = 5/(2s+1). Find DC gain, time constant, settling time</li>
+                        <li>Second-order: G(s) = 25/(s²+4s+25). Find ω_n, ζ, % overshoot, t_s</li>
+                        <li>PID tuning: K_u = 8, P_u = 4s. Find K_p, K_i, K_d using ZN method</li>
+                        <li>Routh: s⁴+2s³+3s²+4s+5=0. Stable?</li>
+                        <li>Stability range: 1+K×G(s)H(s)=0 gives s³+6s²+11s+6+K=0. Find K for stability</li>
+                        <li>Bode: Sketch magnitude plot for G(s)=100/((s+1)(s+100))</li>
+                    </ol>
+                </div>
+
+                <h3>Summary</h3>
+                <ul>
+                    <li>Closed-loop control uses feedback to automatically correct errors and reject disturbances</li>
+                    <li>Transfer functions G(s) represent system dynamics in Laplace domain (Y(s)/U(s))</li>
+                    <li>First-order: G(s) = K/(τs+1); time constant τ determines speed (t_s = 4τ)</li>
+                    <li>Second-order: damping ratio ζ determines overshoot; ω_n determines speed</li>
+                    <li>PID control: P (fast response), I (eliminates error), D (damping/stability)</li>
+                    <li>Ziegler-Nichols provides initial PID tuning; manual adjustment often needed</li>
+                    <li>Routh-Hurwitz tests stability without finding poles (count sign changes)</li>
+                    <li>Bode plots show frequency response; gain/phase margins indicate robustness</li>
+                    <li>Root locus shows closed-loop pole movement as gain K varies</li>
+                    <li>State-space representation is modern approach for MIMO systems</li>
+                </ul>
+
+                <h3>Next Steps</h3>
+                <p>
+                    In Lesson 11, we'll explore Signals and Systems, covering signal analysis, Fourier transforms, 
+                    convolution, sampling theory, and filter design.
+                </p>
+            </div>
+
+            <div class="lesson-navigation">
+                <a href="09-transformers-motors.html" class="nav-btn">← Previous: Transformers & Motors</a>
+                <a href="11-signals-systems.html" class="nav-btn">Next: Signals & Systems →</a>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../js/main.js"></script>
+</body>
+</html>

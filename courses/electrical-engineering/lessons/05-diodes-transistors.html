@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 5: Diodes & Transistors - Engineering Academy</title>
+    <link rel="stylesheet" href="../../../css/styles.css">
+    <link rel="stylesheet" href="../../../css/course-styles/course.css">
+</head>
+<body>
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <h1><a href="../../../index.html" style="color: inherit; text-decoration: none;">🎓 Engineering Academy</a></h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../index.html">Course Overview</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section class="course-header">
+        <div class="container">
+            <h1>⚡ Electrical Engineering</h1>
+            <p>Lesson 5: Diodes & Transistors</p>
+        </div>
+    </section>
+
+    <div class="course-container">
+        <aside class="course-sidebar">
+            <h3>Course Modules</h3>
+            <ul class="lesson-list">
+                <li><a href="../index.html"><span class="lesson-number">📚</span>Course Overview</a></li>
+                <li><a href="01-fundamentals.html" class="completed"><span class="lesson-number">1</span>EE Fundamentals</a></li>
+                <li><a href="02-dc-circuits.html" class="completed"><span class="lesson-number">2</span>DC Circuit Analysis</a></li>
+                <li><a href="03-ac-circuits.html" class="completed"><span class="lesson-number">3</span>AC Circuits</a></li>
+                <li><a href="04-semiconductors.html" class="completed"><span class="lesson-number">4</span>Semiconductors</a></li>
+                <li><a href="05-diodes-transistors.html" class="active"><span class="lesson-number">5</span>Diodes & Transistors</a></li>
+                <li><a href="06-operational-amplifiers.html"><span class="lesson-number">6</span>Op-Amps</a></li>
+                <li><a href="07-digital-electronics.html"><span class="lesson-number">7</span>Digital Electronics</a></li>
+                <li><a href="08-power-systems.html"><span class="lesson-number">8</span>Power Systems</a></li>
+                <li><a href="09-transformers-motors.html"><span class="lesson-number">9</span>Transformers & Motors</a></li>
+                <li><a href="10-control-systems.html"><span class="lesson-number">10</span>Control Systems</a></li>
+                <li><a href="11-signals-systems.html"><span class="lesson-number">11</span>Signals & Systems</a></li>
+                <li><a href="12-safety-standards.html"><span class="lesson-number">12</span>Safety & Standards</a></li>
+            </ul>
+        </aside>
+
+        <main class="course-content">
+            <div class="lesson-header">
+                <h2>Lesson 5: Diodes & Transistors</h2>
+                <div class="lesson-meta">
+                    <span>📖 110 min read</span>
+                    <span>📊 Intermediate-Advanced</span>
+                </div>
+            </div>
+
+            <div class="lesson-content">
+                <h3>Introduction to Transistors</h3>
+                <p>
+                    Transistors are the fundamental building blocks of modern electronics, enabling amplification, 
+                    switching, and signal processing. They revolutionized electronics by replacing vacuum tubes with 
+                    solid-state devices that are smaller, more reliable, and consume less power.
+                </p>
+
+                <div class="info-box note">
+                    <h4>📌 What You'll Learn</h4>
+                    <ul>
+                        <li>Bipolar Junction Transistor (BJT) operation and characteristics</li>
+                        <li>BJT biasing techniques and amplifier configurations</li>
+                        <li>Metal-Oxide-Semiconductor Field-Effect Transistor (MOSFET) physics</li>
+                        <li>MOSFET operating regions and characteristics</li>
+                        <li>Transistor as amplifier and switch</li>
+                        <li>Small-signal and large-signal analysis</li>
+                        <li>Practical circuit design with transistors</li>
+                    </ul>
+                </div>
+
+                <h3>Bipolar Junction Transistor (BJT)</h3>
+
+                <h4>BJT Structure and Types</h4>
+                <div class="code-block" data-language="text">
+<code>BJT Construction:
+  Three-layer semiconductor device with two PN junctions
+  
+  NPN Transistor:
+    Collector (C) - N-type
+    Base (B)      - P-type (thin, lightly doped)
+    Emitter (E)   - N-type (heavily doped)
+    
+       C (Collector)
+       │
+       ▼
+    ───┴───  ← Base-Collector junction
+      │ │
+      │B│    ← Base (very thin!)
+      │ │
+    ───┬───  ← Base-Emitter junction
+       │
+       ▲
+       E (Emitter)
+  
+  PNP Transistor:
+    Collector (C) - P-type
+    Base (B)      - N-type
+    Emitter (E)   - P-type
+    
+  Symbol:
+    NPN: Arrow points OUT of emitter
+    PNP: Arrow points INTO emitter
+
+Current Direction Convention:
+  NPN: I_C and I_E flow into device, I_B flows in
+  PNP: I_C and I_E flow out of device, I_B flows out
+</code>
+                </div>
+
+                <h4>BJT Operation (NPN)</h4>
+                <div class="code-block" data-language="text">
+<code>Active Mode Operation:
+  
+  Biasing:
+    - Base-Emitter junction: Forward biased (V_BE ≈ 0.7V)
+    - Base-Collector junction: Reverse biased (V_CB > 0)
+  
+  Current Flow:
+    1. Base current (I_B) enters base
+    2. Forward bias injects electrons from emitter to base
+    3. Most electrons cross thin base to collector (I_C)
+    4. Small portion recombines in base (contributes to I_B)
+    5. Emitter current: I_E = I_C + I_B
+  
+  Key Relationships:
+    I_E = I_B + I_C  (KCL at transistor)
+    
+    I_C = β × I_B    (current gain)
+    I_C = α × I_E    (alpha relationship)
+    
+    Where:
+      β (beta) = h_FE = DC current gain (typically 50-300)
+      α (alpha) = I_C/I_E = β/(β+1) ≈ 0.98-0.995
+      
+    β and α relationship:
+      α = β/(β+1)
+      β = α/(1-α)
+
+Example:
+  If β = 100 and I_B = 20 μA:
+    I_C = β × I_B = 100 × 20μA = 2 mA
+    I_E = I_B + I_C = 20μA + 2mA = 2.02 mA
+    α = I_C/I_E = 2mA/2.02mA = 0.99
+</code>
+                </div>
+
+                <h4>BJT Operating Regions</h4>
+                <div class="code-block" data-language="text">
+<code>Four Operating Regions:
+
+1. Cutoff (OFF):
+   - Both junctions reverse biased
+   - V_BE < 0.6V (Si)
+   - I_B ≈ 0, I_C ≈ 0
+   - Transistor acts as open switch
+   - Used in: Digital circuits (OFF state)
+
+2. Active (LINEAR):
+   - BE forward biased, BC reverse biased
+   - V_BE ≈ 0.7V, V_CE > V_CE(sat) ≈ 0.2V
+   - I_C = β × I_B (linear relationship)
+   - Used in: Amplifiers, analog circuits
+
+3. Saturation (FULLY ON):
+   - Both junctions forward biased
+   - V_BE ≈ 0.7-0.8V, V_CE ≈ 0.2V (saturated)
+   - I_C < β × I_B (beta not valid)
+   - I_C limited by external circuit
+   - Transistor acts as closed switch
+   - Used in: Digital circuits (ON state), switches
+
+4. Reverse Active:
+   - BE reverse biased, BC forward biased
+   - Not commonly used (poor performance)
+   - Collector and emitter roles swapped
+
+Operating Region Summary:
+┌──────────────┬──────────┬──────────┬─────────┐
+│   Region     │   BE     │    BC    │  V_CE   │
+├──────────────┼──────────┼──────────┼─────────┤
+│ Cutoff       │ Reverse  │ Reverse  │  High   │
+│ Active       │ Forward  │ Reverse  │  Medium │
+│ Saturation   │ Forward  │ Forward  │  Low    │
+│ Rev. Active  │ Reverse  │ Forward  │ Negative│
+└──────────────┴──────────┴──────────┴─────────┘
+</code>
+                </div>
+
+                <h4>BJT Characteristic Curves</h4>
+                <div class="code-block" data-language="text">
+<code>Output Characteristics (I_C vs V_CE):
+
+  I_C ▲
+      │           Active Region
+   4mA│         ┌──────────────────  I_B = 40μA
+      │        /
+   3mA│       /─────────────────────  I_B = 30μA
+      │      /
+   2mA│     /──────────────────────  I_B = 20μA
+      │    /
+   1mA│   /───────────────────────  I_B = 10μA
+      │  /
+    0 │─/────────────────────────  I_B = 0μA
+      └─┴────┴────┴────┴────┴────► V_CE
+        0   0.2  1    5   10   15
+
+  Regions marked:
+    0 to 0.2V: Saturation
+    > 0.2V with I_B > 0: Active
+    I_B = 0: Cutoff
+    
+  Slope in active region: 1/r_o (output resistance)
+  Spacing between curves: β = ΔI_C/ΔI_B
+</code>
+                </div>
+
+                <h4>Example 1: BJT DC Analysis</h4>
+                <div class="code-block" data-language="text">
+<code>Problem:
+  Circuit: V_CC = 12V, R_C = 1kΩ, R_B = 100kΩ
+  Transistor: NPN, β = 150, V_BE = 0.7V
+  
+Find: I_B, I_C, V_CE, and verify operating region
+
+Solution:
+  Step 1: Base current (KVL in base loop)
+    V_CC = I_B × R_B + V_BE
+    12V = I_B × 100kΩ + 0.7V
+    I_B = (12 - 0.7)/100k = 11.3V/100kΩ = 113 μA
+  
+  Step 2: Collector current
+    I_C = β × I_B = 150 × 113μA = 16.95 mA
+  
+  Step 3: Collector-Emitter voltage (KVL in collector loop)
+    V_CC = I_C × R_C + V_CE
+    12V = 16.95mA × 1kΩ + V_CE
+    V_CE = 12V - 16.95V = -4.95V ✗
+    
+    Impossible! Transistor must be saturated.
+  
+  Recalculate assuming saturation (V_CE = 0.2V):
+    I_C(sat) = (V_CC - V_CE(sat))/R_C
+    I_C(sat) = (12V - 0.2V)/1kΩ = 11.8 mA
+  
+  Check: Is I_C < β × I_B?
+    11.8mA < 150 × 113μA = 16.95mA ✓
+    
+  Final Answer:
+    I_B = 113 μA
+    I_C = 11.8 mA (saturated)
+    V_CE = 0.2V
+    Region: Saturation
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>BJT Biasing Techniques</h3>
+                <p>
+                    Proper biasing establishes the DC operating point (Q-point) for linear amplification.
+                </p>
+
+                <h4>Fixed Bias (Base Bias)</h4>
+                <div class="code-block" data-language="text">
+<code>Circuit: V_CC connected to base through R_B
+
+  V_CC ──┬── R_C ──┬── C (output)
+         │         │
+        R_B      NPN
+         │         │
+        Base      E ── GND
+  
+  Equations:
+    I_B = (V_CC - V_BE)/R_B
+    I_C = β × I_B
+    V_CE = V_CC - I_C × R_C
+  
+  Disadvantages:
+    - Q-point highly dependent on β (varies with device/temp)
+    - Poor stability
+    - Not recommended for practical designs
+  
+  Advantage:
+    - Simple, few components
+</code>
+                </div>
+
+                <h4>Voltage Divider Bias (Self-Bias)</h4>
+                <div class="code-block" data-language="text">
+<code>Circuit: Most stable and widely used
+
+  V_CC ──┬── R_C ──┬── C (output)
+         │         │
+        R_1      NPN
+         │         │
+    ┌───┴───┬─────┤
+    │       │     │
+   R_2     Base   R_E
+    │       │     │
+   GND     GND   GND
+  
+  Design approach (stiff divider: I_2 >> I_B):
+  
+    V_B = V_CC × R_2/(R_1 + R_2)  (Thevenin)
+    V_E = V_B - V_BE
+    I_E = V_E/R_E
+    I_C ≈ I_E  (since I_E = I_C + I_B and I_B << I_C)
+    V_CE = V_CC - I_C(R_C + R_E)
+  
+  Advantages:
+    - Stable Q-point (independent of β)
+    - Good temperature stability
+    - Widely used in practice
+  
+  Design Rule:
+    Make I_2 ≥ 10 × I_B for stiff divider
+</code>
+                </div>
+
+                <h4>Example 2: Voltage Divider Bias Design</h4>
+                <div class="code-block" data-language="text">
+<code>Problem:
+  Design bias circuit for:
+    V_CC = 15V, I_C = 2mA, V_CE = 7.5V
+    β = 100, V_BE = 0.7V
+  
+Find: R_C, R_E, R_1, R_2
+
+Solution:
+  Step 1: Emitter resistor (choose V_E ≈ 10% of V_CC)
+    V_E = 0.1 × 15V = 1.5V
+    R_E = V_E/I_E = 1.5V/2mA = 750Ω
+    Use standard: R_E = 680Ω or 750Ω
+  
+  Step 2: Collector resistor
+    V_CC = V_RC + V_CE + V_RE
+    15V = V_RC + 7.5V + 1.5V
+    V_RC = 6V
+    R_C = V_RC/I_C = 6V/2mA = 3kΩ
+  
+  Step 3: Base voltage
+    V_B = V_E + V_BE = 1.5V + 0.7V = 2.2V
+  
+  Step 4: Voltage divider (stiff: I_2 = 10 × I_B)
+    I_B = I_C/β = 2mA/100 = 20μA
+    I_2 = 10 × 20μA = 200μA
+    
+    R_2 = V_B/I_2 = 2.2V/200μA = 11kΩ
+    R_1 = (V_CC - V_B)/I_2 = (15V - 2.2V)/200μA = 64kΩ
+    
+    Use standard values:
+    R_1 = 62kΩ or 68kΩ
+    R_2 = 10kΩ or 12kΩ
+  
+  Final Design:
+    R_C = 3kΩ, R_E = 750Ω
+    R_1 = 62kΩ, R_2 = 12kΩ
+</code>
+                </div>
+
+                <h4>BJT Amplifier Configurations</h4>
+                <div class="code-block" data-language="text">
+<code>Three Basic Configurations:
+
+1. Common Emitter (CE):
+   - Input: Base, Output: Collector, Common: Emitter
+   - Voltage gain: A_v = -R_C/r_e (high, 20-500)
+   - Current gain: A_i = β (high)
+   - Input impedance: Medium (1-5kΩ)
+   - Output impedance: High (5-50kΩ)
+   - Phase shift: 180°
+   - Most common configuration
+
+2. Common Collector (CC) - Emitter Follower:
+   - Input: Base, Output: Emitter, Common: Collector
+   - Voltage gain: A_v ≈ 1 (unity gain)
+   - Current gain: A_i = β + 1 (high)
+   - Input impedance: Very high
+   - Output impedance: Very low
+   - Phase shift: 0°
+   - Used for: Impedance matching, buffering
+
+3. Common Base (CB):
+   - Input: Emitter, Output: Collector, Common: Base
+   - Voltage gain: A_v = R_C/r_e (high)
+   - Current gain: A_i ≈ 1 (unity)
+   - Input impedance: Very low (~25Ω)
+   - Output impedance: Very high
+   - Phase shift: 0°
+   - Used for: High-frequency amplifiers, current buffers
+
+Comparison Table:
+┌──────────┬─────┬─────┬──────┬──────┬──────┐
+│   Type   │ A_v │ A_i │ Z_in │ Z_out│Phase │
+├──────────┼─────┼─────┼──────┼──────┼──────┤
+│    CE    │High │High │ Med  │ High │ 180° │
+│    CC    │  1  │High │V.High│V.Low │  0°  │
+│    CB    │High │  1  │V.Low │V.High│  0°  │
+└──────────┴─────┴─────┴──────┴──────┴──────┘
+</code>
+                </div>
+
+                <h4>Small-Signal Analysis</h4>
+                <div class="code-block" data-language="text">
+<code>BJT Small-Signal Model (Hybrid-π):
+
+  Parameters:
+    r_e = V_T/I_E ≈ 26mV/I_E  (emitter resistance)
+    r_π = β × r_e              (base-emitter resistance)
+    g_m = I_C/V_T = 1/r_e      (transconductance)
+    r_o = V_A/I_C              (output resistance, typically 50-100kΩ)
+  
+  Where:
+    V_T = 26mV at room temperature
+    V_A = Early voltage (50-100V typical)
+  
+  Example at I_C = 1mA, β = 100:
+    r_e = 26mV/1mA = 26Ω
+    r_π = 100 × 26Ω = 2.6kΩ
+    g_m = 1mA/26mV = 38.5 mS (millisiemens)
+
+Common Emitter Gain:
+  A_v = -g_m × R_C = -R_C/r_e
+  
+  If R_C = 2kΩ, I_C = 1mA:
+    A_v = -2kΩ/26Ω = -77 (voltage gain)
+    
+  Negative sign indicates 180° phase shift
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>MOSFET (Metal-Oxide-Semiconductor FET)</h3>
+
+                <h4>MOSFET Structure</h4>
+                <div class="code-block" data-language="text">
+<code>MOSFET Types:
+
+1. Enhancement Mode (normally OFF):
+   - N-channel (NMOS): Most common
+   - P-channel (PMOS)
+   - Requires V_GS > V_th to conduct
+
+2. Depletion Mode (normally ON):
+   - Conducts at V_GS = 0
+   - Less common
+
+N-Channel Enhancement MOSFET Structure:
+  
+       Gate (G)
+         │
+    ─────┴─────  ← Metal gate
+      SiO₂      ← Insulating oxide layer
+    ───────────  ← P-substrate
+    │    │    │
+    N⁺   │   N⁺  ← Source and Drain (N-doped)
+    │    │    │
+    S    B    D
+  Source Body Drain
+
+Terminals:
+  G - Gate (control terminal, isolated by oxide)
+  S - Source (reference terminal)
+  D - Drain (output terminal)
+  B - Body/Substrate (usually connected to Source)
+
+Symbol (NMOS Enhancement):
+  D ───┐
+       │
+  G ───┤├─
+       │
+  S ───┘
+</code>
+                </div>
+
+                <h4>MOSFET Operation</h4>
+                <div class="code-block" data-language="text">
+<code>Enhancement NMOS Operation:
+
+Key voltage: V_GS (Gate-Source voltage)
+            V_th (Threshold voltage, typically 1-4V)
+
+1. Cutoff (OFF): V_GS < V_th
+   - No channel formed
+   - I_D = 0 (ideal)
+   - Acts as open switch
+
+2. Triode (Linear/Ohmic): V_GS > V_th and V_DS < (V_GS - V_th)
+   - Channel formed
+   - Acts as voltage-controlled resistor
+   - Current equation:
+     I_D = K_n[(V_GS - V_th)V_DS - V_DS²/2]
+   
+   Where K_n = μ_n C_ox (W/L) [A/V²]
+     μ_n = electron mobility
+     C_ox = oxide capacitance per unit area
+     W = channel width
+     L = channel length
+
+3. Saturation (Active): V_GS > V_th and V_DS ≥ (V_GS - V_th)
+   - Channel pinched off at drain
+   - Current independent of V_DS
+   - Current equation:
+     I_D = (K_n/2)(V_GS - V_th)²(1 + λV_DS)
+     
+     λ = channel length modulation (≈ 0 for ideal)
+   
+   For ideal (λ = 0):
+     I_D = (K_n/2)(V_GS - V_th)²
+   
+   This is the region used for amplifiers!
+</code>
+                </div>
+
+                <h4>MOSFET vs BJT Comparison</h4>
+                <div class="code-block" data-language="text">
+<code>Key Differences:
+
+┌──────────────────┬─────────────────┬──────────────────┐
+│   Parameter      │      BJT        │     MOSFET       │
+├──────────────────┼─────────────────┼──────────────────┤
+│ Control          │ Current (I_B)   │ Voltage (V_GS)   │
+│ Input impedance  │ Low-Med (kΩ)    │ Very high (MΩ+)  │
+│ Gate/Base current│ Required (μA)   │ ~0 (pA leakage)  │
+│ Switching speed  │ Moderate        │ Fast             │
+│ Power handling   │ Medium          │ High             │
+│ On-resistance    │ Low (V_CE(sat)) │ Higher (R_DS(on))│
+│ Transconductance │ High (g_m)      │ Lower            │
+│ Cost             │ Lower           │ Higher           │
+│ Complexity       │ Simple          │ More complex     │
+│ Temperature      │ Negative coeff  │ Positive coeff   │
+└──────────────────┴─────────────────┴──────────────────┘
+
+When to use:
+  BJT: Audio amplifiers, low-power analog, high g_m needed
+  MOSFET: Switching, power electronics, digital circuits, high impedance
+</code>
+                </div>
+
+                <h4>Example 3: MOSFET DC Analysis</h4>
+                <div class="code-block" data-language="text">
+<code>Problem:
+  Circuit: V_DD = 12V, R_D = 2kΩ, R_G = 1MΩ
+  MOSFET: K_n = 0.5 mA/V², V_th = 2V, λ = 0
+  V_GS = 4V
+  
+Find: I_D, V_DS, and operating region
+
+Solution:
+  Step 1: Check if device is ON
+    V_GS = 4V > V_th = 2V ✓ (Device is ON)
+  
+  Step 2: Assume saturation, calculate I_D
+    I_D = (K_n/2)(V_GS - V_th)²
+    I_D = (0.5mA/V²/2)(4V - 2V)²
+    I_D = 0.25 × 4 = 1 mA
+  
+  Step 3: Calculate V_DS
+    V_DD = I_D × R_D + V_DS
+    12V = 1mA × 2kΩ + V_DS
+    V_DS = 12V - 2V = 10V
+  
+  Step 4: Verify saturation condition
+    V_DS ≥ V_GS - V_th?
+    10V ≥ 4V - 2V = 2V ✓
+    
+  Answer:
+    I_D = 1 mA
+    V_DS = 10V
+    Region: Saturation (correct for amplifier)
+</code>
+                </div>
+
+                <h4>MOSFET as a Switch</h4>
+                <div class="code-block" data-language="text">
+<code>Switching Application:
+
+  V_DD ──┬── R_Load ── Load
+         │
+       NMOS (switch)
+         │
+        GND
+
+Operation:
+  V_GS = 0V (LOW):
+    - MOSFET OFF (cutoff)
+    - I_D = 0
+    - V_DS = V_DD
+    - Load OFF
+    
+  V_GS = V_DD (HIGH):
+    - MOSFET ON (triode region)
+    - V_DS ≈ 0 (ideally)
+    - I_D = V_DD/R_Load
+    - Load ON
+
+Real device:
+  R_DS(on) = on-resistance (specified in datasheet)
+  V_DS = I_D × R_DS(on)  (voltage drop)
+  P_loss = I_D² × R_DS(on)  (power dissipation)
+
+Example:
+  IRF540N: R_DS(on) = 0.044Ω at V_GS = 10V
+  If I_D = 10A:
+    V_DS = 10A × 0.044Ω = 0.44V
+    P_loss = 10² × 0.044 = 4.4W
+</code>
+                </div>
+
+                <h4>Example 4: MOSFET LED Driver</h4>
+                <div class="code-block" data-language="text">
+<code>Problem:
+  Design MOSFET switch to drive 12V LED strip
+  LED strip: V_F = 12V, I_F = 500mA
+  Control: 5V microcontroller GPIO
+  MOSFET: V_th = 2V, R_DS(on) = 0.1Ω at V_GS = 5V
+  
+Find: Verify operation and calculate power dissipation
+
+Solution:
+  Step 1: Check V_GS requirement
+    V_GS = 5V > V_th = 2V ✓
+    MOSFET will turn ON
+  
+  Step 2: Calculate V_DS when ON
+    V_DS = I_D × R_DS(on)
+    V_DS = 0.5A × 0.1Ω = 0.05V
+  
+  Step 3: Voltage across LED
+    V_LED = V_supply - V_DS = 12V - 0.05V = 11.95V ✓
+    (Close enough to 12V)
+  
+  Step 4: Power dissipation in MOSFET
+    P_MOSFET = I_D² × R_DS(on)
+    P_MOSFET = (0.5)² × 0.1 = 0.025W = 25mW
+    
+  Very low loss! MOSFET is efficient switch.
+  No heatsink needed for this application.
+</code>
+                </div>
+
+                <div class="info-box important">
+                    <h4>🎯 Practice Problems</h4>
+                    <ol>
+                        <li>BJT circuit: V_CC=10V, R_C=2.2kΩ, R_B=220kΩ, β=120. Find I_B, I_C, V_CE</li>
+                        <li>Design voltage divider bias for: V_CC=12V, I_C=1.5mA, V_CE=6V, β=80</li>
+                        <li>Calculate small-signal gain for CE amp with R_C=3.3kΩ, I_C=2mA</li>
+                        <li>MOSFET circuit: V_DD=15V, R_D=3kΩ, K_n=1mA/V², V_th=1.5V, V_GS=3.5V. Find I_D and V_DS</li>
+                        <li>Determine MOSFET operating region: V_GS=5V, V_DS=4V, V_th=2V</li>
+                        <li>Design MOSFET switch for 24V, 2A load. Select R_DS(on) requirement</li>
+                    </ol>
+                </div>
+
+                <h3>Summary</h3>
+                <ul>
+                    <li>BJT is current-controlled device (I_C = β × I_B)</li>
+                    <li>BJT regions: Cutoff (OFF), Active (amplifier), Saturation (switch ON)</li>
+                    <li>Voltage divider bias provides best stability for BJT amplifiers</li>
+                    <li>Three BJT configurations: CE (gain), CC (buffer), CB (high freq)</li>
+                    <li>MOSFET is voltage-controlled device (gate insulated, very high input Z)</li>
+                    <li>MOSFET regions: Cutoff (V_GS < V_th), Triode, Saturation</li>
+                    <li>Enhancement MOSFET normally OFF, requires V_GS > V_th to conduct</li>
+                    <li>MOSFETs excel as switches due to low R_DS(on) and fast switching</li>
+                    <li>BJTs better for linear amplifiers, MOSFETs better for switching and power</li>
+                </ul>
+
+                <h3>Next Steps</h3>
+                <p>
+                    In Lesson 6, we'll explore Operational Amplifiers (Op-Amps), integrated circuits that 
+                    combine multiple transistors to create high-gain voltage amplifiers with applications in 
+                    signal conditioning, filtering, and mathematical operations.
+                </p>
+            </div>
+
+            <div class="lesson-navigation">
+                <a href="04-semiconductors.html" class="nav-btn">← Previous: Semiconductors</a>
+                <a href="06-operational-amplifiers.html" class="nav-btn">Next: Op-Amps →</a>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../js/main.js"></script>
+</body>
+</html>

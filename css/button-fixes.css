@@ -1,0 +1,138 @@
+/* Fix for Button Visibility and Click Issues on Dark Theme */
+
+/* Ensure buttons are clickable and visible */
+.btn {
+    position: relative;
+    z-index: 10;
+    pointer-events: auto;
+    cursor: pointer;
+    display: inline-block;
+}
+
+/* Override any conflicting styles */
+.course-card .btn-secondary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    color: white !important;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    box-shadow: 
+        0 4px 15px rgba(102, 126, 234, 0.4),
+        0 0 20px rgba(102, 126, 234, 0.2);
+    transition: all 0.3s ease;
+    border: none;
+    margin-top: 1rem;
+    width: auto;
+    text-align: center;
+}
+
+.course-card .btn-secondary:hover {
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%) !important;
+    transform: translateY(-3px);
+    box-shadow: 
+        0 6px 25px rgba(102, 126, 234, 0.6),
+        0 0 35px rgba(102, 126, 234, 0.4);
+}
+
+.course-card .btn-secondary:active {
+    transform: translateY(-1px);
+}
+
+/* Ensure card pseudo-elements don't block buttons */
+.course-card::before,
+.course-card::after {
+    pointer-events: none;
+}
+
+/* Fix z-index stacking */
+.course-card {
+    position: relative;
+}
+
+.course-card > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* Prevent background from covering buttons */
+.course-card[data-category]::after {
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Ensure text is readable on all card backgrounds */
+.course-card h3,
+.course-card p,
+.course-card li {
+    color: rgba(255, 255, 255, 0.95) !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Fix card backgrounds - prevent color changes */
+.course-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+/* Lock background colors */
+.course-card[data-category="software"] {
+    background: linear-gradient(145deg, rgba(102, 126, 234, 0.25) 0%, rgba(118, 75, 162, 0.35) 100%) !important;
+}
+
+.course-card[data-category="programming"] {
+    background: linear-gradient(145deg, rgba(240, 147, 251, 0.25) 0%, rgba(245, 87, 108, 0.35) 100%) !important;
+}
+
+.course-card[data-category="electrical"] {
+    background: linear-gradient(145deg, rgba(79, 172, 254, 0.25) 0%, rgba(0, 242, 254, 0.35) 100%) !important;
+}
+
+.course-card[data-category="mechanical"] {
+    background: linear-gradient(145deg, rgba(67, 233, 123, 0.25) 0%, rgba(56, 249, 215, 0.35) 100%) !important;
+}
+
+.course-card[data-category="english"] {
+    background: linear-gradient(145deg, rgba(255, 183, 77, 0.25) 0%, rgba(255, 138, 101, 0.35) 100%) !important;
+}
+
+/* Override any inline styles that might be added by JS */
+.course-card[style] {
+    background: inherit !important;
+}
+
+/* Fix for shimmer effect not blocking interactions */
+.course-card::before {
+    pointer-events: none !important;
+    z-index: 1;
+}
+
+/* Ensure progress container doesn't interfere */
+.card-progress-container {
+    pointer-events: none;
+    position: relative;
+    z-index: 2;
+}
+
+/* Make sure links work */
+a.btn {
+    display: inline-block;
+    pointer-events: auto !important;
+}
+
+/* Hero button fix */
+.btn-primary {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%) !important;
+    color: #0f0f1e !important;
+    font-weight: 700;
+    box-shadow: 
+        0 4px 15px rgba(79, 172, 254, 0.4),
+        0 0 20px rgba(79, 172, 254, 0.2);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%) !important;
+    box-shadow: 
+        0 6px 25px rgba(79, 172, 254, 0.6),
+        0 0 35px rgba(79, 172, 254, 0.4);
+    transform: translateY(-3px);
+}

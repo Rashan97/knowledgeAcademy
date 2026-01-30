@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 6: Operational Amplifiers - Engineering Academy</title>
+    <link rel="stylesheet" href="../../../css/styles.css">
+    <link rel="stylesheet" href="../../../css/course-styles/course.css">
+</head>
+<body>
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <h1><a href="../../../index.html" style="color: inherit; text-decoration: none;">🎓 Engineering Academy</a></h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../index.html">Course Overview</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section class="course-header">
+        <div class="container">
+            <h1>⚡ Electrical Engineering</h1>
+            <p>Lesson 6: Operational Amplifiers (Op-Amps)</p>
+        </div>
+    </section>
+
+    <div class="course-container">
+        <aside class="course-sidebar">
+            <h3>Course Modules</h3>
+            <ul class="lesson-list">
+                <li><a href="../index.html"><span class="lesson-number">📚</span>Course Overview</a></li>
+                <li><a href="01-fundamentals.html" class="completed"><span class="lesson-number">1</span>EE Fundamentals</a></li>
+                <li><a href="02-dc-circuits.html" class="completed"><span class="lesson-number">2</span>DC Circuit Analysis</a></li>
+                <li><a href="03-ac-circuits.html" class="completed"><span class="lesson-number">3</span>AC Circuits</a></li>
+                <li><a href="04-semiconductors.html" class="completed"><span class="lesson-number">4</span>Semiconductors</a></li>
+                <li><a href="05-diodes-transistors.html" class="completed"><span class="lesson-number">5</span>Diodes & Transistors</a></li>
+                <li><a href="06-operational-amplifiers.html" class="active"><span class="lesson-number">6</span>Op-Amps</a></li>
+                <li><a href="07-digital-electronics.html"><span class="lesson-number">7</span>Digital Electronics</a></li>
+                <li><a href="08-power-systems.html"><span class="lesson-number">8</span>Power Systems</a></li>
+                <li><a href="09-transformers-motors.html"><span class="lesson-number">9</span>Transformers & Motors</a></li>
+                <li><a href="10-control-systems.html"><span class="lesson-number">10</span>Control Systems</a></li>
+                <li><a href="11-signals-systems.html"><span class="lesson-number">11</span>Signals & Systems</a></li>
+                <li><a href="12-safety-standards.html"><span class="lesson-number">12</span>Safety & Standards</a></li>
+            </ul>
+        </aside>
+
+        <main class="course-content">
+            <div class="lesson-header">
+                <h2>Lesson 6: Operational Amplifiers</h2>
+                <div class="lesson-meta">
+                    <span>📖 105 min read</span>
+                    <span>📊 Intermediate-Advanced</span>
+                </div>
+            </div>
+
+            <div class="lesson-content">
+                <h3>Introduction to Op-Amps</h3>
+                <p>
+                    Operational Amplifiers (Op-Amps) are among the most versatile and widely used integrated circuits in 
+                    analog electronics. Originally designed for analog computers to perform mathematical operations 
+                    (hence "operational"), modern op-amps are ubiquitous in signal processing, instrumentation, 
+                    control systems, and sensor interfaces.
+                </p>
+
+                <div class="info-box note">
+                    <h4>📌 What You'll Learn</h4>
+                    <ul>
+                        <li>Op-amp ideal characteristics and real-world parameters</li>
+                        <li>Golden rules for op-amp analysis</li>
+                        <li>Inverting and non-inverting amplifier configurations</li>
+                        <li>Voltage follower (buffer) applications</li>
+                        <li>Summing, difference, and instrumentation amplifiers</li>
+                        <li>Active filters (low-pass, high-pass, band-pass)</li>
+                        <li>Comparators and integrators/differentiators</li>
+                        <li>Practical design considerations</li>
+                    </ul>
+                </div>
+
+                <h3>Op-Amp Fundamentals</h3>
+
+                <h4>Op-Amp Symbol and Terminals</h4>
+                <div class="code-block" data-language="text">
+<code>Operational Amplifier Symbol:
+
+       V+ ────┐
+              │  ╲
+              │   ╲
+              │    ╲
+              ├─────╲
+              │      ├──── V_out
+              ├─────╱
+              │    ╱
+              │   ╱
+       V- ────┘  ╱
+
+Terminals:
+  V+  : Non-inverting input
+  V-  : Inverting input
+  V_out: Output
+  V_CC: Positive supply (not always shown)
+  V_EE: Negative supply (not always shown)
+  GND: Ground reference
+
+Typical packages:
+  - 8-pin DIP (dual op-amp: LM358, TL082)
+  - 14-pin DIP (quad op-amp: LM324, TL084)
+  - SOT-23, SOIC (surface mount)
+
+Common op-amps:
+  741: Classic general-purpose (obsolete but educational)
+  LM358: Dual, single supply, low cost
+  TL07x: Low noise, JFET input
+  LM324: Quad, single supply
+  OPAx: Precision series (Texas Instruments)
+  LT10xx: Low noise (Analog Devices)
+</code>
+                </div>
+
+                <h4>Ideal Op-Amp Characteristics</h4>
+                <div class="code-block" data-language="text">
+<code>Ideal Op-Amp Properties:
+
+1. Infinite Open-Loop Gain:
+   A_OL = ∞
+   V_out = A_OL × (V+ - V-)
+   
+2. Infinite Input Impedance:
+   Z_in = ∞
+   No current flows into inputs: I+ = I- = 0
+   
+3. Zero Output Impedance:
+   Z_out = 0
+   Can drive any load without voltage drop
+   
+4. Infinite Bandwidth:
+   BW = ∞
+   Gain constant at all frequencies
+   
+5. Infinite Slew Rate:
+   SR = ∞
+   Output can change instantaneously
+   
+6. Zero Input Offset Voltage:
+   V_OS = 0
+   Output is zero when inputs are equal
+   
+7. Infinite CMRR (Common-Mode Rejection Ratio):
+   CMRR = ∞
+   Rejects common-mode signals perfectly
+   
+8. Infinite PSRR (Power Supply Rejection Ratio):
+   PSRR = ∞
+   Output unaffected by supply variations
+
+These are approximations for analysis!
+Real op-amps approach but don't achieve these limits.
+</code>
+                </div>
+
+                <h4>Golden Rules for Op-Amp Analysis</h4>
+                <div class="code-block" data-language="text">
+<code>Two Golden Rules (for ideal op-amp with negative feedback):
+
+Rule 1: No current into inputs
+  I+ = 0
+  I- = 0
+  
+  Consequence: Input impedance is infinite
+  
+Rule 2: Input voltages are equal (virtual short)
+  V+ = V-
+  
+  Consequence: Op-amp adjusts output to make inputs equal
+  
+Note: These rules apply ONLY when:
+  - Op-amp has negative feedback
+  - Op-amp is in linear region (not saturated)
+  - Using ideal approximation
+
+With these two rules, you can analyze most op-amp circuits!
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Basic Op-Amp Configurations</h3>
+
+                <h4>1. Inverting Amplifier</h4>
+                <div class="code-block" data-language="text">
+<code>Circuit Configuration:
+
+  V_in ──[R_in]──┬──[R_f]──┬── V_out
+                 │         │
+                 └─── (-) Op-Amp
+                      (+) 
+                       │
+                      GND
+
+Analysis using Golden Rules:
+  
+  Rule 2: V- = V+ = 0 (virtual ground)
+  
+  Rule 1: No current into op-amp
+    → Current through R_in equals current through R_f
+    
+  I_in = (V_in - 0)/R_in = V_in/R_in
+  I_f = (0 - V_out)/R_f = -V_out/R_f
+  
+  Since I_in = I_f:
+    V_in/R_in = -V_out/R_f
+    
+  Voltage Gain:
+    A_v = V_out/V_in = -R_f/R_in
+    
+  Negative sign: 180° phase inversion
+  
+Input Impedance:
+  Z_in = R_in  (looking into circuit)
+  
+Output Impedance:
+  Z_out ≈ 0  (ideal op-amp drives load)
+
+Example:
+  R_in = 10kΩ, R_f = 100kΩ
+  A_v = -100k/10k = -10
+  V_in = 0.5V → V_out = -5V
+</code>
+                </div>
+
+                <h4>Example 1: Inverting Amplifier Design</h4>
+                <div class="code-block" data-language="text">
+<code>Problem:
+  Design inverting amplifier with gain = -15
+  Input impedance should be ≥ 10kΩ
+  
+Find: R_in and R_f values
+
+Solution:
+  Required: A_v = -R_f/R_in = -15
+  
+  Step 1: Choose R_in ≥ 10kΩ
+    R_in = 10kΩ  (meets requirement)
+  
+  Step 2: Calculate R_f
+    R_f = |A_v| × R_in = 15 × 10kΩ = 150kΩ
+  
+  Verification:
+    A_v = -150k/10k = -15 ✓
+    Z_in = 10kΩ ✓
+  
+  Final Design:
+    R_in = 10kΩ
+    R_f = 150kΩ
+    
+  Note: Use ±15V or ±12V dual supply
+  Max output swing: ±(V_CC - 2V) typically
+</code>
+                </div>
+
+                <h4>2. Non-Inverting Amplifier</h4>
+                <div class="code-block" data-language="text">
+<code>Circuit Configuration:
+
+             ┌──[R_f]──┬── V_out
+             │         │
+       ┌─────┴─── (-) Op-Amp
+       │          (+) 
+  V_in ┘           │
+                  GND
+       [R_g]
+         │
+        GND
+
+Analysis:
+  
+  Rule 2: V- = V+ = V_in
+  
+  Voltage divider at inverting input:
+    V- = V_out × R_g/(R_g + R_f)
+    
+  Since V- = V_in:
+    V_in = V_out × R_g/(R_g + R_f)
+    
+  Voltage Gain:
+    A_v = V_out/V_in = (R_g + R_f)/R_g = 1 + R_f/R_g
+    
+  Always positive (no phase inversion)
+  Minimum gain = 1 (when R_f = 0)
+  
+Input Impedance:
+  Z_in → ∞  (connected to + input)
+  
+Output Impedance:
+  Z_out ≈ 0
+
+Advantages over inverting:
+  - Very high input impedance
+  - No virtual ground
+  - No phase inversion
+  
+Disadvantage:
+  - Cannot have gain < 1
+
+Example:
+  R_g = 1kΩ, R_f = 9kΩ
+  A_v = 1 + 9k/1k = 1 + 9 = 10
+  V_in = 0.2V → V_out = 2V
+</code>
+                </div>
+
+                <h4>Example 2: Non-Inverting Amplifier Design</h4>
+                <div class="code-block" data-language="text">
+<code>Problem:
+  Design non-inverting amplifier with gain = 25
+  Keep current through feedback network < 100μA at V_out = 10V
+  
+Find: R_g and R_f
+
+Solution:
+  Required: A_v = 1 + R_f/R_g = 25
+           R_f/R_g = 24
+  
+  Step 1: Current constraint
+    I_feedback = V_out/(R_g + R_f) < 100μA
+    R_g + R_f > V_out/I_max
+    R_g + R_f > 10V/100μA = 100kΩ
+  
+  Step 2: Use R_f/R_g = 24 and minimum R_total = 100kΩ
+    Let R_g = x, then R_f = 24x
+    x + 24x = 100kΩ
+    25x = 100kΩ
+    x = 4kΩ
+    
+    R_g = 4kΩ
+    R_f = 96kΩ
+  
+  Verification:
+    A_v = 1 + 96k/4k = 1 + 24 = 25 ✓
+    I_max = 10V/100kΩ = 100μA ✓
+    
+  Use standard values:
+    R_g = 3.9kΩ or 4.3kΩ
+    R_f = 100kΩ
+</code>
+                </div>
+
+                <h4>3. Voltage Follower (Unity Gain Buffer)</h4>
+                <div class="code-block" data-language="text">
+<code>Circuit Configuration:
+
+         ┌──────┬── V_out
+         │      │
+       ┌─┴─ (-) Op-Amp
+       │    (+) 
+  V_in ┘
+
+  Direct feedback: R_f = 0, no R_g
+
+Analysis:
+  V- = V_out  (direct connection)
+  V- = V+  (Golden Rule 2)
+  V+ = V_in
+  
+  Therefore: V_out = V_in
+  
+  Gain = 1 (unity gain)
+  
+Characteristics:
+  - Voltage gain: A_v = 1
+  - Input impedance: Very high (GΩ)
+  - Output impedance: Very low (Ω)
+  - No phase shift
+  - No loading effect on source
+
+Applications:
+  1. Impedance matching/buffering
+  2. Isolation between stages
+  3. Drive low-impedance loads
+  4. Prevent loading of high-impedance sources
+  
+Example Use Case:
+  Sensor output: 5V at 100kΩ source impedance
+  Load: 1kΩ
+  
+  Without buffer:
+    V_load = 5V × 1k/(100k+1k) = 0.05V (massive drop!)
+  
+  With buffer:
+    V_load = 5V (no loading!)
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Advanced Op-Amp Circuits</h3>
+
+                <h4>Summing Amplifier</h4>
+                <div class="code-block" data-language="text">
+<code>Circuit: Multiple inputs to inverting configuration
+
+  V1 ──[R1]──┐
+             │
+  V2 ──[R2]──┼──[Rf]──┬── V_out
+             │        │
+  V3 ──[R3]──┴─── (-) Op-Amp
+                  (+) 
+                   │
+                  GND
+
+Analysis:
+  Virtual ground at V- = 0
+  
+  Currents sum at inverting input:
+    I1 + I2 + I3 = If
+    V1/R1 + V2/R2 + V3/R3 = -V_out/Rf
+    
+  Output:
+    V_out = -Rf(V1/R1 + V2/R2 + V3/R3)
+    
+  If R1 = R2 = R3 = R:
+    V_out = -(Rf/R)(V1 + V2 + V3)
+    
+  Weighted sum if resistors differ:
+    V_out = -(Rf/R1)V1 - (Rf/R2)V2 - (Rf/R3)V3
+
+Applications:
+  - Audio mixers
+  - DACs (Digital-to-Analog Converters)
+  - Signal combining
+  - Weighted averaging
+
+Example:
+  R1 = R2 = R3 = 10kΩ, Rf = 10kΩ
+  V1 = 1V, V2 = 2V, V3 = 0.5V
+  
+  V_out = -(10k/10k)(1 + 2 + 0.5) = -3.5V
+</code>
+                </div>
+
+                <h4>Difference (Differential) Amplifier</h4>
+                <div class="code-block" data-language="text">
+<code>Circuit: Amplifies difference between two inputs
+
+  V1 ──[R1]──┬──[R2]──┬── V_out
+             │        │
+             └─── (-) Op-Amp
+                  (+) 
+                   │
+  V2 ──[R3]──┬─────┘
+             │
+            [R4]
+             │
+            GND
+
+For balanced circuit (R1=R3, R2=R4):
+  
+  V_out = (R2/R1)(V2 - V1)
+  
+  Gain = R2/R1
+  
+  Differential gain: A_d = R2/R1
+  Common-mode gain: A_cm ≈ 0 (ideally)
+
+Example:
+  R1 = R3 = 10kΩ
+  R2 = R4 = 100kΩ
+  V1 = 2.5V, V2 = 3.0V
+  
+  V_out = (100k/10k)(3.0 - 2.5) = 10 × 0.5 = 5V
+  
+Applications:
+  - Sensor signal conditioning
+  - Noise rejection (common-mode noise cancelled)
+  - Bridge amplifiers
+  - Differential signal measurement
+</code>
+                </div>
+
+                <h4>Instrumentation Amplifier</h4>
+                <div class="code-block" data-language="text">
+<code>Three Op-Amp Configuration (precision measurement):
+
+  V1 ──────┬─── (+) OpAmp1 ───┬───┐
+           │                   │   │
+          [R]                  │  [R2]
+           │                   │   │
+  V2 ──┬───┴─── (-) OpAmp1     │   ├─── (+) OpAmp3 ── V_out
+       │                       │   │
+      [R]       ┌──────────────┘  [R2]
+       │        │                  │
+       └─[Rgain]┘                  ├─── (-) OpAmp3
+           │                       │
+  V1 ───┬──┘    (-) OpAmp2 ────────┘
+        │        (+) OpAmp2
+       [R]          │
+        │           │
+  V2 ───┴───────────┘
+
+Gain equation:
+  V_out = (V2 - V1) × (1 + 2R/R_gain) × (R2/R2)
+  
+  With R2's equal:
+    V_out = (V2 - V1) × (1 + 2R/R_gain)
+  
+  Single resistor (R_gain) sets gain!
+
+Advantages:
+  - Very high input impedance (both inputs)
+  - High CMRR (>100 dB)
+  - Single resistor gain adjust
+  - Excellent for low-level signals
+  - Rejects common-mode noise
+  
+Applications:
+  - Medical instrumentation (ECG, EEG)
+  - Strain gauge amplifiers
+  - Thermocouple amplifiers
+  - Bridge circuits
+  - Precision measurement
+
+Commercial ICs:
+  - INA128, INA129 (low cost)
+  - AD620, AD621 (precision)
+  - INA114 (very low noise)
+</code>
+                </div>
+
+                <h4>Example 3: Instrumentation Amplifier Design</h4>
+                <div class="code-block" data-language="text">
+<code>Problem:
+  Design instrumentation amp for strain gauge bridge
+  Differential output: ±10mV max
+  Required gain: 100
+  Using INA128 (G = 1 + 50kΩ/R_G)
+  
+Find: R_G value
+
+Solution:
+  Step 1: Given gain equation for INA128
+    G = 1 + 50kΩ/R_G
+    
+  Step 2: Solve for R_G
+    100 = 1 + 50kΩ/R_G
+    99 = 50kΩ/R_G
+    R_G = 50kΩ/99 = 505Ω
+    
+    Use standard: R_G = 510Ω
+  
+  Step 3: Verify gain
+    G = 1 + 50k/510 = 1 + 98 = 99 ✓ (close enough)
+  
+  Step 4: Calculate output range
+    V_out = G × V_diff
+    V_out(max) = 99 × 10mV = 990mV = 0.99V
+    
+  Within most op-amp ranges ✓
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Active Filters</h3>
+
+                <h4>First-Order Low-Pass Filter</h4>
+                <div class="code-block" data-language="text">
+<code>Circuit: RC + Non-inverting amplifier
+
+  V_in ──[R]──┬── V_f
+              │
+             [C]
+              │
+             GND
+              
+  V_f connected to non-inverting op-amp configuration
+
+Transfer Function:
+  H(s) = A_DC / (1 + s/ω_c)
+  
+  Where:
+    A_DC = DC gain = 1 + R_f/R_g
+    ω_c = 1/(RC)  (cutoff frequency, rad/s)
+    f_c = 1/(2πRC)  (cutoff frequency, Hz)
+
+Frequency Response:
+  |H(f)| = A_DC / √(1 + (f/f_c)²)
+  
+  At f = f_c: |H| = A_DC/√2 = 0.707 × A_DC (-3dB point)
+  
+Roll-off: -20 dB/decade above f_c
+
+Design Example:
+  f_c = 1 kHz, A_DC = 10
+  
+  Choose C = 0.1μF
+  R = 1/(2πf_c C) = 1/(2π × 1000 × 0.1×10⁻⁶) = 1.59kΩ
+  Use R = 1.5kΩ → f_c = 1.06 kHz
+  
+  For gain = 10:
+    Choose R_g = 10kΩ, R_f = 90kΩ
+</code>
+                </div>
+
+                <h4>First-Order High-Pass Filter</h4>
+                <div class="code-block" data-language="text">
+<code>Circuit: CR (positions swapped)
+
+  V_in ──[C]──┬── V_f
+              │
+             [R]
+              │
+             GND
+
+Transfer Function:
+  H(s) = A_DC × s/(s + ω_c)
+  
+  f_c = 1/(2πRC)
+
+Frequency Response:
+  |H(f)| = A_DC × (f/f_c) / √(1 + (f/f_c)²)
+  
+  At f << f_c: Gain ≈ 0 (blocks DC)
+  At f = f_c: |H| = 0.707 × A_DC (-3dB)
+  At f >> f_c: Gain ≈ A_DC (passes high freq)
+  
+Roll-off: +20 dB/decade below f_c
+
+Applications:
+  - AC coupling (block DC)
+  - Rumble filters (audio)
+  - Differentiation
+</code>
+                </div>
+
+                <h4>Second-Order Sallen-Key Low-Pass</h4>
+                <div class="code-block" data-language="text">
+<code>Circuit: Two-pole active filter (sharper roll-off)
+
+  V_in ──[R1]──┬──[R2]──┬── V_f
+               │        │
+              [C1]     [C2]
+               │        │
+              GND      GND
+              
+  V_f to non-inverting op-amp (unity gain buffer)
+
+Equal Component Design (R1=R2=R, C1=C2=C):
+  
+  f_c = 1/(2πRC)
+  Q = 0.707  (Butterworth response: maximally flat)
+  Roll-off: -40 dB/decade
+
+Butterworth Response:
+  - Flat passband
+  - No peaking
+  - Smooth transition
+  - Most common filter type
+
+Example:
+  f_c = 10 kHz
+  C = 0.01μF
+  R = 1/(2π × 10k × 0.01μF) = 1.59kΩ
+  Use R = 1.6kΩ
+  
+  Much sharper cutoff than 1st-order!
+</code>
+                </div>
+
+                <h4>Band-Pass Filter</h4>
+                <div class="code-block" data-language="text">
+<code>Multiple Feedback Band-Pass (MFB):
+
+  V_in ──[R1]──┬──[C1]──┬── V_out
+               │        │
+              [C2]     [Rf]
+               │        │
+               └────(-) Op-Amp
+                    (+) 
+                     │
+                    GND
+
+Parameters:
+  f_c = center frequency
+  Q = quality factor (selectivity)
+  BW = bandwidth = f_c/Q
+  
+  High Q → narrow bandwidth (selective)
+  Low Q → wide bandwidth (broad)
+
+Design Equations:
+  f_c = 1/(2π√(R1 R2 C1 C2))
+  Q = (π f_c C2 Rf)
+  Gain = -Rf/(2 R1)
+
+Applications:
+  - Radio tuning
+  - Audio tone control
+  - Signal detection
+  - Noise filtering
+  - Communications
+</code>
+                </div>
+
+                <h4>Comparator</h4>
+                <div class="code-block" data-language="text">
+<code>Op-Amp as Comparator (no feedback):
+
+  V_in ──── (+) Op-Amp ── V_out
+            (-)
+             │
+           V_ref
+
+Operation:
+  If V_in > V_ref:  V_out = +V_SAT (≈ +V_CC)
+  If V_in < V_ref:  V_out = -V_SAT (≈ -V_CC or GND)
+  
+  No linear region - digital output!
+
+Hysteresis (Schmitt Trigger):
+  Add positive feedback for noise immunity
+  
+  Creates two thresholds:
+    V_TH+ (upper threshold)
+    V_TH- (lower threshold)
+  
+  Prevents oscillation near threshold
+
+Applications:
+  - Zero-crossing detection
+  - Level detection
+  - ADC
+  - Pulse generation
+  - Window comparators
+  
+Note: Dedicated comparator ICs (LM311, LM339) are better
+      - Faster switching
+      - Open-collector output
+      - Optimized for comparison
+</code>
+                </div>
+
+                <h4>Integrator and Differentiator</h4>
+                <div class="code-block" data-language="text">
+<code>Integrator (inverted):
+
+  V_in ──[R]──┬──[C]──┬── V_out
+              │       │
+              └── (-) Op-Amp
+                  (+) 
+                   │
+                  GND
+
+Output:
+  V_out = -(1/RC) ∫ V_in dt
+  
+  For constant input: V_out = -(V_in/RC) × t (ramp)
+  
+Applications:
+  - Waveform generation (triangle from square)
+  - Analog computation
+  - Active filters
+  - Slope generation
+
+Differentiator (inverted):
+
+  V_in ──[C]──┬──[R]──┬── V_out
+              │       │
+              └── (-) Op-Amp
+                  (+) 
+                   │
+                  GND
+
+Output:
+  V_out = -RC × d(V_in)/dt
+  
+  For ramp input: V_out = constant
+  For step input: V_out = spike
+  
+Warning: Very sensitive to noise (amplifies high frequencies)
+         Rarely used in practice without modifications
+</code>
+                </div>
+
+                <div class="info-box important">
+                    <h4>🎯 Practice Problems</h4>
+                    <ol>
+                        <li>Design inverting amplifier: gain = -20, input Z ≥ 5kΩ</li>
+                        <li>Design non-inverting amplifier: gain = 15, feedback current < 50μA at V_out=5V</li>
+                        <li>Summing amplifier: 3 inputs (1V, 2V, 3V), R1=R2=R3=10kΩ, Rf=20kΩ. Find V_out</li>
+                        <li>Design 1st-order LPF: f_c = 5kHz, gain = 5</li>
+                        <li>Calculate f_c for HPF: R=10kΩ, C=0.047μF</li>
+                        <li>Difference amp: R1=R3=10kΩ, R2=R4=100kΩ, V1=2.3V, V2=2.8V. Find V_out</li>
+                    </ol>
+                </div>
+
+                <h3>Real Op-Amp Limitations</h3>
+                <div class="code-block" data-language="text">
+<code>Non-Ideal Parameters:
+
+1. Finite Open-Loop Gain: A_OL = 100,000 (100 dB) typical
+2. Input Bias Current: I_B = 80nA (bipolar) to 1pA (CMOS)
+3. Input Offset Voltage: V_OS = 1-5mV
+4. Finite Bandwidth: Unity-Gain BW = 1 MHz (741)
+5. Slew Rate: SR = 0.5 V/μs (741) to 1000 V/μs (high-speed)
+6. Output Voltage Swing: V_out(max) ≈ V_CC - 2V
+7. CMRR: 80-120 dB
+8. PSRR: 80-100 dB
+
+Slew Rate Limitation:
+  Maximum output rate: dV/dt ≤ SR
+  
+  For sine wave: V_out = A sin(2πft)
+    dV/dt(max) = 2πfA
+    
+  Maximum freq at full amplitude:
+    f_max = SR/(2πA)
+  
+  Example: SR = 1V/μs, A = 10V
+    f_max = 1×10⁶/(2π×10) = 15.9 kHz
+</code>
+                </div>
+
+                <h3>Summary</h3>
+                <ul>
+                    <li>Op-amps are high-gain differential voltage amplifiers</li>
+                    <li>Golden Rules: (1) No input current, (2) V+ = V- with negative feedback</li>
+                    <li>Inverting amp: Gain = -R_f/R_in, finite input impedance</li>
+                    <li>Non-inverting amp: Gain = 1 + R_f/R_g, very high input impedance</li>
+                    <li>Voltage follower: Unity gain buffer for impedance transformation</li>
+                    <li>Summing amp adds weighted inputs, difference amp subtracts</li>
+                    <li>Instrumentation amps provide high CMRR for precision measurement</li>
+                    <li>Active filters: Sharper roll-off, gain, no loading</li>
+                    <li>Real op-amps have finite gain, bandwidth, slew rate limitations</li>
+                </ul>
+
+                <h3>Next Steps</h3>
+                <p>
+                    In Lesson 7, we'll explore Digital Electronics, covering logic gates, Boolean algebra, 
+                    combinational and sequential circuits, counters, and microcontroller interfacing.
+                </p>
+            </div>
+
+            <div class="lesson-navigation">
+                <a href="05-diodes-transistors.html" class="nav-btn">← Previous: Diodes & Transistors</a>
+                <a href="07-digital-electronics.html" class="nav-btn">Next: Digital Electronics →</a>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../js/main.js"></script>
+</body>
+</html>

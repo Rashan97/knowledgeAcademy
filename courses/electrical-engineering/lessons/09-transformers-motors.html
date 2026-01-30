@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 9: Transformers & Motors - Engineering Academy</title>
+    <link rel="stylesheet" href="../../../css/styles.css">
+    <link rel="stylesheet" href="../../../css/course-styles/course.css">
+</head>
+<body>
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <h1><a href="../../../index.html" style="color: inherit; text-decoration: none;">🎓 Engineering Academy</a></h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../index.html">Course Overview</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section class="course-header">
+        <div class="container">
+            <h1>⚡ Electrical Engineering</h1>
+            <p>Lesson 9: Transformers & Rotating Machines</p>
+        </div>
+    </section>
+
+    <div class="course-container">
+        <aside class="course-sidebar">
+            <h3>Course Modules</h3>
+            <ul class="lesson-list">
+                <li><a href="../index.html"><span class="lesson-number">📚</span>Course Overview</a></li>
+                <li><a href="01-fundamentals.html" class="completed"><span class="lesson-number">1</span>EE Fundamentals</a></li>
+                <li><a href="02-dc-circuits.html" class="completed"><span class="lesson-number">2</span>DC Circuit Analysis</a></li>
+                <li><a href="03-ac-circuits.html" class="completed"><span class="lesson-number">3</span>AC Circuits</a></li>
+                <li><a href="04-semiconductors.html" class="completed"><span class="lesson-number">4</span>Semiconductors</a></li>
+                <li><a href="05-diodes-transistors.html" class="completed"><span class="lesson-number">5</span>Diodes & Transistors</a></li>
+                <li><a href="06-operational-amplifiers.html" class="completed"><span class="lesson-number">6</span>Op-Amps</a></li>
+                <li><a href="07-digital-electronics.html" class="completed"><span class="lesson-number">7</span>Digital Electronics</a></li>
+                <li><a href="08-power-systems.html" class="completed"><span class="lesson-number">8</span>Power Systems</a></li>
+                <li><a href="09-transformers-motors.html" class="active"><span class="lesson-number">9</span>Transformers & Motors</a></li>
+                <li><a href="10-control-systems.html"><span class="lesson-number">10</span>Control Systems</a></li>
+                <li><a href="11-signals-systems.html"><span class="lesson-number">11</span>Signals & Systems</a></li>
+                <li><a href="12-safety-standards.html"><span class="lesson-number">12</span>Safety & Standards</a></li>
+            </ul>
+        </aside>
+
+        <main class="course-content">
+            <div class="lesson-header">
+                <h2>Lesson 9: Transformers & Motors</h2>
+                <div class="lesson-meta">
+                    <span>📖 110 min read</span>
+                    <span>📊 Intermediate-Advanced</span>
+                </div>
+            </div>
+
+            <div class="lesson-content">
+                <h3>Introduction</h3>
+                <p>
+                    Transformers and rotating machines (motors and generators) are fundamental to electrical 
+                    power systems. Transformers enable efficient power transmission by changing voltage levels, 
+                    while motors convert electrical energy to mechanical work in countless applications.
+                </p>
+
+                <div class="info-box note">
+                    <h4>📌 What You'll Learn</h4>
+                    <ul>
+                        <li>Transformer theory and operation principles</li>
+                        <li>Ideal and practical transformer models</li>
+                        <li>Transformer types and applications</li>
+                        <li>Three-phase transformer connections</li>
+                        <li>DC motor types and characteristics</li>
+                        <li>Three-phase induction motors</li>
+                        <li>Synchronous motors and reluctance motors</li>
+                        <li>Motor control and variable frequency drives</li>
+                    </ul>
+                </div>
+
+                <h3>Part 1: Transformers</h3>
+
+                <h4>Transformer Fundamentals</h4>
+                <div class="code-block" data-language="text">
+<code>Transformer Principle:
+  Based on Faraday's Law of electromagnetic induction
+  Two coils (primary and secondary) on common magnetic core
+  No electrical connection between windings
+  
+  ε = -N × dΦ/dt
+  
+  Where:
+    ε = induced voltage (EMF)
+    N = number of turns
+    Φ = magnetic flux
+    dΦ/dt = rate of change of flux
+
+Construction:
+  1. Core: Laminated silicon steel (reduces eddy currents)
+     - E-I laminations (small transformers)
+     - Toroidal core (high efficiency)
+     - Shell or core type (power transformers)
+  
+  2. Windings:
+     - Primary: Connected to source
+     - Secondary: Connected to load
+     - Copper or aluminum wire
+     - Insulation: Paper, varnish, oil
+  
+  3. Cooling:
+     - Air (dry type, < 500 kVA)
+     - Oil (liquid filled, large transformers)
+     - Forced air/oil circulation
+
+Symbol:
+     Primary   Secondary
+      ││││      ││││
+    ──┤  ├──  ──┤  ├──
+      ││││      ││││
+       Core
+</code>
+                </div>
+
+                <h4>Ideal Transformer Equations</h4>
+                <div class="code-block" data-language="text">
+<code>Assumptions (Ideal Transformer):
+  1. No winding resistance (R = 0)
+  2. No leakage flux (all flux links both windings)
+  3. No core losses (hysteresis, eddy currents)
+  4. Infinite permeability (μ → ∞)
+  
+Turns Ratio:
+  a = N₁/N₂
+  
+  Where:
+    N₁ = primary turns
+    N₂ = secondary turns
+    a = turns ratio
+
+Voltage Relationship:
+  V₁/V₂ = N₁/N₂ = a
+  
+  V₂ = V₁/a  (step-down if a > 1)
+  V₂ = V₁ × a  (step-up if a < 1)
+
+Current Relationship:
+  I₁/I₂ = N₂/N₁ = 1/a
+  
+  I₂ = I₁ × a  (current inversely proportional to voltage)
+
+Power Conservation:
+  P_in = P_out (ideal, 100% efficient)
+  V₁ × I₁ = V₂ × I₂
+
+Impedance Transformation:
+  Z_in = a² × Z_load
+  
+  Load impedance "seen" from primary multiplied by a²
+  
+  Example:
+    Turns ratio a = 10:1 (step-down)
+    Load Z_L = 8Ω
+    Input Z_in = 10² × 8 = 800Ω
+    
+  Used for impedance matching in audio, RF circuits
+
+Polarity (Dot Convention):
+  • Current entering dot → flux adds
+  • Dots on same side → in-phase
+  • Dots on opposite sides → 180° out of phase
+</code>
+                </div>
+
+                <h4>Example 1: Ideal Transformer Calculations</h4>
+                <div class="code-block" data-language="text">
+<code>Problem:
+  Transformer: 2400V/240V, 50 kVA
+  Load: 10Ω resistor on secondary
+  
+Find: Turns ratio, currents, input impedance
+
+Solution:
+  Step 1: Turns ratio
+    a = V₁/V₂ = 2400/240 = 10
+    
+  Step 2: Rated currents
+    I₂_rated = S/V₂ = 50,000/240 = 208.3 A
+    I₁_rated = S/V₁ = 50,000/2400 = 20.83 A
+    
+    Verify: I₁/I₂ = 20.83/208.3 = 0.1 = 1/a ✓
+  
+  Step 3: Actual load current
+    I₂ = V₂/R = 240/10 = 24 A
+    I₁ = I₂/a = 24/10 = 2.4 A
+  
+  Step 4: Load power
+    P = I₂² × R = 24² × 10 = 5760 W = 5.76 kW
+    
+    (Well below 50 kVA rating)
+  
+  Step 5: Input impedance
+    Z_in = a² × Z_load = 10² × 10 = 1000Ω
+    
+    Verify: V₁/I₁ = 2400/2.4 = 1000Ω ✓
+</code>
+                </div>
+
+                <h4>Practical Transformer Model</h4>
+                <div class="code-block" data-language="text">
+<code>Real transformers have losses:
+
+Equivalent Circuit:
+        R₁    X₁           R₂    X₂
+  V₁ ──┬──── Ideal ────┬────
+       │    Transformer │
+      R_c    X_m        Load
+       
+  Where:
+    R₁, R₂ = winding resistances (copper losses)
+    X₁, X₂ = leakage reactances
+    R_c = core loss resistance (hysteresis + eddy)
+    X_m = magnetizing reactance (exciting current)
+
+Losses:
+
+1. Copper Losses (I²R):
+   P_cu = I₁² × R₁ + I₂² × R₂
+   - Varies with load (∝ I²)
+   - Dominant at full load
+   - Causes heating
+
+2. Core Losses (Iron Losses):
+   P_core = P_hysteresis + P_eddy
+   - Constant (independent of load)
+   - Hysteresis: Magnetization cycling
+   - Eddy currents: Circulating currents in core
+   - Reduced by laminations and silicon steel
+
+3. Stray Losses:
+   - Leakage flux in structural parts
+   - Usually < 1% of rating
+
+Efficiency:
+  η = P_out / P_in = P_out / (P_out + P_losses)
+  
+  η = P_out / (P_out + P_cu + P_core)
+
+Typical Efficiencies:
+  Small (< 1 kVA): 85-95%
+  Medium (1-100 kVA): 95-98%
+  Large (> 1 MVA): 98-99.5%
+
+Voltage Regulation:
+  VR = (V₂_no-load - V₂_full-load) / V₂_full-load × 100%
+  
+  Good regulation: VR < 3%
+  Caused by winding impedance drops
+</code>
+                </div>
+
+                <h4>Transformer Types</h4>
+                <div class="code-block" data-language="text">
+<code>Classification by Function:
+
+1. Power Transformers:
+   - Step-up/down voltage
+   - Ratings: 500 kVA to 1000+ MVA
+   - Oil-cooled
+   - Substations, power plants
+   - 99%+ efficiency
+
+2. Distribution Transformers:
+   - Final voltage reduction
+   - Pole-mounted or pad-mounted
+   - 10-500 kVA typical
+   - 13.8 kV → 120/240V
+   - Single-phase or three-phase
+
+3. Instrument Transformers:
+   a) Current Transformer (CT):
+      - Measures high current safely
+      - Ratio: 100:5, 200:5, etc.
+      - Never open-circuit secondary!
+      - Used with ammeters, relays
+   
+   b) Potential Transformer (PT/VT):
+      - Measures high voltage safely
+      - Step-down to 120V standard
+      - Used with voltmeters, relays
+
+4. Autotransformer:
+   - Single winding with tap
+   - More compact, efficient
+   - No isolation between primary/secondary
+   - Variable voltage (Variac®)
+   - Motor starting
+
+5. Isolation Transformer:
+   - 1:1 ratio (same voltage)
+   - Electrical isolation
+   - Noise reduction
+   - Medical equipment
+   - Safety (floating ground)
+
+6. Special Purpose:
+   - Audio transformers (microphones)
+   - RF transformers (impedance matching)
+   - Pulse transformers (gate drives)
+   - Scott-T (3-phase to 2-phase)
+
+Construction Types:
+  - Core type: Windings surround core legs
+  - Shell type: Core surrounds windings
+  - Toroidal: Donut-shaped core
+</code>
+                </div>
+
+                <h4>Three-Phase Transformers</h4>
+                <div class="code-block" data-language="text">
+<code>Three-Phase Connections:
+
+Bank Configurations:
+  1. Y-Y (Wye-Wye)
+  2. Y-Δ (Wye-Delta)
+  3. Δ-Y (Delta-Wye)
+  4. Δ-Δ (Delta-Delta)
+
+Connection Notation:
+  Example: "Δ-Y" means primary Delta, secondary Wye
+
+Y-Y Connection:
+  Advantages:
+    - Neutral available both sides
+    - Insulation reduced (phase voltage < line voltage)
+  Disadvantages:
+    - Third harmonic problems
+    - Requires solid neutral grounding
+  
+  Voltage: V_L(sec) = (N₂/N₁) × V_L(pri)
+
+Δ-Y Connection (most common):
+  Advantages:
+    - Step-up with grounded neutral (distribution)
+    - No third harmonic issues
+    - Unbalanced loads handled well
+  
+  Voltage: V_L(sec) = (N₂/N₁) × V_L(pri) × √3
+  
+  Phase shift: 30° between primary and secondary
+  
+  Example: 13.8 kV Δ → 208Y/120V
+    Turns ratio per transformer: 13,800/120 = 115:1
+    Primary line voltage: 13,800V
+    Secondary line voltage: 208V
+    Secondary phase voltage: 120V
+
+Y-Δ Connection:
+  Used for step-down
+  Example: Transmission to distribution
+
+Δ-Δ Connection:
+  Advantages:
+    - Open-delta operation (one transformer fails)
+    - No phase shift
+  Disadvantages:
+    - No neutral
+    - Circulating current if unbalanced
+
+Open-Delta (V-V):
+  Two transformers instead of three
+  Capacity: 57.7% of three-transformer bank
+  Emergency operation or cost savings
+</code>
+                </div>
+
+                <h4>Example 2: Transformer Efficiency</h4>
+                <div class="code-block" data-language="text">
+<code>Problem:
+  25 kVA transformer, 2400/240V
+  Core losses: 150W (constant)
+  Copper losses: 300W at full load
+  
+Find: Efficiency at 75% load, PF = 0.85
+
+Solution:
+  Step 1: Load power
+    S_load = 0.75 × 25 = 18.75 kVA
+    P_load = S × PF = 18.75 × 0.85 = 15,937.5 W
+  
+  Step 2: Copper losses at 75% load
+    P_cu ∝ I²
+    P_cu(75%) = (0.75)² × 300 = 0.5625 × 300 = 168.75 W
+  
+  Step 3: Total losses
+    P_loss = P_core + P_cu
+    P_loss = 150 + 168.75 = 318.75 W
+  
+  Step 4: Efficiency
+    η = P_out / (P_out + P_loss)
+    η = 15,937.5 / (15,937.5 + 318.75)
+    η = 15,937.5 / 16,256.25
+    η = 0.9804 = 98.04%
+  
+  Maximum efficiency occurs when:
+    P_core = P_cu
+    150 = (load%)² × 300
+    (load%)² = 0.5
+    load% = 0.707 = 70.7% load
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Part 2: DC Motors</h3>
+
+                <h4>DC Motor Principles</h4>
+                <div class="code-block" data-language="text">
+<code>Operating Principle:
+  - Current-carrying conductor in magnetic field
+  - Force: F = B × I × L (Lorentz force)
+  - Torque: T = K × Φ × I_a
+  
+  Where:
+    B = magnetic flux density
+    I = current through conductor
+    L = length of conductor
+    Φ = field flux
+    I_a = armature current
+    K = motor constant
+
+Basic Components:
+  1. Stator (Field):
+     - Permanent magnets or electromagnets
+     - Provides magnetic field
+     
+  2. Rotor (Armature):
+     - Rotating coils
+     - Carries current
+     - Laminated iron core
+  
+  3. Commutator:
+     - Mechanical rectifier
+     - Reverses current every 180°
+     - Maintains torque direction
+  
+  4. Brushes:
+     - Carbon blocks
+     - Conduct current to commutator
+     - Wear item (requires maintenance)
+
+Back EMF:
+  E_b = K × Φ × ω
+  
+  Where:
+    E_b = back EMF (opposes applied voltage)
+    ω = angular velocity (rad/s)
+  
+  At starting: ω = 0, E_b = 0, I_a is very high!
+  At steady-state: E_b ≈ V_a, I_a is moderate
+
+Equivalent Circuit:
+       R_a    L_a
+  V ───┬──────○────E_b
+       
+  V_a = E_b + I_a × R_a
+  
+  Where:
+    V_a = applied armature voltage
+    R_a = armature resistance
+    E_b = back EMF
+</code>
+                </div>
+
+                <h4>DC Motor Types</h4>
+                <div class="code-block" data-language="text">
+<code>Classification by Field Connection:
+
+1. Separately Excited:
+   Field and armature separate supplies
+   Independent control of Φ and I_a
+   Best performance, most expensive
+   Used in precision applications
+
+2. Shunt Motor:
+   Field parallel with armature
+   
+   Characteristics:
+     - Nearly constant speed (good regulation)
+     - Speed drops 5-15% from no-load to full-load
+     - Torque ∝ I_a (linear)
+     - Used: Fans, pumps, machine tools
+   
+   Speed: n ∝ (V_a - I_a R_a) / Φ
+   
+   Speed control:
+     a) Armature voltage control
+     b) Field flux control (field weakening)
+
+3. Series Motor:
+   Field in series with armature
+   
+   Characteristics:
+     - High starting torque
+     - Variable speed (dangerously high at no-load)
+     - Speed inversely proportional to load
+     - Torque ∝ I_a² (at low saturation)
+     - Used: Traction (trains, EVs), hoists, cranes
+   
+   Never run series motor without load!
+
+4. Compound Motor:
+   Both series and shunt fields
+   
+   Types:
+     a) Cumulative compound:
+        - Series aids shunt field
+        - High starting torque + good regulation
+        - Most versatile
+     
+     b) Differential compound:
+        - Series opposes shunt field
+        - Rarely used
+
+Speed-Torque Characteristics:
+  
+  Speed
+    │  Shunt (flat)
+    │─────────────
+    │        \ Compound
+    │         \
+    │          \
+    │      Series \
+    │              \
+    └────────────────── Torque
+</code>
+                </div>
+
+                <h4>DC Motor Control</h4>
+                <div class="code-block" data-language="text">
+<code>Speed Control Methods:
+
+1. Armature Voltage Control:
+   n ∝ V_a (keeping Φ constant)
+   
+   Methods:
+     - Variable DC supply
+     - PWM (pulse width modulation)
+     - Thyristor/MOSFET chopper circuits
+   
+   Advantages: Smooth control, below base speed
+   Disadvantage: Requires variable voltage source
+
+2. Field Flux Control:
+   n ∝ 1/Φ
+   
+   Reduce field current → weaker Φ → higher speed
+   
+   Advantages: Simple, economical, above base speed
+   Disadvantage: Reduced torque at high speed
+
+3. Armature Resistance Control:
+   Add resistance in series with armature
+   
+   Disadvantages:
+     - Poor efficiency (I²R losses)
+     - Speed varies with load
+     - Mostly obsolete (except starting)
+
+Starting Methods:
+
+Problem: At standstill, E_b = 0
+  I_start = V/R_a can be 10-20× rated current!
+  
+Solutions:
+  1. Series resistance (starter):
+     - Gradually reduce resistance
+     - 3-point or 4-point starter
+  
+  2. Reduced voltage:
+     - Start at low V_a
+     - Gradually increase
+     - PWM controllers
+  
+  3. Current limiting:
+     - Electronic control
+     - Monitor I_a, limit to safe value
+
+Braking Methods:
+
+1. Regenerative:
+   - Motor becomes generator
+   - Returns energy to supply
+   - Most efficient
+
+2. Dynamic:
+   - Disconnect from supply
+   - Connect resistance across armature
+   - Dissipate energy as heat
+
+3. Plugging:
+   - Reverse supply polarity
+   - Very fast stop
+   - High stress on motor
+</code>
+                </div>
+
+                <h4>Example 3: DC Shunt Motor</h4>
+                <div class="code-block" data-language="text">
+<code>Problem:
+  DC shunt motor: 240V, 20A armature current
+  R_a = 0.5Ω, speed = 1200 RPM
+  
+Find: Back EMF, developed torque (neglect friction)
+
+Solution:
+  Step 1: Back EMF
+    V_a = E_b + I_a × R_a
+    240 = E_b + 20 × 0.5
+    240 = E_b + 10
+    E_b = 230V
+  
+  Step 2: Electrical power converted
+    P_developed = E_b × I_a
+    P_developed = 230 × 20 = 4600 W
+  
+  Step 3: Angular velocity
+    ω = 2πn/60 = 2π × 1200/60
+    ω = 125.66 rad/s
+  
+  Step 4: Torque
+    P = T × ω
+    T = P/ω = 4600/125.66
+    T = 36.6 N·m
+  
+  Armature copper loss:
+    P_cu = I_a² × R_a = 20² × 0.5 = 200W
+  
+  Efficiency (armature only):
+    η = P_developed / P_input
+    η = 4600 / (240 × 20) = 4600/4800 = 95.8%
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Part 3: AC Motors</h3>
+
+                <h4>Three-Phase Induction Motor</h4>
+                <div class="code-block" data-language="text">
+<code>Most Common Industrial Motor (70% of all motors)
+
+Operating Principle:
+  1. Stator: Three-phase windings create rotating magnetic field
+  2. Rotor: Conductors (squirrel cage or wound rotor)
+  3. Rotating field induces current in rotor
+  4. Induced current creates magnetic field
+  5. Rotor field interacts with stator field → torque
+
+Synchronous Speed:
+  n_s = 120 × f / p
+  
+  Where:
+    n_s = synchronous speed (RPM)
+    f = frequency (Hz)
+    p = number of poles
+  
+  Examples (60 Hz):
+    2-pole: n_s = 3600 RPM
+    4-pole: n_s = 1800 RPM
+    6-pole: n_s = 1200 RPM
+    8-pole: n_s = 900 RPM
+
+Slip:
+  s = (n_s - n_r) / n_s
+  
+  Where:
+    n_r = actual rotor speed
+    s = slip (per unit or %)
+  
+  Example:
+    4-pole motor, n_s = 1800 RPM, actual n_r = 1750 RPM
+    s = (1800 - 1750)/1800 = 0.0278 = 2.78%
+  
+  Typical slip at full load: 2-5%
+  At standstill (starting): s = 1 (100%)
+  At synchronous speed: s = 0 (theoretical, no torque)
+
+Rotor Frequency:
+  f_r = s × f
+  
+  Example: 2.78% slip, 60 Hz supply
+    f_r = 0.0278 × 60 = 1.67 Hz (very slow rotor current)
+
+Types:
+
+1. Squirrel Cage Rotor:
+   - Aluminum or copper bars
+   - End rings short bars together
+   - Robust, no maintenance
+   - 90% of induction motors
+   
+   Classes (NEMA):
+     A: Normal starting torque
+     B: Normal (most common)
+     C: High starting torque
+     D: Very high starting torque, high slip
+
+2. Wound Rotor:
+   - Three-phase winding on rotor
+   - Connected to slip rings
+   - External resistance for starting
+   - Higher cost, maintenance
+   - Variable speed applications
+</code>
+                </div>
+
+                <h4>Induction Motor Characteristics</h4>
+                <div class="code-block" data-language="text">
+<code>Torque-Speed Curve:
+
+  Torque
+    │    Starting
+    │     torque
+    │      │
+    │      ▼
+    ├─────●────┐
+    │          │ Breakdown
+    │          │  torque
+    │          ●
+    │         /│\
+    │        / │ \
+    │       /  │  \ 
+    │      /   │   \
+    │─────/────┼────\──── Speed
+    0    Pull-up  │   n_s
+              Full-load
+
+Key Points:
+
+1. Starting Torque (s = 1):
+   - 150-250% of full-load torque
+   - High starting current (5-7× rated)
+
+2. Pull-up Torque:
+   - Minimum torque during acceleration
+   - Must exceed load torque
+
+3. Breakdown Torque:
+   - Maximum torque motor can develop
+   - Typically 200-300% of full-load
+   - Safety margin
+
+4. Full-Load Operating Point:
+   - Rated torque, 2-5% slip
+   - Stable region
+
+Power and Efficiency:
+
+Power Flow:
+  P_in(electrical) 
+    → P_core(stator losses)
+    → P_gap(air gap power)
+    → P_cu,rotor(rotor copper losses)
+    → P_mech(mechanical developed)
+    → P_friction(friction & windage)
+    → P_out(shaft power)
+
+Rotor Copper Loss:
+  P_cu,rotor = s × P_gap
+  
+  This is why slip must be low for good efficiency!
+
+Efficiency:
+  η = P_out / P_in
+  
+  Typical: 85-96% (higher for larger motors)
+
+Power Factor:
+  Lagging (inductive)
+  Typical: 0.8-0.9 at full load
+           0.2-0.5 at no load (poor!)
+  
+  Capacitors often added for PF correction
+</code>
+                </div>
+
+                <h4>Induction Motor Starting</h4>
+                <div class="code-block" data-language="text">
+<code>Starting Problem:
+  At start: s = 1, high current (5-7× rated)
+  Voltage drop affects other equipment
+  Codes limit starting current
+
+Starting Methods:
+
+1. Direct-On-Line (DOL):
+   - Full voltage applied instantly
+   - Simplest, cheapest
+   - Only for small motors (< 5 HP)
+   - High inrush current
+
+2. Star-Delta Starter:
+   - Start in star (Y) connection
+   - Run in delta (Δ) connection
+   - Reduces starting current to 1/3
+   - Reduces starting torque to 1/3
+   - Common in Europe
+
+3. Autotransformer Starter:
+   - Reduced voltage tap (50%, 65%, 80%)
+   - Better torque than Y-Δ
+   - More expensive
+   - Medium/large motors
+
+4. Soft Starter (Solid-State):
+   - Thyristor-based voltage control
+   - Gradual voltage ramp
+   - Current limiting
+   - Smooth acceleration
+   - Modern standard for 5-500 HP
+
+5. Variable Frequency Drive (VFD):
+   - Best method (but most expensive)
+   - Controls voltage and frequency
+   - V/f ratio constant → constant flux
+   - Wide speed range
+   - Energy savings at reduced speed
+
+Speed Control:
+
+1. Pole Changing:
+   - Special winding design
+   - 2 or 4 discrete speeds
+   - Simple, robust
+   - Cooling tower fans, pumps
+
+2. Voltage Control:
+   - Limited range
+   - Poor efficiency
+   - Rarely used
+
+3. Frequency Control (VFD):
+   - Best method
+   - Wide speed range (0-100+ Hz)
+   - Constant torque if V/f maintained
+   - Energy savings (fan/pump loads)
+   
+   P ∝ n³ for fans/pumps!
+   50% speed → 12.5% power
+</code>
+                </div>
+
+                <h4>Example 4: Induction Motor Slip</h4>
+                <div class="code-block" data-language="text">
+<code>Problem:
+  6-pole, 60 Hz induction motor
+  Full-load speed: 1164 RPM
+  Rotor copper loss at full load: 800W
+  
+Find: Slip, air-gap power, mechanical power developed
+
+Solution:
+  Step 1: Synchronous speed
+    n_s = 120 × f / p = 120 × 60 / 6 = 1200 RPM
+  
+  Step 2: Slip
+    s = (n_s - n_r) / n_s
+    s = (1200 - 1164) / 1200
+    s = 36 / 1200 = 0.03 = 3%
+  
+  Step 3: Air-gap power
+    P_cu,rotor = s × P_gap
+    800 = 0.03 × P_gap
+    P_gap = 800 / 0.03 = 26,667 W ≈ 26.7 kW
+  
+  Step 4: Mechanical power developed
+    P_mech = P_gap - P_cu,rotor
+    P_mech = 26,667 - 800 = 25,867 W ≈ 25.9 kW
+    
+    Alternatively:
+    P_mech = (1 - s) × P_gap
+    P_mech = (1 - 0.03) × 26,667
+    P_mech = 0.97 × 26,667 = 25,867 W ✓
+  
+  This shows importance of low slip for efficiency!
+</code>
+                </div>
+
+                <h4>Synchronous Motors</h4>
+                <div class="code-block" data-language="text">
+<code>Synchronous Motor Characteristics:
+
+Principle:
+  - Stator: Three-phase winding (like induction motor)
+  - Rotor: DC-excited electromagnet or permanent magnet
+  - Rotor locks to rotating magnetic field
+  - Runs exactly at synchronous speed (no slip!)
+
+Advantages:
+  1. Constant speed (n = n_s, zero slip)
+  2. High efficiency (no rotor copper loss from slip)
+  3. Power factor control:
+     - Over-excited → leading PF (supplies VARs)
+     - Under-excited → lagging PF
+     - Unity PF possible
+  4. High power density
+
+Disadvantages:
+  1. Not self-starting (needs special starting method)
+  2. More complex control
+  3. Higher cost
+  4. Requires DC excitation (unless PM)
+
+Starting Methods:
+  1. Damper (amortisseur) windings:
+     - Acts like squirrel cage at start
+     - Motor starts as induction motor
+     - DC applied when near synchronous speed
+     - "Pulls into sync"
+  
+  2. Variable frequency drive:
+     - Start at low frequency
+     - Gradually increase to 60 Hz
+     - Modern method
+
+Applications:
+  - Large compressors (constant speed)
+  - Large pumps
+  - Power factor correction (synchronous condenser)
+  - Precision drives (no slip error)
+  - Industrial loads > 100 HP
+
+Types:
+  1. Wound rotor (slip rings, DC excitation)
+  2. Permanent magnet (PM synchronous):
+     - No excitation needed
+     - High efficiency
+     - Used in EVs, robotics (servo motors)
+  3. Reluctance motor:
+     - No excitation, no magnets
+     - Lower performance
+     - Simple, robust
+</code>
+                </div>
+
+                <h4>Variable Frequency Drives (VFDs)</h4>
+                <div class="code-block" data-language="text">
+<code>VFD Principle:
+  AC → DC → AC (variable voltage and frequency)
+
+Block Diagram:
+  3-ph AC → Rectifier → DC Bus → Inverter → Motor
+   (fixed)              (caps)   (PWM)      (variable)
+
+Components:
+
+1. Rectifier:
+   - Diode bridge (6 diodes for 3-phase)
+   - Converts AC to DC
+   - Uncontrolled
+
+2. DC Bus:
+   - Large capacitors
+   - Smooth DC voltage
+   - Energy storage
+
+3. Inverter:
+   - 6 IGBTs (or MOSFETs)
+   - PWM switching (2-20 kHz)
+   - Creates variable AC from DC
+
+Control Methods:
+
+1. V/f Control (Scalar):
+   - Maintains V/f ratio constant
+   - Keeps flux constant
+   - Simple, cheap
+   - Open-loop
+   - Accuracy: ±3% speed
+   - Most common
+
+2. Vector Control:
+   - Controls magnitude and angle of flux
+   - Fast dynamic response
+   - Better torque control
+   - More complex
+   - Used in servo applications
+
+Benefits:
+  1. Energy savings:
+     - Pumps/fans: Affinity laws
+     - P ∝ n³
+     - 20% speed reduction → 50% energy savings!
+  
+  2. Soft starting:
+     - No inrush current
+     - Reduced mechanical stress
+  
+  3. Process control:
+     - Precise speed/flow regulation
+     - No throttling losses
+  
+  4. Extended speed range:
+     - 0-120 Hz typical
+     - Constant torque to base speed
+     - Constant power above base
+
+Issues:
+  1. Harmonics:
+     - Non-sinusoidal current
+     - Filters may be needed
+     - IEEE 519 compliance
+  
+  2. Motor heating:
+     - Reduced cooling at low speed
+     - May need derating
+  
+  3. Cable length limits:
+     - Reflected waves
+     - dv/dt stress on insulation
+     - Output filters/reactors
+  
+  4. EMI/RFI:
+     - Shielded cables
+     - Proper grounding
+
+Energy Savings Example:
+  100 HP pump, 10 hrs/day, $0.10/kWh
+  
+  50% flow with throttling:
+    Still draws ~85 HP → 634 kW-hr/day → $63.40/day
+  
+  50% flow with VFD:
+    Draws ~12.5 HP (50%³) → 93 kW-hr/day → $9.30/day
+  
+  Savings: $54.10/day × 365 = $19,750/year!
+  VFD payback: Often < 2 years
+</code>
+                </div>
+
+                <div class="info-box tip">
+                    <h4>💡 Motor Selection Guide</h4>
+                    <ul>
+                        <li><strong>DC Motors:</strong> Legacy systems, precise speed control, high starting torque</li>
+                        <li><strong>Induction (squirrel cage):</strong> General purpose, 90% of applications, robust</li>
+                        <li><strong>Induction + VFD:</strong> Variable speed, energy savings, process control</li>
+                        <li><strong>Synchronous:</strong> Constant speed, PF correction, large loads (>100 HP)</li>
+                        <li><strong>PM Synchronous:</strong> High efficiency, servo applications, EVs, robotics</li>
+                        <li><strong>Single-phase induction:</strong> Residential (< 2 HP), split-phase or capacitor-start</li>
+                    </ul>
+                </div>
+
+                <div class="info-box important">
+                    <h4>🎯 Practice Problems</h4>
+                    <ol>
+                        <li>Transformer: 4800/240V, 10 kVA. Load = 20Ω. Find turns ratio, currents, input impedance</li>
+                        <li>Transformer losses: 15 kVA, core loss 100W, copper loss 250W at rated. Find η at 80% load, PF=0.9</li>
+                        <li>DC motor: 120V, R_a=0.3Ω, E_b=110V. Find armature current and power</li>
+                        <li>Induction motor: 8-pole, 60 Hz, runs at 873 RPM. Find synchronous speed and slip</li>
+                        <li>VFD energy savings: 50 HP pump runs at 60% speed. Find power (use affinity laws)</li>
+                        <li>Three-phase transformer bank: Δ-Y, 12.47 kV → 208Y/120V. Find turns ratio per transformer</li>
+                    </ol>
+                </div>
+
+                <h3>Summary</h3>
+                <ul>
+                    <li>Transformers change voltage levels using electromagnetic induction (Faraday's Law)</li>
+                    <li>Ideal transformer: V₁/V₂ = N₁/N₂ = a, I₁/I₂ = 1/a, Z_in = a²Z_load</li>
+                    <li>Real transformers have copper losses (I²R) and core losses (hysteresis + eddy currents)</li>
+                    <li>Three-phase transformers: Δ-Y most common for distribution, provides neutral and grounding</li>
+                    <li>DC motors: Series (high starting torque), Shunt (constant speed), Compound (versatile)</li>
+                    <li>Speed control: Armature voltage (below base), field flux (above base), PWM modern method</li>
+                    <li>Induction motors: Most common (70%), robust, self-starting, 2-5% slip at full load</li>
+                    <li>Synchronous speed: n_s = 120f/p; Slip: s = (n_s - n_r)/n_s</li>
+                    <li>VFD provides energy savings (P ∝ n³ for pumps/fans), soft starting, wide speed range</li>
+                    <li>Synchronous motors run at exact n_s, can correct power factor, used for large constant-speed loads</li>
+                </ul>
+
+                <h3>Next Steps</h3>
+                <p>
+                    In Lesson 10, we'll explore Control Systems, covering feedback control, transfer functions, 
+                    PID controllers, stability analysis, and state-space methods.
+                </p>
+            </div>
+
+            <div class="lesson-navigation">
+                <a href="08-power-systems.html" class="nav-btn">← Previous: Power Systems</a>
+                <a href="10-control-systems.html" class="nav-btn">Next: Control Systems →</a>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../js/main.js"></script>
+</body>
+</html>

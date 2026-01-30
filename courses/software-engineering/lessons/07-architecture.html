@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 7: Software Architecture - Engineering Academy</title>
+    <link rel="stylesheet" href="../../../css/styles.css">
+    <link rel="stylesheet" href="../../../css/course-styles/course.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+</head>
+<body>
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <h1><a href="../../../index.html" style="color: inherit; text-decoration: none;">🎓 Engineering Academy</a></h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../../../index.html#courses">Courses</a></li>
+                    <li><a href="../index.html">Course Overview</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section class="course-header">
+        <div class="container">
+            <h1>💻 Software Engineering</h1>
+            <p>Lesson 7: Software Architecture</p>
+        </div>
+    </section>
+
+    <div class="course-container">
+        <aside class="course-sidebar">
+            <h3>Course Modules</h3>
+            <ul class="lesson-list">
+                <li><a href="../index.html"><span class="lesson-number">📚</span>Course Overview</a></li>
+                <li><a href="01-introduction.html" class="completed"><span class="lesson-number">1</span>Introduction to SE</a></li>
+                <li><a href="02-sdlc.html" class="completed"><span class="lesson-number">2</span>SDLC & Methodologies</a></li>
+                <li><a href="03-requirements-engineering.html" class="completed"><span class="lesson-number">3</span>Requirements Engineering</a></li>
+                <li><a href="04-creational-patterns.html" class="completed"><span class="lesson-number">4</span>Creational Patterns</a></li>
+                <li><a href="05-structural-patterns.html" class="completed"><span class="lesson-number">5</span>Structural Patterns</a></li>
+                <li><a href="06-behavioral-patterns.html" class="completed"><span class="lesson-number">6</span>Behavioral Patterns</a></li>
+                <li><a href="07-architecture.html" class="active"><span class="lesson-number">7</span>System Architecture</a></li>
+                <li class="disabled"><span class="lesson-number">8</span>SOLID Principles <span style="opacity: 0.5;">(Coming Soon)</span></li>
+                <li class="disabled"><span class="lesson-number">9</span>Code Quality <span style="opacity: 0.5;">(Coming Soon)</span></li>
+                <li class="disabled"><span class="lesson-number">10</span>Testing Strategies <span style="opacity: 0.5;">(Coming Soon)</span></li>
+                <li class="disabled"><span class="lesson-number">11</span>Version Control <span style="opacity: 0.5;">(Coming Soon)</span></li>
+                <li class="disabled"><span class="lesson-number">12</span>Agile & DevOps <span style="opacity: 0.5;">(Coming Soon)</span></li>
+            </ul>
+        </aside>
+
+        <main class="course-content">
+            <h2>Software Architecture</h2>
+            <p class="intro">Learn how to design large-scale systems with architectural patterns, quality attributes, and best practices.</p>
+
+            <div class="content-section">
+                <h3>1. Introduction to Software Architecture</h3>
+                
+                <p>Software architecture is the high-level structure of a software system, defining its components, their relationships, and the principles guiding its design and evolution.</p>
+
+                <div class="info-box">
+                    <strong>Why Architecture Matters:</strong>
+                    <ul>
+                        <li><strong>Scalability:</strong> Handle growing workloads and users</li>
+                        <li><strong>Maintainability:</strong> Easy to modify and extend</li>
+                        <li><strong>Performance:</strong> Meet response time and throughput requirements</li>
+                        <li><strong>Reliability:</strong> System availability and fault tolerance</li>
+                        <li><strong>Security:</strong> Protect data and prevent unauthorized access</li>
+                        <li><strong>Team Coordination:</strong> Enable parallel development</li>
+                    </ul>
+                </div>
+
+                <p><strong>Architecture vs. Design:</strong> Architecture focuses on high-level structure and major decisions that are hard to change, while design deals with lower-level details and implementation specifics.</p>
+            </div>
+
+            <div class="content-section">
+                <h3>2. Architectural Patterns</h3>
+                
+                <h4>2.1 Layered (N-Tier) Architecture</h4>
+                <p>Organizes system into horizontal layers, each providing services to the layer above.</p>
+
+                <div class="example-box">
+                    <strong>Example: Traditional 3-Tier Web Application</strong>
+                    <pre><code>┌─────────────────────────────────┐
+│   Presentation Layer (UI)       │  ← React, Angular, Vue
+│   - Web Interface               │
+│   - User Input Validation       │
+└─────────────────────────────────┘
+           ↓ HTTP/REST
+┌─────────────────────────────────┐
+│   Business Logic Layer          │  ← Node.js, Java, Python
+│   - Application Logic           │
+│   - Business Rules              │
+│   - Processing                  │
+└─────────────────────────────────┘
+           ↓ SQL/ORM
+┌─────────────────────────────────┐
+│   Data Access Layer             │  ← PostgreSQL, MongoDB
+│   - Database Operations         │
+│   - Data Persistence            │
+└─────────────────────────────────┘
+
+// Example implementation
+class PresentationLayer {
+    constructor(private businessLayer: BusinessLayer) {}
+
+    async handleUserRequest(userId: string): Promise&lt;void&gt; {
+        const user = await this.businessLayer.getUserProfile(userId);
+        this.displayUser(user);
+    }
+
+    private displayUser(user: User): void {
+        console.log(`Name: ${user.name}, Email: ${user.email}`);
+    }
+}
+
+class BusinessLayer {
+    constructor(private dataLayer: DataLayer) {}
+
+    async getUserProfile(userId: string): Promise&lt;User&gt; {
+        const user = await this.dataLayer.findUserById(userId);
+        
+        // Apply business logic
+        if (!user.isActive) {
+            throw new Error("User account is inactive");
+        }
+        
+        return user;
+    }
+
+    async updateUserEmail(userId: string, newEmail: string): Promise&lt;void&gt; {
+        // Validate email format (business rule)
+        if (!this.isValidEmail(newEmail)) {
+            throw new Error("Invalid email format");
+        }
+        
+        await this.dataLayer.updateUser(userId, { email: newEmail });
+    }
+
+    private isValidEmail(email: string): boolean {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+}
+
+class DataLayer {
+    private database: Map&lt;string, User&gt; = new Map();
+
+    async findUserById(userId: string): Promise&lt;User&gt; {
+        const user = this.database.get(userId);
+        if (!user) {
+            throw new Error("User not found");
+        }
+        return user;
+    }
+
+    async updateUser(userId: string, updates: Partial&lt;User&gt;): Promise&lt;void&gt; {
+        const user = await this.findUserById(userId);
+        Object.assign(user, updates);
+        this.database.set(userId, user);
+    }
+}</code></pre>
+                </div>
+
+                <p><strong>Pros:</strong> Clear separation of concerns, easy to understand, testable layers</p>
+                <p><strong>Cons:</strong> Can become monolithic, performance overhead from layer traversal, tight coupling</p>
+
+                <h4>2.2 Client-Server Architecture</h4>
+                <p>Distributes tasks between service providers (servers) and service requesters (clients).</p>
+
+                <div class="example-box">
+                    <strong>Example: REST API Server</strong>
+                    <pre><code>// Server
+class APIServer {
+    private port: number = 3000;
+    private resources: Map&lt;string, any&gt; = new Map();
+
+    start(): void {
+        console.log(`🖥️ Server started on port ${this.port}`);
+        // Listen for HTTP requests
+    }
+
+    handleRequest(method: string, path: string, data?: any): Response {
+        switch (method) {
+            case 'GET':
+                return this.handleGet(path);
+            case 'POST':
+                return this.handlePost(path, data);
+            case 'PUT':
+                return this.handlePut(path, data);
+            case 'DELETE':
+                return this.handleDelete(path);
+            default:
+                return { status: 405, body: 'Method not allowed' };
+        }
+    }
+
+    private handleGet(path: string): Response {
+        const resource = this.resources.get(path);
+        return resource 
+            ? { status: 200, body: resource }
+            : { status: 404, body: 'Not found' };
+    }
+
+    private handlePost(path: string, data: any): Response {
+        this.resources.set(path, data);
+        return { status: 201, body: data };
+    }
+}
+
+// Client
+class APIClient {
+    private serverUrl: string;
+
+    constructor(serverUrl: string) {
+        this.serverUrl = serverUrl;
+    }
+
+    async get(endpoint: string): Promise&lt;any&gt; {
+        console.log(`📡 GET ${this.serverUrl}${endpoint}`);
+        // Make HTTP GET request
+        return fetch(`${this.serverUrl}${endpoint}`);
+    }
+
+    async post(endpoint: string, data: any): Promise&lt;any&gt; {
+        console.log(`📡 POST ${this.serverUrl}${endpoint}`);
+        // Make HTTP POST request
+        return fetch(`${this.serverUrl}${endpoint}`, {
+            method: 'POST',
+            body: JSON.stringify(data)
+        });
+    }
+}
+
+interface Response {
+    status: number;
+    body: any;
+}</code></pre>
+                </div>
+
+                <h4>2.3 Microservices Architecture</h4>
+                <p>Structures application as collection of loosely coupled, independently deployable services.</p>
+
+                <div class="example-box">
+                    <strong>Example: E-commerce Microservices</strong>
+                    <pre><code>// User Service
+class UserService {
+    private port = 3001;
+    
+    getUserById(userId: string): User {
+        console.log(`👤 UserService: Fetching user ${userId}`);
+        return { id: userId, name: "John Doe", email: "john@example.com" };
+    }
+
+    createUser(userData: any): User {
+        console.log(`👤 UserService: Creating user`);
+        return { id: "new-id", ...userData };
+    }
+}
+
+// Product Service
+class ProductService {
+    private port = 3002;
+    
+    getProductById(productId: string): Product {
+        console.log(`📦 ProductService: Fetching product ${productId}`);
+        return { id: productId, name: "Laptop", price: 1200 };
+    }
+
+    updateInventory(productId: string, quantity: number): void {
+        console.log(`📦 ProductService: Updating inventory for ${productId}`);
+    }
+}
+
+// Order Service
+class OrderService {
+    private port = 3003;
+    
+    constructor(
+        private userService: UserService,
+        private productService: ProductService,
+        private paymentService: PaymentService
+    ) {}
+
+    async createOrder(userId: string, productId: string): Promise&lt;Order&gt; {
+        console.log(`🛒 OrderService: Creating order`);
+        
+        // Call other microservices
+        const user = this.userService.getUserById(userId);
+        const product = this.productService.getProductById(productId);
+        
+        // Process payment
+        const payment = await this.paymentService.processPayment(
+            user.id, 
+            product.price
+        );
+        
+        if (payment.success) {
+            this.productService.updateInventory(productId, -1);
+            return {
+                id: "order-123",
+                userId: user.id,
+                productId: product.id,
+                total: product.price,
+                status: "confirmed"
+            };
+        }
+        
+        throw new Error("Payment failed");
+    }
+}
+
+// Payment Service
+class PaymentService {
+    private port = 3004;
+    
+    async processPayment(userId: string, amount: number): Promise&lt;PaymentResult&gt; {
+        console.log(`💳 PaymentService: Processing $${amount} for user ${userId}`);
+        return { success: true, transactionId: "txn-456" };
+    }
+}
+
+interface User { id: string; name: string; email: string; }
+interface Product { id: string; name: string; price: number; }
+interface Order { id: string; userId: string; productId: string; total: number; status: string; }
+interface PaymentResult { success: boolean; transactionId: string; }</code></pre>
+                </div>
+
+                <p><strong>Pros:</strong> Independent deployment, technology diversity, scalability, fault isolation</p>
+                <p><strong>Cons:</strong> Distributed system complexity, data consistency challenges, network overhead</p>
+
+                <h4>2.4 Event-Driven Architecture</h4>
+                <p>Components communicate by producing and consuming events asynchronously.</p>
+
+                <div class="example-box">
+                    <strong>Example: Event Bus System</strong>
+                    <pre><code>// Event types
+interface Event {
+    type: string;
+    timestamp: Date;
+    data: any;
+}
+
+// Event Bus (Message Broker)
+class EventBus {
+    private subscribers: Map&lt;string, Function[]&gt; = new Map();
+
+    subscribe(eventType: string, handler: Function): void {
+        if (!this.subscribers.has(eventType)) {
+            this.subscribers.set(eventType, []);
+        }
+        this.subscribers.get(eventType)!.push(handler);
+        console.log(`✅ Subscribed to ${eventType}`);
+    }
+
+    publish(event: Event): void {
+        console.log(`📢 Publishing event: ${event.type}`);
+        const handlers = this.subscribers.get(event.type) || [];
+        handlers.forEach(handler => handler(event));
+    }
+}
+
+// Event Producers
+class OrderProcessor {
+    constructor(private eventBus: EventBus) {}
+
+    placeOrder(orderId: string, userId: string, total: number): void {
+        console.log(`🛒 Processing order ${orderId}`);
+        
+        // Publish order placed event
+        this.eventBus.publish({
+            type: 'ORDER_PLACED',
+            timestamp: new Date(),
+            data: { orderId, userId, total }
+        });
+    }
+}
+
+// Event Consumers
+class EmailService {
+    constructor(eventBus: EventBus) {
+        eventBus.subscribe('ORDER_PLACED', this.handleOrderPlaced.bind(this));
+        eventBus.subscribe('PAYMENT_COMPLETED', this.handlePaymentCompleted.bind(this));
+    }
+
+    handleOrderPlaced(event: Event): void {
+        console.log(`📧 Sending order confirmation email for order ${event.data.orderId}`);
+    }
+
+    handlePaymentCompleted(event: Event): void {
+        console.log(`📧 Sending payment receipt email`);
+    }
+}
+
+class InventoryService {
+    constructor(eventBus: EventBus) {
+        eventBus.subscribe('ORDER_PLACED', this.handleOrderPlaced.bind(this));
+    }
+
+    handleOrderPlaced(event: Event): void {
+        console.log(`📦 Updating inventory for order ${event.data.orderId}`);
+        // Decrease stock
+    }
+}
+
+class AnalyticsService {
+    constructor(eventBus: EventBus) {
+        eventBus.subscribe('ORDER_PLACED', this.handleOrderPlaced.bind(this));
+        eventBus.subscribe('PAYMENT_COMPLETED', this.handlePaymentCompleted.bind(this));
+    }
+
+    handleOrderPlaced(event: Event): void {
+        console.log(`📊 Recording order analytics`);
+    }
+
+    handlePaymentCompleted(event: Event): void {
+        console.log(`📊 Recording payment analytics`);
+    }
+}
+
+// Usage
+const eventBus = new EventBus();
+const emailService = new EmailService(eventBus);
+const inventoryService = new InventoryService(eventBus);
+const analyticsService = new AnalyticsService(eventBus);
+
+const orderProcessor = new OrderProcessor(eventBus);
+orderProcessor.placeOrder("ORD-001", "USER-123", 299.99);</code></pre>
+                </div>
+
+                <p><strong>Pros:</strong> Loose coupling, scalability, flexibility, real-time processing</p>
+                <p><strong>Cons:</strong> Complex debugging, eventual consistency, error handling challenges</p>
+
+                <h4>2.5 Pipe-Filter Architecture</h4>
+                <p>Processing is organized as a sequence of filters connected by pipes.</p>
+
+                <div class="example-box">
+                    <strong>Example: Data Processing Pipeline</strong>
+                    <pre><code>// Filter interface
+interface Filter&lt;TInput, TOutput&gt; {
+    process(input: TInput): TOutput;
+}
+
+// Concrete Filters
+class ReadCSVFilter implements Filter&lt;string, string[][]&gt; {
+    process(filepath: string): string[][] {
+        console.log(`📄 Reading CSV from ${filepath}`);
+        // Simulate CSV reading
+        return [
+            ['Name', 'Age', 'City'],
+            ['Alice', '28', 'NYC'],
+            ['Bob', '35', 'LA'],
+            ['Charlie', '42', 'Chicago']
+        ];
+    }
+}
+
+class ParseDataFilter implements Filter&lt;string[][], any[]&gt; {
+    process(rows: string[][]): any[] {
+        console.log(`🔍 Parsing data...`);
+        const headers = rows[0];
+        return rows.slice(1).map(row => {
+            const obj: any = {};
+            headers.forEach((header, i) => {
+                obj[header] = row[i];
+            });
+            return obj;
+        });
+    }
+}
+
+class FilterAdultsFilter implements Filter&lt;any[], any[]&gt; {
+    process(data: any[]): any[] {
+        console.log(`🔎 Filtering adults (age >= 18)...`);
+        return data.filter(person => parseInt(person.Age) >= 18);
+    }
+}
+
+class TransformToUpperCaseFilter implements Filter&lt;any[], any[]&gt; {
+    process(data: any[]): any[] {
+        console.log(`🔄 Transforming to uppercase...`);
+        return data.map(person => ({
+            ...person,
+            Name: person.Name.toUpperCase(),
+            City: person.City.toUpperCase()
+        }));
+    }
+}
+
+class FormatOutputFilter implements Filter&lt;any[], string&gt; {
+    process(data: any[]): string {
+        console.log(`📝 Formatting output...`);
+        return JSON.stringify(data, null, 2);
+    }
+}
+
+// Pipeline
+class Pipeline {
+    private filters: Filter&lt;any, any&gt;[] = [];
+
+    addFilter(filter: Filter&lt;any, any&gt;): Pipeline {
+        this.filters.push(filter);
+        return this; // Enable chaining
+    }
+
+    execute(input: any): any {
+        console.log(`🚀 Starting pipeline execution...\n`);
+        let result = input;
+        
+        for (const filter of this.filters) {
+            result = filter.process(result);
+        }
+        
+        console.log(`\n✅ Pipeline complete!`);
+        return result;
+    }
+}
+
+// Usage
+const pipeline = new Pipeline()
+    .addFilter(new ReadCSVFilter())
+    .addFilter(new ParseDataFilter())
+    .addFilter(new FilterAdultsFilter())
+    .addFilter(new TransformToUpperCaseFilter())
+    .addFilter(new FormatOutputFilter());
+
+const result = pipeline.execute('data/users.csv');
+console.log(`\nFinal Result:\n${result}`);</code></pre>
+                </div>
+
+                <p><strong>Pros:</strong> Reusability, flexibility, concurrent processing, easy to understand</p>
+                <p><strong>Cons:</strong> Overhead of data transformation, not suitable for interactive systems</p>
+            </div>
+
+            <div class="content-section">
+                <h3>3. MVC, MVVM, and MVP Patterns</h3>
+                
+                <h4>3.1 MVC (Model-View-Controller)</h4>
+                <p>Separates application into three interconnected components.</p>
+
+                <div class="example-box">
+                    <strong>Example: MVC Web Application</strong>
+                    <pre><code>// Model - Business logic and data
+class UserModel {
+    private users: Map&lt;string, { name: string; email: string }&gt; = new Map();
+
+    getUser(id: string): any {
+        return this.users.get(id);
+    }
+
+    getAllUsers(): any[] {
+        return Array.from(this.users.values());
+    }
+
+    addUser(id: string, name: string, email: string): void {
+        this.users.set(id, { name, email });
+    }
+}
+
+// View - Presentation logic
+class UserView {
+    displayUser(user: any): void {
+        console.log(`
+╔════════════════════════════╗
+║        User Profile        ║
+╠════════════════════════════╣
+║ Name:  ${user.name.padEnd(20)}║
+║ Email: ${user.email.padEnd(20)}║
+╚════════════════════════════╝
+        `);
+    }
+
+    displayUsers(users: any[]): void {
+        console.log('\n=== All Users ===');
+        users.forEach((user, index) => {
+            console.log(`${index + 1}. ${user.name} (${user.email})`);
+        });
+    }
+
+    displayError(message: string): void {
+        console.log(`❌ Error: ${message}`);
+    }
+}
+
+// Controller - Handles user input and updates model/view
+class UserController {
+    constructor(
+        private model: UserModel,
+        private view: UserView
+    ) {}
+
+    showUser(id: string): void {
+        const user = this.model.getUser(id);
+        if (user) {
+            this.view.displayUser(user);
+        } else {
+            this.view.displayError('User not found');
+        }
+    }
+
+    showAllUsers(): void {
+        const users = this.model.getAllUsers();
+        this.view.displayUsers(users);
+    }
+
+    createUser(id: string, name: string, email: string): void {
+        this.model.addUser(id, name, email);
+        console.log(`✅ User ${name} created successfully`);
+    }
+}
+
+// Usage
+const model = new UserModel();
+const view = new UserView();
+const controller = new UserController(model, view);
+
+controller.createUser('1', 'Alice Johnson', 'alice@example.com');
+controller.createUser('2', 'Bob Smith', 'bob@example.com');
+
+controller.showUser('1');
+controller.showAllUsers();</code></pre>
+                </div>
+
+                <h4>3.2 MVVM (Model-View-ViewModel)</h4>
+                <p>Separates UI from business logic with data binding.</p>
+
+                <div class="example-box">
+                    <strong>Example: MVVM Pattern</strong>
+                    <pre><code>// Model
+class TodoItem {
+    constructor(
+        public id: string,
+        public text: string,
+        public completed: boolean = false
+    ) {}
+}
+
+class TodoModel {
+    private todos: TodoItem[] = [];
+
+    addTodo(text: string): TodoItem {
+        const todo = new TodoItem(Date.now().toString(), text);
+        this.todos.push(todo);
+        return todo;
+    }
+
+    getTodos(): TodoItem[] {
+        return this.todos;
+    }
+
+    toggleTodo(id: string): void {
+        const todo = this.todos.find(t => t.id === id);
+        if (todo) {
+            todo.completed = !todo.completed;
+        }
+    }
+}
+
+// ViewModel - Exposes data and commands for View
+class TodoViewModel {
+    private model: TodoModel;
+    private view: TodoView | null = null;
+
+    // Observable properties
+    public todos: TodoItem[] = [];
+    public newTodoText: string = '';
+    public totalCount: number = 0;
+    public completedCount: number = 0;
+
+    constructor(model: TodoModel) {
+        this.model = model;
+        this.updateComputedProperties();
+    }
+
+    bindView(view: TodoView): void {
+        this.view = view;
+    }
+
+    // Commands (actions)
+    addTodo(): void {
+        if (this.newTodoText.trim()) {
+            this.model.addTodo(this.newTodoText);
+            this.newTodoText = '';
+            this.updateComputedProperties();
+            this.notifyView();
+        }
+    }
+
+    toggleTodo(id: string): void {
+        this.model.toggleTodo(id);
+        this.updateComputedProperties();
+        this.notifyView();
+    }
+
+    private updateComputedProperties(): void {
+        this.todos = this.model.getTodos();
+        this.totalCount = this.todos.length;
+        this.completedCount = this.todos.filter(t => t.completed).length;
+    }
+
+    private notifyView(): void {
+        if (this.view) {
+            this.view.render();
+        }
+    }
+}
+
+// View - Data binding to ViewModel
+class TodoView {
+    constructor(private viewModel: TodoViewModel) {
+        viewModel.bindView(this);
+    }
+
+    render(): void {
+        console.clear();
+        console.log('=== Todo List ===\n');
+        
+        this.viewModel.todos.forEach(todo => {
+            const status = todo.completed ? '✅' : '⬜';
+            const text = todo.completed 
+                ? `\x1b[9m${todo.text}\x1b[0m`  // Strikethrough
+                : todo.text;
+            console.log(`${status} ${text}`);
+        });
+
+        console.log(`\nTotal: ${this.viewModel.totalCount} | Completed: ${this.viewModel.completedCount}`);
+    }
+
+    onAddTodoClick(text: string): void {
+        this.viewModel.newTodoText = text;
+        this.viewModel.addTodo();
+    }
+
+    onToggleTodoClick(id: string): void {
+        this.viewModel.toggleTodo(id);
+    }
+}
+
+// Usage
+const todoModel = new TodoModel();
+const todoViewModel = new TodoViewModel(todoModel);
+const todoView = new TodoView(todoViewModel);
+
+todoView.onAddTodoClick('Learn MVVM pattern');
+todoView.onAddTodoClick('Build an application');
+todoView.onToggleTodoClick(todoViewModel.todos[0].id);</code></pre>
+                </div>
+
+                <h4>3.3 MVP (Model-View-Presenter)</h4>
+                <p>Presenter acts as intermediary between View and Model.</p>
+
+                <div class="info-box">
+                    <strong>Pattern Comparison:</strong>
+                    <ul>
+                        <li><strong>MVC:</strong> Controller handles input, updates model, view observes model</li>
+                        <li><strong>MVVM:</strong> Two-way data binding between View and ViewModel</li>
+                        <li><strong>MVP:</strong> Presenter handles all presentation logic, View is passive</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>4. Quality Attributes</h3>
+                
+                <h4>4.1 Scalability</h4>
+                <p>System's ability to handle increased workload by adding resources.</p>
+
+                <div class="info-box">
+                    <strong>Types of Scalability:</strong>
+                    <ul>
+                        <li><strong>Vertical Scaling (Scale Up):</strong> Add more resources to single node (CPU, RAM)</li>
+                        <li><strong>Horizontal Scaling (Scale Out):</strong> Add more nodes to system</li>
+                    </ul>
+                    
+                    <p><strong>Strategies:</strong></p>
+                    <ul>
+                        <li>Load balancing across multiple servers</li>
+                        <li>Database sharding and replication</li>
+                        <li>Caching (Redis, Memcached)</li>
+                        <li>Asynchronous processing (message queues)</li>
+                        <li>CDN for static content</li>
+                    </ul>
+                </div>
+
+                <h4>4.2 Performance</h4>
+                <p>System's responsiveness and throughput under given workload.</p>
+
+                <div class="info-box">
+                    <strong>Key Metrics:</strong>
+                    <ul>
+                        <li><strong>Latency:</strong> Time to respond to a request</li>
+                        <li><strong>Throughput:</strong> Number of requests processed per unit time</li>
+                        <li><strong>Response Time:</strong> Total time from request to complete response</li>
+                    </ul>
+                    
+                    <p><strong>Optimization Techniques:</strong></p>
+                    <ul>
+                        <li>Database query optimization and indexing</li>
+                        <li>Code profiling and optimization</li>
+                        <li>Lazy loading and pagination</li>
+                        <li>Compression (gzip, Brotli)</li>
+                        <li>Connection pooling</li>
+                    </ul>
+                </div>
+
+                <h4>4.3 Reliability & Availability</h4>
+                <p>System's ability to function correctly and be accessible when needed.</p>
+
+                <div class="info-box">
+                    <strong>Availability Formula:</strong>
+                    <p>$\text{Availability} = \frac{\text{Uptime}}{\text{Uptime} + \text{Downtime}} \times 100\%$</p>
+                    
+                    <table style="width: 100%; margin-top: 10px;">
+                        <tr>
+                            <th>Availability</th>
+                            <th>Downtime/Year</th>
+                            <th>Description</th>
+                        </tr>
+                        <tr>
+                            <td>99% ("two nines")</td>
+                            <td>3.65 days</td>
+                            <td>Basic availability</td>
+                        </tr>
+                        <tr>
+                            <td>99.9% ("three nines")</td>
+                            <td>8.76 hours</td>
+                            <td>Good availability</td>
+                        </tr>
+                        <tr>
+                            <td>99.99% ("four nines")</td>
+                            <td>52.56 minutes</td>
+                            <td>High availability</td>
+                        </tr>
+                        <tr>
+                            <td>99.999% ("five nines")</td>
+                            <td>5.26 minutes</td>
+                            <td>Very high availability</td>
+                        </tr>
+                    </table>
+
+                    <p><strong>Techniques:</strong></p>
+                    <ul>
+                        <li>Redundancy (active-active, active-passive)</li>
+                        <li>Health checks and monitoring</li>
+                        <li>Graceful degradation</li>
+                        <li>Circuit breakers</li>
+                        <li>Retry mechanisms with exponential backoff</li>
+                    </ul>
+                </div>
+
+                <h4>4.4 Security</h4>
+                <p>Protection against threats and vulnerabilities.</p>
+
+                <div class="info-box">
+                    <strong>Security Principles:</strong>
+                    <ul>
+                        <li><strong>Authentication:</strong> Verify user identity (OAuth, JWT, SSO)</li>
+                        <li><strong>Authorization:</strong> Control access to resources (RBAC, ABAC)</li>
+                        <li><strong>Encryption:</strong> Protect data in transit (TLS) and at rest</li>
+                        <li><strong>Input Validation:</strong> Prevent injection attacks</li>
+                        <li><strong>Audit Logging:</strong> Track security events</li>
+                        <li><strong>Least Privilege:</strong> Minimum necessary permissions</li>
+                    </ul>
+                </div>
+
+                <h4>4.5 Maintainability</h4>
+                <p>Ease of making changes to the system.</p>
+
+                <div class="info-box">
+                    <strong>Maintainability Factors:</strong>
+                    <ul>
+                        <li><strong>Modularity:</strong> Clear separation of concerns</li>
+                        <li><strong>Documentation:</strong> Code comments, API docs, architecture diagrams</li>
+                        <li><strong>Code Quality:</strong> Clean code, consistent style</li>
+                        <li><strong>Test Coverage:</strong> Comprehensive automated tests</li>
+                        <li><strong>Dependency Management:</strong> Keep dependencies up to date</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>5. CAP Theorem</h3>
+                
+                <p>The CAP theorem states that a distributed system can provide at most two of these three guarantees simultaneously:</p>
+
+                <div class="info-box">
+                    <strong>CAP Properties:</strong>
+                    <ul>
+                        <li><strong>Consistency (C):</strong> All nodes see the same data at the same time</li>
+                        <li><strong>Availability (A):</strong> Every request receives a response (success or failure)</li>
+                        <li><strong>Partition Tolerance (P):</strong> System continues operating despite network partitions</li>
+                    </ul>
+                </div>
+
+                <div class="example-box">
+                    <strong>CAP Trade-offs:</strong>
+                    <pre><code>┌─────────────────────────────────────────────┐
+│         CAP Theorem Triangle                │
+│                                             │
+│                    C                        │
+│                   /\                        │
+│                  /  \                       │
+│                 /    \                      │
+│                /  CP  \                     │
+│               /   CA   \                    │
+│              /          \                   │
+│             /____________\                  │
+│            P              A                 │
+│                                             │
+└─────────────────────────────────────────────┘
+
+Systems and their CAP choices:
+
+CP Systems (Consistency + Partition Tolerance):
+- MongoDB (when configured for strong consistency)
+- HBase
+- Redis (single instance)
+Example: Banking systems where consistency is critical
+
+AP Systems (Availability + Partition Tolerance):
+- Cassandra
+- DynamoDB
+- CouchDB
+Example: Social media feeds where availability is prioritized
+
+CA Systems (Consistency + Availability):
+- Traditional RDBMS (PostgreSQL, MySQL)
+Note: Only possible without network partitions (single node)</code></pre>
+                </div>
+
+                <p><strong>In Practice:</strong> Since network partitions are inevitable in distributed systems, you typically choose between CP (sacrifice availability during partition) or AP (sacrifice consistency during partition).</p>
+            </div>
+
+            <div class="content-section">
+                <h3>6. Architecture Documentation</h3>
+                
+                <h4>6.1 C4 Model</h4>
+                <p>Hierarchical approach to documenting software architecture at different levels of detail.</p>
+
+                <div class="info-box">
+                    <strong>C4 Levels:</strong>
+                    <ul>
+                        <li><strong>Level 1 - System Context:</strong> Shows system in its environment with users and external systems</li>
+                        <li><strong>Level 2 - Container:</strong> Shows high-level technical building blocks (applications, databases)</li>
+                        <li><strong>Level 3 - Component:</strong> Shows components within each container</li>
+                        <li><strong>Level 4 - Code:</strong> Shows how components are implemented (class diagrams)</li>
+                    </ul>
+                </div>
+
+                <h4>6.2 Architecture Decision Records (ADRs)</h4>
+                <p>Document important architectural decisions and their rationale.</p>
+
+                <div class="example-box">
+                    <strong>ADR Template:</strong>
+                    <pre><code># ADR 001: Use Microservices Architecture
+
+## Status
+Accepted
+
+## Context
+Our monolithic application is becoming difficult to scale and deploy.
+Multiple teams are blocked waiting for deployments.
+Different components have different scaling requirements.
+
+## Decision
+We will adopt a microservices architecture, splitting the monolith into:
+- User Service
+- Product Service
+- Order Service
+- Payment Service
+- Notification Service
+
+## Consequences
+
+### Positive:
+- Independent deployment and scaling
+- Technology diversity (choose best tool for each service)
+- Fault isolation
+- Parallel development by multiple teams
+
+### Negative:
+- Increased operational complexity
+- Distributed system challenges (network latency, partial failures)
+- Data consistency complexities
+- Need for service discovery and API gateway
+
+### Neutral:
+- Requires investment in DevOps infrastructure
+- Team reorganization around services</code></pre>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>7. Practice Problems</h3>
+                
+                <div class="practice-problems">
+                    <div class="problem">
+                        <h4>Problem 1: E-commerce Architecture Design</h4>
+                        <p><strong>Task:</strong> Design a scalable e-commerce system architecture.</p>
+                        <p><strong>Requirements:</strong></p>
+                        <ul>
+                            <li>Handle 1 million users with peak traffic of 10,000 concurrent users</li>
+                            <li>Product catalog with 100,000+ items</li>
+                            <li>Real-time inventory management</li>
+                            <li>Payment processing</li>
+                            <li>Order tracking</li>
+                            <li>99.9% availability</li>
+                        </ul>
+                        
+                        <details>
+                            <summary>Show Solution</summary>
+                            <pre><code>Proposed Architecture:
+
+1. Frontend Layer:
+   - React SPA hosted on CDN
+   - Mobile apps (iOS/Android)
+
+2. API Gateway:
+   - Kong or AWS API Gateway
+   - Rate limiting, authentication, routing
+
+3. Microservices (containerized with Docker):
+   - User Service (authentication, profiles)
+   - Product Catalog Service (search, browse)
+   - Cart Service (shopping cart management)
+   - Order Service (order processing)
+   - Payment Service (payment processing)
+   - Inventory Service (stock management)
+   - Notification Service (emails, SMS)
+
+4. Data Layer:
+   - PostgreSQL (user data, orders) - master-slave replication
+   - MongoDB (product catalog) - sharded
+   - Redis (sessions, cart data, caching)
+   - Elasticsearch (product search)
+
+5. Message Queue:
+   - RabbitMQ or Apache Kafka
+   - Asynchronous processing (order confirmation, emails)
+
+6. Infrastructure:
+   - Load Balancer (NGINX or AWS ALB)
+   - Auto-scaling groups
+   - Kubernetes for container orchestration
+   - Monitoring: Prometheus + Grafana
+   - Logging: ELK Stack
+
+Scalability Strategy:
+- Horizontal scaling of services
+- Database read replicas
+- Caching strategy (Redis)
+- CDN for static assets
+- Async processing for non-critical operations
+
+Availability Strategy:
+- Multi-AZ deployment
+- Health checks and auto-recovery
+- Circuit breakers for external services
+- Graceful degradation</code></pre>
+                        </details>
+                    </div>
+
+                    <div class="problem">
+                        <h4>Problem 2: Choose Architecture Pattern</h4>
+                        <p><strong>Scenario:</strong> You're building a video streaming platform like Netflix.</p>
+                        <p><strong>Requirements:</strong></p>
+                        <ul>
+                            <li>Millions of concurrent users</li>
+                            <li>Video encoding in multiple formats</li>
+                            <li>Personalized recommendations</li>
+                            <li>User profiles and watch history</li>
+                            <li>Content delivery worldwide</li>
+                        </ul>
+                        <p><strong>Question:</strong> Which architectural patterns would you use and why?</p>
+                        
+                        <details>
+                            <summary>Show Solution</summary>
+                            <pre><code>Recommended Architecture:
+
+1. Microservices Architecture:
+   Why: Different services have different scaling needs
+   - Video Encoding Service (compute-intensive)
+   - Recommendation Service (ML-based)
+   - User Service (read-heavy)
+   - Streaming Service (bandwidth-intensive)
+
+2. Event-Driven Architecture:
+   Why: Asynchronous processing for video encoding, notifications
+   - User watches video → trigger analytics event
+   - New video uploaded → trigger encoding pipeline
+   - Encoding complete → update catalog
+
+3. CDN + Edge Computing:
+   Why: Global content delivery with low latency
+   - Video files cached at edge locations
+   - Reduce load on origin servers
+
+4. Pipe-Filter for Video Processing:
+   Why: Video encoding pipeline
+   - Upload → Validation → Transcode → Quality Check → Storage
+
+5. CQRS (Command Query Responsibility Segregation):
+   Why: Separate read/write operations
+   - Write: User actions (play, pause, rate)
+   - Read: Catalog browsing, search (optimized)
+
+Data Storage:
+- Video Files: Object Storage (S3)
+- Metadata: NoSQL (DynamoDB, Cassandra)
+- User Profiles: SQL (PostgreSQL)
+- Analytics: Data Warehouse (Redshift, BigQuery)
+- Cache: Redis (user sessions, popular content)
+
+Key Technologies:
+- Kafka for event streaming
+- Spark for batch processing
+- TensorFlow for recommendations
+- FFmpeg for video encoding</code></pre>
+                        </details>
+                    </div>
+                </div>
+            </div>
+
+            <div class="key-takeaways">
+                <h3>Key Takeaways</h3>
+                <ul>
+                    <li><strong>Architecture Patterns:</strong> Layered for simplicity, Microservices for scalability, Event-Driven for responsiveness</li>
+                    <li><strong>Quality Attributes:</strong> Understand trade-offs between scalability, performance, reliability, security, maintainability</li>
+                    <li><strong>CAP Theorem:</strong> Can only guarantee 2 of 3 (Consistency, Availability, Partition Tolerance) in distributed systems</li>
+                    <li><strong>MVC/MVVM/MVP:</strong> Choose based on framework and separation of concerns needs</li>
+                    <li><strong>Documentation:</strong> Use C4 model for architecture diagrams, ADRs for decisions</li>
+                    <li><strong>Scalability:</strong> Plan for horizontal scaling, use caching, load balancing, database optimization</li>
+                    <li><strong>No Silver Bullet:</strong> Architecture decisions depend on specific requirements, constraints, and trade-offs</li>
+                </ul>
+            </div>
+
+            <div class="lesson-navigation">
+                <a href="06-behavioral-patterns.html" class="nav-btn">← Previous: Behavioral Patterns</a>
+                <a href="08-solid-principles.html" class="nav-btn">Next: SOLID Principles →</a>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../js/course.js"></script>
+</body>
+</html>

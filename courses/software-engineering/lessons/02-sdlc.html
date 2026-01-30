@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 2: SDLC & Methodologies - Engineering Academy</title>
+    <link rel="stylesheet" href="../../../css/styles.css">
+    <link rel="stylesheet" href="../../../css/course-styles/course.css">
+</head>
+<body>
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <h1><a href="../../../index.html" style="color: inherit; text-decoration: none;">🎓 Engineering Academy</a></h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../index.html">Course Overview</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section class="course-header">
+        <div class="container">
+            <h1>💻 Software Engineering</h1>
+            <p>Lesson 2: Software Development Lifecycle & Methodologies</p>
+        </div>
+    </section>
+
+    <div class="course-container">
+        <aside class="course-sidebar">
+            <h3>Course Modules</h3>
+            <ul class="lesson-list">
+                <li><a href="../index.html"><span class="lesson-number">📚</span>Course Overview</a></li>
+                <li><a href="01-introduction.html" class="completed"><span class="lesson-number">1</span>Introduction to SE</a></li>
+                <li><a href="02-sdlc.html" class="active"><span class="lesson-number">2</span>SDLC & Methodologies</a></li>
+                <li><a href="03-requirements-engineering.html"><span class="lesson-number">3</span>Requirements Engineering</a></li>
+                <li><a href="04-creational-patterns.html"><span class="lesson-number">4</span>Creational Patterns</a></li>
+                <li><a href="05-structural-patterns.html"><span class="lesson-number">5</span>Structural Patterns</a></li>
+                <li><a href="06-behavioral-patterns.html"><span class="lesson-number">6</span>Behavioral Patterns</a></li>
+                <li><a href="07-architecture.html"><span class="lesson-number">7</span>Software Architecture</a></li>
+                <li><a href="08-solid-principles.html"><span class="lesson-number">8</span>SOLID Principles</a></li>
+                <li><a href="09-code-quality.html"><span class="lesson-number">9</span>Code Quality</a></li>
+                <li><a href="10-testing.html"><span class="lesson-number">10</span>Testing Strategies</a></li>
+                <li><a href="11-version-control.html"><span class="lesson-number">11</span>Version Control</a></li>
+                <li><a href="12-agile-devops.html"><span class="lesson-number">12</span>Agile & DevOps</a></li>
+            </ul>
+        </aside>
+
+        <main class="course-content">
+            <div class="lesson-header">
+                <h2>Lesson 2: Software Development Lifecycle & Methodologies</h2>
+                <div class="lesson-meta">
+                    <span>📖 50 min read</span>
+                    <span>📊 Beginner</span>
+                </div>
+            </div>
+
+            <div class="lesson-content">
+                <h3>What is the Software Development Lifecycle (SDLC)?</h3>
+                <p>
+                    The Software Development Lifecycle (SDLC) is a structured process used by software development 
+                    teams to design, develop, test, and deploy high-quality software. It provides a systematic approach 
+                    to software creation, ensuring all stakeholders understand what's happening at each stage.
+                </p>
+
+                <div class="info-box note">
+                    <h4>📌 Definition</h4>
+                    <p>
+                        The SDLC is a framework that defines the tasks performed at each step in the software development 
+                        process, from initial concept to final deployment and maintenance.
+                    </p>
+                </div>
+
+                <h3>Phases of the SDLC</h3>
+                <p>
+                    While specific methodologies may vary, most SDLCs include these fundamental phases:
+                </p>
+
+                <h4>1. Planning & Requirement Analysis</h4>
+                <p>
+                    The foundation of any successful project. This phase involves:
+                </p>
+                <ul>
+                    <li>Gathering business requirements from stakeholders</li>
+                    <li>Defining project scope and objectives</li>
+                    <li>Feasibility analysis (technical, economic, operational)</li>
+                    <li>Resource allocation and timeline estimation</li>
+                    <li>Risk assessment</li>
+                </ul>
+
+                <div class="code-block" data-language="example">
+<code>Requirements Document Example:
+
+Functional Requirements:
+- User must be able to register with email/password
+- System must send confirmation email within 2 minutes
+- User can reset password using email link
+
+Non-Functional Requirements:
+- System must handle 10,000 concurrent users
+- Page load time < 2 seconds
+- 99.9% uptime
+- GDPR compliant data handling
+</code>
+                </div>
+
+                <h4>2. System Design</h4>
+                <p>
+                    Converting requirements into a blueprint for implementation:
+                </p>
+                <ul>
+                    <li><strong>High-Level Design (HLD)</strong> - System architecture, modules, data flow</li>
+                    <li><strong>Low-Level Design (LLD)</strong> - Detailed module specifications, database schemas</li>
+                    <li>Technology stack selection</li>
+                    <li>Database design</li>
+                    <li>API design</li>
+                    <li>UI/UX mockups</li>
+                </ul>
+
+                <div class="code-block" data-language="example">
+<code>Architecture Design:
+
+┌──────────────┐
+│   Frontend   │ (React)
+│     Web      │
+└──────┬───────┘
+       │ HTTPS
+┌──────▼───────┐
+│  API Gateway │ (Node.js)
+└──────┬───────┘
+       │
+   ┌───┴────┬────────┬──────────┐
+   │        │        │          │
+┌──▼──┐  ┌─▼───┐ ┌──▼───┐  ┌───▼────┐
+│Auth │  │User │ │Order │  │Payment │
+│ MS  │  │ MS  │ │  MS  │  │   MS   │
+└──┬──┘  └──┬──┘ └──┬───┘  └───┬────┘
+   │        │        │          │
+   └────────┴────────┴──────────┘
+                │
+           ┌────▼────┐
+           │Database │
+           └─────────┘
+</code>
+                </div>
+
+                <h4>3. Implementation (Coding)</h4>
+                <p>
+                    The actual development phase where code is written:
+                </p>
+                <ul>
+                    <li>Following coding standards and guidelines</li>
+                    <li>Writing clean, documented code</li>
+                    <li>Version control usage (Git)</li>
+                    <li>Code reviews</li>
+                    <li>Unit testing during development</li>
+                </ul>
+
+                <h4>4. Testing</h4>
+                <p>
+                    Comprehensive testing to ensure quality:
+                </p>
+                <ul>
+                    <li><strong>Unit Testing</strong> - Individual components</li>
+                    <li><strong>Integration Testing</strong> - Component interactions</li>
+                    <li><strong>System Testing</strong> - Complete system</li>
+                    <li><strong>Acceptance Testing</strong> - User requirements validation</li>
+                    <li><strong>Performance Testing</strong> - Load and stress testing</li>
+                    <li><strong>Security Testing</strong> - Vulnerability assessment</li>
+                </ul>
+
+                <h4>5. Deployment</h4>
+                <p>
+                    Releasing the software to production:
+                </p>
+                <ul>
+                    <li>Environment setup (staging, production)</li>
+                    <li>Database migration</li>
+                    <li>Deployment automation (CI/CD)</li>
+                    <li>Rollback planning</li>
+                    <li>User training and documentation</li>
+                </ul>
+
+                <h4>6. Maintenance</h4>
+                <p>
+                    Ongoing support and improvement:
+                </p>
+                <ul>
+                    <li>Bug fixes</li>
+                    <li>Performance optimization</li>
+                    <li>Feature enhancements</li>
+                    <li>Security patches</li>
+                    <li>Technical debt management</li>
+                </ul>
+
+                <h3>SDLC Models & Methodologies</h3>
+
+                <h4>1. Waterfall Model</h4>
+                <p>
+                    The traditional, sequential approach where each phase must be completed before the next begins.
+                </p>
+
+                <div class="code-block" data-language="example">
+<code>Waterfall Flow:
+Requirements ──► Design ──► Implementation ──► Testing ──► Deployment ──► Maintenance
+     ▼            ▼             ▼               ▼            ▼              ▼
+   Fixed        Fixed         Fixed           Fixed       Fixed         Ongoing
+</code>
+                </div>
+
+                <p><strong>Advantages:</strong></p>
+                <ul>
+                    <li>Simple and easy to understand</li>
+                    <li>Well-documented at each stage</li>
+                    <li>Clear milestones and deliverables</li>
+                    <li>Works well for small projects with clear requirements</li>
+                </ul>
+
+                <p><strong>Disadvantages:</strong></p>
+                <ul>
+                    <li>Inflexible to changing requirements</li>
+                    <li>No working software until late in the cycle</li>
+                    <li>High risk if requirements are misunderstood</li>
+                    <li>Testing happens late, making fixes expensive</li>
+                </ul>
+
+                <div class="info-box tip">
+                    <h4>💡 When to Use Waterfall</h4>
+                    <p>
+                        Best for: Government projects, construction management software, projects with 
+                        well-defined requirements that won't change, regulatory compliance systems.
+                    </p>
+                </div>
+
+                <h4>2. Agile Methodology</h4>
+                <p>
+                    Iterative and incremental approach focused on flexibility, collaboration, and rapid delivery.
+                </p>
+
+                <div class="code-block" data-language="example">
+<code>Agile Iteration (Sprint):
+┌─────────────────────────────────┐
+│  Sprint (1-4 weeks)             │
+│                                 │
+│  Plan → Design → Develop →     │
+│  Test → Review → Deploy        │
+│                                 │
+│  ▼ Working Software Increment  │
+└─────────────────────────────────┘
+         │
+         ▼ Repeat for next sprint
+</code>
+                </div>
+
+                <p><strong>Core Principles (Agile Manifesto):</strong></p>
+                <ul>
+                    <li>Individuals and interactions over processes and tools</li>
+                    <li>Working software over comprehensive documentation</li>
+                    <li>Customer collaboration over contract negotiation</li>
+                    <li>Responding to change over following a plan</li>
+                </ul>
+
+                <p><strong>Advantages:</strong></p>
+                <ul>
+                    <li>Flexible and adaptable to changes</li>
+                    <li>Continuous delivery of working software</li>
+                    <li>Regular customer feedback</li>
+                    <li>Early bug detection</li>
+                    <li>Better team collaboration</li>
+                </ul>
+
+                <h4>3. Scrum Framework</h4>
+                <p>
+                    The most popular Agile framework with defined roles, events, and artifacts.
+                </p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Component</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Roles</strong></td>
+                            <td>Product Owner, Scrum Master, Development Team</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Sprint</strong></td>
+                            <td>Time-boxed iteration (1-4 weeks)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Sprint Planning</strong></td>
+                            <td>Meeting to plan sprint work</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Daily Standup</strong></td>
+                            <td>15-min daily sync meeting</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Sprint Review</strong></td>
+                            <td>Demo completed work to stakeholders</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Sprint Retrospective</strong></td>
+                            <td>Team improvement discussion</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Product Backlog</strong></td>
+                            <td>Prioritized list of all work</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Sprint Backlog</strong></td>
+                            <td>Work selected for current sprint</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="code-block" data-language="example">
+<code>Scrum Sprint Cycle:
+
+Week 1:
+Monday    - Sprint Planning (4 hours)
+Tue-Fri   - Development + Daily Standup (15 min each day)
+
+Week 2:
+Mon-Thu   - Development + Daily Standup
+Friday    - Sprint Review (2 hours)
+          - Sprint Retrospective (1.5 hours)
+          - Start next sprint planning
+</code>
+                </div>
+
+                <h4>4. Kanban</h4>
+                <p>
+                    Visual workflow management system focused on continuous delivery.
+                </p>
+
+                <div class="code-block" data-language="example">
+<code>Kanban Board Example:
+
+┌─────────┬─────────┬─────────┬─────────┬─────────┐
+│ Backlog │  To Do  │ In Prog │ Review  │  Done   │
+├─────────┼─────────┼─────────┼─────────┼─────────┤
+│ Task 7  │ Task 4  │ Task 2  │ Task 1  │ Task 0  │
+│ Task 8  │ Task 5  │ Task 3  │         │ Task X  │
+│ Task 9  │ Task 6  │         │         │ Task Y  │
+│ ...     │         │         │         │         │
+└─────────┴─────────┴─────────┴─────────┴─────────┘
+           ▲         ▲         ▲         ▲
+           │         │         │         │
+         WIP Limits: 3    2    1    ∞
+</code>
+                </div>
+
+                <p><strong>Key Principles:</strong></p>
+                <ul>
+                    <li>Visualize work</li>
+                    <li>Limit work in progress (WIP)</li>
+                    <li>Manage flow</li>
+                    <li>Make policies explicit</li>
+                    <li>Continuous improvement</li>
+                </ul>
+
+                <h4>5. DevOps</h4>
+                <p>
+                    Culture and practice combining development and operations for faster, more reliable delivery.
+                </p>
+
+                <div class="code-block" data-language="example">
+<code>DevOps Pipeline:
+
+Code → Build → Test → Deploy → Monitor
+ │       │       │       │        │
+Git   Jenkins  Auto   K8s/     Prometheus
+           │     Tests  Docker   Grafana
+         Maven          │
+                     CI/CD
+</code>
+                </div>
+
+                <p><strong>Key Practices:</strong></p>
+                <ul>
+                    <li><strong>Continuous Integration (CI)</strong> - Frequent code integration with automated builds</li>
+                    <li><strong>Continuous Delivery/Deployment (CD)</strong> - Automated deployment pipeline</li>
+                    <li><strong>Infrastructure as Code (IaC)</strong> - Managing infrastructure through code</li>
+                    <li><strong>Monitoring & Logging</strong> - Real-time system monitoring</li>
+                    <li><strong>Automated Testing</strong> - Comprehensive test automation</li>
+                </ul>
+
+                <div class="code-block" data-language="yaml">
+<code><span class="comment"># Example CI/CD Pipeline (GitHub Actions)</span>
+name: Deploy Application
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      
+      - name: Run tests
+        run: npm test
+      
+      - name: Build application
+        run: npm run build
+      
+      - name: Deploy to production
+        run: ./deploy.sh
+</code>
+                </div>
+
+                <h3>Comparing Methodologies</h3>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Methodology</th>
+                            <th>Best For</th>
+                            <th>Team Size</th>
+                            <th>Flexibility</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Waterfall</td>
+                            <td>Fixed requirements, regulatory projects</td>
+                            <td>Any</td>
+                            <td>Low</td>
+                        </tr>
+                        <tr>
+                            <td>Agile/Scrum</td>
+                            <td>Changing requirements, rapid iterations</td>
+                            <td>3-9</td>
+                            <td>High</td>
+                        </tr>
+                        <tr>
+                            <td>Kanban</td>
+                            <td>Continuous flow, maintenance</td>
+                            <td>Any</td>
+                            <td>Very High</td>
+                        </tr>
+                        <tr>
+                            <td>DevOps</td>
+                            <td>Continuous deployment, cloud apps</td>
+                            <td>Medium-Large</td>
+                            <td>High</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Choosing the Right Methodology</h3>
+                <p>
+                    Consider these factors when selecting an SDLC model:
+                </p>
+
+                <ul>
+                    <li><strong>Project Size & Complexity</strong> - Larger projects may need more structure</li>
+                    <li><strong>Requirements Clarity</strong> - Clear requirements favor Waterfall, unclear favor Agile</li>
+                    <li><strong>Customer Involvement</strong> - Agile requires active customer participation</li>
+                    <li><strong>Team Experience</strong> - Agile requires self-organizing teams</li>
+                    <li><strong>Budget & Timeline</strong> - Fixed budgets may prefer Waterfall</li>
+                    <li><strong>Risk Tolerance</strong> - Agile allows for more experimentation</li>
+                </ul>
+
+                <div class="info-box important">
+                    <h4>🎯 Real-World Tip</h4>
+                    <p>
+                        Many organizations use hybrid approaches, combining elements from different methodologies. 
+                        For example, "Scrumban" combines Scrum's structure with Kanban's flexibility, or using 
+                        Agile for development with Waterfall for compliance documentation.
+                    </p>
+                </div>
+
+                <h3>Modern Trends</h3>
+
+                <h4>1. Shift-Left Testing</h4>
+                <p>
+                    Testing earlier in the SDLC, even before code is written, to catch defects sooner.
+                </p>
+
+                <h4>2. Continuous Everything</h4>
+                <p>
+                    Continuous Integration, Delivery, Deployment, Testing, and Monitoring throughout the lifecycle.
+                </p>
+
+                <h4>3. Site Reliability Engineering (SRE)</h4>
+                <p>
+                    Google's approach to operations, treating operations as software problems.
+                </p>
+
+                <h4>4. Platform Engineering</h4>
+                <p>
+                    Building internal developer platforms to improve developer experience and productivity.
+                </p>
+
+                <h3>Summary</h3>
+                <ul>
+                    <li>SDLC provides structure to software development</li>
+                    <li>Different methodologies suit different project types</li>
+                    <li>Agile has become dominant for most modern software projects</li>
+                    <li>DevOps bridges development and operations</li>
+                    <li>Continuous improvement is key regardless of methodology</li>
+                </ul>
+
+                <div class="info-box tip">
+                    <h4>💡 Key Takeaways</h4>
+                    <ul>
+                        <li>No single methodology is perfect for all projects</li>
+                        <li>Understanding multiple methodologies makes you more versatile</li>
+                        <li>Focus on principles, not just following processes blindly</li>
+                        <li>Communication and collaboration matter more than strict adherence</li>
+                        <li>Adapt methodologies to your team and project needs</li>
+                    </ul>
+                </div>
+
+                <h3>Next Steps</h3>
+                <p>
+                    In the next lesson, we'll dive into Design Patterns - reusable solutions to common software 
+                    design problems. You'll learn what design patterns are, why they matter, and get an overview 
+                    of the 23 Gang of Four patterns.
+                </p>
+            </div>
+
+            <div class="lesson-navigation">
+                <a href="01-introduction.html" class="nav-btn">← Previous: Introduction</a>
+                <a href="03-requirements-engineering.html" class="nav-btn">Next: Requirements Engineering →</a>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../js/main.js"></script>
+</body>
+</html>

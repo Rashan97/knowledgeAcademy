@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 9: Manufacturing Processes - Engineering Academy</title>
+    <link rel="stylesheet" href="../../../css/styles.css">
+    <link rel="stylesheet" href="../../../css/course-styles/course.css">
+</head>
+<body>
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <h1><a href="../../../index.html" style="color: inherit; text-decoration: none;">🎓 Engineering Academy</a></h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../index.html">Course Overview</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section class="course-header">
+        <div class="container">
+            <h1>⚙️ Mechanical Engineering</h1>
+            <p>Lesson 9: Manufacturing Processes</p>
+        </div>
+    </section>
+
+    <div class="course-container">
+        <aside class="course-sidebar">
+            <h3>Course Modules</h3>
+            <ul class="lesson-list">
+                <li><a href="../index.html"><span class="lesson-number">📚</span>Course Overview</a></li>
+                <li><a href="01-statics.html"><span class="lesson-number">1</span>Statics & Force Analysis</a></li>
+                <li><a href="02-dynamics.html"><span class="lesson-number">2</span>Dynamics & Motion</a></li>
+                <li><a href="03-mechanics-of-materials.html"><span class="lesson-number">3</span>Mechanics of Materials</a></li>
+                <li><a href="04-thermodynamics.html"><span class="lesson-number">4</span>Thermodynamics</a></li>
+                <li><a href="05-fluid-mechanics.html"><span class="lesson-number">5</span>Fluid Mechanics</a></li>
+                <li><a href="06-heat-transfer.html"><span class="lesson-number">6</span>Heat Transfer</a></li>
+                <li><a href="07-materials-science.html"><span class="lesson-number">7</span>Materials Science</a></li>
+                <li><a href="08-machine-design.html"><span class="lesson-number">8</span>Machine Design</a></li>
+                <li><a href="09-manufacturing-processes.html" class="active"><span class="lesson-number">9</span>Manufacturing Processes</a></li>
+                <li><a href="10-vibrations.html"><span class="lesson-number">10</span>Mechanical Vibrations</a></li>
+                <li><a href="11-cad-cam.html"><span class="lesson-number">11</span>CAD/CAM & Design Tools</a></li>
+                <li><a href="12-hvac-systems.html"><span class="lesson-number">12</span>HVAC & Thermal Systems</a></li>
+            </ul>
+        </aside>
+
+        <main class="course-content">
+            <div class="lesson-header">
+                <h2>Lesson 9: Manufacturing Processes</h2>
+                <div class="lesson-meta">
+                    <span>📖 100 min read</span>
+                    <span>📊 Applied</span>
+                </div>
+            </div>
+
+            <div class="lesson-content">
+                <h3>Introduction to Manufacturing</h3>
+                <p>
+                    Manufacturing transforms raw materials into finished products through various physical and chemical 
+                    processes. Understanding manufacturing capabilities and limitations is essential for designing 
+                    parts that are functional, economical, and manufacturable.
+                </p>
+
+                <div class="info-box note">
+                    <h4>📌 What You'll Learn</h4>
+                    <ul>
+                        <li>Casting processes (sand, die, investment)</li>
+                        <li>Bulk deformation (forging, rolling, extrusion)</li>
+                        <li>Sheet metal forming (bending, deep drawing)</li>
+                        <li>Machining fundamentals (turning, milling, drilling)</li>
+                        <li>Cutting parameters and tool life</li>
+                        <li>Non-traditional machining (EDM, laser, waterjet)</li>
+                        <li>Joining processes (welding, brazing, soldering)</li>
+                        <li>Additive manufacturing (3D printing)</li>
+                    </ul>
+                </div>
+
+                <h3>Casting Processes</h3>
+
+                <h4>Fundamentals of Casting</h4>
+                <div class="code-block" data-language="text">
+<code>Casting Process:
+  Pour molten metal into mold cavity
+  Allow to solidify
+  Remove part (and possibly mold)
+
+Advantages:
+  + Complex geometries
+  + Large parts possible
+  + Internal cavities
+  + Near-net shape (less machining)
+  + Wide material selection
+
+Disadvantages:
+  - Porosity possible
+  - Rough surface finish
+  - Less precise tolerances
+  - Solidification defects
+
+Mold Materials:
+  Expendable: Sand, plaster, ceramic (one use)
+  Permanent: Metal, graphite (multiple uses)
+
+Design Considerations:
+
+Shrinkage:
+  Metal contracts during solidification
+  
+  Typical shrinkage allowances:
+    Cast iron: 1%
+    Steel: 2%
+    Aluminum: 1.3%
+    Brass: 1.5%
+  
+  Pattern oversized by shrinkage %
+
+Draft:
+  Taper for part removal
+  
+  Typical: 1-3° for sand, 2-5° for permanent mold
+
+Fillets and Radii:
+  Avoid sharp corners (stress concentration, cracking)
+  
+  Minimum radius ≈ 3 mm
+
+Uniform Wall Thickness:
+  Uneven thickness → differential cooling → defects
+  
+  If variation needed: gradual transition
+
+Parting Line:
+  Where mold halves meet
+  
+  Choose to minimize complexity
+
+Gating and Risers:
+  Gating: Channel for molten metal entry
+  Riser (feeder): Reservoir to compensate shrinkage
+  
+  Proper design prevents:
+    - Shrinkage cavities
+    - Incomplete filling
+    - Trapped gas
+</code>
+                </div>
+
+                <h4>Casting Methods</h4>
+                <div class="code-block" data-language="text">
+<code>Sand Casting:
+  Most common (60% of all castings)
+  
+  Process:
+    1. Make pattern (wood, plastic, metal)
+    2. Pack sand around pattern (green sand = clay binder)
+    3. Remove pattern
+    4. Create gating system
+    5. Pour metal
+    6. Cool, break mold, remove casting
+  
+  Advantages:
+    + Low cost for small quantities
+    + Large parts (engine blocks, machine bases)
+    + All metals
+  
+  Disadvantages:
+    - Rough surface (Ra ≈ 12-25 μm)
+    - Wide tolerances (±1-2 mm)
+    - Labor-intensive
+  
+  Variations:
+    Shell molding: Thin shell (better finish)
+    No-bake: Chemical binder (no baking)
+
+Die Casting:
+  Permanent metal mold, pressure injection
+  
+  Process:
+    1. Close steel dies
+    2. Inject molten metal under pressure (10-150 MPa)
+    3. Cool rapidly
+    4. Open dies, eject part
+  
+  Advantages:
+    + Excellent surface finish (Ra ≈ 0.8-1.6 μm)
+    + Tight tolerances (±0.1-0.2 mm)
+    + High production rate
+    + Thin walls possible (0.5 mm)
+  
+  Disadvantages:
+    - High tooling cost
+    - Limited to low-melting alloys (Zn, Al, Mg, Cu)
+    - Part size limited (typically < 50 kg)
+  
+  Types:
+    Hot chamber: Metal in machine (Zn, Mg, Pb)
+    Cold chamber: Ladled metal (Al, Cu, high-melting)
+
+Investment Casting (Lost Wax):
+  Precision casting
+  
+  Process:
+    1. Inject wax into metal die (pattern)
+    2. Assemble wax patterns on tree
+    3. Coat with ceramic slurry, dry (shell)
+    4. Melt out wax
+    5. Preheat shell, pour metal
+    6. Break shell, remove parts
+  
+  Advantages:
+    + Excellent accuracy (±0.05-0.15 mm)
+    + Smooth surface (Ra ≈ 1.6-3.2 μm)
+    + Complex geometries, undercuts
+    + All metals (including high-temp alloys)
+  
+  Disadvantages:
+    - Expensive
+    - Small-medium parts
+    - Longer lead time
+  
+  Applications:
+    Turbine blades, dental crowns, jewelry
+
+Permanent Mold Casting:
+  Reusable metal mold, gravity pour
+  
+  Better than sand: Finer grain, better properties
+  Lower cost than die casting (no high pressure)
+  
+  Variations:
+    Centrifugal: Rotating mold (pipes, rings)
+    Low-pressure: Slight pressure for filling
+
+Continuous Casting:
+  Solidify while withdrawing from mold
+  
+  Products: Slabs, billets, blooms (semi-finished)
+  Used in steel and aluminum production
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Bulk Deformation Processes</h3>
+
+                <h4>Forging</h4>
+                <div class="code-block" data-language="text">
+<code>Forging:
+  Plastically deform metal using compressive forces
+  
+  Advantages:
+    + Improved grain flow (strength)
+    + Refined grain structure
+    + Elimination of defects
+    + High strength-to-weight
+  
+  Temperature:
+    Hot forging: Above recrystallization T
+      Easier deformation, lower forces
+      Steel: 1100-1250°C
+    
+    Cold forging: Room temperature
+      Higher strength, better finish
+      Work hardening occurs
+
+Open-Die Forging:
+  Simple dies, no complete cavity
+  
+  Operations:
+    Upsetting: Compress height, increase diameter
+    Drawing out: Elongate, reduce cross-section
+  
+  Applications:
+    Large parts (shafts, turbine discs)
+    Custom, low volume
+
+Closed-Die (Impression-Die) Forging:
+  Metal forced into die cavity
+  
+  Process:
+    1. Heat billet
+    2. Place in bottom die
+    3. Top die descends, metal flows into cavity
+    4. Flash forms (excess metal in gap)
+    5. Trim flash
+  
+  Flash:
+    Beneficial: Restricts flow, fills cavity
+    Removed: Trimming operation
+  
+  Draft: 3-10° (for removal)
+  
+  Parting line: Die separation plane
+  
+  Applications:
+    Automotive (crankshafts, connecting rods)
+    Aerospace (landing gear)
+    Tools (wrenches, hammers)
+
+Forging Equipment:
+  Hammers: Impact force, kinetic energy
+    Drop hammer, power hammer
+  
+  Presses: Squeezing force, hydraulic/mechanical
+    Slower, controlled deformation
+
+Design Guidelines:
+  - Avoid sharp corners (use radii)
+  - Uniform thickness preferred
+  - Consider grain flow direction
+  - Parting line on largest dimension
+  - Draft angles for removal
+</code>
+                </div>
+
+                <h4>Rolling, Extrusion, and Drawing</h4>
+                <div class="code-block" data-language="text">
+<code>Rolling:
+  Reduce thickness by passing through rotating rolls
+  
+  Flat Rolling:
+    Produce sheets and plates
+    
+    Reduction:
+      Δh = h₀ - h_f
+      %Reduction = Δh/h₀ × 100%
+    
+    Roll force: F = σ_avg · L · w
+    Where L = contact length
+    
+    Multiple passes: Gradual reduction
+  
+  Shape Rolling:
+    Produce I-beams, rails, structural shapes
+    Contoured rolls
+  
+  Thread Rolling:
+    Form threads by rolling (vs cutting)
+    Stronger (grain flow intact)
+
+Extrusion:
+  Force material through die opening
+  
+  Direct Extrusion:
+    Billet pushed, die stationary
+    Ram force: P = A₀·σ_avg·ln(A₀/A_f)
+  
+  Indirect (Backward) Extrusion:
+    Die moves, billet stationary
+    Lower friction
+  
+  Hot extrusion: Al, Cu, Mg, steel
+  Cold extrusion: Al (toothpaste tubes), steel (small parts)
+  
+  Shapes:
+    Solid: Rods, complex profiles (window frames)
+    Hollow: Tubes, pipes
+  
+  Advantages:
+    + Continuous length
+    + Uniform cross-section
+    + Good surface finish
+  
+  Extrusion ratio:
+    R_x = A₀/A_f  (typically 10-100)
+
+Wire and Tube Drawing:
+  Pull through converging die
+  
+  Reduction in area per pass: 20-50%
+  
+  Multiple dies in series (tandem drawing)
+  
+  Die angle: 6-20° (balance force and length)
+  
+  Drawing stress:
+    σ_d = σ_avg·ln(A₀/A_f)
+  
+  Lubricants critical (reduce friction, heat)
+  
+  Applications:
+    Wire: Electrical cables, springs, fasteners
+    Tubes: Seamless tubing, precision tubes
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Sheet Metal Forming</h3>
+
+                <h4>Bending and Forming Operations</h4>
+                <div class="code-block" data-language="text">
+<code>Sheet Metal Characteristics:
+  Thickness: 0.1-10 mm (typically)
+  Large surface area to thickness ratio
+
+Bending:
+  Deform along straight axis
+  
+  Bend Allowance:
+    L_total = L₁ + L₂ + BA
+    
+    BA = α(R + K_T·t)
+    
+    Where:
+      α = bend angle (radians)
+      R = bend radius
+      t = sheet thickness
+      K_T = K-factor (neutral axis position, ≈ 0.33-0.5)
+  
+  Minimum Bend Radius:
+    Too small → cracking
+    
+    Ductile materials: R_min ≈ 0.5t
+    Less ductile: R_min ≈ 2-3t
+
+Springback:
+  Elastic recovery after bending
+  
+  Final angle < formed angle
+  
+  Springback factor:
+    K_s = (90°-α_f)/(90°-α_i)
+  
+  Where:
+    α_i = initial angle (tool)
+    α_f = final angle (after springback)
+  
+  Compensation:
+    Overbend or bottoming (force into die)
+
+Punching and Blanking:
+  Shearing operation
+  
+  Punching: Remove slug (hole)
+  Blanking: Slug becomes part
+  
+  Clearance: Gap between punch and die
+    c = (0.05-0.1) × t  (typical for steel)
+  
+  Too small: Poor edge, die wear
+  Too large: Large burr
+  
+  Shear force:
+    F_s = 0.7·S_ut·t·L
+    
+    Where L = perimeter length
+  
+  Nibbling: Series of overlapping punches
+
+Deep Drawing:
+  Form cup/box from flat blank
+  
+  Limiting Drawing Ratio (LDR):
+    LDR = D_blank/d_punch  (max ≈ 2.0-2.2)
+  
+  Beyond LDR: Redrawing needed (multiple operations)
+  
+  Blank holder: Prevent wrinkling
+  
+  Drawing force:
+    F_d = πd_p·t·σ_avg·(D_b/d_p - 0.7)
+  
+  Anisotropy:
+    Earing: Uneven height due to grain direction
+  
+  Applications:
+    Beverage cans, automotive body panels
+
+Formability:
+  Strain limits before failure
+  
+  Forming Limit Diagram (FLD):
+    Major strain vs minor strain
+    Safe zone below curve
+  
+  Tests:
+    Tensile test: %Elongation
+    Erichsen test: Cup depth
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Machining Processes</h3>
+
+                <h4>Fundamentals of Machining</h4>
+                <div class="code-block" data-language="text">
+<code>Machining:
+  Remove material to create desired shape
+  Chip formation by cutting tool
+
+Advantages:
+  + High accuracy (±0.01-0.1 mm)
+  + Excellent surface finish
+  + Versatile (any solid material)
+  + Complex geometries
+
+Disadvantages:
+  - Material waste (chips)
+  - Slower than forming
+  - Higher cost for simple shapes
+
+Cutting Parameters:
+
+Cutting Speed (v):
+  Velocity of tool relative to work surface
+  
+  Turning: v = πDn  (m/min or ft/min)
+    Where D = diameter, n = spindle speed (rpm)
+  
+  Milling: v = πDn
+
+Feed Rate (f):
+  Advancement per revolution or per tooth
+  
+  Turning: f = mm/rev
+  Milling: f_z = mm/tooth
+
+Depth of Cut (d):
+  Penetration of tool
+  
+  Radial (turning) or axial (milling)
+
+Material Removal Rate (MRR):
+  Volume removed per time
+  
+  Turning: MRR = πDdf·n = vfd
+  
+  Milling: MRR = a_e·a_p·v_f
+    Where a_e = width, a_p = depth, v_f = feed velocity
+
+Cutting Force and Power:
+  Cutting force: F_c = k_s·A_c
+    Where k_s = specific cutting force (material property)
+          A_c = chip cross-section = fd
+  
+  Power: P_c = F_c·v / η
+    Where η = machine efficiency (≈ 0.8)
+
+Chip Formation:
+  Shear deformation ahead of tool
+  
+  Chip types:
+    Continuous: Ductile, low feed, sharp tool
+    Built-up edge (BUE): Adhesion on tool (bad)
+    Segmented: Medium ductility
+    Discontinuous: Brittle materials
+  
+  Chip thickness ratio:
+    r_c = t_c/t_o  (typically 2-5)
+    Where t_c = chip thickness, t_o = uncut thickness
+
+Merchant's Analysis:
+  Shear plane angle (φ) minimizes energy
+  
+  tan(φ) = (r_c·cos(α)) / (1 - r_c·sin(α))
+  
+  Where α = rake angle
+</code>
+                </div>
+
+                <h4>Machining Operations</h4>
+                <div class="code-block" data-language="text">
+<code>Turning (Lathe):
+  Rotating workpiece, stationary tool
+  
+  Operations:
+    Facing: Reduce length (radial feed)
+    Turning: Reduce diameter (axial feed)
+    Boring: Enlarge existing hole
+    Grooving: Cut narrow slot
+    Threading: Cut external threads
+    Parting: Cut off part
+  
+  Workholding:
+    Chuck: 3-jaw (self-centering), 4-jaw (independent)
+    Collet: Precision, small parts
+    Faceplate: Large, irregular
+    Centers: Between headstock and tailstock
+  
+  Cutting time:
+    t = L/(fn)  (for axial feed)
+
+Milling:
+  Rotating tool, moving workpiece
+  
+  Types:
+    Face milling: Cutter axis ⊥ surface
+      Creates flat surfaces
+    
+    Peripheral (slab) milling: Cutter axis ∥ surface
+      Side of cutter cuts
+  
+  Up milling (conventional):
+    Chip thickness increases
+    Tool lifts workpiece (needs clamping)
+  
+  Down milling (climb):
+    Chip thickness decreases
+    Better finish, tool pulls down
+    Requires backlash elimination
+  
+  Cutting time:
+    t = L/(f_z·z·n)
+    Where z = number of teeth
+
+Drilling:
+  Create round holes
+  
+  Twist drill: Most common
+    Point angle: 118° (general), 135° (hard materials)
+  
+  Cutting speed at periphery (v = πDn)
+  Feed rate: f mm/rev
+  
+  Depth: For through hole, L = t + D/2 (point)
+  
+  Drilling time:
+    t = L/(fn)
+  
+  Peck drilling: Withdraw periodically (chip removal)
+
+Boring:
+  Enlarge and finish existing hole
+  
+  Better accuracy than drilling
+  
+  Single-point boring tool
+  Horizontal or vertical boring machine
+
+Reaming:
+  Finish operation for holes
+  
+  Precision (±0.01 mm), smooth finish
+  
+  Remove ~0.2-0.5 mm allowance
+
+Sawing:
+  Cut stock to length
+  
+  Hacksaw, band saw, circular saw
+
+Broaching:
+  Multiple progressive teeth
+  
+  Single pass produces finished surface
+  
+  Internal: Keyways, splines
+  External: Flat surfaces
+  
+  High productivity, expensive tooling
+
+Planing and Shaping:
+  Reciprocating tool (shaper) or work (planer)
+  
+  Flat surfaces, large parts
+  
+  Mostly replaced by milling
+</code>
+                </div>
+
+                <h4>Tool Materials and Tool Life</h4>
+                <div class="code-block" data-language="text">
+<code>Cutting Tool Materials:
+
+High-Speed Steel (HSS):
+  Alloy steel, heat treated
+  W, Mo, Cr, V alloying
+  
+  Operating: Up to 600°C (red hardness)
+  
+  Cost: Low
+  Toughness: Excellent
+  Hardness: Good
+  
+  Use: General purpose, drills, taps
+
+Cemented Carbide:
+  WC particles in Co binder
+  
+  Hardness: Very high
+  Toughness: Moderate
+  Cost: Medium
+  
+  Cutting speed: 2-3× HSS
+  
+  Grades:
+    C-1 to C-4: Roughing to finishing
+    Coatings: TiN, TiC, Al₂O₃ (improve wear)
+  
+  Use: Inserts, high-production turning/milling
+
+Ceramics:
+  Al₂O₃, Si₃N₄
+  
+  Hardness: Extremely high
+  Hot hardness: Excellent (1000°C+)
+  Toughness: Low (brittle)
+  
+  Very high speeds (5-10× HSS)
+  
+  Use: Finishing hard materials
+
+Cubic Boron Nitride (CBN):
+  Second hardest to diamond
+  
+  Machine hardened steels (45-65 HRC)
+  High-temperature stability
+  
+  Expensive
+
+Diamond:
+  Natural or polycrystalline (PCD)
+  
+  Hardest
+  Best for non-ferrous (Al, Cu, composites)
+  Reacts with Fe at high T
+  
+  Excellent finish
+  Very expensive
+
+Tool Life:
+  Time until tool fails (wear, breakage)
+  
+  Wear mechanisms:
+    Flank wear: Rubbing on workpiece
+    Crater wear: Chip flow on rake face
+    Notch wear: At depth of cut line
+  
+  Criteria: Flank wear land width (e.g., 0.3 mm)
+
+Taylor Tool Life Equation:
+  vT^n = C
+  
+  Where:
+    v = cutting speed
+    T = tool life (min)
+    n = exponent (material/tool dependent)
+        HSS: n ≈ 0.1-0.15
+        Carbide: n ≈ 0.2-0.4
+        Ceramic: n ≈ 0.5-0.7
+    C = constant
+  
+  Higher speed → shorter life (exponential)
+
+Extended Form:
+  vT^n·f^a·d^b = C
+  
+  Includes feed (f) and depth (d)
+
+Optimum Cutting Speed:
+  Balance productivity and tool cost
+  
+  Maximum production rate:
+    v_opt = C / [T_opt^n]
+    
+    Where T_opt = (1-n)/n · (t_c + t_t)
+      t_c = tool change time
+      t_t = tool cost / labor rate
+
+Coolants and Lubricants:
+  Functions:
+    - Cool tool and workpiece
+    - Lubricate (reduce friction)
+    - Flush chips
+    - Prevent corrosion
+  
+  Types:
+    Oils: Better lubrication, lower cooling
+    Water-based: Better cooling, rust issues
+    Dry/MQL: Minimal quantity, environmental
+</code>
+                </div>
+
+                <h4>Example: Machining Calculation</h4>
+                <div class="code-block" data-language="text">
+<code>Problem:
+  Turn steel bar from D₀=50 mm to D_f=46 mm, L=200 mm
+  Cutting speed: v = 120 m/min
+  Feed rate: f = 0.25 mm/rev
+  Find: Spindle speed, machining time, MRR
+
+Solution:
+
+1. Spindle speed (use average diameter):
+   D_avg = (50 + 46)/2 = 48 mm = 0.048 m
+   
+   n = v/(πD) = 120/(π·0.048) = 796 rpm
+   
+   Use: n = 800 rpm (round to available speed)
+
+2. Depth of cut (single pass):
+   d = (D₀ - D_f)/2 = (50-46)/2 = 2 mm
+
+3. Machining time:
+   t = L/(f·n) = 200/(0.25·800) = 1.0 min
+
+4. Material Removal Rate (at D_avg):
+   MRR = π·D_avg·d·f·n
+       = π·48·2·0.25·800
+       = 60,318 mm³/min
+       = 60.3 cm³/min
+
+Alternative (using velocity):
+   MRR = v·f·d = 120,000·0.25·2 = 60,000 mm³/min
+   (slight difference due to using v vs πD_avg·n)
+
+If tool life T=45 min at this v:
+   Number of parts per tool = T/t = 45/1 = 45 parts
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Advanced Manufacturing</h3>
+
+                <h4>Grinding and Abrasive Processes</h4>
+                <div class="code-block" data-language="text">
+<code>Grinding:
+  Abrasive machining with rotating wheel
+  
+  Advantages:
+    + Very fine finish (Ra < 0.4 μm)
+    + High accuracy (±0.002 mm)
+    + Machine hardened materials
+  
+  Disadvantages:
+    - Slow material removal
+    - Heat generation
+    - Expensive wheels
+
+Grinding Wheel:
+  Abrasive grains bonded together
+  
+  Designation: 51-A-36-L-5-V
+    51 = manufacturer's prefix
+    A = abrasive type
+    36 = grit size
+    L = grade (hardness)
+    5 = structure
+    V = bond type
+
+Abrasive Types:
+  Aluminum Oxide (Al₂O₃): General steels
+  Silicon Carbide (SiC): Cast iron, non-ferrous
+  CBN: Hardened steels
+  Diamond: Ceramics, carbides, composites
+
+Grit Size:
+  Mesh number (8-600)
+  
+  Coarse (8-24): Rough grinding, soft materials
+  Medium (30-60): General purpose
+  Fine (70-180): Finishing
+  Very fine (200-600): Precision, lapping
+
+Grade (Hardness):
+  Bond strength (A-Z)
+  
+  Soft (A-H): Hard materials, heavy cuts
+  Medium (I-P): General
+  Hard (Q-Z): Soft materials, light cuts
+  
+  "Soft wheel for hard work, hard wheel for soft work"
+
+Grinding Operations:
+  Surface grinding: Flat surfaces
+  Cylindrical grinding: External OD
+  Internal grinding: Holes
+  Centerless grinding: High production, no centers
+  Tool & cutter grinding: Sharpen tools
+
+Dressing and Truing:
+  Dressing: Sharpen wheel (remove dulled grains)
+  Truing: Restore wheel shape
+  
+  Diamond dresser common
+
+Grinding Ratio:
+  G = Volume of material removed / Volume of wheel wear
+  
+  Typical: G = 20-200 (higher is better)
+</code>
+                </div>
+
+                <h4>Non-Traditional Machining</h4>
+                <div class="code-block" data-language="text">
+<code>Electrical Discharge Machining (EDM):
+  Spark erosion between tool and workpiece
+  
+  Process:
+    1. Tool (electrode) and work in dielectric fluid
+    2. Pulsed DC voltage (50-400 V)
+    3. Spark discharge melts/vaporizes material
+    4. Debris flushed away
+  
+  Types:
+    Die-sinking EDM: 3D cavities (molds, dies)
+    Wire EDM: 2D contours (0.02-0.3 mm wire)
+  
+  Advantages:
+    + Machine any conductive material
+    + Complex shapes, fine details
+    + No cutting forces (delicate parts)
+    + Hard materials (carbide, hardened steel)
+  
+  Disadvantages:
+    - Slow (0.1-10 mm³/min)
+    - Conductive materials only
+    - Heat-affected zone
+    - Electrode wear (die-sinking)
+  
+  Applications:
+    Injection mold cavities, turbine blades, microholes
+
+Electrochemical Machining (ECM):
+  Reverse electroplating (anodic dissolution)
+  
+  Electrolyte flows between tool (cathode) and work (anode)
+  DC current dissolves workpiece
+  
+  Advantages:
+    + No tool wear
+    + No residual stress
+    + High removal rate
+  
+  Disadvantages:
+    - Corrosive electrolyte
+    - Poor surface finish
+    - Complex process control
+
+Laser Beam Machining (LBM):
+  Focused high-energy laser
+  
+  Melts and vaporizes material
+  
+  Lasers:
+    CO₂: Infrared, metals and non-metals
+    Nd:YAG: Near-infrared, metals
+    Fiber: High power, efficiency
+  
+  Applications:
+    Cutting, drilling, welding, marking
+    Sheet metal cutting, microelectronics
+
+Water Jet Machining (WJM):
+  High-velocity water stream
+  
+  Pressure: 200-400 MPa
+  Velocity: Up to 900 m/s
+  Nozzle: 0.1-0.4 mm
+  
+  Abrasive WJM (AWJ):
+    Add garnet or aluminum oxide
+    Cuts harder materials
+  
+  Advantages:
+    + No heat (no thermal damage)
+    + Any material (with abrasive)
+    + No tool wear
+  
+  Disadvantages:
+    - Noisy
+    - Slow for thick materials
+    - Taper on edges
+  
+  Applications:
+    Composites, food cutting, stone
+
+Ultrasonic Machining (USM):
+  Tool vibrates at ultrasonic frequency (~20 kHz)
+  Abrasive slurry between tool and work
+  
+  Brittle materials: Glass, ceramics
+  Small, intricate shapes
+</code>
+                </div>
+
+                <h4>Joining Processes</h4>
+                <div class="code-block" data-language="text">
+<code>Welding:
+  Permanently join metals by melting
+
+Arc Welding:
+  Electric arc provides heat (3000-6000°C)
+  
+  Shielded Metal Arc (SMAW, stick welding):
+    Manual, consumable flux-coated electrode
+    Versatile, portable
+    Applications: Construction, repair
+  
+  Gas Metal Arc (GMAW, MIG):
+    Continuous wire electrode
+    Shielding gas (Ar, CO₂, or mix)
+    Semi-automatic, high productivity
+    Applications: Manufacturing, automotive
+  
+  Gas Tungsten Arc (GTAW, TIG):
+    Non-consumable tungsten electrode
+    Separate filler rod
+    Inert gas (Ar)
+    High quality, slower
+    Applications: Aerospace, precision
+  
+  Flux-Cored Arc (FCAW):
+    Tubular wire with flux core
+    High deposition rate
+    Applications: Shipbuilding, heavy fabrication
+  
+  Submerged Arc (SAW):
+    Arc under granular flux
+    Automatic, deep penetration
+    Applications: Pipe, pressure vessels
+
+Resistance Welding:
+  Heat from electrical resistance
+  
+  Spot welding:
+    Sheet metal overlap
+    Electrodes apply pressure and current
+    Applications: Automotive body (thousands of spots)
+  
+  Seam welding:
+    Continuous weld (rotating electrodes)
+  
+  Projection welding:
+    Embossed projections concentrate current
+
+Gas Welding:
+  Oxyacetylene torch
+  
+  Lower heat than arc
+  Portable, no electricity
+  Mostly replaced by arc welding
+
+Solid-State Welding:
+  No melting
+  
+  Friction welding: Rotation + pressure
+  Ultrasonic: Vibration
+  Explosive: Explosive charge
+  Diffusion: High pressure, temperature, time
+
+Weld Quality:
+  Defects:
+    Porosity: Gas bubbles
+    Slag inclusions: Non-metallic trapped
+    Cracks: Hot or cold
+    Incomplete penetration/fusion
+    Undercut: Groove at toe
+  
+  Inspection:
+    Visual
+    Dye penetrant, magnetic particle
+    Radiography (X-ray), ultrasonic
+
+Heat-Affected Zone (HAZ):
+  Region adjacent to weld
+  Altered microstructure (grain growth, phase change)
+  Can be weakest area
+
+Brazing and Soldering:
+  Filler metal melts, base metal does not
+  
+  Brazing: T > 450°C
+    Filler: Brass, silver alloy
+    Capillary action fills joint
+    Stronger than base metal possible
+    Applications: Carbide tools, heat exchangers
+  
+  Soldering: T < 450°C
+    Filler: Tin-lead, tin-silver
+    Lower strength
+    Applications: Electronics, plumbing
+
+Adhesive Bonding:
+  Polymer adhesive (epoxy, cyanoacrylate)
+  
+  Advantages:
+    + Join dissimilar materials
+    + Uniform stress distribution
+    + Seal and bond
+  
+  Disadvantages:
+    - Temperature limits
+    - Surface prep critical
+    - Long cure time
+  
+  Applications:
+    Aerospace (composites), automotive, packaging
+</code>
+                </div>
+
+                <h4>Additive Manufacturing (3D Printing)</h4>
+                <div class="code-block" data-language="text">
+<code>Additive Manufacturing (AM):
+  Build parts layer by layer
+  
+  Advantages:
+    + Complex geometries (internal features, organic shapes)
+    + Rapid prototyping
+    + Customization (medical implants)
+    + Minimal waste
+    + No tooling
+  
+  Disadvantages:
+    - Slow for large quantities
+    - Anisotropic properties (layer bonding)
+    - Surface finish (stair-stepping)
+    - Limited materials (vs traditional)
+    - Size limitations
+
+Polymer AM:
+
+Fused Deposition Modeling (FDM):
+  Extrude thermoplastic filament layer by layer
+  
+  Materials: PLA, ABS, PETG, nylon
+  
+  Low cost, easy
+  
+  Applications: Prototypes, jigs, consumer products
+
+Stereolithography (SLA):
+  UV laser cures liquid photopolymer resin
+  
+  High resolution, smooth finish
+  
+  Materials: Resins (standard, tough, flexible, castable)
+  
+  Applications: Jewelry, dental models
+
+Selective Laser Sintering (SLS):
+  Laser fuses polymer powder
+  
+  No support structures needed (powder supports)
+  
+  Materials: Nylon, TPU
+  
+  Applications: Functional prototypes, end-use parts
+
+Metal AM:
+
+Powder Bed Fusion:
+  Laser or electron beam melts metal powder
+  
+  Selective Laser Melting (SLM):
+    Laser fully melts powder
+  
+  Direct Metal Laser Sintering (DMLS):
+    Laser sinters powder
+  
+  Electron Beam Melting (EBM):
+    Electron beam in vacuum
+  
+  Materials: Ti-6Al-4V, AlSi10Mg, stainless steel, Inconel
+  
+  Support structures required (overhang, warping)
+  
+  Applications: Aerospace (topology optimized), medical implants
+
+Directed Energy Deposition (DED):
+  Powder or wire fed into focused energy source (laser, arc)
+  
+  Add material to existing part (repair, cladding)
+  
+  Larger parts, multi-axis
+
+Binder Jetting:
+  Liquid binder selectively deposited on powder
+  
+  Sinter or infiltrate after printing
+  
+  Fast, large parts, full color possible
+  
+  Lower strength than laser-based
+
+Post-Processing:
+  Support removal
+  Heat treatment (stress relief, HIP)
+  Machining (critical surfaces)
+  Surface finishing (polishing, bead blasting)
+
+Design for AM (DfAM):
+  Optimize for AM capabilities:
+    - Topology optimization
+    - Lattice structures (lightweight)
+    - Consolidate assemblies
+    - Conformal cooling channels
+    - Overhang limits (typically < 45° without support)
+</code>
+                </div>
+
+                <div class="info-box important">
+                    <h4>🎯 Practice Problems</h4>
+                    <ol>
+                        <li>Casting: Al part 300 mm long. With 1.3% shrinkage, what should pattern length be?</li>
+                        <li>Bending: Bend 2 mm steel sheet to 90°, R=6 mm, K=0.4. Find bend allowance for flange lengths 50 mm and 40 mm.</li>
+                        <li>Turning: v=100 m/min, D=60 mm, f=0.3 mm/rev. Find spindle speed n and machining time for L=150 mm length.</li>
+                        <li>Tool life: Carbide tool has T=60 min at v=80 m/min. If n=0.3, find new T at v=100 m/min using Taylor equation.</li>
+                        <li>MRR: Milling with a_e=50 mm, a_p=3 mm, v_f=200 mm/min. Calculate MRR in cm³/min.</li>
+                        <li>Grinding: Wheel wears 5 cm³ while removing 500 cm³ of work. Find grinding ratio G.</li>
+                    </ol>
+                </div>
+
+                <h3>Summary</h3>
+                <ul>
+                    <li>Casting: sand (low-cost, rough), die (high-production, tight tolerance), investment (complex, precision)</li>
+                    <li>Forging: improved grain flow and strength, hot (easier deformation) vs cold (better finish, work hardened)</li>
+                    <li>Rolling reduces thickness through rotating rolls, extrusion forces through die for constant cross-section</li>
+                    <li>Sheet metal: bending with springback, punching/blanking with clearance, deep drawing limited by LDR≈2</li>
+                    <li>Machining: turning (rotating work), milling (rotating tool), drilling (create holes), high accuracy and finish</li>
+                    <li>Cutting parameters: speed v (surface velocity), feed f (advance per rev), depth d, MRR=vfd for turning</li>
+                    <li>Tool life: Taylor vT^n=C, carbide 2-3× faster than HSS, ceramics/CBN/diamond for hard materials</li>
+                    <li>Non-traditional: EDM (conductive, complex), laser (versatile, no force), waterjet (no heat), ECM (no wear)</li>
+                    <li>Welding: arc (SMAW/MIG/TIG), resistance (spot/seam), HAZ affects properties, brazing/soldering lower temperature</li>
+                    <li>Additive: FDM (low-cost polymer), SLA (smooth resin), SLS (no supports), metal AM (aerospace/medical)</li>
+                </ul>
+
+                <h3>Next Steps</h3>
+                <p>
+                    Lesson 10 covers Mechanical Vibrations, analyzing oscillatory motion in systems. You'll learn about 
+                    free and forced vibrations, damping, resonance, and vibration measurement and control.
+                </p>
+            </div>
+
+            <div class="lesson-navigation">
+                <a href="08-machine-design.html" class="nav-btn">← Machine Design</a>
+                <a href="10-vibrations.html" class="nav-btn">Next: Vibrations →</a>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../js/main.js"></script>
+</body>
+</html>

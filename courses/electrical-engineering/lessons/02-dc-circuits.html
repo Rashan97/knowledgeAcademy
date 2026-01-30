@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 2: DC Circuit Analysis - Engineering Academy</title>
+    <link rel="stylesheet" href="../../../css/styles.css">
+    <link rel="stylesheet" href="../../../css/course-styles/course.css">
+</head>
+<body>
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <h1><a href="../../../index.html" style="color: inherit; text-decoration: none;">🎓 Engineering Academy</a></h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../index.html">Course Overview</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section class="course-header">
+        <div class="container">
+            <h1>⚡ Electrical Engineering</h1>
+            <p>Lesson 2: DC Circuit Analysis</p>
+        </div>
+    </section>
+
+    <div class="course-container">
+        <aside class="course-sidebar">
+            <h3>Course Modules</h3>
+            <ul class="lesson-list">
+                <li><a href="../index.html"><span class="lesson-number">📚</span>Course Overview</a></li>
+                <li><a href="01-fundamentals.html" class="completed"><span class="lesson-number">1</span>EE Fundamentals</a></li>
+                <li><a href="02-dc-circuits.html" class="active"><span class="lesson-number">2</span>DC Circuit Analysis</a></li>
+                <li><a href="03-ac-circuits.html"><span class="lesson-number">3</span>AC Circuits</a></li>
+                <li><a href="04-semiconductors.html"><span class="lesson-number">4</span>Semiconductors</a></li>
+                <li><a href="05-diodes-transistors.html"><span class="lesson-number">5</span>Diodes & Transistors</a></li>
+                <li><a href="06-operational-amplifiers.html"><span class="lesson-number">6</span>Op-Amps</a></li>
+                <li><a href="07-digital-electronics.html"><span class="lesson-number">7</span>Digital Electronics</a></li>
+                <li><a href="08-power-systems.html"><span class="lesson-number">8</span>Power Systems</a></li>
+                <li><a href="09-transformers-motors.html"><span class="lesson-number">9</span>Transformers & Motors</a></li>
+                <li><a href="10-control-systems.html"><span class="lesson-number">10</span>Control Systems</a></li>
+                <li><a href="11-signals-systems.html"><span class="lesson-number">11</span>Signals & Systems</a></li>
+                <li><a href="12-safety-standards.html"><span class="lesson-number">12</span>Safety & Standards</a></li>
+            </ul>
+        </aside>
+
+        <main class="course-content">
+            <div class="lesson-header">
+                <h2>Lesson 2: DC Circuit Analysis</h2>
+                <div class="lesson-meta">
+                    <span>📖 90 min read</span>
+                    <span>📊 Beginner-Intermediate</span>
+                </div>
+            </div>
+
+            <div class="lesson-content">
+                <h3>Introduction to DC Circuits</h3>
+                <p>
+                    Direct Current (DC) circuits are the foundation of electrical engineering. Unlike AC (alternating 
+                    current), DC flows in one direction only. Batteries, solar panels, and electronic devices all 
+                    operate on DC principles.
+                </p>
+
+                <div class="info-box note">
+                    <h4>📌 What You'll Learn</h4>
+                    <ul>
+                        <li>Series and parallel resistor circuits</li>
+                        <li>Voltage and current dividers</li>
+                        <li>Kirchhoff's laws for complex circuits</li>
+                        <li>Mesh and nodal analysis techniques</li>
+                        <li>Thevenin and Norton equivalent circuits</li>
+                        <li>Maximum power transfer theorem</li>
+                    </ul>
+                </div>
+
+                <h3>Fundamental Laws Review</h3>
+
+                <h4>Ohm's Law</h4>
+                <p>
+                    The most fundamental relationship in electrical circuits:
+                </p>
+
+                <div class="code-block" data-language="text">
+<code>V = I × R
+
+Where:
+  V = Voltage (Volts, V)
+  I = Current (Amperes, A)
+  R = Resistance (Ohms, Ω)
+
+Derived forms:
+  I = V / R
+  R = V / I
+</code>
+                </div>
+
+                <h4>Power Calculations</h4>
+                <div class="code-block" data-language="text">
+<code>P = V × I        (Power = Voltage × Current)
+P = I² × R       (Using Ohm's law: V = IR)
+P = V² / R       (Using Ohm's law: I = V/R)
+
+Where:
+  P = Power (Watts, W)
+  
+Energy:
+  W = P × t       (Energy = Power × time)
+  W measured in Joules (J) or Watt-hours (Wh)
+</code>
+                </div>
+
+                <h4>Example 1: Basic Ohm's Law</h4>
+                <div class="code-block" data-language="text">
+<code>Given: A 12V battery connected to a 4Ω resistor
+Find: Current and power dissipated
+
+Solution:
+  I = V / R = 12V / 4Ω = 3A
+  P = V × I = 12V × 3A = 36W
+  
+  Or using: P = V² / R = 12² / 4 = 144 / 4 = 36W ✓
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Series Circuits</h3>
+                <p>
+                    In series circuits, components are connected end-to-end, forming a single path for current.
+                </p>
+
+                <h4>Key Properties of Series Circuits:</h4>
+                <ul>
+                    <li><strong>Current is the same</strong> through all components: I₁ = I₂ = I₃ = I_total</li>
+                    <li><strong>Voltages add up</strong>: V_total = V₁ + V₂ + V₃</li>
+                    <li><strong>Resistances add up</strong>: R_total = R₁ + R₂ + R₃</li>
+                </ul>
+
+                <div class="code-block" data-language="text">
+<code>Series Resistance Formula:
+  R_total = R₁ + R₂ + R₃ + ... + Rₙ
+
+Circuit Diagram:
+  ───R₁───R₂───R₃───
+  
+Example:
+  R₁ = 10Ω, R₂ = 20Ω, R₃ = 30Ω
+  R_total = 10 + 20 + 30 = 60Ω
+</code>
+                </div>
+
+                <h4>Example 2: Series Circuit Analysis</h4>
+                <div class="code-block" data-language="text">
+<code>Given: 
+  - 24V battery
+  - Three resistors in series: R₁=100Ω, R₂=200Ω, R₃=300Ω
+  
+Find: Total current and voltage across each resistor
+
+Solution:
+  Step 1: Total resistance
+    R_total = 100 + 200 + 300 = 600Ω
+  
+  Step 2: Total current (same everywhere in series)
+    I = V / R_total = 24V / 600Ω = 0.04A = 40mA
+  
+  Step 3: Voltage across each resistor
+    V₁ = I × R₁ = 0.04A × 100Ω = 4V
+    V₂ = I × R₂ = 0.04A × 200Ω = 8V
+    V₃ = I × R₃ = 0.04A × 300Ω = 12V
+  
+  Check: V₁ + V₂ + V₃ = 4 + 8 + 12 = 24V ✓
+</code>
+                </div>
+
+                <h4>Voltage Divider Rule</h4>
+                <p>
+                    A crucial technique for finding voltages in series circuits:
+                </p>
+
+                <div class="code-block" data-language="text">
+<code>For resistor Rₙ in a series circuit:
+
+  Vₙ = V_total × (Rₙ / R_total)
+
+Example:
+  V_total = 12V, R₁ = 3kΩ, R₂ = 6kΩ
+  R_total = 3k + 6k = 9kΩ
+  
+  V₁ = 12V × (3k/9k) = 12V × 1/3 = 4V
+  V₂ = 12V × (6k/9k) = 12V × 2/3 = 8V
+</code>
+                </div>
+
+                <div class="info-box tip">
+                    <h4>💡 Practical Application: Voltage Divider</h4>
+                    <p>
+                        Voltage dividers are everywhere in electronics:
+                    </p>
+                    <ul>
+                        <li>Sensor interfaces (potentiometers, thermistors)</li>
+                        <li>Level shifting between different voltage domains</li>
+                        <li>Biasing circuits in amplifiers</li>
+                        <li>Reference voltage generation</li>
+                    </ul>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Parallel Circuits</h3>
+                <p>
+                    In parallel circuits, components are connected across the same two points, providing 
+                    multiple paths for current.
+                </p>
+
+                <h4>Key Properties of Parallel Circuits:</h4>
+                <ul>
+                    <li><strong>Voltage is the same</strong> across all components: V₁ = V₂ = V₃ = V_total</li>
+                    <li><strong>Currents add up</strong>: I_total = I₁ + I₂ + I₃</li>
+                    <li><strong>Reciprocal of total resistance</strong>: 1/R_total = 1/R₁ + 1/R₂ + 1/R₃</li>
+                </ul>
+
+                <div class="code-block" data-language="text">
+<code>Parallel Resistance Formulas:
+
+General formula:
+  1/R_total = 1/R₁ + 1/R₂ + 1/R₃ + ... + 1/Rₙ
+  
+Two resistors shortcut:
+  R_total = (R₁ × R₂) / (R₁ + R₂)    "Product over sum"
+  
+Equal resistors:
+  R_total = R / n                     (n = number of resistors)
+
+Circuit Diagram:
+       ┌──R₁──┐
+  ─────┤      ├─────
+       │  R₂  │
+       └──────┘
+</code>
+                </div>
+
+                <h4>Example 3: Parallel Circuit Analysis</h4>
+                <div class="code-block" data-language="text">
+<code>Given:
+  - 12V battery
+  - Three resistors in parallel: R₁=6Ω, R₂=12Ω, R₃=4Ω
+
+Find: Total resistance and current through each resistor
+
+Solution:
+  Step 1: Total resistance
+    1/R_total = 1/6 + 1/12 + 1/4
+    1/R_total = 2/12 + 1/12 + 3/12 = 6/12 = 1/2
+    R_total = 2Ω
+  
+  Step 2: Currents (voltage same across all = 12V)
+    I₁ = V / R₁ = 12V / 6Ω = 2A
+    I₂ = V / R₂ = 12V / 12Ω = 1A
+    I₃ = V / R₃ = 12V / 4Ω = 3A
+  
+  Step 3: Total current
+    I_total = 2A + 1A + 3A = 6A
+  
+  Check using Ohm's law:
+    I_total = V / R_total = 12V / 2Ω = 6A ✓
+</code>
+                </div>
+
+                <h4>Current Divider Rule</h4>
+                <p>
+                    For finding current distribution in parallel circuits:
+                </p>
+
+                <div class="code-block" data-language="text">
+<code>For two resistors in parallel:
+
+  I₁ = I_total × (R₂ / (R₁ + R₂))
+  I₂ = I_total × (R₁ / (R₁ + R₂))
+
+Note: Current is inversely proportional to resistance!
+
+Example:
+  I_total = 10A, R₁ = 20Ω, R₂ = 30Ω
+  
+  I₁ = 10A × (30/(20+30)) = 10A × 30/50 = 6A
+  I₂ = 10A × (20/(20+30)) = 10A × 20/50 = 4A
+  
+  Check: 6A + 4A = 10A ✓
+</code>
+                </div>
+
+                <div class="info-box warning">
+                    <h4>⚠️ Important Notes on Parallel Circuits</h4>
+                    <ul>
+                        <li>Total resistance is <strong>always less</strong> than the smallest individual resistance</li>
+                        <li>Adding more parallel resistors <strong>decreases</strong> total resistance</li>
+                        <li>More current flows through smaller resistances (path of least resistance)</li>
+                        <li>Short circuits (R=0) make R_total = 0, causing infinite current (dangerous!)</li>
+                    </ul>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Kirchhoff's Laws</h3>
+                <p>
+                    These fundamental laws apply to ALL circuits and are essential for analyzing complex networks.
+                </p>
+
+                <h4>Kirchhoff's Current Law (KCL)</h4>
+                <p>
+                    <strong>The algebraic sum of currents at any node equals zero.</strong>
+                </p>
+
+                <div class="code-block" data-language="text">
+<code>KCL: Σ I_in = Σ I_out
+
+Or equivalently:
+  Σ I_node = 0  (considering direction: in=+, out=-)
+
+Example at Node A:
+     2A ─→ ● ←─ 3A
+           │
+           ↓ 5A
+           
+  KCL: 2A + 3A - 5A = 0 ✓
+  Or: Currents in (5A) = Currents out (2A + 3A) ✓
+</code>
+                </div>
+
+                <h4>Kirchhoff's Voltage Law (KVL)</h4>
+                <p>
+                    <strong>The algebraic sum of voltages around any closed loop equals zero.</strong>
+                </p>
+
+                <div class="code-block" data-language="text">
+<code>KVL: Σ V_loop = 0
+
+Convention:
+  - Voltage rises (- to +): positive
+  - Voltage drops (+ to -): negative
+
+Example Loop:
+  +12V battery, -4V resistor, -8V resistor
+  
+  KVL: +12V - 4V - 8V = 0 ✓
+</code>
+                </div>
+
+                <h4>Example 4: Using KVL</h4>
+                <div class="code-block" data-language="text">
+<code>Given circuit with unknown voltage Vₓ:
+  
+  Loop: +24V source, -6V drop, -Vₓ, -10V drop
+  
+Find: Vₓ
+
+Solution:
+  Apply KVL: +24V - 6V - Vₓ - 10V = 0
+             24V - 16V - Vₓ = 0
+             8V - Vₓ = 0
+             Vₓ = 8V
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Mesh Analysis (Loop Current Method)</h3>
+                <p>
+                    Systematic technique for analyzing circuits with multiple loops using KVL.
+                </p>
+
+                <h4>Mesh Analysis Steps:</h4>
+                <ol>
+                    <li>Identify all independent meshes (loops)</li>
+                    <li>Assign mesh currents (usually clockwise)</li>
+                    <li>Apply KVL to each mesh</li>
+                    <li>Solve simultaneous equations</li>
+                    <li>Find branch currents from mesh currents</li>
+                </ol>
+
+                <h4>Example 5: Two-Mesh Circuit</h4>
+                <div class="code-block" data-language="text">
+<code>Given:
+  Mesh 1: 12V source, R₁=4Ω, R₂=8Ω (shared)
+  Mesh 2: R₂=8Ω (shared), R₃=6Ω, 6V source
+
+Find: Mesh currents I₁ and I₂
+
+Solution:
+  Mesh 1 (KVL):
+    -12 + 4I₁ + 8(I₁ - I₂) = 0
+    -12 + 4I₁ + 8I₁ - 8I₂ = 0
+    12I₁ - 8I₂ = 12  ... equation (1)
+  
+  Mesh 2 (KVL):
+    8(I₂ - I₁) + 6I₂ - 6 = 0
+    8I₂ - 8I₁ + 6I₂ - 6 = 0
+    -8I₁ + 14I₂ = 6  ... equation (2)
+  
+  Solve simultaneously:
+    From (1): I₁ = (12 + 8I₂)/12 = 1 + 2I₂/3
+    
+    Substitute into (2):
+    -8(1 + 2I₂/3) + 14I₂ = 6
+    -8 - 16I₂/3 + 14I₂ = 6
+    14I₂ - 16I₂/3 = 14
+    (42I₂ - 16I₂)/3 = 14
+    26I₂/3 = 14
+    I₂ = 42/26 = 1.615A
+    
+    I₁ = 1 + 2(1.615)/3 = 2.077A
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Nodal Analysis (Node Voltage Method)</h3>
+                <p>
+                    Alternative systematic technique using KCL at nodes to find node voltages.
+                </p>
+
+                <h4>Nodal Analysis Steps:</h4>
+                <ol>
+                    <li>Select a reference node (ground, 0V)</li>
+                    <li>Assign voltage variables to other nodes</li>
+                    <li>Apply KCL at each non-reference node</li>
+                    <li>Express currents using Ohm's law: I = (V₁ - V₂)/R</li>
+                    <li>Solve simultaneous equations for node voltages</li>
+                </ol>
+
+                <h4>Example 6: Three-Node Circuit</h4>
+                <div class="code-block" data-language="text">
+<code>Given:
+  Node 1: Connected to 10V source through R₁=2Ω
+  Node 2: Common node between R₁, R₂=4Ω, R₃=8Ω
+  Ground: Reference node
+
+Find: Voltage at Node 2
+
+Solution:
+  At Node 2, apply KCL (currents leaving = 0):
+  
+  (V₂ - 10)/2 + V₂/4 + V₂/8 = 0
+  
+  Multiply by LCD (8):
+  4(V₂ - 10) + 2V₂ + V₂ = 0
+  4V₂ - 40 + 2V₂ + V₂ = 0
+  7V₂ = 40
+  V₂ = 5.71V
+</code>
+                </div>
+
+                <div class="info-box tip">
+                    <h4>💡 When to Use Mesh vs Nodal Analysis</h4>
+                    <table>
+                        <tr>
+                            <th>Use Mesh Analysis When:</th>
+                            <th>Use Nodal Analysis When:</th>
+                        </tr>
+                        <tr>
+                            <td>Planar circuits</td>
+                            <td>Non-planar circuits</td>
+                        </tr>
+                        <tr>
+                            <td>Few meshes, many nodes</td>
+                            <td>Few nodes, many meshes</td>
+                        </tr>
+                        <tr>
+                            <td>Voltage sources dominant</td>
+                            <td>Current sources dominant</td>
+                        </tr>
+                        <tr>
+                            <td>Finding loop currents needed</td>
+                            <td>Finding node voltages needed</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Thevenin's Theorem</h3>
+                <p>
+                    Any linear circuit with two terminals can be replaced by an equivalent voltage source 
+                    (V_TH) in series with a resistance (R_TH).
+                </p>
+
+                <h4>Finding Thevenin Equivalent:</h4>
+                <ol>
+                    <li><strong>V_TH</strong>: Open-circuit voltage at terminals</li>
+                    <li><strong>R_TH</strong>: Resistance seen from terminals with sources deactivated
+                        <ul>
+                            <li>Voltage sources → short circuit (0V)</li>
+                            <li>Current sources → open circuit (0A)</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <h4>Example 7: Thevenin Equivalent</h4>
+                <div class="code-block" data-language="text">
+<code>Given:
+  12V source in series with R₁=4Ω, then parallel with R₂=12Ω
+  Terminals across R₂
+
+Find: V_TH and R_TH
+
+Solution:
+  Step 1: V_TH (open circuit voltage)
+    With R₂ removed, voltage divider:
+    V_TH = 12V × (12Ω)/(4Ω + 12Ω) = 12V × 0.75 = 9V
+  
+  Step 2: R_TH
+    Short 12V source, looking from terminals:
+    R_TH = R₁ || R₂ = (4 × 12)/(4 + 12) = 48/16 = 3Ω
+  
+  Thevenin Equivalent: 9V source in series with 3Ω
+</code>
+                </div>
+
+                <h4>Norton's Theorem</h4>
+                <p>
+                    Alternative to Thevenin: equivalent current source (I_N) in parallel with resistance (R_N).
+                </p>
+
+                <div class="code-block" data-language="text">
+<code>Conversion between Thevenin and Norton:
+
+  I_N = V_TH / R_TH
+  R_N = R_TH
+  V_TH = I_N × R_N
+
+Example from above:
+  I_N = 9V / 3Ω = 3A
+  R_N = 3Ω
+  
+  Norton Equivalent: 3A source in parallel with 3Ω
+</code>
+                </div>
+
+                <h3>Maximum Power Transfer Theorem</h3>
+                <p>
+                    Maximum power is transferred to a load when load resistance equals source resistance.
+                </p>
+
+                <div class="code-block" data-language="text">
+<code>For maximum power transfer:
+  R_Load = R_Source (or R_TH)
+
+Maximum power:
+  P_max = V_TH² / (4 × R_TH)
+
+Efficiency at max power: 50%
+
+Example:
+  V_TH = 12V, R_TH = 4Ω
+  
+  For max power: R_Load = 4Ω
+  P_max = 12² / (4 × 4) = 144/16 = 9W
+</code>
+                </div>
+
+                <div class="info-box important">
+                    <h4>🎯 Practice Problems</h4>
+                    <ol>
+                        <li>Calculate total resistance for: 10Ω, 20Ω, 30Ω in series, then in parallel</li>
+                        <li>Design a voltage divider to get 3.3V from 5V (hint: use standard resistor values)</li>
+                        <li>Find current through each branch in a circuit with three parallel resistors (6Ω, 12Ω, 4Ω) across 24V</li>
+                        <li>Use mesh analysis on a two-mesh circuit with your own values</li>
+                        <li>Find Thevenin equivalent of a circuit you design</li>
+                    </ol>
+                </div>
+
+                <h3>Summary</h3>
+                <ul>
+                    <li>Series circuits: same current, voltages add, resistances add</li>
+                    <li>Parallel circuits: same voltage, currents add, conductances add</li>
+                    <li>KCL: Current in = Current out at any node</li>
+                    <li>KVL: Voltage rises = Voltage drops around any loop</li>
+                    <li>Mesh analysis uses KVL for loop currents</li>
+                    <li>Nodal analysis uses KCL for node voltages</li>
+                    <li>Thevenin/Norton simplify complex circuits for analysis</li>
+                    <li>Maximum power transfer when R_Load = R_Source</li>
+                </ul>
+
+                <h3>Next Steps</h3>
+                <p>
+                    In Lesson 3, we'll explore AC Circuit Analysis, introducing sinusoidal waveforms, phasors, 
+                    impedance, reactive components (capacitors and inductors), and complex power calculations.
+                </p>
+            </div>
+
+            <div class="lesson-navigation">
+                <a href="01-fundamentals.html" class="nav-btn">← Previous: Fundamentals</a>
+                <a href="03-ac-circuits.html" class="nav-btn">Next: AC Circuits →</a>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../js/main.js"></script>
+</body>
+</html>

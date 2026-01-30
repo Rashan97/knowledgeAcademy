@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 10: Algorithms - Engineering Academy</title>
+    <link rel="stylesheet" href="../../../css/styles.css">
+    <link rel="stylesheet" href="../../../css/course-styles/course.css">
+</head>
+<body>
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <h1><a href="../../../index.html" style="color: inherit; text-decoration: none;">🎓 Engineering Academy</a></h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../index.html">Course Overview</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section class="course-header">
+        <div class="container">
+            <h1>⌨️ Programming</h1>
+            <p>Lesson 10: Algorithms</p>
+        </div>
+    </section>
+
+    <div class="course-container">
+        <aside class="course-sidebar">
+            <h3>Course Modules</h3>
+            <ul class="lesson-list">
+                <li><a href="../index.html"><span class="lesson-number">📚</span>Course Overview</a></li>
+                <li><a href="01-programming-fundamentals.html" class="completed"><span class="lesson-number">1</span>Programming Fundamentals</a></li>
+                <li><a href="02-python-basics.html" class="completed"><span class="lesson-number">2</span>Python Basics</a></li>
+                <li><a href="03-python-advanced.html" class="completed"><span class="lesson-number">3</span>Python Advanced</a></li>
+                <li><a href="04-javascript-basics.html" class="completed"><span class="lesson-number">4</span>JavaScript Basics</a></li>
+                <li><a href="05-javascript-modern.html" class="completed"><span class="lesson-number">5</span>Modern JavaScript</a></li>
+                <li><a href="06-cpp-basics.html" class="completed"><span class="lesson-number">6</span>C++ Basics</a></li>
+                <li><a href="07-cpp-advanced.html" class="completed"><span class="lesson-number">7</span>C++ Advanced</a></li>
+                <li><a href="08-oop-principles.html" class="completed"><span class="lesson-number">8</span>OOP Principles</a></li>
+                <li><a href="09-data-structures.html" class="completed"><span class="lesson-number">9</span>Data Structures</a></li>
+                <li><a href="10-algorithms.html" class="active"><span class="lesson-number">10</span>Algorithms</a></li>
+                <li><a href="11-debugging.html"><span class="lesson-number">11</span>Debugging & Testing</a></li>
+                <li><a href="12-best-practices.html"><span class="lesson-number">12</span>Best Practices</a></li>
+            </ul>
+        </aside>
+
+        <main class="course-content">
+            <div class="lesson-header">
+                <h2>Lesson 10: Algorithms</h2>
+                <div class="lesson-meta">
+                    <span>📖 130 min read</span>
+                    <span>📊 Advanced</span>
+                </div>
+            </div>
+
+            <div class="lesson-content">
+                <h3>Introduction to Algorithms</h3>
+                <p>
+                    An algorithm is a step-by-step procedure for solving a problem. Understanding algorithms 
+                    and their efficiency is crucial for writing performant code. This lesson covers complexity 
+                    analysis, searching, sorting, recursion, dynamic programming, and graph algorithms.
+                </p>
+
+                <div class="info-box note">
+                    <h4>📌 Why Study Algorithms?</h4>
+                    <p>
+                        Algorithms are the foundation of computer science. They determine how efficiently your 
+                        code runs, which matters when processing large datasets, building scalable systems, or 
+                        passing technical interviews at top companies.
+                    </p>
+                </div>
+
+                <h3>Algorithm Complexity</h3>
+
+                <h4>Big O Notation</h4>
+                <p>Big O describes the worst-case time or space complexity as input size grows.</p>
+
+                <div class="code-block" data-language="text">
+<code>Common Time Complexities (from fastest to slowest):
+
+O(1)        - Constant:       Array access, hash table lookup
+O(log n)    - Logarithmic:    Binary search, balanced tree operations
+O(n)        - Linear:         Linear search, single loop
+O(n log n)  - Linearithmic:   Merge sort, quicksort (average)
+O(n²)       - Quadratic:      Bubble sort, nested loops
+O(n³)       - Cubic:          Triple nested loops
+O(2ⁿ)       - Exponential:    Recursive Fibonacci, subsets
+O(n!)       - Factorial:      Permutations, traveling salesman
+
+Examples with n = 1000:
+O(1):        1 operation
+O(log n):    ~10 operations
+O(n):        1,000 operations
+O(n log n):  ~10,000 operations
+O(n²):       1,000,000 operations
+O(2ⁿ):       Too many to compute!
+</code>
+                </div>
+
+                <h4>Analyzing Complexity</h4>
+                <div class="code-block" data-language="python">
+<code><span class="comment"># O(1) - Constant time</span>
+<span class="keyword">def</span> <span class="function">get_first</span>(arr):
+    <span class="keyword">return</span> arr[<span class="number">0</span>]  <span class="comment"># Always 1 operation</span>
+
+<span class="comment"># O(n) - Linear time</span>
+<span class="keyword">def</span> <span class="function">find_max</span>(arr):
+    max_val = arr[<span class="number">0</span>]
+    <span class="keyword">for</span> num <span class="keyword">in</span> arr:  <span class="comment"># n iterations</span>
+        <span class="keyword">if</span> num &gt; max_val:
+            max_val = num
+    <span class="keyword">return</span> max_val
+
+<span class="comment"># O(n²) - Quadratic time</span>
+<span class="keyword">def</span> <span class="function">print_pairs</span>(arr):
+    <span class="keyword">for</span> i <span class="keyword">in</span> arr:      <span class="comment"># n iterations</span>
+        <span class="keyword">for</span> j <span class="keyword">in</span> arr:  <span class="comment"># n iterations for each i</span>
+            <span class="function">print</span>(i, j)
+
+<span class="comment"># O(log n) - Logarithmic time</span>
+<span class="keyword">def</span> <span class="function">binary_search</span>(arr, target):
+    left, right = <span class="number">0</span>, <span class="function">len</span>(arr) - <span class="number">1</span>
+    <span class="keyword">while</span> left &lt;= right:
+        mid = (left + right) // <span class="number">2</span>
+        <span class="keyword">if</span> arr[mid] == target:
+            <span class="keyword">return</span> mid
+        <span class="keyword">elif</span> arr[mid] &lt; target:
+            left = mid + <span class="number">1</span>
+        <span class="keyword">else</span>:
+            right = mid - <span class="number">1</span>
+    <span class="keyword">return</span> -<span class="number">1</span>  <span class="comment"># Halves search space each iteration</span>
+</code>
+                </div>
+
+                <h4>Space Complexity</h4>
+                <div class="code-block" data-language="python">
+<code><span class="comment"># O(1) space - constant extra memory</span>
+<span class="keyword">def</span> <span class="function">sum_array</span>(arr):
+    total = <span class="number">0</span>  <span class="comment"># Only one variable</span>
+    <span class="keyword">for</span> num <span class="keyword">in</span> arr:
+        total += num
+    <span class="keyword">return</span> total
+
+<span class="comment"># O(n) space - linear extra memory</span>
+<span class="keyword">def</span> <span class="function">double_array</span>(arr):
+    result = []  <span class="comment"># New array of size n</span>
+    <span class="keyword">for</span> num <span class="keyword">in</span> arr:
+        result.append(num * <span class="number">2</span>)
+    <span class="keyword">return</span> result
+
+<span class="comment"># O(n) space - recursion call stack</span>
+<span class="keyword">def</span> <span class="function">factorial</span>(n):
+    <span class="keyword">if</span> n &lt;= <span class="number">1</span>:
+        <span class="keyword">return</span> <span class="number">1</span>
+    <span class="keyword">return</span> n * factorial(n - <span class="number">1</span>)  <span class="comment"># n recursive calls on stack</span>
+</code>
+                </div>
+
+                <h3>Searching Algorithms</h3>
+
+                <h4>Linear Search - O(n)</h4>
+                <div class="code-block" data-language="javascript">
+<code><span class="comment">// Check each element until found</span>
+<span class="keyword">function</span> <span class="function">linearSearch</span>(arr, target) {
+    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++) {
+        <span class="keyword">if</span> (arr[i] === target) {
+            <span class="keyword">return</span> i;  <span class="comment">// Found at index i</span>
+        }
+    }
+    <span class="keyword">return</span> -<span class="number">1</span>;  <span class="comment">// Not found</span>
+}
+
+<span class="comment">// Example</span>
+<span class="keyword">const</span> numbers = [<span class="number">5</span>, <span class="number">2</span>, <span class="number">8</span>, <span class="number">1</span>, <span class="number">9</span>];
+console.<span class="function">log</span>(linearSearch(numbers, <span class="number">8</span>));  <span class="comment">// 2</span>
+console.<span class="function">log</span>(linearSearch(numbers, <span class="number">7</span>));  <span class="comment">// -1</span>
+</code>
+                </div>
+
+                <h4>Binary Search - O(log n)</h4>
+                <div class="code-block" data-language="cpp">
+<code><span class="comment">// Requires sorted array!</span>
+<span class="keyword">int</span> <span class="function">binarySearch</span>(<span class="keyword">const</span> vector&lt;<span class="keyword">int</span>&gt;&amp; arr, <span class="keyword">int</span> target) {
+    <span class="keyword">int</span> left = <span class="number">0</span>;
+    <span class="keyword">int</span> right = arr.size() - <span class="number">1</span>;
+    
+    <span class="keyword">while</span> (left &lt;= right) {
+        <span class="keyword">int</span> mid = left + (right - left) / <span class="number">2</span>;  <span class="comment">// Prevent overflow</span>
+        
+        <span class="keyword">if</span> (arr[mid] == target) {
+            <span class="keyword">return</span> mid;
+        }
+        <span class="keyword">else if</span> (arr[mid] &lt; target) {
+            left = mid + <span class="number">1</span>;  <span class="comment">// Search right half</span>
+        }
+        <span class="keyword">else</span> {
+            right = mid - <span class="number">1</span>;  <span class="comment">// Search left half</span>
+        }
+    }
+    <span class="keyword">return</span> -<span class="number">1</span>;
+}
+
+<span class="comment">// Example</span>
+vector&lt;<span class="keyword">int</span>&gt; sorted = {<span class="number">1</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">8</span>, <span class="number">9</span>};
+cout &lt;&lt; binarySearch(sorted, <span class="number">8</span>) &lt;&lt; endl;  <span class="comment">// 3</span>
+</code>
+                </div>
+
+                <h3>Sorting Algorithms</h3>
+
+                <h4>Bubble Sort - O(n²)</h4>
+                <div class="code-block" data-language="python">
+<code><span class="keyword">def</span> <span class="function">bubble_sort</span>(arr):
+    n = <span class="function">len</span>(arr)
+    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="function">range</span>(n):
+        swapped = <span class="keyword">False</span>
+        <span class="comment"># Last i elements are already sorted</span>
+        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="function">range</span>(<span class="number">0</span>, n - i - <span class="number">1</span>):
+            <span class="keyword">if</span> arr[j] &gt; arr[j + <span class="number">1</span>]:
+                arr[j], arr[j + <span class="number">1</span>] = arr[j + <span class="number">1</span>], arr[j]  <span class="comment"># Swap</span>
+                swapped = <span class="keyword">True</span>
+        <span class="keyword">if</span> <span class="keyword">not</span> swapped:
+            <span class="keyword">break</span>  <span class="comment"># Already sorted</span>
+    <span class="keyword">return</span> arr
+
+numbers = [<span class="number">64</span>, <span class="number">34</span>, <span class="number">25</span>, <span class="number">12</span>, <span class="number">22</span>, <span class="number">11</span>, <span class="number">90</span>]
+<span class="function">print</span>(bubble_sort(numbers))  <span class="comment"># [11, 12, 22, 25, 34, 64, 90]</span>
+</code>
+                </div>
+
+                <h4>Selection Sort - O(n²)</h4>
+                <div class="code-block" data-language="python">
+<code><span class="keyword">def</span> <span class="function">selection_sort</span>(arr):
+    n = <span class="function">len</span>(arr)
+    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="function">range</span>(n):
+        <span class="comment"># Find minimum in unsorted portion</span>
+        min_idx = i
+        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="function">range</span>(i + <span class="number">1</span>, n):
+            <span class="keyword">if</span> arr[j] &lt; arr[min_idx]:
+                min_idx = j
+        
+        <span class="comment"># Swap minimum with first unsorted element</span>
+        arr[i], arr[min_idx] = arr[min_idx], arr[i]
+    <span class="keyword">return</span> arr
+</code>
+                </div>
+
+                <h4>Insertion Sort - O(n²)</h4>
+                <div class="code-block" data-language="javascript">
+<code><span class="keyword">function</span> <span class="function">insertionSort</span>(arr) {
+    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt; arr.length; i++) {
+        <span class="keyword">let</span> key = arr[i];
+        <span class="keyword">let</span> j = i - <span class="number">1</span>;
+        
+        <span class="comment">// Move elements greater than key one position ahead</span>
+        <span class="keyword">while</span> (j &gt;= <span class="number">0</span> &amp;&amp; arr[j] &gt; key) {
+            arr[j + <span class="number">1</span>] = arr[j];
+            j--;
+        }
+        arr[j + <span class="number">1</span>] = key;
+    }
+    <span class="keyword">return</span> arr;
+}
+
+<span class="keyword">const</span> data = [<span class="number">12</span>, <span class="number">11</span>, <span class="number">13</span>, <span class="number">5</span>, <span class="number">6</span>];
+console.<span class="function">log</span>(insertionSort(data));  <span class="comment">// [5, 6, 11, 12, 13]</span>
+</code>
+                </div>
+
+                <h4>Merge Sort - O(n log n)</h4>
+                <div class="code-block" data-language="python">
+<code><span class="keyword">def</span> <span class="function">merge_sort</span>(arr):
+    <span class="keyword">if</span> <span class="function">len</span>(arr) &lt;= <span class="number">1</span>:
+        <span class="keyword">return</span> arr
+    
+    <span class="comment"># Divide</span>
+    mid = <span class="function">len</span>(arr) // <span class="number">2</span>
+    left = merge_sort(arr[:mid])
+    right = merge_sort(arr[mid:])
+    
+    <span class="comment"># Conquer (merge)</span>
+    <span class="keyword">return</span> merge(left, right)
+
+<span class="keyword">def</span> <span class="function">merge</span>(left, right):
+    result = []
+    i = j = <span class="number">0</span>
+    
+    <span class="comment"># Merge two sorted arrays</span>
+    <span class="keyword">while</span> i &lt; <span class="function">len</span>(left) <span class="keyword">and</span> j &lt; <span class="function">len</span>(right):
+        <span class="keyword">if</span> left[i] &lt; right[j]:
+            result.append(left[i])
+            i += <span class="number">1</span>
+        <span class="keyword">else</span>:
+            result.append(right[j])
+            j += <span class="number">1</span>
+    
+    result.extend(left[i:])
+    result.extend(right[j:])
+    <span class="keyword">return</span> result
+
+data = [<span class="number">38</span>, <span class="number">27</span>, <span class="number">43</span>, <span class="number">3</span>, <span class="number">9</span>, <span class="number">82</span>, <span class="number">10</span>]
+<span class="function">print</span>(merge_sort(data))  <span class="comment"># [3, 9, 10, 27, 38, 43, 82]</span>
+</code>
+                </div>
+
+                <h4>Quick Sort - O(n log n) average</h4>
+                <div class="code-block" data-language="cpp">
+<code><span class="keyword">int</span> <span class="function">partition</span>(vector&lt;<span class="keyword">int</span>&gt;&amp; arr, <span class="keyword">int</span> low, <span class="keyword">int</span> high) {
+    <span class="keyword">int</span> pivot = arr[high];  <span class="comment">// Choose last element as pivot</span>
+    <span class="keyword">int</span> i = low - <span class="number">1</span>;
+    
+    <span class="keyword">for</span> (<span class="keyword">int</span> j = low; j &lt; high; j++) {
+        <span class="keyword">if</span> (arr[j] &lt; pivot) {
+            i++;
+            swap(arr[i], arr[j]);
+        }
+    }
+    swap(arr[i + <span class="number">1</span>], arr[high]);
+    <span class="keyword">return</span> i + <span class="number">1</span>;
+}
+
+<span class="keyword">void</span> <span class="function">quickSort</span>(vector&lt;<span class="keyword">int</span>&gt;&amp; arr, <span class="keyword">int</span> low, <span class="keyword">int</span> high) {
+    <span class="keyword">if</span> (low &lt; high) {
+        <span class="keyword">int</span> pi = partition(arr, low, high);
+        quickSort(arr, low, pi - <span class="number">1</span>);   <span class="comment">// Sort left</span>
+        quickSort(arr, pi + <span class="number">1</span>, high);  <span class="comment">// Sort right</span>
+    }
+}
+
+<span class="comment">// Usage</span>
+vector&lt;<span class="keyword">int</span>&gt; data = {<span class="number">10</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">1</span>, <span class="number">5</span>};
+quickSort(data, <span class="number">0</span>, data.size() - <span class="number">1</span>);
+</code>
+                </div>
+
+                <div class="info-box important">
+                    <h4>⚠️ Sorting Algorithm Comparison</h4>
+                    <table style="width:100%; border-collapse: collapse; margin-top: 10px;">
+                        <tr style="background: #f0f0f0;">
+                            <th style="padding: 8px; border: 1px solid #ddd;">Algorithm</th>
+                            <th style="padding: 8px; border: 1px solid #ddd;">Best</th>
+                            <th style="padding: 8px; border: 1px solid #ddd;">Average</th>
+                            <th style="padding: 8px; border: 1px solid #ddd;">Worst</th>
+                            <th style="padding: 8px; border: 1px solid #ddd;">Space</th>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd;">Bubble Sort</td>
+                            <td style="padding: 8px; border: 1px solid #ddd;">O(n)</td>
+                            <td style="padding: 8px; border: 1px solid #ddd;">O(n²)</td>
+                            <td style="padding: 8px; border: 1px solid #ddd;">O(n²)</td>
+                            <td style="padding: 8px; border: 1px solid #ddd;">O(1)</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd;">Selection Sort</td>
+                            <td style="padding: 8px; border: 1px solid #ddd;">O(n²)</td>
+                            <td style="padding: 8px; border: 1px solid #ddd;">O(n²)</td>
+                            <td style="padding: 8px; border: 1px solid #ddd;">O(n²)</td>
+                            <td style="padding: 8px; border: 1px solid #ddd;">O(1)</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd;">Insertion Sort</td>
+                            <td style="padding: 8px; border: 1px solid #ddd;">O(n)</td>
+                            <td style="padding: 8px; border: 1px solid #ddd;">O(n²)</td>
+                            <td style="padding: 8px; border: 1px solid #ddd;">O(n²)</td>
+                            <td style="padding: 8px; border: 1px solid #ddd;">O(1)</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd;">Merge Sort</td>
+                            <td style="padding: 8px; border: 1px solid #ddd;">O(n log n)</td>
+                            <td style="padding: 8px; border: 1px solid #ddd;">O(n log n)</td>
+                            <td style="padding: 8px; border: 1px solid #ddd;">O(n log n)</td>
+                            <td style="padding: 8px; border: 1px solid #ddd;">O(n)</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd;">Quick Sort</td>
+                            <td style="padding: 8px; border: 1px solid #ddd;">O(n log n)</td>
+                            <td style="padding: 8px; border: 1px solid #ddd;">O(n log n)</td>
+                            <td style="padding: 8px; border: 1px solid #ddd;">O(n²)</td>
+                            <td style="padding: 8px; border: 1px solid #ddd;">O(log n)</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <h3>Recursion</h3>
+                <p>A function that calls itself. Every recursion needs a base case and a recursive case.</p>
+
+                <div class="code-block" data-language="python">
+<code><span class="comment"># Classic factorial</span>
+<span class="keyword">def</span> <span class="function">factorial</span>(n):
+    <span class="keyword">if</span> n &lt;= <span class="number">1</span>:  <span class="comment"># Base case</span>
+        <span class="keyword">return</span> <span class="number">1</span>
+    <span class="keyword">return</span> n * factorial(n - <span class="number">1</span>)  <span class="comment"># Recursive case</span>
+
+<span class="comment"># Fibonacci</span>
+<span class="keyword">def</span> <span class="function">fibonacci</span>(n):
+    <span class="keyword">if</span> n &lt;= <span class="number">1</span>:
+        <span class="keyword">return</span> n
+    <span class="keyword">return</span> fibonacci(n - <span class="number">1</span>) + fibonacci(n - <span class="number">2</span>)
+
+<span class="comment"># Tower of Hanoi</span>
+<span class="keyword">def</span> <span class="function">hanoi</span>(n, source, target, auxiliary):
+    <span class="keyword">if</span> n == <span class="number">1</span>:
+        <span class="function">print</span>(<span class="string">f"Move disk 1 from <span class="template-var">{source}</span> to <span class="template-var">{target}</span>"</span>)
+        <span class="keyword">return</span>
+    hanoi(n - <span class="number">1</span>, source, auxiliary, target)
+    <span class="function">print</span>(<span class="string">f"Move disk <span class="template-var">{n}</span> from <span class="template-var">{source}</span> to <span class="template-var">{target}</span>"</span>)
+    hanoi(n - <span class="number">1</span>, auxiliary, target, source)
+
+hanoi(<span class="number">3</span>, <span class="string">'A'</span>, <span class="string">'C'</span>, <span class="string">'B'</span>)
+</code>
+                </div>
+
+                <h3>Backtracking</h3>
+                <p>Explore all possibilities by building candidates incrementally and abandoning them if they fail.</p>
+
+                <div class="code-block" data-language="python">
+<code><span class="comment"># N-Queens Problem</span>
+<span class="keyword">def</span> <span class="function">solve_n_queens</span>(n):
+    <span class="keyword">def</span> <span class="function">is_safe</span>(board, row, col):
+        <span class="comment"># Check column</span>
+        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="function">range</span>(row):
+            <span class="keyword">if</span> board[i][col] == <span class="number">1</span>:
+                <span class="keyword">return</span> <span class="keyword">False</span>
+        
+        <span class="comment"># Check upper-left diagonal</span>
+        <span class="keyword">for</span> i, j <span class="keyword">in</span> <span class="function">zip</span>(<span class="function">range</span>(row, -<span class="number">1</span>, -<span class="number">1</span>), <span class="function">range</span>(col, -<span class="number">1</span>, -<span class="number">1</span>)):
+            <span class="keyword">if</span> board[i][j] == <span class="number">1</span>:
+                <span class="keyword">return</span> <span class="keyword">False</span>
+        
+        <span class="comment"># Check upper-right diagonal</span>
+        <span class="keyword">for</span> i, j <span class="keyword">in</span> <span class="function">zip</span>(<span class="function">range</span>(row, -<span class="number">1</span>, -<span class="number">1</span>), <span class="function">range</span>(col, n)):
+            <span class="keyword">if</span> board[i][j] == <span class="number">1</span>:
+                <span class="keyword">return</span> <span class="keyword">False</span>
+        
+        <span class="keyword">return</span> <span class="keyword">True</span>
+    
+    <span class="keyword">def</span> <span class="function">backtrack</span>(board, row):
+        <span class="keyword">if</span> row == n:
+            solutions.append([r[:] <span class="keyword">for</span> r <span class="keyword">in</span> board])
+            <span class="keyword">return</span>
+        
+        <span class="keyword">for</span> col <span class="keyword">in</span> <span class="function">range</span>(n):
+            <span class="keyword">if</span> is_safe(board, row, col):
+                board[row][col] = <span class="number">1</span>
+                backtrack(board, row + <span class="number">1</span>)
+                board[row][col] = <span class="number">0</span>  <span class="comment"># Backtrack</span>
+    
+    solutions = []
+    board = [[<span class="number">0</span>] * n <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="function">range</span>(n)]
+    backtrack(board, <span class="number">0</span>)
+    <span class="keyword">return</span> solutions
+
+<span class="comment"># Find all solutions for 4 queens</span>
+solutions = solve_n_queens(<span class="number">4</span>)
+<span class="function">print</span>(<span class="string">f"Found <span class="template-var">{<span class="function">len</span>(solutions)}</span> solutions"</span>)  <span class="comment"># 2 solutions</span>
+</code>
+                </div>
+
+                <h3>Dynamic Programming</h3>
+                <p>Optimize recursive solutions by storing results of subproblems (memoization or tabulation).</p>
+
+                <h4>Memoization (Top-Down)</h4>
+                <div class="code-block" data-language="python">
+<code><span class="comment"># Fibonacci with memoization - O(n)</span>
+<span class="keyword">def</span> <span class="function">fib_memo</span>(n, memo={}):
+    <span class="keyword">if</span> n <span class="keyword">in</span> memo:
+        <span class="keyword">return</span> memo[n]
+    <span class="keyword">if</span> n &lt;= <span class="number">1</span>:
+        <span class="keyword">return</span> n
+    
+    memo[n] = fib_memo(n - <span class="number">1</span>, memo) + fib_memo(n - <span class="number">2</span>, memo)
+    <span class="keyword">return</span> memo[n]
+
+<span class="function">print</span>(fib_memo(<span class="number">100</span>))  <span class="comment"># Fast! Without memo this would hang</span>
+</code>
+                </div>
+
+                <h4>Tabulation (Bottom-Up)</h4>
+                <div class="code-block" data-language="javascript">
+<code><span class="comment">// Fibonacci with tabulation - O(n)</span>
+<span class="keyword">function</span> <span class="function">fibTable</span>(n) {
+    <span class="keyword">if</span> (n &lt;= <span class="number">1</span>) <span class="keyword">return</span> n;
+    
+    <span class="keyword">const</span> dp = [<span class="number">0</span>, <span class="number">1</span>];
+    
+    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">2</span>; i &lt;= n; i++) {
+        dp[i] = dp[i - <span class="number">1</span>] + dp[i - <span class="number">2</span>];
+    }
+    
+    <span class="keyword">return</span> dp[n];
+}
+
+console.<span class="function">log</span>(fibTable(<span class="number">50</span>));  <span class="comment">// Fast!</span>
+</code>
+                </div>
+
+                <h4>0/1 Knapsack Problem</h4>
+                <div class="code-block" data-language="python">
+<code><span class="keyword">def</span> <span class="function">knapsack</span>(weights, values, capacity):
+    n = <span class="function">len</span>(weights)
+    <span class="comment"># dp[i][w] = max value with first i items and capacity w</span>
+    dp = [[<span class="number">0</span>] * (capacity + <span class="number">1</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="function">range</span>(n + <span class="number">1</span>)]
+    
+    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="function">range</span>(<span class="number">1</span>, n + <span class="number">1</span>):
+        <span class="keyword">for</span> w <span class="keyword">in</span> <span class="function">range</span>(capacity + <span class="number">1</span>):
+            <span class="keyword">if</span> weights[i - <span class="number">1</span>] &lt;= w:
+                <span class="comment"># Max of: include item OR exclude item</span>
+                dp[i][w] = <span class="function">max</span>(
+                    values[i - <span class="number">1</span>] + dp[i - <span class="number">1</span>][w - weights[i - <span class="number">1</span>]],
+                    dp[i - <span class="number">1</span>][w]
+                )
+            <span class="keyword">else</span>:
+                dp[i][w] = dp[i - <span class="number">1</span>][w]
+    
+    <span class="keyword">return</span> dp[n][capacity]
+
+weights = [<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]
+values = [<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]
+capacity = <span class="number">8</span>
+<span class="function">print</span>(knapsack(weights, values, capacity))  <span class="comment"># 10</span>
+</code>
+                </div>
+
+                <h3>Graph Algorithms</h3>
+
+                <h4>Breadth-First Search (BFS)</h4>
+                <div class="code-block" data-language="python">
+<code><span class="keyword">from</span> collections <span class="keyword">import</span> deque
+
+<span class="keyword">def</span> <span class="function">bfs</span>(graph, start):
+    visited = <span class="function">set</span>()
+    queue = deque([start])
+    visited.add(start)
+    result = []
+    
+    <span class="keyword">while</span> queue:
+        node = queue.popleft()
+        result.append(node)
+        
+        <span class="keyword">for</span> neighbor <span class="keyword">in</span> graph[node]:
+            <span class="keyword">if</span> neighbor <span class="keyword">not</span> <span class="keyword">in</span> visited:
+                visited.add(neighbor)
+                queue.append(neighbor)
+    
+    <span class="keyword">return</span> result
+
+graph = {
+    <span class="string">'A'</span>: [<span class="string">'B'</span>, <span class="string">'C'</span>],
+    <span class="string">'B'</span>: [<span class="string">'D'</span>, <span class="string">'E'</span>],
+    <span class="string">'C'</span>: [<span class="string">'F'</span>],
+    <span class="string">'D'</span>: [],
+    <span class="string">'E'</span>: [<span class="string">'F'</span>],
+    <span class="string">'F'</span>: []
+}
+<span class="function">print</span>(bfs(graph, <span class="string">'A'</span>))  <span class="comment"># ['A', 'B', 'C', 'D', 'E', 'F']</span>
+</code>
+                </div>
+
+                <h4>Depth-First Search (DFS)</h4>
+                <div class="code-block" data-language="python">
+<code><span class="keyword">def</span> <span class="function">dfs</span>(graph, start, visited=<span class="keyword">None</span>):
+    <span class="keyword">if</span> visited <span class="keyword">is</span> <span class="keyword">None</span>:
+        visited = <span class="function">set</span>()
+    
+    visited.add(start)
+    result = [start]
+    
+    <span class="keyword">for</span> neighbor <span class="keyword">in</span> graph[start]:
+        <span class="keyword">if</span> neighbor <span class="keyword">not</span> <span class="keyword">in</span> visited:
+            result.extend(dfs(graph, neighbor, visited))
+    
+    <span class="keyword">return</span> result
+
+<span class="function">print</span>(dfs(graph, <span class="string">'A'</span>))  <span class="comment"># ['A', 'B', 'D', 'E', 'F', 'C']</span>
+</code>
+                </div>
+
+                <h4>Dijkstra's Shortest Path</h4>
+                <div class="code-block" data-language="python">
+<code><span class="keyword">import</span> heapq
+
+<span class="keyword">def</span> <span class="function">dijkstra</span>(graph, start):
+    distances = {node: <span class="function">float</span>(<span class="string">'inf'</span>) <span class="keyword">for</span> node <span class="keyword">in</span> graph}
+    distances[start] = <span class="number">0</span>
+    pq = [(<span class="number">0</span>, start)]  <span class="comment"># (distance, node)</span>
+    
+    <span class="keyword">while</span> pq:
+        current_dist, current = heapq.heappop(pq)
+        
+        <span class="keyword">if</span> current_dist &gt; distances[current]:
+            <span class="keyword">continue</span>
+        
+        <span class="keyword">for</span> neighbor, weight <span class="keyword">in</span> graph[current].items():
+            distance = current_dist + weight
+            
+            <span class="keyword">if</span> distance &lt; distances[neighbor]:
+                distances[neighbor] = distance
+                heapq.heappush(pq, (distance, neighbor))
+    
+    <span class="keyword">return</span> distances
+
+graph = {
+    <span class="string">'A'</span>: {<span class="string">'B'</span>: <span class="number">4</span>, <span class="string">'C'</span>: <span class="number">2</span>},
+    <span class="string">'B'</span>: {<span class="string">'D'</span>: <span class="number">3</span>},
+    <span class="string">'C'</span>: {<span class="string">'B'</span>: <span class="number">1</span>, <span class="string">'D'</span>: <span class="number">5</span>},
+    <span class="string">'D'</span>: {}
+}
+<span class="function">print</span>(dijkstra(graph, <span class="string">'A'</span>))  <span class="comment"># {'A': 0, 'B': 3, 'C': 2, 'D': 6}</span>
+</code>
+                </div>
+
+                <h3>Common Algorithm Patterns</h3>
+
+                <h4>Two Pointers</h4>
+                <div class="code-block" data-language="python">
+<code><span class="comment"># Find pair with target sum in sorted array</span>
+<span class="keyword">def</span> <span class="function">two_sum_sorted</span>(arr, target):
+    left, right = <span class="number">0</span>, <span class="function">len</span>(arr) - <span class="number">1</span>
+    
+    <span class="keyword">while</span> left &lt; right:
+        current_sum = arr[left] + arr[right]
+        <span class="keyword">if</span> current_sum == target:
+            <span class="keyword">return</span> [left, right]
+        <span class="keyword">elif</span> current_sum &lt; target:
+            left += <span class="number">1</span>
+        <span class="keyword">else</span>:
+            right -= <span class="number">1</span>
+    
+    <span class="keyword">return</span> <span class="keyword">None</span>
+</code>
+                </div>
+
+                <h4>Sliding Window</h4>
+                <div class="code-block" data-language="python">
+<code><span class="comment"># Maximum sum of k consecutive elements</span>
+<span class="keyword">def</span> <span class="function">max_sum_subarray</span>(arr, k):
+    window_sum = <span class="function">sum</span>(arr[:k])
+    max_sum = window_sum
+    
+    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="function">range</span>(k, <span class="function">len</span>(arr)):
+        window_sum = window_sum - arr[i - k] + arr[i]
+        max_sum = <span class="function">max</span>(max_sum, window_sum)
+    
+    <span class="keyword">return</span> max_sum
+
+<span class="function">print</span>(max_sum_subarray([<span class="number">1</span>, <span class="number">4</span>, <span class="number">2</span>, <span class="number">10</span>, <span class="number">23</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">20</span>], <span class="number">4</span>))  <span class="comment"># 39</span>
+</code>
+                </div>
+
+                <div class="practice-problems">
+                    <h3>Practice Problems</h3>
+                    
+                    <div class="problem">
+                        <h4>Problem 1: Implement Binary Search Recursively</h4>
+                        <p>Write a recursive version of binary search. Return the index of the target or -1.</p>
+                        <button onclick="toggleSolution('sol1')">Show Solution</button>
+                        <div id="sol1" class="solution" style="display:none;">
+                            <div class="code-block" data-language="python">
+<code><span class="keyword">def</span> <span class="function">binary_search_recursive</span>(arr, target, left, right):
+    <span class="keyword">if</span> left &gt; right:
+        <span class="keyword">return</span> -<span class="number">1</span>
+    
+    mid = (left + right) // <span class="number">2</span>
+    
+    <span class="keyword">if</span> arr[mid] == target:
+        <span class="keyword">return</span> mid
+    <span class="keyword">elif</span> arr[mid] &lt; target:
+        <span class="keyword">return</span> binary_search_recursive(arr, target, mid + <span class="number">1</span>, right)
+    <span class="keyword">else</span>:
+        <span class="keyword">return</span> binary_search_recursive(arr, target, left, mid - <span class="number">1</span>)
+
+arr = [<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">9</span>, <span class="number">11</span>]
+<span class="function">print</span>(binary_search_recursive(arr, <span class="number">7</span>, <span class="number">0</span>, <span class="function">len</span>(arr) - <span class="number">1</span>))  <span class="comment"># 3</span>
+</code>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="problem">
+                        <h4>Problem 2: Longest Common Subsequence</h4>
+                        <p>Find the length of the longest common subsequence of two strings using dynamic programming.</p>
+                        <button onclick="toggleSolution('sol2')">Show Solution</button>
+                        <div id="sol2" class="solution" style="display:none;">
+                            <div class="code-block" data-language="python">
+<code><span class="keyword">def</span> <span class="function">lcs</span>(s1, s2):
+    m, n = <span class="function">len</span>(s1), <span class="function">len</span>(s2)
+    dp = [[<span class="number">0</span>] * (n + <span class="number">1</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="function">range</span>(m + <span class="number">1</span>)]
+    
+    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="function">range</span>(<span class="number">1</span>, m + <span class="number">1</span>):
+        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="function">range</span>(<span class="number">1</span>, n + <span class="number">1</span>):
+            <span class="keyword">if</span> s1[i - <span class="number">1</span>] == s2[j - <span class="number">1</span>]:
+                dp[i][j] = <span class="number">1</span> + dp[i - <span class="number">1</span>][j - <span class="number">1</span>]
+            <span class="keyword">else</span>:
+                dp[i][j] = <span class="function">max</span>(dp[i - <span class="number">1</span>][j], dp[i][j - <span class="number">1</span>])
+    
+    <span class="keyword">return</span> dp[m][n]
+
+<span class="function">print</span>(lcs(<span class="string">"ABCDGH"</span>, <span class="string">"AEDFHR"</span>))  <span class="comment"># 3 ("ADH")</span>
+</code>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="problem">
+                        <h4>Problem 3: Detect Cycle in Graph</h4>
+                        <p>Use DFS to detect if a directed graph contains a cycle.</p>
+                        <button onclick="toggleSolution('sol3')">Show Solution</button>
+                        <div id="sol3" class="solution" style="display:none;">
+                            <div class="code-block" data-language="python">
+<code><span class="keyword">def</span> <span class="function">has_cycle</span>(graph):
+    <span class="keyword">def</span> <span class="function">dfs</span>(node, visiting, visited):
+        visiting.add(node)
+        
+        <span class="keyword">for</span> neighbor <span class="keyword">in</span> graph.get(node, []):
+            <span class="keyword">if</span> neighbor <span class="keyword">in</span> visiting:
+                <span class="keyword">return</span> <span class="keyword">True</span>  <span class="comment"># Cycle detected</span>
+            <span class="keyword">if</span> neighbor <span class="keyword">not</span> <span class="keyword">in</span> visited:
+                <span class="keyword">if</span> dfs(neighbor, visiting, visited):
+                    <span class="keyword">return</span> <span class="keyword">True</span>
+        
+        visiting.remove(node)
+        visited.add(node)
+        <span class="keyword">return</span> <span class="keyword">False</span>
+    
+    visiting = <span class="function">set</span>()
+    visited = <span class="function">set</span>()
+    
+    <span class="keyword">for</span> node <span class="keyword">in</span> graph:
+        <span class="keyword">if</span> node <span class="keyword">not</span> <span class="keyword">in</span> visited:
+            <span class="keyword">if</span> dfs(node, visiting, visited):
+                <span class="keyword">return</span> <span class="keyword">True</span>
+    
+    <span class="keyword">return</span> <span class="keyword">False</span>
+</code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Key Takeaways</h3>
+                <ul>
+                    <li>Big O notation describes algorithm efficiency as input size grows</li>
+                    <li>Binary search (O(log n)) is much faster than linear search (O(n)) on sorted data</li>
+                    <li>Merge sort and quick sort (O(n log n)) outperform bubble/selection/insertion sort (O(n²))</li>
+                    <li>Recursion requires base case and recursive case; watch for stack overflow</li>
+                    <li>Dynamic programming optimizes recursion through memoization or tabulation</li>
+                    <li>Backtracking explores all solutions by building candidates and abandoning failures</li>
+                    <li>BFS uses queue (level-by-level), DFS uses stack/recursion (depth-first)</li>
+                    <li>Two pointers and sliding window are efficient array/string patterns</li>
+                    <li>Consider both time and space complexity when choosing algorithms</li>
+                </ul>
+
+                <div class="info-box tip">
+                    <h4>💡 Next Steps</h4>
+                    <p>
+                        You've learned fundamental algorithms! Next, we'll explore debugging strategies, testing 
+                        frameworks, and test-driven development to help you write robust, bug-free code.
+                    </p>
+                </div>
+            </div>
+
+            <div class="lesson-navigation">
+                <a href="09-data-structures.html" class="nav-btn">← Previous: Data Structures</a>
+                <a href="11-debugging.html" class="nav-btn">Next: Debugging & Testing →</a>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../js/main.js"></script>
+    <script>
+        function toggleSolution(id) {
+            const solution = document.getElementById(id);
+            const button = event.target;
+            if (solution.style.display === 'none') {
+                solution.style.display = 'block';
+                button.textContent = 'Hide Solution';
+            } else {
+                solution.style.display = 'none';
+                button.textContent = 'Show Solution';
+            }
+        }
+    </script>
+</body>
+</html>

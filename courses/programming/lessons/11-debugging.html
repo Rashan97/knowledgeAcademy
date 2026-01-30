@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 11: Debugging & Testing - Engineering Academy</title>
+    <link rel="stylesheet" href="../../../css/styles.css">
+    <link rel="stylesheet" href="../../../css/course-styles/course.css">
+</head>
+<body>
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <h1><a href="../../../index.html" style="color: inherit; text-decoration: none;">🎓 Engineering Academy</a></h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../index.html">Course Overview</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section class="course-header">
+        <div class="container">
+            <h1>⌨️ Programming</h1>
+            <p>Lesson 11: Debugging & Testing</p>
+        </div>
+    </section>
+
+    <div class="course-container">
+        <aside class="course-sidebar">
+            <h3>Course Modules</h3>
+            <ul class="lesson-list">
+                <li><a href="../index.html"><span class="lesson-number">📚</span>Course Overview</a></li>
+                <li><a href="01-programming-fundamentals.html" class="completed"><span class="lesson-number">1</span>Programming Fundamentals</a></li>
+                <li><a href="02-python-basics.html" class="completed"><span class="lesson-number">2</span>Python Basics</a></li>
+                <li><a href="03-python-advanced.html" class="completed"><span class="lesson-number">3</span>Python Advanced</a></li>
+                <li><a href="04-javascript-basics.html" class="completed"><span class="lesson-number">4</span>JavaScript Basics</a></li>
+                <li><a href="05-javascript-modern.html" class="completed"><span class="lesson-number">5</span>Modern JavaScript</a></li>
+                <li><a href="06-cpp-basics.html" class="completed"><span class="lesson-number">6</span>C++ Basics</a></li>
+                <li><a href="07-cpp-advanced.html" class="completed"><span class="lesson-number">7</span>C++ Advanced</a></li>
+                <li><a href="08-oop-principles.html" class="completed"><span class="lesson-number">8</span>OOP Principles</a></li>
+                <li><a href="09-data-structures.html" class="completed"><span class="lesson-number">9</span>Data Structures</a></li>
+                <li><a href="10-algorithms.html" class="completed"><span class="lesson-number">10</span>Algorithms</a></li>
+                <li><a href="11-debugging.html" class="active"><span class="lesson-number">11</span>Debugging & Testing</a></li>
+                <li><a href="12-best-practices.html"><span class="lesson-number">12</span>Best Practices</a></li>
+            </ul>
+        </aside>
+
+        <main class="course-content">
+            <div class="lesson-header">
+                <h2>Lesson 11: Debugging & Testing</h2>
+                <div class="lesson-meta">
+                    <span>📖 100 min read</span>
+                    <span>📊 Intermediate</span>
+                </div>
+            </div>
+
+            <div class="lesson-content">
+                <h3>Introduction to Debugging</h3>
+                <p>
+                    Debugging is the process of finding and fixing errors in code. Every developer spends significant 
+                    time debugging, so mastering debugging techniques and tools is crucial. Combined with systematic 
+                    testing, you can build reliable, robust software.
+                </p>
+
+                <div class="info-box note">
+                    <h4>📌 The Debugging Mindset</h4>
+                    <p>
+                        "Everyone knows that debugging is twice as hard as writing a program in the first place." 
+                        - Brian Kernighan. Good debugging is systematic, not random. Form hypotheses, test them, 
+                        and narrow down the problem space methodically.
+                    </p>
+                </div>
+
+                <h3>Debugging Strategies</h3>
+
+                <h4>Rubber Duck Debugging</h4>
+                <p>Explain your code line-by-line to a rubber duck (or any object). Often, just articulating the problem helps you find the bug.</p>
+
+                <div class="code-block" data-language="text">
+<code>Steps:
+1. Get a rubber duck (or teddy bear, colleague, etc.)
+2. Explain what your code is supposed to do
+3. Walk through each line, explaining what it does
+4. When you reach the bug, you'll often realize the mistake
+5. Fix it and thank your duck!
+
+This works because teaching forces you to understand deeply.
+</code>
+                </div>
+
+                <h4>Binary Search Debugging</h4>
+                <p>When you know the bug exists but not where, use binary search to isolate it.</p>
+
+                <div class="code-block" data-language="python">
+<code><span class="comment"># You know the bug is somewhere in this code</span>
+<span class="keyword">def</span> <span class="function">complex_calculation</span>(data):
+    step1 = process_data(data)
+    <span class="function">print</span>(<span class="string">"After step 1:"</span>, step1)  <span class="comment"># Check halfway point</span>
+    
+    step2 = transform(step1)
+    <span class="function">print</span>(<span class="string">"After step 2:"</span>, step2)  <span class="comment"># Narrow down further</span>
+    
+    result = finalize(step2)
+    <span class="keyword">return</span> result
+
+<span class="comment"># Strategy: Comment out half the code, see if bug persists
+# Repeat until you isolate the problematic section</span>
+</code>
+                </div>
+
+                <h4>Print Debugging</h4>
+                <p>The simplest debugging technique - strategically placed print statements.</p>
+
+                <div class="code-block" data-language="javascript">
+<code><span class="keyword">function</span> <span class="function">calculateTotal</span>(items) {
+    console.<span class="function">log</span>(<span class="string">'Input items:'</span>, items);  <span class="comment">// Verify input</span>
+    
+    <span class="keyword">let</span> total = <span class="number">0</span>;
+    <span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> items) {
+        console.<span class="function">log</span>(<span class="string">`Processing item:`</span>, item);  <span class="comment">// Track iteration</span>
+        total += item.price * item.quantity;
+        console.<span class="function">log</span>(<span class="string">`Running total:`</span>, total);  <span class="comment">// Monitor accumulation</span>
+    }
+    
+    console.<span class="function">log</span>(<span class="string">'Final total:'</span>, total);  <span class="comment">// Verify output</span>
+    <span class="keyword">return</span> total;
+}
+</code>
+                </div>
+
+                <h3>Debugger Tools</h3>
+
+                <h4>Chrome DevTools (JavaScript)</h4>
+                <div class="code-block" data-language="javascript">
+<code><span class="comment">// Set breakpoints in Chrome DevTools:</span>
+<span class="comment">// 1. Open DevTools (F12 or Ctrl+Shift+I)</span>
+<span class="comment">// 2. Go to Sources tab</span>
+<span class="comment">// 3. Click line number to set breakpoint</span>
+
+<span class="keyword">function</span> <span class="function">debugExample</span>(arr) {
+    <span class="keyword">let</span> result = [];
+    
+    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++) {
+        <span class="keyword">debugger</span>;  <span class="comment">// Programmatic breakpoint - execution pauses here</span>
+        result.push(arr[i] * <span class="number">2</span>);
+    }
+    
+    <span class="keyword">return</span> result;
+}
+
+<span class="comment">// In DevTools while paused:
+// - Inspect variables in Scope panel
+// - Step over (F10), Step into (F11), Step out (Shift+F11)
+// - Watch expressions
+// - Call stack shows execution path</span>
+</code>
+                </div>
+
+                <h4>Python Debugger (pdb)</h4>
+                <div class="code-block" data-language="python">
+<code><span class="keyword">import</span> pdb
+
+<span class="keyword">def</span> <span class="function">debug_example</span>(numbers):
+    total = <span class="number">0</span>
+    
+    <span class="keyword">for</span> i, num <span class="keyword">in</span> <span class="function">enumerate</span>(numbers):
+        pdb.set_trace()  <span class="comment"># Execution pauses here</span>
+        total += num
+    
+    <span class="keyword">return</span> total
+
+<span class="comment"># pdb commands:
+# n (next)       - Execute next line
+# s (step)       - Step into function
+# c (continue)   - Continue execution
+# p var          - Print variable value
+# l (list)       - Show current code
+# w (where)      - Show call stack
+# q (quit)       - Exit debugger</span>
+
+<span class="comment"># Python 3.7+ has breakpoint() built-in:</span>
+<span class="keyword">def</span> <span class="function">modern_debug</span>(data):
+    <span class="function">breakpoint</span>()  <span class="comment"># Same as pdb.set_trace()</span>
+    result = process(data)
+    <span class="keyword">return</span> result
+</code>
+                </div>
+
+                <h4>GDB for C++</h4>
+                <div class="code-block" data-language="cpp">
+<code><span class="comment">// Compile with debug symbols:</span>
+<span class="comment">// g++ -g program.cpp -o program</span>
+
+<span class="preprocessor">#include &lt;iostream&gt;</span>
+<span class="preprocessor">#include &lt;vector&gt;</span>
+<span class="keyword">using namespace</span> std;
+
+<span class="keyword">int</span> <span class="function">main</span>() {
+    vector&lt;<span class="keyword">int</span>&gt; numbers = {<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>};
+    <span class="keyword">int</span> sum = <span class="number">0</span>;
+    
+    <span class="keyword">for</span> (<span class="keyword">int</span> num : numbers) {
+        sum += num;
+    }
+    
+    cout &lt;&lt; <span class="string">"Sum: "</span> &lt;&lt; sum &lt;&lt; endl;
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+
+<span class="comment">// GDB commands:
+// gdb program              - Start GDB
+// break main               - Set breakpoint at main
+// break file.cpp:20        - Breakpoint at line 20
+// run                      - Start program
+// next (n)                 - Next line
+// step (s)                 - Step into function
+// print variable (p var)   - Print value
+// continue (c)             - Resume execution
+// backtrace (bt)           - Show call stack
+// quit (q)                 - Exit GDB</span>
+</code>
+                </div>
+
+                <h3>Unit Testing Fundamentals</h3>
+
+                <h4>The Arrange-Act-Assert Pattern</h4>
+                <div class="code-block" data-language="text">
+<code>Every unit test follows this structure:
+
+1. Arrange  - Set up test data and conditions
+2. Act      - Execute the function being tested
+3. Assert   - Verify the result matches expectations
+
+This pattern makes tests clear and maintainable.
+</code>
+                </div>
+
+                <h4>Jest for JavaScript</h4>
+                <div class="code-block" data-language="javascript">
+<code><span class="comment">// functions.js</span>
+<span class="keyword">function</span> <span class="function">add</span>(a, b) {
+    <span class="keyword">return</span> a + b;
+}
+
+<span class="keyword">function</span> <span class="function">multiply</span>(a, b) {
+    <span class="keyword">return</span> a * b;
+}
+
+<span class="keyword">module</span>.exports = { add, multiply };
+
+<span class="comment">// functions.test.js</span>
+<span class="keyword">const</span> { add, multiply } = <span class="function">require</span>(<span class="string">'./functions'</span>);
+
+<span class="function">describe</span>(<span class="string">'Math functions'</span>, () => {
+    <span class="function">test</span>(<span class="string">'add should sum two numbers'</span>, () => {
+        <span class="comment">// Arrange</span>
+        <span class="keyword">const</span> a = <span class="number">2</span>;
+        <span class="keyword">const</span> b = <span class="number">3</span>;
+        
+        <span class="comment">// Act</span>
+        <span class="keyword">const</span> result = add(a, b);
+        
+        <span class="comment">// Assert</span>
+        <span class="function">expect</span>(result).<span class="function">toBe</span>(<span class="number">5</span>);
+    });
+    
+    <span class="function">test</span>(<span class="string">'multiply should multiply two numbers'</span>, () => {
+        <span class="function">expect</span>(multiply(<span class="number">3</span>, <span class="number">4</span>)).<span class="function">toBe</span>(<span class="number">12</span>);
+    });
+    
+    <span class="function">test</span>(<span class="string">'add handles negative numbers'</span>, () => {
+        <span class="function">expect</span>(add(-<span class="number">1</span>, -<span class="number">1</span>)).<span class="function">toBe</span>(-<span class="number">2</span>);
+    });
+});
+
+<span class="comment">// Run tests: npm test</span>
+</code>
+                </div>
+
+                <h4>pytest for Python</h4>
+                <div class="code-block" data-language="python">
+<code><span class="comment"># calculator.py</span>
+<span class="keyword">class</span> <span class="class-name">Calculator</span>:
+    <span class="keyword">def</span> <span class="function">add</span>(self, a, b):
+        <span class="keyword">return</span> a + b
+    
+    <span class="keyword">def</span> <span class="function">divide</span>(self, a, b):
+        <span class="keyword">if</span> b == <span class="number">0</span>:
+            <span class="keyword">raise</span> <span class="function">ValueError</span>(<span class="string">"Cannot divide by zero"</span>)
+        <span class="keyword">return</span> a / b
+
+<span class="comment"># test_calculator.py</span>
+<span class="keyword">import</span> pytest
+<span class="keyword">from</span> calculator <span class="keyword">import</span> Calculator
+
+<span class="keyword">def</span> <span class="function">test_add</span>():
+    <span class="comment"># Arrange</span>
+    calc = Calculator()
+    
+    <span class="comment"># Act</span>
+    result = calc.add(<span class="number">2</span>, <span class="number">3</span>)
+    
+    <span class="comment"># Assert</span>
+    <span class="keyword">assert</span> result == <span class="number">5</span>
+
+<span class="keyword">def</span> <span class="function">test_divide</span>():
+    calc = Calculator()
+    <span class="keyword">assert</span> calc.divide(<span class="number">10</span>, <span class="number">2</span>) == <span class="number">5</span>
+
+<span class="keyword">def</span> <span class="function">test_divide_by_zero</span>():
+    calc = Calculator()
+    <span class="keyword">with</span> pytest.raises(<span class="function">ValueError</span>):
+        calc.divide(<span class="number">10</span>, <span class="number">0</span>)
+
+<span class="comment"># Fixtures for reusable setup</span>
+<span class="decorator">@pytest.fixture</span>
+<span class="keyword">def</span> <span class="function">calculator</span>():
+    <span class="keyword">return</span> Calculator()
+
+<span class="keyword">def</span> <span class="function">test_with_fixture</span>(calculator):
+    <span class="keyword">assert</span> calculator.add(<span class="number">1</span>, <span class="number">1</span>) == <span class="number">2</span>
+
+<span class="comment"># Run tests: pytest</span>
+</code>
+                </div>
+
+                <h4>Google Test for C++</h4>
+                <div class="code-block" data-language="cpp">
+<code><span class="comment">// math_functions.h</span>
+<span class="keyword">int</span> <span class="function">add</span>(<span class="keyword">int</span> a, <span class="keyword">int</span> b);
+<span class="keyword">int</span> <span class="function">factorial</span>(<span class="keyword">int</span> n);
+
+<span class="comment">// math_functions.cpp</span>
+<span class="keyword">int</span> <span class="function">add</span>(<span class="keyword">int</span> a, <span class="keyword">int</span> b) {
+    <span class="keyword">return</span> a + b;
+}
+
+<span class="keyword">int</span> <span class="function">factorial</span>(<span class="keyword">int</span> n) {
+    <span class="keyword">if</span> (n &lt;= <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;
+    <span class="keyword">return</span> n * factorial(n - <span class="number">1</span>);
+}
+
+<span class="comment">// test_math.cpp</span>
+<span class="preprocessor">#include &lt;gtest/gtest.h&gt;</span>
+<span class="preprocessor">#include "math_functions.h"</span>
+
+<span class="comment">// Test case using TEST macro</span>
+<span class="function">TEST</span>(MathTest, AddPositiveNumbers) {
+    <span class="comment">// Arrange</span>
+    <span class="keyword">int</span> a = <span class="number">3</span>;
+    <span class="keyword">int</span> b = <span class="number">4</span>;
+    
+    <span class="comment">// Act</span>
+    <span class="keyword">int</span> result = add(a, b);
+    
+    <span class="comment">// Assert</span>
+    EXPECT_EQ(result, <span class="number">7</span>);
+}
+
+<span class="function">TEST</span>(MathTest, AddNegativeNumbers) {
+    EXPECT_EQ(add(-<span class="number">1</span>, -<span class="number">1</span>), -<span class="number">2</span>);
+}
+
+<span class="function">TEST</span>(MathTest, Factorial) {
+    EXPECT_EQ(factorial(<span class="number">0</span>), <span class="number">1</span>);
+    EXPECT_EQ(factorial(<span class="number">1</span>), <span class="number">1</span>);
+    EXPECT_EQ(factorial(<span class="number">5</span>), <span class="number">120</span>);
+}
+
+<span class="comment">// Test fixture for shared setup</span>
+<span class="keyword">class</span> <span class="class-name">CalculatorTest</span> : <span class="keyword">public</span> ::testing::Test {
+<span class="keyword">protected</span>:
+    <span class="keyword">void</span> <span class="function">SetUp</span>() <span class="keyword">override</span> {
+        <span class="comment">// Setup code before each test</span>
+    }
+    
+    <span class="keyword">void</span> <span class="function">TearDown</span>() <span class="keyword">override</span> {
+        <span class="comment">// Cleanup after each test</span>
+    }
+};
+
+<span class="keyword">int</span> <span class="function">main</span>(<span class="keyword">int</span> argc, <span class="keyword">char</span>** argv) {
+    ::testing::InitGoogleTest(&amp;argc, argv);
+    <span class="keyword">return</span> RUN_ALL_TESTS();
+}
+</code>
+                </div>
+
+                <h3>Test-Driven Development (TDD)</h3>
+                <p>TDD is a development approach where you write tests before writing code.</p>
+
+                <div class="info-box note">
+                    <h4>📌 The TDD Cycle (Red-Green-Refactor)</h4>
+                    <ol>
+                        <li><strong>Red:</strong> Write a failing test for new functionality</li>
+                        <li><strong>Green:</strong> Write minimal code to make the test pass</li>
+                        <li><strong>Refactor:</strong> Improve code while keeping tests green</li>
+                        <li>Repeat for next feature</li>
+                    </ol>
+                </div>
+
+                <div class="code-block" data-language="python">
+<code><span class="comment"># Example: TDD for a StringUtils class</span>
+
+<span class="comment"># Step 1: RED - Write failing test</span>
+<span class="keyword">def</span> <span class="function">test_reverse_string</span>():
+    util = StringUtils()
+    <span class="keyword">assert</span> util.reverse(<span class="string">"hello"</span>) == <span class="string">"olleh"</span>
+<span class="comment"># This fails - StringUtils doesn't exist yet!</span>
+
+<span class="comment"># Step 2: GREEN - Minimal code to pass</span>
+<span class="keyword">class</span> <span class="class-name">StringUtils</span>:
+    <span class="keyword">def</span> <span class="function">reverse</span>(self, text):
+        <span class="keyword">return</span> text[::-<span class="number">1</span>]
+<span class="comment"># Test passes!</span>
+
+<span class="comment"># Step 3: REFACTOR - Add more tests</span>
+<span class="keyword">def</span> <span class="function">test_reverse_empty_string</span>():
+    util = StringUtils()
+    <span class="keyword">assert</span> util.reverse(<span class="string">""</span>) == <span class="string">""</span>
+
+<span class="keyword">def</span> <span class="function">test_is_palindrome</span>():
+    util = StringUtils()
+    <span class="keyword">assert</span> util.is_palindrome(<span class="string">"racecar"</span>) == <span class="keyword">True</span>
+    <span class="keyword">assert</span> util.is_palindrome(<span class="string">"hello"</span>) == <span class="keyword">False</span>
+
+<span class="comment"># Add is_palindrome method</span>
+<span class="keyword">class</span> <span class="class-name">StringUtils</span>:
+    <span class="keyword">def</span> <span class="function">reverse</span>(self, text):
+        <span class="keyword">return</span> text[::-<span class="number">1</span>]
+    
+    <span class="keyword">def</span> <span class="function">is_palindrome</span>(self, text):
+        <span class="keyword">return</span> text == text[::-<span class="number">1</span>]
+</code>
+                </div>
+
+                <h3>Assertions and Edge Cases</h3>
+
+                <div class="code-block" data-language="javascript">
+<code><span class="comment">// Test edge cases thoroughly</span>
+<span class="function">describe</span>(<span class="string">'Array utilities'</span>, () => {
+    <span class="function">test</span>(<span class="string">'findMax handles empty array'</span>, () => {
+        <span class="function">expect</span>(() =&gt; findMax([])).<span class="function">toThrow</span>(<span class="string">'Array is empty'</span>);
+    });
+    
+    <span class="function">test</span>(<span class="string">'findMax with single element'</span>, () => {
+        <span class="function">expect</span>(findMax([<span class="number">5</span>])).<span class="function">toBe</span>(<span class="number">5</span>);
+    });
+    
+    <span class="function">test</span>(<span class="string">'findMax with negative numbers'</span>, () => {
+        <span class="function">expect</span>(findMax([-<span class="number">1</span>, -<span class="number">5</span>, -<span class="number">3</span>])).<span class="function">toBe</span>(-<span class="number">1</span>);
+    });
+    
+    <span class="function">test</span>(<span class="string">'findMax with duplicates'</span>, () => {
+        <span class="function">expect</span>(findMax([<span class="number">3</span>, <span class="number">3</span>, <span class="number">3</span>])).<span class="function">toBe</span>(<span class="number">3</span>);
+    });
+});
+
+<span class="comment">// Common edge cases to test:</span>
+<span class="comment">// - Empty inputs</span>
+<span class="comment">// - Single element</span>
+<span class="comment">// - Null/undefined values</span>
+<span class="comment">// - Negative numbers</span>
+<span class="comment">// - Large numbers (overflow)</span>
+<span class="comment">// - Duplicates</span>
+<span class="comment">// - Boundary values (0, -1, max int)</span>
+</code>
+                </div>
+
+                <h3>Test Coverage Metrics</h3>
+
+                <div class="code-block" data-language="text">
+<code>Coverage Types:
+
+1. Line Coverage     - Percentage of lines executed
+2. Branch Coverage   - Percentage of conditional branches tested
+3. Function Coverage - Percentage of functions called
+4. Statement Coverage - Percentage of statements executed
+
+Target: 80%+ coverage for critical code
+100% coverage doesn't mean bug-free!
+
+Tools:
+- JavaScript: Jest with --coverage flag
+- Python: pytest-cov
+- C++: gcov, lcov
+</code>
+                </div>
+
+                <div class="code-block" data-language="bash">
+<code><span class="comment"># Jest coverage report</span>
+npm test -- --coverage
+
+<span class="comment"># pytest with coverage</span>
+pytest --cov=myproject tests/
+
+<span class="comment"># Example output:</span>
+<span class="comment"># Name              Stmts   Miss  Cover</span>
+<span class="comment"># myfile.py            20      2    90%</span>
+<span class="comment"># other.py             15      0   100%</span>
+<span class="comment"># TOTAL                35      2    94%</span>
+</code>
+                </div>
+
+                <h3>Mocking and Stubbing</h3>
+
+                <div class="code-block" data-language="javascript">
+<code><span class="comment">// Mock external dependencies</span>
+<span class="keyword">const</span> axios = <span class="function">require</span>(<span class="string">'axios'</span>);
+jest.<span class="function">mock</span>(<span class="string">'axios'</span>);
+
+<span class="function">test</span>(<span class="string">'fetchUser returns user data'</span>, <span class="keyword">async</span> () => {
+    <span class="comment">// Arrange - Mock API response</span>
+    <span class="keyword">const</span> mockUser = { id: <span class="number">1</span>, name: <span class="string">'Alice'</span> };
+    axios.get.<span class="function">mockResolvedValue</span>({ data: mockUser });
+    
+    <span class="comment">// Act</span>
+    <span class="keyword">const</span> user = <span class="keyword">await</span> <span class="function">fetchUser</span>(<span class="number">1</span>);
+    
+    <span class="comment">// Assert</span>
+    <span class="function">expect</span>(user).<span class="function">toEqual</span>(mockUser);
+    <span class="function">expect</span>(axios.get).<span class="function">toHaveBeenCalledWith</span>(<span class="string">'/api/users/1'</span>);
+});
+
+<span class="comment">// Spy on functions</span>
+<span class="function">test</span>(<span class="string">'calls callback on success'</span>, () => {
+    <span class="keyword">const</span> mockCallback = jest.<span class="function">fn</span>();
+    
+    <span class="function">processData</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], mockCallback);
+    
+    <span class="function">expect</span>(mockCallback).<span class="function">toHaveBeenCalled</span>();
+    <span class="function">expect</span>(mockCallback).<span class="function">toHaveBeenCalledTimes</span>(<span class="number">1</span>);
+});
+</code>
+                </div>
+
+                <h3>Common Bugs and How to Avoid Them</h3>
+
+                <h4>Off-by-One Errors</h4>
+                <div class="code-block" data-language="python">
+<code><span class="comment"># Bug: Index out of range</span>
+<span class="keyword">def</span> <span class="function">buggy</span>(arr):
+    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="function">range</span>(<span class="function">len</span>(arr) + <span class="number">1</span>):  <span class="comment"># Wrong! Goes one too far</span>
+        <span class="function">print</span>(arr[i])
+
+<span class="comment"># Fix: Correct range</span>
+<span class="keyword">def</span> <span class="function">fixed</span>(arr):
+    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="function">range</span>(<span class="function">len</span>(arr)):  <span class="comment"># Correct</span>
+        <span class="function">print</span>(arr[i])
+
+<span class="comment"># Better: Use iteration directly</span>
+<span class="keyword">def</span> <span class="function">best</span>(arr):
+    <span class="keyword">for</span> item <span class="keyword">in</span> arr:
+        <span class="function">print</span>(item)
+</code>
+                </div>
+
+                <h4>Null Pointer/Reference Errors</h4>
+                <div class="code-block" data-language="cpp">
+<code><span class="comment">// Bug: Dereferencing null pointer</span>
+<span class="keyword">int</span>* ptr = <span class="keyword">nullptr</span>;
+*ptr = <span class="number">5</span>;  <span class="comment">// CRASH!</span>
+
+<span class="comment">// Fix: Check before dereferencing</span>
+<span class="keyword">int</span>* ptr = <span class="keyword">nullptr</span>;
+<span class="keyword">if</span> (ptr != <span class="keyword">nullptr</span>) {
+    *ptr = <span class="number">5</span>;
+}
+
+<span class="comment">// Best: Use smart pointers</span>
+<span class="keyword">auto</span> ptr = make_unique&lt;<span class="keyword">int</span>&gt;(<span class="number">5</span>);
+*ptr = <span class="number">10</span>;  <span class="comment">// Safe!</span>
+</code>
+                </div>
+
+                <h4>Infinite Loops</h4>
+                <div class="code-block" data-language="javascript">
+<code><span class="comment">// Bug: Loop never terminates</span>
+<span class="keyword">let</span> i = <span class="number">0</span>;
+<span class="keyword">while</span> (i &lt; <span class="number">10</span>) {
+    console.<span class="function">log</span>(i);
+    <span class="comment">// Forgot to increment i!</span>
+}
+
+<span class="comment">// Fix: Ensure loop condition changes</span>
+<span class="keyword">let</span> i = <span class="number">0</span>;
+<span class="keyword">while</span> (i &lt; <span class="number">10</span>) {
+    console.<span class="function">log</span>(i);
+    i++;  <span class="comment">// Don't forget!</span>
+}
+
+<span class="comment">// Better: Use for loop when count is known</span>
+<span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) {
+    console.<span class="function">log</span>(i);
+}
+</code>
+                </div>
+
+                <h4>Race Conditions (Concurrency)</h4>
+                <div class="code-block" data-language="python">
+<code><span class="keyword">import</span> threading
+
+counter = <span class="number">0</span>
+
+<span class="comment"># Bug: Race condition</span>
+<span class="keyword">def</span> <span class="function">increment_unsafe</span>():
+    <span class="keyword">global</span> counter
+    <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="function">range</span>(<span class="number">100000</span>):
+        counter += <span class="number">1</span>  <span class="comment"># Not atomic!</span>
+
+<span class="comment"># Fix: Use locks</span>
+lock = threading.Lock()
+
+<span class="keyword">def</span> <span class="function">increment_safe</span>():
+    <span class="keyword">global</span> counter
+    <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="function">range</span>(<span class="number">100000</span>):
+        <span class="keyword">with</span> lock:
+            counter += <span class="number">1</span>  <span class="comment"># Thread-safe</span>
+</code>
+                </div>
+
+                <div class="practice-problems">
+                    <h3>Practice Problems</h3>
+                    
+                    <div class="problem">
+                        <h4>Problem 1: Write Tests for isPalindrome</h4>
+                        <p>Write comprehensive unit tests for a function that checks if a string is a palindrome. Include edge cases.</p>
+                        <button onclick="toggleSolution('sol1')">Show Solution</button>
+                        <div id="sol1" class="solution" style="display:none;">
+                            <div class="code-block" data-language="javascript">
+<code><span class="comment">// Implementation</span>
+<span class="keyword">function</span> <span class="function">isPalindrome</span>(str) {
+    <span class="keyword">const</span> cleaned = str.toLowerCase().replace(/[^a-z0-9]/g, <span class="string">''</span>);
+    <span class="keyword">return</span> cleaned === cleaned.split(<span class="string">''</span>).reverse().join(<span class="string">''</span>);
+}
+
+<span class="comment">// Tests</span>
+<span class="function">describe</span>(<span class="string">'isPalindrome'</span>, () => {
+    <span class="function">test</span>(<span class="string">'simple palindrome'</span>, () => {
+        <span class="function">expect</span>(isPalindrome(<span class="string">'racecar'</span>)).<span class="function">toBe</span>(<span class="keyword">true</span>);
+    });
+    
+    <span class="function">test</span>(<span class="string">'not a palindrome'</span>, () => {
+        <span class="function">expect</span>(isPalindrome(<span class="string">'hello'</span>)).<span class="function">toBe</span>(<span class="keyword">false</span>);
+    });
+    
+    <span class="function">test</span>(<span class="string">'empty string'</span>, () => {
+        <span class="function">expect</span>(isPalindrome(<span class="string">''</span>)).<span class="function">toBe</span>(<span class="keyword">true</span>);
+    });
+    
+    <span class="function">test</span>(<span class="string">'single character'</span>, () => {
+        <span class="function">expect</span>(isPalindrome(<span class="string">'a'</span>)).<span class="function">toBe</span>(<span class="keyword">true</span>);
+    });
+    
+    <span class="function">test</span>(<span class="string">'case insensitive'</span>, () => {
+        <span class="function">expect</span>(isPalindrome(<span class="string">'RaceCar'</span>)).<span class="function">toBe</span>(<span class="keyword">true</span>);
+    });
+    
+    <span class="function">test</span>(<span class="string">'ignores spaces and punctuation'</span>, () => {
+        <span class="function">expect</span>(isPalindrome(<span class="string">'A man, a plan, a canal: Panama'</span>)).<span class="function">toBe</span>(<span class="keyword">true</span>);
+    });
+});
+</code>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="problem">
+                        <h4>Problem 2: Debug and Fix Factorial Function</h4>
+                        <p>Find and fix bugs in this factorial function using debugging techniques.</p>
+                        <button onclick="toggleSolution('sol2')">Show Solution</button>
+                        <div id="sol2" class="solution" style="display:none;">
+                            <div class="code-block" data-language="python">
+<code><span class="comment"># Buggy version</span>
+<span class="keyword">def</span> <span class="function">factorial_buggy</span>(n):
+    <span class="keyword">if</span> n == <span class="number">1</span>:  <span class="comment"># Bug: Should be n &lt;= 1</span>
+        <span class="keyword">return</span> <span class="number">1</span>
+    <span class="keyword">return</span> n * factorial_buggy(n)  <span class="comment"># Bug: Should be n-1</span>
+
+<span class="comment"># Fixed version</span>
+<span class="keyword">def</span> <span class="function">factorial</span>(n):
+    <span class="keyword">if</span> n &lt;= <span class="number">1</span>:
+        <span class="keyword">return</span> <span class="number">1</span>
+    <span class="keyword">return</span> n * factorial(n - <span class="number">1</span>)
+
+<span class="comment"># Tests</span>
+<span class="keyword">def</span> <span class="function">test_factorial</span>():
+    <span class="keyword">assert</span> factorial(<span class="number">0</span>) == <span class="number">1</span>
+    <span class="keyword">assert</span> factorial(<span class="number">1</span>) == <span class="number">1</span>
+    <span class="keyword">assert</span> factorial(<span class="number">5</span>) == <span class="number">120</span>
+    <span class="keyword">assert</span> factorial(<span class="number">10</span>) == <span class="number">3628800</span>
+</code>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="problem">
+                        <h4>Problem 3: TDD - String Compressor</h4>
+                        <p>Use TDD to implement a function that compresses strings: "aaabbc" → "a3b2c1"</p>
+                        <button onclick="toggleSolution('sol3')">Show Solution</button>
+                        <div id="sol3" class="solution" style="display:none;">
+                            <div class="code-block" data-language="python">
+<code><span class="comment"># Step 1: Write tests first</span>
+<span class="keyword">def</span> <span class="function">test_compress</span>():
+    <span class="keyword">assert</span> compress(<span class="string">"aaabbc"</span>) == <span class="string">"a3b2c1"</span>
+    <span class="keyword">assert</span> compress(<span class="string">"a"</span>) == <span class="string">"a1"</span>
+    <span class="keyword">assert</span> compress(<span class="string">""</span>) == <span class="string">""</span>
+    <span class="keyword">assert</span> compress(<span class="string">"abc"</span>) == <span class="string">"a1b1c1"</span>
+
+<span class="comment"># Step 2: Implement to pass tests</span>
+<span class="keyword">def</span> <span class="function">compress</span>(s):
+    <span class="keyword">if</span> <span class="keyword">not</span> s:
+        <span class="keyword">return</span> <span class="string">""</span>
+    
+    result = []
+    count = <span class="number">1</span>
+    current = s[<span class="number">0</span>]
+    
+    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="function">range</span>(<span class="number">1</span>, <span class="function">len</span>(s)):
+        <span class="keyword">if</span> s[i] == current:
+            count += <span class="number">1</span>
+        <span class="keyword">else</span>:
+            result.append(<span class="string">f"<span class="template-var">{current}</span><span class="template-var">{count}</span>"</span>)
+            current = s[i]
+            count = <span class="number">1</span>
+    
+    result.append(<span class="string">f"<span class="template-var">{current}</span><span class="template-var">{count}</span>"</span>)
+    <span class="keyword">return</span> <span class="string">""</span>.join(result)
+</code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Key Takeaways</h3>
+                <ul>
+                    <li>Use systematic debugging: form hypotheses, test them, narrow the problem</li>
+                    <li>Debugger tools (Chrome DevTools, pdb, GDB) are more powerful than print statements</li>
+                    <li>Write tests following Arrange-Act-Assert pattern</li>
+                    <li>Test frameworks: Jest (JavaScript), pytest (Python), Google Test (C++)</li>
+                    <li>TDD: Write tests first (Red), make them pass (Green), then refactor</li>
+                    <li>Test edge cases: empty inputs, nulls, boundaries, negatives</li>
+                    <li>Aim for 80%+ test coverage on critical code</li>
+                    <li>Use mocking to isolate units and test without external dependencies</li>
+                    <li>Common bugs: off-by-one, null pointers, infinite loops, race conditions</li>
+                    <li>Good tests make code more maintainable and catch regressions early</li>
+                </ul>
+
+                <div class="info-box tip">
+                    <h4>💡 Next Steps</h4>
+                    <p>
+                        You've mastered debugging and testing! The final lesson covers best practices: code style, 
+                        documentation, design principles, performance optimization, security, and professional 
+                        development habits.
+                    </p>
+                </div>
+            </div>
+
+            <div class="lesson-navigation">
+                <a href="10-algorithms.html" class="nav-btn">← Previous: Algorithms</a>
+                <a href="12-best-practices.html" class="nav-btn">Next: Best Practices →</a>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../js/main.js"></script>
+    <script>
+        function toggleSolution(id) {
+            const solution = document.getElementById(id);
+            const button = event.target;
+            if (solution.style.display === 'none') {
+                solution.style.display = 'block';
+                button.textContent = 'Hide Solution';
+            } else {
+                solution.style.display = 'none';
+                button.textContent = 'Show Solution';
+            }
+        }
+    </script>
+</body>
+</html>

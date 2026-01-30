@@ -1,0 +1,1514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 6: Behavioral Design Patterns - Engineering Academy</title>
+    <link rel="stylesheet" href="../../../css/styles.css">
+    <link rel="stylesheet" href="../../../css/course-styles/course.css">
+</head>
+<body>
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <h1><a href="../../../index.html" style="color: inherit; text-decoration: none;">🎓 Engineering Academy</a></h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../../../index.html#courses">Courses</a></li>
+                    <li><a href="../index.html">Course Overview</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section class="course-header">
+        <div class="container">
+            <h1>💻 Software Engineering</h1>
+            <p>Lesson 6: Behavioral Design Patterns</p>
+        </div>
+    </section>
+
+    <div class="course-container">
+        <aside class="course-sidebar">
+            <h3>Course Modules</h3>
+            <ul class="lesson-list">
+                <li><a href="../index.html"><span class="lesson-number">📚</span>Course Overview</a></li>
+                <li><a href="01-introduction.html" class="completed"><span class="lesson-number">1</span>Introduction to SE</a></li>
+                <li><a href="02-sdlc.html" class="completed"><span class="lesson-number">2</span>SDLC & Methodologies</a></li>
+                <li><a href="03-requirements-engineering.html" class="completed"><span class="lesson-number">3</span>Requirements Engineering</a></li>
+                <li><a href="04-creational-patterns.html" class="completed"><span class="lesson-number">4</span>Creational Patterns</a></li>
+                <li><a href="05-structural-patterns.html" class="completed"><span class="lesson-number">5</span>Structural Patterns</a></li>
+                <li><a href="06-behavioral-patterns.html" class="active"><span class="lesson-number">6</span>Behavioral Patterns</a></li>
+                <li class="disabled"><span class="lesson-number">7</span>System Architecture <span style="opacity: 0.5;">(Coming Soon)</span></li>
+                <li class="disabled"><span class="lesson-number">8</span>SOLID Principles <span style="opacity: 0.5;">(Coming Soon)</span></li>
+                <li class="disabled"><span class="lesson-number">9</span>Code Quality <span style="opacity: 0.5;">(Coming Soon)</span></li>
+                <li class="disabled"><span class="lesson-number">10</span>Testing Strategies <span style="opacity: 0.5;">(Coming Soon)</span></li>
+                <li class="disabled"><span class="lesson-number">11</span>Version Control <span style="opacity: 0.5;">(Coming Soon)</span></li>
+                <li class="disabled"><span class="lesson-number">12</span>Agile & DevOps <span style="opacity: 0.5;">(Coming Soon)</span></li>
+            </ul>
+        </aside>
+
+        <main class="course-content">
+            <h2>Behavioral Design Patterns</h2>
+            <p class="intro">Master patterns that focus on communication between objects and the assignment of responsibilities.</p>
+
+            <div class="content-section">
+                <h3>1. Introduction to Behavioral Patterns</h3>
+                
+                <p>Behavioral patterns are concerned with algorithms and the assignment of responsibilities between objects. They describe not just patterns of objects or classes but also the patterns of communication between them.</p>
+
+                <div class="info-box">
+                    <strong>Key Behavioral Patterns:</strong>
+                    <ul>
+                        <li><strong>Observer:</strong> Define one-to-many dependency so when one object changes, dependents are notified</li>
+                        <li><strong>Strategy:</strong> Define family of algorithms, encapsulate each, make them interchangeable</li>
+                        <li><strong>Command:</strong> Encapsulate request as object to parameterize clients and support undo</li>
+                        <li><strong>State:</strong> Allow object to alter behavior when internal state changes</li>
+                        <li><strong>Template Method:</strong> Define skeleton of algorithm, letting subclasses override steps</li>
+                        <li><strong>Iterator:</strong> Provide way to access elements sequentially without exposing representation</li>
+                        <li><strong>Chain of Responsibility:</strong> Pass request along chain of handlers until one handles it</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>2. Observer Pattern</h3>
+                
+                <h4>Intent</h4>
+                <p>Define a one-to-many dependency between objects so that when one object changes state, all its dependents are notified and updated automatically.</p>
+
+                <h4>Problem</h4>
+                <p>You need to notify multiple objects about state changes without creating tight coupling between them.</p>
+
+                <h4>Solution</h4>
+                <p>Create a subject that maintains a list of observers and notifies them automatically of any state changes.</p>
+
+                <div class="example-box">
+                    <strong>Example: Stock Price Monitoring System</strong>
+                    <pre><code>// Observer interface
+interface Observer {
+    update(stock: string, price: number): void;
+}
+
+// Subject (Observable)
+class StockMarket {
+    private observers: Observer[] = [];
+    private prices: Map&lt;string, number&gt; = new Map();
+
+    attach(observer: Observer): void {
+        this.observers.push(observer);
+    }
+
+    detach(observer: Observer): void {
+        const index = this.observers.indexOf(observer);
+        if (index > -1) {
+            this.observers.splice(index, 1);
+        }
+    }
+
+    setPrice(stock: string, price: number): void {
+        this.prices.set(stock, price);
+        this.notifyObservers(stock, price);
+    }
+
+    private notifyObservers(stock: string, price: number): void {
+        for (const observer of this.observers) {
+            observer.update(stock, price);
+        }
+    }
+}
+
+// Concrete Observers
+class MobileApp implements Observer {
+    update(stock: string, price: number): void {
+        console.log(`📱 Mobile App: ${stock} is now $${price}`);
+        // Send push notification
+    }
+}
+
+class EmailAlert implements Observer {
+    constructor(private email: string) {}
+
+    update(stock: string, price: number): void {
+        console.log(`📧 Email to ${this.email}: ${stock} price changed to $${price}`);
+    }
+}
+
+class Dashboard implements Observer {
+    update(stock: string, price: number): void {
+        console.log(`📊 Dashboard updated: ${stock} = $${price}`);
+    }
+}
+
+// Usage
+const market = new StockMarket();
+
+const mobileApp = new MobileApp();
+const emailAlert = new EmailAlert("investor@example.com");
+const dashboard = new Dashboard();
+
+market.attach(mobileApp);
+market.attach(emailAlert);
+market.attach(dashboard);
+
+market.setPrice("AAPL", 175.50);
+// Output:
+// 📱 Mobile App: AAPL is now $175.5
+// 📧 Email to investor@example.com: AAPL price changed to $175.5
+// 📊 Dashboard updated: AAPL = $175.5
+
+market.detach(emailAlert);
+market.setPrice("GOOGL", 140.25);
+// Only mobile app and dashboard notified</code></pre>
+                </div>
+
+                <div class="info-box">
+                    <strong>When to Use Observer:</strong>
+                    <ul>
+                        <li>When changes to one object require changing others, and you don't know how many objects need to be changed</li>
+                        <li>Event handling systems (UI events, messaging systems)</li>
+                        <li>Model-View-Controller (MVC) architectures</li>
+                        <li>Real-time data monitoring and notifications</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>3. Strategy Pattern</h3>
+                
+                <h4>Intent</h4>
+                <p>Define a family of algorithms, encapsulate each one, and make them interchangeable. Strategy lets the algorithm vary independently from clients that use it.</p>
+
+                <h4>Problem</h4>
+                <p>You need different variants of an algorithm and want to switch between them at runtime.</p>
+
+                <h4>Solution</h4>
+                <p>Extract the algorithms into separate classes that implement a common interface.</p>
+
+                <div class="example-box">
+                    <strong>Example: Payment Processing Strategies</strong>
+                    <pre><code>// Strategy interface
+interface PaymentStrategy {
+    pay(amount: number): void;
+}
+
+// Concrete Strategies
+class CreditCardPayment implements PaymentStrategy {
+    constructor(
+        private cardNumber: string,
+        private cvv: string,
+        private expiryDate: string
+    ) {}
+
+    pay(amount: number): void {
+        console.log(`💳 Paid $${amount} using Credit Card ending in ${this.cardNumber.slice(-4)}`);
+        // Process credit card payment
+    }
+}
+
+class PayPalPayment implements PaymentStrategy {
+    constructor(private email: string) {}
+
+    pay(amount: number): void {
+        console.log(`📧 Paid $${amount} using PayPal account ${this.email}`);
+        // Process PayPal payment
+    }
+}
+
+class CryptoPayment implements PaymentStrategy {
+    constructor(private walletAddress: string) {}
+
+    pay(amount: number): void {
+        console.log(`₿ Paid $${amount} using Crypto wallet ${this.walletAddress}`);
+        // Process cryptocurrency payment
+    }
+}
+
+class BankTransferPayment implements PaymentStrategy {
+    constructor(private accountNumber: string, private routingNumber: string) {}
+
+    pay(amount: number): void {
+        console.log(`🏦 Paid $${amount} via Bank Transfer from account ${this.accountNumber}`);
+        // Process bank transfer
+    }
+}
+
+// Context
+class ShoppingCart {
+    private items: { name: string; price: number }[] = [];
+    private paymentStrategy: PaymentStrategy | null = null;
+
+    addItem(name: string, price: number): void {
+        this.items.push({ name, price });
+    }
+
+    setPaymentStrategy(strategy: PaymentStrategy): void {
+        this.paymentStrategy = strategy;
+    }
+
+    checkout(): void {
+        const total = this.items.reduce((sum, item) => sum + item.price, 0);
+        
+        if (!this.paymentStrategy) {
+            console.log("❌ Please select a payment method");
+            return;
+        }
+
+        console.log(`\n🛒 Cart total: $${total.toFixed(2)}`);
+        this.paymentStrategy.pay(total);
+        this.items = []; // Clear cart
+    }
+}
+
+// Usage
+const cart = new ShoppingCart();
+cart.addItem("Laptop", 1200);
+cart.addItem("Mouse", 25);
+cart.addItem("Keyboard", 75);
+
+// Customer chooses credit card
+cart.setPaymentStrategy(new CreditCardPayment("4532-1234-5678-9010", "123", "12/25"));
+cart.checkout();
+
+// Another purchase with PayPal
+cart.addItem("Monitor", 350);
+cart.setPaymentStrategy(new PayPalPayment("user@example.com"));
+cart.checkout();
+
+// Another purchase with Crypto
+cart.addItem("Headphones", 150);
+cart.setPaymentStrategy(new CryptoPayment("0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb"));
+cart.checkout();</code></pre>
+                </div>
+
+                <div class="info-box">
+                    <strong>When to Use Strategy:</strong>
+                    <ul>
+                        <li>Multiple related classes differ only in their behavior</li>
+                        <li>You need different variants of an algorithm</li>
+                        <li>Algorithm uses data that clients shouldn't know about</li>
+                        <li>Want to avoid conditional statements for selecting behavior</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>4. Command Pattern</h3>
+                
+                <h4>Intent</h4>
+                <p>Encapsulate a request as an object, thereby letting you parameterize clients with different requests, queue or log requests, and support undoable operations.</p>
+
+                <h4>Problem</h4>
+                <p>You need to issue requests to objects without knowing anything about the operation being requested or the receiver.</p>
+
+                <h4>Solution</h4>
+                <p>Encapsulate requests as command objects with a common execute interface.</p>
+
+                <div class="example-box">
+                    <strong>Example: Text Editor with Undo/Redo</strong>
+                    <pre><code>// Command interface
+interface Command {
+    execute(): void;
+    undo(): void;
+}
+
+// Receiver
+class TextEditor {
+    private text: string = "";
+
+    getText(): string {
+        return this.text;
+    }
+
+    insertText(position: number, text: string): void {
+        this.text = this.text.slice(0, position) + text + this.text.slice(position);
+    }
+
+    deleteText(position: number, length: number): void {
+        this.text = this.text.slice(0, position) + this.text.slice(position + length);
+    }
+}
+
+// Concrete Commands
+class InsertCommand implements Command {
+    private deletedText: string = "";
+
+    constructor(
+        private editor: TextEditor,
+        private position: number,
+        private text: string
+    ) {}
+
+    execute(): void {
+        this.editor.insertText(this.position, this.text);
+        console.log(`✏️ Inserted "${this.text}" at position ${this.position}`);
+    }
+
+    undo(): void {
+        this.editor.deleteText(this.position, this.text.length);
+        console.log(`↩️ Undid insert of "${this.text}"`);
+    }
+}
+
+class DeleteCommand implements Command {
+    private deletedText: string = "";
+
+    constructor(
+        private editor: TextEditor,
+        private position: number,
+        private length: number
+    ) {}
+
+    execute(): void {
+        const fullText = this.editor.getText();
+        this.deletedText = fullText.slice(this.position, this.position + this.length);
+        this.editor.deleteText(this.position, this.length);
+        console.log(`🗑️ Deleted "${this.deletedText}" from position ${this.position}`);
+    }
+
+    undo(): void {
+        this.editor.insertText(this.position, this.deletedText);
+        console.log(`↩️ Undid delete of "${this.deletedText}"`);
+    }
+}
+
+// Invoker
+class CommandHistory {
+    private history: Command[] = [];
+    private currentIndex: number = -1;
+
+    execute(command: Command): void {
+        // Remove any commands after current position (if we executed undo before)
+        this.history = this.history.slice(0, this.currentIndex + 1);
+        
+        command.execute();
+        this.history.push(command);
+        this.currentIndex++;
+    }
+
+    undo(): void {
+        if (this.currentIndex >= 0) {
+            const command = this.history[this.currentIndex];
+            command.undo();
+            this.currentIndex--;
+        } else {
+            console.log("Nothing to undo");
+        }
+    }
+
+    redo(): void {
+        if (this.currentIndex < this.history.length - 1) {
+            this.currentIndex++;
+            const command = this.history[this.currentIndex];
+            command.execute();
+        } else {
+            console.log("Nothing to redo");
+        }
+    }
+}
+
+// Usage
+const editor = new TextEditor();
+const history = new CommandHistory();
+
+history.execute(new InsertCommand(editor, 0, "Hello"));
+console.log(`Current text: "${editor.getText()}"`);
+
+history.execute(new InsertCommand(editor, 5, " World"));
+console.log(`Current text: "${editor.getText()}"`);
+
+history.execute(new InsertCommand(editor, 11, "!"));
+console.log(`Current text: "${editor.getText()}"`);
+
+history.undo();
+console.log(`After undo: "${editor.getText()}"`);
+
+history.undo();
+console.log(`After undo: "${editor.getText()}"`);
+
+history.redo();
+console.log(`After redo: "${editor.getText()}"`);
+
+history.execute(new DeleteCommand(editor, 0, 5));
+console.log(`After delete: "${editor.getText()}"`);</code></pre>
+                </div>
+
+                <div class="info-box">
+                    <strong>When to Use Command:</strong>
+                    <ul>
+                        <li>Parameterize objects with operations (callbacks in object-oriented style)</li>
+                        <li>Specify, queue, and execute requests at different times</li>
+                        <li>Support undo/redo operations</li>
+                        <li>Support logging changes for crash recovery</li>
+                        <li>Structure system around high-level operations built on primitive operations</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>5. State Pattern</h3>
+                
+                <h4>Intent</h4>
+                <p>Allow an object to alter its behavior when its internal state changes. The object will appear to change its class.</p>
+
+                <h4>Problem</h4>
+                <p>An object needs to change its behavior based on its state, and you want to avoid large conditional statements.</p>
+
+                <h4>Solution</h4>
+                <p>Create separate state classes for each state and delegate state-specific behavior to the current state object.</p>
+
+                <div class="example-box">
+                    <strong>Example: Order State Machine</strong>
+                    <pre><code>// State interface
+interface OrderState {
+    cancel(order: Order): void;
+    ship(order: Order): void;
+    deliver(order: Order): void;
+    returnOrder(order: Order): void;
+}
+
+// Context
+class Order {
+    private state: OrderState;
+    
+    constructor(private orderId: string) {
+        this.state = new PendingState();
+        console.log(`📦 Order ${orderId} created in Pending state`);
+    }
+
+    setState(state: OrderState): void {
+        this.state = state;
+    }
+
+    cancel(): void {
+        this.state.cancel(this);
+    }
+
+    ship(): void {
+        this.state.ship(this);
+    }
+
+    deliver(): void {
+        this.state.deliver(this);
+    }
+
+    returnOrder(): void {
+        this.state.returnOrder(this);
+    }
+
+    getOrderId(): string {
+        return this.orderId;
+    }
+}
+
+// Concrete States
+class PendingState implements OrderState {
+    cancel(order: Order): void {
+        console.log(`✅ Order ${order.getOrderId()} cancelled`);
+        order.setState(new CancelledState());
+    }
+
+    ship(order: Order): void {
+        console.log(`🚚 Order ${order.getOrderId()} shipped`);
+        order.setState(new ShippedState());
+    }
+
+    deliver(order: Order): void {
+        console.log(`❌ Cannot deliver order ${order.getOrderId()} - not shipped yet`);
+    }
+
+    returnOrder(order: Order): void {
+        console.log(`❌ Cannot return order ${order.getOrderId()} - not delivered yet`);
+    }
+}
+
+class ShippedState implements OrderState {
+    cancel(order: Order): void {
+        console.log(`❌ Cannot cancel order ${order.getOrderId()} - already shipped`);
+    }
+
+    ship(order: Order): void {
+        console.log(`❌ Order ${order.getOrderId()} already shipped`);
+    }
+
+    deliver(order: Order): void {
+        console.log(`✅ Order ${order.getOrderId()} delivered`);
+        order.setState(new DeliveredState());
+    }
+
+    returnOrder(order: Order): void {
+        console.log(`❌ Cannot return order ${order.getOrderId()} - not delivered yet`);
+    }
+}
+
+class DeliveredState implements OrderState {
+    cancel(order: Order): void {
+        console.log(`❌ Cannot cancel order ${order.getOrderId()} - already delivered`);
+    }
+
+    ship(order: Order): void {
+        console.log(`❌ Cannot ship order ${order.getOrderId()} - already delivered`);
+    }
+
+    deliver(order: Order): void {
+        console.log(`❌ Order ${order.getOrderId()} already delivered`);
+    }
+
+    returnOrder(order: Order): void {
+        console.log(`↩️ Order ${order.getOrderId()} returned`);
+        order.setState(new ReturnedState());
+    }
+}
+
+class CancelledState implements OrderState {
+    cancel(order: Order): void {
+        console.log(`❌ Order ${order.getOrderId()} already cancelled`);
+    }
+
+    ship(order: Order): void {
+        console.log(`❌ Cannot ship cancelled order ${order.getOrderId()}`);
+    }
+
+    deliver(order: Order): void {
+        console.log(`❌ Cannot deliver cancelled order ${order.getOrderId()}`);
+    }
+
+    returnOrder(order: Order): void {
+        console.log(`❌ Cannot return cancelled order ${order.getOrderId()}`);
+    }
+}
+
+class ReturnedState implements OrderState {
+    cancel(order: Order): void {
+        console.log(`❌ Order ${order.getOrderId()} already returned`);
+    }
+
+    ship(order: Order): void {
+        console.log(`❌ Cannot ship returned order ${order.getOrderId()}`);
+    }
+
+    deliver(order: Order): void {
+        console.log(`❌ Cannot deliver returned order ${order.getOrderId()}`);
+    }
+
+    returnOrder(order: Order): void {
+        console.log(`❌ Order ${order.getOrderId()} already returned`);
+    }
+}
+
+// Usage
+const order = new Order("ORD-12345");
+
+order.ship();          // Shipped
+order.deliver();       // Delivered
+order.returnOrder();   // Returned
+order.ship();          // Cannot ship returned order
+
+const order2 = new Order("ORD-67890");
+order2.ship();
+order2.cancel();       // Cannot cancel - already shipped
+order2.deliver();      // Delivered</code></pre>
+                </div>
+
+                <div class="info-box">
+                    <strong>When to Use State:</strong>
+                    <ul>
+                        <li>Object behavior depends on its state and must change at runtime</li>
+                        <li>Operations have large, multipart conditional statements depending on object state</li>
+                        <li>Workflow or process management systems</li>
+                        <li>Game character AI with different behaviors per state</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>6. Template Method Pattern</h3>
+                
+                <h4>Intent</h4>
+                <p>Define the skeleton of an algorithm in an operation, deferring some steps to subclasses. Template Method lets subclasses redefine certain steps without changing the algorithm's structure.</p>
+
+                <h4>Problem</h4>
+                <p>You have several classes with similar algorithms but different implementations of specific steps.</p>
+
+                <h4>Solution</h4>
+                <p>Create an abstract class with a template method that defines the algorithm's skeleton, with abstract methods for varying steps.</p>
+
+                <div class="example-box">
+                    <strong>Example: Data Mining Applications</strong>
+                    <pre><code>// Abstract class with template method
+abstract class DataMiner {
+    // Template method - defines the algorithm skeleton
+    public mine(path: string): void {
+        console.log(`\n=== Mining data from ${path} ===`);
+        
+        const file = this.openFile(path);
+        const rawData = this.extractData(file);
+        const parsedData = this.parseData(rawData);
+        const analyzedData = this.analyzeData(parsedData);
+        
+        this.closeFile(file);
+        this.sendReport(analyzedData);
+        
+        // Hook method - optional step
+        if (this.shouldCleanup()) {
+            this.cleanup();
+        }
+    }
+
+    // Common operations
+    protected openFile(path: string): any {
+        console.log(`📂 Opening file: ${path}`);
+        return { path, handle: "file_handle" };
+    }
+
+    protected closeFile(file: any): void {
+        console.log(`🔒 Closing file: ${file.path}`);
+    }
+
+    protected sendReport(data: any): void {
+        console.log(`📊 Sending analysis report...`);
+        console.log(`Report summary: ${JSON.stringify(data)}`);
+    }
+
+    // Abstract methods - must be implemented by subclasses
+    protected abstract extractData(file: any): string;
+    protected abstract parseData(data: string): any;
+    protected abstract analyzeData(data: any): any;
+
+    // Hook method - optional override
+    protected shouldCleanup(): boolean {
+        return false;
+    }
+
+    protected cleanup(): void {
+        console.log(`🧹 Performing cleanup...`);
+    }
+}
+
+// Concrete implementation for CSV
+class CSVDataMiner extends DataMiner {
+    protected extractData(file: any): string {
+        console.log(`📄 Extracting CSV data from ${file.path}`);
+        return "name,age,city\nJohn,30,NYC\nJane,25,LA";
+    }
+
+    protected parseData(data: string): any {
+        console.log(`🔍 Parsing CSV data...`);
+        const lines = data.split('\n');
+        const headers = lines[0].split(',');
+        return lines.slice(1).map(line => {
+            const values = line.split(',');
+            return headers.reduce((obj, header, i) => {
+                obj[header] = values[i];
+                return obj;
+            }, {} as any);
+        });
+    }
+
+    protected analyzeData(data: any): any {
+        console.log(`📈 Analyzing CSV data...`);
+        return {
+            recordCount: data.length,
+            averageAge: data.reduce((sum: number, r: any) => sum + parseInt(r.age), 0) / data.length,
+            cities: [...new Set(data.map((r: any) => r.city))]
+        };
+    }
+
+    protected shouldCleanup(): boolean {
+        return true;
+    }
+}
+
+// Concrete implementation for JSON
+class JSONDataMiner extends DataMiner {
+    protected extractData(file: any): string {
+        console.log(`📄 Extracting JSON data from ${file.path}`);
+        return '{"users": [{"name": "Alice", "age": 28}, {"name": "Bob", "age": 35}]}';
+    }
+
+    protected parseData(data: string): any {
+        console.log(`🔍 Parsing JSON data...`);
+        return JSON.parse(data);
+    }
+
+    protected analyzeData(data: any): any {
+        console.log(`📈 Analyzing JSON data...`);
+        const users = data.users;
+        return {
+            userCount: users.length,
+            averageAge: users.reduce((sum: number, u: any) => sum + u.age, 0) / users.length,
+            names: users.map((u: any) => u.name)
+        };
+    }
+}
+
+// Concrete implementation for XML
+class XMLDataMiner extends DataMiner {
+    protected extractData(file: any): string {
+        console.log(`📄 Extracting XML data from ${file.path}`);
+        return '<products><product><name>Laptop</name><price>1200</price></product></products>';
+    }
+
+    protected parseData(data: string): any {
+        console.log(`🔍 Parsing XML data...`);
+        // Simplified XML parsing
+        const nameMatch = data.match(/<name>(.*?)<\/name>/);
+        const priceMatch = data.match(/<price>(.*?)<\/price>/);
+        return [{
+            name: nameMatch ? nameMatch[1] : '',
+            price: priceMatch ? parseInt(priceMatch[1]) : 0
+        }];
+    }
+
+    protected analyzeData(data: any): any {
+        console.log(`📈 Analyzing XML data...`);
+        return {
+            productCount: data.length,
+            totalValue: data.reduce((sum: number, p: any) => sum + p.price, 0),
+            products: data.map((p: any) => p.name)
+        };
+    }
+
+    protected shouldCleanup(): boolean {
+        return true;
+    }
+
+    protected cleanup(): void {
+        console.log(`🧹 XML-specific cleanup: validating schema...`);
+        super.cleanup();
+    }
+}
+
+// Usage
+const csvMiner = new CSVDataMiner();
+csvMiner.mine("data/users.csv");
+
+const jsonMiner = new JSONDataMiner();
+jsonMiner.mine("data/users.json");
+
+const xmlMiner = new XMLDataMiner();
+xmlMiner.mine("data/products.xml");</code></pre>
+                </div>
+
+                <div class="info-box">
+                    <strong>When to Use Template Method:</strong>
+                    <ul>
+                        <li>Implement invariant parts of algorithm once and let subclasses implement variable behavior</li>
+                        <li>Control subclass extensions (hook operations at specific points)</li>
+                        <li>Factor out common behavior among subclasses to avoid code duplication</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>7. Iterator Pattern</h3>
+                
+                <h4>Intent</h4>
+                <p>Provide a way to access the elements of an aggregate object sequentially without exposing its underlying representation.</p>
+
+                <h4>Problem</h4>
+                <p>You need to traverse a collection without exposing its internal structure.</p>
+
+                <h4>Solution</h4>
+                <p>Create an iterator object that encapsulates the details of traversing the collection.</p>
+
+                <div class="example-box">
+                    <strong>Example: Custom Collection Iterator</strong>
+                    <pre><code>// Iterator interface
+interface Iterator&lt;T&gt; {
+    hasNext(): boolean;
+    next(): T;
+    reset(): void;
+}
+
+// Aggregate interface
+interface Aggregate&lt;T&gt; {
+    createIterator(): Iterator&lt;T&gt;;
+}
+
+// Concrete Iterator for array traversal
+class ArrayIterator&lt;T&gt; implements Iterator&lt;T&gt; {
+    private position: number = 0;
+
+    constructor(private items: T[]) {}
+
+    hasNext(): boolean {
+        return this.position < this.items.length;
+    }
+
+    next(): T {
+        if (!this.hasNext()) {
+            throw new Error("No more elements");
+        }
+        return this.items[this.position++];
+    }
+
+    reset(): void {
+        this.position = 0;
+    }
+}
+
+// Concrete Iterator for reverse traversal
+class ReverseArrayIterator&lt;T&gt; implements Iterator&lt;T&gt; {
+    private position: number;
+
+    constructor(private items: T[]) {
+        this.position = items.length - 1;
+    }
+
+    hasNext(): boolean {
+        return this.position >= 0;
+    }
+
+    next(): T {
+        if (!this.hasNext()) {
+            throw new Error("No more elements");
+        }
+        return this.items[this.position--];
+    }
+
+    reset(): void {
+        this.position = this.items.length - 1;
+    }
+}
+
+// Tree node for tree iterator
+class TreeNode&lt;T&gt; {
+    children: TreeNode&lt;T&gt;[] = [];
+    
+    constructor(public value: T) {}
+
+    addChild(node: TreeNode&lt;T&gt;): void {
+        this.children.push(node);
+    }
+}
+
+// Depth-first tree iterator
+class DepthFirstIterator&lt;T&gt; implements Iterator&lt;T&gt; {
+    private stack: TreeNode&lt;T&gt;[] = [];
+    private visited: Set&lt;TreeNode&lt;T&gt;&gt; = new Set();
+
+    constructor(private root: TreeNode&lt;T&gt;) {
+        this.stack.push(root);
+    }
+
+    hasNext(): boolean {
+        return this.stack.length > 0;
+    }
+
+    next(): T {
+        if (!this.hasNext()) {
+            throw new Error("No more elements");
+        }
+
+        const node = this.stack.pop()!;
+        this.visited.add(node);
+
+        // Add children in reverse order so leftmost is processed first
+        for (let i = node.children.length - 1; i >= 0; i--) {
+            if (!this.visited.has(node.children[i])) {
+                this.stack.push(node.children[i]);
+            }
+        }
+
+        return node.value;
+    }
+
+    reset(): void {
+        this.stack = [this.root];
+        this.visited.clear();
+    }
+}
+
+// Concrete Aggregate
+class BookCollection implements Aggregate&lt;string&gt; {
+    private books: string[] = [];
+
+    addBook(book: string): void {
+        this.books.push(book);
+    }
+
+    createIterator(): Iterator&lt;string&gt; {
+        return new ArrayIterator(this.books);
+    }
+
+    createReverseIterator(): Iterator&lt;string&gt; {
+        return new ReverseArrayIterator(this.books);
+    }
+}
+
+// Usage
+const library = new BookCollection();
+library.addBook("Design Patterns");
+library.addBook("Clean Code");
+library.addBook("The Pragmatic Programmer");
+library.addBook("Refactoring");
+
+console.log("📚 Forward iteration:");
+const iterator = library.createIterator();
+while (iterator.hasNext()) {
+    console.log(`  - ${iterator.next()}`);
+}
+
+console.log("\n📚 Reverse iteration:");
+const reverseIterator = library.createReverseIterator();
+while (reverseIterator.hasNext()) {
+    console.log(`  - ${reverseIterator.next()}`);
+}
+
+// Tree example
+console.log("\n🌳 Tree depth-first traversal:");
+const root = new TreeNode("Root");
+const child1 = new TreeNode("Child 1");
+const child2 = new TreeNode("Child 2");
+const grandchild1 = new TreeNode("Grandchild 1");
+const grandchild2 = new TreeNode("Grandchild 2");
+
+root.addChild(child1);
+root.addChild(child2);
+child1.addChild(grandchild1);
+child1.addChild(grandchild2);
+
+const treeIterator = new DepthFirstIterator(root);
+while (treeIterator.hasNext()) {
+    console.log(`  - ${treeIterator.next()}`);
+}</code></pre>
+                </div>
+
+                <div class="info-box">
+                    <strong>When to Use Iterator:</strong>
+                    <ul>
+                        <li>Access aggregate object's contents without exposing internal representation</li>
+                        <li>Support multiple traversals of aggregate objects</li>
+                        <li>Provide uniform interface for traversing different aggregate structures</li>
+                        <li>Modern languages often have built-in iterator support (JavaScript generators, Python iterators)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>8. Chain of Responsibility Pattern</h3>
+                
+                <h4>Intent</h4>
+                <p>Avoid coupling the sender of a request to its receiver by giving more than one object a chance to handle the request. Chain the receiving objects and pass the request along the chain until an object handles it.</p>
+
+                <h4>Problem</h4>
+                <p>You want to decouple request senders from receivers and allow multiple objects a chance to handle the request.</p>
+
+                <h4>Solution</h4>
+                <p>Create a chain of handler objects where each handler decides whether to process the request or pass it to the next handler.</p>
+
+                <div class="example-box">
+                    <strong>Example: Support Ticket System</strong>
+                    <pre><code>// Request
+interface SupportTicket {
+    id: string;
+    priority: "low" | "medium" | "high" | "critical";
+    issue: string;
+}
+
+// Handler interface
+abstract class SupportHandler {
+    protected nextHandler: SupportHandler | null = null;
+
+    setNext(handler: SupportHandler): SupportHandler {
+        this.nextHandler = handler;
+        return handler; // Return handler for chaining
+    }
+
+    handle(ticket: SupportTicket): void {
+        if (this.canHandle(ticket)) {
+            this.process(ticket);
+        } else if (this.nextHandler) {
+            console.log(`  ↪️ Escalating to next level...`);
+            this.nextHandler.handle(ticket);
+        } else {
+            console.log(`  ❌ No handler available for ticket ${ticket.id}`);
+        }
+    }
+
+    protected abstract canHandle(ticket: SupportTicket): boolean;
+    protected abstract process(ticket: SupportTicket): void;
+}
+
+// Concrete Handlers
+class Level1Support extends SupportHandler {
+    protected canHandle(ticket: SupportTicket): boolean {
+        return ticket.priority === "low";
+    }
+
+    protected process(ticket: SupportTicket): void {
+        console.log(`👨‍💻 Level 1 Support handling ticket ${ticket.id}`);
+        console.log(`   Issue: ${ticket.issue}`);
+        console.log(`   ✅ Resolved with basic troubleshooting`);
+    }
+}
+
+class Level2Support extends SupportHandler {
+    protected canHandle(ticket: SupportTicket): boolean {
+        return ticket.priority === "medium";
+    }
+
+    protected process(ticket: SupportTicket): void {
+        console.log(`👩‍💼 Level 2 Support handling ticket ${ticket.id}`);
+        console.log(`   Issue: ${ticket.issue}`);
+        console.log(`   ✅ Resolved with advanced technical support`);
+    }
+}
+
+class Level3Support extends SupportHandler {
+    protected canHandle(ticket: SupportTicket): boolean {
+        return ticket.priority === "high";
+    }
+
+    protected process(ticket: SupportTicket): void {
+        console.log(`🧑‍🔬 Level 3 Support (Engineering) handling ticket ${ticket.id}`);
+        console.log(`   Issue: ${ticket.issue}`);
+        console.log(`   ✅ Resolved with code analysis and bug fix`);
+    }
+}
+
+class ExecutiveSupport extends SupportHandler {
+    protected canHandle(ticket: SupportTicket): boolean {
+        return ticket.priority === "critical";
+    }
+
+    protected process(ticket: SupportTicket): void {
+        console.log(`👔 Executive Support handling ticket ${ticket.id}`);
+        console.log(`   Issue: ${ticket.issue}`);
+        console.log(`   ✅ Resolved with immediate executive intervention`);
+    }
+}
+
+// Usage
+const level1 = new Level1Support();
+const level2 = new Level2Support();
+const level3 = new Level3Support();
+const executive = new ExecutiveSupport();
+
+// Build the chain
+level1.setNext(level2).setNext(level3).setNext(executive);
+
+// Process various tickets
+const tickets: SupportTicket[] = [
+    { id: "T001", priority: "low", issue: "Password reset" },
+    { id: "T002", priority: "medium", issue: "Software installation problem" },
+    { id: "T003", priority: "high", issue: "Critical bug in production" },
+    { id: "T004", priority: "critical", issue: "Complete system outage" }
+];
+
+tickets.forEach(ticket => {
+    console.log(`\n🎫 Processing ticket ${ticket.id} (Priority: ${ticket.priority})`);
+    level1.handle(ticket);
+});
+
+// Another example: Authentication middleware chain
+abstract class AuthMiddleware {
+    protected nextMiddleware: AuthMiddleware | null = null;
+
+    setNext(middleware: AuthMiddleware): AuthMiddleware {
+        this.nextMiddleware = middleware;
+        return middleware;
+    }
+
+    handle(request: any): boolean {
+        if (this.check(request)) {
+            if (this.nextMiddleware) {
+                return this.nextMiddleware.handle(request);
+            }
+            return true; // All checks passed
+        }
+        return false; // This check failed
+    }
+
+    protected abstract check(request: any): boolean;
+}
+
+class RateLimitMiddleware extends AuthMiddleware {
+    protected check(request: any): boolean {
+        console.log("  🚦 Checking rate limit...");
+        // Simplified rate limit check
+        if (request.requestCount > 100) {
+            console.log("  ❌ Rate limit exceeded");
+            return false;
+        }
+        console.log("  ✅ Rate limit OK");
+        return true;
+    }
+}
+
+class AuthenticationMiddleware extends AuthMiddleware {
+    protected check(request: any): boolean {
+        console.log("  🔐 Checking authentication...");
+        if (!request.token) {
+            console.log("  ❌ No authentication token");
+            return false;
+        }
+        console.log("  ✅ Authenticated");
+        return true;
+    }
+}
+
+class AuthorizationMiddleware extends AuthMiddleware {
+    protected check(request: any): boolean {
+        console.log("  🛡️ Checking authorization...");
+        if (!request.permissions.includes("admin")) {
+            console.log("  ❌ Insufficient permissions");
+            return false;
+        }
+        console.log("  ✅ Authorized");
+        return true;
+    }
+}
+
+console.log("\n\n=== Authentication Chain Example ===");
+const rateLimit = new RateLimitMiddleware();
+const authentication = new AuthenticationMiddleware();
+const authorization = new AuthorizationMiddleware();
+
+rateLimit.setNext(authentication).setNext(authorization);
+
+const request1 = { 
+    requestCount: 50, 
+    token: "valid_token", 
+    permissions: ["admin"] 
+};
+
+console.log("\n📥 Request 1:");
+const allowed = rateLimit.handle(request1);
+console.log(`Result: ${allowed ? "✅ Allowed" : "❌ Denied"}`);</code></pre>
+                </div>
+
+                <div class="info-box">
+                    <strong>When to Use Chain of Responsibility:</strong>
+                    <ul>
+                        <li>More than one object may handle a request, and handler isn't known beforehand</li>
+                        <li>Want to issue request to one of several objects without specifying receiver explicitly</li>
+                        <li>Set of objects that can handle request should be specified dynamically</li>
+                        <li>Middleware patterns, logging systems, event handling</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>9. Practice Problems</h3>
+                
+                <div class="practice-problems">
+                    <div class="problem">
+                        <h4>Problem 1: Weather Monitoring System (Observer)</h4>
+                        <p><strong>Task:</strong> Create a weather monitoring system where different displays (current conditions, statistics, forecast) update automatically when weather data changes.</p>
+                        <p><strong>Requirements:</strong></p>
+                        <ul>
+                            <li>WeatherStation (Subject) tracks temperature, humidity, pressure</li>
+                            <li>Multiple display types can register as observers</li>
+                            <li>When measurements change, all displays update automatically</li>
+                            <li>Displays can be added or removed dynamically</li>
+                        </ul>
+                        
+                        <details>
+                            <summary>Show Solution</summary>
+                            <pre><code>interface Observer {
+    update(temp: number, humidity: number, pressure: number): void;
+}
+
+interface Subject {
+    registerObserver(o: Observer): void;
+    removeObserver(o: Observer): void;
+    notifyObservers(): void;
+}
+
+class WeatherStation implements Subject {
+    private observers: Observer[] = [];
+    private temperature: number = 0;
+    private humidity: number = 0;
+    private pressure: number = 0;
+
+    registerObserver(o: Observer): void {
+        this.observers.push(o);
+    }
+
+    removeObserver(o: Observer): void {
+        const index = this.observers.indexOf(o);
+        if (index >= 0) {
+            this.observers.splice(index, 1);
+        }
+    }
+
+    notifyObservers(): void {
+        for (const observer of this.observers) {
+            observer.update(this.temperature, this.humidity, this.pressure);
+        }
+    }
+
+    setMeasurements(temp: number, humidity: number, pressure: number): void {
+        this.temperature = temp;
+        this.humidity = humidity;
+        this.pressure = pressure;
+        this.notifyObservers();
+    }
+}
+
+class CurrentConditionsDisplay implements Observer {
+    update(temp: number, humidity: number, pressure: number): void {
+        console.log(`Current: ${temp}°C, ${humidity}% humidity, ${pressure} hPa`);
+    }
+}
+
+class StatisticsDisplay implements Observer {
+    private temps: number[] = [];
+
+    update(temp: number, humidity: number, pressure: number): void {
+        this.temps.push(temp);
+        const avg = this.temps.reduce((a, b) => a + b) / this.temps.length;
+        const max = Math.max(...this.temps);
+        const min = Math.min(...this.temps);
+        console.log(`Stats: Avg ${avg.toFixed(1)}°C, Max ${max}°C, Min ${min}°C`);
+    }
+}
+
+// Usage
+const weatherStation = new WeatherStation();
+const current = new CurrentConditionsDisplay();
+const stats = new StatisticsDisplay();
+
+weatherStation.registerObserver(current);
+weatherStation.registerObserver(stats);
+
+weatherStation.setMeasurements(25, 65, 1013);
+weatherStation.setMeasurements(27, 70, 1012);</code></pre>
+                        </details>
+                    </div>
+
+                    <div class="problem">
+                        <h4>Problem 2: Compression Strategies (Strategy)</h4>
+                        <p><strong>Task:</strong> Implement a file compressor that supports multiple compression algorithms (ZIP, RAR, 7Z) that can be switched at runtime.</p>
+                        <p><strong>Requirements:</strong></p>
+                        <ul>
+                            <li>Create compression strategy interface</li>
+                            <li>Implement at least 3 different compression algorithms</li>
+                            <li>FileCompressor can switch strategies dynamically</li>
+                            <li>Each strategy should report compression ratio</li>
+                        </ul>
+                        
+                        <details>
+                            <summary>Show Solution</summary>
+                            <pre><code>interface CompressionStrategy {
+    compress(data: string): { compressed: string; ratio: number };
+}
+
+class ZipCompression implements CompressionStrategy {
+    compress(data: string): { compressed: string; ratio: number } {
+        const compressed = `ZIP[${data}]`;
+        const ratio = compressed.length / data.length;
+        console.log(`ZIP compression: ${ratio.toFixed(2)}x`);
+        return { compressed, ratio };
+    }
+}
+
+class RarCompression implements CompressionStrategy {
+    compress(data: string): { compressed: string; ratio: number } {
+        const compressed = `RAR{${data}}`;
+        const ratio = compressed.length / data.length;
+        console.log(`RAR compression: ${ratio.toFixed(2)}x`);
+        return { compressed, ratio };
+    }
+}
+
+class SevenZipCompression implements CompressionStrategy {
+    compress(data: string): { compressed: string; ratio: number } {
+        const compressed = `7Z<${data}>`;
+        const ratio = compressed.length / data.length;
+        console.log(`7-Zip compression: ${ratio.toFixed(2)}x`);
+        return { compressed, ratio };
+    }
+}
+
+class FileCompressor {
+    private strategy: CompressionStrategy;
+
+    constructor(strategy: CompressionStrategy) {
+        this.strategy = strategy;
+    }
+
+    setStrategy(strategy: CompressionStrategy): void {
+        this.strategy = strategy;
+    }
+
+    compressFile(filename: string, data: string): any {
+        console.log(`Compressing ${filename}...`);
+        return this.strategy.compress(data);
+    }
+}
+
+// Usage
+const compressor = new FileCompressor(new ZipCompression());
+compressor.compressFile("data.txt", "Hello World");
+
+compressor.setStrategy(new RarCompression());
+compressor.compressFile("data.txt", "Hello World");
+
+compressor.setStrategy(new SevenZipCompression());
+compressor.compressFile("data.txt", "Hello World");</code></pre>
+                        </details>
+                    </div>
+
+                    <div class="problem">
+                        <h4>Problem 3: Game Character State Machine (State)</h4>
+                        <p><strong>Task:</strong> Create a game character with different states (Idle, Walking, Running, Jumping, Attacking) where available actions depend on current state.</p>
+                        <p><strong>Requirements:</strong></p>
+                        <ul>
+                            <li>Character can't jump while attacking</li>
+                            <li>Character can't attack while jumping</li>
+                            <li>Character can transition from walking to running</li>
+                            <li>Different states have different movement speeds</li>
+                        </ul>
+                        
+                        <details>
+                            <summary>Show Solution</summary>
+                            <pre><code>interface CharacterState {
+    walk(character: GameCharacter): void;
+    run(character: GameCharacter): void;
+    jump(character: GameCharacter): void;
+    attack(character: GameCharacter): void;
+}
+
+class GameCharacter {
+    private state: CharacterState;
+
+    constructor() {
+        this.state = new IdleState();
+    }
+
+    setState(state: CharacterState): void {
+        this.state = state;
+    }
+
+    walk(): void { this.state.walk(this); }
+    run(): void { this.state.run(this); }
+    jump(): void { this.state.jump(this); }
+    attack(): void { this.state.attack(this); }
+}
+
+class IdleState implements CharacterState {
+    walk(character: GameCharacter): void {
+        console.log("🚶 Started walking (speed: 1x)");
+        character.setState(new WalkingState());
+    }
+    run(character: GameCharacter): void {
+        console.log("🏃 Started running (speed: 2x)");
+        character.setState(new RunningState());
+    }
+    jump(character: GameCharacter): void {
+        console.log("🦘 Jumped from idle");
+        character.setState(new JumpingState());
+    }
+    attack(character: GameCharacter): void {
+        console.log("⚔️ Attacking from idle");
+        character.setState(new AttackingState());
+    }
+}
+
+class WalkingState implements CharacterState {
+    walk(character: GameCharacter): void {
+        console.log("Already walking");
+    }
+    run(character: GameCharacter): void {
+        console.log("🏃 Accelerated to running (speed: 2x)");
+        character.setState(new RunningState());
+    }
+    jump(character: GameCharacter): void {
+        console.log("🦘 Jumped while walking");
+        character.setState(new JumpingState());
+    }
+    attack(character: GameCharacter): void {
+        console.log("⚔️ Attacking while walking");
+        character.setState(new AttackingState());
+    }
+}
+
+class RunningState implements CharacterState {
+    walk(character: GameCharacter): void {
+        console.log("🚶 Slowed to walking (speed: 1x)");
+        character.setState(new WalkingState());
+    }
+    run(character: GameCharacter): void {
+        console.log("Already running");
+    }
+    jump(character: GameCharacter): void {
+        console.log("🦘 Jumped while running (extra height!)");
+        character.setState(new JumpingState());
+    }
+    attack(character: GameCharacter): void {
+        console.log("⚔️ Dash attack!");
+        character.setState(new AttackingState());
+    }
+}
+
+class JumpingState implements CharacterState {
+    walk(character: GameCharacter): void {
+        console.log("❌ Can't walk while in air");
+    }
+    run(character: GameCharacter): void {
+        console.log("❌ Can't run while in air");
+    }
+    jump(character: GameCharacter): void {
+        console.log("❌ Can't double jump");
+    }
+    attack(character: GameCharacter): void {
+        console.log("❌ Can't attack while jumping");
+    }
+}
+
+class AttackingState implements CharacterState {
+    walk(character: GameCharacter): void {
+        console.log("❌ Can't walk while attacking");
+    }
+    run(character: GameCharacter): void {
+        console.log("❌ Can't run while attacking");
+    }
+    jump(character: GameCharacter): void {
+        console.log("❌ Can't jump while attacking");
+    }
+    attack(character: GameCharacter): void {
+        console.log("⚔️ Combo attack!");
+    }
+}
+
+// Usage
+const hero = new GameCharacter();
+hero.walk();
+hero.run();
+hero.jump();
+hero.attack(); // Can't attack while jumping</code></pre>
+                        </details>
+                    </div>
+                </div>
+            </div>
+
+            <div class="key-takeaways">
+                <h3>Key Takeaways</h3>
+                <ul>
+                    <li><strong>Observer:</strong> One-to-many dependency for automatic notifications - use in event systems, MVC patterns</li>
+                    <li><strong>Strategy:</strong> Interchangeable algorithms - use when you need to switch behaviors at runtime</li>
+                    <li><strong>Command:</strong> Encapsulate requests as objects - essential for undo/redo, transactions, queuing</li>
+                    <li><strong>State:</strong> Change behavior based on internal state - eliminates complex conditionals</li>
+                    <li><strong>Template Method:</strong> Define algorithm skeleton - subclasses customize specific steps</li>
+                    <li><strong>Iterator:</strong> Sequential access without exposing representation - standard in modern languages</li>
+                    <li><strong>Chain of Responsibility:</strong> Pass requests along handler chain - great for middleware, logging</li>
+                    <li>Behavioral patterns focus on communication and responsibility assignment between objects</li>
+                    <li>Choose patterns based on your specific needs: notification (Observer), algorithm variation (Strategy), state management (State), request handling (Chain of Responsibility)</li>
+                </ul>
+            </div>
+
+            <div class="lesson-navigation">
+                <a href="05-structural-patterns.html" class="nav-btn">← Previous: Structural Patterns</a>
+                <a href="07-architecture.html" class="nav-btn">Next: Software Architecture →</a>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../js/course.js"></script>
+</body>
+</html>

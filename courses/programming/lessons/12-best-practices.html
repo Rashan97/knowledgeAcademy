@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 12: Best Practices - Engineering Academy</title>
+    <link rel="stylesheet" href="../../../css/styles.css">
+    <link rel="stylesheet" href="../../../css/course-styles/course.css">
+</head>
+<body>
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <h1><a href="../../../index.html" style="color: inherit; text-decoration: none;">🎓 Engineering Academy</a></h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../index.html">Course Overview</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section class="course-header">
+        <div class="container">
+            <h1>⌨️ Programming</h1>
+            <p>Lesson 12: Best Practices</p>
+        </div>
+    </section>
+
+    <div class="course-container">
+        <aside class="course-sidebar">
+            <h3>Course Modules</h3>
+            <ul class="lesson-list">
+                <li><a href="../index.html"><span class="lesson-number">📚</span>Course Overview</a></li>
+                <li><a href="01-programming-fundamentals.html" class="completed"><span class="lesson-number">1</span>Programming Fundamentals</a></li>
+                <li><a href="02-python-basics.html" class="completed"><span class="lesson-number">2</span>Python Basics</a></li>
+                <li><a href="03-python-advanced.html" class="completed"><span class="lesson-number">3</span>Python Advanced</a></li>
+                <li><a href="04-javascript-basics.html" class="completed"><span class="lesson-number">4</span>JavaScript Basics</a></li>
+                <li><a href="05-javascript-modern.html" class="completed"><span class="lesson-number">5</span>Modern JavaScript</a></li>
+                <li><a href="06-cpp-basics.html" class="completed"><span class="lesson-number">6</span>C++ Basics</a></li>
+                <li><a href="07-cpp-advanced.html" class="completed"><span class="lesson-number">7</span>C++ Advanced</a></li>
+                <li><a href="08-oop-principles.html" class="completed"><span class="lesson-number">8</span>OOP Principles</a></li>
+                <li><a href="09-data-structures.html" class="completed"><span class="lesson-number">9</span>Data Structures</a></li>
+                <li><a href="10-algorithms.html" class="completed"><span class="lesson-number">10</span>Algorithms</a></li>
+                <li><a href="11-debugging.html" class="completed"><span class="lesson-number">11</span>Debugging & Testing</a></li>
+                <li><a href="12-best-practices.html" class="active"><span class="lesson-number">12</span>Best Practices</a></li>
+            </ul>
+        </aside>
+
+        <main class="course-content">
+            <div class="lesson-header">
+                <h2>Lesson 12: Best Practices</h2>
+                <div class="lesson-meta">
+                    <span>📖 110 min read</span>
+                    <span>📊 All Levels</span>
+                </div>
+            </div>
+
+            <div class="lesson-content">
+                <h3>Introduction to Best Practices</h3>
+                <p>
+                    Writing code that works is just the beginning. Professional developers write code that is 
+                    readable, maintainable, secure, and performant. This lesson covers industry best practices 
+                    that separate good code from great code.
+                </p>
+
+                <div class="info-box note">
+                    <h4>📌 The Goal of Best Practices</h4>
+                    <p>
+                        "Any fool can write code that a computer can understand. Good programmers write code that 
+                        humans can understand." - Martin Fowler. Best practices ensure your code is readable today, 
+                        maintainable tomorrow, and scalable for years to come.
+                    </p>
+                </div>
+
+                <h3>Code Style Guides</h3>
+
+                <h4>PEP 8 - Python Style Guide</h4>
+                <div class="code-block" data-language="python">
+<code><span class="comment"># Good: Following PEP 8</span>
+
+<span class="comment"># Naming conventions</span>
+<span class="keyword">class</span> <span class="class-name">UserAccount</span>:  <span class="comment"># PascalCase for classes</span>
+    MAX_LOGIN_ATTEMPTS = <span class="number">3</span>  <span class="comment"># SCREAMING_SNAKE_CASE for constants</span>
+    
+    <span class="keyword">def</span> <span class="function">__init__</span>(self, username):  <span class="comment"># snake_case for functions/methods</span>
+        self.username = username
+        self._failed_attempts = <span class="number">0</span>  <span class="comment"># _leading_underscore for protected</span>
+        self.__password = <span class="keyword">None</span>  <span class="comment"># __double_underscore for private</span>
+    
+    <span class="keyword">def</span> <span class="function">validate_password</span>(self, password):
+        <span class="comment"># 4 spaces for indentation (not tabs)</span>
+        <span class="keyword">if</span> <span class="function">len</span>(password) &lt; <span class="number">8</span>:
+            <span class="keyword">return</span> <span class="keyword">False</span>
+        <span class="keyword">return</span> <span class="keyword">True</span>
+    
+    <span class="keyword">def</span> <span class="function">complex_query</span>(self, user_id, start_date, end_date, 
+                       include_inactive=<span class="keyword">False</span>):  <span class="comment"># Line continuation</span>
+        <span class="comment"># Lines &lt;= 79 characters</span>
+        <span class="keyword">pass</span>
+
+<span class="comment"># Imports at top, grouped: stdlib, third-party, local</span>
+<span class="keyword">import</span> os
+<span class="keyword">import</span> sys
+
+<span class="keyword">import</span> requests
+<span class="keyword">import</span> numpy <span class="keyword">as</span> np
+
+<span class="keyword">from</span> myproject.utils <span class="keyword">import</span> helper
+
+<span class="comment"># Two blank lines between top-level definitions</span>
+<span class="keyword">def</span> <span class="function">standalone_function</span>():
+    <span class="keyword">pass</span>
+
+
+<span class="keyword">class</span> <span class="class-name">AnotherClass</span>:
+    <span class="keyword">pass</span>
+</code>
+                </div>
+
+                <h4>Airbnb JavaScript Style Guide</h4>
+                <div class="code-block" data-language="javascript">
+<code><span class="comment">// Good: Following Airbnb Style</span>
+
+<span class="comment">// Use const for constants, let for variables (never var)</span>
+<span class="keyword">const</span> MAX_USERS = <span class="number">100</span>;  <span class="comment">// SCREAMING_SNAKE_CASE</span>
+<span class="keyword">let</span> userCount = <span class="number">0</span>;       <span class="comment">// camelCase for variables</span>
+
+<span class="comment">// PascalCase for classes</span>
+<span class="keyword">class</span> <span class="class-name">UserManager</span> {
+    <span class="function">constructor</span>(name) {
+        <span class="keyword">this</span>.name = name;
+        <span class="keyword">this</span>._privateData = {};  <span class="comment">// _prefix for private</span>
+    }
+    
+    <span class="comment">// camelCase for methods</span>
+    <span class="function">getUserInfo</span>() {
+        <span class="keyword">return</span> <span class="keyword">this</span>.name;
+    }
+}
+
+<span class="comment">// Arrow functions for callbacks</span>
+<span class="keyword">const</span> numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];
+<span class="keyword">const</span> doubled = numbers.<span class="function">map</span>(n =&gt; n * <span class="number">2</span>);
+
+<span class="comment">// Template literals instead of concatenation</span>
+<span class="keyword">const</span> name = <span class="string">'Alice'</span>;
+<span class="keyword">const</span> greeting = <span class="string">`Hello, <span class="template-var">${name}</span>!`</span>;  <span class="comment">// Good</span>
+<span class="comment">// const greeting = 'Hello, ' + name + '!';  // Avoid</span>
+
+<span class="comment">// Destructuring</span>
+<span class="keyword">const</span> user = { firstName: <span class="string">'Alice'</span>, lastName: <span class="string">'Smith'</span> };
+<span class="keyword">const</span> { firstName, lastName } = user;  <span class="comment">// Good</span>
+
+<span class="comment">// Object shorthand</span>
+<span class="keyword">const</span> x = <span class="number">1</span>;
+<span class="keyword">const</span> y = <span class="number">2</span>;
+<span class="keyword">const</span> point = { x, y };  <span class="comment">// Good: { x: x, y: y }</span>
+
+<span class="comment">// Use === instead of ==</span>
+<span class="keyword">if</span> (value === <span class="number">5</span>) {  <span class="comment">// Good: strict equality</span>
+    console.<span class="function">log</span>(<span class="string">'Five'</span>);
+}
+</code>
+                </div>
+
+                <h4>Google C++ Style Guide</h4>
+                <div class="code-block" data-language="cpp">
+<code><span class="comment">// Good: Following Google C++ Style</span>
+
+<span class="preprocessor">#include &lt;iostream&gt;</span>
+<span class="preprocessor">#include &lt;vector&gt;</span>
+<span class="preprocessor">#include &lt;string&gt;</span>
+
+<span class="keyword">namespace</span> company {
+<span class="keyword">namespace</span> project {
+
+<span class="comment">// PascalCase for classes</span>
+<span class="keyword">class</span> <span class="class-name">UserManager</span> {
+ <span class="keyword">public</span>:
+  <span class="comment">// Constructor: same as class name</span>
+  UserManager(std::string name) : name_(name), count_(<span class="number">0</span>) {}
+  
+  <span class="comment">// Methods: PascalCase</span>
+  <span class="keyword">void</span> <span class="function">AddUser</span>(<span class="keyword">const</span> std::string&amp; username);
+  <span class="keyword">int</span> <span class="function">GetUserCount</span>() <span class="keyword">const</span>;
+  
+ <span class="keyword">private</span>:
+  <span class="comment">// Member variables: trailing underscore</span>
+  std::string name_;
+  <span class="keyword">int</span> count_;
+  std::vector&lt;std::string&gt; users_;
+};
+
+<span class="comment">// Function names: PascalCase</span>
+<span class="keyword">int</span> <span class="function">CalculateSum</span>(<span class="keyword">const</span> std::vector&lt;<span class="keyword">int</span>&gt;&amp; numbers) {
+  <span class="keyword">int</span> sum = <span class="number">0</span>;
+  <span class="keyword">for</span> (<span class="keyword">int</span> num : numbers) {  <span class="comment">// 2-space indentation</span>
+    sum += num;
+  }
+  <span class="keyword">return</span> sum;
+}
+
+<span class="comment">// Constants: kPascalCase</span>
+<span class="keyword">const</span> <span class="keyword">int</span> kMaxUsers = <span class="number">100</span>;
+<span class="keyword">const</span> <span class="keyword">double</span> kPi = <span class="number">3.14159</span>;
+
+}  <span class="comment">// namespace project</span>
+}  <span class="comment">// namespace company</span>
+</code>
+                </div>
+
+                <h3>Naming Conventions Summary</h3>
+                <div class="code-block" data-language="text">
+<code>Convention Types:
+
+camelCase           - firstWord lowercase, rest capitalized
+                      Example: getUserName, calculateTotal
+
+PascalCase          - All words capitalized
+                      Example: UserAccount, DatabaseManager
+
+snake_case          - All lowercase, underscores between words
+                      Example: user_name, get_total_count
+
+SCREAMING_SNAKE_CASE - All uppercase, underscores
+                      Example: MAX_SIZE, API_KEY
+
+Language Conventions:
+- Python:    snake_case (functions), PascalCase (classes)
+- JavaScript: camelCase (variables/functions), PascalCase (classes)
+- C++:       Depends on style guide (Google uses PascalCase)
+</code>
+                </div>
+
+                <h3>Code Documentation</h3>
+
+                <h4>Python Docstrings</h4>
+                <div class="code-block" data-language="python">
+<code><span class="keyword">def</span> <span class="function">calculate_bmi</span>(weight, height):
+    <span class="string">"""
+    Calculate Body Mass Index (BMI).
+    
+    BMI is calculated as weight in kilograms divided by the square
+    of height in meters.
+    
+    Args:
+        weight (float): Weight in kilograms.
+        height (float): Height in meters.
+    
+    Returns:
+        float: The calculated BMI value.
+    
+    Raises:
+        ValueError: If height is zero or negative.
+    
+    Example:
+        &gt;&gt;&gt; calculate_bmi(70, 1.75)
+        22.86
+    """</span>
+    <span class="keyword">if</span> height &lt;= <span class="number">0</span>:
+        <span class="keyword">raise</span> <span class="function">ValueError</span>(<span class="string">"Height must be positive"</span>)
+    
+    <span class="keyword">return</span> weight / (height ** <span class="number">2</span>)
+
+
+<span class="keyword">class</span> <span class="class-name">BankAccount</span>:
+    <span class="string">"""
+    A simple bank account class.
+    
+    Attributes:
+        account_number (str): The unique account identifier.
+        balance (float): Current account balance.
+    """</span>
+    
+    <span class="keyword">def</span> <span class="function">__init__</span>(self, account_number, initial_balance=<span class="number">0</span>):
+        <span class="string">"""Initialize a new bank account."""</span>
+        self.account_number = account_number
+        self.balance = initial_balance
+</code>
+                </div>
+
+                <h4>JSDoc Comments</h4>
+                <div class="code-block" data-language="javascript">
+<code><span class="comment">/**
+ * Calculate the area of a rectangle.
+ * 
+ * @param {number} width - The width of the rectangle.
+ * @param {number} height - The height of the rectangle.
+ * @returns {number} The calculated area.
+ * @throws {Error} If width or height is negative.
+ * 
+ * @example
+ * const area = calculateArea(5, 10);
+ * console.log(area); // 50
+ */</span>
+<span class="keyword">function</span> <span class="function">calculateArea</span>(width, height) {
+    <span class="keyword">if</span> (width &lt; <span class="number">0</span> || height &lt; <span class="number">0</span>) {
+        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="class-name">Error</span>(<span class="string">'Dimensions must be positive'</span>);
+    }
+    <span class="keyword">return</span> width * height;
+}
+
+<span class="comment">/**
+ * Represents a user account.
+ * @class
+ */</span>
+<span class="keyword">class</span> <span class="class-name">UserAccount</span> {
+    <span class="comment">/**
+     * Create a user account.
+     * @param {string} username - The username.
+     * @param {string} email - The email address.
+     */</span>
+    <span class="function">constructor</span>(username, email) {
+        <span class="keyword">this</span>.username = username;
+        <span class="keyword">this</span>.email = email;
+    }
+}
+</code>
+                </div>
+
+                <h4>Doxygen for C++</h4>
+                <div class="code-block" data-language="cpp">
+<code><span class="comment">/**
+ * @brief Calculate the factorial of a number.
+ * 
+ * This function computes n! recursively.
+ * 
+ * @param n The input number (must be non-negative).
+ * @return The factorial of n.
+ * @throws std::invalid_argument If n is negative.
+ * 
+ * @note This is a recursive implementation and may
+ *       cause stack overflow for large n.
+ * 
+ * @example
+ * int result = factorial(5);  // Returns 120
+ */</span>
+<span class="keyword">int</span> <span class="function">factorial</span>(<span class="keyword">int</span> n) {
+    <span class="keyword">if</span> (n &lt; <span class="number">0</span>) {
+        <span class="keyword">throw</span> std::invalid_argument(<span class="string">"n must be non-negative"</span>);
+    }
+    <span class="keyword">if</span> (n &lt;= <span class="number">1</span>) {
+        <span class="keyword">return</span> <span class="number">1</span>;
+    }
+    <span class="keyword">return</span> n * factorial(n - <span class="number">1</span>);
+}
+
+<span class="comment">/**
+ * @class Rectangle
+ * @brief Represents a rectangle shape.
+ */</span>
+<span class="keyword">class</span> <span class="class-name">Rectangle</span> {
+<span class="keyword">private</span>:
+    <span class="keyword">double</span> width_;   <span class="comment">///&lt; Width of the rectangle</span>
+    <span class="keyword">double</span> height_;  <span class="comment">///&lt; Height of the rectangle</span>
+    
+<span class="keyword">public</span>:
+    <span class="comment">/// Constructor</span>
+    Rectangle(<span class="keyword">double</span> w, <span class="keyword">double</span> h) : width_(w), height_(h) {}
+    
+    <span class="comment">/// Calculate area</span>
+    <span class="keyword">double</span> <span class="function">area</span>() <span class="keyword">const</span> { <span class="keyword">return</span> width_ * height_; }
+};
+</code>
+                </div>
+
+                <h3>Design Principles</h3>
+
+                <h4>DRY - Don't Repeat Yourself</h4>
+                <div class="code-block" data-language="python">
+<code><span class="comment"># Bad: Repetitive code</span>
+<span class="keyword">def</span> <span class="function">process_order_from_web</span>(order):
+    validate_address(order[<span class="string">'address'</span>])
+    calculate_tax(order[<span class="string">'total'</span>])
+    apply_discount(order[<span class="string">'items'</span>])
+    save_to_database(order)
+    send_confirmation_email(order[<span class="string">'email'</span>])
+
+<span class="keyword">def</span> <span class="function">process_order_from_api</span>(order):
+    validate_address(order[<span class="string">'address'</span>])
+    calculate_tax(order[<span class="string">'total'</span>])
+    apply_discount(order[<span class="string">'items'</span>])
+    save_to_database(order)
+    send_confirmation_email(order[<span class="string">'email'</span>])
+
+<span class="comment"># Good: Extract common logic</span>
+<span class="keyword">def</span> <span class="function">process_order</span>(order):
+    <span class="string">"""Common order processing logic."""</span>
+    validate_address(order[<span class="string">'address'</span>])
+    calculate_tax(order[<span class="string">'total'</span>])
+    apply_discount(order[<span class="string">'items'</span>])
+    save_to_database(order)
+    send_confirmation_email(order[<span class="string">'email'</span>])
+
+<span class="keyword">def</span> <span class="function">process_order_from_web</span>(order):
+    process_order(order)
+
+<span class="keyword">def</span> <span class="function">process_order_from_api</span>(order):
+    process_order(order)
+</code>
+                </div>
+
+                <h4>KISS - Keep It Simple, Stupid</h4>
+                <div class="code-block" data-language="javascript">
+<code><span class="comment">// Bad: Overcomplicated</span>
+<span class="keyword">function</span> <span class="function">isEven</span>(num) {
+    <span class="keyword">return</span> num % <span class="number">2</span> === <span class="number">0</span> ? <span class="keyword">true</span> : <span class="keyword">false</span> ? <span class="keyword">true</span> : <span class="keyword">false</span>;
+}
+
+<span class="comment">// Good: Simple and clear</span>
+<span class="keyword">function</span> <span class="function">isEven</span>(num) {
+    <span class="keyword">return</span> num % <span class="number">2</span> === <span class="number">0</span>;
+}
+
+<span class="comment">// Bad: Complex one-liner</span>
+<span class="keyword">const</span> result = data.<span class="function">filter</span>(x =&gt; x.age &gt; <span class="number">18</span>).<span class="function">map</span>(x =&gt; x.name).<span class="function">reduce</span>((a, b) =&gt; a + <span class="string">', '</span> + b);
+
+<span class="comment">// Good: Clear and readable</span>
+<span class="keyword">const</span> adults = data.<span class="function">filter</span>(person =&gt; person.age &gt; <span class="number">18</span>);
+<span class="keyword">const</span> names = adults.<span class="function">map</span>(person =&gt; person.name);
+<span class="keyword">const</span> result = names.<span class="function">join</span>(<span class="string">', '</span>);
+</code>
+                </div>
+
+                <h4>YAGNI - You Aren't Gonna Need It</h4>
+                <div class="code-block" data-language="cpp">
+<code><span class="comment">// Bad: Adding features "just in case"</span>
+<span class="keyword">class</span> <span class="class-name">User</span> {
+<span class="keyword">public</span>:
+    string name;
+    string email;
+    string phone;
+    string address;  <span class="comment">// Not needed yet!</span>
+    string faxNumber;  <span class="comment">// Really not needed!</span>
+    string alternateEmail1;  <span class="comment">// Speculative!</span>
+    string alternateEmail2;
+    string socialSecurityNumber;  <span class="comment">// Security risk!</span>
+    <span class="comment">// ... 20 more "just in case" fields</span>
+};
+
+<span class="comment">// Good: Only what you need now</span>
+<span class="keyword">class</span> <span class="class-name">User</span> {
+<span class="keyword">public</span>:
+    string name;
+    string email;
+    <span class="comment">// Add more fields when actually needed</span>
+};
+</code>
+                </div>
+
+                <h3>Performance Optimization</h3>
+
+                <h4>Choose the Right Algorithm</h4>
+                <div class="code-block" data-language="python">
+<code><span class="comment"># Bad: O(n²) - checking if list contains item</span>
+<span class="keyword">def</span> <span class="function">find_duplicates_slow</span>(items):
+    duplicates = []
+    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="function">range</span>(<span class="function">len</span>(items)):
+        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="function">range</span>(i + <span class="number">1</span>, <span class="function">len</span>(items)):
+            <span class="keyword">if</span> items[i] == items[j]:
+                duplicates.append(items[i])
+    <span class="keyword">return</span> duplicates
+
+<span class="comment"># Good: O(n) - using set for O(1) lookups</span>
+<span class="keyword">def</span> <span class="function">find_duplicates_fast</span>(items):
+    seen = <span class="function">set</span>()
+    duplicates = <span class="function">set</span>()
+    <span class="keyword">for</span> item <span class="keyword">in</span> items:
+        <span class="keyword">if</span> item <span class="keyword">in</span> seen:
+            duplicates.add(item)
+        seen.add(item)
+    <span class="keyword">return</span> <span class="function">list</span>(duplicates)
+</code>
+                </div>
+
+                <h4>Caching/Memoization</h4>
+                <div class="code-block" data-language="python">
+<code><span class="keyword">from</span> functools <span class="keyword">import</span> lru_cache
+
+<span class="comment"># Expensive computation without caching</span>
+<span class="keyword">def</span> <span class="function">fibonacci_slow</span>(n):
+    <span class="keyword">if</span> n &lt;= <span class="number">1</span>:
+        <span class="keyword">return</span> n
+    <span class="keyword">return</span> fibonacci_slow(n - <span class="number">1</span>) + fibonacci_slow(n - <span class="number">2</span>)
+
+<span class="comment"># With memoization - much faster!</span>
+<span class="decorator">@lru_cache</span>(maxsize=<span class="keyword">None</span>)
+<span class="keyword">def</span> <span class="function">fibonacci_fast</span>(n):
+    <span class="keyword">if</span> n &lt;= <span class="number">1</span>:
+        <span class="keyword">return</span> n
+    <span class="keyword">return</span> fibonacci_fast(n - <span class="number">1</span>) + fibonacci_fast(n - <span class="number">2</span>)
+
+<span class="function">print</span>(fibonacci_slow(<span class="number">35</span>))  <span class="comment"># Takes seconds</span>
+<span class="function">print</span>(fibonacci_fast(<span class="number">100</span>))  <span class="comment"># Instant!</span>
+</code>
+                </div>
+
+                <h4>Lazy Evaluation</h4>
+                <div class="code-block" data-language="javascript">
+<code><span class="comment">// Bad: Process all data even if not needed</span>
+<span class="keyword">function</span> <span class="function">findFirstAdult</span>(users) {
+    <span class="keyword">const</span> adults = users.<span class="function">filter</span>(u =&gt; u.age &gt;= <span class="number">18</span>);  <span class="comment">// Processes ALL users</span>
+    <span class="keyword">return</span> adults[<span class="number">0</span>];
+}
+
+<span class="comment">// Good: Stop when found</span>
+<span class="keyword">function</span> <span class="function">findFirstAdult</span>(users) {
+    <span class="keyword">return</span> users.<span class="function">find</span>(u =&gt; u.age &gt;= <span class="number">18</span>);  <span class="comment">// Stops at first match</span>
+}
+
+<span class="comment">// Python generators for lazy evaluation</span>
+<span class="keyword">def</span> <span class="function">process_large_file</span>(filename):
+    <span class="keyword">with</span> <span class="function">open</span>(filename) <span class="keyword">as</span> f:
+        <span class="keyword">for</span> line <span class="keyword">in</span> f:  <span class="comment"># Lazy - one line at a time</span>
+            <span class="keyword">yield</span> line.strip()
+</code>
+                </div>
+
+                <h3>Security Best Practices</h3>
+
+                <h4>Input Validation</h4>
+                <div class="code-block" data-language="python">
+<code><span class="comment"># Always validate and sanitize user input</span>
+<span class="keyword">def</span> <span class="function">register_user</span>(username, email, age):
+    <span class="comment"># Validate username</span>
+    <span class="keyword">if</span> <span class="keyword">not</span> username <span class="keyword">or</span> <span class="function">len</span>(username) &lt; <span class="number">3</span>:
+        <span class="keyword">raise</span> <span class="function">ValueError</span>(<span class="string">"Username must be at least 3 characters"</span>)
+    
+    <span class="comment"># Validate email format</span>
+    <span class="keyword">import</span> re
+    email_pattern = <span class="string">r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'</span>
+    <span class="keyword">if</span> <span class="keyword">not</span> re.match(email_pattern, email):
+        <span class="keyword">raise</span> <span class="function">ValueError</span>(<span class="string">"Invalid email format"</span>)
+    
+    <span class="comment"># Validate age range</span>
+    <span class="keyword">if</span> <span class="keyword">not</span> <span class="function">isinstance</span>(age, <span class="function">int</span>) <span class="keyword">or</span> age &lt; <span class="number">13</span> <span class="keyword">or</span> age &gt; <span class="number">120</span>:
+        <span class="keyword">raise</span> <span class="function">ValueError</span>(<span class="string">"Age must be between 13 and 120"</span>)
+    
+    <span class="comment"># Proceed with registration...</span>
+</code>
+                </div>
+
+                <h4>SQL Injection Prevention</h4>
+                <div class="code-block" data-language="python">
+<code><span class="keyword">import</span> sqlite3
+
+<span class="comment"># Bad: Vulnerable to SQL injection</span>
+<span class="keyword">def</span> <span class="function">get_user_unsafe</span>(username):
+    query = <span class="string">f"SELECT * FROM users WHERE username = '<span class="template-var">{username}</span>'"</span>
+    <span class="comment"># If username = "admin' OR '1'='1", shows all users!</span>
+    cursor.execute(query)
+
+<span class="comment"># Good: Use parameterized queries</span>
+<span class="keyword">def</span> <span class="function">get_user_safe</span>(username):
+    query = <span class="string">"SELECT * FROM users WHERE username = ?"</span>
+    cursor.execute(query, (username,))  <span class="comment"># Parameterized - safe!</span>
+</code>
+                </div>
+
+                <h4>XSS Prevention</h4>
+                <div class="code-block" data-language="javascript">
+<code><span class="comment">// Bad: Vulnerable to XSS attacks</span>
+<span class="keyword">function</span> <span class="function">displayUserComment</span>(comment) {
+    document.<span class="function">getElementById</span>(<span class="string">'comments'</span>).innerHTML = comment;
+    <span class="comment">// If comment = "&lt;script&gt;alert('XSS')&lt;/script&gt;", code executes!</span>
+}
+
+<span class="comment">// Good: Escape HTML or use textContent</span>
+<span class="keyword">function</span> <span class="function">displayUserComment</span>(comment) {
+    <span class="keyword">const</span> element = document.<span class="function">getElementById</span>(<span class="string">'comments'</span>);
+    element.textContent = comment;  <span class="comment">// Safe - no HTML parsing</span>
+}
+
+<span class="comment">// Or sanitize HTML</span>
+<span class="keyword">function</span> <span class="function">escapeHtml</span>(text) {
+    <span class="keyword">const</span> div = document.<span class="function">createElement</span>(<span class="string">'div'</span>);
+    div.textContent = text;
+    <span class="keyword">return</span> div.innerHTML;
+}
+</code>
+                </div>
+
+                <h4>Password Security</h4>
+                <div class="code-block" data-language="python">
+<code><span class="keyword">import</span> hashlib
+<span class="keyword">import</span> secrets
+
+<span class="comment"># Bad: Never store passwords in plain text!</span>
+<span class="keyword">def</span> <span class="function">store_password_unsafe</span>(password):
+    <span class="keyword">return</span> password  <span class="comment"># NEVER DO THIS!</span>
+
+<span class="comment"># Good: Hash with salt</span>
+<span class="keyword">def</span> <span class="function">hash_password</span>(password):
+    <span class="comment"># Generate random salt</span>
+    salt = secrets.token_hex(<span class="number">16</span>)
+    
+    <span class="comment"># Hash password with salt</span>
+    password_hash = hashlib.pbkdf2_hmac(
+        <span class="string">'sha256'</span>,
+        password.encode(<span class="string">'utf-8'</span>),
+        salt.encode(<span class="string">'utf-8'</span>),
+        <span class="number">100000</span>  <span class="comment"># iterations</span>
+    )
+    
+    <span class="keyword">return</span> salt + password_hash.hex()
+
+<span class="comment"># Better: Use bcrypt or argon2</span>
+<span class="keyword">import</span> bcrypt
+
+<span class="keyword">def</span> <span class="function">hash_password_bcrypt</span>(password):
+    <span class="keyword">return</span> bcrypt.hashpw(password.encode(<span class="string">'utf-8'</span>), bcrypt.gensalt())
+
+<span class="keyword">def</span> <span class="function">verify_password</span>(password, hashed):
+    <span class="keyword">return</span> bcrypt.checkpw(password.encode(<span class="string">'utf-8'</span>), hashed)
+</code>
+                </div>
+
+                <h3>Version Control Best Practices</h3>
+
+                <h4>Commit Messages</h4>
+                <div class="code-block" data-language="bash">
+<code><span class="comment"># Bad commit messages</span>
+git commit -m <span class="string">"fix"</span>
+git commit -m <span class="string">"update"</span>
+git commit -m <span class="string">"asdf"</span>
+git commit -m <span class="string">"Fixed the bug"</span>
+
+<span class="comment"># Good commit messages (follow convention)</span>
+git commit -m <span class="string">"feat: Add user authentication"</span>
+git commit -m <span class="string">"fix: Resolve null pointer in user service"</span>
+git commit -m <span class="string">"docs: Update API documentation"</span>
+git commit -m <span class="string">"refactor: Simplify database query logic"</span>
+git commit -m <span class="string">"test: Add unit tests for user registration"</span>
+
+<span class="comment"># Conventional Commits format:</span>
+<span class="comment"># &lt;type&gt;(&lt;scope&gt;): &lt;subject&gt;</span>
+<span class="comment">#</span>
+<span class="comment"># &lt;body&gt;</span>
+<span class="comment">#</span>
+<span class="comment"># &lt;footer&gt;</span>
+
+<span class="comment"># Example with full description:</span>
+git commit -m <span class="string">"fix: Prevent race condition in checkout
+
+The checkout process was vulnerable to race conditions when
+multiple users tried to purchase the same item simultaneously.
+
+Added transaction locking to ensure atomic operations.
+
+Closes #123"</span>
+</code>
+                </div>
+
+                <h4>Branching Strategy</h4>
+                <div class="code-block" data-language="bash">
+<code><span class="comment"># Git Flow branching model</span>
+
+<span class="comment"># main - production-ready code</span>
+<span class="comment"># develop - integration branch</span>
+<span class="comment"># feature/* - new features</span>
+<span class="comment"># hotfix/* - urgent production fixes</span>
+<span class="comment"># release/* - release preparation</span>
+
+<span class="comment"># Create feature branch</span>
+git checkout -b feature/user-authentication develop
+
+<span class="comment"># Work on feature, commit regularly</span>
+git add .
+git commit -m <span class="string">"feat: Implement login form"</span>
+
+<span class="comment"># When done, merge back to develop</span>
+git checkout develop
+git merge --no-ff feature/user-authentication
+git branch -d feature/user-authentication
+
+<span class="comment"># For hotfixes</span>
+git checkout -b hotfix/critical-bug main
+<span class="comment"># Fix bug</span>
+git checkout main
+git merge --no-ff hotfix/critical-bug
+git checkout develop
+git merge --no-ff hotfix/critical-bug
+</code>
+                </div>
+
+                <h3>Code Review Guidelines</h3>
+
+                <div class="info-box note">
+                    <h4>📌 Code Review Checklist</h4>
+                    <ul>
+                        <li><strong>Correctness:</strong> Does the code work? Are there bugs?</li>
+                        <li><strong>Design:</strong> Is it well-designed? Does it fit the architecture?</li>
+                        <li><strong>Readability:</strong> Can others understand it easily?</li>
+                        <li><strong>Tests:</strong> Are there adequate tests?</li>
+                        <li><strong>Security:</strong> Any security vulnerabilities?</li>
+                        <li><strong>Performance:</strong> Any obvious performance issues?</li>
+                        <li><strong>Documentation:</strong> Is it documented appropriately?</li>
+                        <li><strong>Style:</strong> Does it follow style guidelines?</li>
+                    </ul>
+                </div>
+
+                <h3>Refactoring Techniques</h3>
+
+                <div class="code-block" data-language="javascript">
+<code><span class="comment">// Before refactoring: Long method</span>
+<span class="keyword">function</span> <span class="function">processOrder</span>(order) {
+    <span class="comment">// Validate</span>
+    <span class="keyword">if</span> (!order.items || order.items.length === <span class="number">0</span>) {
+        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="class-name">Error</span>(<span class="string">'No items'</span>);
+    }
+    
+    <span class="comment">// Calculate total</span>
+    <span class="keyword">let</span> total = <span class="number">0</span>;
+    <span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> order.items) {
+        total += item.price * item.quantity;
+    }
+    
+    <span class="comment">// Apply discount</span>
+    <span class="keyword">if</span> (order.coupon) {
+        total *= <span class="number">0.9</span>;
+    }
+    
+    <span class="comment">// Calculate tax</span>
+    total *= <span class="number">1.08</span>;
+    
+    <span class="keyword">return</span> total;
+}
+
+<span class="comment">// After refactoring: Extract methods</span>
+<span class="keyword">function</span> <span class="function">validateOrder</span>(order) {
+    <span class="keyword">if</span> (!order.items || order.items.length === <span class="number">0</span>) {
+        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="class-name">Error</span>(<span class="string">'No items in order'</span>);
+    }
+}
+
+<span class="keyword">function</span> <span class="function">calculateSubtotal</span>(items) {
+    <span class="keyword">return</span> items.<span class="function">reduce</span>((sum, item) =&gt; 
+        sum + item.price * item.quantity, <span class="number">0</span>);
+}
+
+<span class="keyword">function</span> <span class="function">applyDiscount</span>(total, hasCoupon) {
+    <span class="keyword">return</span> hasCoupon ? total * <span class="number">0.9</span> : total;
+}
+
+<span class="keyword">function</span> <span class="function">addTax</span>(total, taxRate = <span class="number">0.08</span>) {
+    <span class="keyword">return</span> total * (<span class="number">1</span> + taxRate);
+}
+
+<span class="keyword">function</span> <span class="function">processOrder</span>(order) {
+    <span class="function">validateOrder</span>(order);
+    <span class="keyword">let</span> total = <span class="function">calculateSubtotal</span>(order.items);
+    total = <span class="function">applyDiscount</span>(total, order.coupon);
+    total = <span class="function">addTax</span>(total);
+    <span class="keyword">return</span> total;
+}
+</code>
+                </div>
+
+                <div class="practice-problems">
+                    <h3>Practice Problems</h3>
+                    
+                    <div class="problem">
+                        <h4>Problem 1: Refactor for Readability</h4>
+                        <p>Refactor this code to follow best practices: proper naming, extract functions, add documentation.</p>
+                        <button onclick="toggleSolution('sol1')">Show Solution</button>
+                        <div id="sol1" class="solution" style="display:none;">
+                            <div class="code-block" data-language="python">
+<code><span class="comment"># Before: Poor readability</span>
+<span class="keyword">def</span> <span class="function">f</span>(x):
+    r = []
+    <span class="keyword">for</span> i <span class="keyword">in</span> x:
+        <span class="keyword">if</span> i % <span class="number">2</span> == <span class="number">0</span>:
+            r.append(i * i)
+    <span class="keyword">return</span> r
+
+<span class="comment"># After: Much better!</span>
+<span class="keyword">def</span> <span class="function">square_even_numbers</span>(numbers):
+    <span class="string">"""
+    Filter even numbers and return their squares.
+    
+    Args:
+        numbers (list): List of integers.
+    
+    Returns:
+        list: Squares of even numbers.
+    """</span>
+    <span class="keyword">return</span> [num ** <span class="number">2</span> <span class="keyword">for</span> num <span class="keyword">in</span> numbers <span class="keyword">if</span> is_even(num)]
+
+<span class="keyword">def</span> <span class="function">is_even</span>(number):
+    <span class="string">"""Check if a number is even."""</span>
+    <span class="keyword">return</span> number % <span class="number">2</span> == <span class="number">0</span>
+</code>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="problem">
+                        <h4>Problem 2: Fix Security Vulnerabilities</h4>
+                        <p>Identify and fix security issues in this user registration code.</p>
+                        <button onclick="toggleSolution('sol2')">Show Solution</button>
+                        <div id="sol2" class="solution" style="display:none;">
+                            <div class="code-block" data-language="javascript">
+<code><span class="comment">// Before: Multiple security issues</span>
+<span class="keyword">function</span> <span class="function">registerUser</span>(username, password) {
+    <span class="keyword">const</span> query = <span class="string">`INSERT INTO users (username, password) 
+                    VALUES ('<span class="template-var">${username}</span>', '<span class="template-var">${password}</span>')`</span>;
+    db.<span class="function">execute</span>(query);
+}
+
+<span class="comment">// After: Fixed!</span>
+<span class="keyword">const</span> bcrypt = <span class="function">require</span>(<span class="string">'bcrypt'</span>);
+
+<span class="keyword">async</span> <span class="keyword">function</span> <span class="function">registerUser</span>(username, password) {
+    <span class="comment">// Validate input</span>
+    <span class="keyword">if</span> (!username || username.length &lt; <span class="number">3</span>) {
+        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="class-name">Error</span>(<span class="string">'Invalid username'</span>);
+    }
+    
+    <span class="comment">// Validate password strength</span>
+    <span class="keyword">if</span> (password.length &lt; <span class="number">8</span>) {
+        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="class-name">Error</span>(<span class="string">'Password too short'</span>);
+    }
+    
+    <span class="comment">// Hash password</span>
+    <span class="keyword">const</span> passwordHash = <span class="keyword">await</span> bcrypt.<span class="function">hash</span>(password, <span class="number">10</span>);
+    
+    <span class="comment">// Use parameterized query</span>
+    <span class="keyword">const</span> query = <span class="string">'INSERT INTO users (username, password) VALUES (?, ?)'</span>;
+    <span class="keyword">await</span> db.<span class="function">execute</span>(query, [username, passwordHash]);
+}
+</code>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="problem">
+                        <h4>Problem 3: Optimize Performance</h4>
+                        <p>Improve the performance of this function that finds common elements in two arrays.</p>
+                        <button onclick="toggleSolution('sol3')">Show Solution</button>
+                        <div id="sol3" class="solution" style="display:none;">
+                            <div class="code-block" data-language="python">
+<code><span class="comment"># Before: O(n²) time complexity</span>
+<span class="keyword">def</span> <span class="function">find_common_slow</span>(arr1, arr2):
+    common = []
+    <span class="keyword">for</span> item1 <span class="keyword">in</span> arr1:
+        <span class="keyword">for</span> item2 <span class="keyword">in</span> arr2:
+            <span class="keyword">if</span> item1 == item2 <span class="keyword">and</span> item1 <span class="keyword">not</span> <span class="keyword">in</span> common:
+                common.append(item1)
+    <span class="keyword">return</span> common
+
+<span class="comment"># After: O(n) time complexity using sets</span>
+<span class="keyword">def</span> <span class="function">find_common_fast</span>(arr1, arr2):
+    <span class="string">"""
+    Find common elements between two arrays.
+    
+    Time complexity: O(n + m) where n = len(arr1), m = len(arr2)
+    Space complexity: O(min(n, m))
+    """</span>
+    set1 = <span class="function">set</span>(arr1)
+    set2 = <span class="function">set</span>(arr2)
+    <span class="keyword">return</span> <span class="function">list</span>(set1 &amp; set2)
+
+<span class="comment"># Even better: One-liner</span>
+<span class="keyword">def</span> <span class="function">find_common</span>(arr1, arr2):
+    <span class="keyword">return</span> <span class="function">list</span>(<span class="function">set</span>(arr1) &amp; <span class="function">set</span>(arr2))
+</code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Key Takeaways</h3>
+                <ul>
+                    <li>Follow language-specific style guides: PEP 8, Airbnb, Google C++</li>
+                    <li>Use consistent naming: camelCase, snake_case, PascalCase</li>
+                    <li>Document code with docstrings, JSDoc, or Doxygen comments</li>
+                    <li>Apply DRY, KISS, and YAGNI principles</li>
+                    <li>Optimize performance: choose right algorithms, cache, lazy evaluation</li>
+                    <li>Validate all user input to prevent security vulnerabilities</li>
+                    <li>Never store passwords in plain text - always hash with salt</li>
+                    <li>Use parameterized queries to prevent SQL injection</li>
+                    <li>Write meaningful commit messages and follow branching strategies</li>
+                    <li>Code reviews improve quality and share knowledge</li>
+                    <li>Refactor regularly to keep code clean and maintainable</li>
+                </ul>
+
+                <div class="info-box tip">
+                    <h4>🎉 Congratulations!</h4>
+                    <p>
+                        You've completed the Programming course! You've learned fundamentals, Python, JavaScript, 
+                        C++, OOP principles, data structures, algorithms, debugging, testing, and best practices. 
+                        Keep practicing, building projects, and learning. The journey of a programmer never ends!
+                    </p>
+                </div>
+
+                <div class="info-box note">
+                    <h4>📚 Continue Learning</h4>
+                    <p>
+                        Next steps: Build real projects, contribute to open source, explore specialized domains 
+                        (web development, mobile apps, machine learning, systems programming), participate in 
+                        coding competitions, and never stop learning new technologies!
+                    </p>
+                </div>
+            </div>
+
+            <div class="lesson-navigation">
+                <a href="11-debugging.html" class="nav-btn">← Previous: Debugging & Testing</a>
+                <a href="#" class="nav-btn disabled" style="opacity: 0.5; cursor: not-allowed;">Course Complete! 🎉</a>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../js/main.js"></script>
+    <script>
+        function toggleSolution(id) {
+            const solution = document.getElementById(id);
+            const button = event.target;
+            if (solution.style.display === 'none') {
+                solution.style.display = 'block';
+                button.textContent = 'Hide Solution';
+            } else {
+                solution.style.display = 'none';
+                button.textContent = 'Show Solution';
+            }
+        }
+    </script>
+</body>
+</html>

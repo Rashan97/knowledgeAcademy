@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 2: Dynamics & Motion - Engineering Academy</title>
+    <link rel="stylesheet" href="../../../css/styles.css">
+    <link rel="stylesheet" href="../../../css/course-styles/course.css">
+</head>
+<body>
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <h1><a href="../../../index.html" style="color: inherit; text-decoration: none;">🎓 Engineering Academy</a></h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../index.html">Course Overview</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section class="course-header">
+        <div class="container">
+            <h1>⚙️ Mechanical Engineering</h1>
+            <p>Lesson 2: Dynamics & Motion</p>
+        </div>
+    </section>
+
+    <div class="course-container">
+        <aside class="course-sidebar">
+            <h3>Course Modules</h3>
+            <ul class="lesson-list">
+                <li><a href="../index.html"><span class="lesson-number">📚</span>Course Overview</a></li>
+                <li><a href="01-statics.html"><span class="lesson-number">1</span>Statics & Force Analysis</a></li>
+                <li><a href="02-dynamics.html" class="active"><span class="lesson-number">2</span>Dynamics & Motion</a></li>
+                <li><a href="03-mechanics-of-materials.html"><span class="lesson-number">3</span>Mechanics of Materials</a></li>
+                <li><a href="04-thermodynamics.html"><span class="lesson-number">4</span>Thermodynamics</a></li>
+                <li><a href="05-fluid-mechanics.html"><span class="lesson-number">5</span>Fluid Mechanics</a></li>
+                <li><a href="06-heat-transfer.html"><span class="lesson-number">6</span>Heat Transfer</a></li>
+                <li><a href="07-materials-science.html"><span class="lesson-number">7</span>Materials Science</a></li>
+                <li><a href="08-machine-design.html"><span class="lesson-number">8</span>Machine Design</a></li>
+                <li><a href="09-manufacturing-processes.html"><span class="lesson-number">9</span>Manufacturing Processes</a></li>
+                <li><a href="10-vibrations.html"><span class="lesson-number">10</span>Mechanical Vibrations</a></li>
+                <li><a href="11-cad-cam.html"><span class="lesson-number">11</span>CAD/CAM & Design Tools</a></li>
+                <li><a href="12-hvac-systems.html"><span class="lesson-number">12</span>HVAC & Thermal Systems</a></li>
+            </ul>
+        </aside>
+
+        <main class="course-content">
+            <div class="lesson-header">
+                <h2>Lesson 2: Dynamics & Motion</h2>
+                <div class="lesson-meta">
+                    <span>📖 95 min read</span>
+                    <span>📊 Fundamental</span>
+                </div>
+            </div>
+
+            <div class="lesson-content">
+                <h3>Introduction to Dynamics</h3>
+                <p>
+                    Dynamics studies bodies in motion and the forces causing that motion. While statics dealt 
+                    with equilibrium, dynamics analyzes accelerating systems using Newton's laws. This is 
+                    fundamental to understanding vehicle motion, robotics, vibrations, and machinery.
+                </p>
+
+                <div class="info-box note">
+                    <h4>📌 What You'll Learn</h4>
+                    <ul>
+                        <li>Kinematics: describing motion (position, velocity, acceleration)</li>
+                        <li>Kinetics: relating forces to motion (Newton's laws)</li>
+                        <li>Rectilinear and curvilinear motion</li>
+                        <li>Work-energy methods</li>
+                        <li>Impulse-momentum principles</li>
+                        <li>Rotation of rigid bodies</li>
+                        <li>General plane motion</li>
+                    </ul>
+                </div>
+
+                <h3>Kinematics of Particles</h3>
+
+                <h4>Rectilinear Motion (Straight Line)</h4>
+                <div class="code-block" data-language="text">
+<code>Position, Velocity, Acceleration:
+  s = position (displacement)
+  v = velocity = ds/dt
+  a = acceleration = dv/dt = d²s/dt²
+
+Relationships:
+  v = ds/dt  →  ds = v dt
+  a = dv/dt  →  dv = a dt
+  a = v(dv/ds)  (useful when a = f(s))
+
+Integration:
+  s = ∫ v dt
+  v = ∫ a dt
+
+Constant Acceleration Equations:
+  (Uniformly accelerated motion)
+  
+  v = v₀ + at
+  
+  s = s₀ + v₀t + ½at²
+  
+  v² = v₀² + 2a(s - s₀)
+  
+  s = s₀ + ½(v₀ + v)t
+  
+  Where:
+    v₀ = initial velocity
+    s₀ = initial position
+    a = constant acceleration
+    t = time
+
+Free Fall (vertical motion):
+  a = -g = -9.81 m/s² (downward)
+  
+  Upward motion: v = v₀ - gt
+  Maximum height: v = 0, so s_max = v₀²/(2g)
+  
+  Total time in air (projectile): t_total = 2v₀/g
+
+Relative Motion (1D):
+  For particles A and B:
+    s_B = s_A + s_B/A
+    v_B = v_A + v_B/A
+    a_B = a_A + a_B/A
+  
+  Where subscript B/A means "B relative to A"
+</code>
+                </div>
+
+                <h4>Example 1: Braking Car</h4>
+                <div class="code-block" data-language="text">
+<code>Problem:
+  Car traveling at 80 km/h applies brakes
+  Deceleration = 6 m/s²
+  
+Find:
+  a) Stopping distance
+  b) Time to stop
+
+Solution:
+  Step 1: Convert units
+    v₀ = 80 km/h × (1000 m/km) × (1 h/3600 s)
+       = 80/3.6 = 22.22 m/s
+    
+    a = -6 m/s² (negative because decelerating)
+    v = 0 (final velocity when stopped)
+  
+  Step 2: Stopping distance
+    Use: v² = v₀² + 2as
+    
+    0² = (22.22)² + 2(-6)s
+    0 = 493.73 - 12s
+    s = 493.73/12 = 41.14 m
+  
+  Step 3: Time to stop
+    Use: v = v₀ + at
+    
+    0 = 22.22 + (-6)t
+    6t = 22.22
+    t = 3.70 s
+  
+  Answer:
+    a) Stopping distance = 41.14 m
+    b) Time to stop = 3.70 s
+  
+  Check (alternate equation):
+    s = v₀t + ½at²
+      = 22.22(3.70) + ½(-6)(3.70)²
+      = 82.21 - 41.07
+      = 41.14 m ✓
+</code>
+                </div>
+
+                <h4>Curvilinear Motion</h4>
+                <div class="code-block" data-language="text">
+<code>Motion in 2D or 3D:
+  Position vector: r = x i + y j + z k
+  
+  Velocity: v = dr/dt = ẋ i + ẏ j + ż k
+  
+  Acceleration: a = dv/dt = ẍ i + ÿ j + z̈ k
+  
+  Magnitude: |v| = √(v_x² + v_y² + v_z²)
+
+Projectile Motion:
+  Initial velocity v₀ at angle θ
+  
+  Horizontal (x-direction):
+    v_x = v₀ cos(θ) = constant
+    x = v₀ cos(θ) × t
+  
+  Vertical (y-direction):
+    v_y = v₀ sin(θ) - gt
+    y = v₀ sin(θ) × t - ½gt²
+  
+  Range (horizontal distance):
+    R = (v₀² sin(2θ))/g
+    
+    Maximum range at θ = 45°
+  
+  Maximum height:
+    h_max = (v₀ sin(θ))²/(2g)
+  
+  Time of flight:
+    t_flight = (2v₀ sin(θ))/g
+
+Normal-Tangential Coordinates (n-t):
+  For path following curve
+  
+  Unit tangent vector: e_t (along path)
+  Unit normal vector: e_n (toward center of curvature)
+  
+  Velocity: v = v e_t (always tangent)
+  
+  Acceleration:
+    a = a_t e_t + a_n e_n
+  
+  Where:
+    a_t = dv/dt (tangential, changes speed)
+    a_n = v²/ρ (normal, changes direction)
+    ρ = radius of curvature
+
+Circular Motion:
+  ρ = r (constant radius)
+  
+  Angular velocity: ω = dθ/dt (rad/s)
+  Angular acceleration: α = dω/dt (rad/s²)
+  
+  Relationships:
+    v = rω
+    a_t = rα
+    a_n = rω² = v²/r (centripetal acceleration)
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Kinetics of Particles</h3>
+
+                <h4>Newton's Second Law</h4>
+                <div class="code-block" data-language="text">
+<code>Newton's Laws:
+
+First Law (Inertia):
+  Body remains at rest or constant velocity unless acted upon by force
+  
+  If ΣF = 0, then a = 0
+
+Second Law (F = ma):
+  ΣF = ma
+  
+  Vector equation in components:
+    ΣF_x = ma_x
+    ΣF_y = ma_y
+    ΣF_z = ma_z
+  
+  For normal-tangential coordinates:
+    ΣF_t = ma_t = m(dv/dt)
+    ΣF_n = ma_n = m(v²/ρ)
+
+Third Law (Action-Reaction):
+  For every action, equal and opposite reaction
+  
+  F_AB = -F_BA
+
+Equation of Motion:
+  Same form as equilibrium, but with ma term
+  
+  Statics: ΣF = 0
+  Dynamics: ΣF = ma
+
+Weight vs. Mass:
+  Weight: W = mg (force)
+  Mass: m = W/g (inertia)
+  
+  SI: m in kg, g = 9.81 m/s²
+  US: W in lb, g = 32.2 ft/s², m in slugs
+
+Procedure:
+  1. Draw FBD (all external forces)
+  2. Choose coordinate system
+  3. Apply ΣF = ma in each direction
+  4. Solve for unknowns (forces or acceleration)
+</code>
+                </div>
+
+                <h4>Example 2: Block on Incline with Friction</h4>
+                <div class="code-block" data-language="text">
+<code>Problem:
+  10 kg block released on 25° incline
+  μ_k = 0.2 (kinetic friction)
+  
+Find: Acceleration down the incline
+
+Solution:
+  Step 1: FBD of block
+    - Weight W = mg = 10 × 9.81 = 98.1 N (downward)
+    - Normal force N (perpendicular to incline)
+    - Friction F_k (up the incline, opposes motion)
+  
+  Step 2: Components
+    W_parallel = mg sin(25°) = 98.1 × 0.4226 = 41.44 N
+    W_perpendicular = mg cos(25°) = 98.1 × 0.9063 = 88.91 N
+  
+  Step 3: Perpendicular direction (no acceleration)
+    ΣF_n = 0:
+      N - W_perpendicular = 0
+      N = 88.91 N
+  
+  Step 4: Friction
+    F_k = μ_k N = 0.2 × 88.91 = 17.78 N
+  
+  Step 5: Parallel direction (along incline)
+    ΣF_t = ma:
+      W_parallel - F_k = ma
+      41.44 - 17.78 = 10a
+      23.66 = 10a
+      a = 2.37 m/s²
+  
+  Answer: a = 2.37 m/s² down the incline
+  
+  Note: Without friction, a = g sin(25°) = 4.14 m/s²
+        Friction reduces acceleration by 43%
+</code>
+                </div>
+
+                <h4>Circular Motion Dynamics</h4>
+                <div class="code-block" data-language="text">
+<code>Centripetal Force:
+  Required to maintain circular motion
+  
+  F_c = ma_n = m(v²/r) = mrω²
+  
+  Directed toward center of circle
+
+Banking (cars on curves):
+  Unbanked curve:
+    Friction provides centripetal force
+    f = mv²/r
+    
+    Maximum speed: v_max = √(μgr)
+  
+  Banked curve at angle θ:
+    Normal force component provides some centripetal
+    
+    No friction, ideal banking:
+      tan(θ) = v²/(gr)
+    
+    With friction:
+      v_max = √(gr(μ + tan(θ))/(1 - μ tan(θ)))
+
+Conical Pendulum:
+  Mass m on string length L, rotating at angle θ
+  
+  Vertical: T cos(θ) = mg
+  Horizontal: T sin(θ) = m(v²/r)
+  
+  Where r = L sin(θ)
+  
+  Combine: tan(θ) = v²/(gr)
+
+Vertical Circle:
+  Minimum speed at top to maintain contact:
+    At top: N + mg = mv²/r
+    
+    For N ≥ 0: v ≥ √(gr)
+  
+  Speed at bottom (from energy):
+    v_bottom² = v_top² + 4gr
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Work and Energy Methods</h3>
+
+                <h4>Work Done by Forces</h4>
+                <div class="code-block" data-language="text">
+<code>Work:
+  Energy transferred by force through displacement
+  
+  Constant force:
+    W = F · s = Fs cos(θ)
+  
+  Where θ = angle between F and s
+  
+  Variable force:
+    W = ∫ F · dr
+  
+  Units: Joule (J) = N·m
+
+Work by Different Forces:
+
+Weight:
+  W = -mg(y₂ - y₁) = -mgΔy
+  
+  Negative if moving up (against gravity)
+  Positive if moving down (with gravity)
+
+Spring (linear elastic):
+  F_spring = kx (k = spring constant)
+  
+  W = ∫₀ˣ kx dx = ½kx²
+  
+  For stretching from x₁ to x₂:
+    W = ½k(x₂² - x₁²)
+
+Friction:
+  Always opposes motion, always negative work
+  
+  W_friction = -f × d = -μNd
+
+Power:
+  Rate of doing work
+  
+  P = dW/dt = F · v
+  
+  Units: Watt (W) = J/s
+  
+  Also: 1 hp = 746 W
+</code>
+                </div>
+
+                <h4>Kinetic Energy and Work-Energy Theorem</h4>
+                <div class="code-block" data-language="text">
+<code>Kinetic Energy:
+  Energy due to motion
+  
+  KE = ½mv²
+  
+  Always positive
+
+Work-Energy Theorem:
+  Net work equals change in kinetic energy
+  
+  W_net = ΔKE = KE₂ - KE₁
+  
+  W₁₋₂ = ½m(v₂² - v₁²)
+
+Procedure:
+  1. Identify initial and final positions/velocities
+  2. Calculate all work done (by all forces)
+  3. Apply W = ΔKE
+  4. Solve for unknown
+
+Conservative Forces:
+  Work independent of path (depends only on endpoints)
+  
+  Examples: gravity, elastic spring force
+  
+  Can define potential energy
+
+Non-Conservative Forces:
+  Work depends on path
+  
+  Examples: friction, air resistance
+  
+  Dissipate energy (convert to heat)
+</code>
+                </div>
+
+                <h4>Potential Energy and Conservation of Energy</h4>
+                <div class="code-block" data-language="text">
+<code>Gravitational Potential Energy:
+  PE_g = mgy
+  
+  Where y = height above reference (datum)
+  
+  Change: ΔPE_g = mg(y₂ - y₁)
+
+Elastic Potential Energy:
+  PE_s = ½kx²
+  
+  Where x = deformation from unstretched length
+  
+  Change: ΔPE_s = ½k(x₂² - x₁²)
+
+Conservation of Mechanical Energy:
+  If only conservative forces do work:
+  
+  E₁ = E₂
+  
+  KE₁ + PE₁ = KE₂ + PE₂
+  
+  ½mv₁² + mgy₁ + ½kx₁² = ½mv₂² + mgy₂ + ½kx₂²
+
+With Non-Conservative Forces:
+  E₁ + W_nc = E₂
+  
+  Where W_nc = work by non-conservative forces
+  
+  Energy lost to friction: E_lost = -W_friction
+
+Example: Pendulum
+  Released from height h:
+  
+  At top: KE = 0, PE = mgh
+  At bottom: KE = ½mv², PE = 0
+  
+  Conservation: mgh = ½mv²
+  
+  v = √(2gh)
+</code>
+                </div>
+
+                <h4>Example 3: Roller Coaster Energy</h4>
+                <div class="code-block" data-language="text">
+<code>Problem:
+  Roller coaster car (500 kg) starts from rest at h₁ = 40 m
+  Drops to h₂ = 10 m
+  Friction/air resistance do -50,000 J work
+  
+Find: Speed at h₂
+
+Solution:
+  Step 1: Initial energy (at h₁ = 40 m)
+    KE₁ = 0 (starts from rest)
+    PE₁ = mgh₁ = 500 × 9.81 × 40 = 196,200 J
+    E₁ = 196,200 J
+  
+  Step 2: Final energy (at h₂ = 10 m)
+    KE₂ = ½mv₂²
+    PE₂ = mgh₂ = 500 × 9.81 × 10 = 49,050 J
+    E₂ = ½mv₂² + 49,050
+  
+  Step 3: Energy equation with friction
+    E₁ + W_friction = E₂
+    196,200 + (-50,000) = ½(500)v₂² + 49,050
+    146,200 = 250v₂² + 49,050
+    97,150 = 250v₂²
+    v₂² = 388.6
+    v₂ = 19.71 m/s
+  
+  Answer: v = 19.71 m/s (about 71 km/h)
+  
+  Check: Without friction
+    196,200 = 250v² + 49,050
+    v = 24.26 m/s (faster, as expected)
+    
+    Friction reduced speed by 19%
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Impulse and Momentum</h3>
+
+                <h4>Linear Momentum</h4>
+                <div class="code-block" data-language="text">
+<code>Linear Momentum:
+  p = mv (vector)
+  
+  Units: kg·m/s or N·s
+
+Impulse:
+  Change in momentum due to force over time
+  
+  I = ∫ F dt
+  
+  For constant force:
+    I = F × Δt
+  
+  Units: N·s (same as momentum)
+
+Impulse-Momentum Theorem:
+  Impulse equals change in momentum
+  
+  I = Δp = m(v₂ - v₁)
+  
+  F Δt = m(v₂ - v₁)
+  
+  Component form:
+    F_x Δt = m(v₂ₓ - v₁ₓ)
+    F_y Δt = m(v₂ᵧ - v₁ᵧ)
+
+When to Use:
+  - Forces applied for short time (impacts, collisions)
+  - Force varies with time
+  - Want to find final velocity after impact
+
+Average Force:
+  F_avg = Δp/Δt = m(v₂ - v₁)/Δt
+
+Conservation of Momentum:
+  If ΣF_ext = 0 (no external forces):
+  
+  Σp_before = Σp_after
+  
+  m₁v₁ + m₂v₂ = m₁v₁' + m₂v₂'
+  
+  Holds in each direction independently
+</code>
+                </div>
+
+                <h4>Impact and Collisions</h4>
+                <div class="code-block" data-language="text">
+<code>Coefficient of Restitution:
+  e = (v₂' - v₁')/(v₁ - v₂)
+  
+  Where:
+    v₁, v₂ = velocities before impact
+    v₁', v₂' = velocities after impact
+  
+  Values:
+    e = 0: Perfectly plastic (stick together)
+    0 < e < 1: Real collision (some energy lost)
+    e = 1: Perfectly elastic (no energy lost)
+
+Direct Central Impact:
+  Objects collide head-on along line of centers
+  
+  Two equations:
+    1. Conservation of momentum:
+       m₁v₁ + m₂v₂ = m₁v₁' + m₂v₂'
+    
+    2. Coefficient of restitution:
+       e = (v₂' - v₁')/(v₁ - v₂)
+  
+  Solve these two for v₁' and v₂'
+
+Special Cases:
+
+Perfectly Elastic (e = 1):
+  Momentum conserved: m₁v₁ + m₂v₂ = m₁v₁' + m₂v₂'
+  Energy conserved: ½m₁v₁² + ½m₂v₂² = ½m₁v₁'² + ½m₂v₂'²
+  
+  If equal masses (m₁ = m₂):
+    Velocities exchange: v₁' = v₂, v₂' = v₁
+
+Perfectly Plastic (e = 0):
+  Objects stick together after impact
+  
+  v₁' = v₂' = v_common
+  
+  m₁v₁ + m₂v₂ = (m₁ + m₂)v_common
+  
+  Energy lost: ΔKE = KE_before - KE_after < 0
+
+Oblique Impact:
+  Velocity components tangent to surface unchanged
+  Normal components follow restitution equation
+</code>
+                </div>
+
+                <h4>Example 4: Collision Problem</h4>
+                <div class="code-block" data-language="text">
+<code>Problem:
+  Car A (1200 kg) traveling east at 20 m/s
+  Car B (1500 kg) traveling west at 15 m/s
+  They collide head-on, e = 0.4
+  
+Find: Velocities after collision
+
+Solution:
+  Step 1: Sign convention
+    East = positive direction
+    v₁ = +20 m/s (car A)
+    v₂ = -15 m/s (car B, negative because west)
+  
+  Step 2: Conservation of momentum
+    m₁v₁ + m₂v₂ = m₁v₁' + m₂v₂'
+    1200(20) + 1500(-15) = 1200v₁' + 1500v₂'
+    24,000 - 22,500 = 1200v₁' + 1500v₂'
+    1500 = 1200v₁' + 1500v₂'  ... (1)
+  
+  Step 3: Coefficient of restitution
+    e = (v₂' - v₁')/(v₁ - v₂)
+    0.4 = (v₂' - v₁')/(20 - (-15))
+    0.4 = (v₂' - v₁')/35
+    v₂' - v₁' = 14  ... (2)
+  
+  Step 4: Solve equations (1) and (2)
+    From (2): v₂' = v₁' + 14
+    
+    Substitute into (1):
+    1500 = 1200v₁' + 1500(v₁' + 14)
+    1500 = 1200v₁' + 1500v₁' + 21,000
+    1500 = 2700v₁' + 21,000
+    -19,500 = 2700v₁'
+    v₁' = -7.22 m/s (west)
+    
+    v₂' = -7.22 + 14 = 6.78 m/s (east)
+  
+  Answer:
+    Car A: 7.22 m/s west
+    Car B: 6.78 m/s east
+  
+  Check momentum:
+    Before: 24,000 - 22,500 = 1500 kg·m/s
+    After: 1200(-7.22) + 1500(6.78) = -8664 + 10,170 = 1506 kg·m/s ✓
+    (Small difference due to rounding)
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Kinetics of Rigid Bodies</h3>
+
+                <h4>Rotation About Fixed Axis</h4>
+                <div class="code-block" data-language="text">
+<code>Angular Motion:
+  θ = angular position (rad)
+  ω = angular velocity = dθ/dt (rad/s)
+  α = angular acceleration = dω/dt (rad/s²)
+
+Constant Angular Acceleration:
+  (Same form as linear equations)
+  
+  ω = ω₀ + αt
+  θ = θ₀ + ω₀t + ½αt²
+  ω² = ω₀² + 2α(θ - θ₀)
+
+Relation to Linear Motion:
+  For point at distance r from axis:
+  
+  v = rω (tangential velocity)
+  a_t = rα (tangential acceleration)
+  a_n = rω² (normal acceleration)
+
+Mass Moment of Inertia:
+  Resistance to angular acceleration
+  
+  I = ∫ r² dm
+  
+  Units: kg·m²
+  
+  Common shapes:
+    Thin rod (length L, about center): I = mL²/12
+    Thin rod (about end): I = mL²/3
+    
+    Solid disk/cylinder (radius r, about axis): I = mr²/2
+    
+    Hollow cylinder (outer R, inner r): I = m(R² + r²)/2
+    
+    Solid sphere (about diameter): I = 2mr²/5
+    
+    Thin spherical shell: I = 2mr²/3
+
+Parallel Axis Theorem:
+  I = I_c + md²
+  
+  Where:
+    I_c = moment about centroidal axis
+    m = mass
+    d = distance between axes
+
+Equation of Motion (Rotation):
+  ΣM = Iα
+  
+  Analogous to ΣF = ma
+</code>
+                </div>
+
+                <h4>General Plane Motion</h4>
+                <div class="code-block" data-language="text">
+<code>Plane Motion:
+  Combination of translation and rotation
+  
+  Examples: rolling wheel, connecting rod in engine
+
+Velocity Analysis:
+  v_B = v_A + v_B/A
+  
+  Where v_B/A = ω × r_B/A
+  
+  For rotation: |v_B/A| = rω
+
+Instantaneous Center of Rotation (IC):
+  Point with zero velocity at instant
+  
+  All points rotate about IC at that instant
+  
+  Location: perpendicular to velocities
+  
+  If rolling without slipping: IC at contact point
+
+Rolling Without Slipping:
+  Constraint: v_center = rω
+  
+  Where r = radius, v_center = velocity of center
+  
+  At contact point: v = 0 (no slip)
+  At top: v = 2v_center
+
+Acceleration:
+  a_B = a_A + a_B/A
+  
+  Where a_B/A has two components:
+    - Tangential: a_t = rα
+    - Normal: a_n = rω²
+
+Equations of Motion:
+  Translation of center of mass:
+    ΣF = ma_G
+  
+  Rotation about center of mass:
+    ΣM_G = I_G α
+  
+  Need both equations for general motion!
+
+Rolling Down Incline:
+  Cylinder on slope θ:
+    mg sin(θ) - f = ma
+    fr = Iα
+    
+    With a = rα (no slip)
+    
+    Solve: a = g sin(θ)/(1 + I/(mr²))
+    
+    For solid cylinder I = mr²/2:
+      a = (2/3)g sin(θ)
+    
+    Compare to sliding (no friction): a = g sin(θ)
+    Rolling is slower!
+</code>
+                </div>
+
+                <h4>Example 5: Yo-Yo Problem</h4>
+                <div class="code-block" data-language="text">
+<code>Problem:
+  Yo-yo: mass m = 0.2 kg, outer radius R = 0.05 m, inner radius r = 0.02 m
+  I = 1.2 × 10⁻⁴ kg·m² (about center)
+  Released from rest
+  
+Find: Linear acceleration of center, tension in string
+
+Solution:
+  Step 1: FBD of yo-yo
+    - Weight mg downward
+    - Tension T upward (acts at radius r)
+  
+  Step 2: Translation equation (vertical)
+    ΣF_y = ma:
+      mg - T = ma  ... (1)
+  
+  Step 3: Rotation equation (about center)
+    ΣM = Iα:
+      Tr = Iα  ... (2)
+    
+    (Tension creates moment, weight acts through center)
+  
+  Step 4: Kinematic constraint
+    String unwinds without slipping:
+      a = rα  ... (3)
+  
+  Step 5: Solve
+    From (3): α = a/r
+    
+    Substitute into (2):
+      Tr = I(a/r)
+      T = Ia/r²  ... (4)
+    
+    Substitute (4) into (1):
+      mg - Ia/r² = ma
+      mg = ma + Ia/r²
+      mg = a(m + I/r²)
+      
+      a = mg/(m + I/r²)
+        = (0.2 × 9.81)/(0.2 + 1.2×10⁻⁴/0.02²)
+        = 1.962/(0.2 + 0.3)
+        = 1.962/0.5
+        = 3.92 m/s²
+  
+  Step 6: Tension
+    From (4):
+      T = Ia/r² = (1.2×10⁻⁴ × 3.92)/0.0004
+        = 1.18 N
+  
+  Answer:
+    a = 3.92 m/s² (downward)
+    T = 1.18 N
+  
+  Note: Free fall would be a = g = 9.81 m/s²
+        Rotational inertia slows descent
+</code>
+                </div>
+
+                <div class="info-box important">
+                    <h4>🎯 Practice Problems</h4>
+                    <ol>
+                        <li>Projectile: Ball thrown at 25 m/s at 40° angle. Find range and max height.</li>
+                        <li>Circular motion: Car (1200 kg) rounds 50 m radius curve at 60 km/h. Find centripetal force needed.</li>
+                        <li>Energy: 5 kg block slides down frictionless ramp from 3 m height. Find speed at bottom.</li>
+                        <li>Collision: 80 kg person running at 6 m/s jumps onto 120 kg stationary cart. Find final velocity (perfectly plastic).</li>
+                        <li>Rotation: Solid disk (10 kg, 0.4 m radius) accelerates from rest to 300 rpm in 5 seconds. Find torque.</li>
+                        <li>Rolling: Sphere (r = 0.1 m) rolls down 20° incline. Find acceleration. (I = 2mr²/5 for sphere)</li>
+                    </ol>
+                </div>
+
+                <h3>Summary</h3>
+                <ul>
+                    <li>Kinematics describes motion: position, velocity (v = ds/dt), acceleration (a = dv/dt)</li>
+                    <li>Constant acceleration: v = v₀ + at, s = v₀t + ½at², v² = v₀² + 2as</li>
+                    <li>Newton's 2nd law: ΣF = ma (forces cause acceleration)</li>
+                    <li>Circular motion: centripetal a_n = v²/r, requires force toward center</li>
+                    <li>Work-energy: W = ΔKE, use when forces/displacements known</li>
+                    <li>Conservation of energy: KE₁ + PE₁ = KE₂ + PE₂ (conservative forces only)</li>
+                    <li>Impulse-momentum: FΔt = mΔv, use for short-duration impacts</li>
+                    <li>Collisions: conservation of momentum always, energy only if elastic (e = 1)</li>
+                    <li>Rotation: ΣM = Iα, analogous to ΣF = ma, I depends on mass distribution</li>
+                    <li>General plane motion: use both ΣF = ma and ΣM = Iα together</li>
+                </ul>
+
+                <h3>Next Steps</h3>
+                <p>
+                    Lesson 3 covers Mechanics of Materials, analyzing internal stresses and deformations 
+                    in structures. You'll learn about normal stress, shear stress, strain, bending of beams, 
+                    torsion, and failure theories - essential for structural and machine design.
+                </p>
+            </div>
+
+            <div class="lesson-navigation">
+                <a href="01-statics.html" class="nav-btn">← Statics & Force Analysis</a>
+                <a href="03-mechanics-of-materials.html" class="nav-btn">Next: Mechanics of Materials →</a>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../js/main.js"></script>
+</body>
+</html>

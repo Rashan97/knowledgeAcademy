@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 1: Electrical Engineering Fundamentals - Engineering Academy</title>
+    <link rel="stylesheet" href="../../../css/styles.css">
+    <link rel="stylesheet" href="../../../css/course-styles/course.css">
+</head>
+<body>
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <h1><a href="../../../index.html" style="color: inherit; text-decoration: none;">🎓 Engineering Academy</a></h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../index.html">Course Overview</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section class="course-header">
+        <div class="container">
+            <h1>⚡ Electrical Engineering</h1>
+            <p>Lesson 1: Electrical Engineering Fundamentals</p>
+        </div>
+    </section>
+
+    <div class="course-container">
+        <aside class="course-sidebar">
+            <h3>Course Modules</h3>
+            <ul class="lesson-list">
+                <li><a href="../index.html"><span class="lesson-number">📚</span>Course Overview</a></li>
+                <li><a href="01-fundamentals.html" class="active"><span class="lesson-number">1</span>EE Fundamentals</a></li>
+                <li><a href="02-dc-circuits.html"><span class="lesson-number">2</span>DC Circuit Analysis</a></li>
+                <li><a href="03-ac-circuits.html"><span class="lesson-number">3</span>AC Circuits</a></li>
+                <li><a href="04-semiconductors.html"><span class="lesson-number">4</span>Semiconductors</a></li>
+                <li><a href="05-diodes-transistors.html"><span class="lesson-number">5</span>Diodes & Transistors</a></li>
+                <li><a href="06-operational-amplifiers.html"><span class="lesson-number">6</span>Op-Amps</a></li>
+                <li><a href="07-digital-electronics.html"><span class="lesson-number">7</span>Digital Electronics</a></li>
+                <li><a href="08-power-systems.html"><span class="lesson-number">8</span>Power Systems</a></li>
+                <li><a href="09-transformers-motors.html"><span class="lesson-number">9</span>Transformers & Motors</a></li>
+                <li><a href="10-control-systems.html"><span class="lesson-number">10</span>Control Systems</a></li>
+                <li><a href="11-signals-systems.html"><span class="lesson-number">11</span>Signals & Systems</a></li>
+                <li><a href="12-safety-standards.html"><span class="lesson-number">12</span>Safety & Standards</a></li>
+            </ul>
+        </aside>
+
+        <main class="course-content">
+            <div class="lesson-header">
+                <h2>Lesson 1: Electrical Engineering Fundamentals</h2>
+                <div class="lesson-meta">
+                    <span>📖 75 min read</span>
+                    <span>📊 Beginner</span>
+                </div>
+            </div>
+
+            <div class="lesson-content">
+                <h3>Introduction to Electrical Engineering</h3>
+                <p>
+                    Electrical engineering is the study and application of electricity, electronics, and electromagnetism. 
+                    It's one of the newest engineering disciplines, emerging in the late 19th century with the 
+                    commercialization of electric power and telegraphy.
+                </p>
+
+                <div class="info-box note">
+                    <h4>📌 What You'll Learn</h4>
+                    <ul>
+                        <li>Fundamental electrical quantities (charge, current, voltage, power)</li>
+                        <li>Ohm's Law and its applications</li>
+                        <li>Kirchhoff's Current and Voltage Laws</li>
+                        <li>Energy and power calculations</li>
+                        <li>Units and measurement systems</li>
+                        <li>Safety principles in electrical systems</li>
+                    </ul>
+                </div>
+
+                <h3>Fundamental Quantities</h3>
+
+                <h4>1. Electric Charge (Q)</h4>
+                <p>
+                    Charge is the fundamental property of matter that causes electromagnetic interaction. 
+                    It exists in discrete quantities carried by elementary particles.
+                </p>
+
+                <div class="code-block" data-language="text">
+<code>Electric Charge:
+  Symbol: Q or q
+  Unit: Coulomb (C)
+  
+Elementary charge:
+  e = 1.602 × 10⁻¹⁹ C (charge of one electron/proton)
+  
+Electron: -1.602 × 10⁻¹⁹ C (negative)
+Proton:   +1.602 × 10⁻¹⁹ C (positive)
+
+Law of Conservation of Charge:
+  Charge cannot be created or destroyed,
+  only transferred from one object to another.
+
+Example:
+  1 Coulomb = 6.242 × 10¹⁸ electrons
+</code>
+                </div>
+
+                <h4>2. Electric Current (I)</h4>
+                <p>
+                    Current is the <strong>rate of flow of electric charge</strong> through a conductor.
+                </p>
+
+                <div class="code-block" data-language="text">
+<code>Current Definition:
+  I = dQ/dt  (charge per unit time)
+  
+  Symbol: I (intensity)
+  Unit: Ampere or Amp (A)
+  
+  1 Ampere = 1 Coulomb per second
+  
+Direction Convention:
+  - Conventional current: Positive charge flow direction
+    (+ to -, opposite to electron flow)
+  - Electron flow: Actual electron movement direction
+    (- to +)
+
+Current Types:
+  DC (Direct Current): Constant direction, constant magnitude
+  AC (Alternating Current): Periodically reverses direction
+
+Example:
+  If 10 C of charge passes through a point in 2 seconds:
+  I = Q/t = 10 C / 2 s = 5 A
+</code>
+                </div>
+
+                <div class="info-box tip">
+                    <h4>💡 Current Flow Direction</h4>
+                    <p>
+                        Though we now know electrons (negative) are the actual charge carriers in conductors, 
+                        we still use <strong>conventional current</strong> (positive to negative) established 
+                        by Benjamin Franklin before electrons were discovered. This convention works perfectly 
+                        for circuit analysis!
+                    </p>
+                </div>
+
+                <h4>3. Voltage (V)</h4>
+                <p>
+                    Voltage is the <strong>electric potential difference</strong> between two points - the energy 
+                    required to move a unit charge between those points.
+                </p>
+
+                <div class="code-block" data-language="text">
+<code>Voltage Definition:
+  V = W/Q  (work per unit charge)
+  
+  Symbol: V or E (electromotive force)
+  Unit: Volt (V)
+  
+  1 Volt = 1 Joule per Coulomb (J/C)
+
+Analogy:
+  Voltage is like water pressure in a pipe
+  Higher voltage = greater "electrical pressure"
+
+Example:
+  If 12 J of energy is required to move 4 C of charge:
+  V = W/Q = 12 J / 4 C = 3 V
+
+Common Voltages:
+  AA Battery:        1.5 V
+  Car Battery:       12 V
+  Household (USA):   120 V AC
+  Household (EU):    230 V AC
+  High Voltage:      > 1000 V
+</code>
+                </div>
+
+                <h4>4. Resistance (R)</h4>
+                <p>
+                    Resistance is the opposition to current flow in a material.
+                </p>
+
+                <div class="code-block" data-language="text">
+<code>Resistance:
+  Symbol: R
+  Unit: Ohm (Ω)
+  
+Factors affecting resistance:
+  R = ρ × (L/A)
+  
+  Where:
+    ρ = resistivity (material property, Ω·m)
+    L = length of conductor (m)
+    A = cross-sectional area (m²)
+
+Temperature dependence:
+  R_T = R₀[1 + α(T - T₀)]
+  
+  α = temperature coefficient
+  
+Conductance (G):
+  G = 1/R  (Unit: Siemens, S or mho)
+
+Example:
+  Copper wire: ρ = 1.68 × 10⁻⁸ Ω·m
+  L = 10 m, A = 1 mm² = 1 × 10⁻⁶ m²
+  R = 1.68×10⁻⁸ × (10/1×10⁻⁶) = 0.168 Ω
+</code>
+                </div>
+
+                <h4>5. Power (P)</h4>
+                <p>
+                    Power is the <strong>rate of energy transfer or conversion</strong>.
+                </p>
+
+                <div class="code-block" data-language="text">
+<code>Power Definition:
+  P = dW/dt  (energy per unit time)
+  
+  Symbol: P
+  Unit: Watt (W)
+  
+  1 Watt = 1 Joule per second (J/s)
+
+Electrical Power:
+  P = V × I  (voltage times current)
+  
+Combined with Ohm's Law (V = IR):
+  P = I² × R
+  P = V² / R
+
+Energy:
+  W = P × t  (power times time)
+  Unit: Joules (J) or Watt-hours (Wh)
+  
+  1 kWh = 1000 W × 3600 s = 3.6 MJ
+
+Example:
+  A 100W light bulb running for 10 hours:
+  W = 100W × 10h = 1000 Wh = 1 kWh
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Ohm's Law</h3>
+                <p>
+                    The most fundamental relationship in electrical engineering, discovered by Georg Ohm in 1827.
+                </p>
+
+                <div class="code-block" data-language="text">
+<code>Ohm's Law:
+  V = I × R
+  
+  Where:
+    V = Voltage across element (Volts)
+    I = Current through element (Amperes)
+    R = Resistance of element (Ohms)
+
+Derived forms:
+  I = V / R
+  R = V / I
+
+Ohm's Law Triangle (memory aid):
+     V
+    ───
+    I│R
+
+  Cover what you want to find:
+    - Cover V: V = I × R
+    - Cover I: I = V / R
+    - Cover R: R = V / I
+</code>
+                </div>
+
+                <h4>Example 1: Basic Ohm's Law Application</h4>
+                <div class="code-block" data-language="text">
+<code>Problem:
+  A resistor of 220Ω is connected to a 9V battery.
+  Find: a) Current through resistor
+        b) Power dissipated
+
+Solution:
+  a) Current:
+     I = V / R = 9V / 220Ω = 0.0409 A ≈ 41 mA
+  
+  b) Power:
+     P = V × I = 9V × 0.041A = 0.369 W ≈ 370 mW
+     
+     Or: P = V² / R = 81 / 220 = 0.368 W ✓
+     Or: P = I² × R = 0.041² × 220 = 0.369 W ✓
+</code>
+                </div>
+
+                <h4>Example 2: Practical Application - LED Circuit</h4>
+                <div class="code-block" data-language="text">
+<code>Problem:
+  Design a current-limiting resistor for an LED
+  LED specs: V_LED = 2.1V, I_LED = 20 mA
+  Power supply: 5V
+  
+Find: Resistor value and power rating
+
+Solution:
+  Step 1: Voltage across resistor
+    V_R = V_supply - V_LED = 5V - 2.1V = 2.9V
+  
+  Step 2: Resistor value (Ohm's Law)
+    R = V_R / I_LED = 2.9V / 0.020A = 145Ω
+    
+    Use standard value: 150Ω (closest)
+  
+  Step 3: Power dissipation
+    P = I² × R = (0.020)² × 150 = 0.06 W = 60 mW
+    
+    Use 1/4 W (250 mW) resistor for safety margin
+</code>
+                </div>
+
+                <div class="info-box warning">
+                    <h4>⚠️ Ohm's Law Limitations</h4>
+                    <p>
+                        Ohm's Law applies to <strong>linear, ohmic materials</strong> where resistance 
+                        is constant. It does NOT apply to:
+                    </p>
+                    <ul>
+                        <li>Diodes and transistors (non-linear devices)</li>
+                        <li>Thermistors (resistance changes with temperature)</li>
+                        <li>Gas discharge lamps</li>
+                        <li>Semiconductors in general</li>
+                    </ul>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Kirchhoff's Laws</h3>
+                <p>
+                    Two fundamental laws that govern all electrical circuits, named after Gustav Kirchhoff (1845).
+                </p>
+
+                <h4>Kirchhoff's Current Law (KCL)</h4>
+                <p>
+                    <strong>The algebraic sum of currents entering a node equals the algebraic sum of currents leaving the node.</strong>
+                </p>
+
+                <div class="code-block" data-language="text">
+<code>KCL Statement:
+  Σ I_in = Σ I_out
+  
+  Or equivalently:
+  Σ I_node = 0  (considering direction)
+
+Physical basis:
+  Conservation of electric charge
+  Charge cannot accumulate at a node
+
+Node/Junction: Point where 2+ conductors meet
+
+Example:
+  At node A:
+    I₁ (3A) entering
+    I₂ (1A) entering  
+    I₃ (4A) leaving
+  
+  KCL: I₁ + I₂ = I₃
+       3A + 1A = 4A ✓
+</code>
+                </div>
+
+                <h4>Example 3: Using KCL</h4>
+                <div class="code-block" data-language="text">
+<code>Problem:
+  At a junction, currents are:
+    I₁ = 5A (entering)
+    I₂ = 2A (entering)
+    I₃ = 3A (leaving)
+    I₄ = ? (leaving)
+  
+Find: I₄
+
+Solution:
+  Apply KCL: Σ I_in = Σ I_out
+  I₁ + I₂ = I₃ + I₄
+  5A + 2A = 3A + I₄
+  7A = 3A + I₄
+  I₄ = 4A
+</code>
+                </div>
+
+                <h4>Kirchhoff's Voltage Law (KVL)</h4>
+                <p>
+                    <strong>The algebraic sum of all voltages around any closed loop equals zero.</strong>
+                </p>
+
+                <div class="code-block" data-language="text">
+<code>KVL Statement:
+  Σ V_loop = 0
+
+Physical basis:
+  Conservation of energy
+  
+Sign Convention:
+  - Voltage rise (- to +): Positive
+  - Voltage drop (+ to -): Negative
+  
+Loop: Any closed path in a circuit
+
+Procedure:
+  1. Choose loop direction (clockwise or CCW)
+  2. Traverse loop, recording voltages
+  3. Set sum equal to zero
+  4. Solve
+
+Example:
+  Simple loop: +12V battery, -5V resistor, -7V resistor
+  
+  KVL: +12V - 5V - 7V = 0 ✓
+</code>
+                </div>
+
+                <h4>Example 4: Using KVL</h4>
+                <div class="code-block" data-language="text">
+<code>Problem:
+  Series circuit: 24V battery, R₁ (unknown voltage), R₂ (8V), R₃ (10V)
+  
+Find: Voltage across R₁
+
+Solution:
+  Apply KVL (clockwise):
+  +24V - V₁ - 8V - 10V = 0
+  24V - V₁ - 18V = 0
+  V₁ = 6V
+</code>
+                </div>
+
+                <div class="info-box tip">
+                    <h4>💡 KCL and KVL Together</h4>
+                    <p>
+                        Most circuit analysis uses both laws simultaneously:
+                    </p>
+                    <ul>
+                        <li><strong>KCL</strong> for finding unknown currents at nodes</li>
+                        <li><strong>KVL</strong> for finding unknown voltages in loops</li>
+                        <li>Together with Ohm's Law, they solve any linear circuit!</li>
+                    </ul>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Energy and Power</h3>
+
+                <h4>Energy Stored in Elements</h4>
+                <div class="code-block" data-language="text">
+<code>Resistor (dissipates energy as heat):
+  W = ∫ P dt = P × t  (for constant power)
+  W = I²Rt  (joules)
+
+Capacitor (stores energy in electric field):
+  W = ½ CV²  (joules)
+  
+  C = capacitance (Farads)
+  V = voltage across capacitor
+
+Inductor (stores energy in magnetic field):
+  W = ½ LI²  (joules)
+  
+  L = inductance (Henries)
+  I = current through inductor
+</code>
+                </div>
+
+                <h4>Example 5: Power and Energy Calculation</h4>
+                <div class="code-block" data-language="text">
+<code>Problem:
+  An electric heater draws 12.5A from 120V supply
+  Find: a) Resistance
+        b) Power consumed
+        c) Energy used in 3 hours
+        d) Cost at $0.12/kWh
+
+Solution:
+  a) Resistance:
+     R = V / I = 120V / 12.5A = 9.6Ω
+  
+  b) Power:
+     P = V × I = 120V × 12.5A = 1500 W = 1.5 kW
+  
+  c) Energy:
+     W = P × t = 1.5 kW × 3 h = 4.5 kWh
+  
+  d) Cost:
+     Cost = 4.5 kWh × $0.12/kWh = $0.54
+</code>
+                </div>
+
+                <h3>Electrical Safety Fundamentals</h3>
+                <p>
+                    Understanding electrical hazards is critical for every electrical engineer.
+                </p>
+
+                <div class="code-block" data-language="text">
+<code>Current Effects on Human Body (60 Hz AC):
+
+  < 1 mA:    Barely perceptible
+  1-5 mA:    Threshold of perception, tingling
+  5-10 mA:   Painful shock
+  10-20 mA:  Muscle contractions, "can't let go"
+  20-50 mA:  Severe pain, breathing difficulty
+  50-100 mA: Possible ventricular fibrillation (fatal)
+  > 100 mA:  Certain ventricular fibrillation, death
+
+Resistance of human body: 1,000 - 100,000 Ω
+  (varies with moisture, contact area, path)
+
+Example danger calculation:
+  V = 120V, R_body = 1000Ω (wet conditions)
+  I = V/R = 120V / 1000Ω = 120 mA (LETHAL!)
+</code>
+                </div>
+
+                <div class="info-box warning">
+                    <h4>⚠️ Safety Rules</h4>
+                    <ol>
+                        <li><strong>De-energize before working</strong> - Turn off and lockout power</li>
+                        <li><strong>Verify de-energization</strong> - Test with voltmeter</li>
+                        <li><strong>Discharge capacitors</strong> - They store charge even when off</li>
+                        <li><strong>One hand rule</strong> - Keep one hand in pocket to prevent cross-body path</li>
+                        <li><strong>Insulated tools</strong> - Use proper equipment rated for voltage</li>
+                        <li><strong>Dry conditions</strong> - Water dramatically lowers body resistance</li>
+                        <li><strong>GFCIs</strong> - Use Ground Fault Circuit Interrupters in wet areas</li>
+                        <li><strong>Never assume</strong> - Always test before touching</li>
+                    </ol>
+                </div>
+
+                <h3>Unit Prefixes and Conversions</h3>
+                <p>
+                    Electrical values span enormous ranges - from picoamps to megavolts.
+                </p>
+
+                <div class="code-block" data-language="text">
+<code>Metric Prefixes:
+
+  Tera   (T)   10¹²   1,000,000,000,000
+  Giga   (G)   10⁹    1,000,000,000
+  Mega   (M)   10⁶    1,000,000
+  Kilo   (k)   10³    1,000
+  ---    (-)   10⁰    1
+  milli  (m)   10⁻³   0.001
+  micro  (μ)   10⁻⁶   0.000001
+  nano   (n)   10⁻⁹   0.000000001
+  pico   (p)   10⁻¹²  0.000000000001
+
+Examples:
+  4700Ω = 4.7kΩ = 4.7 × 10³Ω
+  0.000047F = 47μF = 47 × 10⁻⁶F
+  2,500,000 Hz = 2.5 MHz = 2.5 × 10⁶Hz
+  0.025A = 25mA = 25 × 10⁻³A
+</code>
+                </div>
+
+                <h4>Example 6: Unit Conversions</h4>
+                <div class="code-block" data-language="text">
+<code>Convert and calculate:
+  
+a) 2.2kΩ resistor with 15mA current, find voltage:
+   R = 2.2 × 10³Ω = 2200Ω
+   I = 15 × 10⁻³A = 0.015A
+   V = IR = 0.015 × 2200 = 33V
+
+b) 100μF capacitor charged to 50V, find stored energy:
+   C = 100 × 10⁻⁶F = 0.0001F
+   W = ½CV² = 0.5 × 0.0001 × 50² = 0.125 J
+</code>
+                </div>
+
+                <div class="info-box important">
+                    <h4>🎯 Practice Problems</h4>
+                    <ol>
+                        <li>Calculate current when 50C of charge passes through a conductor in 10 seconds</li>
+                        <li>A 12V battery powers a 6Ω resistor. Find current and power dissipated</li>
+                        <li>At a node: I₁=10A (in), I₂=4A (in), I₃=6A (out). Find I₄</li>
+                        <li>Series circuit: 48V source, three resistors with 12V, 18V, and V₃. Find V₃</li>
+                        <li>Convert: 3300pF to μF, 0.0047MΩ to kΩ, 2500mA to A</li>
+                        <li>A device draws 500mA at 24V for 8 hours. Calculate energy in kWh and cost at $0.15/kWh</li>
+                    </ol>
+                </div>
+
+                <h3>Summary</h3>
+                <ul>
+                    <li>Charge (Q) measured in Coulombs, fundamental property of matter</li>
+                    <li>Current (I) is rate of charge flow, measured in Amperes</li>
+                    <li>Voltage (V) is potential difference, measured in Volts</li>
+                    <li>Resistance (R) opposes current flow, measured in Ohms</li>
+                    <li>Power (P) is rate of energy transfer, measured in Watts</li>
+                    <li>Ohm's Law: V = IR (fundamental relationship)</li>
+                    <li>KCL: Current in equals current out at any node</li>
+                    <li>KVL: Voltage rises equal voltage drops in any loop</li>
+                    <li>Electrical safety is paramount - understand hazards and precautions</li>
+                </ul>
+
+                <h3>Next Steps</h3>
+                <p>
+                    In Lesson 2, we'll apply these fundamentals to analyze DC circuits using series and parallel 
+                    combinations, voltage and current dividers, and advanced techniques like mesh and nodal analysis.
+                </p>
+            </div>
+
+            <div class="lesson-navigation">
+                <a href="../index.html" class="nav-btn">← Course Overview</a>
+                <a href="02-dc-circuits.html" class="nav-btn">Next: DC Circuits →</a>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../js/main.js"></script>
+</body>
+</html>

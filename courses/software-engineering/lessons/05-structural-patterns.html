@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 5: Structural Design Patterns - Engineering Academy</title>
+    <link rel="stylesheet" href="../../../css/styles.css">
+    <link rel="stylesheet" href="../../../css/course-styles/course.css">
+</head>
+<body>
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <h1><a href="../../../index.html" style="color: inherit; text-decoration: none;">🎓 Engineering Academy</a></h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../../../index.html#courses">Courses</a></li>
+                    <li><a href="../index.html">Course Overview</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section class="course-header">
+        <div class="container">
+            <h1>💻 Software Engineering</h1>
+            <p>Lesson 5: Structural Design Patterns</p>
+        </div>
+    </section>
+
+    <div class="course-container">
+        <aside class="course-sidebar">
+            <h3>Course Modules</h3>
+            <ul class="lesson-list">
+                <li><a href="../index.html"><span class="lesson-number">📚</span>Course Overview</a></li>
+                <li><a href="01-introduction.html" class="completed"><span class="lesson-number">1</span>Introduction to SE</a></li>
+                <li><a href="02-sdlc.html" class="completed"><span class="lesson-number">2</span>SDLC & Methodologies</a></li>
+                <li><a href="03-requirements-engineering.html" class="completed"><span class="lesson-number">3</span>Requirements Engineering</a></li>
+                <li><a href="04-creational-patterns.html" class="completed"><span class="lesson-number">4</span>Creational Patterns</a></li>
+                <li><a href="05-structural-patterns.html" class="active"><span class="lesson-number">5</span>Structural Patterns</a></li>
+                <li class="disabled"><span class="lesson-number">6</span>Behavioral Patterns <span style="opacity: 0.5;">(Coming Soon)</span></li>
+                <li class="disabled"><span class="lesson-number">7</span>System Architecture <span style="opacity: 0.5;">(Coming Soon)</span></li>
+                <li class="disabled"><span class="lesson-number">8</span>SOLID Principles <span style="opacity: 0.5;">(Coming Soon)</span></li>
+                <li class="disabled"><span class="lesson-number">9</span>Code Quality <span style="opacity: 0.5;">(Coming Soon)</span></li>
+                <li class="disabled"><span class="lesson-number">10</span>Testing Strategies <span style="opacity: 0.5;">(Coming Soon)</span></li>
+                <li class="disabled"><span class="lesson-number">11</span>Version Control <span style="opacity: 0.5;">(Coming Soon)</span></li>
+                <li class="disabled"><span class="lesson-number">12</span>Agile & DevOps <span style="opacity: 0.5;">(Coming Soon)</span></li>
+            </ul>
+        </aside>
+
+        <main class="course-content">
+            <h2>Structural Design Patterns</h2>
+            <p class="intro">Learn how to compose classes and objects into larger structures while keeping them flexible and efficient.</p>
+
+            <div class="content-section">
+                <h3>1. Introduction to Structural Patterns</h3>
+                
+                <p>Structural patterns focus on how classes and objects are composed to form larger structures. They help ensure that when one part of a system changes, the entire structure doesn't need to change.</p>
+
+                <div class="info-box">
+                    <strong>Key Structural Patterns:</strong>
+                    <ul>
+                        <li><strong>Adapter:</strong> Convert interface of a class into another interface clients expect</li>
+                        <li><strong>Bridge:</strong> Decouple abstraction from implementation</li>
+                        <li><strong>Composite:</strong> Compose objects into tree structures for part-whole hierarchies</li>
+                        <li><strong>Decorator:</strong> Add responsibilities to objects dynamically</li>
+                        <li><strong>Facade:</strong> Provide unified interface to a set of interfaces in a subsystem</li>
+                        <li><strong>Flyweight:</strong> Share objects to support large numbers efficiently</li>
+                        <li><strong>Proxy:</strong> Provide surrogate or placeholder for another object</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>2. Adapter Pattern</h3>
+                
+                <h4>Intent</h4>
+                <p>Convert the interface of a class into another interface that clients expect. Adapter lets classes work together that couldn't otherwise because of incompatible interfaces.</p>
+
+                <h4>Problem</h4>
+                <p>You want to use an existing class, but its interface doesn't match what you need.</p>
+
+                <h4>Solution</h4>
+                <p>Create an adapter class that wraps the incompatible class and translates requests.</p>
+
+                <div class="example-box">
+                    <strong>Example: Payment Gateway Adapter</strong>
+                    <pre><code>// Target interface expected by the application
+interface PaymentProcessor {
+    processPayment(amount: number, currency: string): PaymentResult;
+}
+
+// Adaptee: Existing third-party payment service with incompatible interface
+class StripePaymentService {
+    makePayment(amountInCents: number, currencyCode: string, token: string) {
+        console.log(`Stripe: Processing ${amountInCents} cents ${currencyCode}`);
+        return { success: true, transactionId: "stripe_" + Math.random() };
+    }
+}
+
+// Adapter: Makes StripePaymentService compatible with PaymentProcessor interface
+class StripeAdapter implements PaymentProcessor {
+    private stripe: StripePaymentService;
+    private apiToken: string;
+
+    constructor(apiToken: string) {
+        this.stripe = new StripePaymentService();
+        this.apiToken = apiToken;
+    }
+
+    processPayment(amount: number, currency: string): PaymentResult {
+        // Adapt the interface: convert dollars to cents
+        const amountInCents = Math.round(amount * 100);
+        const result = this.stripe.makePayment(amountInCents, currency, this.apiToken);
+        
+        return {
+            success: result.success,
+            transactionId: result.transactionId,
+            timestamp: new Date()
+        };
+    }
+}
+
+// Another adaptee
+class PayPalService {
+    pay(dollars: string, curr: string, email: string) {
+        console.log(`PayPal: Processing $${dollars} ${curr}`);
+        return { status: "completed", id: "pp_" + Math.random() };
+    }
+}
+
+class PayPalAdapter implements PaymentProcessor {
+    private paypal: PayPalService;
+    private accountEmail: string;
+
+    constructor(email: string) {
+        this.paypal = new PayPalService();
+        this.accountEmail = email;
+    }
+
+    processPayment(amount: number, currency: string): PaymentResult {
+        const result = this.paypal.pay(amount.toFixed(2), currency, this.accountEmail);
+        
+        return {
+            success: result.status === "completed",
+            transactionId: result.id,
+            timestamp: new Date()
+        };
+    }
+}
+
+// Client code works with the unified interface
+class ShoppingCart {
+    private processor: PaymentProcessor;
+
+    constructor(processor: PaymentProcessor) {
+        this.processor = processor;
+    }
+
+    checkout(amount: number) {
+        const result = this.processor.processPayment(amount, "USD");
+        if (result.success) {
+            console.log(`Payment successful: ${result.transactionId}`);
+        }
+    }
+}
+
+// Usage
+const cart1 = new ShoppingCart(new StripeAdapter("sk_test_123"));
+cart1.checkout(99.99);
+
+const cart2 = new ShoppingCart(new PayPalAdapter("merchant@example.com"));
+cart2.checkout(149.50);</code></pre>
+                </div>
+
+                <h4>When to Use</h4>
+                <ul>
+                    <li>You want to use an existing class with an incompatible interface</li>
+                    <li>Integrating third-party libraries or legacy code</li>
+                    <li>Creating reusable classes that cooperate with unrelated classes</li>
+                </ul>
+            </div>
+
+            <div class="content-section">
+                <h3>3. Bridge Pattern</h3>
+                
+                <h4>Intent</h4>
+                <p>Decouple an abstraction from its implementation so the two can vary independently.</p>
+
+                <h4>Problem</h4>
+                <p>You have a class hierarchy that combines different variations (e.g., shapes in different colors). Adding new variations causes exponential growth in subclasses.</p>
+
+                <h4>Solution</h4>
+                <p>Split into two separate hierarchies: abstraction and implementation. The abstraction contains a reference to the implementation.</p>
+
+                <div class="example-box">
+                    <strong>Example: Device and Remote Control</strong>
+                    <pre><code>// Implementation interface
+interface Device {
+    isEnabled(): boolean;
+    enable(): void;
+    disable(): void;
+    getVolume(): number;
+    setVolume(percent: number): void;
+    getChannel(): number;
+    setChannel(channel: number): void;
+}
+
+// Concrete implementations
+class TV implements Device {
+    private on = false;
+    private volume = 50;
+    private channel = 1;
+
+    isEnabled(): boolean { return this.on; }
+    enable(): void { this.on = true; console.log("TV: Power ON"); }
+    disable(): void { this.on = false; console.log("TV: Power OFF"); }
+    
+    getVolume(): number { return this.volume; }
+    setVolume(percent: number): void {
+        this.volume = Math.max(0, Math.min(100, percent));
+        console.log(`TV: Volume set to ${this.volume}%`);
+    }
+    
+    getChannel(): number { return this.channel; }
+    setChannel(channel: number): void {
+        this.channel = channel;
+        console.log(`TV: Channel ${this.channel}`);
+    }
+}
+
+class Radio implements Device {
+    private on = false;
+    private volume = 30;
+    private channel = 881; // FM frequency
+
+    isEnabled(): boolean { return this.on; }
+    enable(): void { this.on = true; console.log("Radio: Power ON"); }
+    disable(): void { this.on = false; console.log("Radio: Power OFF"); }
+    
+    getVolume(): number { return this.volume; }
+    setVolume(percent: number): void {
+        this.volume = Math.max(0, Math.min(100, percent));
+        console.log(`Radio: Volume set to ${this.volume}%`);
+    }
+    
+    getChannel(): number { return this.channel; }
+    setChannel(channel: number): void {
+        this.channel = channel;
+        console.log(`Radio: Frequency ${this.channel / 10} MHz`);
+    }
+}
+
+// Abstraction
+class RemoteControl {
+    protected device: Device;
+
+    constructor(device: Device) {
+        this.device = device;
+    }
+
+    togglePower(): void {
+        if (this.device.isEnabled()) {
+            this.device.disable();
+        } else {
+            this.device.enable();
+        }
+    }
+
+    volumeDown(): void {
+        this.device.setVolume(this.device.getVolume() - 10);
+    }
+
+    volumeUp(): void {
+        this.device.setVolume(this.device.getVolume() + 10);
+    }
+
+    channelDown(): void {
+        this.device.setChannel(this.device.getChannel() - 1);
+    }
+
+    channelUp(): void {
+        this.device.setChannel(this.device.getChannel() + 1);
+    }
+}
+
+// Extended abstraction
+class AdvancedRemoteControl extends RemoteControl {
+    mute(): void {
+        console.log("Advanced Remote: Muting");
+        this.device.setVolume(0);
+    }
+
+    setFavoriteChannel(channel: number): void {
+        console.log(`Advanced Remote: Setting favorite channel ${channel}`);
+        this.device.setChannel(channel);
+    }
+}
+
+// Usage
+const tv = new TV();
+const remote = new RemoteControl(tv);
+remote.togglePower();      // TV: Power ON
+remote.volumeUp();         // TV: Volume set to 60%
+remote.channelUp();        // TV: Channel 2
+
+const radio = new Radio();
+const advancedRemote = new AdvancedRemoteControl(radio);
+advancedRemote.togglePower();           // Radio: Power ON
+advancedRemote.setFavoriteChannel(953); // Radio: Frequency 95.3 MHz
+advancedRemote.mute();                  // Radio: Volume set to 0%</code></pre>
+                </div>
+
+                <h4>When to Use</h4>
+                <ul>
+                    <li>You want to avoid permanent binding between abstraction and implementation</li>
+                    <li>Both abstraction and implementation should be extensible through subclasses</li>
+                    <li>Changes in implementation shouldn't affect clients</li>
+                </ul>
+            </div>
+
+            <div class="content-section">
+                <h3>4. Composite Pattern</h3>
+                
+                <h4>Intent</h4>
+                <p>Compose objects into tree structures to represent part-whole hierarchies. Composite lets clients treat individual objects and compositions uniformly.</p>
+
+                <h4>Problem</h4>
+                <p>You need to work with tree structures where individual objects and groups should be treated the same way.</p>
+
+                <div class="example-box">
+                    <strong>Example: File System</strong>
+                    <pre><code>// Component
+interface FileSystemComponent {
+    getName(): string;
+    getSize(): number;
+    display(indent: string): void;
+}
+
+// Leaf
+class File implements FileSystemComponent {
+    constructor(private name: string, private size: number) {}
+
+    getName(): string {
+        return this.name;
+    }
+
+    getSize(): number {
+        return this.size;
+    }
+
+    display(indent: string = ""): void {
+        console.log(`${indent}📄 ${this.name} (${this.size} KB)`);
+    }
+}
+
+// Composite
+class Directory implements FileSystemComponent {
+    private children: FileSystemComponent[] = [];
+
+    constructor(private name: string) {}
+
+    getName(): string {
+        return this.name;
+    }
+
+    add(component: FileSystemComponent): void {
+        this.children.push(component);
+    }
+
+    remove(component: FileSystemComponent): void {
+        const index = this.children.indexOf(component);
+        if (index !== -1) {
+            this.children.splice(index, 1);
+        }
+    }
+
+    getSize(): number {
+        return this.children.reduce((total, child) => total + child.getSize(), 0);
+    }
+
+    display(indent: string = ""): void {
+        console.log(`${indent}📁 ${this.name}/ (${this.getSize()} KB)`);
+        for (const child of this.children) {
+            child.display(indent + "  ");
+        }
+    }
+}
+
+// Usage
+const root = new Directory("root");
+
+const documents = new Directory("documents");
+documents.add(new File("resume.pdf", 150));
+documents.add(new File("cover-letter.docx", 45));
+
+const photos = new Directory("photos");
+photos.add(new File("vacation.jpg", 2500));
+photos.add(new File("family.png", 1800));
+
+const work = new Directory("work");
+work.add(new File("project.zip", 5000));
+work.add(new File("notes.txt", 12));
+
+documents.add(work);
+
+root.add(documents);
+root.add(photos);
+root.add(new File("readme.txt", 8));
+
+root.display();
+// Output:
+// 📁 root/ (9515 KB)
+//   📁 documents/ (5207 KB)
+//     📄 resume.pdf (150 KB)
+//     📄 cover-letter.docx (45 KB)
+//     📁 work/ (5012 KB)
+//       📄 project.zip (5000 KB)
+//       📄 notes.txt (12 KB)
+//   📁 photos/ (4300 KB)
+//     📄 vacation.jpg (2500 KB)
+//     📄 family.png (1800 KB)
+//   📄 readme.txt (8 KB)
+
+console.log(`Total size: ${root.getSize()} KB`);</code></pre>
+                </div>
+
+                <h4>When to Use</h4>
+                <ul>
+                    <li>You want to represent part-whole hierarchies</li>
+                    <li>Clients should treat individual and composite objects uniformly</li>
+                    <li>UI component hierarchies, file systems, organizational structures</li>
+                </ul>
+            </div>
+
+            <div class="content-section">
+                <h3>5. Decorator Pattern</h3>
+                
+                <h4>Intent</h4>
+                <p>Attach additional responsibilities to an object dynamically. Decorators provide a flexible alternative to subclassing for extending functionality.</p>
+
+                <h4>Problem</h4>
+                <p>You want to add features to objects without creating numerous subclasses for every combination.</p>
+
+                <div class="example-box">
+                    <strong>Example: Coffee Shop</strong>
+                    <pre><code>// Component interface
+interface Coffee {
+    getCost(): number;
+    getDescription(): string;
+}
+
+// Concrete component
+class SimpleCoffee implements Coffee {
+    getCost(): number {
+        return 2.00;
+    }
+
+    getDescription(): string {
+        return "Simple coffee";
+    }
+}
+
+// Base decorator
+abstract class CoffeeDecorator implements Coffee {
+    constructor(protected coffee: Coffee) {}
+
+    getCost(): number {
+        return this.coffee.getCost();
+    }
+
+    getDescription(): string {
+        return this.coffee.getDescription();
+    }
+}
+
+// Concrete decorators
+class MilkDecorator extends CoffeeDecorator {
+    getCost(): number {
+        return this.coffee.getCost() + 0.50;
+    }
+
+    getDescription(): string {
+        return this.coffee.getDescription() + ", milk";
+    }
+}
+
+class SugarDecorator extends CoffeeDecorator {
+    getCost(): number {
+        return this.coffee.getCost() + 0.25;
+    }
+
+    getDescription(): string {
+        return this.coffee.getDescription() + ", sugar";
+    }
+}
+
+class WhipDecorator extends CoffeeDecorator {
+    getCost(): number {
+        return this.coffee.getCost() + 0.75;
+    }
+
+    getDescription(): string {
+        return this.coffee.getDescription() + ", whipped cream";
+    }
+}
+
+class CaramelDecorator extends CoffeeDecorator {
+    getCost(): number {
+        return this.coffee.getCost() + 0.60;
+    }
+
+    getDescription(): string {
+        return this.coffee.getDescription() + ", caramel";
+    }
+}
+
+// Usage
+let myCoffee: Coffee = new SimpleCoffee();
+console.log(`${myCoffee.getDescription()}: $${myCoffee.getCost()}`);
+// Simple coffee: $2.00
+
+myCoffee = new MilkDecorator(myCoffee);
+console.log(`${myCoffee.getDescription()}: $${myCoffee.getCost()}`);
+// Simple coffee, milk: $2.50
+
+myCoffee = new SugarDecorator(myCoffee);
+myCoffee = new WhipDecorator(myCoffee);
+console.log(`${myCoffee.getDescription()}: $${myCoffee.getCost()}`);
+// Simple coffee, milk, sugar, whipped cream: $3.50
+
+// Complex order
+let fancyCoffee: Coffee = new SimpleCoffee();
+fancyCoffee = new MilkDecorator(fancyCoffee);
+fancyCoffee = new MilkDecorator(fancyCoffee); // Double milk
+fancyCoffee = new CaramelDecorator(fancyCoffee);
+fancyCoffee = new WhipDecorator(fancyCoffee);
+console.log(`${fancyCoffee.getDescription()}: $${fancyCoffee.getCost()}`);
+// Simple coffee, milk, milk, caramel, whipped cream: $4.35</code></pre>
+                </div>
+
+                <h4>When to Use</h4>
+                <ul>
+                    <li>Add responsibilities to individual objects dynamically and transparently</li>
+                    <li>Responsibilities can be withdrawn</li>
+                    <li>Extension by subclassing is impractical (too many combinations)</li>
+                </ul>
+            </div>
+
+            <div class="content-section">
+                <h3>6. Facade Pattern</h3>
+                
+                <h4>Intent</h4>
+                <p>Provide a unified interface to a set of interfaces in a subsystem. Facade defines a higher-level interface that makes the subsystem easier to use.</p>
+
+                <h4>Problem</h4>
+                <p>A complex subsystem has many interdependent classes. Clients need a simple way to use common features without dealing with complexity.</p>
+
+                <div class="example-box">
+                    <strong>Example: Home Theater System</strong>
+                    <pre><code>// Complex subsystem classes
+class Amplifier {
+    turnOn(): void { console.log("Amplifier: Turning on"); }
+    turnOff(): void { console.log("Amplifier: Turning off"); }
+    setVolume(level: number): void { console.log(`Amplifier: Volume set to ${level}`); }
+    setSurroundSound(): void { console.log("Amplifier: Surround sound enabled"); }
+}
+
+class DVDPlayer {
+    turnOn(): void { console.log("DVD Player: Turning on"); }
+    turnOff(): void { console.log("DVD Player: Turning off"); }
+    play(movie: string): void { console.log(`DVD Player: Playing "${movie}"`); }
+    stop(): void { console.log("DVD Player: Stopped"); }
+    eject(): void { console.log("DVD Player: Ejecting disc"); }
+}
+
+class Projector {
+    turnOn(): void { console.log("Projector: Turning on"); }
+    turnOff(): void { console.log("Projector: Turning off"); }
+    wideScreenMode(): void { console.log("Projector: Widescreen mode"); }
+}
+
+class Lights {
+    dim(level: number): void { console.log(`Lights: Dimming to ${level}%`); }
+    on(): void { console.log("Lights: Turning on"); }
+}
+
+class Screen {
+    down(): void { console.log("Screen: Going down"); }
+    up(): void { console.log("Screen: Going up"); }
+}
+
+// Facade
+class HomeTheaterFacade {
+    constructor(
+        private amp: Amplifier,
+        private dvd: DVDPlayer,
+        private projector: Projector,
+        private lights: Lights,
+        private screen: Screen
+    ) {}
+
+    watchMovie(movie: string): void {
+        console.log("\n=== Get ready to watch a movie ===");
+        this.lights.dim(10);
+        this.screen.down();
+        this.projector.turnOn();
+        this.projector.wideScreenMode();
+        this.amp.turnOn();
+        this.amp.setSurroundSound();
+        this.amp.setVolume(50);
+        this.dvd.turnOn();
+        this.dvd.play(movie);
+        console.log("=================================\n");
+    }
+
+    endMovie(): void {
+        console.log("\n=== Shutting down theater ===");
+        this.dvd.stop();
+        this.dvd.eject();
+        this.dvd.turnOff();
+        this.amp.turnOff();
+        this.projector.turnOff();
+        this.screen.up();
+        this.lights.on();
+        console.log("============================\n");
+    }
+}
+
+// Usage
+const homeTheater = new HomeTheaterFacade(
+    new Amplifier(),
+    new DVDPlayer(),
+    new Projector(),
+    new Lights(),
+    new Screen()
+);
+
+homeTheater.watchMovie("Inception");
+// Complex sequence executed with one method call
+
+homeTheater.endMovie();
+// Another complex sequence simplified</code></pre>
+                </div>
+
+                <h4>When to Use</h4>
+                <ul>
+                    <li>Provide simple interface to complex subsystem</li>
+                    <li>Decouple subsystem from clients and other subsystems</li>
+                    <li>Layer your subsystems (facade as entry point to each layer)</li>
+                </ul>
+            </div>
+
+            <div class="content-section">
+                <h3>7. Flyweight Pattern</h3>
+                
+                <h4>Intent</h4>
+                <p>Use sharing to support large numbers of fine-grained objects efficiently by sharing common state.</p>
+
+                <h4>Problem</h4>
+                <p>Your application needs to create a huge number of similar objects, consuming too much memory.</p>
+
+                <div class="example-box">
+                    <strong>Example: Text Editor Character Rendering</strong>
+                    <pre><code>// Flyweight: Intrinsic state (shared)
+class CharacterStyle {
+    constructor(
+        public font: string,
+        public size: number,
+        public color: string
+    ) {}
+
+    render(char: string, position: { x: number, y: number }): void {
+        console.log(
+            `Rendering '${char}' at (${position.x}, ${position.y}) ` +
+            `with ${this.font} ${this.size}pt ${this.color}`
+        );
+    }
+}
+
+// Flyweight Factory
+class CharacterStyleFactory {
+    private styles: Map<string, CharacterStyle> = new Map();
+
+    getStyle(font: string, size: number, color: string): CharacterStyle {
+        const key = `${font}-${size}-${color}`;
+        
+        if (!this.styles.has(key)) {
+            console.log(`Creating new style: ${key}`);
+            this.styles.set(key, new CharacterStyle(font, size, color));
+        }
+        
+        return this.styles.get(key)!;
+    }
+
+    getTotalStyles(): number {
+        return this.styles.size;
+    }
+}
+
+// Context: Extrinsic state (unique per character)
+class Character {
+    constructor(
+        private char: string,
+        private position: { x: number, y: number },
+        private style: CharacterStyle
+    ) {}
+
+    render(): void {
+        this.style.render(this.char, this.position);
+    }
+}
+
+// Usage
+const factory = new CharacterStyleFactory();
+const characters: Character[] = [];
+
+// Document with repeated styles
+const text = "Hello World";
+let x = 0;
+
+for (const char of text) {
+    // Most characters share the same style
+    const style = factory.getStyle("Arial", 12, "black");
+    characters.push(new Character(char, { x: x++, y: 0 }, style));
+}
+
+// Some characters with different style
+const style2 = factory.getStyle("Arial", 16, "red");
+characters.push(new Character('!', { x: x++, y: 0 }, style2));
+
+console.log(`\nTotal characters: ${characters.length}`);
+console.log(`Total unique styles (flyweights): ${factory.getTotalStyles()}`);
+// Only 2 style objects created despite 12 characters
+
+// Render all
+characters.forEach(char => char.render());
+
+// Memory savings: Instead of 12 style objects (12 * 3 properties),
+// we have only 2 style objects (2 * 3 properties) shared by all characters</code></pre>
+                </div>
+
+                <h4>When to Use</h4>
+                <ul>
+                    <li>Application uses large number of objects</li>
+                    <li>Storage costs are high due to quantity of objects</li>
+                    <li>Most object state can be made extrinsic (context-dependent)</li>
+                    <li>Many groups of objects can share relatively few flyweights</li>
+                </ul>
+            </div>
+
+            <div class="content-section">
+                <h3>8. Proxy Pattern</h3>
+                
+                <h4>Intent</h4>
+                <p>Provide a surrogate or placeholder for another object to control access to it.</p>
+
+                <h4>Types of Proxies</h4>
+                <ul>
+                    <li><strong>Virtual Proxy:</strong> Delay expensive object creation until needed</li>
+                    <li><strong>Protection Proxy:</strong> Control access based on permissions</li>
+                    <li><strong>Remote Proxy:</strong> Represent object in different address space</li>
+                    <li><strong>Caching Proxy:</strong> Cache results of expensive operations</li>
+                </ul>
+
+                <div class="example-box">
+                    <strong>Example: Image Loading Proxy</strong>
+                    <pre><code>// Subject interface
+interface Image {
+    display(): void;
+}
+
+// Real subject: Expensive to create
+class RealImage implements Image {
+    private filename: string;
+
+    constructor(filename: string) {
+        this.filename = filename;
+        this.loadFromDisk();
+    }
+
+    private loadFromDisk(): void {
+        console.log(`Loading image from disk: ${this.filename}`);
+        // Simulate expensive operation
+    }
+
+    display(): void {
+        console.log(`Displaying image: ${this.filename}`);
+    }
+}
+
+// Proxy: Controls access to RealImage
+class ImageProxy implements Image {
+    private realImage: RealImage | null = null;
+    private filename: string;
+
+    constructor(filename: string) {
+        this.filename = filename;
+    }
+
+    display(): void {
+        // Lazy initialization: create real object only when needed
+        if (this.realImage === null) {
+            this.realImage = new RealImage(this.filename);
+        }
+        this.realImage.display();
+    }
+}
+
+// Usage
+console.log("Creating image proxies...");
+const image1 = new ImageProxy("photo1.jpg");
+const image2 = new ImageProxy("photo2.jpg");
+console.log("Proxies created (images not loaded yet)\n");
+
+console.log("First display call:");
+image1.display();
+// Loading image from disk: photo1.jpg
+// Displaying image: photo1.jpg
+
+console.log("\nSecond display call:");
+image1.display();
+// Displaying image: photo1.jpg (no loading, already cached)
+
+console.log("\nDisplay second image:");
+image2.display();
+// Loading image from disk: photo2.jpg
+// Displaying image: photo2.jpg</code></pre>
+                </div>
+
+                <div class="example-box">
+                    <strong>Example: Protection Proxy</strong>
+                    <pre><code>interface BankAccount {
+    deposit(amount: number): void;
+    withdraw(amount: number): void;
+    getBalance(): number;
+}
+
+class RealBankAccount implements BankAccount {
+    private balance: number = 0;
+
+    deposit(amount: number): void {
+        this.balance += amount;
+        console.log(`Deposited $${amount}. Balance: $${this.balance}`);
+    }
+
+    withdraw(amount: number): void {
+        if (amount <= this.balance) {
+            this.balance -= amount;
+            console.log(`Withdrew $${amount}. Balance: $${this.balance}`);
+        } else {
+            console.log("Insufficient funds");
+        }
+    }
+
+    getBalance(): number {
+        return this.balance;
+    }
+}
+
+class ProtectedBankAccount implements BankAccount {
+    private realAccount: RealBankAccount;
+    private owner: string;
+    private currentUser: string;
+
+    constructor(owner: string, currentUser: string) {
+        this.realAccount = new RealBankAccount();
+        this.owner = owner;
+        this.currentUser = currentUser;
+    }
+
+    private checkAccess(): boolean {
+        if (this.currentUser !== this.owner) {
+            console.log(`Access denied: ${this.currentUser} is not the owner`);
+            return false;
+        }
+        return true;
+    }
+
+    deposit(amount: number): void {
+        // Anyone can deposit
+        this.realAccount.deposit(amount);
+    }
+
+    withdraw(amount: number): void {
+        // Only owner can withdraw
+        if (this.checkAccess()) {
+            this.realAccount.withdraw(amount);
+        }
+    }
+
+    getBalance(): number {
+        // Only owner can check balance
+        if (this.checkAccess()) {
+            return this.realAccount.getBalance();
+        }
+        return 0;
+    }
+}
+
+// Usage
+const aliceAccount = new ProtectedBankAccount("Alice", "Alice");
+aliceAccount.deposit(1000);  // Allowed
+aliceAccount.withdraw(200);  // Allowed
+console.log(`Balance: $${aliceAccount.getBalance()}`); // Allowed
+
+const bobTryingAliceAccount = new ProtectedBankAccount("Alice", "Bob");
+bobTryingAliceAccount.deposit(500);   // Allowed (anyone can deposit)
+bobTryingAliceAccount.withdraw(100);  // Access denied
+bobTryingAliceAccount.getBalance();   // Access denied</code></pre>
+                </div>
+
+                <h4>When to Use</h4>
+                <ul>
+                    <li>Lazy initialization (virtual proxy) for expensive objects</li>
+                    <li>Access control (protection proxy)</li>
+                    <li>Local representative for remote object (remote proxy)</li>
+                    <li>Cache expensive operation results</li>
+                </ul>
+            </div>
+
+            <div class="practice-problems">
+                <h3>Practice Problems</h3>
+                
+                <div class="problem">
+                    <p><strong>Problem 1:</strong> Which pattern would you use for each scenario?</p>
+                    <p>a) You need to make a third-party logging library work with your application's logging interface</p>
+                    <p>b) You want to add features like scrollbars and borders to window components without creating many subclasses</p>
+                    <p>c) You have thousands of tree objects in a game, each with the same 3D model but different positions</p>
+                    
+                    <button class="toggle-solution">Show Solution</button>
+                    <div class="solution" style="display: none;">
+                        <p><strong>Solution:</strong></p>
+                        <p>a) <strong>Adapter Pattern</strong> - Converts the third-party interface to match your interface</p>
+                        <p>b) <strong>Decorator Pattern</strong> - Dynamically adds features like scrollbars and borders to window components</p>
+                        <p>c) <strong>Flyweight Pattern</strong> - Shares the 3D model (intrinsic state) among thousands of trees while keeping position (extrinsic state) separate</p>
+                    </div>
+                </div>
+
+                <div class="problem">
+                    <p><strong>Problem 2:</strong> Implement a composite pattern for a company organizational structure with Employees and Managers, where each has a salary and managers can have subordinates.</p>
+                    
+                    <button class="toggle-solution">Show Solution</button>
+                    <div class="solution" style="display: none;">
+                        <pre><code>interface OrganizationComponent {
+    getName(): string;
+    getSalary(): number;
+    getTotalSalary(): number;
+    display(indent: string): void;
+}
+
+class Employee implements OrganizationComponent {
+    constructor(private name: string, private salary: number, private position: string) {}
+
+    getName(): string { return this.name; }
+    getSalary(): number { return this.salary; }
+    getTotalSalary(): number { return this.salary; }
+
+    display(indent: string = ""): void {
+        console.log(`${indent}👤 ${this.name} - ${this.position} ($${this.salary})`);
+    }
+}
+
+class Manager implements OrganizationComponent {
+    private subordinates: OrganizationComponent[] = [];
+
+    constructor(private name: string, private salary: number) {}
+
+    add(employee: OrganizationComponent): void {
+        this.subordinates.push(employee);
+    }
+
+    remove(employee: OrganizationComponent): void {
+        const index = this.subordinates.indexOf(employee);
+        if (index !== -1) this.subordinates.splice(index, 1);
+    }
+
+    getName(): string { return this.name; }
+    getSalary(): number { return this.salary; }
+    
+    getTotalSalary(): number {
+        const subordinateTotal = this.subordinates.reduce(
+            (sum, emp) => sum + emp.getTotalSalary(), 0
+        );
+        return this.salary + subordinateTotal;
+    }
+
+    display(indent: string = ""): void {
+        console.log(`${indent}👨‍💼 ${this.name} - Manager ($${this.salary})`);
+        console.log(`${indent}  Team total: $${this.getTotalSalary()}`);
+        this.subordinates.forEach(emp => emp.display(indent + "    "));
+    }
+}
+
+// Usage
+const ceo = new Manager("Alice", 200000);
+const cto = new Manager("Bob", 150000);
+const cfo = new Manager("Carol", 150000);
+
+cto.add(new Employee("Dave", 100000, "Senior Developer"));
+cto.add(new Employee("Eve", 90000, "Developer"));
+cto.add(new Employee("Frank", 85000, "Developer"));
+
+cfo.add(new Employee("Grace", 80000, "Accountant"));
+cfo.add(new Employee("Henry", 75000, "Accountant"));
+
+ceo.add(cto);
+ceo.add(cfo);
+ceo.add(new Employee("Ivy", 70000, "Executive Assistant"));
+
+ceo.display();
+console.log(`\nTotal company payroll: $${ceo.getTotalSalary()}`);</code></pre>
+                    </div>
+                </div>
+
+                <div class="problem">
+                    <p><strong>Problem 3:</strong> Create a caching proxy for an expensive database query operation.</p>
+                    
+                    <button class="toggle-solution">Show Solution</button>
+                    <div class="solution" style="display: none;">
+                        <pre><code>interface Database {
+    query(sql: string): any[];
+}
+
+class RealDatabase implements Database {
+    query(sql: string): any[] {
+        console.log(`Executing expensive query: ${sql}`);
+        // Simulate database delay
+        const delay = Math.random() * 1000;
+        console.log(`Query took ${delay.toFixed(0)}ms`);
+        // Simulate result
+        return [{ id: 1, name: "Result" }];
+    }
+}
+
+class CachingDatabaseProxy implements Database {
+    private realDb: RealDatabase;
+    private cache: Map<string, { data: any[], timestamp: number }>;
+    private cacheDuration: number; // milliseconds
+
+    constructor(cacheDuration: number = 60000) {
+        this.realDb = new RealDatabase();
+        this.cache = new Map();
+        this.cacheDuration = cacheDuration;
+    }
+
+    query(sql: string): any[] {
+        const now = Date.now();
+        const cached = this.cache.get(sql);
+
+        if (cached && (now - cached.timestamp < this.cacheDuration)) {
+            console.log(`Cache HIT for: ${sql}`);
+            return cached.data;
+        }
+
+        console.log(`Cache MISS for: ${sql}`);
+        const result = this.realDb.query(sql);
+        this.cache.set(sql, { data: result, timestamp: now });
+        return result;
+    }
+
+    clearCache(): void {
+        console.log("Cache cleared");
+        this.cache.clear();
+    }
+}
+
+// Usage
+const db = new CachingDatabaseProxy(5000); // 5 second cache
+
+db.query("SELECT * FROM users");        // Cache MISS, executes query
+db.query("SELECT * FROM users");        // Cache HIT, instant
+db.query("SELECT * FROM products");     // Cache MISS, executes query
+db.query("SELECT * FROM users");        // Cache HIT, instant
+
+setTimeout(() => {
+    db.query("SELECT * FROM users");    // Still cache HIT if within 5s
+}, 3000);
+
+setTimeout(() => {
+    db.query("SELECT * FROM users");    // Cache MISS after 5s expired
+}, 6000);</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="key-takeaways">
+                <h3>Key Takeaways</h3>
+                <ul>
+                    <li><strong>Adapter:</strong> Converts interfaces - use for integrating incompatible components</li>
+                    <li><strong>Bridge:</strong> Separates abstraction from implementation - prevents explosion of subclasses</li>
+                    <li><strong>Composite:</strong> Tree structures for part-whole hierarchies - treat individuals and groups uniformly</li>
+                    <li><strong>Decorator:</strong> Add responsibilities dynamically - flexible alternative to subclassing</li>
+                    <li><strong>Facade:</strong> Simplifies complex subsystems - provides easy-to-use interface</li>
+                    <li><strong>Flyweight:</strong> Shares objects efficiently - reduces memory for large quantities of similar objects</li>
+                    <li><strong>Proxy:</strong> Controls access to objects - lazy loading, access control, caching</li>
+                    <li>Structural patterns focus on composition and relationships between objects</li>
+                    <li>Choose the right pattern based on your specific problem (interface mismatch, complexity, memory, access control)</li>
+                </ul>
+            </div>
+
+            <div class="lesson-navigation">
+                <a href="04-creational-patterns.html" class="nav-btn">← Previous: Creational Patterns</a>
+                <a href="06-behavioral-patterns.html" class="nav-btn">Next: Behavioral Patterns →</a>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../js/course.js"></script>
+</body>
+</html>

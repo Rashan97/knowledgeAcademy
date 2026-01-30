@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 7: C++ Advanced - Engineering Academy</title>
+    <link rel="stylesheet" href="../../../css/styles.css">
+    <link rel="stylesheet" href="../../../css/course-styles/course.css">
+</head>
+<body>
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <h1><a href="../../../index.html" style="color: inherit; text-decoration: none;">🎓 Engineering Academy</a></h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../index.html">Course Overview</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section class="course-header">
+        <div class="container">
+            <h1>⌨️ Programming</h1>
+            <p>Lesson 7: C++ Advanced</p>
+        </div>
+    </section>
+
+    <div class="course-container">
+        <aside class="course-sidebar">
+            <h3>Course Modules</h3>
+            <ul class="lesson-list">
+                <li><a href="../index.html"><span class="lesson-number">📚</span>Course Overview</a></li>
+                <li><a href="01-programming-fundamentals.html" class="completed"><span class="lesson-number">1</span>Programming Fundamentals</a></li>
+                <li><a href="02-python-basics.html" class="completed"><span class="lesson-number">2</span>Python Basics</a></li>
+                <li><a href="03-python-advanced.html" class="completed"><span class="lesson-number">3</span>Python Advanced</a></li>
+                <li><a href="04-javascript-basics.html" class="completed"><span class="lesson-number">4</span>JavaScript Basics</a></li>
+                <li><a href="05-javascript-modern.html" class="completed"><span class="lesson-number">5</span>Modern JavaScript</a></li>
+                <li><a href="06-cpp-basics.html" class="completed"><span class="lesson-number">6</span>C++ Basics</a></li>
+                <li><a href="07-cpp-advanced.html" class="active"><span class="lesson-number">7</span>C++ Advanced</a></li>
+                <li><a href="08-oop-principles.html"><span class="lesson-number">8</span>OOP Principles</a></li>
+                <li><a href="09-data-structures.html"><span class="lesson-number">9</span>Data Structures</a></li>
+                <li><a href="10-algorithms.html"><span class="lesson-number">10</span>Algorithms</a></li>
+                <li><a href="11-debugging.html"><span class="lesson-number">11</span>Debugging & Testing</a></li>
+                <li><a href="12-best-practices.html"><span class="lesson-number">12</span>Best Practices</a></li>
+            </ul>
+        </aside>
+
+        <main class="course-content">
+            <div class="lesson-header">
+                <h2>Lesson 7: C++ Advanced</h2>
+                <div class="lesson-meta">
+                    <span>📖 120 min read</span>
+                    <span>📊 Advanced</span>
+                </div>
+            </div>
+
+            <div class="lesson-content">
+                <h3>Modern C++ Features</h3>
+                <p>
+                    Modern C++ (C++11 and later) introduced powerful features that make code safer, more expressive, 
+                    and easier to maintain. This lesson covers templates, smart pointers, move semantics, lambdas, 
+                    and essential modern features that every C++ developer should know.
+                </p>
+
+                <div class="info-box note">
+                    <h4>📌 The Evolution of C++</h4>
+                    <p>
+                        C++11, C++14, C++17, and C++20 transformed C++ from a low-level language into a modern, 
+                        high-level systems language with automatic memory management, type inference, and functional 
+                        programming features while maintaining its performance advantages.
+                    </p>
+                </div>
+
+                <h3>Templates</h3>
+
+                <h4>Function Templates</h4>
+                <p>Templates enable generic programming by allowing functions and classes to work with any data type.</p>
+                <div class="code-block" data-language="cpp">
+<code><span class="preprocessor">#include &lt;iostream&gt;</span>
+<span class="preprocessor">#include &lt;string&gt;</span>
+<span class="keyword">using namespace</span> std;
+
+<span class="comment">// Function template - works with any type</span>
+<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;
+T <span class="function">getMax</span>(T a, T b) {
+    <span class="keyword">return</span> (a &gt; b) ? a : b;
+}
+
+<span class="comment">// Template with multiple type parameters</span>
+<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> U&gt;
+<span class="keyword">auto</span> <span class="function">add</span>(T a, U b) -&gt; <span class="keyword">decltype</span>(a + b) {
+    <span class="keyword">return</span> a + b;
+}
+
+<span class="keyword">int</span> <span class="function">main</span>() {
+    cout &lt;&lt; getMax(<span class="number">10</span>, <span class="number">20</span>) &lt;&lt; endl;           <span class="comment">// 20 (int)</span>
+    cout &lt;&lt; getMax(<span class="number">3.14</span>, <span class="number">2.71</span>) &lt;&lt; endl;       <span class="comment">// 3.14 (double)</span>
+    cout &lt;&lt; getMax(string(<span class="string">"abc"</span>), string(<span class="string">"xyz"</span>)) &lt;&lt; endl;  <span class="comment">// "xyz"</span>
+    
+    cout &lt;&lt; add(<span class="number">5</span>, <span class="number">3.14</span>) &lt;&lt; endl;            <span class="comment">// 8.14 (mixed types)</span>
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+</code>
+                </div>
+
+                <h4>Class Templates</h4>
+                <div class="code-block" data-language="cpp">
+<code><span class="comment">// Generic container class</span>
+<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;
+<span class="keyword">class</span> <span class="class-name">Box</span> {
+<span class="keyword">private</span>:
+    T value;
+<span class="keyword">public</span>:
+    Box(T v) : value(v) {}
+    
+    T <span class="function">getValue</span>() { <span class="keyword">return</span> value; }
+    <span class="keyword">void</span> <span class="function">setValue</span>(T v) { value = v; }
+};
+
+<span class="keyword">int</span> <span class="function">main</span>() {
+    Box&lt;<span class="keyword">int</span>&gt; intBox(<span class="number">42</span>);
+    Box&lt;string&gt; strBox(<span class="string">"Hello"</span>);
+    
+    cout &lt;&lt; intBox.getValue() &lt;&lt; endl;  <span class="comment">// 42</span>
+    cout &lt;&lt; strBox.getValue() &lt;&lt; endl;  <span class="comment">// Hello</span>
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+</code>
+                </div>
+
+                <h4>Template Specialization</h4>
+                <div class="code-block" data-language="cpp">
+<code><span class="comment">// General template</span>
+<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;
+<span class="keyword">class</span> <span class="class-name">Printer</span> {
+<span class="keyword">public</span>:
+    <span class="keyword">void</span> <span class="function">print</span>(T value) {
+        cout &lt;&lt; <span class="string">"Value: "</span> &lt;&lt; value &lt;&lt; endl;
+    }
+};
+
+<span class="comment">// Specialization for bool type</span>
+<span class="keyword">template</span> &lt;&gt;
+<span class="keyword">class</span> <span class="class-name">Printer</span>&lt;<span class="keyword">bool</span>&gt; {
+<span class="keyword">public</span>:
+    <span class="keyword">void</span> <span class="function">print</span>(<span class="keyword">bool</span> value) {
+        cout &lt;&lt; <span class="string">"Boolean: "</span> &lt;&lt; (value ? <span class="string">"true"</span> : <span class="string">"false"</span>) &lt;&lt; endl;
+    }
+};
+</code>
+                </div>
+
+                <h3>Smart Pointers</h3>
+                <p>Smart pointers automatically manage memory, preventing leaks and dangling pointer errors.</p>
+
+                <h4>unique_ptr - Exclusive Ownership</h4>
+                <div class="code-block" data-language="cpp">
+<code><span class="preprocessor">#include &lt;memory&gt;</span>
+<span class="preprocessor">#include &lt;iostream&gt;</span>
+<span class="keyword">using namespace</span> std;
+
+<span class="keyword">class</span> <span class="class-name">Resource</span> {
+<span class="keyword">public</span>:
+    Resource() { cout &lt;&lt; <span class="string">"Resource created"</span> &lt;&lt; endl; }
+    ~Resource() { cout &lt;&lt; <span class="string">"Resource destroyed"</span> &lt;&lt; endl; }
+    <span class="keyword">void</span> <span class="function">use</span>() { cout &lt;&lt; <span class="string">"Using resource"</span> &lt;&lt; endl; }
+};
+
+<span class="keyword">int</span> <span class="function">main</span>() {
+    <span class="comment">// unique_ptr has exclusive ownership</span>
+    unique_ptr&lt;Resource&gt; ptr1 = make_unique&lt;Resource&gt;();
+    ptr1-&gt;use();
+    
+    <span class="comment">// Transfer ownership with std::move</span>
+    unique_ptr&lt;Resource&gt; ptr2 = move(ptr1);  <span class="comment">// ptr1 is now null</span>
+    
+    <span class="keyword">if</span> (!ptr1) {
+        cout &lt;&lt; <span class="string">"ptr1 is null"</span> &lt;&lt; endl;
+    }
+    
+    ptr2-&gt;use();
+    <span class="comment">// Resource automatically destroyed when ptr2 goes out of scope</span>
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+</code>
+                </div>
+
+                <h4>shared_ptr - Shared Ownership</h4>
+                <div class="code-block" data-language="cpp">
+<code><span class="preprocessor">#include &lt;memory&gt;</span>
+<span class="preprocessor">#include &lt;iostream&gt;</span>
+<span class="keyword">using namespace</span> std;
+
+<span class="keyword">int</span> <span class="function">main</span>() {
+    <span class="comment">// Multiple shared_ptrs can own the same resource</span>
+    shared_ptr&lt;<span class="keyword">int</span>&gt; ptr1 = make_shared&lt;<span class="keyword">int</span>&gt;(<span class="number">42</span>);
+    cout &lt;&lt; <span class="string">"Use count: "</span> &lt;&lt; ptr1.use_count() &lt;&lt; endl;  <span class="comment">// 1</span>
+    
+    {
+        shared_ptr&lt;<span class="keyword">int</span>&gt; ptr2 = ptr1;  <span class="comment">// Shared ownership</span>
+        shared_ptr&lt;<span class="keyword">int</span>&gt; ptr3 = ptr1;
+        cout &lt;&lt; <span class="string">"Use count: "</span> &lt;&lt; ptr1.use_count() &lt;&lt; endl;  <span class="comment">// 3</span>
+        cout &lt;&lt; <span class="string">"Value: "</span> &lt;&lt; *ptr2 &lt;&lt; endl;  <span class="comment">// 42</span>
+    }  <span class="comment">// ptr2 and ptr3 destroyed here</span>
+    
+    cout &lt;&lt; <span class="string">"Use count: "</span> &lt;&lt; ptr1.use_count() &lt;&lt; endl;  <span class="comment">// 1</span>
+    <span class="comment">// Memory freed when last shared_ptr is destroyed</span>
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+</code>
+                </div>
+
+                <h4>weak_ptr - Non-Owning Observer</h4>
+                <div class="code-block" data-language="cpp">
+<code><span class="comment">// weak_ptr breaks circular references</span>
+<span class="keyword">class</span> <span class="class-name">Node</span> {
+<span class="keyword">public</span>:
+    shared_ptr&lt;Node&gt; next;
+    weak_ptr&lt;Node&gt; prev;  <span class="comment">// Weak to prevent circular reference</span>
+    <span class="keyword">int</span> data;
+    
+    Node(<span class="keyword">int</span> val) : data(val) {}
+    ~Node() { cout &lt;&lt; <span class="string">"Node "</span> &lt;&lt; data &lt;&lt; <span class="string">" destroyed"</span> &lt;&lt; endl; }
+};
+
+<span class="keyword">int</span> <span class="function">main</span>() {
+    <span class="keyword">auto</span> node1 = make_shared&lt;Node&gt;(<span class="number">1</span>);
+    <span class="keyword">auto</span> node2 = make_shared&lt;Node&gt;(<span class="number">2</span>);
+    
+    node1-&gt;next = node2;
+    node2-&gt;prev = node1;  <span class="comment">// Weak pointer - no ownership</span>
+    
+    <span class="comment">// Check if weak_ptr is still valid</span>
+    <span class="keyword">if</span> (<span class="keyword">auto</span> locked = node2-&gt;prev.lock()) {
+        cout &lt;&lt; <span class="string">"Previous node: "</span> &lt;&lt; locked-&gt;data &lt;&lt; endl;
+    }
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+</code>
+                </div>
+
+                <div class="info-box important">
+                    <h4>⚠️ Smart Pointer Best Practices</h4>
+                    <ul>
+                        <li>Prefer <code>unique_ptr</code> by default - it's the fastest</li>
+                        <li>Use <code>shared_ptr</code> only when you need shared ownership</li>
+                        <li>Use <code>make_unique</code> and <code>make_shared</code> instead of raw <code>new</code></li>
+                        <li>Use <code>weak_ptr</code> to break circular references</li>
+                        <li>Never delete a raw pointer that a smart pointer owns</li>
+                    </ul>
+                </div>
+
+                <h3>Move Semantics and Rvalue References</h3>
+                <p>Move semantics enable efficient transfer of resources instead of copying.</p>
+
+                <div class="code-block" data-language="cpp">
+<code><span class="preprocessor">#include &lt;iostream&gt;</span>
+<span class="preprocessor">#include &lt;vector&gt;</span>
+<span class="preprocessor">#include &lt;utility&gt;</span>  <span class="comment">// For std::move</span>
+<span class="keyword">using namespace</span> std;
+
+<span class="keyword">class</span> <span class="class-name">Buffer</span> {
+<span class="keyword">private</span>:
+    <span class="keyword">int</span>* data;
+    size_t size;
+<span class="keyword">public</span>:
+    <span class="comment">// Constructor</span>
+    Buffer(size_t s) : size(s), data(<span class="keyword">new</span> <span class="keyword">int</span>[s]) {
+        cout &lt;&lt; <span class="string">"Constructor: Allocated "</span> &lt;&lt; size &lt;&lt; <span class="string">" ints"</span> &lt;&lt; endl;
+    }
+    
+    <span class="comment">// Copy constructor (expensive)</span>
+    Buffer(<span class="keyword">const</span> Buffer&amp; other) : size(other.size), data(<span class="keyword">new</span> <span class="keyword">int</span>[other.size]) {
+        cout &lt;&lt; <span class="string">"Copy constructor: Copying "</span> &lt;&lt; size &lt;&lt; <span class="string">" ints"</span> &lt;&lt; endl;
+        copy(other.data, other.data + size, data);
+    }
+    
+    <span class="comment">// Move constructor (efficient - steals resources)</span>
+    Buffer(Buffer&amp;&amp; other) <span class="keyword">noexcept</span> : size(other.size), data(other.data) {
+        cout &lt;&lt; <span class="string">"Move constructor: Transferred "</span> &lt;&lt; size &lt;&lt; <span class="string">" ints"</span> &lt;&lt; endl;
+        other.data = <span class="keyword">nullptr</span>;
+        other.size = <span class="number">0</span>;
+    }
+    
+    <span class="comment">// Move assignment operator</span>
+    Buffer&amp; <span class="keyword">operator</span>=<span class="function"></span>(Buffer&amp;&amp; other) <span class="keyword">noexcept</span> {
+        <span class="keyword">if</span> (<span class="keyword">this</span> != &amp;other) {
+            <span class="keyword">delete</span>[] data;
+            data = other.data;
+            size = other.size;
+            other.data = <span class="keyword">nullptr</span>;
+            other.size = <span class="number">0</span>;
+        }
+        <span class="keyword">return</span> *<span class="keyword">this</span>;
+    }
+    
+    ~Buffer() {
+        <span class="keyword">delete</span>[] data;
+        cout &lt;&lt; <span class="string">"Destructor"</span> &lt;&lt; endl;
+    }
+};
+
+<span class="keyword">int</span> <span class="function">main</span>() {
+    Buffer buf1(<span class="number">1000</span>);
+    Buffer buf2 = buf1;           <span class="comment">// Copy constructor</span>
+    Buffer buf3 = move(buf1);     <span class="comment">// Move constructor - buf1 is now empty</span>
+    
+    vector&lt;<span class="keyword">int</span>&gt; vec1 = {<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>};
+    vector&lt;<span class="keyword">int</span>&gt; vec2 = move(vec1);  <span class="comment">// Transfer ownership - vec1 is now empty</span>
+    
+    cout &lt;&lt; <span class="string">"vec1 size: "</span> &lt;&lt; vec1.size() &lt;&lt; endl;  <span class="comment">// 0</span>
+    cout &lt;&lt; <span class="string">"vec2 size: "</span> &lt;&lt; vec2.size() &lt;&lt; endl;  <span class="comment">// 5</span>
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+</code>
+                </div>
+
+                <h3>Lambda Expressions</h3>
+                <p>Lambdas are anonymous functions that can capture variables from their surrounding scope.</p>
+
+                <h4>Basic Lambda Syntax</h4>
+                <div class="code-block" data-language="cpp">
+<code><span class="preprocessor">#include &lt;iostream&gt;</span>
+<span class="preprocessor">#include &lt;vector&gt;</span>
+<span class="preprocessor">#include &lt;algorithm&gt;</span>
+<span class="keyword">using namespace</span> std;
+
+<span class="keyword">int</span> <span class="function">main</span>() {
+    <span class="comment">// Basic lambda: [capture](parameters) { body }</span>
+    <span class="keyword">auto</span> square = [](<span class="keyword">int</span> x) { <span class="keyword">return</span> x * x; };
+    cout &lt;&lt; square(<span class="number">5</span>) &lt;&lt; endl;  <span class="comment">// 25</span>
+    
+    <span class="comment">// Lambda with explicit return type</span>
+    <span class="keyword">auto</span> divide = [](<span class="keyword">double</span> a, <span class="keyword">double</span> b) -&gt; <span class="keyword">double</span> {
+        <span class="keyword">if</span> (b == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;
+        <span class="keyword">return</span> a / b;
+    };
+    
+    <span class="comment">// Using lambda with STL algorithms</span>
+    vector&lt;<span class="keyword">int</span>&gt; numbers = {<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>};
+    
+    <span class="comment">// Count even numbers</span>
+    <span class="keyword">int</span> evenCount = count_if(numbers.begin(), numbers.end(), 
+                                [](<span class="keyword">int</span> n) { <span class="keyword">return</span> n % <span class="number">2</span> == <span class="number">0</span>; });
+    cout &lt;&lt; <span class="string">"Even numbers: "</span> &lt;&lt; evenCount &lt;&lt; endl;  <span class="comment">// 2</span>
+    
+    <span class="comment">// Transform with lambda</span>
+    transform(numbers.begin(), numbers.end(), numbers.begin(),
+              [](<span class="keyword">int</span> n) { <span class="keyword">return</span> n * <span class="number">2</span>; });
+    <span class="comment">// numbers is now {2, 4, 6, 8, 10}</span>
+    
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+</code>
+                </div>
+
+                <h4>Lambda Captures</h4>
+                <div class="code-block" data-language="cpp">
+<code><span class="keyword">int</span> <span class="function">main</span>() {
+    <span class="keyword">int</span> x = <span class="number">10</span>;
+    <span class="keyword">int</span> y = <span class="number">20</span>;
+    
+    <span class="comment">// [=] capture all by value</span>
+    <span class="keyword">auto</span> lambda1 = [=]() { <span class="keyword">return</span> x + y; };
+    cout &lt;&lt; lambda1() &lt;&lt; endl;  <span class="comment">// 30</span>
+    
+    <span class="comment">// [&amp;] capture all by reference</span>
+    <span class="keyword">auto</span> lambda2 = [&amp;]() { x = <span class="number">100</span>; y = <span class="number">200</span>; };
+    lambda2();
+    cout &lt;&lt; x &lt;&lt; <span class="string">", "</span> &lt;&lt; y &lt;&lt; endl;  <span class="comment">// 100, 200</span>
+    
+    <span class="comment">// [x, &amp;y] capture x by value, y by reference</span>
+    <span class="keyword">auto</span> lambda3 = [x, &amp;y]() { y = x + <span class="number">50</span>; };
+    lambda3();
+    cout &lt;&lt; y &lt;&lt; endl;  <span class="comment">// 150</span>
+    
+    <span class="comment">// [this] capture class members</span>
+    <span class="comment">// [x = expr] init capture (C++14)</span>
+    <span class="keyword">auto</span> lambda4 = [z = x + y]() { <span class="keyword">return</span> z * <span class="number">2</span>; };
+    
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+</code>
+                </div>
+
+                <h3>Modern C++11/14/17 Features</h3>
+
+                <h4>Auto Keyword - Type Deduction</h4>
+                <div class="code-block" data-language="cpp">
+<code><span class="preprocessor">#include &lt;vector&gt;</span>
+<span class="preprocessor">#include &lt;map&gt;</span>
+<span class="keyword">using namespace</span> std;
+
+<span class="keyword">int</span> <span class="function">main</span>() {
+    <span class="comment">// Type deduced from initializer</span>
+    <span class="keyword">auto</span> x = <span class="number">42</span>;              <span class="comment">// int</span>
+    <span class="keyword">auto</span> y = <span class="number">3.14</span>;            <span class="comment">// double</span>
+    <span class="keyword">auto</span> name = <span class="string">"Alice"</span>;       <span class="comment">// const char*</span>
+    <span class="keyword">auto</span> vec = vector&lt;<span class="keyword">int</span>&gt;{<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>};
+    
+    <span class="comment">// Especially useful with complex types</span>
+    map&lt;string, vector&lt;<span class="keyword">int</span>&gt;&gt; data;
+    <span class="keyword">auto</span> it = data.begin();  <span class="comment">// Instead of map&lt;string, vector&lt;int&gt;&gt;::iterator</span>
+    
+    <span class="comment">// Auto with functions (C++14)</span>
+    <span class="keyword">auto</span> add = [](<span class="keyword">auto</span> a, <span class="keyword">auto</span> b) { <span class="keyword">return</span> a + b; };
+    
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+</code>
+                </div>
+
+                <h4>Range-Based For Loops</h4>
+                <div class="code-block" data-language="cpp">
+<code><span class="preprocessor">#include &lt;vector&gt;</span>
+<span class="preprocessor">#include &lt;map&gt;</span>
+<span class="keyword">using namespace</span> std;
+
+<span class="keyword">int</span> <span class="function">main</span>() {
+    vector&lt;<span class="keyword">int</span>&gt; numbers = {<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>};
+    
+    <span class="comment">// Range-based for loop (read-only)</span>
+    <span class="keyword">for</span> (<span class="keyword">auto</span> n : numbers) {
+        cout &lt;&lt; n &lt;&lt; <span class="string">" "</span>;
+    }
+    cout &lt;&lt; endl;
+    
+    <span class="comment">// By reference (modifiable)</span>
+    <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; n : numbers) {
+        n *= <span class="number">2</span>;  <span class="comment">// Doubles each element</span>
+    }
+    
+    <span class="comment">// Const reference (efficient, read-only)</span>
+    <span class="keyword">for</span> (<span class="keyword">const auto</span>&amp; n : numbers) {
+        cout &lt;&lt; n &lt;&lt; <span class="string">" "</span>;
+    }
+    
+    <span class="comment">// Works with maps too</span>
+    map&lt;string, <span class="keyword">int</span>&gt; ages = {<span class="string">"Alice"</span>, <span class="number">25</span>}, {<span class="string">"Bob"</span>, <span class="number">30</span>}};
+    <span class="keyword">for</span> (<span class="keyword">const auto</span>&amp; [name, age] : ages) {  <span class="comment">// Structured binding (C++17)</span>
+        cout &lt;&lt; name &lt;&lt; <span class="string">": "</span> &lt;&lt; age &lt;&lt; endl;
+    }
+    
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+</code>
+                </div>
+
+                <h4>Constexpr - Compile-Time Computation</h4>
+                <div class="code-block" data-language="cpp">
+<code><span class="comment">// constexpr variables are computed at compile time</span>
+<span class="keyword">constexpr</span> <span class="keyword">int</span> <span class="function">factorial</span>(<span class="keyword">int</span> n) {
+    <span class="keyword">return</span> (n &lt;= <span class="number">1</span>) ? <span class="number">1</span> : n * factorial(n - <span class="number">1</span>);
+}
+
+<span class="keyword">constexpr</span> <span class="keyword">int</span> <span class="function">square</span>(<span class="keyword">int</span> x) {
+    <span class="keyword">return</span> x * x;
+}
+
+<span class="keyword">int</span> <span class="function">main</span>() {
+    <span class="comment">// Computed at compile time!</span>
+    <span class="keyword">constexpr</span> <span class="keyword">int</span> result = factorial(<span class="number">5</span>);  <span class="comment">// 120</span>
+    <span class="keyword">constexpr</span> <span class="keyword">int</span> area = square(<span class="number">10</span>);      <span class="comment">// 100</span>
+    
+    <span class="comment">// Can use as array size (needs compile-time constant)</span>
+    <span class="keyword">int</span> array[factorial(<span class="number">4</span>)];  <span class="comment">// Array of size 24</span>
+    
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+</code>
+                </div>
+
+                <h3>RAII Pattern</h3>
+                <p>Resource Acquisition Is Initialization - tying resource lifetime to object lifetime.</p>
+
+                <div class="code-block" data-language="cpp">
+<code><span class="preprocessor">#include &lt;iostream&gt;</span>
+<span class="preprocessor">#include &lt;fstream&gt;</span>
+<span class="preprocessor">#include &lt;mutex&gt;</span>
+<span class="keyword">using namespace</span> std;
+
+<span class="comment">// RAII for file handling</span>
+<span class="keyword">class</span> <span class="class-name">FileHandler</span> {
+<span class="keyword">private</span>:
+    ofstream file;
+<span class="keyword">public</span>:
+    FileHandler(<span class="keyword">const</span> string&amp; filename) {
+        file.open(filename);
+        <span class="keyword">if</span> (file.is_open()) {
+            cout &lt;&lt; <span class="string">"File opened"</span> &lt;&lt; endl;
+        }
+    }
+    
+    <span class="keyword">void</span> <span class="function">write</span>(<span class="keyword">const</span> string&amp; data) {
+        file &lt;&lt; data;
+    }
+    
+    ~FileHandler() {
+        <span class="keyword">if</span> (file.is_open()) {
+            file.close();
+            cout &lt;&lt; <span class="string">"File closed"</span> &lt;&lt; endl;
+        }
+    }
+};
+
+<span class="keyword">int</span> <span class="function">main</span>() {
+    {
+        FileHandler fh(<span class="string">"data.txt"</span>);
+        fh.write(<span class="string">"Hello, RAII!"</span>);
+        <span class="comment">// File automatically closed when fh goes out of scope</span>
+    }
+    
+    <span class="comment">// RAII with mutex (lock_guard)</span>
+    mutex mtx;
+    {
+        lock_guard&lt;mutex&gt; lock(mtx);  <span class="comment">// Acquires lock</span>
+        <span class="comment">// Critical section</span>
+        cout &lt;&lt; <span class="string">"Thread-safe operation"</span> &lt;&lt; endl;
+        <span class="comment">// Lock automatically released when lock goes out of scope</span>
+    }
+    
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+</code>
+                </div>
+
+                <h3>Exception Handling</h3>
+
+                <div class="code-block" data-language="cpp">
+<code><span class="preprocessor">#include &lt;iostream&gt;</span>
+<span class="preprocessor">#include &lt;stdexcept&gt;</span>
+<span class="keyword">using namespace</span> std;
+
+<span class="keyword">double</span> <span class="function">divide</span>(<span class="keyword">double</span> a, <span class="keyword">double</span> b) {
+    <span class="keyword">if</span> (b == <span class="number">0</span>) {
+        <span class="keyword">throw</span> invalid_argument(<span class="string">"Division by zero!"</span>);
+    }
+    <span class="keyword">return</span> a / b;
+}
+
+<span class="keyword">class</span> <span class="class-name">CustomException</span> : <span class="keyword">public</span> exception {
+<span class="keyword">public</span>:
+    <span class="keyword">const char</span>* <span class="function">what</span>() <span class="keyword">const noexcept</span> <span class="keyword">override</span> {
+        <span class="keyword">return</span> <span class="string">"Custom error occurred"</span>;
+    }
+};
+
+<span class="keyword">int</span> <span class="function">main</span>() {
+    <span class="keyword">try</span> {
+        cout &lt;&lt; divide(<span class="number">10</span>, <span class="number">2</span>) &lt;&lt; endl;   <span class="comment">// 5</span>
+        cout &lt;&lt; divide(<span class="number">10</span>, <span class="number">0</span>) &lt;&lt; endl;   <span class="comment">// Throws exception</span>
+        cout &lt;&lt; <span class="string">"This won't execute"</span> &lt;&lt; endl;
+    }
+    <span class="keyword">catch</span> (<span class="keyword">const</span> invalid_argument&amp; e) {
+        cerr &lt;&lt; <span class="string">"Error: "</span> &lt;&lt; e.what() &lt;&lt; endl;
+    }
+    <span class="keyword">catch</span> (<span class="keyword">const</span> exception&amp; e) {
+        cerr &lt;&lt; <span class="string">"General exception: "</span> &lt;&lt; e.what() &lt;&lt; endl;
+    }
+    <span class="keyword">catch</span> (...) {
+        cerr &lt;&lt; <span class="string">"Unknown exception"</span> &lt;&lt; endl;
+    }
+    
+    <span class="comment">// Multiple exceptions</span>
+    <span class="keyword">try</span> {
+        <span class="keyword">throw</span> CustomException();
+    }
+    <span class="keyword">catch</span> (<span class="keyword">const</span> CustomException&amp; e) {
+        cerr &lt;&lt; e.what() &lt;&lt; endl;
+    }
+    
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+</code>
+                </div>
+
+                <h3>Multithreading Basics</h3>
+
+                <h4>Creating and Joining Threads</h4>
+                <div class="code-block" data-language="cpp">
+<code><span class="preprocessor">#include &lt;iostream&gt;</span>
+<span class="preprocessor">#include &lt;thread&gt;</span>
+<span class="preprocessor">#include &lt;chrono&gt;</span>
+<span class="keyword">using namespace</span> std;
+
+<span class="keyword">void</span> <span class="function">printNumbers</span>(<span class="keyword">int</span> id, <span class="keyword">int</span> count) {
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; count; ++i) {
+        cout &lt;&lt; <span class="string">"Thread "</span> &lt;&lt; id &lt;&lt; <span class="string">": "</span> &lt;&lt; i &lt;&lt; endl;
+        this_thread::sleep_for(chrono::milliseconds(<span class="number">100</span>));
+    }
+}
+
+<span class="keyword">int</span> <span class="function">main</span>() {
+    <span class="comment">// Create threads</span>
+    thread t1(printNumbers, <span class="number">1</span>, <span class="number">5</span>);
+    thread t2(printNumbers, <span class="number">2</span>, <span class="number">5</span>);
+    
+    <span class="comment">// Wait for threads to complete</span>
+    t1.join();
+    t2.join();
+    
+    cout &lt;&lt; <span class="string">"All threads completed"</span> &lt;&lt; endl;
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+</code>
+                </div>
+
+                <h4>Thread Synchronization with Mutex</h4>
+                <div class="code-block" data-language="cpp">
+<code><span class="preprocessor">#include &lt;iostream&gt;</span>
+<span class="preprocessor">#include &lt;thread&gt;</span>
+<span class="preprocessor">#include &lt;mutex&gt;</span>
+<span class="keyword">using namespace</span> std;
+
+mutex mtx;
+<span class="keyword">int</span> counter = <span class="number">0</span>;
+
+<span class="keyword">void</span> <span class="function">incrementCounter</span>(<span class="keyword">int</span> iterations) {
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; iterations; ++i) {
+        lock_guard&lt;mutex&gt; lock(mtx);  <span class="comment">// RAII-style lock</span>
+        ++counter;
+        <span class="comment">// Lock released automatically</span>
+    }
+}
+
+<span class="keyword">int</span> <span class="function">main</span>() {
+    thread t1(incrementCounter, <span class="number">1000</span>);
+    thread t2(incrementCounter, <span class="number">1000</span>);
+    thread t3(incrementCounter, <span class="number">1000</span>);
+    
+    t1.join();
+    t2.join();
+    t3.join();
+    
+    cout &lt;&lt; <span class="string">"Final counter: "</span> &lt;&lt; counter &lt;&lt; endl;  <span class="comment">// 3000 (safe)</span>
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+</code>
+                </div>
+
+                <div class="practice-problems">
+                    <h3>Practice Problems</h3>
+                    
+                    <div class="problem">
+                        <h4>Problem 1: Generic Stack</h4>
+                        <p>Create a template class <code>Stack&lt;T&gt;</code> with methods: push, pop, top, isEmpty, and size.</p>
+                        <button onclick="toggleSolution('sol1')">Show Solution</button>
+                        <div id="sol1" class="solution" style="display:none;">
+                            <div class="code-block" data-language="cpp">
+<code><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;
+<span class="keyword">class</span> <span class="class-name">Stack</span> {
+<span class="keyword">private</span>:
+    vector&lt;T&gt; data;
+<span class="keyword">public</span>:
+    <span class="keyword">void</span> <span class="function">push</span>(<span class="keyword">const</span> T&amp; item) { data.push_back(item); }
+    <span class="keyword">void</span> <span class="function">pop</span>() { <span class="keyword">if</span> (!data.empty()) data.pop_back(); }
+    T <span class="function">top</span>() <span class="keyword">const</span> { <span class="keyword">return</span> data.back(); }
+    <span class="keyword">bool</span> <span class="function">isEmpty</span>() <span class="keyword">const</span> { <span class="keyword">return</span> data.empty(); }
+    size_t <span class="function">size</span>() <span class="keyword">const</span> { <span class="keyword">return</span> data.size(); }
+};
+</code>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="problem">
+                        <h4>Problem 2: Unique Pointer Array Manager</h4>
+                        <p>Create a function that uses unique_ptr to manage a dynamic array of integers. Include functions to allocate, modify, and safely deallocate.</p>
+                        <button onclick="toggleSolution('sol2')">Show Solution</button>
+                        <div id="sol2" class="solution" style="display:none;">
+                            <div class="code-block" data-language="cpp">
+<code><span class="preprocessor">#include &lt;memory&gt;</span>
+<span class="preprocessor">#include &lt;iostream&gt;</span>
+
+unique_ptr&lt;<span class="keyword">int</span>[]&gt; <span class="function">createArray</span>(size_t size) {
+    <span class="keyword">return</span> make_unique&lt;<span class="keyword">int</span>[]&gt;(size);
+}
+
+<span class="keyword">void</span> <span class="function">fillArray</span>(unique_ptr&lt;<span class="keyword">int</span>[]&gt;&amp; arr, size_t size) {
+    <span class="keyword">for</span> (size_t i = <span class="number">0</span>; i &lt; size; ++i) {
+        arr[i] = i * <span class="number">2</span>;
+    }
+}
+
+<span class="keyword">int</span> <span class="function">main</span>() {
+    <span class="keyword">auto</span> arr = createArray(<span class="number">10</span>);
+    fillArray(arr, <span class="number">10</span>);
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; ++i) {
+        cout &lt;&lt; arr[i] &lt;&lt; <span class="string">" "</span>;
+    }
+    <span class="comment">// Automatic cleanup</span>
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+</code>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="problem">
+                        <h4>Problem 3: Lambda Filter and Transform</h4>
+                        <p>Use lambdas to filter even numbers from a vector and transform them by squaring.</p>
+                        <button onclick="toggleSolution('sol3')">Show Solution</button>
+                        <div id="sol3" class="solution" style="display:none;">
+                            <div class="code-block" data-language="cpp">
+<code><span class="preprocessor">#include &lt;vector&gt;</span>
+<span class="preprocessor">#include &lt;algorithm&gt;</span>
+
+vector&lt;<span class="keyword">int</span>&gt; <span class="function">filterAndSquare</span>(vector&lt;<span class="keyword">int</span>&gt;&amp; nums) {
+    vector&lt;<span class="keyword">int</span>&gt; result;
+    copy_if(nums.begin(), nums.end(), back_inserter(result),
+            [](<span class="keyword">int</span> n) { <span class="keyword">return</span> n % <span class="number">2</span> == <span class="number">0</span>; });
+    
+    transform(result.begin(), result.end(), result.begin(),
+              [](<span class="keyword">int</span> n) { <span class="keyword">return</span> n * n; });
+    
+    <span class="keyword">return</span> result;
+}
+</code>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="problem">
+                        <h4>Problem 4: Thread-Safe Counter</h4>
+                        <p>Create a thread-safe counter class using mutex that can be incremented by multiple threads.</p>
+                        <button onclick="toggleSolution('sol4')">Show Solution</button>
+                        <div id="sol4" class="solution" style="display:none;">
+                            <div class="code-block" data-language="cpp">
+<code><span class="preprocessor">#include &lt;mutex&gt;</span>
+
+<span class="keyword">class</span> <span class="class-name">ThreadSafeCounter</span> {
+<span class="keyword">private</span>:
+    <span class="keyword">int</span> count;
+    mutable mutex mtx;
+<span class="keyword">public</span>:
+    ThreadSafeCounter() : count(<span class="number">0</span>) {}
+    
+    <span class="keyword">void</span> <span class="function">increment</span>() {
+        lock_guard&lt;mutex&gt; lock(mtx);
+        ++count;
+    }
+    
+    <span class="keyword">int</span> <span class="function">get</span>() <span class="keyword">const</span> {
+        lock_guard&lt;mutex&gt; lock(mtx);
+        <span class="keyword">return</span> count;
+    }
+};
+</code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Key Takeaways</h3>
+                <ul>
+                    <li>Templates enable generic programming for functions and classes</li>
+                    <li>Smart pointers (unique_ptr, shared_ptr, weak_ptr) automate memory management</li>
+                    <li>Move semantics with std::move enable efficient resource transfer</li>
+                    <li>Lambda expressions provide inline anonymous functions with captures</li>
+                    <li>Auto keyword simplifies type declarations with type deduction</li>
+                    <li>Range-based for loops make iteration cleaner and safer</li>
+                    <li>Constexpr enables compile-time computation for better performance</li>
+                    <li>RAII pattern ties resource lifetime to object lifetime</li>
+                    <li>Exception handling with try/catch/throw for error management</li>
+                    <li>std::thread and mutex enable concurrent programming</li>
+                </ul>
+
+                <div class="info-box tip">
+                    <h4>💡 Next Steps</h4>
+                    <p>
+                        You've mastered advanced C++ features! Next, we'll explore Object-Oriented Programming 
+                        principles in depth: encapsulation, inheritance, polymorphism, and abstraction with 
+                        examples across Python, JavaScript, and C++.
+                    </p>
+                </div>
+            </div>
+
+            <div class="lesson-navigation">
+                <a href="06-cpp-basics.html" class="nav-btn">← Previous: C++ Basics</a>
+                <a href="08-oop-principles.html" class="nav-btn">Next: OOP Principles →</a>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../js/main.js"></script>
+    <script>
+        function toggleSolution(id) {
+            const solution = document.getElementById(id);
+            const button = event.target;
+            if (solution.style.display === 'none') {
+                solution.style.display = 'block';
+                button.textContent = 'Hide Solution';
+            } else {
+                solution.style.display = 'none';
+                button.textContent = 'Show Solution';
+            }
+        }
+    </script>
+</body>
+</html>

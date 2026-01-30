@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 1: Introduction to Software Engineering - Engineering Academy</title>
+    <link rel="stylesheet" href="../../../css/styles.css">
+    <link rel="stylesheet" href="../../../css/course-styles/course.css">
+    <link rel="stylesheet" href="../../../css/modern.css">
+</head>
+<body>
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <h1><a href="../../../index.html" style="color: inherit; text-decoration: none;">🎓 Engineering Academy</a></h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../../../index.html#courses">Courses</a></li>
+                    <li><a href="../index.html">Course Overview</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section class="course-header">
+        <div class="container">
+            <h1>💻 Software Engineering</h1>
+            <p>Lesson 1: Introduction to Software Engineering</p>
+        </div>
+    </section>
+
+    <div class="course-container">
+        <aside class="course-sidebar">
+            <h3>Course Modules</h3>
+            <ul class="lesson-list">
+                <li><a href="../index.html"><span class="lesson-number">📚</span>Course Overview</a></li>
+                <li><a href="01-introduction.html" class="active"><span class="lesson-number">1</span>Introduction to SE</a></li>
+                <li><a href="02-sdlc.html"><span class="lesson-number">2</span>SDLC & Methodologies</a></li>
+                <li><a href="03-requirements-engineering.html"><span class="lesson-number">3</span>Requirements Engineering</a></li>
+                <li><a href="04-creational-patterns.html"><span class="lesson-number">4</span>Creational Patterns</a></li>
+                <li><a href="05-structural-patterns.html"><span class="lesson-number">5</span>Structural Patterns</a></li>
+                <li><a href="06-behavioral-patterns.html"><span class="lesson-number">6</span>Behavioral Patterns</a></li>
+                <li><a href="07-architecture.html"><span class="lesson-number">7</span>Software Architecture</a></li>
+                <li><a href="08-solid-principles.html"><span class="lesson-number">8</span>SOLID Principles</a></li>
+                <li><a href="09-code-quality.html"><span class="lesson-number">9</span>Code Quality</a></li>
+                <li><a href="10-testing.html"><span class="lesson-number">10</span>Testing Strategies</a></li>
+                <li><a href="11-version-control.html"><span class="lesson-number">11</span>Version Control</a></li>
+                <li><a href="12-agile-devops.html"><span class="lesson-number">12</span>Agile & DevOps</a></li>
+            </ul>
+        </aside>
+
+        <main class="course-content">
+            <div class="lesson-header">
+                <h2>Lesson 1: Introduction to Software Engineering</h2>
+                <div class="lesson-meta">
+                    <span>📖 45 min read</span>
+                    <span>📊 Beginner</span>
+                </div>
+            </div>
+
+            <div class="lesson-content">
+                <h3>What is Software Engineering?</h3>
+                <p>
+                    Software Engineering is a systematic, disciplined, and quantifiable approach to the development, 
+                    operation, and maintenance of software. It's the application of engineering principles to software 
+                    creation, going far beyond simply writing code.
+                </p>
+
+                <div class="info-box note">
+                    <h4>📌 Key Definition</h4>
+                    <p>
+                        <strong>Software Engineering</strong> is the establishment and use of sound engineering principles 
+                        in order to obtain economically software that is reliable and works efficiently on real machines.
+                        <br><em>- Fritz Bauer, 1968</em>
+                    </p>
+                </div>
+
+                <h3>Programming vs. Software Engineering</h3>
+                <p>
+                    While programming is an essential component of software engineering, they are not the same thing. 
+                    Understanding this distinction is crucial for becoming a professional software engineer.
+                </p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Aspect</th>
+                            <th>Programming</th>
+                            <th>Software Engineering</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Scope</strong></td>
+                            <td>Writing code to solve problems</td>
+                            <td>Entire software lifecycle from conception to retirement</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Focus</strong></td>
+                            <td>Making it work</td>
+                            <td>Making it work, maintainable, scalable, and reliable</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Team Size</strong></td>
+                            <td>Often individual</td>
+                            <td>Usually teams of varying sizes</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Timeframe</strong></td>
+                            <td>Short-term solutions</td>
+                            <td>Long-term maintenance and evolution</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Documentation</strong></td>
+                            <td>Minimal or none</td>
+                            <td>Comprehensive and essential</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Testing</strong></td>
+                            <td>Manual, ad-hoc</td>
+                            <td>Automated, systematic, continuous</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Why Software Engineering Matters</h3>
+                <p>
+                    As software systems grow in complexity and importance, proper software engineering practices 
+                    become essential. Here's why:
+                </p>
+
+                <h4>1. Managing Complexity</h4>
+                <p>
+                    Modern software systems can contain millions of lines of code. Without engineering discipline, 
+                    such systems become impossible to understand, maintain, or modify.
+                </p>
+
+                <div class="code-block" data-language="example">
+<code>// Simple program (Programming)
+print("Hello World")
+
+// Enterprise system (Software Engineering)
+- Authentication & Authorization System
+- Database Layer with ORM
+- API Gateway with rate limiting
+- Microservices architecture
+- Logging & monitoring
+- Error handling & recovery
+- Security layers
+- Performance optimization
+- Scalability considerations
+- Deployment pipelines
+</code>
+                </div>
+
+                <h4>2. Ensuring Quality and Reliability</h4>
+                <p>
+                    Software failures can have serious consequences - from financial losses to loss of life in 
+                    critical systems. Software engineering practices ensure reliability through:
+                </p>
+                <ul>
+                    <li>Rigorous testing at multiple levels</li>
+                    <li>Code reviews and quality gates</li>
+                    <li>Design for fault tolerance</li>
+                    <li>Security best practices</li>
+                    <li>Performance monitoring</li>
+                </ul>
+
+                <h4>3. Cost-Effective Development</h4>
+                <p>
+                    Poor software engineering can be extremely expensive. Studies show that:
+                </p>
+                <ul>
+                    <li>Fixing a bug in production costs 100x more than fixing it during design</li>
+                    <li>Technical debt accumulates interest rapidly</li>
+                    <li>Poor architecture makes features exponentially harder to add</li>
+                    <li>Unmaintainable code leads to complete rewrites</li>
+                </ul>
+
+                <div class="info-box warning">
+                    <h4>⚠️ Real-World Impact</h4>
+                    <p>
+                        The 1996 Ariane 5 rocket explosion was caused by a software bug - a 64-bit floating point 
+                        number was converted to a 16-bit integer, causing overflow. The rocket and its payload 
+                        ($370 million) were destroyed. This demonstrates why software engineering rigor matters.
+                    </p>
+                </div>
+
+                <h3>Core Principles of Software Engineering</h3>
+
+                <h4>1. Abstraction</h4>
+                <p>
+                    Hide complex implementation details behind simpler interfaces. This allows developers to work 
+                    at higher levels of understanding without being overwhelmed by details.
+                </p>
+
+                <div class="code-block" data-language="python">
+<code><span class="comment"># Low-level - too many details</span>
+socket = create_socket()
+socket.bind(address, port)
+socket.listen()
+connection = socket.accept()
+<span class="comment"># ... many more lines</span>
+
+<span class="comment"># Abstracted - simple interface</span>
+server = HTTPServer(port=8080)
+server.start()
+</code>
+                </div>
+
+                <h4>2. Modularity</h4>
+                <p>
+                    Break systems into smaller, independent modules that can be developed, tested, and maintained 
+                    separately. This enables parallel development and easier maintenance.
+                </p>
+
+                <div class="code-block" data-language="javascript">
+<code><span class="comment">// Monolithic - everything together</span>
+<span class="keyword">function</span> <span class="function">processOrder</span>(order) {
+    <span class="comment">// validate, calculate, send email, update database</span>
+    <span class="comment">// all in one function - hard to test and maintain</span>
+}
+
+<span class="comment">// Modular - separated concerns</span>
+<span class="keyword">function</span> <span class="function">validateOrder</span>(order) { ... }
+<span class="keyword">function</span> <span class="function">calculateTotal</span>(order) { ... }
+<span class="keyword">function</span> <span class="function">sendConfirmation</span>(order) { ... }
+<span class="keyword">function</span> <span class="function">updateInventory</span>(order) { ... }
+</code>
+                </div>
+
+                <h4>3. Encapsulation</h4>
+                <p>
+                    Bundle data and methods that operate on that data within a single unit, hiding internal 
+                    implementation details from the outside world.
+                </p>
+
+                <div class="code-block" data-language="python">
+<code><span class="keyword">class</span> <span class="class-name">BankAccount</span>:
+    <span class="keyword">def</span> <span class="function">__init__</span>(self, initial_balance):
+        self.__balance = initial_balance  <span class="comment"># Private</span>
+    
+    <span class="keyword">def</span> <span class="function">deposit</span>(self, amount):
+        <span class="keyword">if</span> amount > 0:
+            self.__balance += amount
+            <span class="keyword">return</span> <span class="keyword">True</span>
+        <span class="keyword">return</span> <span class="keyword">False</span>
+    
+    <span class="keyword">def</span> <span class="function">get_balance</span>(self):
+        <span class="keyword">return</span> self.__balance
+    
+<span class="comment"># Users can't directly modify __balance</span>
+<span class="comment"># They must use the public interface</span>
+</code>
+                </div>
+
+                <h4>4. Separation of Concerns</h4>
+                <p>
+                    Different aspects of software functionality should be separated into distinct sections, 
+                    each addressing a specific concern.
+                </p>
+
+                <div class="code-block" data-language="example">
+<code>Typical Web Application Layers:
+┌─────────────────────┐
+│  Presentation Layer │  (UI, Views)
+├─────────────────────┤
+│   Business Logic    │  (Rules, Processing)
+├─────────────────────┤
+│    Data Access      │  (Database, APIs)
+├─────────────────────┤
+│      Database       │  (Storage)
+└─────────────────────┘
+</code>
+                </div>
+
+                <h3>The Software Engineering Process</h3>
+                <p>
+                    Software engineering follows a structured process, though the specific methodology may vary. 
+                    The fundamental activities include:
+                </p>
+
+                <ol>
+                    <li><strong>Requirements Analysis</strong> - Understanding what the software should do</li>
+                    <li><strong>Design</strong> - Planning how the software will be structured</li>
+                    <li><strong>Implementation</strong> - Writing the actual code</li>
+                    <li><strong>Testing</strong> - Verifying the software works correctly</li>
+                    <li><strong>Deployment</strong> - Releasing the software to users</li>
+                    <li><strong>Maintenance</strong> - Fixing bugs and adding features over time</li>
+                </ol>
+
+                <div class="info-box tip">
+                    <h4>💡 Key Insight</h4>
+                    <p>
+                        Studies show that maintenance typically accounts for 60-80% of total software costs. 
+                        This is why writing maintainable code is so crucial - it's not just about getting it 
+                        to work initially, but ensuring it can be understood and modified years later.
+                    </p>
+                </div>
+
+                <h3>Essential Skills for Software Engineers</h3>
+
+                <h4>Technical Skills:</h4>
+                <ul>
+                    <li>Programming languages and paradigms</li>
+                    <li>Data structures and algorithms</li>
+                    <li>Design patterns and architectural styles</li>
+                    <li>Databases and data modeling</li>
+                    <li>Testing and debugging</li>
+                    <li>Version control systems</li>
+                    <li>DevOps and deployment</li>
+                </ul>
+
+                <h4>Soft Skills:</h4>
+                <ul>
+                    <li>Communication and documentation</li>
+                    <li>Teamwork and collaboration</li>
+                    <li>Problem-solving and analytical thinking</li>
+                    <li>Time management and estimation</li>
+                    <li>Continuous learning</li>
+                    <li>Attention to detail</li>
+                </ul>
+
+                <h3>Industry Standards and Best Practices</h3>
+                <p>
+                    Professional software engineers follow industry-recognized standards and practices:
+                </p>
+
+                <ul>
+                    <li><strong>Clean Code</strong> - Writing readable, maintainable code (Robert C. Martin)</li>
+                    <li><strong>SOLID Principles</strong> - Object-oriented design principles</li>
+                    <li><strong>DRY (Don't Repeat Yourself)</strong> - Avoid code duplication</li>
+                    <li><strong>KISS (Keep It Simple, Stupid)</strong> - Prefer simple solutions</li>
+                    <li><strong>YAGNI (You Aren't Gonna Need It)</strong> - Don't over-engineer</li>
+                    <li><strong>Code Reviews</strong> - Peer review for quality assurance</li>
+                    <li><strong>Continuous Integration/Deployment</strong> - Automated testing and deployment</li>
+                </ul>
+
+                <h3>Career Paths in Software Engineering</h3>
+                <p>
+                    Software engineering offers diverse career opportunities:
+                </p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Role</th>
+                            <th>Focus Area</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Frontend Engineer</td>
+                            <td>User interfaces, web technologies, UX</td>
+                        </tr>
+                        <tr>
+                            <td>Backend Engineer</td>
+                            <td>Server logic, databases, APIs</td>
+                        </tr>
+                        <tr>
+                            <td>Full-Stack Engineer</td>
+                            <td>Both frontend and backend</td>
+                        </tr>
+                        <tr>
+                            <td>DevOps Engineer</td>
+                            <td>Deployment, infrastructure, automation</td>
+                        </tr>
+                        <tr>
+                            <td>Solutions Architect</td>
+                            <td>System design, technology selection</td>
+                        </tr>
+                        <tr>
+                            <td>QA Engineer</td>
+                            <td>Testing, quality assurance, automation</td>
+                        </tr>
+                        <tr>
+                            <td>Security Engineer</td>
+                            <td>Application security, vulnerabilities</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Summary</h3>
+                <p>
+                    Software Engineering is much more than programming - it's a disciplined approach to building 
+                    reliable, maintainable, and scalable software systems. It encompasses:
+                </p>
+
+                <ul>
+                    <li>Systematic approaches to software development</li>
+                    <li>Engineering principles applied to software creation</li>
+                    <li>Focus on long-term maintainability and quality</li>
+                    <li>Team collaboration and communication</li>
+                    <li>Continuous improvement and learning</li>
+                </ul>
+
+                <div class="info-box important">
+                    <h4>🎯 Key Takeaways</h4>
+                    <ul>
+                        <li>Software Engineering ≠ Programming (it's much broader)</li>
+                        <li>Quality, maintainability, and reliability are paramount</li>
+                        <li>Following engineering principles saves time and money long-term</li>
+                        <li>Both technical and soft skills are essential</li>
+                        <li>The field requires continuous learning and adaptation</li>
+                    </ul>
+                </div>
+
+                <h3>Next Steps</h3>
+                <p>
+                    In the next lesson, we'll explore the Software Development Lifecycle (SDLC) and various 
+                    development methodologies including Waterfall, Agile, and DevOps practices. You'll learn 
+                    how software projects are planned, executed, and delivered in professional environments.
+                </p>
+
+                <hr style="margin: 50px 0; border: none; border-top: 2px solid #e0e0e0;">
+
+                <h2 style="color: #667eea; margin-bottom: 30px;">📝 Test Your Knowledge</h2>
+                <p style="margin-bottom: 30px; font-size: 1.1rem;">
+                    Complete this quiz to test your understanding of Software Engineering fundamentals. 
+                    You need to score 70% or higher to mark this lesson as complete.
+                </p>
+                <div id="quizContainer"></div>
+            </div>
+
+            <div class="lesson-navigation">
+                <a href="../index.html" class="nav-btn">← Course Overview</a>
+                <a href="02-sdlc.html" class="nav-btn">Next: SDLC & Methodologies →</a>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../js/main.js"></script>
+    <script src="../../../js/progress.js"></script>
+    <script>
+        // Quiz Questions for Lesson 1: Introduction to Software Engineering
+        const quizQuestions = [
+            {
+                question: "What is the primary difference between programming and software engineering?",
+                options: [
+                    "Software engineering is broader and includes design, testing, and maintenance",
+                    "Programming is more complex than software engineering",
+                    "They are exactly the same thing",
+                    "Software engineering only deals with code writing"
+                ],
+                correct: 0
+            },
+            {
+                question: "Which of the following is NOT a key principle of software engineering?",
+                options: [
+                    "Modularity",
+                    "Abstraction",
+                    "Code obfuscation",
+                    "Maintainability"
+                ],
+                correct: 2
+            },
+            {
+                question: "What does SDLC stand for?",
+                options: [
+                    "Software Design and Logic Control",
+                    "Software Development Lifecycle",
+                    "System Design and Logic Cycle",
+                    "Software Deployment and Launch Criteria"
+                ],
+                correct: 1
+            },
+            {
+                question: "Which quality attribute refers to how easily software can be modified?",
+                options: [
+                    "Reliability",
+                    "Performance",
+                    "Maintainability",
+                    "Security"
+                ],
+                correct: 2
+            },
+            {
+                question: "What is the purpose of software testing?",
+                options: [
+                    "To slow down development",
+                    "To identify and fix defects before release",
+                    "To make code more complex",
+                    "Testing is not important in software engineering"
+                ],
+                correct: 1
+            },
+            {
+                question: "Which role is responsible for writing code in a software team?",
+                options: [
+                    "Product Manager",
+                    "UX Designer",
+                    "Software Developer",
+                    "Quality Assurance Tester"
+                ],
+                correct: 2
+            },
+            {
+                question: "What is modularity in software engineering?",
+                options: [
+                    "Making all code in one large file",
+                    "Breaking down software into smaller, independent components",
+                    "Using only modular arithmetic",
+                    "Avoiding code reuse"
+                ],
+                correct: 1
+            },
+            {
+                question: "Why is documentation important in software engineering?",
+                options: [
+                    "It's not important, code should be self-explanatory",
+                    "It helps with knowledge transfer and maintenance",
+                    "It's only needed for legal compliance",
+                    "Documentation slows down development unnecessarily"
+                ],
+                correct: 1
+            },
+            {
+                question: "What does 'scalability' mean in software engineering?",
+                options: [
+                    "The ability to handle increasing workload",
+                    "Making software smaller",
+                    "Reducing the number of users",
+                    "Making code more complex"
+                ],
+                correct: 0
+            },
+            {
+                question: "Which is a soft skill important for software engineers?",
+                options: [
+                    "Advanced calculus",
+                    "Team communication and collaboration",
+                    "Hardware design",
+                    "Network cable installation"
+                ],
+                correct: 1
+            }
+        ];
+
+        // Initialize quiz
+        const quiz = new Quiz(quizQuestions, 'software-engineering', '01-introduction');
+        quiz.render('quizContainer');
+    </script>
+</body>
+</html>

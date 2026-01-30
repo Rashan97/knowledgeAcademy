@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 7: Materials Science - Engineering Academy</title>
+    <link rel="stylesheet" href="../../../css/styles.css">
+    <link rel="stylesheet" href="../../../css/course-styles/course.css">
+</head>
+<body>
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <h1><a href="../../../index.html" style="color: inherit; text-decoration: none;">🎓 Engineering Academy</a></h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../index.html">Course Overview</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section class="course-header">
+        <div class="container">
+            <h1>⚙️ Mechanical Engineering</h1>
+            <p>Lesson 7: Materials Science</p>
+        </div>
+    </section>
+
+    <div class="course-container">
+        <aside class="course-sidebar">
+            <h3>Course Modules</h3>
+            <ul class="lesson-list">
+                <li><a href="../index.html"><span class="lesson-number">📚</span>Course Overview</a></li>
+                <li><a href="01-statics.html"><span class="lesson-number">1</span>Statics & Force Analysis</a></li>
+                <li><a href="02-dynamics.html"><span class="lesson-number">2</span>Dynamics & Motion</a></li>
+                <li><a href="03-mechanics-of-materials.html"><span class="lesson-number">3</span>Mechanics of Materials</a></li>
+                <li><a href="04-thermodynamics.html"><span class="lesson-number">4</span>Thermodynamics</a></li>
+                <li><a href="05-fluid-mechanics.html"><span class="lesson-number">5</span>Fluid Mechanics</a></li>
+                <li><a href="06-heat-transfer.html"><span class="lesson-number">6</span>Heat Transfer</a></li>
+                <li><a href="07-materials-science.html" class="active"><span class="lesson-number">7</span>Materials Science</a></li>
+                <li><a href="08-machine-design.html"><span class="lesson-number">8</span>Machine Design</a></li>
+                <li><a href="09-manufacturing-processes.html"><span class="lesson-number">9</span>Manufacturing Processes</a></li>
+                <li><a href="10-vibrations.html"><span class="lesson-number">10</span>Mechanical Vibrations</a></li>
+                <li><a href="11-cad-cam.html"><span class="lesson-number">11</span>CAD/CAM & Design Tools</a></li>
+                <li><a href="12-hvac-systems.html"><span class="lesson-number">12</span>HVAC & Thermal Systems</a></li>
+            </ul>
+        </aside>
+
+        <main class="course-content">
+            <div class="lesson-header">
+                <h2>Lesson 7: Materials Science</h2>
+                <div class="lesson-meta">
+                    <span>📖 100 min read</span>
+                    <span>📊 Core</span>
+                </div>
+            </div>
+
+            <div class="lesson-content">
+                <h3>Introduction to Materials Science</h3>
+                <p>
+                    Materials Science studies the relationships between structure, properties, processing, and performance 
+                    of engineering materials. Understanding why materials behave as they do enables engineers to select 
+                    the right material for each application and develop new materials with superior properties.
+                </p>
+
+                <div class="info-box note">
+                    <h4>📌 What You'll Learn</h4>
+                    <ul>
+                        <li>Atomic bonding and crystal structures</li>
+                        <li>Crystalline defects and their effects</li>
+                        <li>Phase diagrams and microstructures</li>
+                        <li>Mechanical properties and testing</li>
+                        <li>Strengthening mechanisms</li>
+                        <li>Metals and alloys (steels, aluminum, titanium)</li>
+                        <li>Polymers, ceramics, and composites</li>
+                        <li>Material selection criteria</li>
+                    </ul>
+                </div>
+
+                <h3>Atomic Structure and Bonding</h3>
+
+                <h4>Types of Atomic Bonds</h4>
+                <div class="code-block" data-language="text">
+<code>Atomic Bonding:
+  Determines material properties
+  
+  Four primary types:
+
+1. Metallic Bonding:
+   - Valence electrons delocalized (electron sea)
+   - Positively charged ion cores
+   - Non-directional
+   
+   Properties:
+     - High electrical/thermal conductivity
+     - Ductile, malleable
+     - Opaque, lustrous
+   
+   Examples: Fe, Cu, Al, Au
+
+2. Ionic Bonding:
+   - Transfer of electrons
+   - Electrostatic attraction between ions
+   - Non-directional
+   
+   Properties:
+     - Hard, brittle
+     - High melting point
+     - Insulator (ceramic becomes conductor when molten)
+   
+   Examples: NaCl, MgO, Al₂O₃
+
+3. Covalent Bonding:
+   - Sharing of electrons
+   - Directional (specific angles)
+   - Very strong
+   
+   Properties:
+     - Hard, brittle
+     - High melting point
+     - Poor conductor
+   
+   Examples: Diamond (C), SiC, Si₃N₄
+
+4. Van der Waals (Secondary):
+   - Weak intermolecular forces
+   - Dipole interactions
+   
+   Properties:
+     - Low melting point
+     - Soft
+   
+   Examples: Polymers, molecular solids
+
+Mixed Bonding:
+  Many materials have combination
+  
+  SiO₂: Covalent + Ionic
+  Graphite: Covalent (in-plane) + Van der Waals (between planes)
+
+Bond Strength Impact:
+  Stronger bonds →
+    - Higher melting point
+    - Higher elastic modulus
+    - Lower thermal expansion
+    - Higher thermal conductivity (for crystals)
+</code>
+                </div>
+
+                <h4>Crystal Structures</h4>
+                <div class="code-block" data-language="text">
+<code>Crystalline vs. Amorphous:
+
+Crystalline:
+  Atoms arranged in periodic 3D pattern
+  Long-range order
+  
+  Examples: Most metals, salt, diamond
+
+Amorphous:
+  Random atomic arrangement
+  No long-range order
+  
+  Examples: Glass, many polymers
+
+Unit Cell:
+  Smallest repeating unit
+  Defines crystal structure
+  
+  Parameters:
+    Lattice parameters: a, b, c (edge lengths)
+    Angles: α, β, γ
+
+Common Metal Structures:
+
+1. Face-Centered Cubic (FCC):
+   - Atoms at corners + face centers
+   - Coordination number: 12
+   - APF (packing factor): 0.74 (dense)
+   
+   Examples: Al, Cu, Au, Ag, Ni
+   
+   Properties:
+     - Ductile
+     - No ductile-brittle transition
+
+2. Body-Centered Cubic (BCC):
+   - Atoms at corners + body center
+   - Coordination number: 8
+   - APF: 0.68
+   
+   Examples: Fe (α), Cr, W, Mo
+   
+   Properties:
+     - Less ductile than FCC
+     - Ductile-brittle transition at low T
+
+3. Hexagonal Close-Packed (HCP):
+   - Atoms in hexagonal layers
+   - Coordination number: 12
+   - APF: 0.74 (dense like FCC)
+   
+   Examples: Mg, Ti (α), Zn, Co
+   
+   Properties:
+     - Limited slip systems
+     - Less ductile
+
+Miller Indices:
+  Notation for crystal planes and directions
+  
+  Plane (hkl): Reciprocals of intercepts
+  Direction [uvw]: Vector components
+  
+  Example: (111) plane, [110] direction
+  
+  Important for:
+    - Slip systems
+    - Cleavage planes
+    - X-ray diffraction
+
+Polymorphism (Allotropy):
+  Same element, different structures
+  
+  Fe: BCC (α) < 912°C, FCC (γ) 912-1394°C, BCC (δ) > 1394°C
+  C: Diamond (cubic), Graphite (hexagonal)
+  
+  Basis for steel heat treatment
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Crystalline Defects</h3>
+
+                <h4>Point, Line, and Planar Defects</h4>
+                <div class="code-block" data-language="text">
+<code>Crystal Imperfections:
+  Real crystals always have defects
+  Defects actually improve many properties!
+
+Point Defects (0D):
+
+1. Vacancy:
+   Missing atom
+   
+   Equilibrium concentration:
+     n_v/N = exp(-Q_v/kT)
+   
+   Increases with temperature
+   
+   Effects:
+     - Enables diffusion
+     - Reduces density slightly
+
+2. Interstitial:
+   Extra atom in void space
+   Usually smaller impurity atom
+   
+   Carbon in iron: strengthens steel
+
+3. Substitutional:
+   Different atom replaces host
+   Similar size required
+   
+   Solid solution strengthening
+
+Line Defects (1D):
+
+Edge Dislocation:
+  Extra half-plane of atoms
+  
+  Burger's vector ⊥ dislocation line
+  
+  Motion: Slip (glide)
+
+Screw Dislocation:
+  Helical distortion
+  
+  Burger's vector ∥ dislocation line
+  
+  Motion: Slip + climb
+
+Dislocation Density:
+  ρ_d = total length / volume (m/m³ or m⁻²)
+  
+  Annealed metal: 10⁶-10⁸ m⁻²
+  Heavily deformed: 10¹²-10¹⁴ m⁻²
+
+Plastic Deformation:
+  Movement of dislocations
+  
+  Slip occurs on close-packed planes
+  in close-packed directions
+  
+  FCC: 12 slip systems (very ductile)
+  BCC: 48 slip systems (ductile)
+  HCP: 3-6 slip systems (brittle)
+
+Planar Defects (2D):
+
+Grain Boundary:
+  Interface between crystals (grains)
+  Different orientations
+  
+  High-angle: θ > 10-15°
+  Low-angle: Array of dislocations
+  
+  Effects:
+     - Strengthening (Hall-Petch)
+     - Corrosion susceptibility
+     - Diffusion paths
+
+Twin Boundary:
+  Mirror symmetry across boundary
+  
+  Deformation twins: Formed during loading
+  Annealing twins: Formed during recrystallization
+
+Volume Defects (3D):
+  Pores, cracks, inclusions
+  
+  Generally detrimental
+  Stress concentrations
+</code>
+                </div>
+
+                <h4>Strengthening Mechanisms</h4>
+                <div class="code-block" data-language="text">
+<code>Objective:
+  Impede dislocation motion → increase strength
+  
+  Trade-off: Strength ↑, Ductility ↓
+
+1. Grain Size Reduction:
+   Hall-Petch relationship:
+     σ_y = σ₀ + k_y d^(-1/2)
+   
+   Where:
+     d = average grain diameter
+     k_y = material constant
+   
+   Smaller grains → higher strength
+   
+   Methods:
+     - Rapid cooling
+     - Controlled rolling
+     - Recrystallization
+
+2. Solid Solution Strengthening:
+   Add alloying elements
+   
+   Substitutional: Similar size (Ni in Cu)
+   Interstitial: Small atoms (C in Fe)
+   
+   Lattice distortion impedes dislocations
+   
+   Example: Brass (Cu-Zn) stronger than pure Cu
+
+3. Strain Hardening (Work Hardening):
+   Plastic deformation increases dislocation density
+   
+   Dislocations interfere with each other
+   
+   σ_y increases with cold work
+   
+   Example: Wire drawing, cold rolling
+   
+   Remove by annealing (heat treatment)
+
+4. Precipitation Hardening (Age Hardening):
+   Fine precipitates block dislocations
+   
+   Process:
+     a. Solution treatment (dissolve)
+     b. Quench (supersaturated)
+     c. Age (precipitates form)
+   
+   Example: Al-Cu alloys (2xxx series)
+   
+   Optimum precipitate size: ~10-100 nm
+
+5. Transformation Hardening:
+   Phase transformation creates hard structure
+   
+   Steel: Austenite → Martensite (quenching)
+   
+   Hardest steel structure
+
+6. Dispersion Strengthening:
+   Fine, stable particles
+   
+   Different from precipitation (don't dissolve)
+   
+   Example: TD-Nickel (ThO₂ particles)
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Phase Diagrams</h3>
+
+                <h4>Binary Phase Diagrams</h4>
+                <div class="code-block" data-language="text">
+<code>Phase Diagram:
+  Map showing phases present
+  as function of T, composition, P
+  
+  Axes:
+    Horizontal: Composition (wt% or at%)
+    Vertical: Temperature
+    (Pressure usually constant at 1 atm)
+
+Key Features:
+
+Phase Regions:
+  Single phase: α, β, liquid L
+  Two-phase: α+β, α+L, β+L
+  
+  Gibb's phase rule: F = C - P + 1
+  (At constant pressure)
+  
+  Where:
+    F = degrees of freedom
+    C = number of components
+    P = number of phases
+
+Phase Boundaries:
+  Solidus: Below = all solid
+  Liquidus: Above = all liquid
+  Solvus: Solubility limit
+
+Lever Rule:
+  In two-phase region, find amounts
+  
+  W_α/W_β = (C_β - C₀)/(C₀ - C_α)
+  
+  Where C₀ = overall composition
+  
+  "Lever" on tie line at C₀
+
+Eutectic System:
+  Liquid → Two solid phases simultaneously
+  
+  Lowest melting point
+  
+  Example: Pb-Sn (solder), Al-Si
+
+Eutectoid:
+  Solid → Two different solids
+  
+  Example: Fe-C at 727°C, 0.76% C
+  
+  γ (austenite) → α (ferrite) + Fe₃C (cementite)
+  
+  Critical for steel heat treatment
+
+Peritectic:
+  Liquid + Solid₁ → Solid₂
+
+Intermediate Phases:
+  Compounds: Fe₃C, Mg₂Si
+  Intermetallic compounds
+</code>
+                </div>
+
+                <h4>Iron-Carbon Phase Diagram</h4>
+                <div class="code-block" data-language="text">
+<code>Fe-C System:
+  Most important engineering diagram
+  Basis of steel and cast iron
+
+Phases:
+
+α-Ferrite (BCC):
+  Low C solubility (<0.022% at 727°C)
+  Soft, ductile, magnetic
+  Stable < 912°C
+
+γ-Austenite (FCC):
+  Higher C solubility (max 2.11% at 1148°C)
+  Non-magnetic
+  Stable 912-1394°C
+
+Fe₃C - Cementite:
+  Iron carbide, 6.67% C
+  Hard, brittle
+
+δ-Ferrite (BCC):
+  High temperature
+  Stable > 1394°C
+
+Important Reactions:
+
+Eutectoid (0.76% C, 727°C):
+  γ → α + Fe₃C (pearlite)
+  
+  Pearlite: Lamellar structure
+  Alternating α and Fe₃C layers
+
+Eutectic (4.3% C, 1148°C):
+  L → γ + Fe₃C (ledeburite)
+  
+  Cast irons (>2% C)
+
+Classifications:
+
+Steel (< 2.11% C):
+  Hypoeutectoid (< 0.76% C):
+    Primary α + pearlite
+    Low/medium carbon steels
+  
+  Eutectoid (0.76% C):
+    100% pearlite
+  
+  Hypereutectoid (0.76-2.11% C):
+    Primary Fe₃C + pearlite
+    High carbon, tool steels
+
+Cast Iron (2.11-6.67% C):
+  White: Cementite (hard, brittle)
+  Gray: Graphite flakes (machinable)
+  Ductile: Graphite nodules (strong)
+  Malleable: Heat-treated white iron
+
+Cooling Rate Effects:
+  Slow: Equilibrium (ferrite + pearlite)
+  Moderate: Fine pearlite
+  Fast (quench): Martensite (non-equilibrium)
+  
+  TTT diagrams show transformations
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Mechanical Properties</h3>
+
+                <h4>Tensile Test and Properties</h4>
+                <div class="code-block" data-language="text">
+<code>Tensile Test (ASTM E8):
+  Standard test for mechanical properties
+  
+  Procedure:
+    1. Machine standard specimen
+    2. Apply axial load, measure elongation
+    3. Plot stress-strain curve
+    4. Determine properties
+
+Engineering Stress-Strain:
+  σ = P/A₀ (original area)
+  ε = ΔL/L₀ (original length)
+
+True Stress-Strain:
+  σ_true = P/A_i (instantaneous area)
+  ε_true = ln(L_i/L₀)
+  
+  σ_true = σ(1 + ε)
+  ε_true = ln(1 + ε)
+
+Key Properties:
+
+Elastic Modulus (E):
+  Slope of elastic region
+  
+  Steel: E ≈ 200 GPa
+  Aluminum: E ≈ 70 GPa
+  Ceramics: E ≈ 300-400 GPa
+  Polymers: E ≈ 0.01-5 GPa
+
+Yield Strength (σ_y):
+  Onset of plastic deformation
+  
+  0.2% offset method (common)
+  
+  Mild steel: σ_y ≈ 250 MPa
+  High-strength steel: σ_y ≈ 700+ MPa
+
+Ultimate Tensile Strength (UTS):
+  Maximum engineering stress
+  
+  σ_u or σ_UTS
+  
+  Steel: 400-1000 MPa
+  Al alloys: 100-500 MPa
+
+Ductility:
+  % Elongation: %EL = (L_f - L₀)/L₀ × 100%
+  
+  % Reduction in area: %RA = (A₀ - A_f)/A₀ × 100%
+  
+  Ductile: %EL > 5%
+  Brittle: %EL < 5%
+
+Toughness:
+  Energy absorbed before fracture
+  
+  Area under stress-strain curve
+  
+  Units: J/m³ or MJ/m³
+
+Resilience:
+  Energy absorbed in elastic region
+  
+  U_r = σ_y²/(2E)
+  
+  Ability to spring back
+
+Strength-to-Weight Ratio:
+  Specific strength = σ/ρ
+  
+  Important for aerospace
+  
+  Ti alloys excel here
+</code>
+                </div>
+
+                <h4>Hardness Testing</h4>
+                <div class="code-block" data-language="text">
+<code>Hardness:
+  Resistance to localized plastic deformation
+  
+  Correlates with:
+    - Strength (σ_UTS ≈ 3.45 × HB for steel)
+    - Wear resistance
+
+Brinell Hardness (HB):
+  10 mm ball indenter, specified load
+  
+  HB = 2P/(πD(D - √(D² - d²)))
+  
+  Where:
+    P = load (kg)
+    D = ball diameter (mm)
+    d = indent diameter (mm)
+  
+  Range: 100-650 HB
+  Used: Large parts, castings
+
+Rockwell Hardness (HR):
+  Depth-measuring test
+  Different scales (A, B, C, etc.)
+  
+  HRC (C scale): Diamond cone, 150 kg
+    Range: 20-70 HRC
+    Used: Hardened steels, hard alloys
+  
+  HRB (B scale): 1/16" ball, 100 kg
+    Range: 0-100 HRB
+    Used: Softer materials
+
+Vickers Hardness (HV):
+  Diamond pyramid indenter
+  
+  HV = 1.854 P/d²
+  
+  Where:
+    P = load (kg)
+    d = diagonal (mm)
+  
+  Wide range, one scale
+  Used: Research, small parts, thin coatings
+
+Knoop Hardness (HK):
+  Elongated diamond pyramid
+  
+  Used: Brittle materials, thin layers
+
+Microhardness:
+  Vickers or Knoop with small loads (<1 kg)
+  
+  Measure individual phases, coatings
+
+Shore Hardness:
+  For elastomers, polymers
+  
+  Types A (soft) and D (hard)
+</code>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>Engineering Materials</h3>
+
+                <h4>Ferrous Alloys (Steels and Cast Irons)</h4>
+                <div class="code-block" data-language="text">
+<code>Steels:
+  Fe-C alloys with < 2% C (typically 0.05-1.5%)
+  Most widely used engineering material
+
+Carbon Steels:
+  Low carbon (< 0.3% C):
+    Mild steel, structural steel
+    σ_y ≈ 200-400 MPa
+    Weldable, formable
+    Applications: Construction, automotive bodies
+  
+  Medium carbon (0.3-0.6% C):
+    Machinery steel
+    σ_y ≈ 400-600 MPa
+    Heat treatable
+    Applications: Shafts, gears
+  
+  High carbon (0.6-1.4% C):
+    Tool steel
+    σ_y ≈ 600-1000 MPa
+    Hard, less ductile
+    Applications: Cutting tools, springs
+
+Alloy Steels:
+  Additional elements for properties
+  
+  Chromium: Corrosion resistance, hardenability
+  Nickel: Toughness, low-T properties
+  Molybdenum: High-T strength, hardenability
+  Vanadium: Grain refinement, wear resistance
+  Tungsten: High-T hardness (tool steels)
+  
+  Examples:
+    4140: Cr-Mo alloy steel (versatile)
+    4340: Ni-Cr-Mo (high strength)
+    52100: Cr steel (bearings)
+
+Stainless Steels:
+  > 11% Cr (passive oxide layer)
+  
+  Austenitic (304, 316):
+    18% Cr, 8-10% Ni
+    Non-magnetic, excellent corrosion resistance
+    Not heat treatable
+    Applications: Food, chemical equipment
+  
+  Ferritic (430):
+    16-18% Cr, low C
+    Magnetic, moderate corrosion resistance
+    Applications: Automotive trim
+  
+  Martensitic (410, 420):
+    12-17% Cr, higher C
+    Heat treatable, magnetic
+    Applications: Cutlery, surgical instruments
+  
+  Precipitation-hardening (17-4PH):
+    Cr-Ni-Cu
+    High strength after aging
+    Applications: Aerospace
+
+Cast Irons (2-4.5% C):
+  Gray: Graphite flakes
+    Good damping, machinability
+    Engine blocks, machine bases
+  
+  Ductile (Nodular): Graphite spheroids
+    Higher strength and ductility
+    Crankshafts, gears, pipes
+  
+  White: Cementite (no graphite)
+    Very hard, brittle
+    Wear-resistant parts
+  
+  Malleable: Heat-treated white iron
+    Graphite clusters (temper carbon)
+    Moderate strength, ductility
+</code>
+                </div>
+
+                <h4>Non-Ferrous Alloys</h4>
+                <div class="code-block" data-language="text">
+<code>Aluminum Alloys:
+  Low density (2.7 g/cm³), good corrosion resistance
+  High conductivity, reflectivity
+  
+  Wrought alloys (deformed):
+    1xxx: Pure Al (99%+), excellent corrosion
+    2xxx: Al-Cu, heat treatable, aerospace
+    3xxx: Al-Mn, moderate strength, beverage cans
+    5xxx: Al-Mg, marine applications
+    6xxx: Al-Mg-Si, heat treatable, extrusions
+    7xxx: Al-Zn-Mg, highest strength, aircraft
+  
+  Cast alloys:
+    3xx.x: Al-Si-Mg/Cu, engine blocks
+
+Titanium Alloys:
+  High strength-to-weight
+  Excellent corrosion resistance
+  Expensive, difficult to machine
+  
+  Pure Ti (Grade 2): Chemical equipment
+  
+  α alloys (Ti-5Al-2.5Sn): High-T creep
+  
+  α-β alloys (Ti-6Al-4V): Most common
+    Aerospace, biomedical implants
+  
+  β alloys: High strength, formable
+
+Copper Alloys:
+  High electrical/thermal conductivity
+  Excellent corrosion resistance
+  
+  Brass (Cu-Zn):
+    α brass (< 35% Zn): Ductile, cartridge brass
+    α-β brass (> 35% Zn): Stronger, naval brass
+  
+  Bronze (Cu-Sn):
+    Phosphor bronze: Bearings, springs
+    Aluminum bronze (Cu-Al): Marine props
+  
+  Cupronickel (Cu-Ni):
+    Marine condensers, coinage
+
+Nickel Alloys:
+  High-temperature strength
+  Corrosion resistance
+  
+  Inconel (Ni-Cr): Jet engines, furnaces
+  Monel (Ni-Cu): Marine, chemical
+  Hastelloy (Ni-Mo-Cr): Extreme corrosion
+
+Magnesium Alloys:
+  Lightest structural metal (1.7 g/cm³)
+  
+  AZ91: Die casting, electronics housings
+  
+  Issues: Flammable (machining), galvanic corrosion
+
+Zinc Alloys:
+  Die casting (Zamak)
+  Low melting point, good castability
+  Galvanizing (corrosion protection)
+</code>
+                </div>
+
+                <h4>Polymers, Ceramics, and Composites</h4>
+                <div class="code-block" data-language="text">
+<code>Polymers (Plastics):
+  Long-chain organic molecules
+  Low density, easy processing
+  
+  Thermoplastics (remoldable):
+    PE (polyethylene): Bags, bottles
+    PP (polypropylene): Containers, fibers
+    PVC: Pipes, vinyl
+    PS (polystyrene): Foam, packaging
+    PMMA (acrylic): Transparent, signs
+    PC (polycarbonate): Safety glasses, CDs
+    Nylon (PA): Gears, bearings, textiles
+    PTFE (Teflon): Non-stick, low friction
+  
+  Thermosets (permanent):
+    Epoxy: Adhesives, composites matrix
+    Polyester: Fiberglass matrix
+    Phenolics: Electrical insulation
+    Polyurethane: Foams, coatings
+  
+  Elastomers (rubbers):
+    Natural rubber: Tires, seals
+    Neoprene: Oil-resistant
+    Silicone: High-T, biocompatible
+
+Ceramics:
+  Inorganic, non-metallic
+  Ionic/covalent bonding
+  
+  Properties:
+    - Hard, brittle
+    - High melting point
+    - Compression strong, tension weak
+    - Electrical/thermal insulators
+  
+  Traditional:
+    Alumina (Al₂O₃): Spark plugs, abrasives
+    Silicon carbide (SiC): Cutting tools
+    Silicon nitride (Si₃N₄): Engine parts
+  
+  Glass: Amorphous silica
+    Soda-lime: Windows
+    Borosilicate (Pyrex): Cookware
+    Tempered: Safety glass
+
+Composites:
+  Combination of two or more materials
+  
+  Fiber-reinforced:
+    Fibers: Glass, carbon, aramid (Kevlar)
+    Matrix: Polymer, metal, ceramic
+    
+    GFRP (glass fiber): Boats, cars
+    CFRP (carbon fiber): Aerospace, sports
+    
+    Properties:
+      - High specific strength/stiffness
+      - Anisotropic (directional)
+  
+  Particle-reinforced:
+    Concrete (cement + aggregate)
+    Cemented carbide (WC in Co)
+  
+  Structural:
+    Sandwich panels (honeycomb core)
+    Laminated (plywood, safety glass)
+</code>
+                </div>
+
+                <h4>Material Selection</h4>
+                <div class="code-block" data-language="text">
+<code>Selection Criteria:
+
+Mechanical Requirements:
+  - Strength (yield, ultimate)
+  - Stiffness (elastic modulus)
+  - Toughness (fracture resistance)
+  - Hardness (wear resistance)
+  - Fatigue resistance
+  - Creep resistance (high-T)
+
+Physical Properties:
+  - Density (weight constraints)
+  - Thermal conductivity
+  - Thermal expansion
+  - Electrical conductivity
+  - Magnetic properties
+  - Optical properties
+
+Environmental Factors:
+  - Corrosion resistance
+  - Temperature range
+  - Radiation resistance
+  - Chemical compatibility
+
+Manufacturing:
+  - Formability
+  - Machinability
+  - Weldability
+  - Castability
+  - Availability
+
+Economic:
+  - Material cost
+  - Processing cost
+  - Life-cycle cost
+  - Recyclability
+
+Ashby Charts:
+  Property maps for selection
+  
+  Example axes:
+    - Strength vs. Density
+    - Modulus vs. Density
+    - Toughness vs. Strength
+  
+  Selection lines isolate candidates
+  
+  Material indices:
+    Beam (minimize weight): M = E^(1/2)/ρ
+    Tie rod: M = σ_y/ρ
+    Spring: M = σ_y²/E
+
+Decision Matrix:
+  Weight factors by importance
+  Score each material
+  Calculate weighted total
+  Select highest score
+</code>
+                </div>
+
+                <div class="info-box important">
+                    <h4>🎯 Practice Problems</h4>
+                    <ol>
+                        <li>Crystal: FCC aluminum (a=0.405 nm). Calculate density. (Atomic weight 27 g/mol, 4 atoms/cell)</li>
+                        <li>Phase diagram: Fe-0.4% C cooled slowly from 1000°C. What phases at 750°C? What is microstructure at room T?</li>
+                        <li>Lever rule: Cu-40wt%Ni at 1300°C. Find fraction liquid and solid. (Use Cu-Ni diagram)</li>
+                        <li>Hardness: Steel has 250 HB. Estimate tensile strength. (σ_UTS ≈ 3.45 × HB MPa)</li>
+                        <li>Selection: Aerospace bracket needs σ_y > 400 MPa, ρ < 5 g/cm³. Compare steel (7.8 g/cm³, 500 MPa) vs Ti-6Al-4V (4.4 g/cm³, 900 MPa).</li>
+                        <li>Strengthening: Grain size reduced from 50 μm to 10 μm. If σ₀=100 MPa, k_y=0.4 MPa·mm^0.5, find new σ_y.</li>
+                    </ol>
+                </div>
+
+                <h3>Summary</h3>
+                <ul>
+                    <li>Bonding determines properties: metallic (ductile, conductive), ionic/covalent (hard, brittle)</li>
+                    <li>Crystal structures: FCC and HCP most dense (74%), BCC less (68%), affects ductility via slip systems</li>
+                    <li>Defects enable properties: vacancies (diffusion), dislocations (plasticity), grain boundaries (strength)</li>
+                    <li>Strengthening: grain refinement (Hall-Petch), solid solution, strain hardening, precipitation, phase transformation</li>
+                    <li>Phase diagrams: Fe-C critical for steels, eutectoid (0.76%C, 727°C) forms pearlite</li>
+                    <li>Steels: low C (weldable), medium C (heat treatable), high C (tools), stainless (>11% Cr for corrosion)</li>
+                    <li>Non-ferrous: Al (lightweight, 2xxx/7xxx aerospace), Ti (high strength/weight, expensive), Cu (conductive)</li>
+                    <li>Composites: fiber-reinforced (high specific strength), anisotropic, used where performance justifies cost</li>
+                    <li>Selection: mechanical, environmental, manufacturing, economic factors; use Ashby charts and material indices</li>
+                </ul>
+
+                <h3>Next Steps</h3>
+                <p>
+                    Lesson 8 covers Machine Design, applying materials knowledge to design mechanical components 
+                    for strength, fatigue life, and reliability. You'll learn about stress concentrations, fatigue 
+                    analysis, shaft design, gears, bearings, springs, and fasteners.
+                </p>
+            </div>
+
+            <div class="lesson-navigation">
+                <a href="06-heat-transfer.html" class="nav-btn">← Heat Transfer</a>
+                <a href="08-machine-design.html" class="nav-btn">Next: Machine Design →</a>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../js/main.js"></script>
+</body>
+</html>

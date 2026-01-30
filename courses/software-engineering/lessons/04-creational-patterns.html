@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 4: Creational Design Patterns - Engineering Academy</title>
+    <link rel="stylesheet" href="../../../css/styles.css">
+    <link rel="stylesheet" href="../../../css/course-styles/course.css">
+</head>
+<body>
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <h1><a href="../../../index.html" style="color: inherit; text-decoration: none;">🎓 Engineering Academy</a></h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../index.html">Course Overview</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section class="course-header">
+        <div class="container">
+            <h1>💻 Software Engineering</h1>
+            <p>Lesson 4: Creational Design Patterns</p>
+        </div>
+    </section>
+
+    <div class="course-container">
+        <aside class="course-sidebar">
+            <h3>Course Modules</h3>
+            <ul class="lesson-list">
+                <li><a href="../index.html"><span class="lesson-number">📚</span>Course Overview</a></li>
+                <li><a href="01-introduction.html" class="completed"><span class="lesson-number">1</span>Introduction to SE</a></li>
+                <li><a href="02-sdlc.html" class="completed"><span class="lesson-number">2</span>SDLC & Methodologies</a></li>
+                <li><a href="03-requirements-engineering.html" class="completed"><span class="lesson-number">3</span>Requirements Engineering</a></li>
+                <li><a href="04-creational-patterns.html" class="active"><span class="lesson-number">4</span>Creational Patterns</a></li>
+                <li><a href="05-structural-patterns.html"><span class="lesson-number">5</span>Structural Patterns</a></li>
+                <li><a href="06-behavioral-patterns.html"><span class="lesson-number">6</span>Behavioral Patterns</a></li>
+                <li><a href="07-architecture.html"><span class="lesson-number">7</span>Software Architecture</a></li>
+                <li><a href="08-solid-principles.html"><span class="lesson-number">8</span>SOLID Principles</a></li>
+                <li><a href="09-code-quality.html"><span class="lesson-number">9</span>Code Quality</a></li>
+                <li><a href="10-testing.html"><span class="lesson-number">10</span>Testing Strategies</a></li>
+                <li><a href="11-version-control.html"><span class="lesson-number">11</span>Version Control</a></li>
+                <li><a href="12-agile-devops.html"><span class="lesson-number">12</span>Agile & DevOps</a></li>
+            </ul>
+        </aside>
+
+        <main class="course-content">
+            <div class="lesson-header">
+                <h2>Lesson 4: Creational Design Patterns</h2>
+                <div class="lesson-meta">
+                    <span>📖 60 min read</span>
+                    <span>📊 Intermediate</span>
+                </div>
+            </div>
+
+            <div class="lesson-content">
+                <h3>Introduction to Creational Patterns</h3>
+                <p>
+                    Creational design patterns deal with object creation mechanisms, providing flexibility in 
+                    deciding which objects to create for a given use case. They abstract the instantiation process, 
+                    making the system independent of how its objects are created, composed, and represented.
+                </p>
+
+                <div class="info-box note">
+                    <h4>📌 Why Creational Patterns Matter</h4>
+                    <p>
+                        Direct object creation using constructors can lead to tight coupling and inflexibility. 
+                        Creational patterns provide controlled, flexible ways to create objects that promote 
+                        loose coupling and code reusability.
+                    </p>
+                </div>
+
+                <h3>The 5 Creational Patterns</h3>
+                <ul>
+                    <li><strong>Singleton</strong> - Ensure a class has only one instance</li>
+                    <li><strong>Factory Method</strong> - Define an interface for creating objects</li>
+                    <li><strong>Abstract Factory</strong> - Create families of related objects</li>
+                    <li><strong>Builder</strong> - Construct complex objects step by step</li>
+                    <li><strong>Prototype</strong> - Create objects by cloning existing ones</li>
+                </ul>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>1. Singleton Pattern</h3>
+                <p>
+                    The Singleton pattern ensures a class has only one instance and provides a global point of 
+                    access to it. This is useful for resources that should only exist once, like configuration 
+                    managers, connection pools, or logging systems.
+                </p>
+
+                <h4>Problem It Solves</h4>
+                <ul>
+                    <li>Need exactly one instance of a class</li>
+                    <li>Global access to that instance</li>
+                    <li>Lazy initialization (create only when needed)</li>
+                    <li>Thread-safe access in concurrent environments</li>
+                </ul>
+
+                <h4>Implementation in Python</h4>
+                <div class="code-block" data-language="python">
+<code><span class="keyword">class</span> <span class="class-name">DatabaseConnection</span>:
+    <span class="comment"># Class variable to hold the single instance</span>
+    _instance = <span class="keyword">None</span>
+    _lock = threading.Lock()
+    
+    <span class="keyword">def</span> <span class="function">__new__</span>(cls):
+        <span class="comment"># Thread-safe singleton implementation</span>
+        <span class="keyword">if</span> cls._instance <span class="keyword">is</span> <span class="keyword">None</span>:
+            <span class="keyword">with</span> cls._lock:
+                <span class="comment"># Double-check locking</span>
+                <span class="keyword">if</span> cls._instance <span class="keyword">is</span> <span class="keyword">None</span>:
+                    cls._instance = <span class="keyword">super</span>().__new__(cls)
+                    cls._instance._initialized = <span class="keyword">False</span>
+        <span class="keyword">return</span> cls._instance
+    
+    <span class="keyword">def</span> <span class="function">__init__</span>(self):
+        <span class="comment"># Initialize only once</span>
+        <span class="keyword">if</span> <span class="keyword">not</span> self._initialized:
+            self.connection = self._create_connection()
+            self._initialized = <span class="keyword">True</span>
+    
+    <span class="keyword">def</span> <span class="function">_create_connection</span>(self):
+        <span class="keyword">print</span>(<span class="string">"Creating database connection..."</span>)
+        <span class="keyword">return</span> <span class="string">"DB Connection Object"</span>
+
+<span class="comment"># Usage</span>
+db1 = DatabaseConnection()
+db2 = DatabaseConnection()
+<span class="keyword">print</span>(db1 <span class="keyword">is</span> db2)  <span class="comment"># True - same instance!</span>
+</code>
+                </div>
+
+                <h4>Implementation in JavaScript</h4>
+                <div class="code-block" data-language="javascript">
+<code><span class="keyword">class</span> <span class="class-name">Logger</span> {
+    <span class="keyword">constructor</span>() {
+        <span class="keyword">if</span> (Logger.instance) {
+            <span class="keyword">return</span> Logger.instance;
+        }
+        
+        <span class="keyword">this</span>.logs = [];
+        Logger.instance = <span class="keyword">this</span>;
+    }
+    
+    <span class="function">log</span>(message) {
+        <span class="keyword">this</span>.logs.push({
+            message,
+            timestamp: <span class="keyword">new</span> Date()
+        });
+        console.log(<span class="string">`[LOG] ${message}`</span>);
+    }
+    
+    <span class="function">printLogs</span>() {
+        <span class="keyword">this</span>.logs.forEach(log => {
+            console.log(<span class="string">`${log.timestamp}: ${log.message}`</span>);
+        });
+    }
+}
+
+<span class="comment">// Usage</span>
+<span class="keyword">const</span> logger1 = <span class="keyword">new</span> Logger();
+<span class="keyword">const</span> logger2 = <span class="keyword">new</span> Logger();
+console.log(logger1 === logger2);  <span class="comment">// true</span>
+</code>
+                </div>
+
+                <div class="info-box warning">
+                    <h4>⚠️ Singleton Pitfalls</h4>
+                    <ul>
+                        <li>Can make testing difficult (global state)</li>
+                        <li>May violate Single Responsibility Principle</li>
+                        <li>Can hide dependencies</li>
+                        <li>Thread-safety issues if not implemented carefully</li>
+                    </ul>
+                </div>
+
+                <h4>When to Use Singleton</h4>
+                <ul>
+                    <li>Configuration managers</li>
+                    <li>Logging systems</li>
+                    <li>Database connection pools</li>
+                    <li>Thread pools</li>
+                    <li>Cache management</li>
+                </ul>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>2. Factory Method Pattern</h3>
+                <p>
+                    The Factory Method defines an interface for creating objects but lets subclasses decide which 
+                    class to instantiate. It delegates the instantiation logic to subclasses.
+                </p>
+
+                <h4>Problem It Solves</h4>
+                <ul>
+                    <li>Create objects without specifying their exact classes</li>
+                    <li>Delegate instantiation to subclasses</li>
+                    <li>Promote loose coupling</li>
+                    <li>Follow Open/Closed Principle (open for extension, closed for modification)</li>
+                </ul>
+
+                <h4>Implementation Example</h4>
+                <div class="code-block" data-language="python">
+<code><span class="keyword">from</span> abc <span class="keyword">import</span> ABC, abstractmethod
+
+<span class="comment"># Product Interface</span>
+<span class="keyword">class</span> <span class="class-name">Vehicle</span>(ABC):
+    @abstractmethod
+    <span class="keyword">def</span> <span class="function">deliver</span>(self):
+        <span class="keyword">pass</span>
+
+<span class="comment"># Concrete Products</span>
+<span class="keyword">class</span> <span class="class-name">Truck</span>(Vehicle):
+    <span class="keyword">def</span> <span class="function">deliver</span>(self):
+        <span class="keyword">return</span> <span class="string">"Delivering by land in a truck"</span>
+
+<span class="keyword">class</span> <span class="class-name">Ship</span>(Vehicle):
+    <span class="keyword">def</span> <span class="function">deliver</span>(self):
+        <span class="keyword">return</span> <span class="string">"Delivering by sea in a ship"</span>
+
+<span class="keyword">class</span> <span class="class-name">Plane</span>(Vehicle):
+    <span class="keyword">def</span> <span class="function">deliver</span>(self):
+        <span class="keyword">return</span> <span class="string">"Delivering by air in a plane"</span>
+
+<span class="comment"># Creator (Factory)</span>
+<span class="keyword">class</span> <span class="class-name">Logistics</span>(ABC):
+    @abstractmethod
+    <span class="keyword">def</span> <span class="function">create_transport</span>(self) -> Vehicle:
+        <span class="keyword">pass</span>
+    
+    <span class="keyword">def</span> <span class="function">plan_delivery</span>(self):
+        <span class="comment"># Factory method is called here</span>
+        vehicle = self.create_transport()
+        <span class="keyword">return</span> vehicle.deliver()
+
+<span class="comment"># Concrete Creators</span>
+<span class="keyword">class</span> <span class="class-name">RoadLogistics</span>(Logistics):
+    <span class="keyword">def</span> <span class="function">create_transport</span>(self):
+        <span class="keyword">return</span> Truck()
+
+<span class="keyword">class</span> <span class="class-name">SeaLogistics</span>(Logistics):
+    <span class="keyword">def</span> <span class="function">create_transport</span>(self):
+        <span class="keyword">return</span> Ship()
+
+<span class="keyword">class</span> <span class="class-name">AirLogistics</span>(Logistics):
+    <span class="keyword">def</span> <span class="function">create_transport</span>(self):
+        <span class="keyword">return</span> Plane()
+
+<span class="comment"># Usage</span>
+<span class="keyword">def</span> <span class="function">client_code</span>(logistics: Logistics):
+    <span class="keyword">print</span>(logistics.plan_delivery())
+
+client_code(RoadLogistics())  <span class="comment"># Delivering by land in a truck</span>
+client_code(SeaLogistics())   <span class="comment"># Delivering by sea in a ship</span>
+client_code(AirLogistics())   <span class="comment"># Delivering by air in a plane</span>
+</code>
+                </div>
+
+                <div class="info-box tip">
+                    <h4>💡 Real-World Example</h4>
+                    <p>
+                        UI frameworks use Factory Method extensively. For example, a GUI framework might have 
+                        different factories for Windows, macOS, and Linux, each creating platform-specific 
+                        buttons, checkboxes, and windows while maintaining the same interface.
+                    </p>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>3. Abstract Factory Pattern</h3>
+                <p>
+                    Abstract Factory provides an interface for creating families of related or dependent objects 
+                    without specifying their concrete classes. It's essentially a factory of factories.
+                </p>
+
+                <h4>Implementation Example - UI Components</h4>
+                <div class="code-block" data-language="python">
+<code><span class="comment"># Abstract Products</span>
+<span class="keyword">class</span> <span class="class-name">Button</span>(ABC):
+    @abstractmethod
+    <span class="keyword">def</span> <span class="function">render</span>(self): <span class="keyword">pass</span>
+
+<span class="keyword">class</span> <span class="class-name">Checkbox</span>(ABC):
+    @abstractmethod
+    <span class="keyword">def</span> <span class="function">render</span>(self): <span class="keyword">pass</span>
+
+<span class="comment"># Windows Concrete Products</span>
+<span class="keyword">class</span> <span class="class-name">WindowsButton</span>(Button):
+    <span class="keyword">def</span> <span class="function">render</span>(self):
+        <span class="keyword">return</span> <span class="string">"Rendering Windows-style button"</span>
+
+<span class="keyword">class</span> <span class="class-name">WindowsCheckbox</span>(Checkbox):
+    <span class="keyword">def</span> <span class="function">render</span>(self):
+        <span class="keyword">return</span> <span class="string">"Rendering Windows-style checkbox"</span>
+
+<span class="comment"># macOS Concrete Products</span>
+<span class="keyword">class</span> <span class="class-name">MacButton</span>(Button):
+    <span class="keyword">def</span> <span class="function">render</span>(self):
+        <span class="keyword">return</span> <span class="string">"Rendering macOS-style button"</span>
+
+<span class="keyword">class</span> <span class="class-name">MacCheckbox</span>(Checkbox):
+    <span class="keyword">def</span> <span class="function">render</span>(self):
+        <span class="keyword">return</span> <span class="string">"Rendering macOS-style checkbox"</span>
+
+<span class="comment"># Abstract Factory</span>
+<span class="keyword">class</span> <span class="class-name">GUIFactory</span>(ABC):
+    @abstractmethod
+    <span class="keyword">def</span> <span class="function">create_button</span>(self) -> Button: <span class="keyword">pass</span>
+    
+    @abstractmethod
+    <span class="keyword">def</span> <span class="function">create_checkbox</span>(self) -> Checkbox: <span class="keyword">pass</span>
+
+<span class="comment"># Concrete Factories</span>
+<span class="keyword">class</span> <span class="class-name">WindowsFactory</span>(GUIFactory):
+    <span class="keyword">def</span> <span class="function">create_button</span>(self):
+        <span class="keyword">return</span> WindowsButton()
+    
+    <span class="keyword">def</span> <span class="function">create_checkbox</span>(self):
+        <span class="keyword">return</span> WindowsCheckbox()
+
+<span class="keyword">class</span> <span class="class-name">MacFactory</span>(GUIFactory):
+    <span class="keyword">def</span> <span class="function">create_button</span>(self):
+        <span class="keyword">return</span> MacButton()
+    
+    <span class="keyword">def</span> <span class="function">create_checkbox</span>(self):
+        <span class="keyword">return</span> MacCheckbox()
+
+<span class="comment"># Client Code</span>
+<span class="keyword">class</span> <span class="class-name">Application</span>:
+    <span class="keyword">def</span> <span class="function">__init__</span>(self, factory: GUIFactory):
+        self.button = factory.create_button()
+        self.checkbox = factory.create_checkbox()
+    
+    <span class="keyword">def</span> <span class="function">render</span>(self):
+        <span class="keyword">print</span>(self.button.render())
+        <span class="keyword">print</span>(self.checkbox.render())
+
+<span class="comment"># Usage</span>
+<span class="keyword">import</span> platform
+
+<span class="keyword">if</span> platform.system() == <span class="string">"Windows"</span>:
+    factory = WindowsFactory()
+<span class="keyword">elif</span> platform.system() == <span class="string">"Darwin"</span>:
+    factory = MacFactory()
+
+app = Application(factory)
+app.render()
+</code>
+                </div>
+
+                <h4>Key Differences: Factory Method vs Abstract Factory</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Aspect</th>
+                            <th>Factory Method</th>
+                            <th>Abstract Factory</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Purpose</strong></td>
+                            <td>Create one product</td>
+                            <td>Create families of products</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Complexity</strong></td>
+                            <td>Simple</td>
+                            <td>More complex</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Inheritance</strong></td>
+                            <td>Uses inheritance</td>
+                            <td>Uses composition</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Example</strong></td>
+                            <td>Create different vehicles</td>
+                            <td>Create entire UI themes</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>4. Builder Pattern</h3>
+                <p>
+                    Builder pattern separates the construction of a complex object from its representation, 
+                    allowing the same construction process to create different representations.
+                </p>
+
+                <h4>Problem It Solves</h4>
+                <ul>
+                    <li>Too many constructor parameters (telescoping constructor anti-pattern)</li>
+                    <li>Need to create objects with many optional parameters</li>
+                    <li>Step-by-step object construction</li>
+                    <li>Immutable objects with many fields</li>
+                </ul>
+
+                <h4>Implementation Example</h4>
+                <div class="code-block" data-language="python">
+<code><span class="keyword">class</span> <span class="class-name">Pizza</span>:
+    <span class="keyword">def</span> <span class="function">__init__</span>(self):
+        self.size = <span class="keyword">None</span>
+        self.cheese = <span class="keyword">False</span>
+        self.pepperoni = <span class="keyword">False</span>
+        self.mushrooms = <span class="keyword">False</span>
+        self.olives = <span class="keyword">False</span>
+        self.bacon = <span class="keyword">False</span>
+    
+    <span class="keyword">def</span> <span class="function">__str__</span>(self):
+        toppings = []
+        <span class="keyword">if</span> self.cheese: toppings.append(<span class="string">"cheese"</span>)
+        <span class="keyword">if</span> self.pepperoni: toppings.append(<span class="string">"pepperoni"</span>)
+        <span class="keyword">if</span> self.mushrooms: toppings.append(<span class="string">"mushrooms"</span>)
+        <span class="keyword">if</span> self.olives: toppings.append(<span class="string">"olives"</span>)
+        <span class="keyword">if</span> self.bacon: toppings.append(<span class="string">"bacon"</span>)
+        <span class="keyword">return</span> <span class="string">f"{self.size} pizza with {', '.join(toppings)}"</span>
+
+<span class="keyword">class</span> <span class="class-name">PizzaBuilder</span>:
+    <span class="keyword">def</span> <span class="function">__init__</span>(self):
+        self.pizza = Pizza()
+    
+    <span class="keyword">def</span> <span class="function">set_size</span>(self, size):
+        self.pizza.size = size
+        <span class="keyword">return</span> self  <span class="comment"># Return self for method chaining</span>
+    
+    <span class="keyword">def</span> <span class="function">add_cheese</span>(self):
+        self.pizza.cheese = <span class="keyword">True</span>
+        <span class="keyword">return</span> self
+    
+    <span class="keyword">def</span> <span class="function">add_pepperoni</span>(self):
+        self.pizza.pepperoni = <span class="keyword">True</span>
+        <span class="keyword">return</span> self
+    
+    <span class="keyword">def</span> <span class="function">add_mushrooms</span>(self):
+        self.pizza.mushrooms = <span class="keyword">True</span>
+        <span class="keyword">return</span> self
+    
+    <span class="keyword">def</span> <span class="function">add_olives</span>(self):
+        self.pizza.olives = <span class="keyword">True</span>
+        <span class="keyword">return</span> self
+    
+    <span class="keyword">def</span> <span class="function">add_bacon</span>(self):
+        self.pizza.bacon = <span class="keyword">True</span>
+        <span class="keyword">return</span> self
+    
+    <span class="keyword">def</span> <span class="function">build</span>(self):
+        <span class="keyword">return</span> self.pizza
+
+<span class="comment"># Usage - Fluent Interface</span>
+pizza = (PizzaBuilder()
+         .set_size(<span class="string">"Large"</span>)
+         .add_cheese()
+         .add_pepperoni()
+         .add_mushrooms()
+         .build())
+
+<span class="keyword">print</span>(pizza)  <span class="comment"># Large pizza with cheese, pepperoni, mushrooms</span>
+</code>
+                </div>
+
+                <h4>JavaScript Implementation with Director</h4>
+                <div class="code-block" data-language="javascript">
+<code><span class="keyword">class</span> <span class="class-name">Computer</span> {
+    <span class="keyword">constructor</span>() {
+        <span class="keyword">this</span>.cpu = <span class="keyword">null</span>;
+        <span class="keyword">this</span>.ram = <span class="keyword">null</span>;
+        <span class="keyword">this</span>.storage = <span class="keyword">null</span>;
+        <span class="keyword">this</span>.gpu = <span class="keyword">null</span>;
+    }
+}
+
+<span class="keyword">class</span> <span class="class-name">ComputerBuilder</span> {
+    <span class="keyword">constructor</span>() {
+        <span class="keyword">this</span>.computer = <span class="keyword">new</span> Computer();
+    }
+    
+    <span class="function">setCPU</span>(cpu) {
+        <span class="keyword">this</span>.computer.cpu = cpu;
+        <span class="keyword">return</span> <span class="keyword">this</span>;
+    }
+    
+    <span class="function">setRAM</span>(ram) {
+        <span class="keyword">this</span>.computer.ram = ram;
+        <span class="keyword">return</span> <span class="keyword">this</span>;
+    }
+    
+    <span class="function">setStorage</span>(storage) {
+        <span class="keyword">this</span>.computer.storage = storage;
+        <span class="keyword">return</span> <span class="keyword">this</span>;
+    }
+    
+    <span class="function">setGPU</span>(gpu) {
+        <span class="keyword">this</span>.computer.gpu = gpu;
+        <span class="keyword">return</span> <span class="keyword">this</span>;
+    }
+    
+    <span class="function">build</span>() {
+        <span class="keyword">return</span> <span class="keyword">this</span>.computer;
+    }
+}
+
+<span class="comment">// Director - knows how to build common configurations</span>
+<span class="keyword">class</span> <span class="class-name">ComputerDirector</span> {
+    <span class="keyword">static</span> <span class="function">buildGamingPC</span>() {
+        <span class="keyword">return</span> <span class="keyword">new</span> ComputerBuilder()
+            .setCPU(<span class="string">"Intel i9-13900K"</span>)
+            .setRAM(<span class="string">"32GB DDR5"</span>)
+            .setStorage(<span class="string">"2TB NVMe SSD"</span>)
+            .setGPU(<span class="string">"RTX 4090"</span>)
+            .build();
+    }
+    
+    <span class="keyword">static</span> <span class="function">buildOfficePC</span>() {
+        <span class="keyword">return</span> <span class="keyword">new</span> ComputerBuilder()
+            .setCPU(<span class="string">"Intel i5-13400"</span>)
+            .setRAM(<span class="string">"16GB DDR4"</span>)
+            .setStorage(<span class="string">"512GB SSD"</span>)
+            .build();  <span class="comment">// No GPU needed</span>
+    }
+}
+
+<span class="comment">// Usage</span>
+<span class="keyword">const</span> gamingPC = ComputerDirector.buildGamingPC();
+<span class="keyword">const</span> officePC = ComputerDirector.buildOfficePC();
+</code>
+                </div>
+
+                <div class="info-box tip">
+                    <h4>💡 When to Use Builder</h4>
+                    <p>
+                        Use Builder when you have a class with more than 4-5 constructor parameters, 
+                        especially if many are optional. Common in configuration objects, HTTP request 
+                        builders, and query builders (SQL, NoSQL).
+                    </p>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <h3>5. Prototype Pattern</h3>
+                <p>
+                    Prototype pattern creates new objects by cloning existing ones rather than creating from scratch. 
+                    Useful when object creation is expensive or complex.
+                </p>
+
+                <h4>Implementation Example</h4>
+                <div class="code-block" data-language="python">
+<code><span class="keyword">import</span> copy
+
+<span class="keyword">class</span> <span class="class-name">Document</span>:
+    <span class="keyword">def</span> <span class="function">__init__</span>(self, title, content, formatting):
+        self.title = title
+        self.content = content
+        self.formatting = formatting  <span class="comment"># Complex object</span>
+        <span class="keyword">print</span>(<span class="string">f"Creating document: {title}"</span>)
+    
+    <span class="keyword">def</span> <span class="function">clone</span>(self):
+        <span class="comment"># Deep copy to avoid shared references</span>
+        <span class="keyword">return</span> copy.deepcopy(self)
+    
+    <span class="keyword">def</span> <span class="function">__str__</span>(self):
+        <span class="keyword">return</span> <span class="string">f"Document: {self.title}"</span>
+
+<span class="comment"># Create expensive template</span>
+template = Document(
+    title=<span class="string">"Template"</span>,
+    content=<span class="string">"Lorem ipsum..."</span>,
+    formatting={
+        <span class="string">"font"</span>: <span class="string">"Arial"</span>,
+        <span class="string">"size"</span>: 12,
+        <span class="string">"colors"</span>: {<span class="string">"primary"</span>: <span class="string">"#000"</span>, <span class="string">"secondary"</span>: <span class="string">"#666"</span>}
+    }
+)
+
+<span class="comment"># Clone instead of creating from scratch</span>
+doc1 = template.clone()
+doc1.title = <span class="string">"Report Q1"</span>
+
+doc2 = template.clone()
+doc2.title = <span class="string">"Report Q2"</span>
+
+<span class="comment"># No expensive creation logs for clones!</span>
+</code>
+                </div>
+
+                <h3>Summary: Creational Patterns Comparison</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Pattern</th>
+                            <th>When to Use</th>
+                            <th>Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Singleton</strong></td>
+                            <td>Need exactly one instance</td>
+                            <td>Configuration, Logger, Cache</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Factory Method</strong></td>
+                            <td>Subclasses decide what to create</td>
+                            <td>Transport logistics, Document creators</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Abstract Factory</strong></td>
+                            <td>Create families of related objects</td>
+                            <td>UI toolkits, Database drivers</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Builder</strong></td>
+                            <td>Complex object construction</td>
+                            <td>Pizza, Computer, HTTP Request</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Prototype</strong></td>
+                            <td>Cloning is cheaper than creating</td>
+                            <td>Document templates, Game objects</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="info-box important">
+                    <h4>🎯 Key Takeaways</h4>
+                    <ul>
+                        <li>Creational patterns provide flexibility in object creation</li>
+                        <li>Choose based on your specific needs, not arbitrarily</li>
+                        <li>They promote loose coupling and code reusability</li>
+                        <li>Can be combined (e.g., Singleton Factory)</li>
+                        <li>Understand trade-offs - added complexity vs. flexibility</li>
+                    </ul>
+                </div>
+
+                <h3>Next Steps</h3>
+                <p>
+                    In the next lesson, we'll explore Structural Design Patterns, which deal with object composition 
+                    and relationships between entities. You'll learn about Adapter, Bridge, Composite, Decorator, 
+                    Facade, Flyweight, and Proxy patterns.
+                </p>
+            </div>
+
+            <div class="lesson-navigation">
+                <a href="03-requirements-engineering.html" class="nav-btn">← Previous: Requirements Engineering</a>
+                <a href="05-structural-patterns.html" class="nav-btn">Next: Structural Patterns →</a>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../../js/main.js"></script>
+</body>
+</html>
