@@ -340,4 +340,26 @@ tr:hover {
         font-size: 0.8rem;
         padding: 1rem;
     }
+
+    /* Fix Start Learning button visibility on mobile */
+    .course-content > div[style*="linear-gradient"] {
+        padding: 1.5rem 1rem !important;
+        margin: 2rem 0 !important;
+    }
+
+    .course-content > div[style*="linear-gradient"] h3 {
+        font-size: 1.3rem !important;
+    }
+
+    .course-content > div[style*="linear-gradient"] p {
+        font-size: 1rem !important;
+    }
+
+    .course-content > div[style*="linear-gradient"] a {
+        display: block !important;
+        width: 100% !important;
+        text-align: center !important;
+        padding: 1rem !important;
+        box-sizing: border-box !important;
+    }
 }
