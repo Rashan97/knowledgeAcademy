@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://rashan97.github.io/knowledgeAcademy/sitemap.xml
+
+# Disallow large files
+Disallow: /assets/*.exe
+Disallow: /assets/*.zip
