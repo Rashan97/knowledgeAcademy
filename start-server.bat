@@ -5,7 +5,7 @@ taskkill /F /IM node.exe 2>nul
 timeout /t 2 /nobreak >nul
 
 echo Starting Node.js server...
-cd /d "C:\New Projects\learning-platform"
+cd /d "%~dp0"
 start "Knowledge Academy Server" node server.js
 
 timeout /t 3 /nobreak >nul
