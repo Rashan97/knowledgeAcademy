@@ -112,6 +112,8 @@
     padding: 2rem;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     min-height: 600px;
+    overflow: visible;
+    padding-bottom: 3rem;
 }
 
 .lesson-header {
@@ -345,6 +347,9 @@ tr:hover {
     .course-content > div[style*="linear-gradient"] {
         padding: 1.5rem 1rem !important;
         margin: 2rem 0 !important;
+        position: relative !important;
+        z-index: 10 !important;
+        overflow: visible !important;
     }
 
     .course-content > div[style*="linear-gradient"] h3 {
@@ -353,13 +358,26 @@ tr:hover {
 
     .course-content > div[style*="linear-gradient"] p {
         font-size: 1rem !important;
+        margin-bottom: 1.5rem !important;
     }
 
     .course-content > div[style*="linear-gradient"] a {
         display: block !important;
         width: 100% !important;
         text-align: center !important;
-        padding: 1rem !important;
+        padding: 1rem 1.5rem !important;
         box-sizing: border-box !important;
+        font-size: 1.1rem !important;
+        position: relative !important;
+        z-index: 100 !important;
+    }
+
+    .course-content {
+        padding-bottom: 4rem !important;
+        overflow: visible !important;
+    }
+
+    .course-container {
+        overflow: visible !important;
     }
 }
